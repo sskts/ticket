@@ -9,18 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let AppComponent = class AppComponent {
-    constructor() {
-    }
+let PageComponent = class PageComponent {
 };
-AppComponent = __decorate([
+PageComponent = __decorate([
     core_1.Component({
-        selector: 'app',
+        selector: 'page',
         template: `
-    
-    <router-outlet></router-outlet>
-  `
+        page
+    `
     }), 
     __metadata('design:paramtypes', [])
-], AppComponent);
-exports.AppComponent = AppComponent;
+], PageComponent);
+exports.PageComponent = PageComponent;

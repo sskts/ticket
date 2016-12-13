@@ -8,24 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 const core_1 = require('@angular/core');
-const AppComponent_1 = require('../../components/app/AppComponent');
-let IndexComponent = class IndexComponent {
-    constructor(app) {
-        this.app = app;
-    }
+let BaseComponent = class BaseComponent {
 };
-IndexComponent = __decorate([
+BaseComponent = __decorate([
     core_1.Component({
-        selector: 'index',
+        selector: 'base',
         template: `
-        index
+        base
     `
-    }),
-    __param(0, core_1.Inject(core_1.forwardRef(() => AppComponent_1.AppComponent))), 
-    __metadata('design:paramtypes', [AppComponent_1.AppComponent])
-], IndexComponent);
-exports.IndexComponent = IndexComponent;
+    }), 
+    __metadata('design:paramtypes', [])
+], BaseComponent);
+exports.BaseComponent = BaseComponent;

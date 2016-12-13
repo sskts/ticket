@@ -1,0 +1,32 @@
+
+.auth.contents {
+    padding: 20px 40px;
+    .logo {
+        text-align: center;
+        margin: 0 0 20px;
+        img {
+            width: 80px;
+        }
+    }
+    dl {
+        dt {
+            margin: 0 0 10px;
+        }
+        dd {
+            margin: 0 0 30px;
+            .button {
+                margin: 0 0 20px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+            input {
+                margin: 0 0 10px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+

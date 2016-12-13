@@ -1,0 +1,252 @@
+* {
+    box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+body {
+    font-weight: 500;
+    -webkit-text-size-adjust: 100%;
+    width: 100%;
+    font-family: 'Lucida Grande','游ゴシック','ヒラギノ角ゴ ProN W3','Hiragino Kaku Gothic ProN','メイリオ',Meiryo,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: #FFF;
+    position: relative;
+}
+
+input[type=text],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=email],
+input[type=submit],
+textarea,
+select,
+option,
+button,
+label {
+    font-weight: 500;
+    font-family: 'Lucida Grande','游ゴシック','ヒラギノ角ゴ ProN W3','Hiragino Kaku Gothic ProN','メイリオ',Meiryo,Helvetica,Arial,sans-serif;
+    border-radius: 0;
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+
+input[type=submit],
+button {
+    cursor: pointer;
+}
+
+input[type=text],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=email] {
+    width: 100%;
+    border: 1px solid #d9d9d9;
+    padding: 8px 10px;
+    background-color: #FFF;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select {
+    border: 1px solid #d9d9d9;
+    padding: 8px 10px;
+    background-color: #FFF;
+}
+
+p {
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}
+
+.d-table {
+    display: table;
+    width: 100%;
+}
+
+.d-tr {
+    display: table-row-group;
+}
+
+.d-td {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-cover {
+    display: none;
+    background-color: #000;
+    opacity: 0.75;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 300px;
+    margin-left: -150px;
+    z-index: 10;
+}
+
+.modal-cover.active,
+.modal.active {
+    display: block;
+}
+
+// header
+.header {
+    padding: 10px;
+    .inner {
+        position: relative;
+        margin: 0 auto;
+    }
+    .logo {
+        width: 80px;
+        img {
+            width: 100%;
+        }
+    }
+}
+// footer
+.footer {
+    background-color: #212121;
+    padding: 20px 10px;
+    .inner {
+        position: relative;
+        margin: 0 auto;
+    }
+    ul {
+        margin: 0 0 10px -5px;
+        li {
+            float: left;
+            padding: 0 5px;
+            border-right: 1px solid #FFF;
+            line-height: 1.5;
+            &:last-child {
+                border: none;
+                padding-right: 0;
+            }
+            a {
+                color: #FFF;
+            }
+        }
+    }
+    .copyright {
+        color: #FFF;
+    }
+}
+
+
+//contents
+.contents {
+    border-top: 1px solid #ccc;
+    padding: 20px 10px;
+    margin: 0 auto;
+}
+.red-text {
+    color: #c00017;
+}
+.box {
+    background-color: #eeeef0;
+    padding: 15px 10px;
+    margin: 0 0 20px;
+    &:last-child {
+        margin: 0;
+    }
+}
+ul.box {
+    > li {
+        border-bottom: 1px solid #d1d1d1;
+        margin: 0 0 10px;
+        padding: 0 0 10px;
+        &:last-child {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+.page-ttl {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 0 20px;
+    text-align: center;
+}
+.read {
+    margin: 0 0 20px;
+}
+.button {
+    line-height: 1;
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px #333;
+}
+.blue-button {
+    background-color: #019fe8;
+    color: #FFF;
+}
+.dark-blue-button {
+    background-color: #036db7;
+    color: #FFF;
+}
+.gray-button {
+    background-color: #595758;
+    color: #FFF;
+}
+.white-button {
+    background-color: #FFF;
+}
+.button-area {
+    width: auto;
+}
+.next-button {
+    
+}
+.prev-button {
+    
+}
+.prev-link {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+.section-ttl {
+    margin: 0 0 10px;
+}
+.validation {
+    color: #c00017;
+}

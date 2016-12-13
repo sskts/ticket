@@ -14,7 +14,15 @@ const forms_1 = require('@angular/forms');
 const http_1 = require('@angular/http');
 const app_routing_1 = require('./app.routing');
 const AppComponent_1 = require('./components/app/AppComponent');
-const IndexComponent_1 = require('./components/index/IndexComponent');
+const BaseComponent_1 = require('./components/BaseComponent');
+const PageComponent_1 = require('./components/pages/PageComponent');
+const IndexComponent_1 = require('./components/pages/index/IndexComponent');
+const AuthComponent_1 = require('./components/pages/auth/AuthComponent');
+const AuthLoginComponent_1 = require('./components/pages/auth/login/AuthLoginComponent');
+const RegistInputComponent_1 = require('./components/pages/regist/RegistInputComponent');
+const RegistConfirmComponent_1 = require('./components/pages/regist/RegistConfirmComponent');
+const RegistPasswordComponent_1 = require('./components/pages/regist/RegistPasswordComponent');
+const RegistCompleteComponent_1 = require('./components/pages/regist/RegistCompleteComponent');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -22,15 +30,32 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
+            forms_1.ReactiveFormsModule,
             http_1.HttpModule,
             app_routing_1.routing
         ],
         declarations: [
             AppComponent_1.AppComponent,
+            BaseComponent_1.BaseComponent,
+            PageComponent_1.PageComponent,
             IndexComponent_1.IndexComponent,
+            AuthComponent_1.AuthComponent,
+            AuthLoginComponent_1.AuthLoginComponent,
+            RegistInputComponent_1.RegistInputComponent,
+            RegistConfirmComponent_1.RegistConfirmComponent,
+            RegistPasswordComponent_1.RegistPasswordComponent,
+            RegistCompleteComponent_1.RegistCompleteComponent,
         ],
         entryComponents: [
-            IndexComponent_1.IndexComponent
+            BaseComponent_1.BaseComponent,
+            PageComponent_1.PageComponent,
+            IndexComponent_1.IndexComponent,
+            AuthComponent_1.AuthComponent,
+            AuthLoginComponent_1.AuthLoginComponent,
+            RegistInputComponent_1.RegistInputComponent,
+            RegistConfirmComponent_1.RegistConfirmComponent,
+            RegistPasswordComponent_1.RegistPasswordComponent,
+            RegistCompleteComponent_1.RegistCompleteComponent,
         ],
         //   providers: [
         //     HeroService

@@ -9,18 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let AppComponent = class AppComponent {
-    constructor() {
-    }
+let RegistCompleteComponent = class RegistCompleteComponent {
 };
-AppComponent = __decorate([
+RegistCompleteComponent = __decorate([
     core_1.Component({
-        selector: 'app',
+        selector: 'regist-complete',
         template: `
-    
-    <router-outlet></router-outlet>
-  `
+        regist-Complete
+    `
     }), 
     __metadata('design:paramtypes', [])
-], AppComponent);
-exports.AppComponent = AppComponent;
+], RegistCompleteComponent);
+exports.RegistCompleteComponent = RegistCompleteComponent;

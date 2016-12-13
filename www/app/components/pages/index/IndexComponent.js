@@ -9,18 +9,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let AppComponent = class AppComponent {
-    constructor() {
+const router_1 = require('@angular/router');
+let IndexComponent = class IndexComponent {
+    constructor(router) {
+        this.router = router;
+    }
+    /**
+     * 初期化
+     */
+    ngOnInit() {
+        //ログインチェック
+        let loginFlag = false;
+        if (loginFlag) {
+        }
+        else {
+            //認証画面へ
+            this.router.navigate(['/auth']);
+        }
+    }
+    /**
+     * ログインチェック
+     */
+    isAuth() {
+        let result = false;
+        let storage = sessionStorage;
+        if (storage.getItem('user')) {
+            result = true;
+        }
+        return result;
     }
 };
-AppComponent = __decorate([
+IndexComponent = __decorate([
     core_1.Component({
-        selector: 'app',
+        selector: 'index',
         template: `
-    
-    <router-outlet></router-outlet>
-  `
+        <page>index</page>
+    `
     }), 
-    __metadata('design:paramtypes', [])
-], AppComponent);
-exports.AppComponent = AppComponent;
+    __metadata('design:paramtypes', [router_1.Router])
+], IndexComponent);
+exports.IndexComponent = IndexComponent;

@@ -9,18 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let AppComponent = class AppComponent {
-    constructor() {
-    }
+let RegistPasswordComponent = class RegistPasswordComponent {
 };
-AppComponent = __decorate([
+RegistPasswordComponent = __decorate([
     core_1.Component({
-        selector: 'app',
+        selector: 'regist-password',
         template: `
-    
-    <router-outlet></router-outlet>
-  `
+        regist-Password
+    `
     }), 
     __metadata('design:paramtypes', [])
-], AppComponent);
-exports.AppComponent = AppComponent;
+], RegistPasswordComponent);
+exports.RegistPasswordComponent = RegistPasswordComponent;
