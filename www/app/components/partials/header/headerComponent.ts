@@ -1,13 +1,14 @@
 import { Component, Inject, forwardRef } from '@angular/core';
 
 @Component({
-    selector: 'page',
+    selector: 'header',
     template: `
-        page
+        <div class="header">
+        </div>
     `
 })
 
-export class PageComponent { 
+export class headerComponent { 
 
     
 }

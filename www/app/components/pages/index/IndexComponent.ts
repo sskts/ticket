@@ -18,9 +18,7 @@ export class IndexComponent implements OnInit {
      */
     public ngOnInit() {
         //ログインチェック
-        let loginFlag = false;
-
-        if (loginFlag) {
+        if (this.isAuth()) {
 
         } else {
             //認証画面へ

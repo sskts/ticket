@@ -16,6 +16,7 @@ import { RegistConfirmComponent } from './components/pages/regist/RegistConfirmC
 import { RegistPasswordComponent } from './components/pages/regist/RegistPasswordComponent';
 import { RegistCompleteComponent } from './components/pages/regist/RegistCompleteComponent';
 
+import { headerComponent } from './components/partials/header/headerComponent';
 
 @NgModule({
     imports: [
@@ -36,7 +37,9 @@ import { RegistCompleteComponent } from './components/pages/regist/RegistComplet
         RegistConfirmComponent,
         RegistPasswordComponent,
         RegistCompleteComponent,
-        
+
+        headerComponent,
+
     ],
     entryComponents: [
         BaseComponent,
@@ -48,12 +51,14 @@ import { RegistCompleteComponent } from './components/pages/regist/RegistComplet
         RegistConfirmComponent,
         RegistPasswordComponent,
         RegistCompleteComponent,
+
+        headerComponent,
     ],
-  //   providers: [
-  //     HeroService
-  //   ],
-    bootstrap: [ AppComponent ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA] 
+    //   providers: [
+    //     HeroService
+    //   ],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class AppModule {

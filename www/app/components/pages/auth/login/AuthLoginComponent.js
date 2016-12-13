@@ -27,9 +27,12 @@ let AuthLoginComponent = class AuthLoginComponent {
         this.submitFlag = true;
         if (this.loginForm.valid) {
             let storage = sessionStorage;
-            let user = {};
-            storage.setItem('user', user);
-            this.router.navigate(['/index']);
+            let user = {
+                name: '畑口 晃人',
+                mail: this.mail.value
+            };
+            storage.setItem('user', JSON.stringify(user));
+            this.router.navigate(['']);
         }
     }
     /**
@@ -67,7 +70,7 @@ AuthLoginComponent = __decorate([
             <dl>
                 <dt>パスワード</dt>
                 <dd>
-                    <input type="text" [formControl]="loginForm.controls['password']" placeholder="">
+                    <input type="password" [formControl]="loginForm.controls['password']" placeholder="">
                     <div *ngIf="submitFlag && password.hasError('required')" class="validation">パスワードが未入力です</div>
                 </dd>
             </dl>

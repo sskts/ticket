@@ -23,6 +23,7 @@ const RegistInputComponent_1 = require('./components/pages/regist/RegistInputCom
 const RegistConfirmComponent_1 = require('./components/pages/regist/RegistConfirmComponent');
 const RegistPasswordComponent_1 = require('./components/pages/regist/RegistPasswordComponent');
 const RegistCompleteComponent_1 = require('./components/pages/regist/RegistCompleteComponent');
+const headerComponent_1 = require('./components/partials/header/headerComponent');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -45,6 +46,7 @@ AppModule = __decorate([
             RegistConfirmComponent_1.RegistConfirmComponent,
             RegistPasswordComponent_1.RegistPasswordComponent,
             RegistCompleteComponent_1.RegistCompleteComponent,
+            headerComponent_1.headerComponent,
         ],
         entryComponents: [
             BaseComponent_1.BaseComponent,
@@ -56,6 +58,7 @@ AppModule = __decorate([
             RegistConfirmComponent_1.RegistConfirmComponent,
             RegistPasswordComponent_1.RegistPasswordComponent,
             RegistCompleteComponent_1.RegistCompleteComponent,
+            headerComponent_1.headerComponent,
         ],
         //   providers: [
         //     HeroService

@@ -1,5 +1,4 @@
 import { Component, Inject, forwardRef } from '@angular/core';
-import { PageComponent } from '../../../../components/pages/PageComponent';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
@@ -22,7 +21,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
             <dl>
                 <dt>パスワード</dt>
                 <dd>
-                    <input type="text" [formControl]="loginForm.controls['password']" placeholder="">
+                    <input type="password" [formControl]="loginForm.controls['password']" placeholder="">
                     <div *ngIf="submitFlag && password.hasError('required')" class="validation">パスワードが未入力です</div>
                 </dd>
             </dl>
@@ -53,10 +52,11 @@ export class AuthLoginComponent {
         if (this.loginForm.valid) {
             let storage: Storage = sessionStorage;
             let user = {
-                
+                name: '畑口 晃人',
+                mail: this.mail.value
             };
-            storage.setItem('user', user);
-            this.router.navigate(['/index']);
+            storage.setItem('user', JSON.stringify(user));
+            this.router.navigate(['']);
         }
     }
 
