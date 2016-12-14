@@ -7,6 +7,7 @@ const RegistInputComponent_1 = require('./components/pages/regist/RegistInputCom
 const RegistConfirmComponent_1 = require('./components/pages/regist/RegistConfirmComponent');
 const RegistPasswordComponent_1 = require('./components/pages/regist/RegistPasswordComponent');
 const RegistCompleteComponent_1 = require('./components/pages/regist/RegistCompleteComponent');
+const PerformanceComponent_1 = require('./components/pages/performance/PerformanceComponent');
 const appRoutes = [
     {
         path: '',
@@ -35,6 +36,10 @@ const appRoutes = [
     {
         path: 'regist/complete',
         component: RegistCompleteComponent_1.RegistCompleteComponent
+    },
+    {
+        path: 'performance',
+        component: PerformanceComponent_1.PerformanceComponent
     }
 ];
 exports.routing = router_1.RouterModule.forRoot(appRoutes);

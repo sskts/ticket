@@ -1,4 +1,4 @@
-import { Component, Inject, forwardRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
@@ -7,13 +7,13 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
     selector: 'auth-login',
     template: `
     <div class="contents auth">
-        <div class="logo"><img src="/images/logo.jpg"></div>
+        <div class="logo"><img src="images/logo.jpg"></div>
         <div class="page-ttl">ログイン</div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
             <dl>
                 <dt>メールアドレス</dt>
                 <dd>
-                    <input type="text" [formControl]="loginForm.controls['mail']" placeholder="(例)cinema@cinemasunshine.jp">
+                    <input type="text" [formControl]="formGroup.controls['mail']" placeholder="(例)cinema@cinemasunshine.jp">
                     <div *ngIf="submitFlag && mail.hasError('required')" class="validation">メールアドレスが未入力です</div>
                     <div *ngIf="submitFlag && mail.hasError('pattern')" class="validation">メールアドレスの形式が違います</div>
                 </dd>
@@ -21,27 +21,29 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
             <dl>
                 <dt>パスワード</dt>
                 <dd>
-                    <input type="password" [formControl]="loginForm.controls['password']" placeholder="">
+                    <input type="password" [formControl]="formGroup.controls['password']" placeholder="">
                     <div *ngIf="submitFlag && password.hasError('required')" class="validation">パスワードが未入力です</div>
                 </dd>
             </dl>
-            <button class="blue-button button" type="submit">ログイン</button>
+            <div class="button-area">
+                <button class="blue-button button" type="submit">ログイン</button>
+                <div class="blue-button button" routerLink="/auth">戻る</div>
+            </div>
         </form>
     </div>
     `
 })
 export class AuthLoginComponent {
-    public loginForm: FormGroup;
+    public formGroup: FormGroup;
     public mail: AbstractControl;
     public password: AbstractControl;
     public submitFlag: boolean;
 
     constructor(private formBuilder: FormBuilder, private router: Router) {
         this.submitFlag = false;
-        this.loginForm = formBuilder.group(this.getValidation());
-
-        this.mail = this.loginForm.controls['mail'];
-        this.password = this.loginForm.controls['password'];
+        this.formGroup = formBuilder.group(this.getFormControls());
+        this.settingForms();
+        
     }
 
     /**
@@ -49,13 +51,7 @@ export class AuthLoginComponent {
      */
     public onSubmit(value: string): void {
         this.submitFlag = true;
-        if (this.loginForm.valid) {
-            let storage: Storage = sessionStorage;
-            let user = {
-                name: '畑口 晃人',
-                mail: this.mail.value
-            };
-            storage.setItem('user', JSON.stringify(user));
+        if (this.formGroup.valid) {
             this.router.navigate(['']);
         }
     }
@@ -63,7 +59,7 @@ export class AuthLoginComponent {
     /**
      * バリデーション
      */
-    private getValidation(): any {
+    private getFormControls(): any {
         let result = {
             mail: ['', Validators.compose([
                 Validators.required,
@@ -76,6 +72,15 @@ export class AuthLoginComponent {
 
         return result;
     }
+
+    /**
+     * フォームセッティング
+     */
+    private settingForms(): void {
+        this.mail = this.formGroup.controls['mail'];
+        this.password = this.formGroup.controls['password'];
+    }
+
 
 }
 

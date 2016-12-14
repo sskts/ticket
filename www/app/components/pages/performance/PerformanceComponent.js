@@ -10,26 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
-let RegistCompleteComponent = class RegistCompleteComponent {
+let PerformanceComponent = class PerformanceComponent {
     constructor(router) {
         this.router = router;
     }
+    /**
+     * 初期化
+     */
+    ngOnInit() {
+        this.performanceList = [];
+    }
 };
-RegistCompleteComponent = __decorate([
+PerformanceComponent = __decorate([
     core_1.Component({
-        selector: 'regist-complete',
+        selector: 'performance',
         template: `
-    <header pageName="新規会員登録"></header>
-    <div class="contents">
-        <p class="read">
-            会員登録が完了しました。<br>
-            ご登録ありがとうございます。<br>
-            引き続きシネマサンシャインアプリをお楽しみください。
-        </p>
-        <div class="blue-button button" routerLink="/">アプリTOPへ</div>
-    </div>
+        <header pageName="チケット購入"></header>
+        <div class="contents performance">
+            <ul>
+                <li *ngFor="let performance of performanceList">
+                    <div class="date"></div>
+                    <div class="date"></div>
+                    <div class="date"></div>
+                </li>
+            </ul>
+        </div>
+        <navigation activeNo="2"></navigation>
     `
     }), 
     __metadata('design:paramtypes', [router_1.Router])
-], RegistCompleteComponent);
-exports.RegistCompleteComponent = RegistCompleteComponent;
+], PerformanceComponent);
+exports.PerformanceComponent = PerformanceComponent;

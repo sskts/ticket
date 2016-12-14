@@ -23,7 +23,9 @@ const RegistInputComponent_1 = require('./components/pages/regist/RegistInputCom
 const RegistConfirmComponent_1 = require('./components/pages/regist/RegistConfirmComponent');
 const RegistPasswordComponent_1 = require('./components/pages/regist/RegistPasswordComponent');
 const RegistCompleteComponent_1 = require('./components/pages/regist/RegistCompleteComponent');
-const headerComponent_1 = require('./components/partials/header/headerComponent');
+const PerformanceComponent_1 = require('./components/pages/performance/PerformanceComponent');
+const HeaderComponent_1 = require('./components/partials/header/HeaderComponent');
+const NavigationComponent_1 = require('./components/partials/navigation/NavigationComponent');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -46,7 +48,9 @@ AppModule = __decorate([
             RegistConfirmComponent_1.RegistConfirmComponent,
             RegistPasswordComponent_1.RegistPasswordComponent,
             RegistCompleteComponent_1.RegistCompleteComponent,
-            headerComponent_1.headerComponent,
+            PerformanceComponent_1.PerformanceComponent,
+            HeaderComponent_1.headerComponent,
+            NavigationComponent_1.NavigationComponent
         ],
         entryComponents: [
             BaseComponent_1.BaseComponent,
@@ -58,7 +62,9 @@ AppModule = __decorate([
             RegistConfirmComponent_1.RegistConfirmComponent,
             RegistPasswordComponent_1.RegistPasswordComponent,
             RegistCompleteComponent_1.RegistCompleteComponent,
-            headerComponent_1.headerComponent,
+            PerformanceComponent_1.PerformanceComponent,
+            HeaderComponent_1.headerComponent,
+            NavigationComponent_1.NavigationComponent
         ],
         //   providers: [
         //     HeroService

@@ -31,18 +31,28 @@ let IndexComponent = class IndexComponent {
      */
     isAuth() {
         let result = false;
-        let storage = sessionStorage;
-        if (storage.getItem('user')) {
+        if (localStorage.getItem('user')) {
             result = true;
         }
         return result;
+    }
+    /**
+     * Storage初期化
+     */
+    initStorage() {
+        localStorage.removeItem('user');
+        this.ngOnInit();
     }
 };
 IndexComponent = __decorate([
     core_1.Component({
         selector: 'index',
         template: `
-        <page>index</page>
+        <header pageName="TOP"></header>
+        <div class="contents">
+            <div class="button blue-button" (click)="initStorage()">ストレージ初期化</div>
+        </div>
+        <navigation activeNo="0"></navigation>
     `
     }), 
     __metadata('design:paramtypes', [router_1.Router])

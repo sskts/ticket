@@ -7,6 +7,7 @@ import { RegistInputComponent } from './components/pages/regist/RegistInputCompo
 import { RegistConfirmComponent } from './components/pages/regist/RegistConfirmComponent';
 import { RegistPasswordComponent } from './components/pages/regist/RegistPasswordComponent';
 import { RegistCompleteComponent } from './components/pages/regist/RegistCompleteComponent';
+import { PerformanceComponent } from './components/pages/performance/PerformanceComponent';
 
 const appRoutes: Routes = [
     {
@@ -37,6 +38,10 @@ const appRoutes: Routes = [
     {
         path: 'regist/complete',
         component: RegistCompleteComponent
+    },
+    {
+        path: 'performance',
+        component: PerformanceComponent
     }
 ];
 

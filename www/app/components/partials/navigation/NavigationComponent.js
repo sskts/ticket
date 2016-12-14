@@ -9,22 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let headerComponent = class headerComponent {
+let NavigationComponent = class NavigationComponent {
 };
 __decorate([
     core_1.Input(), 
     __metadata('design:type', String)
-], headerComponent.prototype, "pageName", void 0);
-headerComponent = __decorate([
+], NavigationComponent.prototype, "activeNo", void 0);
+NavigationComponent = __decorate([
     core_1.Component({
-        selector: 'header',
+        selector: 'navigation',
         template: `
-        <div class="header">
-            <div class="logo"><img src="images/logo.jpg"></div>
-            <div class="header-ttl">{{pageName}}</div>
+        <div class="navigation">
+            <ul class="d-table">
+                <li [ngClass]="{active: activeNo==='0'}" class="d-td"><div class="inner">TOP</div></li>
+                <li [ngClass]="{active: activeNo==='1'}" class="d-td"><div class="inner">マイページ</div></li>
+                <li [ngClass]="{active: activeNo==='2'}" class="d-td"><div class="inner">チケット購入</div></li>
+                <li [ngClass]="{active: activeNo==='3'}" class="d-td"><div class="inner">キャンペーン</div></li>
+            </ul>
         </div>
     `
     }), 
     __metadata('design:paramtypes', [])
-], headerComponent);
-exports.headerComponent = headerComponent;
+], NavigationComponent);
+exports.NavigationComponent = NavigationComponent;

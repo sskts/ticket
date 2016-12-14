@@ -16,29 +16,22 @@ let AuthLoginComponent = class AuthLoginComponent {
         this.formBuilder = formBuilder;
         this.router = router;
         this.submitFlag = false;
-        this.loginForm = formBuilder.group(this.getValidation());
-        this.mail = this.loginForm.controls['mail'];
-        this.password = this.loginForm.controls['password'];
+        this.formGroup = formBuilder.group(this.getFormControls());
+        this.settingForms();
     }
     /**
      * ログイン
      */
     onSubmit(value) {
         this.submitFlag = true;
-        if (this.loginForm.valid) {
-            let storage = sessionStorage;
-            let user = {
-                name: '畑口 晃人',
-                mail: this.mail.value
-            };
-            storage.setItem('user', JSON.stringify(user));
+        if (this.formGroup.valid) {
             this.router.navigate(['']);
         }
     }
     /**
      * バリデーション
      */
-    getValidation() {
+    getFormControls() {
         let result = {
             mail: ['', forms_1.Validators.compose([
                     forms_1.Validators.required,
@@ -50,19 +43,26 @@ let AuthLoginComponent = class AuthLoginComponent {
         };
         return result;
     }
+    /**
+     * フォームセッティング
+     */
+    settingForms() {
+        this.mail = this.formGroup.controls['mail'];
+        this.password = this.formGroup.controls['password'];
+    }
 };
 AuthLoginComponent = __decorate([
     core_1.Component({
         selector: 'auth-login',
         template: `
     <div class="contents auth">
-        <div class="logo"><img src="/images/logo.jpg"></div>
+        <div class="logo"><img src="images/logo.jpg"></div>
         <div class="page-ttl">ログイン</div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
             <dl>
                 <dt>メールアドレス</dt>
                 <dd>
-                    <input type="text" [formControl]="loginForm.controls['mail']" placeholder="(例)cinema@cinemasunshine.jp">
+                    <input type="text" [formControl]="formGroup.controls['mail']" placeholder="(例)cinema@cinemasunshine.jp">
                     <div *ngIf="submitFlag && mail.hasError('required')" class="validation">メールアドレスが未入力です</div>
                     <div *ngIf="submitFlag && mail.hasError('pattern')" class="validation">メールアドレスの形式が違います</div>
                 </dd>
@@ -70,11 +70,14 @@ AuthLoginComponent = __decorate([
             <dl>
                 <dt>パスワード</dt>
                 <dd>
-                    <input type="password" [formControl]="loginForm.controls['password']" placeholder="">
+                    <input type="password" [formControl]="formGroup.controls['password']" placeholder="">
                     <div *ngIf="submitFlag && password.hasError('required')" class="validation">パスワードが未入力です</div>
                 </dd>
             </dl>
-            <button class="blue-button button" type="submit">ログイン</button>
+            <div class="button-area">
+                <button class="blue-button button" type="submit">ログイン</button>
+                <div class="blue-button button" routerLink="/auth">戻る</div>
+            </div>
         </form>
     </div>
     `

@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PageComponent } from '../../../components/pages/PageComponent';
 
 @Component({
     selector: 'index',
     template: `
-        <page>index</page>
+        <header pageName="TOP"></header>
+        <div class="contents">
+            <div class="button blue-button" (click)="initStorage()">ストレージ初期化</div>
+        </div>
+        <navigation activeNo="0"></navigation>
     `
 })
 export class IndexComponent implements OnInit {
@@ -31,11 +34,18 @@ export class IndexComponent implements OnInit {
      */
     private isAuth(): boolean {
         let result = false;
-        let storage: Storage = sessionStorage;
-        if (storage.getItem('user')) {
+        if (localStorage.getItem('user')) {
             result = true;
         }
         return result;
+    }
+
+    /**
+     * Storage初期化
+     */
+    public initStorage(): void {
+        localStorage.removeItem('user');
+        this.ngOnInit();
     }
 }
 

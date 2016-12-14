@@ -15,8 +15,11 @@ import { RegistInputComponent } from './components/pages/regist/RegistInputCompo
 import { RegistConfirmComponent } from './components/pages/regist/RegistConfirmComponent';
 import { RegistPasswordComponent } from './components/pages/regist/RegistPasswordComponent';
 import { RegistCompleteComponent } from './components/pages/regist/RegistCompleteComponent';
+import { PerformanceComponent } from './components/pages/performance/PerformanceComponent';
 
-import { headerComponent } from './components/partials/header/headerComponent';
+
+import { headerComponent } from './components/partials/header/HeaderComponent';
+import { NavigationComponent } from './components/partials/navigation/NavigationComponent';
 
 @NgModule({
     imports: [
@@ -37,8 +40,10 @@ import { headerComponent } from './components/partials/header/headerComponent';
         RegistConfirmComponent,
         RegistPasswordComponent,
         RegistCompleteComponent,
+        PerformanceComponent,
 
         headerComponent,
+        NavigationComponent
 
     ],
     entryComponents: [
@@ -51,8 +56,10 @@ import { headerComponent } from './components/partials/header/headerComponent';
         RegistConfirmComponent,
         RegistPasswordComponent,
         RegistCompleteComponent,
+        PerformanceComponent,
 
         headerComponent,
+        NavigationComponent
     ],
     //   providers: [
     //     HeroService
