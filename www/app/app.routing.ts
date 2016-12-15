@@ -8,6 +8,7 @@ import { RegistConfirmComponent } from './components/pages/regist/RegistConfirmC
 import { RegistPasswordComponent } from './components/pages/regist/RegistPasswordComponent';
 import { RegistCompleteComponent } from './components/pages/regist/RegistCompleteComponent';
 import { PerformanceComponent } from './components/pages/performance/PerformanceComponent';
+import { MyPageComponent } from './components/pages/myPage/MyPageComponent';
 
 const appRoutes: Routes = [
     {
@@ -42,6 +43,10 @@ const appRoutes: Routes = [
     {
         path: 'performance',
         component: PerformanceComponent
+    },
+    {
+        path: 'myPage',
+        component: MyPageComponent
     }
 ];
 

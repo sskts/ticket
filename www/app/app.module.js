@@ -24,6 +24,7 @@ const RegistConfirmComponent_1 = require('./components/pages/regist/RegistConfir
 const RegistPasswordComponent_1 = require('./components/pages/regist/RegistPasswordComponent');
 const RegistCompleteComponent_1 = require('./components/pages/regist/RegistCompleteComponent');
 const PerformanceComponent_1 = require('./components/pages/performance/PerformanceComponent');
+const MyPageComponent_1 = require('./components/pages/myPage/MyPageComponent');
 const HeaderComponent_1 = require('./components/partials/header/HeaderComponent');
 const NavigationComponent_1 = require('./components/partials/navigation/NavigationComponent');
 let AppModule = class AppModule {
@@ -49,6 +50,7 @@ AppModule = __decorate([
             RegistPasswordComponent_1.RegistPasswordComponent,
             RegistCompleteComponent_1.RegistCompleteComponent,
             PerformanceComponent_1.PerformanceComponent,
+            MyPageComponent_1.MyPageComponent,
             HeaderComponent_1.headerComponent,
             NavigationComponent_1.NavigationComponent
         ],
@@ -63,6 +65,7 @@ AppModule = __decorate([
             RegistPasswordComponent_1.RegistPasswordComponent,
             RegistCompleteComponent_1.RegistCompleteComponent,
             PerformanceComponent_1.PerformanceComponent,
+            MyPageComponent_1.MyPageComponent,
             HeaderComponent_1.headerComponent,
             NavigationComponent_1.NavigationComponent
         ],

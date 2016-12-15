@@ -16,6 +16,7 @@ import { RegistConfirmComponent } from './components/pages/regist/RegistConfirmC
 import { RegistPasswordComponent } from './components/pages/regist/RegistPasswordComponent';
 import { RegistCompleteComponent } from './components/pages/regist/RegistCompleteComponent';
 import { PerformanceComponent } from './components/pages/performance/PerformanceComponent';
+import { MyPageComponent } from './components/pages/myPage/MyPageComponent';
 
 
 import { headerComponent } from './components/partials/header/HeaderComponent';
@@ -41,6 +42,7 @@ import { NavigationComponent } from './components/partials/navigation/Navigation
         RegistPasswordComponent,
         RegistCompleteComponent,
         PerformanceComponent,
+        MyPageComponent,
 
         headerComponent,
         NavigationComponent
@@ -57,6 +59,7 @@ import { NavigationComponent } from './components/partials/navigation/Navigation
         RegistPasswordComponent,
         RegistCompleteComponent,
         PerformanceComponent,
+        MyPageComponent,
 
         headerComponent,
         NavigationComponent
