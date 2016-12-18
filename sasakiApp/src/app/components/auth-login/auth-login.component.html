@@ -1,0 +1,25 @@
+<div class="contents auth">
+    <div class="logo"><img src="assets/images/logo.jpg"></div>
+    <div class="page-ttl">ログイン</div>
+    <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+        <dl>
+            <dt>メールアドレス</dt>
+            <dd>
+                <input type="text" [formControl]="formGroup.controls['mail']" placeholder="(例)cinema@cinemasunshine.jp">
+                <div *ngIf="submitFlag && mail.hasError('required')" class="validation">メールアドレスが未入力です</div>
+                <div *ngIf="submitFlag && mail.hasError('pattern')" class="validation">メールアドレスの形式が違います</div>
+            </dd>
+        </dl>
+        <dl>
+            <dt>パスワード</dt>
+            <dd>
+                <input type="password" [formControl]="formGroup.controls['password']" placeholder="">
+                <div *ngIf="submitFlag && password.hasError('required')" class="validation">パスワードが未入力です</div>
+            </dd>
+        </dl>
+        <div class="button-area">
+            <button class="blue-button button" type="submit">ログイン</button>
+            <div class="blue-button button" routerLink="/auth">戻る</div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,12 @@
+<div class="contents">
+    <p *ngIf="ticketList.length === 0">ticketがありません</p>
+    <ul class="box">
+        <li *ngFor="let ticket of ticketList">
+            <div class="title">{{ticket.title}}</div>
+            <div class="date">{{ticket.date}}</div>
+            <div class="theater">{{ticket.theater}}</div>
+            <div class="screen">{{ticket.screen}}</div>
+            <div class="button blue-button" (click)="sendSms(ticket)">SMS送信</div>
+        </li>
+    </ul>
+</div>
