@@ -128,16 +128,18 @@ a {
 }
 
 // header
-header {
-    height: 62px;
+app-header {
+    display: block;
+    height: 60px;
 }
+
 .header {
     position: fixed;
     top: 0;
     left: 0;
-    padding: 15px 10px;
     background-color: #019fe8;
     width: 100%;
+    height: 60px;
     .logo {
         position: absolute;
         left: 10px;
@@ -152,19 +154,20 @@ header {
         text-align: center;
         color: #FFF;
         font-size: 22px;
+        line-height: 60px;
     }
 }
 // footer
-.footer {
+app-footer {
     
 }
 
-//navigation
-navigation {
+//navi
+app-navi {
     display: block;
     height: 65px;
 }
-.navigation {
+.navi {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -195,6 +198,7 @@ navigation {
 .red-text {
     color: #c00017;
 }
+
 .box {
     background-color: #eeeef0;
     padding: 15px 10px;
@@ -289,4 +293,18 @@ ul.box {
             margin-bottom: 0;
         }
     }
+}
+
+.contents {
+    animation: 0.5s linear fadein;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

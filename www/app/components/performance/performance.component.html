@@ -1,0 +1,12 @@
+<div class="contents performance">
+    <p *ngIf="performanceList.length === 0">performanceがありません</p>
+    <ul class="box">
+        <li *ngFor="let performance of performanceList">
+            <div class="title">{{performance.title}}</div>
+            <div class="date">{{performance.date}}</div>
+            <div class="theater">{{performance.theater}}</div>
+            <div class="screen">{{performance.screen}}</div>
+            <div class="button blue-button" (click)="performanceSelect(performance.url)">選択</div>
+        </li>
+    </ul>
+</div>

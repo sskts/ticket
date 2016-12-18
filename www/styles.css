@@ -192,17 +192,18 @@ a {
   display: block;
 }
 
-header {
-  height: 62px;
+app-header {
+  display: block;
+  height: 60px;
 }
 
 .header {
   position: fixed;
   top: 0;
   left: 0;
-  padding: 15px 10px;
   background-color: #019fe8;
   width: 100%;
+  height: 60px;
 }
 
 .header .logo {
@@ -221,21 +222,22 @@ header {
   text-align: center;
   color: #FFF;
   font-size: 22px;
+  line-height: 60px;
 }
 
-navigation {
+app-navi {
   display: block;
   height: 65px;
 }
 
-.navigation {
+.navi {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
 }
 
-.navigation ul li {
+.navi ul li {
   width: 25%;
   background-color: #555;
   padding: 25px 5px;
@@ -244,7 +246,7 @@ navigation {
   color: #FFF;
 }
 
-.navigation ul .active {
+.navi ul .active {
   background-color: #666;
 }
 
@@ -365,6 +367,19 @@ ul.box > li:last-child {
 
 .form .validation:last-child {
   margin-bottom: 0;
+}
+
+.contents {
+  animation: 0.5s linear fadein;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .auth.contents {

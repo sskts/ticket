@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
-    "sass": "node-sass css/style.scss css/style.css --output-style expanded -w"
+    "sass": "node-sass scss/style.scss styles.css --output-style expanded -w"
   },
   "repository": {
     "type": "git",
