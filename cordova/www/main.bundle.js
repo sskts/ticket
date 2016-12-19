@@ -35,7 +35,7 @@ var AppComponent = (function () {
     return AppComponent;
     var _a;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/app.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/app.component.js.map
 
 /***/ },
 
@@ -111,7 +111,7 @@ var AuthLoginComponent = (function () {
     return AuthLoginComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/auth-login.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/auth-login.component.js.map
 
 /***/ },
 
@@ -146,7 +146,7 @@ var AuthComponent = (function () {
     ], AuthComponent);
     return AuthComponent;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/auth.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/auth.component.js.map
 
 /***/ },
 
@@ -176,6 +176,8 @@ var IndexComponent = (function () {
         console.log(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */]);
     }
     IndexComponent.prototype.ngOnInit = function () {
+        console.log('123');
+        console.log(navigator.contacts);
     };
     /**
      * Storage初期化
@@ -195,7 +197,7 @@ var IndexComponent = (function () {
     return IndexComponent;
     var _a;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/index.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/index.component.js.map
 
 /***/ },
 
@@ -272,7 +274,7 @@ var MyPageComponent = (function () {
     return MyPageComponent;
     var _a;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/my-page.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/my-page.component.js.map
 
 /***/ },
 
@@ -352,7 +354,7 @@ var PerformanceComponent = (function () {
     return PerformanceComponent;
     var _a;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/performance.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/performance.component.js.map
 
 /***/ },
 
@@ -410,7 +412,7 @@ var RedirectComponent = (function () {
     return RedirectComponent;
     var _a;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/redirect.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/redirect.component.js.map
 
 /***/ },
 
@@ -445,7 +447,7 @@ var RegistCompleteComponent = (function () {
     ], RegistCompleteComponent);
     return RegistCompleteComponent;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/regist-complete.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/regist-complete.component.js.map
 
 /***/ },
 
@@ -495,7 +497,7 @@ var RegistConfirmComponent = (function () {
     return RegistConfirmComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/regist-confirm.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/regist-confirm.component.js.map
 
 /***/ },
 
@@ -677,7 +679,7 @@ var RegistInputComponent = (function () {
     return RegistInputComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/regist-input.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/regist-input.component.js.map
 
 /***/ },
 
@@ -754,7 +756,7 @@ var RegistPasswordComponent = (function () {
     return RegistPasswordComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/regist-password.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/regist-password.component.js.map
 
 /***/ },
 
@@ -767,7 +769,7 @@ var environment = {
     production: false,
     motiopicture_api_end_point: ''
 };
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/environment.dev.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/environment.dev.js.map
 
 /***/ },
 
@@ -804,7 +806,7 @@ if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment *
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_27" /* enableProdMode */])();
 }
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_4__app___["a" /* AppModule */]);
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/main.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/main.js.map
 
 /***/ },
 
@@ -893,7 +895,7 @@ var AppModule = (function () {
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/app.module.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/app.module.js.map
 
 /***/ },
 
@@ -967,7 +969,7 @@ var appRoutes = [
     }
 ];
 var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* RouterModule */].forRoot(appRoutes);
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/app.routing.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/app.routing.js.map
 
 /***/ },
 
@@ -1018,7 +1020,7 @@ var HeaderComponent = (function () {
     return HeaderComponent;
     var _a;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/header.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/header.component.js.map
 
 /***/ },
 
@@ -1069,7 +1071,7 @@ var NaviComponent = (function () {
     return NaviComponent;
     var _a;
 }());
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/navi.component.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/navi.component.js.map
 
 /***/ },
 
@@ -1083,7 +1085,7 @@ var NaviComponent = (function () {
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__app_module__["a"]; });
 
 
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/index.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/index.js.map
 
 /***/ },
 
@@ -1139,7 +1141,7 @@ var NaviComponent = (function () {
 
 
 
-//# sourceMappingURL=C:/xampp/htdocs/workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/polyfills.js.map
+//# sourceMappingURL=C:/xampp/htdocs/Workspace/motionpicture/SASAKI_TICKET/src_app_prototype/sasakiApp/src/polyfills.js.map
 
 /***/ },
 
@@ -1244,21 +1246,21 @@ module.exports = "<app-header *ngIf=\"!(router.url.indexOf('auth') > -1)\"></app
 /***/ 661:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"contents auth\">\n    <div class=\"logo\"><img src=\"assets/images/logo.jpg\"></div>\n    <div class=\"page-ttl\">ログイン</div>\n    <form class=\"form\" [formGroup]=\"formGroup\" (ngSubmit)=\"onSubmit(formGroup.value)\">\n        <dl>\n            <dt>メールアドレス</dt>\n            <dd>\n                <input type=\"text\" [formControl]=\"formGroup.controls['mail']\" placeholder=\"(例)cinema@cinemasunshine.jp\">\n                <div *ngIf=\"submitFlag && mail.hasError('required')\" class=\"validation\">メールアドレスが未入力です</div>\n                <div *ngIf=\"submitFlag && mail.hasError('pattern')\" class=\"validation\">メールアドレスの形式が違います</div>\n            </dd>\n        </dl>\n        <dl>\n            <dt>パスワード</dt>\n            <dd>\n                <input type=\"password\" [formControl]=\"formGroup.controls['password']\" placeholder=\"\">\n                <div *ngIf=\"submitFlag && password.hasError('required')\" class=\"validation\">パスワードが未入力です</div>\n            </dd>\n        </dl>\n        <div class=\"button-area\">\n            <button class=\"blue-button button\" type=\"submit\">ログイン</button>\n            <div class=\"blue-button button\" routerLink=\"/auth\">戻る</div>\n        </div>\n    </form>\n</div>"
+module.exports = "<div class=\"contents auth\">\n    <div class=\"logo\"><img src=\"assets/images/logo.png\"></div>\n    <div class=\"page-ttl\">ログイン</div>\n    <form class=\"form\" [formGroup]=\"formGroup\" (ngSubmit)=\"onSubmit(formGroup.value)\">\n        <dl>\n            <dt>メールアドレス</dt>\n            <dd>\n                <input type=\"text\" [formControl]=\"formGroup.controls['mail']\" placeholder=\"(例)cinema@cinemasunshine.jp\">\n                <div *ngIf=\"submitFlag && mail.hasError('required')\" class=\"validation\">メールアドレスが未入力です</div>\n                <div *ngIf=\"submitFlag && mail.hasError('pattern')\" class=\"validation\">メールアドレスの形式が違います</div>\n            </dd>\n        </dl>\n        <dl>\n            <dt>パスワード</dt>\n            <dd>\n                <input type=\"password\" [formControl]=\"formGroup.controls['password']\" placeholder=\"\">\n                <div *ngIf=\"submitFlag && password.hasError('required')\" class=\"validation\">パスワードが未入力です</div>\n            </dd>\n        </dl>\n        <div class=\"button-area\">\n            <button class=\"blue-button button\" type=\"submit\">ログイン</button>\n            <div class=\"blue-button button\" routerLink=\"/auth\">戻る</div>\n        </div>\n    </form>\n</div>"
 
 /***/ },
 
 /***/ 662:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"contents auth\">\n    <div class=\"logo\"><img src=\"assets/images/logo.jpg\"></div>\n    <div class=\"page-ttl\">新規会員登録 / ログイン</div>\n    <div class=\"form\">\n        <dl>\n            <dt>初めて会員登録をする方は下のボタンよりご登録ください</dt>\n            <dd>\n                <div class=\"blue-button button\" routerLink=\"/regist/input\">会員登録する</div>\n            </dd>\n        </dl>\n        <dl>\n            <dt>既に会員登録済みの方は下のボタンよりログインしてください</dt>\n            <dd>\n                <div class=\"blue-button button\" routerLink=\"/auth/login\">ログインする</div>\n                <a routerLink=\"/regist/password\">パスワードを忘れた方はこちら</a>\n            </dd>\n        </dl>\n    </div>\n</div>"
+module.exports = "<div class=\"contents auth\">\n    <div class=\"logo\"><img src=\"assets/images/logo.png\"></div>\n    <div class=\"page-ttl\">新規会員登録 / ログイン</div>\n    <div class=\"form\">\n        <dl>\n            <dt>初めて会員登録をする方は下のボタンよりご登録ください</dt>\n            <dd>\n                <div class=\"blue-button button\" routerLink=\"/regist/input\">会員登録する</div>\n            </dd>\n        </dl>\n        <dl>\n            <dt>既に会員登録済みの方は下のボタンよりログインしてください</dt>\n            <dd>\n                <div class=\"blue-button button\" routerLink=\"/auth/login\">ログインする</div>\n                <a routerLink=\"/regist/password\">パスワードを忘れた方はこちら</a>\n            </dd>\n        </dl>\n    </div>\n</div>"
 
 /***/ },
 
 /***/ 663:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"header\">\n    <div class=\"logo\"><img src=\"assets/images/logo.jpg\"></div>\n    <div class=\"header-ttl\">{{pageName}}</div>\n</div>"
+module.exports = "<div class=\"header\">\n    <div class=\"logo\"><img src=\"assets/images/logo.png\"></div>\n    <div class=\"header-ttl\">{{pageName}}</div>\n</div>"
 
 /***/ },
 
