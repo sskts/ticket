@@ -402,3 +402,24 @@ ul.box > li:last-child {
 .auth.contents dl dd .button:last-child {
   margin-bottom: 0;
 }
+
+.performance li dl {
+  margin: 0 0 10px;
+}
+
+.performance li dt {
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+.performance li dd {
+  margin: 0 0 10px;
+}
+
+.performance li dd:last-child {
+  margin-bottom: 0;
+}
+
+.performance li .button {
+  margin: 0 0 10px;
+}

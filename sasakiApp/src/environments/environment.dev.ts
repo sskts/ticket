@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  motiopicture_api_end_point: ''
-
+  end_point: 'https://devsasakiticketapiprototypewebapp.azurewebsites.net',
+  purchase_url: 'https://devsasakiticketfrontendprototypewebapp.azurewebsites.net'
 };

@@ -14,8 +14,7 @@ export class IndexComponent implements OnInit {
     }
 
     public ngOnInit() {
-        console.log('123')
-        console.log(navigator.contacts);
+        
     }
 
     /**
