@@ -1,0 +1,63 @@
+
+/**
+ * ヘッダーコンポーネント
+ */
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from "@angular/router";
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
+})
+/**
+ * ヘッダー
+ * @class HeaderComponent
+ * @implements OnInit
+ */
+export class HeaderComponent implements OnInit {
+  /**
+   * タイトル
+   * @memberof HeaderComponent
+   */
+  public title: string;
+  /**
+   * メニュー状態
+   * @memberof isOpen
+   */
+  public isOpen: boolean;
+
+  constructor(private router: Router) { }
+
+  public ngOnInit() {
+    this.isOpen = false;
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const page = pages.find((value) => {
+          return (value.url === event.url);
+        });
+        this.title = page.title;
+      }
+    });
+  }
+
+  public open() {
+    this.isOpen = true;
+  }
+
+  public close() {
+    this.isOpen = false;
+  }
+
+}
+
+/**
+ * ページ情報
+ * @const pages
+ */
+const pages = [
+  { url: '/', title: 'チケットホルダー' },
+  { url: '/ticket-holder', title: 'チケットホルダー' },
+  { url: '/purchase', title: 'チケット購入' },
+  { url: '/setting', title: '設定変更' }
+];

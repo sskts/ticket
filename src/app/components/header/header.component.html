@@ -1,0 +1,16 @@
+<header>
+  <div class="logo"><img src="/assets/images/logo.svg"></div>
+  <h1>{{title}}</h1>
+  <div class="button" (click)="open()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</header>
+<div class="cover" [class.active]="isOpen" (click)="close()"></div>
+<ul class="menu" [class.active]="isOpen">
+  <li routerLink="/ticket-holder" routerLinkActive="active">チケットホルダー</li>
+  <li routerLink="/purchase" routerLinkActive="active">チケット購入</li>
+  <li routerLink="/setting" routerLinkActive="active">設定変更</li>
+  <li (click)="close()">閉じる</li>
+</ul>
