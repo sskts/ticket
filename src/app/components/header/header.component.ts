@@ -3,7 +3,7 @@
  * ヘッダーコンポーネント
  */
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from "@angular/router";
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -31,12 +31,10 @@ export class HeaderComponent implements OnInit {
 
   public ngOnInit() {
     this.isOpen = false;
+    this.changeTitle(this.router.url);
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        const page = pages.find((value) => {
-          return (value.url === event.url);
-        });
-        this.title = page.title;
+        this.changeTitle(event.url);
       }
     });
   }
@@ -49,6 +47,13 @@ export class HeaderComponent implements OnInit {
     this.isOpen = false;
   }
 
+  private changeTitle(url: string) {
+    const page = pages.find((value) => {
+      return (value.url === url);
+    });
+    this.title = page.title;
+  }
+
 }
 
 /**
@@ -56,8 +61,7 @@ export class HeaderComponent implements OnInit {
  * @const pages
  */
 const pages = [
-  { url: '/', title: 'チケットホルダー' },
-  { url: '/ticket-holder', title: 'チケットホルダー' },
-  { url: '/purchase', title: 'チケット購入' },
-  { url: '/setting', title: '設定変更' }
+  { url: '/main/ticket-holder', title: 'チケットホルダー' },
+  { url: '/main/purchase', title: 'チケット購入' },
+  { url: '/main/setting', title: '設定変更' }
 ];

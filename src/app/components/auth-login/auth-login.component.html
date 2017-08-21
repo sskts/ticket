@@ -1,0 +1,72 @@
+<form [formGroup]="loginForm" class="form-signin" method="POST">
+  <div class="form-group">
+      <h2>Login</h2>
+  </div>
+  <div class="form-group">
+      <label class="control-label" for="mail">Email</label>
+      <input id="mail" type="email" class="form-control" name="mail" [formControl]="loginForm.controls.mail">
+      <p class="text-danger small" *ngIf="loginForm.controls.mail.errors?.required && loginForm.controls.mail.dirty">必須項目</p>
+      <p class="text-danger small" *ngIf="loginForm.controls.mail.errors?.maxlength && loginForm.controls.mail.dirty">10文字以内</p>
+      <p class="text-danger small" *ngIf="loginForm.controls.mail.errors?.email && loginForm.controls.mail.dirty">メール形式</p>
+  </div>
+
+  <div class="form-group">
+      <label class="control-label" for="password">Password</label>
+      <input id="password" type="email" class="form-control" name="password" [formControl]="loginForm.controls.password">
+      <p class="text-danger small" *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.dirty">必須項目</p>
+      <p class="text-danger small" *ngIf="loginForm.controls.password.errors?.maxlength && loginForm.controls.password.dirty">10文字以内</p>
+  </div>
+  <div class="form-group">
+      <button [disabled]="loginForm.invalid" id="signupSubmit" type="submit" class="btn btn-info btn-block">
+          Login
+      </button>
+  </div>
+  <hr>
+  <p><a [routerLink]="['/auth/register']"> <i class="fa fa-fw fa-group"></i> 会員登録</a></p>
+</form>
+
+
+
+
+
+<div class="container">
+  <div id="g-signin2" class="g-signin2" data-onsuccess="onSignInWithGoogle"></div>
+  <a (click)="signOutFromGoogle()">Sign out</a><br>
+</div>
+
+<script>
+  function onSignInWithGoogle(googleUser) {
+      const profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+      console.log('googleUser.getAuthResponse() is', googleUser.getAuthResponse());
+      // document.getElementById('idToken').innerText = googleUser.getAuthResponse().id_token;
+
+      // signInWithGoogle(googleUser.getAuthResponse().id_token);
+  }
+
+  function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+          console.log('User signed out.');
+      });
+  }
+
+  function signInWithGoogle(idToken) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://localhost:8081/oauth/token/signInWithGoogle');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onload = function () {
+          console.log('Signed in as: ' + xhr.responseText);
+      };
+      var data = 'client_id=motionpicture' +
+          '&state=teststate' +
+          '&scope=people.profile' +
+          '&id_token=' + idToken;
+      xhr.send(data);
+  }
+
+</script>
