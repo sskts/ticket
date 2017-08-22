@@ -11,9 +11,10 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class AuthLoginComponent implements OnInit {
   public loginForm: FormGroup;
+  public mail: FormControl;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder
   ) {
     console.log('LoginComponent constructor');
   }
@@ -32,7 +33,7 @@ export class AuthLoginComponent implements OnInit {
     });
   }
 
-  public submit() {
+  public async submit() {
     console.log(this.loginForm);
   }
 }
