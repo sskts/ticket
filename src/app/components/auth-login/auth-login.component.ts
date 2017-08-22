@@ -1,5 +1,7 @@
+/**
+ * ログインコンポーネント
+ */
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -30,8 +32,7 @@ export class AuthLoginComponent implements OnInit {
     });
   }
 
-  public submit(event: Event) {
-    event.preventDefault();
+  public submit() {
     console.log(this.loginForm);
   }
 }

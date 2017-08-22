@@ -1,3 +1,6 @@
+/**
+ * authルートコンポーネント
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +12,7 @@ export class AuthComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
 }

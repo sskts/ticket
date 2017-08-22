@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" class="form-signin" method="POST">
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
   <div class="form-group">
       <h2>Login</h2>
   </div>
@@ -17,12 +17,10 @@
       <p class="text-danger small" *ngIf="loginForm.controls.password.errors?.maxlength && loginForm.controls.password.dirty">10文字以内</p>
   </div>
   <div class="form-group">
-      <button [disabled]="loginForm.invalid" id="signupSubmit" type="submit" class="btn btn-info btn-block">
-          Login
-      </button>
+      <button [disabled]="loginForm.invalid" id="signupSubmit" type="submit" class="btn btn-info btn-block">Login</button>
   </div>
   <hr>
-  <p><a [routerLink]="['/auth/register']"> <i class="fa fa-fw fa-group"></i> 会員登録</a></p>
+  <p><a [routerLink]="['/auth/register']"> <i class="fa fa-fw fa-group"></i> Register</a></p>
 </form>
 
 
