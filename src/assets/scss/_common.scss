@@ -38,10 +38,13 @@ img {
 }
 
 .auth {
-    margin: 20px;
-    padding: 20px;
-    background-color: #FFF;
-    label {
-        margin: 0 0 10px;
+    .auth-container {
+        display: block;
+        margin: 20px;
+        padding: 20px;
+        background-color: #FFF;
+        label {
+            margin: 0 0 10px;
+        }
     }
 }

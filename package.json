@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "start": "ng serve --port 3333 --ssl true --ssl-key \"./certificate/server.key\" --ssl-cert \"./certificate/server.crt\"",
     "ng": "ng",
-    "start": "ng serve --port 3333",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -49,6 +49,6 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
-    "typescript": "~2.3.3"
+    "typescript": "^2.4.0"
   }
 }

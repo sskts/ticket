@@ -21,8 +21,11 @@ import { AuthComponent } from './components/auth/auth.component';
 import { AuthRegisterComponent } from './components/auth-register/auth-register.component';
 import { AuthLoginComponent } from './components/auth-login/auth-login.component';
 import { AuthConfirmComponent } from './components/auth-confirm/auth-confirm.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 import { SasakiService } from './service/sasaki.service';
+import { SignOutComponent } from './components/sign-out/sign-out.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { SasakiService } from './service/sasaki.service';
     AuthRegisterComponent,
     AuthLoginComponent,
     AuthConfirmComponent,
-    AuthComponent
+    AuthComponent,
+    SignInComponent,
+    SignOutComponent
   ],
   imports: [
     BrowserModule,

@@ -27,7 +27,9 @@ export class HeaderComponent implements OnInit {
    */
   public isOpen: boolean;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router
+  ) { }
 
   public ngOnInit() {
     this.isOpen = false;
@@ -61,7 +63,7 @@ export class HeaderComponent implements OnInit {
  * @const pages
  */
 const pages = [
-  { url: '/main/ticket-holder', title: 'チケットホルダー' },
-  { url: '/main/purchase', title: 'チケット購入' },
-  { url: '/main/setting', title: '設定変更' }
+  { url: '/ticket-holder', title: 'チケットホルダー' },
+  { url: '/purchase', title: 'チケット購入' },
+  { url: '/setting', title: '設定変更' }
 ];
