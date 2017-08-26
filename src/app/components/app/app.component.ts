@@ -4,7 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { SasakiService } from '../../service/sasaki.service';
+import { SasakiService } from '../../service/sasaki/sasaki.service';
 
 @Component({
   selector: 'app-root',

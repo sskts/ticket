@@ -14,11 +14,14 @@ import { AuthConfirmComponent } from './components/auth-confirm/auth-confirm.com
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignOutComponent } from './components/sign-out/sign-out.component';
 
+import { AuthGuardService } from './service/auth-guard/auth-guard.service';
+
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+  // { path: '', redirectTo: '/ticket-holder', pathMatch: 'full' },
   {
     path: '',
     component: MainComponent,
+    canActivate: [AuthGuardService],
     children: [
       { path: 'ticket-holder', component: TicketHolderComponent },
       { path: 'purchase', component: PurchaseComponent },
