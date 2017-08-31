@@ -7,7 +7,6 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { MainComponent } from './components/main/main.component';
-import { AuthComponent } from './components/auth/auth.component';
 import { AuthRegisterComponent } from './components/auth-register/auth-register.component';
 import { AuthLoginComponent } from './components/auth-login/auth-login.component';
 import { AuthConfirmComponent } from './components/auth-confirm/auth-confirm.component';
@@ -17,7 +16,7 @@ import { SignOutComponent } from './components/sign-out/sign-out.component';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 
 const appRoutes: Routes = [
-  // { path: '', redirectTo: '/ticket-holder', pathMatch: 'full' },
+  { path: '', redirectTo: '/ticket-holder', pathMatch: 'full' },
   {
     path: '',
     component: MainComponent,
@@ -28,29 +27,16 @@ const appRoutes: Routes = [
       { path: 'setting', component: SettingComponent }
     ]
   },
-  {
-    path: 'auth',
-    component: AuthComponent,
-    children: [
-      { path: 'register', component: AuthRegisterComponent },
-      { path: 'login', component: AuthLoginComponent },
-      { path: 'confirm', component: AuthConfirmComponent }
-    ]
-  },
-  {
-    path: 'signIn',
-    component: AuthComponent,
-    children: [
-      { path: '', component: SignInComponent }
-    ]
-  },
-  {
-    path: 'signOut',
-    component: AuthComponent,
-    children: [
-      { path: '', component: SignOutComponent }
-    ]
-  },
+  // {
+  //   path: 'auth',
+  //   children: [
+  //     { path: 'register', component: AuthRegisterComponent },
+  //     { path: 'login', component: AuthLoginComponent },
+  //     { path: 'confirm', component: AuthConfirmComponent }
+  //   ]
+  // },
+  { path: 'signIn', component: SignInComponent },
+  { path: 'signOut', component: SignOutComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

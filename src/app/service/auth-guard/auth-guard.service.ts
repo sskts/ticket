@@ -7,7 +7,7 @@ import { SasakiService } from '../../service/sasaki/sasaki.service';
 export class AuthGuardService implements CanActivate {
 
   constructor(
-    private sasakiService: SasakiService,
+    private sasaki: SasakiService,
     private router: Router
   ) { }
 
@@ -15,13 +15,18 @@ export class AuthGuardService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
-    console.log('認証確認', route, state);
-    const credentials = null;
-    if (credentials === null) {
-      this.router.navigate(['/auth/login']);
-
+    try {
+      const isSignedIn = await this.sasaki.auth.isSignedIn();
+      if (isSignedIn === null) {
+        const result = await this.sasaki.auth.signIn();
+        console.log('authorize result:', result);
+        this.sasaki.credentials = result;
+      }
+    } catch (err) {
+      console.log(err);
       return false;
     }
+
     return true;
   }
 

@@ -3,6 +3,8 @@
  */
 import { Component, OnInit } from '@angular/core';
 
+import { SasakiService } from '../../service/sasaki/sasaki.service';
+
 @Component({
   selector: 'app-ticket-holder',
   templateUrl: './ticket-holder.component.html',
@@ -10,15 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 /**
  * チケットホルダー
- * @class TicketHolderComponent 
+ * @class TicketHolderComponent
  * @implements OnInit
  */
 export class TicketHolderComponent implements OnInit {
   public config: Object;
+  public reservationOwnerships: any[];
 
-  constructor() { }
+  constructor(
+    private sasaki: SasakiService
+  ) { }
 
-  public ngOnInit() {
+  public async ngOnInit() {
     this.config = {
       pagination: '.swiper-pagination',
       paginationClickable: true,
@@ -26,6 +31,15 @@ export class TicketHolderComponent implements OnInit {
       prevButton: '.swiper-button-prev',
       spaceBetween: 30
     };
+    try {
+      this.reservationOwnerships = await this.sasaki.people.searchReservationOwnerships({
+        personId: 'me'
+      });
+      console.log('reservationOwnerships:', this.reservationOwnerships);
+    } catch (err) {
+      console.error(err);
+    }
+
   }
 
 }

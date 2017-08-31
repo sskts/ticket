@@ -9,7 +9,7 @@ export class SignInComponent implements OnInit {
 
   constructor() { }
 
-  public ngOnInit() {
+  public async ngOnInit() {
     if (window.opener !== null) {
       console.log('posting message to opner window...', window.location.hash.slice(0, 30), '...');
       window.opener.postMessage(window.location.hash, '*');

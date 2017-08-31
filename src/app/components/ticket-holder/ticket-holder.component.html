@@ -2,14 +2,8 @@
   <div class="mb-small"><img src="/assets/images/demo_01.png"></div>
   <swiper [config]="config">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <app-ticket></app-ticket>
-      </div>
-      <div class="swiper-slide">
-        <app-ticket></app-ticket>
-      </div>
-      <div class="swiper-slide">
-        <app-ticket></app-ticket>
+      <div *ngFor="let reservationOwnership of reservationOwnerships" class="swiper-slide">
+        <app-ticket [reservationOwnership]="reservationOwnership"></app-ticket>
       </div>
     </div>
 

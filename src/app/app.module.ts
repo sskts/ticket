@@ -17,7 +17,6 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { MainComponent } from './components/main/main.component';
-import { AuthComponent } from './components/auth/auth.component';
 import { AuthRegisterComponent } from './components/auth-register/auth-register.component';
 import { AuthLoginComponent } from './components/auth-login/auth-login.component';
 import { AuthConfirmComponent } from './components/auth-confirm/auth-confirm.component';
@@ -26,6 +25,7 @@ import { SignOutComponent } from './components/sign-out/sign-out.component';
 
 import { SasakiService } from './service/sasaki/sasaki.service';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
+import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 
 @NgModule({
   declarations: [
@@ -42,9 +42,9 @@ import { AuthGuardService } from './service/auth-guard/auth-guard.service';
     AuthRegisterComponent,
     AuthLoginComponent,
     AuthConfirmComponent,
-    AuthComponent,
     SignInComponent,
-    SignOutComponent
+    SignOutComponent,
+    TimeFormatPipe
   ],
   imports: [
     BrowserModule,

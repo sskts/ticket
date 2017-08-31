@@ -13,7 +13,7 @@ import { SasakiService } from '../../service/sasaki/sasaki.service';
 export class AppComponent implements OnInit {
   constructor(
     private router: Router,
-    private sasakiService: SasakiService
+    private sasaki: SasakiService
   ) {
     console.log('AppComponent constructor');
   }

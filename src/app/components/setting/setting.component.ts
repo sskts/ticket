@@ -13,14 +13,14 @@ import { SasakiService } from '../../service/sasaki/sasaki.service';
 })
 /**
  * 設定変更
- * @class SettingComponent 
+ * @class SettingComponent
  * @implements OnInit
  */
 export class SettingComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private sasakiService: SasakiService,
+    private sasaki: SasakiService,
   ) { }
 
   public ngOnInit() {
@@ -28,9 +28,9 @@ export class SettingComponent implements OnInit {
 
   public async logout() {
     try {
-      await this.sasakiService.auth.signOut();
+      await this.sasaki.auth.signOut();
       console.log('logout');
-      this.sasakiService.credentials = null;
+      this.sasaki.credentials = null;
       this.router.navigate(['/auth/login']);
     } catch (error) {
       console.error(error);
