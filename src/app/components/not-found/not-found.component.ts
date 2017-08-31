@@ -1,5 +1,5 @@
 /**
- * NotFoundコンポーネント
+ * NotFoundComponent
  */
 import { Component, OnInit } from '@angular/core';
 

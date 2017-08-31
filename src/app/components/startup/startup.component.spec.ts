@@ -1,3 +1,6 @@
+/**
+ * StartupComponentテスト
+ */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StartupComponent } from './startup.component';

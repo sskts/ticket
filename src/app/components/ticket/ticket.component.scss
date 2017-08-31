@@ -13,13 +13,13 @@
             border: none;
         }
         dt {
-            width: 70px;
+            width: 80px;
             text-align: center;
             display: table-cell;
             vertical-align: middle;
         }
         dd {
-            width: calc(100% - 70px);
+            width: calc(100% - 80px);
             padding: 20px 20px 20px 0;
             display: table-cell;
             vertical-align: middle;
@@ -39,11 +39,6 @@ ul {
         }
         .ticket-info {
             text-align: center;
-        }
-        .qr {
-            width: 125px;
-            height: 125px;
-            background-color: #FFF;
         }
     }
 }

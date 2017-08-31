@@ -1,7 +1,7 @@
 /**
- * チケットコンポーネント
+ * TicketComponent
  */
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ticket',
@@ -14,13 +14,11 @@ import { Component, OnInit, Input } from '@angular/core';
  * @implements OnInit
  */
 export class TicketComponent implements OnInit {
-  @Input() public reservationOwnership: any;
-  public reservationFor: any;
-  
+  @Input() public reservation: {};
+
   constructor() { }
 
-  public ngOnInit() {
-    this.reservationFor = this.reservationOwnership.typeOfGood.reservationFor;
+  public ngOnInit(): void {
   }
 
 }

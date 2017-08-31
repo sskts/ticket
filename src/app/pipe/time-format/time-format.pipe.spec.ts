@@ -1,3 +1,6 @@
+/**
+ * TimeFormatPipeテスト
+ */
 import { TimeFormatPipe } from './time-format.pipe';
 
 describe('TimeFormatPipe', () => {

@@ -1,3 +1,6 @@
+/**
+ * StartupComponent
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +12,7 @@ export class StartupComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
 }

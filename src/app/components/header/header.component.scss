@@ -69,10 +69,10 @@ header {
     position: fixed;
     top: 0;
     bottom: 0;
-    right: -60%;
+    right: -75%;
     z-index: 20;
     background-color: rgb(0, 0, 0);
-    width: 60%;
+    width: 75%;
     transition: right 0.1s;
     &.active {
         right: 0;

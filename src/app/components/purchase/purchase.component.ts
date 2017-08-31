@@ -1,5 +1,5 @@
 /**
- * チケット購入コンポーネント
+ * PurchaseComponent
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 /**
  * チケット購入
- * @class PurchaseComponent 
+ * @class PurchaseComponent
  * @implements OnInit
  */
 export class PurchaseComponent implements OnInit {

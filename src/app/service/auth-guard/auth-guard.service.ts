@@ -1,5 +1,8 @@
+/**
+ * AuthGuardService
+ */
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 
 import { SasakiService } from '../../service/sasaki/sasaki.service';
 
@@ -24,6 +27,7 @@ export class AuthGuardService implements CanActivate {
       }
     } catch (err) {
       console.log(err);
+
       return false;
     }
 

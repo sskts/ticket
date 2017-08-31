@@ -1,4 +1,8 @@
-import { TestBed, inject } from '@angular/core/testing';
+
+/**
+ * AuthGuardServiceテスト
+ */
+import { inject, TestBed } from '@angular/core/testing';
 
 import { AuthGuardService } from './auth-guard.service';
 

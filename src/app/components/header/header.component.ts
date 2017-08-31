@@ -1,9 +1,8 @@
-
 /**
- * ヘッダーコンポーネント
+ * HeaderComponent
  */
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -31,7 +30,7 @@ export class HeaderComponent implements OnInit {
     private router: Router
   ) { }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.isOpen = false;
     this.changeTitle(this.router.url);
     this.router.events.subscribe((event) => {
@@ -41,15 +40,15 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public open() {
+  public open(): void {
     this.isOpen = true;
   }
 
-  public close() {
+  public close(): void {
     this.isOpen = false;
   }
 
-  private changeTitle(url: string) {
+  private changeTitle(url: string): void {
     const page = pages.find((value) => {
       return (value.url === url);
     });

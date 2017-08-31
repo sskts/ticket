@@ -4,9 +4,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
 import { SwiperModule } from 'angular2-useful-swiper';
+import { QRCodeModule } from 'angular2-qrcode';
 
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './components/app/app.component';
 import { TicketHolderComponent } from './components/ticket-holder/ticket-holder.component';
 import { TicketComponent } from './components/ticket/ticket.component';
@@ -22,7 +22,6 @@ import { AuthLoginComponent } from './components/auth-login/auth-login.component
 import { AuthConfirmComponent } from './components/auth-confirm/auth-confirm.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignOutComponent } from './components/sign-out/sign-out.component';
-
 import { SasakiService } from './service/sasaki/sasaki.service';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
@@ -52,7 +51,8 @@ import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
     MomentModule,
     SwiperModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QRCodeModule
   ],
   providers: [
     SasakiService,

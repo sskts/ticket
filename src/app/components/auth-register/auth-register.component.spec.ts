@@ -1,3 +1,6 @@
+/**
+ * AuthRegisterComponentテスト
+ */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthRegisterComponent } from './auth-register.component';

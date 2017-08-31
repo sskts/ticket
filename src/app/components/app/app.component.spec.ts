@@ -1,4 +1,7 @@
-import { TestBed, async } from '@angular/core/testing';
+/**
+ * AppComponentテスト
+ */
+import { async, TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 
