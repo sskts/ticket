@@ -13,7 +13,7 @@ export class AuthRegisterComponent implements OnInit {
   public registerForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder
   ) {
     console.log('LoginComponent constructor');
   }
@@ -45,7 +45,7 @@ export class AuthRegisterComponent implements OnInit {
         Validators.required,
         Validators.maxLength(10),
         Validators.pattern(/^[0-9]+$/)
-      ]),
+      ])
     });
   }
 

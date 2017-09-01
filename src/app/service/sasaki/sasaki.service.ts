@@ -1,6 +1,23 @@
+/**
+ * sasaki-api
+ */
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import * as sasaki from '@motionpicture/sasaki-api';
+import { environment } from '../../../environments/environment';
+
+interface IOptions {
+    domain: string;
+    clientId: string;
+    redirectUri: string;
+    logoutUri: string;
+    responseType: string;
+    responseMode?: string;
+    scope: string;
+    state: string;
+    nonce: string | null;
+    audience?: string;
+    tokenIssuer: string;
+}
 
 @Injectable()
 export class SasakiService {
@@ -8,6 +25,7 @@ export class SasakiService {
     public auth: sasaki.IImplicitGrantClient;
     public events: sasaki.service.Event;
     public people: sasaki.service.Person;
+    public place: sasaki.service.Place;
 
     constructor() {
         this.credentials = null;
@@ -19,10 +37,11 @@ export class SasakiService {
             'https://sskts-api-development.azurewebsites.net/organizations.read-only',
             'https://sskts-api-development.azurewebsites.net/people.contacts',
             'https://sskts-api-development.azurewebsites.net/people.creditCards',
-            'https://sskts-api-development.azurewebsites.net/people.ownershipInfos.read-only'
+            'https://sskts-api-development.azurewebsites.net/people.ownershipInfos.read-only',
+            'https://sskts-api-development.azurewebsites.net/places.read-only'
         ];
 
-        const options = {
+        const options: IOptions = {
             domain: environment.sasakiAuthDomain,
             clientId: environment.clientId,
             responseType: 'token',
@@ -42,6 +61,11 @@ export class SasakiService {
         });
 
         this.events = new sasaki.service.Event({
+            auth: this.auth,
+            endpoint: environment.sasakiAPIEndpoint
+        });
+
+        this.place = new sasaki.service.Place({
             auth: this.auth,
             endpoint: environment.sasakiAPIEndpoint
         });

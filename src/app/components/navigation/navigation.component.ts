@@ -1,5 +1,5 @@
 /**
- * ナビゲーションコンポーネント
+ * NavigationComponent
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +12,6 @@ import { Component, OnInit } from '@angular/core';
  * ナビゲーション
  * @class NavigationComponent
  * @implements OnInit
- * 
  */
 export class NavigationComponent implements OnInit {
 

@@ -2,7 +2,11 @@
  * TicketHolderComponent
  */
 import { Component, OnInit } from '@angular/core';
+import * as sasaki from '@motionpicture/sasaki-api';
+
 import { SasakiService } from '../../service/sasaki/sasaki.service';
+
+type IScreenEventReservation = sasaki.factory.reservation.event.IEventReservation<sasaki.factory.event.individualScreeningEvent.IEvent>;
 
 @Component({
   selector: 'app-ticket-holder',
@@ -16,7 +20,8 @@ import { SasakiService } from '../../service/sasaki/sasaki.service';
  */
 export class TicketHolderComponent implements OnInit {
   public config: Object;
-  public reservationOwnerships: any[];
+  public isLoading: boolean;
+  public reservationOwnerships: sasaki.factory.ownershipInfo.IOwnershipInfo<IScreenEventReservation>[];
   public reservations: any[];
 
   constructor(
@@ -24,6 +29,7 @@ export class TicketHolderComponent implements OnInit {
   ) { }
 
   public async ngOnInit() {
+    this.isLoading = true;
     this.config = {
       pagination: '.swiper-pagination',
       paginationClickable: true,
@@ -36,6 +42,7 @@ export class TicketHolderComponent implements OnInit {
         personId: 'me'
       });
       this.reservations = this.convertToReservations();
+      this.isLoading = false;
     } catch (err) {
       console.error(err);
     }
@@ -47,7 +54,7 @@ export class TicketHolderComponent implements OnInit {
    * @method convertToReservations
    */
   private convertToReservations() {
-    const reservationsIdList = [];
+    const reservationsIdList: string[] = [];
     this.reservationOwnerships.forEach((reservationOwnership) => {
       const reservationsId = reservationOwnership.typeOfGood.reservationFor.identifier;
       if (reservationsIdList.indexOf(reservationsId) === -1) {

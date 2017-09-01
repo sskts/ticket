@@ -52,6 +52,9 @@ export class HeaderComponent implements OnInit {
     const page = pages.find((value) => {
       return (value.url === url);
     });
+    if (page === undefined) {
+      return;
+    }
     this.title = page.title;
   }
 

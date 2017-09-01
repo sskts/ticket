@@ -1,2 +1,29 @@
+<div class="contents">
+    <div class="mb-small">チケット購入</div>
+    <p class="read">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>
+    <ul class="conditions">
+        <li>
+            <div class="form-group">
+                <label class="control-label">鑑賞劇場</label>
+                <select class="form-control" name="theater" [(ngModel)]="theater" (change)="changeConditions($event)">
+                    <option value="">選択して下さい</option>
+                    <option *ngFor="let theater of theaters" value="{{ theater.branchCode }}">{{ theater.name.ja }}</option>
+                </select>
+            </div>
+        </li>
+        <li>
+            <div class="form-group">
+                <label class="control-label">鑑賞日時</label>
+                <select class="form-control" name="date" [(ngModel)]="date" (change)="changeConditions($event)">
+                    <option value="">選択して下さい</option>
+                    <option *ngFor="let date of dateList" value="{{ date.value }}">{{ date.text }}</option>
+                </select>
+            </div>
+        </li>
+    </ul>
 
-チケット購入
+    <div *ngIf="isLoading; else thenBlock" class="loading">loading...</div>
+    <ng-template #thenBlock>
+        
+    </ng-template>
+</div>

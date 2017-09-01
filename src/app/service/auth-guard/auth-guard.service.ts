@@ -2,7 +2,7 @@
  * AuthGuardService
  */
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 
 import { SasakiService } from '../../service/sasaki/sasaki.service';
 
@@ -14,19 +14,17 @@ export class AuthGuardService implements CanActivate {
     private router: Router
   ) { }
 
-  public async canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Promise<boolean> {
+  public async canActivate(): Promise<boolean> {
+    console.log('canActivate');
     try {
       const isSignedIn = await this.sasaki.auth.isSignedIn();
+      console.log('isSignedIn', isSignedIn);
       if (isSignedIn === null) {
-        const result = await this.sasaki.auth.signIn();
-        console.log('authorize result:', result);
-        this.sasaki.credentials = result;
+        throw new Error('isSignedIn is null');
       }
     } catch (err) {
-      console.log(err);
+      console.log('非ログイン', err);
+      this.router.navigate(['/auth/login']);
 
       return false;
     }

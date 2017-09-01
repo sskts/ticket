@@ -1,18 +1,17 @@
+/**
+ * ルーティング
+ */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { StartupComponent } from './components/startup/startup.component';
-import { TicketHolderComponent } from './components/ticket-holder/ticket-holder.component';
-import { PurchaseComponent } from './components/purchase/purchase.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { SettingComponent } from './components/setting/setting.component';
-import { MainComponent } from './components/main/main.component';
-import { AuthRegisterComponent } from './components/auth-register/auth-register.component';
 import { AuthLoginComponent } from './components/auth-login/auth-login.component';
-import { AuthConfirmComponent } from './components/auth-confirm/auth-confirm.component';
+import { MainComponent } from './components/main/main.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PurchaseComponent } from './components/purchase/purchase.component';
+import { SettingComponent } from './components/setting/setting.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignOutComponent } from './components/sign-out/sign-out.component';
-
+import { TicketHolderComponent } from './components/ticket-holder/ticket-holder.component';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 
 const appRoutes: Routes = [
@@ -27,19 +26,20 @@ const appRoutes: Routes = [
       { path: 'setting', component: SettingComponent }
     ]
   },
-  // {
-  //   path: 'auth',
-  //   children: [
-  //     { path: 'register', component: AuthRegisterComponent },
-  //     { path: 'login', component: AuthLoginComponent },
-  //     { path: 'confirm', component: AuthConfirmComponent }
-  //   ]
-  // },
+  {
+    path: 'auth',
+    children: [
+      { path: 'login', component: AuthLoginComponent },
+      // { path: 'register', component: AuthRegisterComponent },
+      // { path: 'confirm', component: AuthConfirmComponent }
+    ]
+  },
   { path: 'signIn', component: SignInComponent },
   { path: 'signOut', component: SignOutComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
+// tslint:disable-next-line:no-stateless-class
 @NgModule({
   imports: [
     RouterModule.forRoot(

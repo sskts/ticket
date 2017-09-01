@@ -1,3 +1,6 @@
+/**
+ * 環境変数dev
+ */
 export const environment = {
   production: false,
 

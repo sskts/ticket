@@ -20,15 +20,14 @@ export class AuthLoginComponent implements OnInit {
     console.log('LoginComponent constructor');
   }
 
-  public async ngOnInit() {
-    await this.login();
-  }
+  public async ngOnInit() {}
 
   public async login() {
     try {
       const result = await this.sasaki.auth.signIn();
       console.log('authorize result:', result);
       this.sasaki.credentials = result;
+      this.router.navigate(['/']);
     } catch (error) {
       console.error(error);
     }

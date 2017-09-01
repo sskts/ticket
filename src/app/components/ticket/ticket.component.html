@@ -1,28 +1,32 @@
-<div class="movie-info">
-  <dl class="film">
-    <dt class="small-x-text">作品名</dt>
-    <dd>{{ reservation.reservationFor.workPerformed.name }}</dd>
-  </dl>
-  <dl class="date">
-    <dt class="small-x-text">鑑賞日時</dt>
-    <dd>{{ reservation.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{ reservation.reservationFor.startDate | timeFormat: reservation.reservationFor.coaInfo.dateJouei }}-{{ reservation.reservationFor.endDate | timeFormat: reservation.reservationFor.coaInfo.dateJouei }}</dd>
-  </dl>
-  <dl class="theater">
-    <dt class="small-x-text">劇場</dt>
-    <dd>{{ reservation.reservationFor.superEvent.location.name.ja }}</dd>
-  </dl>
-  <dl class="screen">
-    <dt class="small-x-text">スクリーン</dt>
-    <dd>{{ reservation.reservationFor.location.name.ja }}</dd>
-  </dl>
-</div>
-<ul>
-  <li *ngFor="let reservedTicket of reservation.reservedTickets">
-    <div class="ticket-info">
-      <div class="large-x-text mb-x-small">{{ reservedTicket.ticketedSeat.seatNumber }}</div>
-      <div *ngIf="reservedTicket.coaTicketInfo.addGlasses > 0">{{ reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>
-      <div *ngIf="reservedTicket.coaTicketInfo.addGlasses === 0">{{ reservedTicket.coaTicketInfo.ticketName }}</div>
+<div class="inner">
+    <div class="movie-info">
+        <dl class="film">
+            <dt class="small-x-text">作品名</dt>
+            <dd>{{ reservation.reservationFor.workPerformed.name }}</dd>
+        </dl>
+        <dl class="date">
+            <dt class="small-x-text">鑑賞日時</dt>
+            <dd>{{ reservation.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{ reservation.reservationFor.startDate
+                | timeFormat: reservation.reservationFor.coaInfo.dateJouei }}-{{ reservation.reservationFor.endDate | timeFormat:
+                reservation.reservationFor.coaInfo.dateJouei }}</dd>
+        </dl>
+        <dl class="theater">
+            <dt class="small-x-text">劇場</dt>
+            <dd>{{ reservation.reservationFor.superEvent.location.name.ja }}</dd>
+        </dl>
+        <dl class="screen">
+            <dt class="small-x-text">スクリーン</dt>
+            <dd>{{ reservation.reservationFor.location.name.ja }}</dd>
+        </dl>
     </div>
-    <qr-code class="qr" [value]="reservedTicket.ticketToken" [size]="125" [padding]="12.5"></qr-code>
-  </li>
-</ul>
+    <ul>
+        <li *ngFor="let reservedTicket of reservation.reservedTickets">
+            <div class="ticket-info">
+                <div class="large-x-text mb-x-small">{{ reservedTicket.ticketedSeat.seatNumber }}</div>
+                <div *ngIf="reservedTicket.coaTicketInfo.addGlasses > 0">{{ reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>
+                <div *ngIf="reservedTicket.coaTicketInfo.addGlasses === 0">{{ reservedTicket.coaTicketInfo.ticketName }}</div>
+            </div>
+            <qr-code class="qr" [value]="reservedTicket.ticketToken" [size]="125" [padding]="12.5"></qr-code>
+        </li>
+    </ul>
+</div>
