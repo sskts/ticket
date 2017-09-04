@@ -4,6 +4,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
+import { environment } from '../../../environments/environment';
+import { SasakiService } from '../../service/sasaki/sasaki.service';
+import { UserService } from '../../service/user/user.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -25,12 +29,26 @@ export class HeaderComponent implements OnInit {
    * @memberof isOpen
    */
   public isOpen: boolean;
+  /**
+   * 名前
+   * @memberof HeaderComponent
+   */
+  public name: string;
+  /**
+   * ポータルサイト
+   * @memberof HeaderComponent
+   */
+  public portalSite: string;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private user: UserService,
+    private sasaki: SasakiService
   ) { }
 
   public ngOnInit(): void {
+    this.name = `${this.user.contacts.familyName} ${this.user.contacts.givenName}`;
+    this.portalSite = environment.portalSite;
     this.isOpen = false;
     this.changeTitle(this.router.url);
     this.router.events.subscribe((event) => {
@@ -56,6 +74,17 @@ export class HeaderComponent implements OnInit {
       return;
     }
     this.title = page.title;
+  }
+
+  public async logout() {
+    try {
+      await this.sasaki.auth.signOut();
+      console.log('logout');
+      this.sasaki.credentials = null;
+      this.router.navigate(['/auth/login']);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
 }

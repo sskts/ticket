@@ -4,7 +4,9 @@
     background-color: #FFF;
 }
 .info {
-    padding: 0 10px 0;
+    padding: 10px 10px 0;
+    color: #333;
+    border-bottom: 1px solid #CCC;
     dl {
         border-bottom: 1px dashed #CCC;
         display: table;
@@ -20,25 +22,22 @@
         }
         dd {
             width: calc(100% - 80px);
-            padding: 20px 20px 20px 0;
+            padding: 10px 20px 10px 0;
             display: table-cell;
             vertical-align: middle;
         }
     }
 }
 ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 10px 10px;
     li {
+        width: calc(50% - 5px);
         background-color: #0074A9;
         color: #FFF;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        &:nth-child(even) {
-            background-color: #008ECF;
-        }
-        .ticket-info {
-            text-align: center;
-        }
+        padding: 10px;
+        margin: 0 0 10px;
     }
 }

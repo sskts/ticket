@@ -11,6 +11,7 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignOutComponent } from './components/sign-out/sign-out.component';
+import { StartupComponent } from './components/startup/startup.component';
 import { TicketHolderComponent } from './components/ticket-holder/ticket-holder.component';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
       // { path: 'confirm', component: AuthConfirmComponent }
     ]
   },
+  { path: 'startup', component: StartupComponent },
   { path: 'signIn', component: SignInComponent },
   { path: 'signOut', component: SignOutComponent },
   { path: '**', component: NotFoundComponent }

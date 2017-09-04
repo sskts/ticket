@@ -1,0 +1,32 @@
+p {
+    color: #FFF;
+}
+.startup {
+    
+}
+.inner {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 100px;
+}
+.under-line {
+    border-bottom: 3px solid #F4D600;
+}
+.step-0 {
+    img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 132px;
+        height: 80px;
+        margin: -40px 0 0 -66px;
+    }
+}
+
+.step-5 {
+    button {
+        border-radius: 0;
+        padding: 75px 0;
+    }
+}

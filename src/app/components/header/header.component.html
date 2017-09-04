@@ -8,9 +8,16 @@
     </div>
 </header>
 <div class="cover" [class.active]="isOpen" (click)="close()"></div>
-<ul class="menu" [class.active]="isOpen">
-    <li routerLink="/ticket-holder" routerLinkActive="active">チケットホルダー</li>
-    <li routerLink="/purchase" routerLinkActive="active">チケット購入</li>
-    <li routerLink="/setting" routerLinkActive="active">設定変更</li>
-    <li (click)="close()">閉じる</li>
-</ul>
+<div class="menu" [class.active]="isOpen">
+    <div class="title">{{ name }}</div>
+    <ul>
+        <li><span routerLink="/about" routerLinkActive="active">このアプリについて</span></li>
+        <li><span routerLink="/entry-method" routerLinkActive="active">入場方法説明</span></li>
+        <li><a [attr.href]="portalSite" target="_blank">シネマサンシャインポータルサイト</a></li>
+        <li><a [attr.href]="portalSite + '/sitepolicy'" target="_blank">利用規約</a></li>
+        <li><a [attr.href]="portalSite + '/law'" target="_blank">特定商取引法に基づく表記</a></li>
+        <li><a [attr.href]="portalSite + '/privacy'" target="_blank">プライバシーポリシー</a></li>
+        <li><span (click)="logout()">ログアウト</span></li>
+        <li><span (click)="close()">閉じる</span></li>
+    </ul>
+</div>

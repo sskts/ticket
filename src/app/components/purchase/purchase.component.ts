@@ -12,6 +12,18 @@ interface Idate {
   text: string;
 }
 
+type chronological = sasaki.factory.event.individualScreeningEvent.IEventWithOffer;
+
+interface Ifilm {
+  id: string;
+  films: sasaki.factory.event.individualScreeningEvent.IEventWithOffer[];
+}
+
+/**
+ * 販売終了時間 30分前
+ */
+const END_TIME = 30;
+
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
@@ -29,6 +41,10 @@ export class PurchaseComponent implements OnInit {
   public theater: string;
   public date: string;
   public individualScreeningEvents: sasaki.factory.event.individualScreeningEvent.IEventWithOffer[];
+  public chronologicalList: sasaki.factory.event.individualScreeningEvent.IEventWithOffer[];
+  public filmList: Ifilm[];
+  public config: any;
+  public error: string;
 
   constructor(
     private sasaki: SasakiService
@@ -36,11 +52,18 @@ export class PurchaseComponent implements OnInit {
 
   public async ngOnInit() {
     this.isLoading = false;
-    this.theater = '';
-    this.date = '';
+    this.config = {
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      spaceBetween: 30
+    };
     try {
       this.theaters = await this.sasaki.place.searchMovieTheaters();
+      this.theater = this.theaters[0].branchCode;
       this.dateList = this.createDate();
+      this.date = this.dateList[0].value;
       await this.fitchPerformances();
     } catch (err) {
       console.log(err);
@@ -85,6 +108,63 @@ export class PurchaseComponent implements OnInit {
       day: this.date
     });
     console.log('上映イベント検索', this.individualScreeningEvents);
+    this.chronologicalList = this.convertToChronologicalOrder(this.individualScreeningEvents);
+    this.filmList = this.convertToFilmOrder(this.individualScreeningEvents);
+    console.log('時間順', this.chronologicalList);
+    console.log('作品順', this.filmList);
     this.isLoading = false;
+  }
+
+  /**
+   * 時間別へ変換
+   * @function getTheaterCode
+   * @param {sasaki.factory.event.individualScreeningEvent.IEventWithOffer[]} data
+   * @returns {chronological[]}
+   */
+  private convertToChronologicalOrder(
+    data: sasaki.factory.event.individualScreeningEvent.IEventWithOffer[]
+  ) {
+    const results: chronological[] = [];
+    data.forEach((performance) => {
+      // 販売可能時間判定
+      const limitTime = moment().add(END_TIME, 'minutes');
+      if (limitTime.unix() > moment(`${performance.startDate}`).unix()) {
+        return;
+      }
+      results.push(performance);
+    });
+
+    return results;
+  }
+  /**
+   * 作品別へ変換
+   * @function getTheaterCode
+   * @param {sasaki.factory.event.individualScreeningEvent.IEventWithOffer[]} data
+   * @returns {Ifilm[]}
+   */
+  private convertToFilmOrder(
+    data: sasaki.factory.event.individualScreeningEvent.IEventWithOffer[]
+  ) {
+    const results: Ifilm[] = [];
+    data.forEach((performance) => {
+      // 販売可能時間判定
+      const limitTime = moment().add(END_TIME, 'minutes');
+      if (limitTime.unix() > moment(`${performance.startDate}`).unix()) {
+        return;
+      }
+      const film = results.find((event) => {
+        return (event.id === performance.workPerformed.identifier);
+      });
+      if (film === undefined) {
+        results.push({
+          id: performance.workPerformed.identifier,
+          films: [performance]
+        });
+      } else {
+        film.films.push(performance);
+      }
+    });
+
+    return results;
   }
 }

@@ -14,6 +14,10 @@ import { AppComponent } from './components/app/app.component';
 import { AuthConfirmComponent } from './components/auth-confirm/auth-confirm.component';
 import { AuthLoginComponent } from './components/auth-login/auth-login.component';
 import { AuthRegisterComponent } from './components/auth-register/auth-register.component';
+import {
+  ChronologicalOrderOfPerformanceComponent
+} from './components/chronological-order-of-performance/chronological-order-of-performance.component';
+import { FilmOrderOfPerformanceComponent } from './components/film-order-of-performance/film-order-of-performance.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -25,11 +29,12 @@ import { SignOutComponent } from './components/sign-out/sign-out.component';
 import { StartupComponent } from './components/startup/startup.component';
 import { TicketHolderComponent } from './components/ticket-holder/ticket-holder.component';
 import { TicketComponent } from './components/ticket/ticket.component';
+import { AvailabilityPipe } from './pipe/availability/availability.pipe';
 import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { SasakiService } from './service/sasaki/sasaki.service';
-import { TimeScheduleComponent } from './components/time-schedule/time-schedule.component';
-import { FilmScheduleComponent } from './components/film-schedule/film-schedule.component';
+import { UserService } from './service/user/user.service';
+import { DurationPipe } from './pipe/duration/duration.pipe';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -50,8 +55,10 @@ import { FilmScheduleComponent } from './components/film-schedule/film-schedule.
     SignInComponent,
     SignOutComponent,
     TimeFormatPipe,
-    TimeScheduleComponent,
-    FilmScheduleComponent
+    ChronologicalOrderOfPerformanceComponent,
+    FilmOrderOfPerformanceComponent,
+    AvailabilityPipe,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
@@ -65,7 +72,8 @@ import { FilmScheduleComponent } from './components/film-schedule/film-schedule.
   ],
   providers: [
     SasakiService,
-    AuthGuardService
+    AuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

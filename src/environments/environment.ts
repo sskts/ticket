@@ -26,5 +26,9 @@ export const environment = {
   sasakiAuthRedirectUri: 'https://localhost:3333/signIn',
   sasakiAuthLogoutUri: 'https://localhost:3333/signOut',
   tokenIssuer: 'https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_bQcyLA7Jq',
-  sasakiAPIEndpoint: 'https://sskts-api-development-preview.azurewebsites.net'
+  sasakiAPIEndpoint: 'https://sskts-api-development-preview.azurewebsites.net',
+
+  // tslint:disable-next-line:no-http-string
+  portalSite: 'http://www.cinemasunshine.co.jp',
+  ticketingSite: 'https://sskts-frontend-test.azurewebsites.net'
 };
