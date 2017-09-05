@@ -2,6 +2,9 @@
  * StartupComponent
  */
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { SasakiService } from '../../service/sasaki/sasaki.service';
 
 @Component({
   selector: 'app-startup',
@@ -13,7 +16,10 @@ export class StartupComponent implements OnInit {
   public tutorial: boolean;
   public step: number;
 
-  constructor() { }
+  constructor(
+    private sasaki: SasakiService,
+    private router: Router
+  ) { }
 
   public ngOnInit() {
     this.step = 0;
@@ -23,13 +29,7 @@ export class StartupComponent implements OnInit {
       paginationClickable: true,
       nextButton: '.swiper-button-next',
       prevButton: '.swiper-button-prev',
-      spaceBetween: 30,
-      onSlideNextEnd: (a, b, c) => {
-        this.step += 1;
-      },
-      onSlidePrevEnd: () => {
-        this.step -= 1;
-      }
+      spaceBetween: 30
     };
     this.tutorialStart();
   }
@@ -42,6 +42,17 @@ export class StartupComponent implements OnInit {
         this.tutorial = true;
       },
       timeout);
+  }
+
+  public async login() {
+    try {
+      const result = await this.sasaki.auth.signIn();
+      console.log('authorize result:', result);
+      this.sasaki.credentials = result;
+      this.router.navigate(['/']);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
 }

@@ -1,49 +1,51 @@
-<div class="startup" [class]="'step-' + step">
-    <div *ngIf="!tutorial; else elseBlock" class="inner">
-        <img src="/assets/images/logo.svg">
+<div class="startup">
+    <div *ngIf="!tutorial; else elseBlock" class="step-0">
+        <div class="inner">
+            <img src="/assets/images/logo.svg">
+        </div>
     </div>
     <ng-template #elseBlock>
         <swiper [config]="config">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <div class="swiper-slide step-1">
                     <div class="inner">
                         <p class="text-center large-text mb-middle"><strong>シネマサンシャイン<br>公式アプリへようこそ!</strong></p>
                         <div class="image text-center mb-middle"><img src="/assets/images/logo.svg"></div>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide step-2">
                     <div class="inner">
                         <p class="text-center large-text mb-middle"><strong>いつでも<br><span class="under-line">アプリ会員価格！</span></strong></p>
                         <div class="image text-center mb-middle"><img src="/assets/images/logo.svg"></div>
                         <p class="text-center mb-middle">お得なアプリ会員価格で<br>チケットが購入できます。</p>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide step-3">
                     <div class="inner">
                         <p class="text-center large-text mb-middle"><strong>チケットを<br><span class="under-line">スマートに購入！</span></strong></p>
                         <div class="image text-center mb-middle"><img src="/assets/images/logo.svg"></div>
                         <p class="text-center mb-middle">一度、アプリ内で購入すると<br>面倒な購入者情報入力をスキップできます。</p>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide step-4">
                     <div class="inner">
                         <p class="text-center large-text mb-middle"><strong>チケットを<br><span class="under-line">そのままチケットに！</span></strong></p>
                         <div class="image text-center mb-middle"><img src="/assets/images/logo.svg"></div>
                         <p class="text-center mb-middle">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide step-5">
                     <div class="inner">
                         <p class="text-center large-text mb-middle"><strong><span class="under-line">スマフォが<br>そのままチケットに！</span></strong></p>
                         <div class="image text-center mb-middle"><img src="/assets/images/logo.svg"></div>
                         <p class="text-center mb-middle">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide step-6">
                     <div class="inner">
                         <p class="text-center large-text mb-middle"><strong>それではアプリを<br>お楽しみください！</strong></p>
                         <div class="image text-center mb-middle"><img src="/assets/images/logo.svg"></div>
-                        <button class="btn btn-primary btn-block">アプリを始める</button>
+                        <button class="btn btn-primary btn-block" (click)="login()">アプリを始める</button>
                     </div>
                 </div>
             </div>

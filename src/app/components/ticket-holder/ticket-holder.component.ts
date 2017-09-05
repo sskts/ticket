@@ -35,7 +35,8 @@ export class TicketHolderComponent implements OnInit {
       paginationClickable: true,
       nextButton: '.swiper-button-next',
       prevButton: '.swiper-button-prev',
-      spaceBetween: 30
+      spaceBetween: 30,
+      autoHeight: true
     };
     try {
       this.reservationOwnerships = await this.sasaki.people.searchReservationOwnerships({

@@ -25,7 +25,7 @@ export class FilmOrderOfPerformanceComponent implements OnInit {
   }
 
   public performanceSelect(data: sasaki.factory.event.individualScreeningEvent.IEventWithOffer) {
-    location.href = `${environment.ticketingSite}/purchase/?id=${data.identifier}`;
+    location.href = `${environment.ticketingSite}/signIn?id=${data.identifier}`;
   }
 
 }
