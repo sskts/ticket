@@ -2418,6 +2418,7 @@ var SasakiService = /** @class */ (function () {
             nonce: null,
             tokenIssuer: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].tokenIssuer
         };
+        console.log('options-----', options);
         this.auth = __WEBPACK_IMPORTED_MODULE_1__motionpicture_sasaki_api__["createAuthInstance"](options);
         this.people = new __WEBPACK_IMPORTED_MODULE_1__motionpicture_sasaki_api__["service"].Person({
             auth: this.auth,
