@@ -5,7 +5,7 @@
   "scripts": {
     "start": "ng serve --port 3333 --ssl true --ssl-key \"./certificate/server.key\" --ssl-cert \"./certificate/server.crt\"",
     "ng": "ng",
-    "build": "ng build",
+    "build": "ng build && ng build --development --output-path=./development",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
