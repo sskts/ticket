@@ -30,11 +30,11 @@ import { StartupComponent } from './components/startup/startup.component';
 import { TicketHolderComponent } from './components/ticket-holder/ticket-holder.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { AvailabilityPipe } from './pipe/availability/availability.pipe';
+import { DurationPipe } from './pipe/duration/duration.pipe';
 import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { SasakiService } from './service/sasaki/sasaki.service';
 import { UserService } from './service/user/user.service';
-import { DurationPipe } from './pipe/duration/duration.pipe';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({

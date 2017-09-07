@@ -53,7 +53,7 @@ export class SasakiService {
             tokenIssuer: environment.tokenIssuer
         };
 
-        console.log('options-----', options);
+        console.log('options-----', options, process);
 
         this.auth = sasaki.createAuthInstance(options);
 

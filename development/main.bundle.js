@@ -128,11 +128,11 @@ var AppRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/components/ticket-holder/ticket-holder.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_ticket_ticket_component__ = __webpack_require__("../../../../../src/app/components/ticket/ticket.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pipe_availability_availability_pipe__ = __webpack_require__("../../../../../src/app/pipe/availability/availability.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pipe_time_format_time_format_pipe__ = __webpack_require__("../../../../../src/app/pipe/time-format/time-format.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pipe_duration_duration_pipe__ = __webpack_require__("../../../../../src/app/pipe/duration/duration.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pipe_duration_duration_pipe__ = __webpack_require__("../../../../../src/app/pipe/duration/duration.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pipe_time_format_time_format_pipe__ = __webpack_require__("../../../../../src/app/pipe/time-format/time-format.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -196,11 +196,11 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__components_auth_confirm_auth_confirm_component__["a" /* AuthConfirmComponent */],
                 __WEBPACK_IMPORTED_MODULE_20__components_sign_in_sign_in_component__["a" /* SignInComponent */],
                 __WEBPACK_IMPORTED_MODULE_21__components_sign_out_sign_out_component__["a" /* SignOutComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
+                __WEBPACK_IMPORTED_MODULE_27__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
                 __WEBPACK_IMPORTED_MODULE_12__components_chronological_order_of_performance_chronological_order_of_performance_component__["a" /* ChronologicalOrderOfPerformanceComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__components_film_order_of_performance_film_order_of_performance_component__["a" /* FilmOrderOfPerformanceComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__pipe_availability_availability_pipe__["a" /* AvailabilityPipe */],
-                __WEBPACK_IMPORTED_MODULE_30__pipe_duration_duration_pipe__["a" /* DurationPipe */]
+                __WEBPACK_IMPORTED_MODULE_26__pipe_duration_duration_pipe__["a" /* DurationPipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
@@ -213,9 +213,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5_angular2_qrcode__["a" /* QRCodeModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_28__service_sasaki_sasaki_service__["a" /* SasakiService */],
-                __WEBPACK_IMPORTED_MODULE_27__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
-                __WEBPACK_IMPORTED_MODULE_29__service_user_user_service__["a" /* UserService */]
+                __WEBPACK_IMPORTED_MODULE_29__service_sasaki_sasaki_service__["a" /* SasakiService */],
+                __WEBPACK_IMPORTED_MODULE_28__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
+                __WEBPACK_IMPORTED_MODULE_30__service_user_user_service__["a" /* UserService */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_8__components_app_app_component__["a" /* AppComponent */]]
         })
@@ -2374,7 +2374,7 @@ var AuthGuardService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sasaki_api__ = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sasaki_api___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__motionpicture_sasaki_api__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
@@ -2418,7 +2418,7 @@ var SasakiService = /** @class */ (function () {
             nonce: null,
             tokenIssuer: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].tokenIssuer
         };
-        console.log('options-----', options);
+        console.log('options-----', options, process);
         this.auth = __WEBPACK_IMPORTED_MODULE_1__motionpicture_sasaki_api__["createAuthInstance"](options);
         this.people = new __WEBPACK_IMPORTED_MODULE_1__motionpicture_sasaki_api__["service"].Person({
             auth: this.auth,
@@ -2441,6 +2441,7 @@ var SasakiService = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=sasaki.service.js.map
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("../../../../process/browser.js")))
 
 /***/ }),
 
@@ -2501,14 +2502,14 @@ var environment = {
     dynamodb_endpoint: '',
     s3_endpoint: '',
     sasakiAuthDomain: 'sskts-development.auth.ap-northeast-1.amazoncognito.com',
-    sasakiAuthRedirectUri: 'https://localhost:3333/signIn',
-    sasakiAuthLogoutUri: 'https://localhost:3333/signOut',
+    sasakiAuthRedirectUri: 'https://sskts-ticket-development.azurewebsites.net/signIn',
+    sasakiAuthLogoutUri: 'https://sskts-ticket-development.azurewebsites.net/signOut',
     tokenIssuer: 'https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_bQcyLA7Jq',
     sasakiAPIEndpoint: 'https://sskts-api-development-preview.azurewebsites.net',
     // tslint:disable-next-line:no-http-string
     portalSite: 'http://www.cinemasunshine.co.jp',
     // tslint:disable-next-line:no-http-string
-    ticketingSite: 'https://localhost'
+    ticketingSite: 'https://sskts-frontend-development-preview.azurewebsites.net'
 };
 //# sourceMappingURL=environment.js.map
 
@@ -2523,6 +2524,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__("../../../platform-browser-dynamic/@angular/platform-browser-dynamic.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__("../../../../../src/app/app.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/**
+ * main
+ */
 
 
 
