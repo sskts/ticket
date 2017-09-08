@@ -81,7 +81,7 @@ var AppRoutingModule = /** @class */ (function () {
     AppRoutingModule = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */].forRoot(appRoutes, { enableTracing: true } // <-- debugging purposes only
+                __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */].forRoot(appRoutes, { useHash: true, enableTracing: true } // <-- debugging purposes only
                 )
             ],
             exports: [
@@ -2502,8 +2502,8 @@ var environment = {
     dynamodb_endpoint: '',
     s3_endpoint: '',
     sasakiAuthDomain: 'sskts-development.auth.ap-northeast-1.amazoncognito.com',
-    sasakiAuthRedirectUri: 'https://sskts-ticket-development.azurewebsites.net/signIn',
-    sasakiAuthLogoutUri: 'https://sskts-ticket-development.azurewebsites.net/signOut',
+    sasakiAuthRedirectUri: 'https://sskts-ticket-development.azurewebsites.net/assets/signIn.thml',
+    sasakiAuthLogoutUri: 'https://sskts-ticket-development.azurewebsites.net/assets/signOut.html',
     tokenIssuer: 'https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_bQcyLA7Jq',
     sasakiAPIEndpoint: 'https://sskts-api-development-preview.azurewebsites.net',
     // tslint:disable-next-line:no-http-string

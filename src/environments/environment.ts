@@ -23,13 +23,13 @@ export const environment = {
     s3_endpoint: '',
 
     sasakiAuthDomain: 'sskts-development.auth.ap-northeast-1.amazoncognito.com',
-    sasakiAuthRedirectUri: 'https://localhost:3333/signIn',
-    sasakiAuthLogoutUri: 'https://localhost:3333/signOut',
+    sasakiAuthRedirectUri: 'https://sskts-ticket-development.azurewebsites.net/assets/signIn.thml',
+    sasakiAuthLogoutUri: 'https://sskts-ticket-development.azurewebsites.net/assets/signOut.html',
     tokenIssuer: 'https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_bQcyLA7Jq',
     sasakiAPIEndpoint: 'https://sskts-api-development-preview.azurewebsites.net',
 
     // tslint:disable-next-line:no-http-string
     portalSite: 'http://www.cinemasunshine.co.jp',
     // tslint:disable-next-line:no-http-string
-    ticketingSite: 'https://localhost'
+    ticketingSite: 'https://sskts-frontend-development-preview.azurewebsites.net'
 };
