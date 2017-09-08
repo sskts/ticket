@@ -367,7 +367,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "p {\n  color: #FFF; }\n\n.contents {\n  padding-top: 50px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
+exports.push([module.i, "p {\n  color: #FFF; }\n\n.contents {\n  width: 100%;\n  height: 100vh;\n  padding-top: 50px;\n  background-image: url(/assets/images/bg/bg_repeat_01.svg);\n  background-size: 50px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
 
 // exports
 
@@ -986,7 +986,7 @@ var MainComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/navigation/navigation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<ul>\n    <li routerLink=\"/ticket-holder\" routerLinkActive=\"active\">チケットホルダー</li>\n    <li routerLink=\"/purchase\" routerLinkActive=\"active\">チケット購入</li>\n</ul>"
+module.exports = "<ul>\n    <li routerLink=\"/ticket-holder\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-ticket-holder-white\"></div>\n        <div>チケットホルダー</div>\n    </li>\n    <li routerLink=\"/purchase\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>チケット購入</div>\n    </li>\n</ul>"
 
 /***/ }),
 
@@ -998,7 +998,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  height: 60px;\n  display: block; }\n\nul {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 10;\n  display: table;\n  table-layout: fixed;\n  width: 100%;\n  height: 60px;\n  background-color: #05418f; }\n  ul li {\n    color: #FFF;\n    display: table-cell;\n    border-bottom: 5px solid #4C4C4C;\n    font-size: 10px;\n    text-align: center;\n    vertical-align: middle; }\n    ul li.active {\n      border-bottom-color: #00A0E9; }\n", ""]);
+exports.push([module.i, ":host {\n  height: 60px;\n  display: block; }\n\nul {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 10;\n  display: table;\n  table-layout: fixed;\n  width: 100%;\n  height: 60px;\n  background: linear-gradient(135deg, #05418f 0%, #000a2a 100%); }\n  ul li {\n    color: #FFF;\n    display: table-cell;\n    border-bottom: 5px solid #4C4C4C;\n    font-size: 10px;\n    text-align: center;\n    vertical-align: middle;\n    opacity: 0.7; }\n    ul li.active {\n      border-bottom-color: #00A0E9;\n      opacity: 1; }\n    ul li .icon-ticket-holder-white:before, ul li .icon-purchase-white:before {\n      margin: auto; }\n", ""]);
 
 // exports
 
@@ -1702,7 +1702,7 @@ var SignOutComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/startup/startup.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"startup\">\n    <div *ngIf=\"!tutorial; else elseBlock\" class=\"step-0\">\n        <div class=\"inner\">\n            <img src=\"/assets/images/logo.svg\">\n        </div>\n    </div>\n    <ng-template #elseBlock>\n        <swiper [config]=\"config\">\n            <div class=\"swiper-wrapper\">\n                <div class=\"swiper-slide step-1\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong>シネマサンシャイン<br>公式アプリへようこそ!</strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/logo.svg\"></div>\n                    </div>\n                </div>\n                <div class=\"swiper-slide step-2\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong>いつでも<br><span class=\"under-line\">アプリ会員価格！</span></strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/logo.svg\"></div>\n                        <p class=\"text-center mb-middle\">お得なアプリ会員価格で<br>チケットが購入できます。</p>\n                    </div>\n                </div>\n                <div class=\"swiper-slide step-3\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong>チケットを<br><span class=\"under-line\">スマートに購入！</span></strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/logo.svg\"></div>\n                        <p class=\"text-center mb-middle\">一度、アプリ内で購入すると<br>面倒な購入者情報入力をスキップできます。</p>\n                    </div>\n                </div>\n                <div class=\"swiper-slide step-4\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong>チケットを<br><span class=\"under-line\">そのままチケットに！</span></strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/logo.svg\"></div>\n                        <p class=\"text-center mb-middle\">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>\n                    </div>\n                </div>\n                <div class=\"swiper-slide step-5\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong><span class=\"under-line\">スマフォが<br>そのままチケットに！</span></strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/logo.svg\"></div>\n                        <p class=\"text-center mb-middle\">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>\n                    </div>\n                </div>\n                <div class=\"swiper-slide step-6\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong>それではアプリを<br>お楽しみください！</strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/logo.svg\"></div>\n                        <button class=\"btn btn-primary btn-block\" (click)=\"login()\">アプリを始める</button>\n                    </div>\n                </div>\n            </div>\n            <div class=\"swiper-pagination\"></div>\n        </swiper>\n    </ng-template>\n</div>"
+module.exports = "<div class=\"startup\">\n    <div *ngIf=\"!walkThrough; else elseBlock\" class=\"step-0\">\n        <div class=\"inner\">\n            <img src=\"/assets/images/logo.svg\">\n        </div>\n    </div>\n    <ng-template #elseBlock>\n        <swiper [config]=\"config\">\n            <div class=\"swiper-wrapper walk-through\">\n                <div class=\"swiper-slide step-1\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong>シネマサンシャイン<br>公式アプリへようこそ!</strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/01.svg\" width=\"118\" height=\"202\"></div>\n                    </div>\n                </div>\n                <div class=\"swiper-slide step-2\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong>いつでも<br><span class=\"under-line\">アプリ会員価格！</span></strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/02.svg\" width=\"118\" height=\"202\"></div>\n                        <p class=\"text-center mb-middle\">お得なアプリ会員価格で<br>チケットが購入できます。</p>\n                    </div>\n                </div>\n                <div class=\"swiper-slide step-3\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong>チケットを<br><span class=\"under-line\">スマートに購入！</span></strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/03.svg\" width=\"118\" height=\"202\"></div>\n                        <p class=\"text-center mb-middle\">一度、アプリ内で購入すると<br>面倒な購入者情報入力をスキップできます。</p>\n                    </div>\n                </div>\n                <div class=\"swiper-slide step-4\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong>チケットを<br><span class=\"under-line\">そのままチケットに！</span></strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/04.svg\" width=\"274\" height=\"223\"></div>\n                        <p class=\"text-center mb-middle\">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>\n                    </div>\n                </div>\n                <!-- <div class=\"swiper-slide step-5\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong>アプリでチケットを<br><span class=\"under-line\">6枚購入すると1枚無料！</span></strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/06.svg\" width=\"118\" height=\"202\"></div>\n                        <p class=\"text-center mb-middle\">アプリ内で6枚購入すると<br>なんと1枚無料になります。</p>\n                    </div>\n                </div> -->\n                <div class=\"swiper-slide step-5\">\n                    <div class=\"inner\">\n                        <p class=\"text-center large-text mb-middle\"><strong>それではアプリを<br>お楽しみください！</strong></p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/05.svg\" width=\"269\" height=\"241\"></div>\n                        <button class=\"btn btn-primary btn-block\" (click)=\"login()\">アプリを始める</button>\n                    </div>\n                </div>\n            </div>\n            <div class=\"swiper-pagination\"></div>\n        </swiper>\n    </ng-template>\n</div>"
 
 /***/ }),
 
@@ -1714,7 +1714,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "p {\n  color: #FFF; }\n\n.inner {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  padding-top: 100px; }\n\n.under-line {\n  border-bottom: 3px solid #F4D600; }\n\n.step-0 img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 132px;\n  height: 80px;\n  margin: -40px 0 0 -66px; }\n\n.step-6 button {\n  border-radius: 0;\n  padding: 75px 0; }\n", ""]);
+exports.push([module.i, "p {\n  color: #FFF; }\n\n.startup {\n  background: linear-gradient(135deg, #00a0e9 0%, #00216b 100%); }\n\n.inner {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  padding-top: 100px; }\n\n.under-line {\n  border-bottom: 3px solid #F4D600; }\n\n.step-0 img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 132px;\n  height: 80px;\n  margin: -40px 0 0 -66px; }\n\n.walk-through .swiper-slide:last-child button {\n  border-radius: 0;\n  padding: 75px 0; }\n", ""]);
 
 // exports
 
@@ -1789,7 +1789,7 @@ var StartupComponent = /** @class */ (function () {
     }
     StartupComponent.prototype.ngOnInit = function () {
         this.step = 0;
-        this.tutorial = false;
+        this.walkThrough = false;
         this.config = {
             pagination: '.swiper-pagination',
             paginationClickable: true,
@@ -1804,7 +1804,7 @@ var StartupComponent = /** @class */ (function () {
         var timeout = 3000;
         setTimeout(function () {
             _this.step = 1;
-            _this.tutorial = true;
+            _this.walkThrough = true;
         }, timeout);
     };
     StartupComponent.prototype.login = function () {
@@ -1849,7 +1849,7 @@ var StartupComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/ticket-holder/ticket-holder.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <div class=\"mb-small\"><img src=\"/assets/images/demo_01.png\"></div>\n    <div *ngIf=\"isLoading; else thenBlock\" class=\"loading\">loading...</div>\n    <ng-template #thenBlock>\n        <swiper [config]=\"config\">\n            <div class=\"swiper-wrapper\">\n                <div *ngFor=\"let reservation of reservations\" class=\"swiper-slide\">\n                    <app-ticket [reservation]=\"reservation\"></app-ticket>\n                </div>\n            </div>\n\n            <div class=\"swiper-pagination\"></div>\n        </swiper>\n    </ng-template>\n</div>"
+module.exports = "<div class=\"contents\">\n    <div class=\"mb-small\"><img src=\"/assets/images/demo_01.png\"></div>\n    <div *ngIf=\"isLoading; else thenBlock\" class=\"loading\">loading...</div>\n    <ng-template #thenBlock>\n        <ng-template *ngIf=\"reservations.length > 0; else noTicketBlock\">\n                <swiper [config]=\"config\">\n                    <div class=\"swiper-wrapper\">\n                        <div *ngFor=\"let reservation of reservations\" class=\"swiper-slide\">\n                            <app-ticket [reservation]=\"reservation\"></app-ticket>\n                        </div>\n                    </div>\n        \n                    <div class=\"swiper-pagination\"></div>\n                </swiper>\n        </ng-template>\n        <ng-template #noTicketBlock>\n            <p style=\"color: #FFF\">noTicketBlock</p>\n        </ng-template>\n    </ng-template>\n</div>"
 
 /***/ }),
 

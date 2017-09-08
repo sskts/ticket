@@ -1,13 +1,277 @@
 webpackJsonp([4],{
 
-/***/ "../../../../@motionpicture/sasaki-api/lib/apiFetch.js":
+/***/ "../../../../@motionpicture/sasaki-api-abstract/lib/auth/authClient.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var transporters_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/transporters.js");
 /**
- * API fetch module
+ * AuthClient abstract class
+ * 抽象認証クライアント
+ * @export
+ * @abstract
+ * @class
  */
+var AuthClient = /** @class */ (function () {
+    function AuthClient() {
+    }
+    return AuthClient;
+}());
+exports.AuthClient = AuthClient;
+/**
+ * test auth client
+ * テスト認証クライアント
+ * @export
+ * @class
+ */
+var StubAuthClient = /** @class */ (function () {
+    function StubAuthClient() {
+    }
+    // tslint:disable-next-line:prefer-function-over-method
+    StubAuthClient.prototype.fetch = function (url, options, expectedStatusCodes) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, (new transporters_1.DefaultTransporter(expectedStatusCodes)).fetch(url, options)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    // tslint:disable-next-line:prefer-function-over-method
+    StubAuthClient.prototype.getAccessToken = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, 'access_token'];
+            });
+        });
+    };
+    return StubAuthClient;
+}());
+exports.StubAuthClient = StubAuthClient;
+
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/lib/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// tslint:disable:max-classes-per-file
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Sasaki API Service Library for Javascript
+ * @ignore
+ */
+var factory = __webpack_require__("../../../../@motionpicture/sskts-factory/lib/index.js");
+var authClient_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/auth/authClient.js");
+var event_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service/event.js");
+var order_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service/order.js");
+var organization_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service/organization.js");
+var person_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service/person.js");
+var place_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service/place.js");
+var placeOrder_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service/transaction/placeOrder.js");
+var transporters = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/transporters.js");
+exports.factory = factory;
+exports.transporters = transporters;
+/**
+ * auth client abstract class
+ * 認証クライアント抽象クラス
+ * @export
+ * @class
+ * @abstract
+ */
+var Auth = /** @class */ (function (_super) {
+    __extends(Auth, _super);
+    function Auth() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Auth;
+}(authClient_1.AuthClient));
+exports.Auth = Auth;
+var service;
+(function (service) {
+    /**
+     * event service
+     * @class
+     */
+    var Event = /** @class */ (function (_super) {
+        __extends(Event, _super);
+        function Event() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        return Event;
+    }(event_1.EventService));
+    service.Event = Event;
+    /**
+     * order service
+     * @class
+     */
+    var Order = /** @class */ (function (_super) {
+        __extends(Order, _super);
+        function Order() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        return Order;
+    }(order_1.OrderService));
+    service.Order = Order;
+    /**
+     * organization service
+     * @class
+     */
+    var Organization = /** @class */ (function (_super) {
+        __extends(Organization, _super);
+        function Organization() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        return Organization;
+    }(organization_1.OrganizationService));
+    service.Organization = Organization;
+    /**
+     * person service
+     * @class
+     */
+    var Person = /** @class */ (function (_super) {
+        __extends(Person, _super);
+        function Person() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        return Person;
+    }(person_1.PersonService));
+    service.Person = Person;
+    /**
+     * place service
+     * @class
+     */
+    var Place = /** @class */ (function (_super) {
+        __extends(Place, _super);
+        function Place() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        return Place;
+    }(place_1.PlaceService));
+    service.Place = Place;
+    /**
+     * event service
+     * @param {IOptions} options service configurations
+     */
+    function event(options) {
+        return new event_1.EventService(options);
+    }
+    service.event = event;
+    /**
+     * order service
+     * @param {IOptions} options service configurations
+     */
+    function order(options) {
+        return new order_1.OrderService(options);
+    }
+    service.order = order;
+    /**
+     * organization service
+     * @param {IOptions} options service configurations
+     */
+    function organization(options) {
+        return new organization_1.OrganizationService(options);
+    }
+    service.organization = organization;
+    /**
+     * person service
+     * @param {IOptions} options service configurations
+     */
+    function person(options) {
+        return new person_1.PersonService(options);
+    }
+    service.person = person;
+    /**
+     * place service
+     * @param {IOptions} options service configurations
+     */
+    function place(options) {
+        return new place_1.PlaceService(options);
+    }
+    service.place = place;
+    var transaction;
+    (function (transaction) {
+        /**
+         * placeOrder transaction service
+         * @class
+         */
+        var PlaceOrder = /** @class */ (function (_super) {
+            __extends(PlaceOrder, _super);
+            function PlaceOrder() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            return PlaceOrder;
+        }(placeOrder_1.PlaceOrderTransactionService));
+        transaction.PlaceOrder = PlaceOrder;
+        /**
+         * placeOrder transaction service
+         * @param {IOptions} options service configurations
+         */
+        function placeOrder(options) {
+            return new placeOrder_1.PlaceOrderTransactionService(options);
+        }
+        transaction.placeOrder = placeOrder;
+    })(transaction = service.transaction || (service.transaction = {}));
+})(service = exports.service || (exports.service = {}));
+
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/lib/service.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -53,44 +317,1624 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var querystring = __webpack_require__("../../../../querystring-es3/index.js");
-var transporters_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/transporters.js");
+var transporters_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/transporters.js");
 /**
- * Create and send request to API
+ * base service class
+ * @export
+ * @class Service
  */
-function apiFetch(options) {
-    return __awaiter(this, void 0, void 0, function () {
-        var defaultOptions, url, querystrings, headers, fetchOptions;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    defaultOptions = {
-                        headers: {},
-                        method: 'GET'
-                    };
-                    options = __assign({}, defaultOptions, options);
-                    url = "" + options.baseUrl + options.uri;
-                    querystrings = querystring.stringify(options.qs);
-                    url += (querystrings.length > 0) ? "?" + querystrings : '';
-                    headers = __assign({
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json'
-                    }, options.headers);
-                    fetchOptions = {
-                        method: options.method,
-                        headers: headers,
-                        body: JSON.stringify(options.body)
-                    };
-                    if (!(options.auth !== undefined)) return [3 /*break*/, 2];
-                    return [4 /*yield*/, options.auth.fetch(url, fetchOptions, options.expectedStatusCodes)];
-                case 1: return [2 /*return*/, _a.sent()];
-                case 2: return [4 /*yield*/, (new transporters_1.DefaultTransporter(options.expectedStatusCodes)).fetch(url, fetchOptions)];
-                case 3: return [2 /*return*/, _a.sent()];
-            }
+var Service = /** @class */ (function () {
+    function Service(options) {
+        this.options = options;
+    }
+    /**
+     * Create and send request to API
+     */
+    Service.prototype.fetch = function (options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var defaultOptions, baseUrl, url, querystrings, headers, fetchOptions, transporter;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        defaultOptions = {
+                            headers: {},
+                            method: 'GET'
+                        };
+                        options = __assign({}, defaultOptions, options);
+                        baseUrl = this.options.endpoint;
+                        url = "" + baseUrl + options.uri;
+                        querystrings = querystring.stringify(options.qs);
+                        url += (querystrings.length > 0) ? "?" + querystrings : '';
+                        headers = __assign({
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json'
+                        }, options.headers);
+                        fetchOptions = {
+                            method: options.method,
+                            headers: headers,
+                            body: JSON.stringify(options.body)
+                        };
+                        if (!(this.options.auth !== undefined)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this.options.auth.fetch(url, fetchOptions, options.expectedStatusCodes)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                    case 2:
+                        transporter = (this.options.transporter !== undefined) ? this.options.transporter : new transporters_1.DefaultTransporter(options.expectedStatusCodes);
+                        return [4 /*yield*/, transporter.fetch(url, fetchOptions)];
+                    case 3: return [2 /*return*/, _a.sent()];
+                }
+            });
         });
-    });
-}
-exports.default = apiFetch;
+    };
+    return Service;
+}());
+exports.Service = Service;
 
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/lib/service/event.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
+var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service.js");
+/**
+ * event service
+ * @class EventService
+ */
+var EventService = /** @class */ (function (_super) {
+    __extends(EventService, _super);
+    function EventService() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * 上映イベント検索
+     */
+    EventService.prototype.searchIndividualScreeningEvent = function (
+        /**
+         * 検索条件
+         */
+        params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: '/events/individualScreeningEvent',
+                        method: 'GET',
+                        qs: params,
+                        expectedStatusCodes: [http_status_1.OK]
+                    })];
+            });
+        });
+    };
+    /**
+     * 上映イベント情報取得
+     */
+    EventService.prototype.findIndividualScreeningEvent = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: "/events/individualScreeningEvent/" + params.identifier,
+                        method: 'GET',
+                        expectedStatusCodes: [http_status_1.OK]
+                    })];
+            });
+        });
+    };
+    return EventService;
+}(service_1.Service));
+exports.EventService = EventService;
+
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/lib/service/order.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * 注文サービス
+ *
+ * @namespace service.order
+ */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
+var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service.js");
+/**
+ * order service
+ *
+ * @class OrderService
+ */
+var OrderService = /** @class */ (function (_super) {
+    __extends(OrderService, _super);
+    function OrderService() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * 照会キーで注文情報を取得する
+     */
+    OrderService.prototype.findByOrderInquiryKey = function (
+        /**
+         * 注文照会キー
+         */
+        params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: '/orders/findByOrderInquiryKey',
+                        method: 'POST',
+                        body: params,
+                        expectedStatusCodes: [http_status_1.OK]
+                    })];
+            });
+        });
+    };
+    return OrderService;
+}(service_1.Service));
+exports.OrderService = OrderService;
+
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/lib/service/organization.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * 組織サービス
+ *
+ * @namespace service.organization
+ */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
+var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service.js");
+/**
+ * organization service
+ *
+ * @class OrganizationService
+ */
+var OrganizationService = /** @class */ (function (_super) {
+    __extends(OrganizationService, _super);
+    function OrganizationService() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * 劇場組織検索
+     */
+    OrganizationService.prototype.searchMovieTheaters = function (
+        /**
+         * 検索条件
+         */
+        params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: '/organizations/movieTheater',
+                        method: 'GET',
+                        qs: params,
+                        expectedStatusCodes: [http_status_1.OK]
+                    })];
+            });
+        });
+    };
+    /**
+     * 枝番号で劇場組織検索
+     */
+    OrganizationService.prototype.findMovieTheaterByBranchCode = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: "/organizations/movieTheater/" + params.branchCode,
+                        method: 'GET',
+                        qs: {},
+                        expectedStatusCodes: [http_status_1.OK]
+                    })];
+            });
+        });
+    };
+    return OrganizationService;
+}(service_1.Service));
+exports.OrganizationService = OrganizationService;
+
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/lib/service/person.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
+var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service.js");
+/**
+ * person service
+ *
+ * @class PersonService
+ */
+var PersonService = /** @class */ (function (_super) {
+    __extends(PersonService, _super);
+    function PersonService() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * retrieve user contacts
+     */
+    PersonService.prototype.getContacts = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: "/people/" + params.personId + "/contacts",
+                        method: 'GET',
+                        qs: {},
+                        expectedStatusCodes: [http_status_1.OK]
+                    })];
+            });
+        });
+    };
+    /**
+     * update contacts
+     */
+    PersonService.prototype.updateContacts = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: "/people/" + params.personId + "/contacts",
+                        method: 'PUT',
+                        body: params.contacts,
+                        expectedStatusCodes: [http_status_1.NO_CONTENT]
+                    })];
+            });
+        });
+    };
+    /**
+     * find credit cards
+     * クレジットカード検索
+     * @see example /example/person/handleCreditCards
+     */
+    PersonService.prototype.findCreditCards = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: "/people/" + params.personId + "/creditCards",
+                        method: 'GET',
+                        qs: {},
+                        expectedStatusCodes: [http_status_1.OK]
+                    })];
+            });
+        });
+    };
+    /**
+     * add a credit card
+     * クレジットカード追加
+     * @return {Promise<ISearchCardResult>} successfully created credit card info
+     * @see example /example/person/handleCreditCards
+     */
+    PersonService.prototype.addCreditCard = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: "/people/" + params.personId + "/creditCards",
+                        method: 'POST',
+                        body: params.creditCard,
+                        expectedStatusCodes: [http_status_1.CREATED]
+                    })];
+            });
+        });
+    };
+    /**
+     * delete a credit card by cardSeq
+     * クレジットカード削除
+     * @return {Promise<void>}
+     * @see example /example/person/handleCreditCards
+     */
+    PersonService.prototype.deleteCreditCard = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: "/people/" + params.personId + "/creditCards/" + params.cardSeq,
+                        method: 'DELETE',
+                        expectedStatusCodes: [http_status_1.NO_CONTENT]
+                    })];
+            });
+        });
+    };
+    /**
+     * search ownerships of reservations
+     */
+    PersonService.prototype.searchReservationOwnerships = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: "/people/" + params.personId + "/ownershipInfos/reservation",
+                        method: 'GET',
+                        qs: {},
+                        expectedStatusCodes: [http_status_1.OK]
+                    })];
+            });
+        });
+    };
+    return PersonService;
+}(service_1.Service));
+exports.PersonService = PersonService;
+
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/lib/service/place.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * 場所サービス
+ *
+ * @namespace service.place
+ */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
+var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service.js");
+/**
+ * place service
+ *
+ * @class PlaceService
+ */
+var PlaceService = /** @class */ (function (_super) {
+    __extends(PlaceService, _super);
+    function PlaceService() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * 劇場検索
+     */
+    PlaceService.prototype.searchMovieTheaters = function (
+        /**
+         * 検索条件
+         */
+        params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: '/places/movieTheater',
+                        method: 'GET',
+                        qs: params,
+                        expectedStatusCodes: [http_status_1.OK]
+                    })];
+            });
+        });
+    };
+    /**
+     * 劇場情報取得
+     */
+    PlaceService.prototype.findMovieTheater = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: "/places/movieTheater/" + params.branchCode,
+                        method: 'GET',
+                        qs: {},
+                        expectedStatusCodes: [http_status_1.OK]
+                    })];
+            });
+        });
+    };
+    return PlaceService;
+}(service_1.Service));
+exports.PlaceService = PlaceService;
+
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/lib/service/transaction/placeOrder.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * 注文取引サービス
+ *
+ * @namespace service.transaction.placeOrder
+ */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
+var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/service.js");
+/**
+ * placeOrder transaction service
+ *
+ * @class PlaceOrderTransactionService
+ */
+var PlaceOrderTransactionService = /** @class */ (function (_super) {
+    __extends(PlaceOrderTransactionService, _super);
+    function PlaceOrderTransactionService() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * 取引を開始する
+     * 開始できない場合(混雑中など)、nullが返されます。
+     */
+    PlaceOrderTransactionService.prototype.start = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.fetch({
+                        uri: '/transactions/placeOrder/start',
+                        method: 'POST',
+                        body: {
+                            // tslint:disable-next-line:no-magic-numbers
+                            expires: (params.expires.getTime() / 1000).toFixed(0),
+                            sellerId: params.sellerId
+                        },
+                        expectedStatusCodes: [http_status_1.OK]
+                    })];
+            });
+        });
+    };
+    /**
+     * 取引に座席予約を追加する
+     */
+    PlaceOrderTransactionService.prototype.createSeatReservationAuthorization = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.fetch({
+                            uri: "/transactions/placeOrder/" + params.transactionId + "/seatReservationAuthorization",
+                            method: 'POST',
+                            expectedStatusCodes: [http_status_1.CREATED],
+                            body: {
+                                eventIdentifier: params.eventIdentifier,
+                                offers: params.offers
+                            }
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
+     * 座席予約取消
+     */
+    PlaceOrderTransactionService.prototype.cancelSeatReservationAuthorization = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.fetch({
+                            uri: "/transactions/placeOrder/" + params.transactionId + "/seatReservationAuthorization/" + params.authorizationId,
+                            method: 'DELETE',
+                            expectedStatusCodes: [http_status_1.NO_CONTENT]
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
+     * クレジットカードのオーソリを取得する
+     */
+    PlaceOrderTransactionService.prototype.createCreditCardAuthorization = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.fetch({
+                            uri: "/transactions/placeOrder/" + params.transactionId + "/paymentInfos/creditCard",
+                            method: 'POST',
+                            expectedStatusCodes: [http_status_1.CREATED],
+                            body: {
+                                orderId: params.orderId,
+                                amount: params.amount,
+                                method: params.method,
+                                creditCard: params.creditCard
+                            }
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
+     * クレジットカードオーソリ取消
+     */
+    PlaceOrderTransactionService.prototype.cancelCreditCardAuthorization = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.fetch({
+                            uri: "/transactions/placeOrder/" + params.transactionId + "/paymentInfos/creditCard/" + params.authorizationId,
+                            method: 'DELETE',
+                            expectedStatusCodes: [http_status_1.NO_CONTENT]
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
+     * 決済方法として、ムビチケを追加する
+     */
+    PlaceOrderTransactionService.prototype.createMvtkAuthorization = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.fetch({
+                            uri: "/transactions/placeOrder/" + params.transactionId + "/discountInfos/mvtk",
+                            method: 'POST',
+                            expectedStatusCodes: [http_status_1.CREATED],
+                            body: params.mvtk
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
+     * ムビチケ取消
+     */
+    PlaceOrderTransactionService.prototype.cancelMvtkAuthorization = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.fetch({
+                            uri: "/transactions/placeOrder/" + params.transactionId + "/discountInfos/mvtk/" + params.authorizationId,
+                            method: 'DELETE',
+                            expectedStatusCodes: [http_status_1.NO_CONTENT]
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
+     * register a customer contact
+     */
+    PlaceOrderTransactionService.prototype.setCustomerContact = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.fetch({
+                            uri: "/transactions/placeOrder/" + params.transactionId + "/customerContact",
+                            method: 'PUT',
+                            expectedStatusCodes: [http_status_1.NO_CONTENT],
+                            body: params.contact
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
+     * 取引確定
+     */
+    PlaceOrderTransactionService.prototype.confirm = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.fetch({
+                            uri: "/transactions/placeOrder/" + params.transactionId + "/confirm",
+                            method: 'POST',
+                            expectedStatusCodes: [http_status_1.CREATED]
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
+     * 確定した取引に関して、購入者にメール通知を送信する
+     */
+    PlaceOrderTransactionService.prototype.sendEmailNotification = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.fetch({
+                            uri: "/transactions/placeOrder/" + params.transactionId + "/tasks/sendEmailNotification",
+                            method: 'POST',
+                            expectedStatusCodes: [http_status_1.NO_CONTENT],
+                            body: params.emailNotification
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    return PlaceOrderTransactionService;
+}(service_1.Service));
+exports.PlaceOrderTransactionService = PlaceOrderTransactionService;
+
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/lib/transporters.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// tslint:disable:max-classes-per-file
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * transporters
+ * @ignore
+ */
+var createDebug = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/node_modules/debug/src/browser.js");
+var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
+var fetch = __webpack_require__("../../../../isomorphic-fetch/fetch-npm-browserify.js");
+var debug = createDebug('sasaki-api-service:transporters');
+// tslint:disable-next-line
+var pkg = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/package.json");
+/**
+ * transporter abstract class
+ * トランスポーター抽象クラス
+ * @export
+ * @class
+ * @abstract
+ */
+var Transporter = /** @class */ (function () {
+    function Transporter() {
+    }
+    return Transporter;
+}());
+exports.Transporter = Transporter;
+/**
+ * RequestError
+ * @export
+ * @class
+ */
+var RequestError = /** @class */ (function (_super) {
+    __extends(RequestError, _super);
+    function RequestError() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return RequestError;
+}(Error));
+exports.RequestError = RequestError;
+/**
+ * stub transporter
+ * スタブトランポーター
+ * @export
+ * @class
+ */
+var StubTransporter = /** @class */ (function () {
+    function StubTransporter(body) {
+        this.body = body;
+    }
+    StubTransporter.prototype.fetch = function (url, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                debug('fetching...', url, options);
+                return [2 /*return*/, this.body];
+            });
+        });
+    };
+    return StubTransporter;
+}());
+exports.StubTransporter = StubTransporter;
+/**
+ * DefaultTransporter
+ * @export
+ * @class
+ */
+var DefaultTransporter = /** @class */ (function () {
+    function DefaultTransporter(expectedStatusCodes) {
+        this.expectedStatusCodes = expectedStatusCodes;
+    }
+    /**
+     * Configures request options before making a request.
+     */
+    DefaultTransporter.CONFIGURE = function (options) {
+        // set transporter user agent
+        options.headers = (options.headers !== undefined) ? options.headers : {};
+        if (!options.headers['User-Agent']) {
+            options.headers['User-Agent'] = DefaultTransporter.USER_AGENT;
+        }
+        else if (options.headers['User-Agent'].indexOf(DefaultTransporter.USER_AGENT) === -1) {
+            options.headers['User-Agent'] = options.headers['User-Agent'] + " " + DefaultTransporter.USER_AGENT;
+        }
+        return options;
+    };
+    /**
+     * Makes a request with given options and invokes callback.
+     */
+    DefaultTransporter.prototype.fetch = function (url, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var fetchOptions;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        fetchOptions = DefaultTransporter.CONFIGURE(options);
+                        debug('fetching...', url, fetchOptions);
+                        return [4 /*yield*/, fetch(url, fetchOptions).then(function (response) { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
+                                return [2 /*return*/, this.wrapCallback(response)];
+                            }); }); })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
+     * Wraps the response callback.
+     */
+    DefaultTransporter.prototype.wrapCallback = function (response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var err, body, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        err = new RequestError('An unexpected error occurred');
+                        debug('request processed', response.status);
+                        if (!(this.expectedStatusCodes.indexOf(response.status) < 0)) return [3 /*break*/, 6];
+                        body = void 0;
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 5]);
+                        return [4 /*yield*/, response.clone().json()];
+                    case 2:
+                        // Only and only application/json responses should
+                        // be decoded back to JSON, but there are cases API back-ends
+                        // responds without proper content-type.
+                        body = _a.sent();
+                        return [3 /*break*/, 5];
+                    case 3:
+                        error_1 = _a.sent();
+                        return [4 /*yield*/, response.clone().text()];
+                    case 4:
+                        body = _a.sent();
+                        return [3 /*break*/, 5];
+                    case 5:
+                        if (typeof body === 'object' && body.error !== undefined) {
+                            err = new RequestError(body.error.message);
+                            err.code = response.status;
+                            err.errors = body.error.errors;
+                        }
+                        else {
+                            err = new RequestError(body);
+                            err.code = response.status;
+                            err.errors = [];
+                        }
+                        return [3 /*break*/, 9];
+                    case 6:
+                        if (!(response.status === http_status_1.NO_CONTENT)) return [3 /*break*/, 7];
+                        // consider 204
+                        return [2 /*return*/];
+                    case 7: return [4 /*yield*/, response.clone().json()];
+                    case 8: 
+                    // consider 200,201,404
+                    return [2 /*return*/, _a.sent()];
+                    case 9: throw err;
+                }
+            });
+        });
+    };
+    /**
+     * Default user agent.
+     */
+    DefaultTransporter.USER_AGENT = "sasaki-api-javascript-client/" + pkg.version;
+    return DefaultTransporter;
+}());
+exports.DefaultTransporter = DefaultTransporter;
+/**
+ * TransporterWithRequestPromise
+ */
+// export class TransporterWithRequestPromise {
+//     /**
+//      * Default user agent.
+//      */
+//     public static readonly USER_AGENT: string = `sasaki-api-nodejs-client/${pkg.version}`;
+//     public expectedStatusCodes: number[];
+//     constructor(expectedStatusCodes: number[]) {
+//         this.expectedStatusCodes = expectedStatusCodes;
+//     }
+//     /**
+//      * Configures request options before making a request.
+//      */
+//     public static CONFIGURE(options: request.OptionsWithUri): request.OptionsWithUri {
+//         // set transporter user agent
+//         options.headers = (options.headers !== undefined) ? options.headers : {};
+//         if (!options.headers['User-Agent']) {
+//             options.headers['User-Agent'] = DefaultTransporter.USER_AGENT;
+//         } else if (options.headers['User-Agent'].indexOf(DefaultTransporter.USER_AGENT) === -1) {
+//             options.headers['User-Agent'] = `${options.headers['User-Agent']} ${DefaultTransporter.USER_AGENT}`;
+//         }
+//         return options;
+//     }
+//     /**
+//      * Makes a request with given options and invokes callback.
+//      */
+//     public async request(options: request.OptionsWithUri) {
+//         const requestOptions = DefaultTransporter.CONFIGURE(options);
+//         return await request(requestOptions)
+//             .then((res) => this.wrapCallback(res));
+//     }
+//     /**
+//      * Wraps the response callback.
+//      */
+//     private wrapCallback(res: request.FullResponse): any {
+//         let err: RequestError = new RequestError('An unexpected error occurred');
+//         debug('request processed', res.statusCode, res.body);
+//         if (res.statusCode !== undefined) {
+//             if (this.expectedStatusCodes.indexOf(res.statusCode) < 0) {
+//                 if (typeof res.body === 'string') {
+//                     // Consider all 4xx and 5xx responses errors.
+//                     err = new RequestError(res.body);
+//                     err.code = res.statusCode;
+//                 }
+//                 if (typeof res.body === 'object' && res.body.errors !== undefined) {
+//                     // consider 400
+//                     err = new RequestError((<any[]>res.body.errors).map((error) => `${error.title}:${error.detail}`).join('\n'));
+//                     err.code = res.statusCode;
+//                     err.errors = res.body.errors;
+//                 }
+//             } else {
+//                 if (res.body !== undefined) {
+//                     // consider 200,201,404
+//                     return res.body;
+//                 } else {
+//                     // consider 204
+//                     return;
+//                 }
+//             }
+//         }
+//         throw err;
+//     }
+// }
+
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/node_modules/debug/src/browser.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * This is the web browser implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/node_modules/debug/src/debug.js");
+exports.log = log;
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+exports.storage = 'undefined' != typeof chrome
+               && 'undefined' != typeof chrome.storage
+                  ? chrome.storage.local
+                  : localstorage();
+
+/**
+ * Colors.
+ */
+
+exports.colors = [
+  '#0000CC', '#0000FF', '#0033CC', '#0033FF', '#0066CC', '#0066FF', '#0099CC',
+  '#0099FF', '#00CC00', '#00CC33', '#00CC66', '#00CC99', '#00CCCC', '#00CCFF',
+  '#3300CC', '#3300FF', '#3333CC', '#3333FF', '#3366CC', '#3366FF', '#3399CC',
+  '#3399FF', '#33CC00', '#33CC33', '#33CC66', '#33CC99', '#33CCCC', '#33CCFF',
+  '#6600CC', '#6600FF', '#6633CC', '#6633FF', '#66CC00', '#66CC33', '#9900CC',
+  '#9900FF', '#9933CC', '#9933FF', '#99CC00', '#99CC33', '#CC0000', '#CC0033',
+  '#CC0066', '#CC0099', '#CC00CC', '#CC00FF', '#CC3300', '#CC3333', '#CC3366',
+  '#CC3399', '#CC33CC', '#CC33FF', '#CC6600', '#CC6633', '#CC9900', '#CC9933',
+  '#CCCC00', '#CCCC33', '#FF0000', '#FF0033', '#FF0066', '#FF0099', '#FF00CC',
+  '#FF00FF', '#FF3300', '#FF3333', '#FF3366', '#FF3399', '#FF33CC', '#FF33FF',
+  '#FF6600', '#FF6633', '#FF9900', '#FF9933', '#FFCC00', '#FFCC33'
+];
+
+/**
+ * Currently only WebKit-based Web Inspectors, Firefox >= v31,
+ * and the Firebug extension (any Firefox version) are known
+ * to support "%c" CSS customizations.
+ *
+ * TODO: add a `localStorage` variable to explicitly enable/disable colors
+ */
+
+function useColors() {
+  // NB: In an Electron preload script, document will be defined but not fully
+  // initialized. Since we know we're in Chrome, we'll just detect this case
+  // explicitly
+  if (typeof window !== 'undefined' && window.process && window.process.type === 'renderer') {
+    return true;
+  }
+
+  // Internet Explorer and Edge do not support colors.
+  if (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/(edge|trident)\/(\d+)/)) {
+    return false;
+  }
+
+  // is webkit? http://stackoverflow.com/a/16459606/376773
+  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+  return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
+    // is firebug? http://stackoverflow.com/a/398120/376773
+    (typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
+    // is firefox >= v31?
+    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
+    // double check webkit in userAgent just in case we are in a worker
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
+}
+
+/**
+ * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
+ */
+
+exports.formatters.j = function(v) {
+  try {
+    return JSON.stringify(v);
+  } catch (err) {
+    return '[UnexpectedJSONParseError]: ' + err.message;
+  }
+};
+
+
+/**
+ * Colorize log arguments if enabled.
+ *
+ * @api public
+ */
+
+function formatArgs(args) {
+  var useColors = this.useColors;
+
+  args[0] = (useColors ? '%c' : '')
+    + this.namespace
+    + (useColors ? ' %c' : ' ')
+    + args[0]
+    + (useColors ? '%c ' : ' ')
+    + '+' + exports.humanize(this.diff);
+
+  if (!useColors) return;
+
+  var c = 'color: ' + this.color;
+  args.splice(1, 0, c, 'color: inherit')
+
+  // the final "%c" is somewhat tricky, because there could be other
+  // arguments passed either before or after the %c, so we need to
+  // figure out the correct index to insert the CSS into
+  var index = 0;
+  var lastC = 0;
+  args[0].replace(/%[a-zA-Z%]/g, function(match) {
+    if ('%%' === match) return;
+    index++;
+    if ('%c' === match) {
+      // we only are interested in the *last* %c
+      // (the user may have provided their own)
+      lastC = index;
+    }
+  });
+
+  args.splice(lastC, 0, c);
+}
+
+/**
+ * Invokes `console.log()` when available.
+ * No-op when `console.log` is not a "function".
+ *
+ * @api public
+ */
+
+function log() {
+  // this hackery is required for IE8/9, where
+  // the `console.log` function doesn't have 'apply'
+  return 'object' === typeof console
+    && console.log
+    && Function.prototype.apply.call(console.log, console, arguments);
+}
+
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+function save(namespaces) {
+  try {
+    if (null == namespaces) {
+      exports.storage.removeItem('debug');
+    } else {
+      exports.storage.debug = namespaces;
+    }
+  } catch(e) {}
+}
+
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+function load() {
+  var r;
+  try {
+    r = exports.storage.debug;
+  } catch(e) {}
+
+  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
+  if (!r && typeof process !== 'undefined' && 'env' in process) {
+    r = process.env.DEBUG;
+  }
+
+  return r;
+}
+
+/**
+ * Enable namespaces listed in `localStorage.debug` initially.
+ */
+
+exports.enable(load());
+
+/**
+ * Localstorage attempts to return the localstorage.
+ *
+ * This is necessary because safari throws
+ * when a user disables cookies/localstorage
+ * and you attempt to access it.
+ *
+ * @return {LocalStorage}
+ * @api private
+ */
+
+function localstorage() {
+  try {
+    return window.localStorage;
+  } catch (e) {}
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("../../../../process/browser.js")))
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/node_modules/debug/src/debug.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/**
+ * This is the common logic for both the Node.js and web browser
+ * implementations of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
+exports.coerce = coerce;
+exports.disable = disable;
+exports.enable = enable;
+exports.enabled = enabled;
+exports.humanize = __webpack_require__("../../../../ms/index.js");
+
+/**
+ * Active `debug` instances.
+ */
+exports.instances = [];
+
+/**
+ * The currently active debug mode names, and names to skip.
+ */
+
+exports.names = [];
+exports.skips = [];
+
+/**
+ * Map of special "%n" handling functions, for the debug "format" argument.
+ *
+ * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
+ */
+
+exports.formatters = {};
+
+/**
+ * Select a color.
+ * @param {String} namespace
+ * @return {Number}
+ * @api private
+ */
+
+function selectColor(namespace) {
+  var hash = 0, i;
+
+  for (i in namespace) {
+    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
+    hash |= 0; // Convert to 32bit integer
+  }
+
+  return exports.colors[Math.abs(hash) % exports.colors.length];
+}
+
+/**
+ * Create a debugger with the given `namespace`.
+ *
+ * @param {String} namespace
+ * @return {Function}
+ * @api public
+ */
+
+function createDebug(namespace) {
+
+  var prevTime;
+
+  function debug() {
+    // disabled?
+    if (!debug.enabled) return;
+
+    var self = debug;
+
+    // set `diff` timestamp
+    var curr = +new Date();
+    var ms = curr - (prevTime || curr);
+    self.diff = ms;
+    self.prev = prevTime;
+    self.curr = curr;
+    prevTime = curr;
+
+    // turn the `arguments` into a proper Array
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+
+    args[0] = exports.coerce(args[0]);
+
+    if ('string' !== typeof args[0]) {
+      // anything else let's inspect with %O
+      args.unshift('%O');
+    }
+
+    // apply any `formatters` transformations
+    var index = 0;
+    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
+      // if we encounter an escaped % then don't increase the array index
+      if (match === '%%') return match;
+      index++;
+      var formatter = exports.formatters[format];
+      if ('function' === typeof formatter) {
+        var val = args[index];
+        match = formatter.call(self, val);
+
+        // now we need to remove `args[index]` since it's inlined in the `format`
+        args.splice(index, 1);
+        index--;
+      }
+      return match;
+    });
+
+    // apply env-specific formatting (colors, etc.)
+    exports.formatArgs.call(self, args);
+
+    var logFn = debug.log || exports.log || console.log.bind(console);
+    logFn.apply(self, args);
+  }
+
+  debug.namespace = namespace;
+  debug.enabled = exports.enabled(namespace);
+  debug.useColors = exports.useColors();
+  debug.color = selectColor(namespace);
+  debug.destroy = destroy;
+
+  // env-specific initialization logic for debug instances
+  if ('function' === typeof exports.init) {
+    exports.init(debug);
+  }
+
+  exports.instances.push(debug);
+
+  return debug;
+}
+
+function destroy () {
+  var index = exports.instances.indexOf(this);
+  if (index !== -1) {
+    exports.instances.splice(index, 1);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * Enables a debug mode by namespaces. This can include modes
+ * separated by a colon and wildcards.
+ *
+ * @param {String} namespaces
+ * @api public
+ */
+
+function enable(namespaces) {
+  exports.save(namespaces);
+
+  exports.names = [];
+  exports.skips = [];
+
+  var i;
+  var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
+  var len = split.length;
+
+  for (i = 0; i < len; i++) {
+    if (!split[i]) continue; // ignore empty strings
+    namespaces = split[i].replace(/\*/g, '.*?');
+    if (namespaces[0] === '-') {
+      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+    } else {
+      exports.names.push(new RegExp('^' + namespaces + '$'));
+    }
+  }
+
+  for (i = 0; i < exports.instances.length; i++) {
+    var instance = exports.instances[i];
+    instance.enabled = exports.enabled(instance.namespace);
+  }
+}
+
+/**
+ * Disable debug output.
+ *
+ * @api public
+ */
+
+function disable() {
+  exports.enable('');
+}
+
+/**
+ * Returns true if the given mode name is enabled, false otherwise.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+function enabled(name) {
+  if (name[name.length - 1] === '*') {
+    return true;
+  }
+  var i, len;
+  for (i = 0, len = exports.skips.length; i < len; i++) {
+    if (exports.skips[i].test(name)) {
+      return false;
+    }
+  }
+  for (i = 0, len = exports.names.length; i < len; i++) {
+    if (exports.names[i].test(name)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Coerce `val`.
+ *
+ * @param {Mixed} val
+ * @return {Mixed}
+ * @api private
+ */
+
+function coerce(val) {
+  if (val instanceof Error) return val.stack || val.message;
+  return val;
+}
+
+
+/***/ }),
+
+/***/ "../../../../@motionpicture/sasaki-api-abstract/package.json":
+/***/ (function(module, exports) {
+
+module.exports = {"_from":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-client-service.git#feature/SSKTS-580","_id":"@motionpicture/sasaki-api-abstract@1.0.0","_inBundle":false,"_integrity":"sha1-rfrN+Lcqd4lgsX8eOWSENB8LGPo=","_location":"/@motionpicture/sasaki-api-abstract","_phantomChildren":{"ms":"2.0.0"},"_requested":{"type":"git","raw":"@motionpicture/sasaki-api-abstract@git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-client-service.git#feature/SSKTS-580","name":"@motionpicture/sasaki-api-abstract","escapedName":"@motionpicture%2fsasaki-api-abstract","scope":"@motionpicture","rawSpec":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-client-service.git#feature/SSKTS-580","saveSpec":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-client-service.git#feature/SSKTS-580","fetchSpec":"https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-client-service.git","gitCommittish":"feature/SSKTS-580"},"_requiredBy":["/@motionpicture/sasaki-api"],"_resolved":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-client-service.git#9885945536fd54de260d27936da8c08bc5de0268","_spec":"@motionpicture/sasaki-api-abstract@git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-client-service.git#feature/SSKTS-580","_where":"C:\\xampp\\htdocs\\Workspace\\motionpicture\\SSKTS\\ticket\\node_modules\\@motionpicture\\sasaki-api","author":{"name":"Motionpicture co.,ltd."},"bundleDependencies":false,"contributors":[{"name":"Tetsu Yamazaki","email":"yamazaki@motionpicture.jp"}],"dependencies":{"@motionpicture/sskts-factory":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/factory.git#feature/SSKTS-566","debug":"^3.0.1","http-status":"^1.0.1","isomorphic-fetch":"^2.2.1"},"deprecated":false,"description":"Sasaki API Abstract Client Library for Javascript","devDependencies":{"@types/debug":"0.0.30","@types/form-data":"^2.2.0","@types/http-status":"^0.2.30","@types/isomorphic-fetch":"0.0.34","@types/mocha":"^2.2.42","@types/nock":"^8.2.1","@types/open":"0.0.29","@types/power-assert":"^1.4.29","@types/request":"^2.0.3","@types/sinon":"^2.3.3","http-server":"^0.10.0","ink-docstrap":"^1.3.0","jsdoc":"^3.5.4","mocha":"^3.5.0","nock":"^9.0.14","nsp":"^2.7.0","nyc":"^11.1.0","open":"0.0.5","power-assert":"^1.4.4","rimraf":"^2.6.1","sinon":"^3.2.1","snyk":"^1.40.2","ts-node":"^3.3.0","tslint":"^5.7.0","tslint-microsoft-contrib":"^5.0.1","typescript":"^2.5.2"},"directories":{"doc":"./doc","lib":"./lib","example":"./example","test":"./test"},"files":["lib"],"keywords":["sasaki-api"],"license":"UNLICENSED","main":"./lib/index.js","name":"@motionpicture/sasaki-api-abstract","repository":{"type":"git","url":"https://m-p.backlog.jp/git/SSKTS/api-client-service.git"},"scripts":{"build":"tsc","check":"npm run tslint && nsp check && npm run snyk","clean":"rimraf ./src/**/*.js ./src/**/*.d.ts ./lib npm-debug.log* ./test/**/*.js ./doc","coverage":"nyc mocha src/**/*.spec.ts","doc":"jsdoc -c jsdoc.json","example":"http-server ./example","mocha":"mocha","postversion":"git push origin --tags","pretest":"npm run build","preversion":"npm run clean && npm run build && npm test && npm run doc","snyk":"snyk auth && snyk test --ignore-policy","test":"npm run check && npm run coverage","tslint":"tslint --type-check --project tsconfig.json -c tslint.json src/**/*.ts --exclude **/*.spec.ts","version":"git add -A"},"types":"./lib/index.d.ts","version":"1.0.0"}
 
 /***/ }),
 
@@ -615,7 +2459,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var createDebug = __webpack_require__("../../../../@motionpicture/sasaki-api/node_modules/debug/src/browser.js");
 var httpStatus = __webpack_require__("../../../../http-status/lib/index.js");
 var fetch = __webpack_require__("../../../../isomorphic-fetch/fetch-npm-browserify.js");
-var transporters_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/transporters.js");
+var sasaki_api_abstract_1 = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/index.js");
 var debug = createDebug('sasaki-api:auth:oAuth2client');
 /**
  * OAuth2 client
@@ -733,7 +2577,7 @@ var OAuth2client = /** @class */ (function () {
                                         case 1:
                                             body = _a.sent();
                                             if (typeof body === 'object' && body.errors !== undefined) {
-                                                err = new transporters_1.RequestError(body.errors.map(function (error) { return error.title + ":" + error.detail; }).join('\n'));
+                                                err = new sasaki_api_abstract_1.transporters.RequestError(body.errors.map(function (error) { return error.title + ":" + error.detail; }).join('\n'));
                                                 err.code = response.status;
                                                 err.errors = body.errors;
                                             }
@@ -767,7 +2611,7 @@ var OAuth2client = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var transporter;
             return __generator(this, function (_a) {
-                transporter = new transporters_1.DefaultTransporter(expectedStatusCodes);
+                transporter = new sasaki_api_abstract_1.transporters.DefaultTransporter(expectedStatusCodes);
                 return [2 /*return*/, transporter.fetch(url, options)];
             });
         });
@@ -1206,38 +3050,22 @@ exports.default = SilentLogoutHandler;
 
 "use strict";
 
-// tslint:disable:max-classes-per-file
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Sasaki API client for javascript
  *
  * @ignore
  */
-var factory = __webpack_require__("../../../../@motionpicture/sskts-factory/lib/index.js");
+Object.defineProperty(exports, "__esModule", { value: true });
+var sasaki = __webpack_require__("../../../../@motionpicture/sasaki-api-abstract/lib/index.js");
 var implicitGrantClient_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/auth/implicitGrantClient.js");
-var event_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service/event.js");
-var order_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service/order.js");
-var organization_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service/organization.js");
-var person_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service/person.js");
-var place_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service/place.js");
-var placeOrder_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service/transaction/placeOrder.js");
 /**
  * factory
  * All object interfaces are here.
  * 全てのオブジェクトのインターフェースはここに含まれます。
  * @export
  */
-exports.factory = factory;
+exports.factory = sasaki.factory;
+exports.service = sasaki.service;
 /**
  * create OAuth2 client instance using implicit grant
  * @param options implicit grant configurations
@@ -1246,1252 +3074,6 @@ function createAuthInstance(options) {
     return new implicitGrantClient_1.ImplicitGrantClient(options);
 }
 exports.createAuthInstance = createAuthInstance;
-/**
- * each API services
- */
-var service;
-(function (service) {
-    /**
-     * event service
-     * @class
-     */
-    var Event = /** @class */ (function (_super) {
-        __extends(Event, _super);
-        function Event() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        return Event;
-    }(event_1.EventService));
-    service.Event = Event;
-    /**
-     * order service
-     * @class
-     */
-    var Order = /** @class */ (function (_super) {
-        __extends(Order, _super);
-        function Order() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        return Order;
-    }(order_1.OrderService));
-    service.Order = Order;
-    /**
-     * organization service
-     * @class
-     */
-    var Organization = /** @class */ (function (_super) {
-        __extends(Organization, _super);
-        function Organization() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        return Organization;
-    }(organization_1.OrganizationService));
-    service.Organization = Organization;
-    /**
-     * person service
-     * @class
-     */
-    var Person = /** @class */ (function (_super) {
-        __extends(Person, _super);
-        function Person() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        return Person;
-    }(person_1.PersonService));
-    service.Person = Person;
-    /**
-     * place service
-     * @class
-     */
-    var Place = /** @class */ (function (_super) {
-        __extends(Place, _super);
-        function Place() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        return Place;
-    }(place_1.PlaceService));
-    service.Place = Place;
-    var transaction;
-    (function (transaction) {
-        /**
-         * placeOrder transaction service
-         * @class
-         */
-        var PlaceOrder = /** @class */ (function (_super) {
-            __extends(PlaceOrder, _super);
-            function PlaceOrder() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return PlaceOrder;
-        }(placeOrder_1.PlaceOrderTransactionService));
-        transaction.PlaceOrder = PlaceOrder;
-    })(transaction = service.transaction || (service.transaction = {}));
-})(service = exports.service || (exports.service = {}));
-
-
-/***/ }),
-
-/***/ "../../../../@motionpicture/sasaki-api/lib/service.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * base service class
- * @class
- */
-var Service = /** @class */ (function () {
-    function Service(options) {
-        this.options = options;
-    }
-    return Service;
-}());
-exports.Service = Service;
-
-
-/***/ }),
-
-/***/ "../../../../@motionpicture/sasaki-api/lib/service/event.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
-var apiFetch_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/apiFetch.js");
-var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service.js");
-/**
- * event service
- * @class EventService
- */
-var EventService = /** @class */ (function (_super) {
-    __extends(EventService, _super);
-    function EventService() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-     * 上映イベント検索
-     */
-    EventService.prototype.searchIndividualScreeningEvent = function (
-        /**
-         * 検索条件
-         */
-        params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: '/events/individualScreeningEvent',
-                        method: 'GET',
-                        qs: params,
-                        expectedStatusCodes: [http_status_1.OK]
-                    })];
-            });
-        });
-    };
-    /**
-     * 上映イベント情報取得
-     */
-    EventService.prototype.findIndividualScreeningEvent = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: "/events/individualScreeningEvent/" + params.identifier,
-                        method: 'GET',
-                        expectedStatusCodes: [http_status_1.OK]
-                    })];
-            });
-        });
-    };
-    return EventService;
-}(service_1.Service));
-exports.EventService = EventService;
-
-
-/***/ }),
-
-/***/ "../../../../@motionpicture/sasaki-api/lib/service/order.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/**
- * 注文サービス
- *
- * @namespace service.order
- */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
-var apiFetch_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/apiFetch.js");
-var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service.js");
-/**
- * order service
- *
- * @class OrderService
- */
-var OrderService = /** @class */ (function (_super) {
-    __extends(OrderService, _super);
-    function OrderService() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-     * 照会キーで注文情報を取得する
-     */
-    OrderService.prototype.findByOrderInquiryKey = function (
-        /**
-         * 注文照会キー
-         */
-        params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: '/orders/findByOrderInquiryKey',
-                        method: 'POST',
-                        body: params,
-                        expectedStatusCodes: [http_status_1.OK]
-                    })];
-            });
-        });
-    };
-    return OrderService;
-}(service_1.Service));
-exports.OrderService = OrderService;
-
-
-/***/ }),
-
-/***/ "../../../../@motionpicture/sasaki-api/lib/service/organization.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/**
- * 組織サービス
- *
- * @namespace service.organization
- */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
-var apiFetch_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/apiFetch.js");
-var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service.js");
-/**
- * organization service
- *
- * @class OrganizationService
- */
-var OrganizationService = /** @class */ (function (_super) {
-    __extends(OrganizationService, _super);
-    function OrganizationService() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-     * 劇場組織検索
-     */
-    OrganizationService.prototype.searchMovieTheaters = function (
-        /**
-         * 検索条件
-         */
-        params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: '/organizations/movieTheater',
-                        method: 'GET',
-                        qs: params,
-                        expectedStatusCodes: [http_status_1.OK]
-                    })];
-            });
-        });
-    };
-    /**
-     * 枝番号で劇場組織検索
-     */
-    OrganizationService.prototype.findMovieTheaterByBranchCode = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: "/organizations/movieTheater/" + params.branchCode,
-                        method: 'GET',
-                        qs: {},
-                        expectedStatusCodes: [http_status_1.OK]
-                    })];
-            });
-        });
-    };
-    return OrganizationService;
-}(service_1.Service));
-exports.OrganizationService = OrganizationService;
-
-
-/***/ }),
-
-/***/ "../../../../@motionpicture/sasaki-api/lib/service/person.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
-var apiFetch_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/apiFetch.js");
-var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service.js");
-/**
- * person service
- *
- * @class PersonService
- */
-var PersonService = /** @class */ (function (_super) {
-    __extends(PersonService, _super);
-    function PersonService() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-     * retrieve user contacts
-     */
-    PersonService.prototype.getContacts = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: "/people/" + params.personId + "/contacts",
-                        method: 'GET',
-                        qs: {},
-                        expectedStatusCodes: [http_status_1.OK]
-                    })];
-            });
-        });
-    };
-    /**
-     * update contacts
-     */
-    PersonService.prototype.updateContacts = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: "/people/" + params.personId + "/contacts",
-                        method: 'PUT',
-                        body: params.contacts,
-                        expectedStatusCodes: [http_status_1.NO_CONTENT]
-                    })];
-            });
-        });
-    };
-    /**
-     * find credit cards
-     * クレジットカード検索
-     * @see example /example/person/handleCreditCards
-     */
-    PersonService.prototype.findCreditCards = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: "/people/" + params.personId + "/creditCards",
-                        method: 'GET',
-                        qs: {},
-                        expectedStatusCodes: [http_status_1.OK]
-                    })];
-            });
-        });
-    };
-    /**
-     * add a credit card
-     * クレジットカード追加
-     * @return {Promise<ISearchCardResult>} successfully created credit card info
-     * @see example /example/person/handleCreditCards
-     */
-    PersonService.prototype.addCreditCard = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: "/people/" + params.personId + "/creditCards",
-                        method: 'POST',
-                        body: params.creditCard,
-                        expectedStatusCodes: [http_status_1.CREATED]
-                    })];
-            });
-        });
-    };
-    /**
-     * delete a credit card by cardSeq
-     * クレジットカード削除
-     * @return {Promise<void>}
-     * @see example /example/person/handleCreditCards
-     */
-    PersonService.prototype.deleteCreditCard = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: "/people/" + params.personId + "/creditCards/" + params.cardSeq,
-                        method: 'DELETE',
-                        expectedStatusCodes: [http_status_1.NO_CONTENT]
-                    })];
-            });
-        });
-    };
-    /**
-     * search ownerships of reservations
-     */
-    PersonService.prototype.searchReservationOwnerships = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: "/people/" + params.personId + "/ownershipInfos/reservation",
-                        method: 'GET',
-                        qs: {},
-                        expectedStatusCodes: [http_status_1.OK]
-                    })];
-            });
-        });
-    };
-    return PersonService;
-}(service_1.Service));
-exports.PersonService = PersonService;
-
-
-/***/ }),
-
-/***/ "../../../../@motionpicture/sasaki-api/lib/service/place.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/**
- * 場所サービス
- *
- * @namespace service.place
- */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
-var apiFetch_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/apiFetch.js");
-var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service.js");
-/**
- * place service
- *
- * @class PlaceService
- */
-var PlaceService = /** @class */ (function (_super) {
-    __extends(PlaceService, _super);
-    function PlaceService() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-     * 劇場検索
-     */
-    PlaceService.prototype.searchMovieTheaters = function (
-        /**
-         * 検索条件
-         */
-        params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: '/places/movieTheater',
-                        method: 'GET',
-                        qs: params,
-                        expectedStatusCodes: [http_status_1.OK]
-                    })];
-            });
-        });
-    };
-    /**
-     * 劇場情報取得
-     */
-    PlaceService.prototype.findMovieTheater = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: "/places/movieTheater/" + params.branchCode,
-                        method: 'GET',
-                        qs: {},
-                        expectedStatusCodes: [http_status_1.OK]
-                    })];
-            });
-        });
-    };
-    return PlaceService;
-}(service_1.Service));
-exports.PlaceService = PlaceService;
-
-
-/***/ }),
-
-/***/ "../../../../@motionpicture/sasaki-api/lib/service/transaction/placeOrder.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/**
- * 注文取引サービス
- *
- * @namespace service.transaction.placeOrder
- */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var http_status_1 = __webpack_require__("../../../../http-status/lib/index.js");
-var apiFetch_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/apiFetch.js");
-var service_1 = __webpack_require__("../../../../@motionpicture/sasaki-api/lib/service.js");
-/**
- * placeOrder transaction service
- *
- * @class PlaceOrderTransactionService
- */
-var PlaceOrderTransactionService = /** @class */ (function (_super) {
-    __extends(PlaceOrderTransactionService, _super);
-    function PlaceOrderTransactionService() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-     * 取引を開始する
-     * 開始できない場合(混雑中など)、nullが返されます。
-     */
-    PlaceOrderTransactionService.prototype.start = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, apiFetch_1.default({
-                        auth: this.options.auth,
-                        baseUrl: this.options.endpoint,
-                        uri: '/transactions/placeOrder/start',
-                        method: 'POST',
-                        body: {
-                            // tslint:disable-next-line:no-magic-numbers
-                            expires: (params.expires.getTime() / 1000).toFixed(0),
-                            sellerId: params.sellerId
-                        },
-                        expectedStatusCodes: [http_status_1.OK]
-                    })];
-            });
-        });
-    };
-    /**
-     * 取引に座席予約を追加する
-     */
-    PlaceOrderTransactionService.prototype.createSeatReservationAuthorization = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, apiFetch_1.default({
-                            baseUrl: this.options.endpoint,
-                            uri: "/transactions/placeOrder/" + params.transactionId + "/seatReservationAuthorization",
-                            method: 'POST',
-                            expectedStatusCodes: [http_status_1.CREATED],
-                            auth: this.options.auth,
-                            body: {
-                                eventIdentifier: params.eventIdentifier,
-                                offers: params.offers
-                            }
-                        })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    /**
-     * 座席予約取消
-     */
-    PlaceOrderTransactionService.prototype.cancelSeatReservationAuthorization = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, apiFetch_1.default({
-                            baseUrl: this.options.endpoint,
-                            uri: "/transactions/placeOrder/" + params.transactionId + "/seatReservationAuthorization/" + params.authorizationId,
-                            method: 'DELETE',
-                            expectedStatusCodes: [http_status_1.NO_CONTENT],
-                            auth: this.options.auth
-                        })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    /**
-     * クレジットカードのオーソリを取得する
-     */
-    PlaceOrderTransactionService.prototype.createCreditCardAuthorization = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, apiFetch_1.default({
-                            baseUrl: this.options.endpoint,
-                            uri: "/transactions/placeOrder/" + params.transactionId + "/paymentInfos/creditCard",
-                            method: 'POST',
-                            expectedStatusCodes: [http_status_1.CREATED],
-                            auth: this.options.auth,
-                            body: {
-                                orderId: params.orderId,
-                                amount: params.amount,
-                                method: params.method,
-                                creditCard: params.creditCard
-                            }
-                        })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    /**
-     * クレジットカードオーソリ取消
-     */
-    PlaceOrderTransactionService.prototype.cancelCreditCardAuthorization = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, apiFetch_1.default({
-                            baseUrl: this.options.endpoint,
-                            uri: "/transactions/placeOrder/" + params.transactionId + "/paymentInfos/creditCard/" + params.authorizationId,
-                            method: 'DELETE',
-                            expectedStatusCodes: [http_status_1.NO_CONTENT],
-                            auth: this.options.auth
-                        })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    /**
-     * 決済方法として、ムビチケを追加する
-     */
-    PlaceOrderTransactionService.prototype.createMvtkAuthorization = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, apiFetch_1.default({
-                            baseUrl: this.options.endpoint,
-                            uri: "/transactions/placeOrder/" + params.transactionId + "/discountInfos/mvtk",
-                            method: 'POST',
-                            expectedStatusCodes: [http_status_1.CREATED],
-                            auth: this.options.auth,
-                            body: params.mvtk
-                        })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    /**
-     * ムビチケ取消
-     */
-    PlaceOrderTransactionService.prototype.cancelMvtkAuthorization = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, apiFetch_1.default({
-                            baseUrl: this.options.endpoint,
-                            uri: "/transactions/placeOrder/" + params.transactionId + "/discountInfos/mvtk/" + params.authorizationId,
-                            method: 'DELETE',
-                            expectedStatusCodes: [http_status_1.NO_CONTENT],
-                            auth: this.options.auth
-                        })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    /**
-     * register a customer contact
-     */
-    PlaceOrderTransactionService.prototype.setCustomerContact = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, apiFetch_1.default({
-                            baseUrl: this.options.endpoint,
-                            uri: "/transactions/placeOrder/" + params.transactionId + "/customerContact",
-                            method: 'PUT',
-                            expectedStatusCodes: [http_status_1.NO_CONTENT],
-                            auth: this.options.auth,
-                            body: params.contact
-                        })];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    /**
-     * 取引確定
-     */
-    PlaceOrderTransactionService.prototype.confirm = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, apiFetch_1.default({
-                            baseUrl: this.options.endpoint,
-                            uri: "/transactions/placeOrder/" + params.transactionId + "/confirm",
-                            method: 'POST',
-                            expectedStatusCodes: [http_status_1.CREATED],
-                            auth: this.options.auth
-                        })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    /**
-     * 確定した取引に関して、購入者にメール通知を送信する
-     */
-    PlaceOrderTransactionService.prototype.sendEmailNotification = function (params) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, apiFetch_1.default({
-                            baseUrl: this.options.endpoint,
-                            uri: "/transactions/placeOrder/" + params.transactionId + "/tasks/sendEmailNotification",
-                            method: 'POST',
-                            expectedStatusCodes: [http_status_1.NO_CONTENT],
-                            auth: this.options.auth,
-                            body: params.emailNotification
-                        })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    return PlaceOrderTransactionService;
-}(service_1.Service));
-exports.PlaceOrderTransactionService = PlaceOrderTransactionService;
-
-
-/***/ }),
-
-/***/ "../../../../@motionpicture/sasaki-api/lib/transporters.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/**
- * transporters
- *
- * @ignore
- */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var createDebug = __webpack_require__("../../../../@motionpicture/sasaki-api/node_modules/debug/src/browser.js");
-var httpStatus = __webpack_require__("../../../../http-status/lib/index.js");
-var fetch = __webpack_require__("../../../../isomorphic-fetch/fetch-npm-browserify.js");
-var debug = createDebug('sasaki-api:transporters');
-// tslint:disable-next-line
-var pkg = __webpack_require__("../../../../@motionpicture/sasaki-api/package.json");
-/**
- * RequestError
- */
-var RequestError = /** @class */ (function (_super) {
-    __extends(RequestError, _super);
-    function RequestError() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return RequestError;
-}(Error));
-exports.RequestError = RequestError;
-/**
- * DefaultTransporter
- */
-var DefaultTransporter = /** @class */ (function () {
-    function DefaultTransporter(expectedStatusCodes) {
-        this.expectedStatusCodes = expectedStatusCodes;
-    }
-    /**
-     * Configures request options before making a request.
-     */
-    DefaultTransporter.CONFIGURE = function (options) {
-        // set transporter user agent
-        options.headers = (options.headers !== undefined) ? options.headers : {};
-        if (!options.headers['User-Agent']) {
-            options.headers['User-Agent'] = DefaultTransporter.USER_AGENT;
-        }
-        else if (options.headers['User-Agent'].indexOf(DefaultTransporter.USER_AGENT) === -1) {
-            options.headers['User-Agent'] = options.headers['User-Agent'] + " " + DefaultTransporter.USER_AGENT;
-        }
-        return options;
-    };
-    /**
-     * Makes a request with given options and invokes callback.
-     */
-    DefaultTransporter.prototype.fetch = function (url, options) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            var fetchOptions;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        fetchOptions = DefaultTransporter.CONFIGURE(options);
-                        debug('fetching...', fetchOptions);
-                        return [4 /*yield*/, fetch(url, fetchOptions).then(function (response) { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
-                                return [2 /*return*/, this.wrapCallback(response)];
-                            }); }); })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    /**
-     * Wraps the response callback.
-     */
-    DefaultTransporter.prototype.wrapCallback = function (response) {
-        return __awaiter(this, void 0, void 0, function () {
-            var err, body, error_1, body;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        err = new RequestError('An unexpected error occurred');
-                        debug('request processed', response.status);
-                        if (!(this.expectedStatusCodes.indexOf(response.status) < 0)) return [3 /*break*/, 6];
-                        body = void 0;
-                        _a.label = 1;
-                    case 1:
-                        _a.trys.push([1, 3, , 5]);
-                        return [4 /*yield*/, response.json()];
-                    case 2:
-                        // Only and only application/json responses should
-                        // be decoded back to JSON, but there are cases API back-ends
-                        // responds without proper content-type.
-                        body = _a.sent();
-                        return [3 /*break*/, 5];
-                    case 3:
-                        error_1 = _a.sent();
-                        return [4 /*yield*/, response.text()];
-                    case 4:
-                        body = _a.sent();
-                        return [3 /*break*/, 5];
-                    case 5:
-                        if (typeof body === 'object' && body.error !== undefined) {
-                            err = new RequestError(body.error.message);
-                            err.code = response.status;
-                            err.errors = body.error.errors;
-                        }
-                        else {
-                            err = new RequestError(body);
-                            err.code = response.status;
-                            err.errors = [];
-                        }
-                        return [3 /*break*/, 9];
-                    case 6:
-                        if (!(response.status === httpStatus.NO_CONTENT)) return [3 /*break*/, 7];
-                        // consider 204
-                        return [2 /*return*/];
-                    case 7: return [4 /*yield*/, response.json()];
-                    case 8:
-                        body = _a.sent();
-                        if (body !== undefined && body.data !== undefined) {
-                            // consider 200,201,404
-                            return [2 /*return*/, body.data];
-                        }
-                        _a.label = 9;
-                    case 9: throw err;
-                }
-            });
-        });
-    };
-    /**
-     * Default user agent.
-     */
-    DefaultTransporter.USER_AGENT = "sasaki-api-nodejs-client/" + pkg.version;
-    return DefaultTransporter;
-}());
-exports.DefaultTransporter = DefaultTransporter;
-/**
- * TransporterWithRequestPromise
- */
-// export class TransporterWithRequestPromise {
-//     /**
-//      * Default user agent.
-//      */
-//     public static readonly USER_AGENT: string = `sasaki-api-nodejs-client/${pkg.version}`;
-//     public expectedStatusCodes: number[];
-//     constructor(expectedStatusCodes: number[]) {
-//         this.expectedStatusCodes = expectedStatusCodes;
-//     }
-//     /**
-//      * Configures request options before making a request.
-//      */
-//     public static CONFIGURE(options: request.OptionsWithUri): request.OptionsWithUri {
-//         // set transporter user agent
-//         options.headers = (options.headers !== undefined) ? options.headers : {};
-//         if (!options.headers['User-Agent']) {
-//             options.headers['User-Agent'] = DefaultTransporter.USER_AGENT;
-//         } else if (options.headers['User-Agent'].indexOf(DefaultTransporter.USER_AGENT) === -1) {
-//             options.headers['User-Agent'] = `${options.headers['User-Agent']} ${DefaultTransporter.USER_AGENT}`;
-//         }
-//         return options;
-//     }
-//     /**
-//      * Makes a request with given options and invokes callback.
-//      */
-//     public async request(options: request.OptionsWithUri) {
-//         const requestOptions = DefaultTransporter.CONFIGURE(options);
-//         return await request(requestOptions)
-//             .then((res) => this.wrapCallback(res));
-//     }
-//     /**
-//      * Wraps the response callback.
-//      */
-//     private wrapCallback(res: request.FullResponse): any {
-//         let err: RequestError = new RequestError('An unexpected error occurred');
-//         debug('request processed', res.statusCode, res.body);
-//         if (res.statusCode !== undefined) {
-//             if (this.expectedStatusCodes.indexOf(res.statusCode) < 0) {
-//                 if (typeof res.body === 'string') {
-//                     // Consider all 4xx and 5xx responses errors.
-//                     err = new RequestError(res.body);
-//                     err.code = res.statusCode;
-//                 }
-//                 if (typeof res.body === 'object' && res.body.errors !== undefined) {
-//                     // consider 400
-//                     err = new RequestError((<any[]>res.body.errors).map((error) => `${error.title}:${error.detail}`).join('\n'));
-//                     err.code = res.statusCode;
-//                     err.errors = res.body.errors;
-//                 }
-//             } else {
-//                 if (res.body !== undefined && res.body.data !== undefined) {
-//                     // consider 200,201,404
-//                     return res.body.data;
-//                 } else {
-//                     // consider 204
-//                     return;
-//                 }
-//             }
-//         }
-//         throw err;
-//     }
-// }
 
 
 /***/ }),
@@ -3571,13 +4153,6 @@ exports.isBuffer = function (obj) {
     return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));
 };
 
-
-/***/ }),
-
-/***/ "../../../../@motionpicture/sasaki-api/package.json":
-/***/ (function(module, exports) {
-
-module.exports = {"_from":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-javascript-client.git#feature/SSKTS-559","_id":"@motionpicture/sasaki-api@1.0.0","_inBundle":false,"_integrity":"sha1-W+dd9pykrX9lnOUHApfDFsC30RY=","_location":"/@motionpicture/sasaki-api","_phantomChildren":{"ms":"2.0.0"},"_requested":{"type":"git","raw":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-javascript-client.git#feature/SSKTS-559","rawSpec":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-javascript-client.git#feature/SSKTS-559","saveSpec":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-javascript-client.git#feature/SSKTS-559","fetchSpec":"https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-javascript-client.git","gitCommittish":"feature/SSKTS-559"},"_requiredBy":["#USER","/"],"_resolved":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-javascript-client.git#7ab8f640d00f38069f2a254dd41dc67ce53b7f80","_spec":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-javascript-client.git#feature/SSKTS-559","_where":"C:\\xampp\\htdocs\\Workspace\\motionpicture\\SSKTS\\src_app_prototype","author":{"name":"Motionpicture co.,ltd."},"browser":"./lib/index.js","bundleDependencies":false,"contributors":[{"name":"Tetsu Yamazaki","email":"yamazaki@motionpicture.jp"}],"dependencies":{"@motionpicture/sskts-factory":"git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/factory.git#feature/SSKTS-566","debug":"^3.0.1","http-status":"^1.0.1","idtoken-verifier":"^1.1.0","isomorphic-fetch":"^2.2.1","qs":"^6.5.0"},"deprecated":false,"description":"Sasaki API Client Library for JavaScript","devDependencies":{"@types/debug":"0.0.30","@types/http-status":"^0.2.30","@types/isomorphic-fetch":"0.0.34","@types/node":"^8.0.26","@types/qs":"^6.5.0","browserify":"^14.4.0","concurrently":"^3.5.0","copyfiles":"^1.2.0","fs-extra":"^4.0.1","http-server":"^0.10.0","jsonwebtoken":"^7.4.3","jwk-to-pem":"^1.2.6","rimraf":"^2.6.1","tslint":"^5.7.0","tslint-microsoft-contrib":"^5.0.1","typescript":"^2.5.2","watchify":"^3.9.0"},"directories":{"doc":"./doc","lib":"./lib","example":"./example","test":"./test"},"files":["lib/"],"license":"UNLICENSED","main":"./lib/index.js","name":"@motionpicture/sasaki-api","private":true,"scripts":{"build:watch":"tsc && concurrently \"tsc -w\" \"npm run watchify\"","check":"","clean":"rimraf ./lib npm-debug.log* ./doc","example":"copyfiles ./lib/browser.js ./example/browser && http-server ./example/browser","example:ssl":"copyfiles ./lib/browser.js ./example/browser && http-server --ssl --cert ./example/browser/server.crt --key ./example/browser/server.key ./example/browser","test":"echo \"Error: no test specified\" && exit 1","tslint":"tslint --type-check --project tsconfig.json -c tslint.json src/**/*.ts","watchify":"watchify ./browser.js -o ./lib/browser.js"},"types":"./lib/index.d.ts","version":"1.0.0"}
 
 /***/ }),
 
@@ -7070,9 +7645,11 @@ var NgbInputDatepicker = (function () {
         this._calendar = _calendar;
         this._cRef = null;
         /**
-         * Placement of a datepicker popup. Accepts: "top", "bottom", "left", "right", "bottom-left",
-         * "bottom-right" etc.
-         */
+            * Placement of a datepicker popup accepts:
+            *    "top", "top-left", "top-right", "bottom", "bottom-left", "bottom-right",
+            *    "left", "left-top", "left-bottom", "right", "right-top", "right-bottom"
+            * and array of above values.
+            */
         this.placement = 'bottom-left';
         /**
          * An event fired when navigation happens and currently displayed month changes.
@@ -8700,13 +9277,30 @@ NgbDropdownConfig.ctorParameters = function () { return []; };
 /**
  */
 var NgbDropdownMenu = (function () {
-    function NgbDropdownMenu(dropdown, _elementRef) {
+    function NgbDropdownMenu(dropdown, _elementRef, _renderer) {
         this.dropdown = dropdown;
         this._elementRef = _elementRef;
+        this._renderer = _renderer;
+        this.placement = 'bottom';
         this.isOpen = false;
     }
     NgbDropdownMenu.prototype.isEventFrom = function ($event) { return this._elementRef.nativeElement.contains($event.target); };
-    NgbDropdownMenu.prototype.position = function (triggerEl, placement) { __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(triggerEl, this._elementRef.nativeElement, placement); };
+    NgbDropdownMenu.prototype.position = function (triggerEl, placement) {
+        this.applyPlacement(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(triggerEl, this._elementRef.nativeElement, placement));
+    };
+    NgbDropdownMenu.prototype.applyPlacement = function (_placement) {
+        // remove the current placement classes
+        this._renderer.removeClass(this._elementRef.nativeElement.parentElement, 'dropup');
+        this.placement = _placement;
+        /**
+         * apply the new placement
+         * change the class only in case of top to show up arrow
+         * or use defualt which is dropdown to show down arrow
+         */
+        if (_placement.search('^top') !== -1) {
+            this._renderer.addClass(this._elementRef.nativeElement.parentElement, 'dropup');
+        }
+    };
     return NgbDropdownMenu;
 }());
 
@@ -8717,6 +9311,7 @@ NgbDropdownMenu.decorators = [
 NgbDropdownMenu.ctorParameters = function () { return [
     { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"], args: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["forwardRef"])(function () { return NgbDropdown; }),] },] },
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"], },
 ]; };
 /**
  * Allows the dropdown to be toggled via click. This directive is optional.
@@ -8759,10 +9354,6 @@ var NgbDropdown = (function () {
          */
         this._open = false;
         /**
-         * Placement of a dropdown. Use "top-right" for dropups.
-         */
-        this.placement = '';
-        /**
          *  An event fired when the dropdown is opened or closed.
          *  Event's payload equals whether dropdown is open.
          */
@@ -8771,8 +9362,11 @@ var NgbDropdown = (function () {
         this.autoClose = config.autoClose;
         this._zoneSubscription = ngZone.onStable.subscribe(function () { _this._positionMenu(); });
     }
-    NgbDropdown.prototype.isUp = function () { return this.placement.indexOf('top') !== -1; };
-    NgbDropdown.prototype.isDown = function () { return this.placement.indexOf('bottom') !== -1; };
+    NgbDropdown.prototype.ngOnInit = function () {
+        if (this._menu) {
+            this._menu.applyPlacement(Array.isArray(this.placement) ? (this.placement[0]) : this.placement);
+        }
+    };
     /**
      * Checks if the dropdown menu is open or not.
      */
@@ -8841,8 +9435,6 @@ NgbDropdown.decorators = [
                 selector: '[ngbDropdown]',
                 exportAs: 'ngbDropdown',
                 host: {
-                    '[class.dropdown]': 'isDown()',
-                    '[class.dropup]': 'isUp()',
                     '[class.show]': 'isOpen()',
                     '(keyup.esc)': 'closeFromOutsideEsc()',
                     '(document:click)': 'closeFromClick($event)'
@@ -9132,11 +9724,12 @@ NgbActiveModal.ctorParameters = function () { return []; };
  * A reference to a newly opened modal.
  */
 var NgbModalRef = (function () {
-    function NgbModalRef(_windowCmptRef, _contentRef, _backdropCmptRef) {
+    function NgbModalRef(_windowCmptRef, _contentRef, _backdropCmptRef, _beforeDismiss) {
         var _this = this;
         this._windowCmptRef = _windowCmptRef;
         this._contentRef = _contentRef;
         this._backdropCmptRef = _backdropCmptRef;
+        this._beforeDismiss = _beforeDismiss;
         _windowCmptRef.instance.dismissEvent.subscribe(function (reason) { _this.dismiss(reason); });
         this.result = new Promise(function (resolve, reject) {
             _this._resolve = resolve;
@@ -9173,8 +9766,10 @@ var NgbModalRef = (function () {
      */
     NgbModalRef.prototype.dismiss = function (reason) {
         if (this._windowCmptRef) {
-            this._reject(reason);
-            this._removeModalElements();
+            if (!this._beforeDismiss || this._beforeDismiss() !== false) {
+                this._reject(reason);
+                this._removeModalElements();
+            }
         }
     };
     NgbModalRef.prototype._removeModalElements = function () {
@@ -9204,6 +9799,7 @@ NgbModalRef.ctorParameters = function () { return [
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ComponentRef"], },
     { type: __WEBPACK_IMPORTED_MODULE_1__util_popup__["b" /* ContentRef */], },
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ComponentRef"], },
+    { type: Function, },
 ]; };
 //# sourceMappingURL=modal-ref.js.map
 
@@ -9253,7 +9849,7 @@ var NgbModalStack = (function () {
         windowCmptRef = this._windowFactory.create(this._injector, contentRef.nodes);
         this._applicationRef.attachView(windowCmptRef.hostView);
         containerEl.appendChild(windowCmptRef.location.nativeElement);
-        ngbModalRef = new __WEBPACK_IMPORTED_MODULE_5__modal_ref__["b" /* NgbModalRef */](windowCmptRef, contentRef, backdropCmptRef);
+        ngbModalRef = new __WEBPACK_IMPORTED_MODULE_5__modal_ref__["b" /* NgbModalRef */](windowCmptRef, contentRef, backdropCmptRef, options.beforeDismiss);
         activeModal.close = function (result) { ngbModalRef.close(result); };
         activeModal.dismiss = function (reason) { ngbModalRef.dismiss(reason); };
         this._applyWindowOptions(windowCmptRef.instance, options);
@@ -9757,9 +10353,21 @@ NgbPopoverConfig.ctorParameters = function () { return []; };
 
 var nextId = 0;
 var NgbPopoverWindow = (function () {
-    function NgbPopoverWindow() {
+    function NgbPopoverWindow(_element, _renderer) {
+        this._element = _element;
+        this._renderer = _renderer;
         this.placement = 'top';
     }
+    NgbPopoverWindow.prototype.applyPlacement = function (_placement) {
+        // remove the current placement classes
+        this._renderer.removeClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString().split('-')[0]);
+        this._renderer.removeClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString());
+        // set the new placement classes
+        this.placement = _placement;
+        // apply the new placement
+        this._renderer.addClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString().split('-')[0]);
+        this._renderer.addClass(this._element.nativeElement, 'bs-popover-' + this.placement.toString());
+    };
     return NgbPopoverWindow;
 }());
 
@@ -9767,13 +10375,20 @@ NgbPopoverWindow.decorators = [
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
                 selector: 'ngb-popover-window',
                 changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectionStrategy"].OnPush,
-                host: { '[class]': '"popover bs-popover-" + placement', 'role': 'tooltip', '[id]': 'id' },
+                host: {
+                    '[class]': '"popover bs-popover-" + placement.split("-")[0]+" bs-popover-" + placement',
+                    'role': 'tooltip',
+                    '[id]': 'id'
+                },
                 template: "\n    <div class=\"arrow\"></div>\n    <h3 class=\"popover-header\">{{title}}</h3><div class=\"popover-body\"><ng-content></ng-content></div>",
-                styles: ["\n    :host.bs-popover-top .arrow, :host.bs-popover-bottom .arrow {\n      left: 50%;\n    }\n\n    :host.bs-popover-left .arrow, :host.bs-popover-right .arrow {\n      top: 50%;\n    }\n  "]
+                styles: ["\n    :host.bs-popover-top .arrow, :host.bs-popover-bottom .arrow {\n      left: 50%;\n    }\n\n    :host.bs-popover-top-left .arrow, :host.bs-popover-bottom-left .arrow {\n      left: 2em;\n    }\n\n    :host.bs-popover-top-right .arrow, :host.bs-popover-bottom-right .arrow {\n      left: auto;\n      right: 2em;\n    }\n\n    :host.bs-popover-left .arrow, :host.bs-popover-right .arrow {\n      top: 50%;\n    }\n    \n    :host.bs-popover-left-top .arrow, :host.bs-popover-right-top .arrow {\n      top: 0.7em;\n    }\n\n    :host.bs-popover-left-bottom .arrow, :host.bs-popover-right-bottom .arrow {\n      top: auto;\n      bottom: 0.7em;\n    }\n  "]
             },] },
 ];
 /** @nocollapse */
-NgbPopoverWindow.ctorParameters = function () { return []; };
+NgbPopoverWindow.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"], },
+]; };
 NgbPopoverWindow.propDecorators = {
     'placement': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
     'title': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
@@ -9802,7 +10417,7 @@ var NgbPopover = (function () {
         this._popupService = new __WEBPACK_IMPORTED_MODULE_3__util_popup__["a" /* PopupService */](NgbPopoverWindow, injector, viewContainerRef, _renderer, componentFactoryResolver);
         this._zoneSubscription = ngZone.onStable.subscribe(function () {
             if (_this._windowRef) {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(_this._elementRef.nativeElement, _this._windowRef.location.nativeElement, _this.placement, _this.container === 'body');
+                _this._windowRef.instance.applyPlacement(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(_this._elementRef.nativeElement, _this._windowRef.location.nativeElement, _this.placement, _this.container === 'body'));
             }
         });
     }
@@ -9813,18 +10428,17 @@ var NgbPopover = (function () {
     NgbPopover.prototype.open = function (context) {
         if (!this._windowRef) {
             this._windowRef = this._popupService.open(this.ngbPopover, context);
-            this._windowRef.instance.placement = this.placement;
             this._windowRef.instance.title = this.popoverTitle;
             this._windowRef.instance.id = this._ngbPopoverWindowId;
             this._renderer.setAttribute(this._elementRef.nativeElement, 'aria-describedby', this._ngbPopoverWindowId);
             if (this.container === 'body') {
                 window.document.querySelector(this.container).appendChild(this._windowRef.location.nativeElement);
             }
-            // position popover along the element
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(this._elementRef.nativeElement, this._windowRef.location.nativeElement, this.placement, this.container === 'body');
-            // we need to manually invoke change detection since events registered via
-            // Renderer::listen() are not picked up by change detection with the OnPush strategy
+            // apply styling to set basic css-classes on target element, before going for positioning
+            this._windowRef.changeDetectorRef.detectChanges();
             this._windowRef.changeDetectorRef.markForCheck();
+            // position popover along the element
+            this._windowRef.instance.applyPlacement(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(this._elementRef.nativeElement, this._windowRef.location.nativeElement, this.placement, this.container === 'body'));
             this.shown.emit();
         }
     };
@@ -10830,9 +11444,21 @@ NgbTooltipConfig.ctorParameters = function () { return []; };
 
 var nextId = 0;
 var NgbTooltipWindow = (function () {
-    function NgbTooltipWindow() {
+    function NgbTooltipWindow(_element, _renderer) {
+        this._element = _element;
+        this._renderer = _renderer;
         this.placement = 'top';
     }
+    NgbTooltipWindow.prototype.applyPlacement = function (_placement) {
+        // remove the current placement classes
+        this._renderer.removeClass(this._element.nativeElement, 'bs-tooltip-' + this.placement.toString().split('-')[0]);
+        this._renderer.removeClass(this._element.nativeElement, 'bs-tooltip-' + this.placement.toString());
+        // set the new placement classes
+        this.placement = _placement;
+        // apply the new placement
+        this._renderer.addClass(this._element.nativeElement, 'bs-tooltip-' + this.placement.toString().split('-')[0]);
+        this._renderer.addClass(this._element.nativeElement, 'bs-tooltip-' + this.placement.toString());
+    };
     return NgbTooltipWindow;
 }());
 
@@ -10840,13 +11466,20 @@ NgbTooltipWindow.decorators = [
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
                 selector: 'ngb-tooltip-window',
                 changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectionStrategy"].OnPush,
-                host: { '[class]': '"tooltip show bs-tooltip-" + placement', 'role': 'tooltip', '[id]': 'id' },
+                host: {
+                    '[class]': '"tooltip show bs-tooltip-" + placement.split("-")[0]+" bs-tooltip-" + placement',
+                    'role': 'tooltip',
+                    '[id]': 'id'
+                },
                 template: "<div class=\"arrow\"></div><div class=\"tooltip-inner\"><ng-content></ng-content></div>",
-                styles: ["\n    :host.bs-tooltip-top .arrow, :host.bs-tooltip-bottom .arrow {\n      left: 50%;\n    }\n\n    :host.bs-tooltip-left .arrow, :host.bs-tooltip-right .arrow {\n      top: 50%;\n    }\n  "]
+                styles: ["\n    :host.bs-tooltip-top .arrow, :host.bs-tooltip-bottom .arrow {\n      left: 50%;\n    }\n\n    :host.bs-tooltip-top-left .arrow, :host.bs-tooltip-bottom-left .arrow {\n      left: 1em;\n    }\n\n    :host.bs-tooltip-top-right .arrow, :host.bs-tooltip-bottom-right .arrow {\n      left: auto;\n      right: 1em;\n    }\n\n    :host.bs-tooltip-left .arrow, :host.bs-tooltip-right .arrow {\n      top: 50%;\n    }\n    \n    :host.bs-tooltip-left-top .arrow, :host.bs-tooltip-right-top .arrow {\n      top: 0.7em;\n    }\n\n    :host.bs-tooltip-left-bottom .arrow, :host.bs-tooltip-right-bottom .arrow {\n      top: auto;\n      bottom: 0.7em;\n    }\n  "]
             },] },
 ];
 /** @nocollapse */
-NgbTooltipWindow.ctorParameters = function () { return []; };
+NgbTooltipWindow.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"], },
+]; };
 NgbTooltipWindow.propDecorators = {
     'placement': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
     'id': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
@@ -10874,7 +11507,7 @@ var NgbTooltip = (function () {
         this._popupService = new __WEBPACK_IMPORTED_MODULE_3__util_popup__["a" /* PopupService */](NgbTooltipWindow, injector, viewContainerRef, _renderer, componentFactoryResolver);
         this._zoneSubscription = ngZone.onStable.subscribe(function () {
             if (_this._windowRef) {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(_this._elementRef.nativeElement, _this._windowRef.location.nativeElement, _this.placement, _this.container === 'body');
+                _this._windowRef.instance.applyPlacement(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(_this._elementRef.nativeElement, _this._windowRef.location.nativeElement, _this.placement, _this.container === 'body'));
             }
         });
     }
@@ -10899,17 +11532,17 @@ var NgbTooltip = (function () {
     NgbTooltip.prototype.open = function (context) {
         if (!this._windowRef && this._ngbTooltip) {
             this._windowRef = this._popupService.open(this._ngbTooltip, context);
-            this._windowRef.instance.placement = this.placement;
             this._windowRef.instance.id = this._ngbTooltipWindowId;
             this._renderer.setAttribute(this._elementRef.nativeElement, 'aria-describedby', this._ngbTooltipWindowId);
             if (this.container === 'body') {
                 window.document.querySelector(this.container).appendChild(this._windowRef.location.nativeElement);
             }
-            // position tooltip along the element
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(this._elementRef.nativeElement, this._windowRef.location.nativeElement, this.placement, this.container === 'body');
-            // we need to manually invoke change detection since events registered via
-            // Renderer::listen() - to be determined if this is a bug in the Angular itself
+            this._windowRef.instance.placement = Array.isArray(this.placement) ? this.placement[0] : this.placement;
+            // apply styling to set basic css-classes on target element, before going for positioning
+            this._windowRef.changeDetectorRef.detectChanges();
             this._windowRef.changeDetectorRef.markForCheck();
+            // position tooltip along the element
+            this._windowRef.instance.applyPlacement(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(this._elementRef.nativeElement, this._windowRef.location.nativeElement, this.placement, this.container === 'body'));
             this.shown.emit();
         }
     };
@@ -11076,6 +11709,7 @@ var NgbTypeaheadConfig = (function () {
         this.editable = true;
         this.focusFirst = true;
         this.showHint = false;
+        this.placement = 'bottom-left';
     }
     return NgbTypeaheadConfig;
 }());
@@ -11235,6 +11869,12 @@ var NgbTypeahead = (function () {
         this._viewContainerRef = _viewContainerRef;
         this._renderer = _renderer;
         this._injector = _injector;
+        /** Placement of a typeahead accepts:
+         *    "top", "top-left", "top-right", "bottom", "bottom-left", "bottom-right",
+         *    "left", "left-top", "left-bottom", "right", "right-top", "right-bottom"
+         * and array of above values.
+        */
+        this.placement = 'bottom-left';
         /**
          * An event emitted when a match is selected. Event payload is of type NgbTypeaheadSelectItemEvent.
          */
@@ -11246,12 +11886,13 @@ var NgbTypeahead = (function () {
         this.editable = config.editable;
         this.focusFirst = config.focusFirst;
         this.showHint = config.showHint;
+        this.placement = config.placement;
         this._valueChanges = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_rxjs_observable_fromEvent__["fromEvent"])(_elementRef.nativeElement, 'input', function ($event) { return $event.target.value; });
         this._resubscribeTypeahead = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"](null);
         this._popupService = new __WEBPACK_IMPORTED_MODULE_9__util_popup__["a" /* PopupService */](__WEBPACK_IMPORTED_MODULE_8__typeahead_window__["a" /* NgbTypeaheadWindow */], _injector, _viewContainerRef, _renderer, componentFactoryResolver);
         this._zoneSubscription = ngZone.onStable.subscribe(function () {
             if (_this.isPopupOpen()) {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__util_positioning__["a" /* positionElements */])(_this._elementRef.nativeElement, _this._windowRef.location.nativeElement, 'bottom-left', _this.container === 'body');
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__util_positioning__["a" /* positionElements */])(_this._elementRef.nativeElement, _this._windowRef.location.nativeElement, _this.placement, _this.container === 'body');
             }
         });
     }
@@ -11451,6 +12092,7 @@ NgbTypeahead.propDecorators = {
     'resultFormatter': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
     'resultTemplate': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
     'showHint': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+    'placement': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
     'selectItem': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
 };
 //# sourceMappingURL=typeahead.js.map
@@ -11698,14 +12340,124 @@ var Positioning = (function () {
         targetElPosition.right = Math.round(targetElPosition.right);
         return targetElPosition;
     };
+    // get the availble placements of the target element in the viewport dependeing on the host element
+    Positioning.prototype.getAvailablePlacements = function (hostElement, targetElement) {
+        var availablePlacements = [];
+        var hostElemClientRect = hostElement.getBoundingClientRect();
+        var targetElemClientRect = targetElement.getBoundingClientRect();
+        var html = document.documentElement;
+        // left: check if target width can be placed between host left and viewport start and also height of target is
+        // inside viewport
+        if (targetElemClientRect.width < hostElemClientRect.left) {
+            // check for left only
+            if ((hostElemClientRect.top + hostElemClientRect.height / 2 - targetElement.offsetHeight / 2) > 0) {
+                availablePlacements.splice(availablePlacements.length, 1, 'left');
+            }
+            // check for left-top and left-bottom
+            this.setSecondaryPlacementForLeftRight(hostElemClientRect, targetElemClientRect, 'left', availablePlacements);
+        }
+        // top: target height is less than host top
+        if (targetElemClientRect.height < hostElemClientRect.top) {
+            availablePlacements.splice(availablePlacements.length, 1, 'top');
+            this.setSecondaryPlacementForTopBottom(hostElemClientRect, targetElemClientRect, 'top', availablePlacements);
+        }
+        // right: check if target width can be placed between host right and viewport end and also height of target is
+        // inside viewport
+        if ((window.innerWidth || html.clientWidth) - hostElemClientRect.right > targetElemClientRect.width) {
+            // check for right only
+            if ((hostElemClientRect.top + hostElemClientRect.height / 2 - targetElement.offsetHeight / 2) > 0) {
+                availablePlacements.splice(availablePlacements.length, 1, 'right');
+            }
+            // check for right-top and right-bottom
+            this.setSecondaryPlacementForLeftRight(hostElemClientRect, targetElemClientRect, 'right', availablePlacements);
+        }
+        // bottom: check if there is enough space between host bottom and viewport end for target height
+        if ((window.innerHeight || html.clientHeight) - hostElemClientRect.bottom > targetElemClientRect.height) {
+            availablePlacements.splice(availablePlacements.length, 1, 'bottom');
+            this.setSecondaryPlacementForTopBottom(hostElemClientRect, targetElemClientRect, 'bottom', availablePlacements);
+        }
+        return availablePlacements;
+    };
+    /**
+     * check if secondary placement for left and right are available i.e. left-top, left-bottom, right-top, right-bottom
+     * primaryplacement: left|right
+     * availablePlacementArr: array in which available placemets to be set
+     */
+    Positioning.prototype.setSecondaryPlacementForLeftRight = function (hostElemClientRect, targetElemClientRect, primaryPlacement, availablePlacementArr) {
+        var html = document.documentElement;
+        // check for left-bottom
+        if (targetElemClientRect.height <= hostElemClientRect.bottom) {
+            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-bottom');
+        }
+        if ((window.innerHeight || html.clientHeight) - hostElemClientRect.top >= targetElemClientRect.height) {
+            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-top');
+        }
+    };
+    /**
+     * check if secondary placement for top and bottom are available i.e. top-left, top-right, bottom-left, bottom-right
+     * primaryplacement: top|bottom
+     * availablePlacementArr: array in which available placemets to be set
+     */
+    Positioning.prototype.setSecondaryPlacementForTopBottom = function (hostElemClientRect, targetElemClientRect, primaryPlacement, availablePlacementArr) {
+        var html = document.documentElement;
+        // check for left-bottom
+        if ((window.innerHeight || html.clientHeight) - hostElemClientRect.left >= targetElemClientRect.width) {
+            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-left');
+        }
+        if (targetElemClientRect.width <= hostElemClientRect.right) {
+            availablePlacementArr.splice(availablePlacementArr.length, 1, primaryPlacement + '-right');
+        }
+    };
     return Positioning;
 }());
 
 var positionService = new Positioning();
+/*
+ * Accept the placement array and applies the appropriate placement dependent on the viewport.
+ * Returns the applied placement.
+ * In case of auto placement, placements are selected in order 'top', 'bottom', 'left', 'right'.
+ * */
 function positionElements(hostElement, targetElement, placement, appendToBody) {
-    var pos = positionService.positionElements(hostElement, targetElement, placement, appendToBody);
-    targetElement.style.top = pos.top + "px";
-    targetElement.style.left = pos.left + "px";
+    var placementVals = Array.isArray(placement) ? placement : [placement];
+    // replace auto placement with other placements
+    var hasAuto = placementVals.findIndex(function (val) { return val === 'auto'; });
+    if (hasAuto >= 0) {
+        ['top', 'right', 'bottom', 'left'].forEach(function (obj) {
+            if (placementVals.find(function (val) { return val.search('^' + obj + '|^' + obj + '-') !== -1; }) == null) {
+                placementVals.splice(hasAuto++, 1, obj);
+            }
+        });
+    }
+    // coordinates where to position
+    var topVal = 0, leftVal = 0;
+    var appliedPlacement;
+    // get available placements
+    var availablePlacements = positionService.getAvailablePlacements(hostElement, targetElement);
+    var _loop_1 = function (item, index) {
+        // check if passed placement is present in the available placement or otherwise apply the last placement in the
+        // passed placement list
+        if ((availablePlacements.find(function (val) { return val === item; }) != null) || (placementVals.length === index + 1)) {
+            appliedPlacement = item;
+            var pos = positionService.positionElements(hostElement, targetElement, item, appendToBody);
+            topVal = pos.top;
+            leftVal = pos.left;
+            return "break";
+        }
+    };
+    // iterate over all the passed placements
+    for (var _i = 0, _a = toItemIndexes(placementVals); _i < _a.length; _i++) {
+        var _b = _a[_i], item = _b.item, index = _b.index;
+        var state_1 = _loop_1(item, index);
+        if (state_1 === "break")
+            break;
+    }
+    targetElement.style.top = topVal + "px";
+    targetElement.style.left = leftVal + "px";
+    return appliedPlacement;
+}
+// function to get index and item of an array
+function toItemIndexes(a) {
+    return a.map(function (item, index) { return ({ item: item, index: index }); });
 }
 //# sourceMappingURL=positioning.js.map
 

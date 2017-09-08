@@ -2,14 +2,19 @@
     <div class="mb-small"><img src="/assets/images/demo_01.png"></div>
     <div *ngIf="isLoading; else thenBlock" class="loading">loading...</div>
     <ng-template #thenBlock>
-        <swiper [config]="config">
-            <div class="swiper-wrapper">
-                <div *ngFor="let reservation of reservations" class="swiper-slide">
-                    <app-ticket [reservation]="reservation"></app-ticket>
-                </div>
-            </div>
-
-            <div class="swiper-pagination"></div>
-        </swiper>
+        <ng-template *ngIf="reservations.length > 0; else noTicketBlock">
+                <swiper [config]="config">
+                    <div class="swiper-wrapper">
+                        <div *ngFor="let reservation of reservations" class="swiper-slide">
+                            <app-ticket [reservation]="reservation"></app-ticket>
+                        </div>
+                    </div>
+        
+                    <div class="swiper-pagination"></div>
+                </swiper>
+        </ng-template>
+        <ng-template #noTicketBlock>
+            <p style="color: #FFF">noTicketBlock</p>
+        </ng-template>
     </ng-template>
 </div>

@@ -2,7 +2,7 @@ p {
     color: #FFF;
 }
 .startup {
-    
+    background: linear-gradient(135deg, rgba(0,160,233,1) 0%,rgba(0,33,107,1) 100%);
 }
 .inner {
     position: relative;
@@ -23,10 +23,13 @@ p {
         margin: -40px 0 0 -66px;
     }
 }
-
-.step-6 {
-    button {
-        border-radius: 0;
-        padding: 75px 0;
+.walk-through {
+    .swiper-slide {
+        &:last-child {
+            button {
+                border-radius: 0;
+                padding: 75px 0;
+            }
+        }
     }
 }

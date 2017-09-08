@@ -13,7 +13,7 @@ import { SasakiService } from '../../service/sasaki/sasaki.service';
 })
 export class StartupComponent implements OnInit {
   public config: Object;
-  public tutorial: boolean;
+  public walkThrough: boolean;
   public step: number;
 
   constructor(
@@ -23,7 +23,7 @@ export class StartupComponent implements OnInit {
 
   public ngOnInit() {
     this.step = 0;
-    this.tutorial = false;
+    this.walkThrough = false;
     this.config = {
       pagination: '.swiper-pagination',
       paginationClickable: true,
@@ -39,7 +39,7 @@ export class StartupComponent implements OnInit {
     setTimeout(
       () => {
         this.step = 1;
-        this.tutorial = true;
+        this.walkThrough = true;
       },
       timeout);
   }
