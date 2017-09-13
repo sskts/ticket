@@ -34,10 +34,11 @@
     "sourceMap": false,
     "stripInternal": false,
     "suppressExcessPropertyErrors": false,
-    "suppressImplicitAnyIndexErrors": false,
+    "suppressImplicitAnyIndexErrors": false
   },
   "exclude": [
     "test.ts",
+    "**/*.d.ts",
     "**/*.spec.ts"
   ]
 }

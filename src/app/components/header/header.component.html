@@ -1,7 +1,7 @@
 <header>
     <div class="logo"><img src="/assets/images/logo.svg"></div>
     <h1>{{title}}</h1>
-    <div class="button" (click)="open()">
+    <div class="button" [class.active]="isOpen" (click)="(isOpen) ? close() : open()">
         <div></div>
         <div></div>
         <div></div>
@@ -11,8 +11,8 @@
 <div class="menu" [class.active]="isOpen">
     <div class="title">{{ name }}</div>
     <ul>
-        <li><span routerLink="/about" routerLinkActive="active">このアプリについて</span></li>
-        <li><span routerLink="/entry-method" routerLinkActive="active">入場方法説明</span></li>
+        <li><span routerLink="/about" routerLinkActive="active" (click)="close()">このアプリについて</span></li>
+        <li><span routerLink="/entry-method" routerLinkActive="active" (click)="close()">入場方法説明</span></li>
         <li><a [attr.href]="portalSite" target="_blank">シネマサンシャインポータルサイト</a></li>
         <li><a [attr.href]="portalSite + '/sitepolicy'" target="_blank">利用規約</a></li>
         <li><a [attr.href]="portalSite + '/law'" target="_blank">特定商取引法に基づく表記</a></li>

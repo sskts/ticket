@@ -21,6 +21,7 @@ import { FilmOrderOfPerformanceComponent } from './components/film-order-of-perf
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { NoTicketComponent } from './components/no-ticket/no-ticket.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { SettingComponent } from './components/setting/setting.component';
@@ -35,6 +36,8 @@ import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { SasakiService } from './service/sasaki/sasaki.service';
 import { UserService } from './service/user/user.service';
+import { AboutComponent } from './components/about/about.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -58,7 +61,10 @@ import { UserService } from './service/user/user.service';
     ChronologicalOrderOfPerformanceComponent,
     FilmOrderOfPerformanceComponent,
     AvailabilityPipe,
-    DurationPipe
+    DurationPipe,
+    NoTicketComponent,
+    AboutComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

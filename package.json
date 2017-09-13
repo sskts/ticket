@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "ng serve --port 3333 --ssl true --ssl-key \"./certificate/server.key\" --ssl-cert \"./certificate/server.crt\"",
+    "start": "ng serve --port 3333 --ssl true --ssl-key \"./certificate/server.key\" --ssl-cert \"./certificate/server.crt\" --env=source",
     "ng": "ng",
-    "build": "ng build --environment=dev --output-path=./development",
+    "build": "ng build --environment=dev --output-path=./development && ng build --environment=test --output-path=./test",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -34,7 +34,7 @@
     "zone.js": "^0.8.17"
   },
   "devDependencies": {
-    "@angular/cli": "1.2.1",
+    "@angular/cli": "^1.4.1",
     "@angular/compiler-cli": "^4.3.6",
     "@angular/language-service": "^4.3.6",
     "@types/jasmine": "^2.5.54",

@@ -4,6 +4,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AboutComponent } from './components/about/about.component';
 import { AuthLoginComponent } from './components/auth-login/auth-login.component';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -24,13 +25,14 @@ const appRoutes: Routes = [
     children: [
       { path: 'ticket-holder', component: TicketHolderComponent },
       { path: 'purchase', component: PurchaseComponent },
-      { path: 'setting', component: SettingComponent }
+      { path: 'setting', component: SettingComponent },
+      { path: 'about', component: AboutComponent }
     ]
   },
   {
     path: 'auth',
     children: [
-      { path: 'login', component: AuthLoginComponent },
+      { path: 'login', component: AuthLoginComponent }
       // { path: 'register', component: AuthRegisterComponent },
       // { path: 'confirm', component: AuthConfirmComponent }
     ]
