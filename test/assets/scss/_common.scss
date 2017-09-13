@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #000;
+    background: linear-gradient(to bottom, rgba(45,45,45,1) 0%,rgba(0,0,0,1) 100%);
+    background-attachment: fixed;
+    font-size: 14px;
+    color: #FFF;
+    min-height: 100vh;
+}
+p {
+    line-height: 1.4;
+}
+a {
+    color: #FFF;
+}
+div {
+    line-height: 1;
+}
+img {
+    width: 100%;
+}
+.contents {
+    padding: 10px 20px;
+    position: relative;
+}
+.mb-x-small {
+    margin-bottom: 10px;
+}
+.mb-small {
+    margin-bottom: 20px;
+}
+.mb-middle {
+    margin-bottom: 30px;
+}
+.mb-large {
+    margin-bottom: 40px;
+}
+.small-x-text {
+    font-size: 10px;
+}
+.small-text {
+    font-size: 12px;
+}
+.large-text {
+    font-size: 24px;
+}
+.large-x-text {
+    font-size: 40px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn {
+    border-radius: 30px;
+    padding: 20px 0; 
+}
+
+.btn-primary {
+    background-color: #0074A9;
+    color: #FFF;
+    &:hover {
+        background-color: #0074A9;
+    }
+}
+
+.btn-info {
+    background-color: transparent;
+    color: #FFF;
+    border: 1px solid #FFF;
+    &:hover {
+        background-color: transparent;
+    }
+}
+
+.swiper-container {
+    .swiper-pagination-bullet {
+        background-color: #aaa;
+    }
+    .swiper-pagination-bullet-active {
+        background-color: #0074A9;
+        border: 1px solid #01B3FF;
+    }
+}
+
+.auth {
+    .auth-container {
+        display: block;
+        margin: 20px;
+        padding: 20px;
+        background-color: #FFF;
+        label {
+            margin: 0 0 10px;
+        }
+    }
+}

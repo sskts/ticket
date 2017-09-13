@@ -2,11 +2,18 @@
     box-sizing: border-box;
 }
 body {
-    background-color: rgb(45, 45, 45);
+    background-color: #000;
+    background: linear-gradient(to bottom, rgba(45,45,45,1) 0%,rgba(0,0,0,1) 100%);
+    background-attachment: fixed;
     font-size: 14px;
+    color: #FFF;
+    min-height: 100vh;
 }
 p {
     line-height: 1.4;
+}
+a {
+    color: #FFF;
 }
 div {
     line-height: 1;
@@ -71,6 +78,16 @@ img {
     border: 1px solid #FFF;
     &:hover {
         background-color: transparent;
+    }
+}
+
+.swiper-container {
+    .swiper-pagination-bullet {
+        background-color: #aaa;
+    }
+    .swiper-pagination-bullet-active {
+        background-color: #0074A9;
+        border: 1px solid #01B3FF;
     }
 }
 
