@@ -2,6 +2,9 @@
     box-sizing: border-box;
 }
 body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-touch-callout: none;
+    user-select: none;
     background-color: #000;
     background: linear-gradient(to bottom, rgba(45,45,45,1) 0%,rgba(0,0,0,1) 100%);
     background-attachment: fixed;
@@ -24,6 +27,7 @@ img {
 .contents {
     padding: 10px 20px;
     position: relative;
+    min-height: 100vh;
 }
 .mb-x-small {
     margin-bottom: 10px;
