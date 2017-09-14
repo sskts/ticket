@@ -5,3 +5,4 @@
     <p class="read mb-small text-center">既に会員登録済みの方は<br>下のボタンよりログインしてください。</p>
     <button class="btn btn-info btn-block" (click)="login()">会員登録済みの方</button>
 </div>
+<app-loading *ngIf="isLoading"></app-loading>

@@ -12,6 +12,7 @@ import { SasakiService } from '../../service/sasaki/sasaki.service';
   styleUrls: ['./auth-login.component.scss']
 })
 export class AuthLoginComponent implements OnInit {
+  public isLoading: boolean;
 
   constructor(
     private sasaki: SasakiService,
@@ -20,9 +21,12 @@ export class AuthLoginComponent implements OnInit {
     console.log('LoginComponent constructor');
   }
 
-  public async ngOnInit() {}
+  public ngOnInit() {
+    this.isLoading = false;
+  }
 
   public async login() {
+    this.isLoading = true;
     try {
       const result = await this.sasaki.auth.signIn();
       console.log('authorize result:', result);
@@ -30,6 +34,7 @@ export class AuthLoginComponent implements OnInit {
       this.router.navigate(['/']);
     } catch (error) {
       console.error(error);
+      this.isLoading = false;
     }
   }
 

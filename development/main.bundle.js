@@ -437,7 +437,7 @@ var AuthConfirmComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/auth-login/auth-login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <div class=\"logo text-center mb-middle\"><img src=\"/assets/images/logo.svg\"></div>\n    <p class=\"read mb-small text-center\">初めてアプリをご利用なさる方は<br>下のボタンから会員登録をおこなってください。</p>\n    <button class=\"btn btn-info btn-block mb-middle\" routerLink=\"/startup\">アプリを初めてご利用の方</button>\n    <p class=\"read mb-small text-center\">既に会員登録済みの方は<br>下のボタンよりログインしてください。</p>\n    <button class=\"btn btn-info btn-block\" (click)=\"login()\">会員登録済みの方</button>\n</div>"
+module.exports = "<div class=\"contents\">\n    <div class=\"logo text-center mb-middle\"><img src=\"/assets/images/logo.svg\"></div>\n    <p class=\"read mb-small text-center\">初めてアプリをご利用なさる方は<br>下のボタンから会員登録をおこなってください。</p>\n    <button class=\"btn btn-info btn-block mb-middle\" routerLink=\"/startup\">アプリを初めてご利用の方</button>\n    <p class=\"read mb-small text-center\">既に会員登録済みの方は<br>下のボタンよりログインしてください。</p>\n    <button class=\"btn btn-info btn-block\" (click)=\"login()\">会員登録済みの方</button>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -524,9 +524,7 @@ var AuthLoginComponent = /** @class */ (function () {
         console.log('LoginComponent constructor');
     }
     AuthLoginComponent.prototype.ngOnInit = function () {
-        return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-            return [2 /*return*/];
-        }); });
+        this.isLoading = false;
     };
     AuthLoginComponent.prototype.login = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -534,19 +532,23 @@ var AuthLoginComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.sasaki.auth.signIn()];
+                        this.isLoading = true;
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.sasaki.auth.signIn()];
+                    case 2:
                         result = _a.sent();
                         console.log('authorize result:', result);
                         this.sasaki.credentials = result;
                         this.router.navigate(['/']);
-                        return [3 /*break*/, 3];
-                    case 2:
+                        return [3 /*break*/, 4];
+                    case 3:
                         error_1 = _a.sent();
                         console.error(error_1);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        this.isLoading = false;
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
@@ -1002,7 +1004,14 @@ var pages = [
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/loading/loading.component.css":
+/***/ "../../../../../src/app/components/loading/loading.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"cover\"></div>\n<div class=\"loading\">\n    <div class=\"bar1\"></div>\n    <div class=\"bar2\"></div>\n    <div class=\"bar3\"></div>\n    <div class=\"bar4\"></div>\n    <div class=\"bar5\"></div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/loading/loading.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -1010,20 +1019,13 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".cover {\n  opacity: 0;\n  background-color: rgba(0, 0, 0, 0.7);\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  z-index: 11;\n  visibility: visible;\n  -webkit-animation: fadein 0.4s both;\n          animation: fadein 0.4s both; }\n\n.loading {\n  opacity: 0;\n  visibility: hidden;\n  position: fixed;\n  z-index: 10;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  top: 50%;\n  left: 50%;\n  z-index: 11;\n  width: 70px;\n  height: 30px;\n  margin-top: -15px;\n  margin-left: -35px;\n  -webkit-animation: fadein 0.4s both;\n          animation: fadein 0.4s both;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .loading div {\n    height: 30px;\n    width: 3px;\n    background-color: #FFF;\n    -webkit-animation: loading 1s infinite;\n            animation: loading 1s infinite; }\n  .loading .bar1 {\n    -webkit-animation-delay: 0.5s;\n            animation-delay: 0.5s; }\n  .loading .bar2 {\n    -webkit-animation-delay: 0.6s;\n            animation-delay: 0.6s; }\n  .loading .bar3 {\n    -webkit-animation-delay: 0.7s;\n            animation-delay: 0.7s; }\n  .loading .bar4 {\n    -webkit-animation-delay: 0.8s;\n            animation-delay: 0.8s; }\n  .loading .bar5 {\n    -webkit-animation-delay: 0.9s;\n            animation-delay: 0.9s; }\n", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/loading/loading.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  loading works!\n</p>\n"
 
 /***/ }),
 
@@ -1042,17 +1044,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/**
+ * LoadingComponent
+ */
 
 var LoadingComponent = /** @class */ (function () {
     function LoadingComponent() {
     }
-    LoadingComponent.prototype.ngOnInit = function () {
-    };
+    LoadingComponent.prototype.ngOnInit = function () { };
     LoadingComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-loading',
             template: __webpack_require__("../../../../../src/app/components/loading/loading.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/loading/loading.component.css")]
+            styles: [__webpack_require__("../../../../../src/app/components/loading/loading.component.scss")]
         }),
         __metadata("design:paramtypes", [])
     ], LoadingComponent);
@@ -1334,7 +1338,7 @@ var NotFoundComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/purchase/purchase.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <div class=\"mb-small\">スケジュール選択</div>\n    <p class=\"read mb-small\">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>\n    <ul class=\"conditions\">\n        <li>\n            <div class=\"form-group\">\n                <label class=\"control-label\">鑑賞劇場</label>\n                <select class=\"form-control\" name=\"theater\" [(ngModel)]=\"theater\" (change)=\"changeConditions($event)\">\n                    <option value=\"\">選択して下さい</option>\n                    <option *ngFor=\"let theater of theaters\" value=\"{{ theater.branchCode }}\">{{ theater.name.ja }}</option>\n                </select>\n            </div>\n        </li>\n        <li>\n            <div class=\"form-group\">\n                <label class=\"control-label\">鑑賞日時</label>\n                <select class=\"form-control\" name=\"date\" [(ngModel)]=\"date\" (change)=\"changeConditions($event)\">\n                    <option value=\"\">選択して下さい</option>\n                    <option *ngFor=\"let date of dateList\" value=\"{{ date.value }}\">{{ date.text }}</option>\n                </select>\n            </div>\n        </li>\n    </ul>\n\n    <div *ngIf=\"isLoading; else elseBlock\" class=\"loading\">loading...</div>\n    <ng-template #elseBlock>\n        <swiper [config]=\"config\">\n            <div class=\"swiper-wrapper\">\n                <div *ngFor=\"let film of filmList\" class=\"swiper-slide\">\n                    <app-film-order-of-performance [data]=\"film\" (performanceSelect)=\"purchaseView($event)\"></app-film-order-of-performance>\n                </div>\n            </div>\n            <div class=\"swiper-pagination\"></div>\n        </swiper>\n    </ng-template>\n</div>"
+module.exports = "<div class=\"contents\">\n    <div class=\"mb-small\">スケジュール選択</div>\n    <p class=\"read mb-small\">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>\n    <ul class=\"conditions\">\n        <li>\n            <div class=\"form-group\">\n                <label class=\"control-label\">鑑賞劇場</label>\n                <select class=\"form-control\" name=\"theater\" [(ngModel)]=\"theater\" (change)=\"changeConditions($event)\">\n                    <option *ngFor=\"let theater of theaters\" value=\"{{ theater.branchCode }}\">{{ theater.name.ja }}</option>\n                </select>\n            </div>\n        </li>\n        <li>\n            <div class=\"form-group\">\n                <label class=\"control-label\">鑑賞日時</label>\n                <select class=\"form-control\" name=\"date\" [(ngModel)]=\"date\" (change)=\"changeConditions($event)\">\n                    <option *ngFor=\"let date of dateList\" value=\"{{ date.value }}\">{{ date.text }}</option>\n                </select>\n            </div>\n        </li>\n    </ul>\n\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper\">\n            <div *ngFor=\"let film of filmList\" class=\"swiper-slide\">\n                <app-film-order-of-performance [data]=\"film\" (performanceSelect)=\"purchaseView($event)\"></app-film-order-of-performance>\n            </div>\n        </div>\n        <div class=\"swiper-pagination\"></div>\n    </swiper>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -1429,7 +1433,7 @@ var PurchaseComponent = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        this.isLoading = false;
+                        this.isLoading = true;
                         this.config = {
                             pagination: '.swiper-pagination',
                             paginationClickable: true,
@@ -1922,7 +1926,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".startup {\n  background: linear-gradient(135deg, #00a0e9 0%, #00216b 100%); }\n\n.inner {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  padding-top: 50px; }\n\n.under-line {\n  border-bottom: 3px solid #F4D600; }\n\n.step-0 img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 132px;\n  height: 80px;\n  margin: -40px 0 0 -66px;\n  -webkit-filter: drop-shadow(1px 1px 6px #000);\n          filter: drop-shadow(1px 1px 6px #000); }\n\n.walk-through .swiper-slide:last-child button {\n  border-radius: 0;\n  padding: 60px 0; }\n", ""]);
+exports.push([module.i, ".startup {\n  background: linear-gradient(135deg, #00a0e9 0%, #00216b 100%); }\n\n.inner {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  padding-top: 50px; }\n\n.under-line {\n  border-bottom: 4px solid #F4D600; }\n\n.step-0 img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 132px;\n  height: 80px;\n  margin: -40px 0 0 -66px;\n  -webkit-filter: drop-shadow(1px 1px 6px #000);\n          filter: drop-shadow(1px 1px 6px #000); }\n\n.walk-through .swiper-slide:last-child button {\n  border-radius: 0;\n  padding: 45px 0; }\n", ""]);
 
 // exports
 
@@ -2057,7 +2061,7 @@ var StartupComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/ticket-holder/ticket-holder.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <div class=\"mb-small\"><img src=\"/assets/images/demo_01.png\"></div>\n    <div *ngIf=\"isLoading; else thenBlock\" class=\"loading\">loading...</div>\n    <ng-template #thenBlock>\n        <ng-template *ngIf=\"reservations.length > 0; then ticketBlock else noTicketBlock\"></ng-template>\n        <ng-template #ticketBlock>\n            <swiper [config]=\"config\">\n                <div class=\"swiper-wrapper\">\n                    <div *ngFor=\"let reservation of reservations\" class=\"swiper-slide\">\n                        <app-ticket [reservation]=\"reservation\"></app-ticket>\n                    </div>\n                </div>\n                <div class=\"swiper-pagination\"></div>\n            </swiper>\n        </ng-template>\n        <ng-template #noTicketBlock>\n            <app-no-ticket></app-no-ticket>\n        </ng-template>\n    </ng-template>\n</div>"
+module.exports = "<div class=\"contents\">\n    <div class=\"mb-small\"><img src=\"/assets/images/demo_01.png\"></div>\n    <ng-template *ngIf=\"reservations.length > 0; then ticketBlock else noTicketBlock\"></ng-template>\n    <ng-template #ticketBlock>\n        <swiper [config]=\"config\">\n            <div class=\"swiper-wrapper\">\n                <div *ngFor=\"let reservation of reservations\" class=\"swiper-slide\">\n                    <app-ticket [reservation]=\"reservation\"></app-ticket>\n                </div>\n            </div>\n            <div class=\"swiper-pagination\"></div>\n        </swiper>\n    </ng-template>\n    <ng-template #noTicketBlock>\n        <app-no-ticket></app-no-ticket>\n    </ng-template>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 

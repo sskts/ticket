@@ -6,7 +6,6 @@
             <div class="form-group">
                 <label class="control-label">鑑賞劇場</label>
                 <select class="form-control" name="theater" [(ngModel)]="theater" (change)="changeConditions($event)">
-                    <option value="">選択して下さい</option>
                     <option *ngFor="let theater of theaters" value="{{ theater.branchCode }}">{{ theater.name.ja }}</option>
                 </select>
             </div>
@@ -15,22 +14,19 @@
             <div class="form-group">
                 <label class="control-label">鑑賞日時</label>
                 <select class="form-control" name="date" [(ngModel)]="date" (change)="changeConditions($event)">
-                    <option value="">選択して下さい</option>
                     <option *ngFor="let date of dateList" value="{{ date.value }}">{{ date.text }}</option>
                 </select>
             </div>
         </li>
     </ul>
 
-    <div *ngIf="isLoading; else elseBlock" class="loading">loading...</div>
-    <ng-template #elseBlock>
-        <swiper [config]="config">
-            <div class="swiper-wrapper">
-                <div *ngFor="let film of filmList" class="swiper-slide">
-                    <app-film-order-of-performance [data]="film" (performanceSelect)="purchaseView($event)"></app-film-order-of-performance>
-                </div>
+    <swiper [config]="config">
+        <div class="swiper-wrapper">
+            <div *ngFor="let film of filmList" class="swiper-slide">
+                <app-film-order-of-performance [data]="film" (performanceSelect)="purchaseView($event)"></app-film-order-of-performance>
             </div>
-            <div class="swiper-pagination"></div>
-        </swiper>
-    </ng-template>
+        </div>
+        <div class="swiper-pagination"></div>
+    </swiper>
 </div>
+<app-loading *ngIf="isLoading"></app-loading>

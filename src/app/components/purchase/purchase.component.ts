@@ -51,7 +51,7 @@ export class PurchaseComponent implements OnInit {
   ) { }
 
   public async ngOnInit() {
-    this.isLoading = false;
+    this.isLoading = true;
     this.config = {
       pagination: '.swiper-pagination',
       paginationClickable: true,
