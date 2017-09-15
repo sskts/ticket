@@ -20,10 +20,14 @@ import { UserService } from '../../service/user/user.service';
  */
 export class HeaderComponent implements OnInit {
   /**
-   * タイトル
+   * ページ
    * @memberof HeaderComponent
    */
-  public title: string;
+  public page: {
+    url: string;
+    title: string;
+    prev: boolean;
+  };
   /**
    * メニュー状態
    * @memberof isOpen
@@ -50,10 +54,10 @@ export class HeaderComponent implements OnInit {
     this.name = `${this.user.contacts.familyName} ${this.user.contacts.givenName}`;
     this.portalSite = environment.portalSite;
     this.isOpen = false;
-    this.changeTitle(this.router.url);
+    this.changePage(this.router.url);
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.changeTitle(event.url);
+        this.changePage(event.url);
       }
     });
   }
@@ -66,14 +70,14 @@ export class HeaderComponent implements OnInit {
     this.isOpen = false;
   }
 
-  private changeTitle(url: string): void {
+  private changePage(url: string): void {
     const page = pages.find((value) => {
       return (value.url === url);
     });
     if (page === undefined) {
       return;
     }
-    this.title = page.title;
+    this.page = page;
   }
 
   public async logout() {
@@ -94,8 +98,9 @@ export class HeaderComponent implements OnInit {
  * @const pages
  */
 const pages = [
-  { url: '/ticket-holder', title: 'チケットホルダー' },
-  { url: '/purchase', title: 'チケット購入' },
-  { url: '/setting', title: '設定変更' },
-  { url: '/about', title: 'このアプリについて' }
+  { url: '/ticket-holder', title: 'チケットホルダー', prev: false },
+  { url: '/purchase', title: 'チケット購入', prev: false },
+  { url: '/setting', title: '設定変更', prev: false },
+  { url: '/about', title: 'このアプリについて', prev: true },
+  { url: '/profile', title: 'ユーザー情報変更', prev: true }
 ];

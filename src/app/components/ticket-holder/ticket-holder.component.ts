@@ -33,8 +33,6 @@ export class TicketHolderComponent implements OnInit {
     this.config = {
       pagination: '.swiper-pagination',
       paginationClickable: true,
-      nextButton: '.swiper-button-next',
-      prevButton: '.swiper-button-prev',
       spaceBetween: 30,
       autoHeight: true
     };
@@ -47,7 +45,6 @@ export class TicketHolderComponent implements OnInit {
     } catch (err) {
       console.error(err);
     }
-
   }
 
   /**

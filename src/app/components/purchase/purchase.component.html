@@ -1,10 +1,9 @@
 <div class="contents">
-    <div class="mb-small">スケジュール選択</div>
     <p class="read mb-small">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>
     <ul class="conditions">
         <li>
             <div class="form-group">
-                <label class="control-label">鑑賞劇場</label>
+                <div class="control-label mb-x-small">鑑賞劇場</div>
                 <select class="form-control" name="theater" [(ngModel)]="theater" (change)="changeConditions($event)">
                     <option *ngFor="let theater of theaters" value="{{ theater.branchCode }}">{{ theater.name.ja }}</option>
                 </select>
@@ -12,7 +11,7 @@
         </li>
         <li>
             <div class="form-group">
-                <label class="control-label">鑑賞日時</label>
+                <div class="control-label mb-x-small">鑑賞日時</div>
                 <select class="form-control" name="date" [(ngModel)]="date" (change)="changeConditions($event)">
                     <option *ngFor="let date of dateList" value="{{ date.value }}">{{ date.text }}</option>
                 </select>

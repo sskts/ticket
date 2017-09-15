@@ -27,7 +27,7 @@ img {
 .contents {
     padding: 10px 20px;
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100vh - 48px - 60px);
 }
 .mb-x-small {
     margin-bottom: 10px;
@@ -51,7 +51,7 @@ img {
     font-size: 24px;
 }
 .large-x-text {
-    font-size: 40px;
+    font-size: 32px;
 }
 
 .center {
@@ -88,10 +88,12 @@ img {
 .swiper-container {
     .swiper-pagination-bullet {
         background-color: #aaa;
+        border: 1px solid #ddd;
+        opacity: 0.8;
     }
     .swiper-pagination-bullet-active {
         background-color: #0074A9;
-        border: 1px solid #01B3FF;
+        border: 1px solid #00B7FF;
     }
 }
 

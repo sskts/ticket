@@ -26,11 +26,11 @@ export class AuthLoginComponent implements OnInit {
   }
 
   public async login() {
-    this.isLoading = true;
     try {
       const result = await this.sasaki.auth.signIn();
       console.log('authorize result:', result);
       this.sasaki.credentials = result;
+      this.isLoading = true;
       this.router.navigate(['/']);
     } catch (error) {
       console.error(error);

@@ -15,6 +15,7 @@ export class StartupComponent implements OnInit {
   public config: Object;
   public walkThrough: boolean;
   public step: number;
+  public isLoading: boolean;
 
   constructor(
     private sasaki: SasakiService,
@@ -22,13 +23,12 @@ export class StartupComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
+    this.isLoading = false;
     this.step = 0;
     this.walkThrough = false;
     this.config = {
       pagination: '.swiper-pagination',
       paginationClickable: true,
-      nextButton: '.swiper-button-next',
-      prevButton: '.swiper-button-prev',
       spaceBetween: 30
     };
     this.tutorialStart();
@@ -49,9 +49,11 @@ export class StartupComponent implements OnInit {
       const result = await this.sasaki.auth.signIn();
       console.log('authorize result:', result);
       this.sasaki.credentials = result;
+      this.isLoading = true;
       this.router.navigate(['/']);
     } catch (error) {
       console.error(error);
+      this.isLoading = false;
     }
   }
 

@@ -10,6 +10,7 @@ import { QRCodeModule } from 'angular2-qrcode';
 import { SwiperModule } from 'angular2-useful-swiper';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AboutComponent } from './components/about/about.component';
 import { AppComponent } from './components/app/app.component';
 import { AuthConfirmComponent } from './components/auth-confirm/auth-confirm.component';
 import { AuthLoginComponent } from './components/auth-login/auth-login.component';
@@ -19,10 +20,12 @@ import {
 } from './components/chronological-order-of-performance/chronological-order-of-performance.component';
 import { FilmOrderOfPerformanceComponent } from './components/film-order-of-performance/film-order-of-performance.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LoadingComponent } from './components/loading/loading.component';
 import { MainComponent } from './components/main/main.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { NoTicketComponent } from './components/no-ticket/no-ticket.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -36,8 +39,6 @@ import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { SasakiService } from './service/sasaki/sasaki.service';
 import { UserService } from './service/user/user.service';
-import { AboutComponent } from './components/about/about.component';
-import { LoadingComponent } from './components/loading/loading.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -64,7 +65,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     DurationPipe,
     NoTicketComponent,
     AboutComponent,
-    LoadingComponent
+    LoadingComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

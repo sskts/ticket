@@ -5,7 +5,7 @@
   "scripts": {
     "start": "ng serve --port 3333 --ssl true --ssl-key \"./certificate/server.key\" --ssl-cert \"./certificate/server.crt\" --env=source",
     "ng": "ng",
-    "build": "ng build --environment=dev --output-path=./development && ng build --environment=test --output-path=./test",
+    "build": "ng build --environment=dev --output-path=./dist/development && ng build --environment=test --output-path=./dist/test",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "^4.3.6",
     "@angular/router": "^4.3.6",
     "@motionpicture/sasaki-api": "git+https://tetsu:M0P!Xmopix@m-p.backlog.jp/git/SSKTS/api-javascript-client.git#feature/SSKTS-559",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.4",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.5",
     "angular2-moment": "^1.7.0",
     "angular2-qrcode": "^2.0.1",
     "angular2-useful-swiper": "^4.0.7",
@@ -34,10 +34,10 @@
     "zone.js": "^0.8.17"
   },
   "devDependencies": {
-    "@angular/cli": "^1.4.1",
+    "@angular/cli": "^1.4.2",
     "@angular/compiler-cli": "^4.3.6",
     "@angular/language-service": "^4.3.6",
-    "@types/jasmine": "^2.5.54",
+    "@types/jasmine": "^2.6.0",
     "@types/jasminewd2": "^2.0.3",
     "@types/node": "^6.0.88",
     "codelyzer": "~3.0.1",

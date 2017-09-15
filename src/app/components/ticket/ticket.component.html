@@ -11,12 +11,8 @@
                 reservation.reservationFor.coaInfo.dateJouei }}</dd>
         </dl>
         <dl class="theater">
-            <dt class="small-x-text">劇場</dt>
-            <dd>{{ reservation.reservationFor.superEvent.location.name.ja }}</dd>
-        </dl>
-        <dl class="screen">
-            <dt class="small-x-text">スクリーン</dt>
-            <dd>{{ reservation.reservationFor.location.name.ja }}</dd>
+            <dt class="small-x-text">劇場/スクリーン</dt>
+            <dd>{{ reservation.reservationFor.superEvent.location.name.ja }} / {{ reservation.reservationFor.location.name.ja }}</dd>
         </dl>
     </div>
     <ul>
@@ -26,7 +22,7 @@
                 <div *ngIf="reservedTicket.coaTicketInfo.addGlasses > 0">{{ reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>
                 <div *ngIf="reservedTicket.coaTicketInfo.addGlasses === 0">{{ reservedTicket.coaTicketInfo.ticketName }}</div>
             </div>
-            <qr-code class="qr" [value]="reservedTicket.ticketToken" [size]="125" [padding]="12.5"></qr-code>
+            <qr-code class="qr" [value]="reservedTicket.ticketToken" [size]="100" [padding]="10"></qr-code>
         </li>
     </ul>
 </div>

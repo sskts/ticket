@@ -8,6 +8,7 @@ import { AboutComponent } from './components/about/about.component';
 import { AuthLoginComponent } from './components/auth-login/auth-login.component';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
       { path: 'ticket-holder', component: TicketHolderComponent },
       { path: 'purchase', component: PurchaseComponent },
       { path: 'setting', component: SettingComponent },
-      { path: 'about', component: AboutComponent }
+      { path: 'about', component: AboutComponent },
+      { path: 'profile', component: ProfileComponent }
     ]
   },
   {

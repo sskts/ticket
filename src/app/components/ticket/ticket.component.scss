@@ -15,16 +15,17 @@
             border: none;
         }
         dt {
-            width: 80px;
+            width: 100px;
             text-align: center;
             display: table-cell;
             vertical-align: middle;
         }
         dd {
-            width: calc(100% - 80px);
-            padding: 20px 20px 20px 0;
+            width: calc(100% - 100px);
+            padding: 10px 0;
             display: table-cell;
             vertical-align: middle;
+            line-height: 1.4;
         }
     }
 }
@@ -32,7 +33,7 @@ ul {
     li {
         background-color: #0074A9;
         color: #FFF;
-        padding: 20px;
+        padding: 10px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -41,6 +42,7 @@ ul {
         }
         .ticket-info {
             text-align: center;
+            width: calc(100% - 100px);
         }
     }
 }
