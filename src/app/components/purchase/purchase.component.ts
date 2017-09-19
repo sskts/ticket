@@ -2,7 +2,7 @@
  * PurchaseComponent
  */
 import { Component, OnInit } from '@angular/core';
-import * as sasaki from '@motionpicture/sasaki-api';
+import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 
 import { SasakiService } from '../../service/sasaki/sasaki.service';

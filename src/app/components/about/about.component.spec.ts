@@ -11,9 +11,9 @@ describe('AboutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AboutComponent ]
+      declarations: [AboutComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,7 +22,7 @@ describe('AboutComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('表示', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -15,7 +15,7 @@ export class TimeFormatPipe implements PipeTransform {
    * @param {Date} screeningTime
    * @param {string} referenceDate
    */
-  public transform(screeningTime: Date, referenceDate: string): any {
+  public transform(screeningTime: Date, referenceDate: string): string {
     const HOUR = 60;
     const DIGITS = -2;
     const diff = moment(screeningTime).diff(moment(referenceDate), 'minutes');

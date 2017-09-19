@@ -1,9 +1,14 @@
 /**
  * MainComponentテスト
  */
+import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainComponent } from './main.component';
+
+// tslint:disable-next-line:no-stateless-class component-selector
+@Component({ selector: 'app-header', template: '' })
+class HeaderComponent { }
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -11,9 +16,12 @@ describe('MainComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainComponent ]
+      declarations: [
+        MainComponent,
+        HeaderComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

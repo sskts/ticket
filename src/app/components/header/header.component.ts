@@ -81,6 +81,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public async logout() {
+    this.close();
     try {
       await this.sasaki.auth.signOut();
       console.log('logout');
@@ -102,5 +103,8 @@ const pages = [
   { url: '/purchase', title: 'チケット購入', prev: false },
   { url: '/setting', title: '設定変更', prev: false },
   { url: '/about', title: 'このアプリについて', prev: true },
-  { url: '/profile', title: 'ユーザー情報変更', prev: true }
+  { url: '/profile', title: 'ユーザー情報変更', prev: true },
+  { url: '/policy', title: '利用規約', prev: true },
+  { url: '/law', title: '特定商取引法に基づく表記', prev: true },
+  { url: '/privacy', title: 'プライバシーポリシー', prev: true }
 ];

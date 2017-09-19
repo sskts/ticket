@@ -6,11 +6,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './components/about/about.component';
 import { AuthLoginComponent } from './components/auth-login/auth-login.component';
+import { LawComponent } from './components/law/law.component';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PolicyComponent } from './components/policy/policy.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
-import { SettingComponent } from './components/setting/setting.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignOutComponent } from './components/sign-out/sign-out.component';
 import { StartupComponent } from './components/startup/startup.component';
@@ -26,17 +28,17 @@ const appRoutes: Routes = [
     children: [
       { path: 'ticket-holder', component: TicketHolderComponent },
       { path: 'purchase', component: PurchaseComponent },
-      { path: 'setting', component: SettingComponent },
       { path: 'about', component: AboutComponent },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent },
+      { path: 'policy', component: PolicyComponent },
+      { path: 'law', component: LawComponent },
+      { path: 'privacy', component: PrivacyComponent }
     ]
   },
   {
     path: 'auth',
     children: [
       { path: 'login', component: AuthLoginComponent }
-      // { path: 'register', component: AuthRegisterComponent },
-      // { path: 'confirm', component: AuthConfirmComponent }
     ]
   },
   { path: 'startup', component: StartupComponent },

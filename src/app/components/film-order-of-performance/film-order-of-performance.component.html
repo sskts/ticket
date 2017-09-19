@@ -10,7 +10,7 @@
         </dl>
     </div>
     <ul>
-        <li *ngFor="let film of data.films" class="btn btn-primary" (click)="performanceSelect(film)">
+        <li *ngFor="let film of data.films" (click)="performanceSelect(film)">
             <div class="mb-x-small large-text"><strong>{{ film.startDate | timeFormat: film.coaInfo.dateJouei }}</strong></div>
             <div class="mb-x-small">～ {{ film.endDate | timeFormat: film.coaInfo.dateJouei }}</div>
             <div>{{ film.location.name.ja }} {{ (film.offer.availability | availability).string }}</div>

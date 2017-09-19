@@ -4,6 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { SasakiService } from '../../service/sasaki/sasaki.service';
 import { UserService } from '../../service/user/user.service';
 
 @Component({
@@ -12,21 +13,23 @@ import { UserService } from '../../service/user/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
+  public isLoading: boolean;
   public updateForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private user: UserService
+    private user: UserService,
+    private sasaki: SasakiService
   ) {
     console.log('LoginComponent constructor');
   }
 
   public ngOnInit() {
+    this.isLoading = false;
     this.updateForm = this.formBuilder.group({
       mail: new FormControl(this.user.contacts.email, [
         Validators.required,
-        Validators.maxLength(10),
+        Validators.maxLength(30),
         Validators.email
       ]),
       givenName: new FormControl(this.user.contacts.givenName, [
@@ -39,16 +42,26 @@ export class ProfileComponent implements OnInit {
         Validators.maxLength(10),
         Validators.pattern(/^[ぁ-ゞー]+$/)
       ]),
-      phoneNumber: new FormControl(this.user.contacts.telephone, [
+      telephone: new FormControl(this.user.contacts.telephone.replace(/\-/g, ''), [
         Validators.required,
-        Validators.maxLength(10),
+        Validators.maxLength(15),
         Validators.pattern(/^[0-9]+$/)
       ])
     });
   }
 
-  public submit() {
-    console.log(this.updateForm);
+  public async submit() {
+    this.isLoading = true;
+    await this.sasaki.people.updateContacts({
+      personId: 'me',
+      contacts: {
+        email: this.updateForm.controls.mail.value,
+        familyName: this.updateForm.controls.familyName.value,
+        givenName: this.updateForm.controls.givenName.value,
+        telephone: this.updateForm.controls.telephone.value
+      }
+    });
+    this.isLoading = false;
   }
 
 }

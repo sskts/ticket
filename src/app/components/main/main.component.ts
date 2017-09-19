@@ -13,7 +13,6 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   public ngOnInit() {
-    
   }
 
 }

@@ -2,7 +2,7 @@
  * TicketHolderComponent
  */
 import { Component, OnInit } from '@angular/core';
-import * as sasaki from '@motionpicture/sasaki-api';
+import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 
 import { SasakiService } from '../../service/sasaki/sasaki.service';
 
@@ -33,7 +33,6 @@ export class TicketHolderComponent implements OnInit {
     this.config = {
       pagination: '.swiper-pagination',
       paginationClickable: true,
-      spaceBetween: 30,
       autoHeight: true
     };
     try {
@@ -41,10 +40,11 @@ export class TicketHolderComponent implements OnInit {
         personId: 'me'
       });
       this.reservations = this.convertToReservations();
-      this.isLoading = false;
     } catch (err) {
-      console.error(err);
+      console.log(err);
+      this.reservations = [];
     }
+    this.isLoading = false;
   }
 
   /**

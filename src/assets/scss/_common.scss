@@ -17,6 +17,10 @@ p {
 }
 a {
     color: #FFF;
+    &:focus, &:hover {
+        color: inherit;
+        text-decoration: none;
+    }
 }
 div {
     line-height: 1;
@@ -24,11 +28,69 @@ div {
 img {
     width: 100%;
 }
+input[type=text],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=email],
+input[type=number],
+input[type=submit],
+textarea,
+select,
+option,
+button,
+label {
+    font-weight: 500;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+input[type=text],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=email],
+input[type=number] {
+    width: 100%;
+    border: 1px solid #999;
+    padding: 0 10px;
+    background-color: #FFF;
+    line-height: 44px;
+    height: 44px;
+    outline: none;
+}
+
+textarea {
+    width: 100%;
+    border: 1px solid #999;
+    padding: 8px 10px;
+    background-color: #FFF;
+}
+
+select.form-control {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    overflow: hidden;
+    border: 1px solid #999;
+    padding: 0 54px 0 10px;
+    height: 44px;
+    background-color: #FFF;
+    background-image: url(/images/default/common/select_box.svg);
+    background-repeat: no-repeat;
+    background-size: 44px;
+    background-position: right center;
+    outline: none;
+}
+
 .contents {
-    padding: 10px 20px;
+    padding: 10px 15px;
     position: relative;
     min-height: calc(100vh - 48px - 60px);
 }
+
 .mb-x-small {
     margin-bottom: 10px;
 }
@@ -107,4 +169,14 @@ img {
             margin: 0 0 10px;
         }
     }
+}
+
+.bg-image-blue {
+    background: url(/assets/images/common/bg_01.svg);
+    background-size: cover;
+}
+
+.btn:hover {
+    background-color: inherit !important;
+    border-color: inherit !important;
 }

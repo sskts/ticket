@@ -2,7 +2,7 @@
  * UserService
  */
 import { Injectable } from '@angular/core';
-import * as sasaki from '@motionpicture/sasaki-api';
+import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 
 @Injectable()
 export class UserService {

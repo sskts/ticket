@@ -2,7 +2,7 @@
  * FilmOrderOfPerformanceComponent
  */
 import { Component, Input, OnInit } from '@angular/core';
-import * as sasaki from '@motionpicture/sasaki-api';
+import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 
 import { environment } from '../../../environments/environment';
 

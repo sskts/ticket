@@ -1,5 +1,9 @@
+/**
+ * test
+ */
 // This file is required by karma.conf.js and loads recursively all the .spec and framework files
 
+// tslint:disable:no-consecutive-blank-lines no-import-side-effect ordered-imports no-function-expression no-reserved-keywords
 import 'zone.js/dist/long-stack-trace-zone';
 import 'zone.js/dist/proxy.js';
 import 'zone.js/dist/sync-test';

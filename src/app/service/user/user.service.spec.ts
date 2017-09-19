@@ -1,4 +1,7 @@
-import { TestBed, inject } from '@angular/core/testing';
+/**
+ * UserServiceテスト
+ */
+import { inject, TestBed } from '@angular/core/testing';
 
 import { UserService } from './user.service';
 
