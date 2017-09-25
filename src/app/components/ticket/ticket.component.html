@@ -1,17 +1,17 @@
 <div class="inner">
     <div class="info">
         <dl class="film">
-            <dt class="small-x-text">作品名</dt>
+            <dt class="small-x-text icon-film-name-gray">作品名</dt>
             <dd>{{ reservation.reservationFor.workPerformed.name }}</dd>
         </dl>
         <dl class="date">
-            <dt class="small-x-text">鑑賞日時</dt>
+            <dt class="small-x-text icon-calendar-gray">鑑賞日時</dt>
             <dd>{{ reservation.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{ reservation.reservationFor.startDate
                 | timeFormat: reservation.reservationFor.coaInfo.dateJouei }}-{{ reservation.reservationFor.endDate | timeFormat:
                 reservation.reservationFor.coaInfo.dateJouei }}</dd>
         </dl>
         <dl class="theater">
-            <dt class="small-x-text">劇場/スクリーン</dt>
+            <dt class="small-x-text icon-location-gray">劇場/スクリーン</dt>
             <dd>{{ reservation.reservationFor.superEvent.location.name.ja }} / {{ reservation.reservationFor.location.name.ja }}</dd>
         </dl>
     </div>

@@ -1,6 +1,6 @@
 <div class="contents profile bg-image-blue">
     <form [formGroup]="updateForm" (ngSubmit)="submit()">
-        <div class="form-group">
+        <div class="mb-small">
             <label class="control-label mb-x-small">メールアドレス</label>
             <input type="email" class="form-control" name="mail" [formControl]="updateForm.controls.mail">
             <p class="text-danger small-text" *ngIf="updateForm.controls.mail.errors?.required && updateForm.controls.mail.dirty">必須項目</p>
@@ -8,7 +8,7 @@
             <p class="text-danger small-text" *ngIf="updateForm.controls.mail.errors?.email && updateForm.controls.mail.dirty">メール形式で入力してください</p>
         </div>
 
-        <div class="form-group">
+        <div class="mb-small">
             <label class="control-label mb-x-small">せい</label>
             <input type="text" class="form-control" name="familyName" [formControl]="updateForm.controls.familyName">
             <p class="text-danger small-text" *ngIf="updateForm.controls.familyName.errors?.required && updateForm.controls.familyName.dirty">必須項目</p>
@@ -16,7 +16,7 @@
             <p class="text-danger small-text" *ngIf="updateForm.controls.familyName.errors?.pattern && updateForm.controls.familyName.dirty">ひらがなで入力してください</p>
         </div>
 
-        <div class="form-group">
+        <div class="mb-small">
             <label class="control-label mb-x-small">めい</label>
             <input type="text" class="form-control" name="givenName" [formControl]="updateForm.controls.givenName">
             <p class="text-danger small-text" *ngIf="updateForm.controls.givenName.errors?.required && updateForm.controls.givenName.dirty">必須項目</p>
@@ -24,7 +24,7 @@
             <p class="text-danger small-text" *ngIf="updateForm.controls.givenName.errors?.pattern && updateForm.controls.givenName.dirty">ひらがなで入力してください</p>
         </div>
 
-        <div class="form-group">
+        <div class="mb-small">
             <label class="control-label mb-x-small">電話番号</label>
             <input type="tel" class="form-control" name="telephone" [formControl]="updateForm.controls.telephone">
             <p class="text-danger small-text" *ngIf="updateForm.controls.telephone.errors?.required && updateForm.controls.telephone.dirty">必須項目</p>

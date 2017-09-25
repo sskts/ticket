@@ -70,7 +70,7 @@ textarea {
     background-color: #FFF;
 }
 
-select.form-control {
+select {
     -moz-appearance: none;
     -webkit-appearance: none;
     overflow: hidden;
@@ -78,7 +78,7 @@ select.form-control {
     padding: 0 54px 0 10px;
     height: 44px;
     background-color: #FFF;
-    background-image: url(/images/default/common/select_box.svg);
+    background-image: url(/assets/images/common/select.svg);
     background-repeat: no-repeat;
     background-size: 44px;
     background-position: right center;
@@ -121,13 +121,31 @@ select.form-control {
     margin-right: auto;
 }
 
+.text-right {
+    text-align: right;
+}
+
 .text-center {
     text-align: center;
+}
+
+.control-label {
+    display: block;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
 }
 
 .btn {
     border-radius: 30px;
     padding: 20px 0; 
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
 }
 
 .btn-primary {
@@ -145,6 +163,11 @@ select.form-control {
     &:hover {
         background-color: transparent;
     }
+}
+
+.btn:hover {
+    background-color: inherit !important;
+    border-color: inherit !important;
 }
 
 .swiper-container {
@@ -174,9 +197,4 @@ select.form-control {
 .bg-image-blue {
     background: url(/assets/images/common/bg_01.svg);
     background-size: cover;
-}
-
-.btn:hover {
-    background-color: inherit !important;
-    border-color: inherit !important;
 }

@@ -1,0 +1,40 @@
+.cover {
+    position: fixed;
+    top: 48px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: none;
+    &.active {
+        display: block;
+    }
+}
+.menu {
+    position: fixed;
+    top: 48px;
+    bottom: 0;
+    right: -100%;
+    z-index: 20;
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    transition: right 0.1s;
+    &.active {
+        right: 0;
+    }
+    .title {
+        background-color: #4D4D4D;
+        padding: 20px;
+    }
+    li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+        &.active {
+            background-color: rgb(32, 32, 32);
+        }
+        a, span {
+            display: block;
+            padding: 20px;
+        }
+    }
+}

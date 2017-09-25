@@ -5,8 +5,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 import { environment } from '../../../environments/environment';
-import { SasakiService } from '../../service/sasaki/sasaki.service';
-import { UserService } from '../../service/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -19,41 +17,24 @@ import { UserService } from '../../service/user/user.service';
  * @implements OnInit
  */
 export class HeaderComponent implements OnInit {
-  /**
-   * ページ
-   * @memberof HeaderComponent
-   */
+
   public page: {
     url: string;
     title: string;
     prev: boolean;
   };
-  /**
-   * メニュー状態
-   * @memberof isOpen
-   */
-  public isOpen: boolean;
-  /**
-   * 名前
-   * @memberof HeaderComponent
-   */
-  public name: string;
-  /**
-   * ポータルサイト
-   * @memberof HeaderComponent
-   */
+  public isMenuOpen: boolean;
+  public isLogoutModalOpen: boolean;
   public portalSite: string;
 
   constructor(
-    private router: Router,
-    private user: UserService,
-    private sasaki: SasakiService
+    private router: Router
   ) { }
 
   public ngOnInit(): void {
-    this.name = `${this.user.contacts.familyName} ${this.user.contacts.givenName}`;
     this.portalSite = environment.portalSite;
-    this.isOpen = false;
+    this.isMenuOpen = false;
+    this.isLogoutModalOpen = false;
     this.changePage(this.router.url);
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -62,12 +43,21 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public open(): void {
-    this.isOpen = true;
+  public menuOpen(): void {
+    this.isMenuOpen = true;
   }
 
-  public close(): void {
-    this.isOpen = false;
+  public menuClose(): void {
+    this.isMenuOpen = false;
+  }
+
+  public logoutModalOpen(): void {
+    this.menuClose();
+    this.isLogoutModalOpen = true;
+  }
+
+  public logoutModalClose(): void {
+    this.isLogoutModalOpen = false;
   }
 
   private changePage(url: string): void {
@@ -79,19 +69,6 @@ export class HeaderComponent implements OnInit {
     }
     this.page = page;
   }
-
-  public async logout() {
-    this.close();
-    try {
-      await this.sasaki.auth.signOut();
-      console.log('logout');
-      this.sasaki.credentials = null;
-      this.router.navigate(['/auth/login']);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
 }
 
 /**

@@ -5,7 +5,7 @@
     overflow: hidden;
 }
 .info {
-    padding: 0 10px 0;
+    padding: 10px 10px 0;
     color: #333;
     dl {
         border-bottom: 1px dashed #CCC;
@@ -19,10 +19,13 @@
             text-align: center;
             display: table-cell;
             vertical-align: middle;
+            &:before {
+                margin: 0 auto 5px;
+            }
         }
         dd {
             width: calc(100% - 100px);
-            padding: 10px 0;
+            padding: 15px 0;
             display: table-cell;
             vertical-align: middle;
             line-height: 1.4;

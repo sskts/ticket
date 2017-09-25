@@ -1,22 +1,11 @@
 <header>
     <div class="logo"><img src="/assets/images/common/logo.svg"></div>
     <h1>{{ page.title }}</h1>
-    <div class="button" [class.active]="isOpen" (click)="(isOpen) ? close() : open()">
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="button" [class.active]="isMenuOpen" (click)="(isMenuOpen) ? menuClose() : menuOpen()">
+        <div></div><div></div><div></div>
     </div>
 </header>
-<div class="cover" [class.active]="isOpen" (click)="close()"></div>
-<div class="menu" [class.active]="isOpen">
-    <div class="title">{{ name }}</div>
-    <ul>
-        <li><span routerLink="/about" routerLinkActive="active" (click)="close()">このアプリについて</span></li>
-        <li><span routerLink="/profile" routerLinkActive="active" (click)="close()">ユーザー情報変更</span></li>
-        <li><span routerLink="/policy" routerLinkActive="active" (click)="close()">利用規約</span></li>
-        <li><span routerLink="/law" routerLinkActive="active" (click)="close()">特定商取引法に基づく表記</span></li>
-        <li><span routerLink="/privacy" routerLinkActive="active" (click)="close()">プライバシーポリシー</span></li>
-        <li><a [attr.href]="portalSite" target="_blank">シネマサンシャインポータルサイト</a></li>
-        <li><span (click)="logout()">ログアウト</span></li>
-    </ul>
-</div>
+
+<app-header-menu [isOpen]="isMenuOpen" (logout)="logoutModalOpen()" (close)="menuClose()"></app-header-menu>
+
+<app-logout [isOpen]="isLogoutModalOpen" (close)="logoutModalClose()"></app-logout>

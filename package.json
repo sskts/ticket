@@ -6,7 +6,7 @@
     "start": "ng serve --port 3333 --ssl true --ssl-key \"./certificate/server.key\" --ssl-cert \"./certificate/server.crt\" --env=source",
     "ng": "ng",
     "build": "ng build --environment=dev --output-path=./dist/development && ng build --environment=test --output-path=./dist/test",
-    "test": "ng test",
+    "test": "ng test --watch=true --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "check": "ng lint && nsp check"
@@ -22,7 +22,7 @@
     "@angular/platform-browser": "^4.4.2",
     "@angular/platform-browser-dynamic": "^4.4.2",
     "@angular/router": "^4.4.2",
-    "@motionpicture/sskts-api-javascript-client": "^1.0.0-alpha.0",
+    "@motionpicture/sskts-api-javascript-client": "^1.1.0",
     "angular2-moment": "^1.7.0",
     "angular2-qrcode": "^2.0.1",
     "angular2-useful-swiper": "^4.0.7",

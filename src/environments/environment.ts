@@ -31,5 +31,6 @@ export const environment = {
     // tslint:disable-next-line:no-http-string
     portalSite: 'http://www.cinemasunshine.co.jp',
     // tslint:disable-next-line:no-http-string
-    ticketingSite: 'https://localhost'
+    // ticketingSite: 'https://localhost'
+    ticketingSite: 'https://sskts-frontend-development-preview.azurewebsites.net'
 };
