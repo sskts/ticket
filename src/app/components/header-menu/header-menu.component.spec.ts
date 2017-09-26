@@ -1,25 +1,28 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// /**
+//  * HeaderMenuComponentテスト
+//  */
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderMenuComponent } from './header-menu.component';
+// import { HeaderMenuComponent } from './header-menu.component';
 
-describe('HeaderMenuComponent', () => {
-  let component: HeaderMenuComponent;
-  let fixture: ComponentFixture<HeaderMenuComponent>;
+// describe('HeaderMenuComponent', () => {
+//   let component: HeaderMenuComponent;
+//   let fixture: ComponentFixture<HeaderMenuComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ HeaderMenuComponent ]
-    })
-    .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ HeaderMenuComponent ]
+//     })
+//     .compileComponents();
+//   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderMenuComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(HeaderMenuComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });

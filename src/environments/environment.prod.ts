@@ -28,6 +28,8 @@ export const environment = {
   tokenIssuer: 'https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_bQcyLA7Jq',
   sasakiAPIEndpoint: 'https://sskts-api-development-preview.azurewebsites.net',
 
+  resourceServerDomain: 'https://sskts-api-development.azurewebsites.net',
+
   // tslint:disable-next-line:no-http-string
   portalSite: 'http://www.cinemasunshine.co.jp',
   // tslint:disable-next-line:no-http-string
