@@ -1,70 +1,70 @@
 /**
- * AuthLoginComponentテスト
+ * LoginComponentテスト
  */
 import { Injectable } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 
 import { LoadingComponent } from '../../components/loading/loading.component';
-import { SasakiService } from '../../service/sasaki/sasaki.service';
-import { router } from '../../testing/router';
-import { SasakiServiceStub } from '../../testing/sasaki.service';
-import { AuthLoginComponent } from './auth-login.component';
+import { SasakiService, SasakiStubService } from '../../service/sasaki/sasaki-stub.service';
+import { Router, RouterStub } from '../../testing/router-stubs';
+import { LoginComponent } from './login.component';
 
-describe('AuthLoginComponent', () => {
+describe('LoginComponent', () => {
 
-    it('should be created', async () => {
+    it('コンポーネント生成', async () => {
         await TestBed.configureTestingModule({
             declarations: [
-                AuthLoginComponent,
+                LoginComponent,
                 LoadingComponent
             ],
             providers: [
-                { provide: SasakiService, useClass: SasakiServiceStub },
-                { provide: Router, useValue: router }
+                { provide: SasakiService, useClass: SasakiStubService },
+                { provide: Router, useClass: RouterStub }
             ]
         })
             .compileComponents();
-        const fixture = TestBed.createComponent(AuthLoginComponent);
+        const fixture = TestBed.createComponent(LoginComponent);
         const component = fixture.componentInstance;
         fixture.detectChanges();
         await expect(component).toBeTruthy();
     });
 
     it('login 正常', async () => {
+        const routerStub = new RouterStub();
+        routerStub.navigate = jasmine.createSpy('navigate');
         await TestBed.configureTestingModule({
             declarations: [
-                AuthLoginComponent,
+                LoginComponent,
                 LoadingComponent
             ],
             providers: [
-                { provide: SasakiService, useClass: SasakiServiceStub },
-                { provide: Router, useValue: router }
+                { provide: SasakiService, useClass: SasakiStubService },
+                { provide: Router, useValue: routerStub }
             ]
         })
             .compileComponents();
-        const fixture = TestBed.createComponent(AuthLoginComponent);
+        const fixture = TestBed.createComponent(LoginComponent);
         const component = fixture.componentInstance;
         fixture.detectChanges();
         await component.login();
-        await expect(router.navigate).toHaveBeenCalled();
+        await expect(routerStub.navigate).toHaveBeenCalled();
     });
 
     it('login エラー', async () => {
-        const sasakiService = new SasakiServiceStub();
+        const sasakiService = new SasakiStubService();
         spyOn(sasakiService.auth, 'signIn').and.throwError('signInエラー');
         await TestBed.configureTestingModule({
             declarations: [
-                AuthLoginComponent,
+                LoginComponent,
                 LoadingComponent
             ],
             providers: [
                 { provide: SasakiService, useValue: sasakiService },
-                { provide: Router, useValue: router }
+                { provide: Router, useClass: RouterStub }
             ]
         })
             .compileComponents();
-        const fixture = TestBed.createComponent(AuthLoginComponent);
+        const fixture = TestBed.createComponent(LoginComponent);
         const component = fixture.componentInstance;
         fixture.detectChanges();
         await component.login();

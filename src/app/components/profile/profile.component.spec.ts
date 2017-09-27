@@ -1,28 +1,43 @@
-// /**
-//  * ProfileComponentテスト
-//  */
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+/**
+ * ProfileComponentテスト
+ */
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// import { ProfileComponent } from './profile.component';
+import { SasakiService, SasakiStubService } from '../../service/sasaki/sasaki-stub.service';
+import { UserService, UserStubService } from '../../service/user/user-stub.service';
+import { LoadingComponent } from '../loading/loading.component';
+import { ProfileComponent } from './profile.component';
 
-// describe('ProfileComponent', () => {
-//   let component: ProfileComponent;
-//   let fixture: ComponentFixture<ProfileComponent>;
+describe('ProfileComponent', () => {
+    let component: ProfileComponent;
+    let fixture: ComponentFixture<ProfileComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ ProfileComponent ]
-//     })
-//     .compileComponents();
-//   }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                ProfileComponent,
+                LoadingComponent
+            ],
+            imports: [
+                FormsModule,
+                ReactiveFormsModule
+            ],
+            providers: [
+                { provide: SasakiService, useClass: SasakiStubService },
+                { provide: UserService, useClass: UserStubService }
+            ]
+        })
+            .compileComponents();
+    }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(ProfileComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ProfileComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+    it('コンポーネント生成', () => {
+        expect(component).toBeTruthy();
+    });
+});

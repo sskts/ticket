@@ -12,8 +12,11 @@
 
 // describe('FilmOrderOfPerformanceComponent', () => {
 
-//     it('should be created', async () => {
-//         await TestBed.configureTestingModule({
+//     let component: FilmOrderOfPerformanceComponent;
+//     let fixture: ComponentFixture<FilmOrderOfPerformanceComponent>;
+
+//     beforeEach(async(() => {
+//         TestBed.configureTestingModule({
 //             declarations: [
 //                 FilmOrderOfPerformanceComponent,
 //                 DurationPipe,
@@ -22,60 +25,40 @@
 //             ]
 //         })
 //             .compileComponents();
-//         const fixture = TestBed.createComponent(FilmOrderOfPerformanceComponent);
-//         const component = fixture.componentInstance;
-//         const data: any = {
-//             id: '',
-//             films: [
-//                 {
-//                     workPerformed: { name: '', duration: 'PT2H16M' },
-//                     startDate: moment().add(1, 'hours').toDate(),
-//                     endDate: moment().add(2, 'hours').toDate(),
-//                     coaInfo: { dateJouei: moment().format('YYYYMMDD') },
-//                     location: {
-//                         name: { ja: '' },
-//                         offer: { availability: '' }
-//                     }
-//                 }
-//             ]
-//         };
-//         component.data = data;
+//     }));
+
+//     beforeEach(() => {
+//         fixture = TestBed.createComponent(FilmOrderOfPerformanceComponent);
+//         component = fixture.componentInstance;
 //         fixture.detectChanges();
-//         await expect(component).toBeTruthy();
 //     });
 
-//     it('performanceSelect', async () => {
-//         await TestBed.configureTestingModule({
-//             declarations: [
-//                 FilmOrderOfPerformanceComponent,
-//                 DurationPipe,
-//                 TimeFormatPipe,
-//                 AvailabilityPipe
-//             ]
-//         })
-//             .compileComponents();
-//         const fixture = TestBed.createComponent(FilmOrderOfPerformanceComponent);
-//         const component = fixture.componentInstance;
+//     it('コンポーネント生成', () => {
 //         const data: any = {
-//             id: '',
+//             id: '123',
 //             films: [
 //                 {
-//                     workPerformed: { name: '', duration: 'PT2H16M' },
-//                     startDate: moment().add(1, 'hours').toDate(),
-//                     endDate: moment().add(2, 'hours').toDate(),
-//                     coaInfo: { dateJouei: moment().format('YYYYMMDD') },
+//                     startDate: moment().toDate(),
+//                     endDate: moment().add(1, 'hours').toDate(),
+//                     coaInfo: {
+//                         dateJouei: moment().format('YYYYMMDD')
+//                     },
+//                     workPerformed: {
+//                         duration: 'PT1H40M',
+//                         identifier: '99315',
+//                         name: '通常３Ｄ作品テスト（R15+)'
+//                     },
 //                     location: {
-//                         name: { ja: '' },
-//                         offer: { availability: '' }
+//                         name: { ja: '' }
+//                     },
+//                     offer: {
+//                         availability: 100
 //                     }
 //                 }
 //             ]
 //         };
 //         component.data = data;
-//         fixture.detectChanges();
-//         spyOn(location, 'href').and.returnValue({});
-//         component.performanceSelect(data.films[0]);
-//         await expect(component).toBeTruthy();
-//         await expect(location.href).toHaveBeenCalled();
+//         expect(component).toBeTruthy();
 //     });
+
 // });

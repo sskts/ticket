@@ -65,6 +65,8 @@ export class HeaderComponent implements OnInit {
       return (value.url === url);
     });
     if (page === undefined) {
+      this.page = { url: '', title: '', prev: false };
+
       return;
     }
     this.page = page;

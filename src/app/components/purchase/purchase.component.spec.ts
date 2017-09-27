@@ -6,23 +6,23 @@
 // import { PurchaseComponent } from './purchase.component';
 
 // describe('PurchaseComponent', () => {
-//   let component: PurchaseComponent;
-//   let fixture: ComponentFixture<PurchaseComponent>;
+//     let component: PurchaseComponent;
+//     let fixture: ComponentFixture<PurchaseComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ PurchaseComponent ]
-//     })
-//     .compileComponents();
-//   }));
+//     beforeEach(async(() => {
+//         TestBed.configureTestingModule({
+//             declarations: [PurchaseComponent]
+//         })
+//             .compileComponents();
+//     }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(PurchaseComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+//     beforeEach(() => {
+//         fixture = TestBed.createComponent(PurchaseComponent);
+//         component = fixture.componentInstance;
+//         fixture.detectChanges();
+//     });
 
-//   it('should be created', () => {
-//     expect(component).toBeTruthy();
-//   });
+//     it('should be created', () => {
+//         expect(component).toBeTruthy();
+//     });
 // });

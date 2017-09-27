@@ -25,7 +25,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_about_about_component__ = __webpack_require__("../../../../../src/app/components/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_auth_login_auth_login_component__ = __webpack_require__("../../../../../src/app/components/auth-login/auth-login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_auth_login_auth_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_main_main_component__ = __webpack_require__("../../../../../src/app/components/main/main.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/components/not-found/not-found.component.ts");
@@ -82,7 +82,7 @@ var appRoutes = [
     {
         path: 'auth',
         children: [
-            { path: 'login', component: __WEBPACK_IMPORTED_MODULE_3__components_auth_login_auth_login_component__["a" /* AuthLoginComponent */] }
+            { path: 'login', component: __WEBPACK_IMPORTED_MODULE_3__components_auth_login_auth_login_component__["a" /* LoginComponent */] }
         ]
     },
     { path: 'startup', component: __WEBPACK_IMPORTED_MODULE_13__components_startup_startup_component__["a" /* StartupComponent */] },
@@ -128,7 +128,7 @@ var AppRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_about_about_component__ = __webpack_require__("../../../../../src/app/components/about/about.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_app_app_component__ = __webpack_require__("../../../../../src/app/components/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_auth_login_auth_login_component__ = __webpack_require__("../../../../../src/app/components/auth-login/auth-login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_auth_login_auth_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_chronological_order_of_performance_chronological_order_of_performance_component__ = __webpack_require__("../../../../../src/app/components/chronological-order-of-performance/chronological-order-of-performance.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_film_order_of_performance_film_order_of_performance_component__ = __webpack_require__("../../../../../src/app/components/film-order-of-performance/film-order-of-performance.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
@@ -216,7 +216,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_22__components_purchase_purchase_component__["a" /* PurchaseComponent */],
                 __WEBPACK_IMPORTED_MODULE_18__components_not_found_not_found_component__["a" /* NotFoundComponent */],
                 __WEBPACK_IMPORTED_MODULE_15__components_main_main_component__["a" /* MainComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__components_auth_login_auth_login_component__["a" /* AuthLoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__components_auth_login_auth_login_component__["a" /* LoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_23__components_sign_in_sign_in_component__["a" /* SignInComponent */],
                 __WEBPACK_IMPORTED_MODULE_24__components_sign_out_sign_out_component__["a" /* SignOutComponent */],
                 __WEBPACK_IMPORTED_MODULE_30__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
@@ -369,14 +369,14 @@ var AppComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/auth-login/auth-login.component.html":
+/***/ "../../../../../src/app/components/login/login.component.html":
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"contents\">\n    <div class=\"logo text-center mb-middle\"><img src=\"/assets/images/common/logo.svg\"></div>\n    <p class=\"read mb-small text-center\">初めてアプリをご利用なさる方は<br>下のボタンから会員登録をおこなってください。</p>\n    <button class=\"btn btn-info btn-block mb-middle\" routerLink=\"/startup\">アプリを初めてご利用の方</button>\n    <p class=\"read mb-small text-center\">既に会員登録済みの方は<br>下のボタンよりログインしてください。</p>\n    <button class=\"btn btn-info btn-block\" (click)=\"login()\">会員登録済みの方</button>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/auth-login/auth-login.component.scss":
+/***/ "../../../../../src/app/components/login/login.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -394,11 +394,11 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/auth-login/auth-login.component.ts":
+/***/ "../../../../../src/app/components/login/login.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthLoginComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
@@ -447,21 +447,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 /**
- * AuthLoginComponent
+ * LoginComponent
  */
 
 
 
-var AuthLoginComponent = /** @class */ (function () {
-    function AuthLoginComponent(sasaki, router) {
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(sasaki, router) {
         this.sasaki = sasaki;
         this.router = router;
         console.log('LoginComponent constructor');
     }
-    AuthLoginComponent.prototype.ngOnInit = function () {
+    LoginComponent.prototype.ngOnInit = function () {
         this.isLoading = false;
     };
-    AuthLoginComponent.prototype.login = function () {
+    LoginComponent.prototype.login = function () {
         return __awaiter(this, void 0, void 0, function () {
             var result, error_1;
             return __generator(this, function (_a) {
@@ -486,7 +486,7 @@ var AuthLoginComponent = /** @class */ (function () {
             });
         });
     };
-    AuthLoginComponent.prototype.logout = function () {
+    LoginComponent.prototype.logout = function () {
         return __awaiter(this, void 0, void 0, function () {
             var error_2;
             return __generator(this, function (_a) {
@@ -508,19 +508,19 @@ var AuthLoginComponent = /** @class */ (function () {
             });
         });
     };
-    AuthLoginComponent = __decorate([
+    LoginComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-auth-login',
-            template: __webpack_require__("../../../../../src/app/components/auth-login/auth-login.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/auth-login/auth-login.component.scss")]
+            selector: 'app-login',
+            template: __webpack_require__("../../../../../src/app/components/login/login.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/login/login.component.scss")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
-    ], AuthLoginComponent);
-    return AuthLoginComponent;
+    ], LoginComponent);
+    return LoginComponent;
     var _a, _b;
 }());
 
-//# sourceMappingURL=auth-login.component.js.map
+//# sourceMappingURL=login.component.js.map
 
 /***/ }),
 

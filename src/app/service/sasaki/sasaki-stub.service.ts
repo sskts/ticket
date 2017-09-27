@@ -1,11 +1,13 @@
 /**
- * sasaki-api
+ * SasakiStubService
  */
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
+
+export { SasakiService } from './sasaki.service';
 
 @Injectable()
-export class SasakiServiceStub {
+export class SasakiStubService {
     public credentials: any;
     public auth: any;
     public events: any;
@@ -32,7 +34,7 @@ export class SasakiServiceStub {
                 return Promise.resolve({});
             },
             searchReservationOwnerships: () => {
-                return Promise.resolve({});
+                return Promise.resolve([]);
             },
             getContacts: () => {
                 return Promise.resolve({});

@@ -1,28 +1,28 @@
-// /**
-//  * LawComponentテスト
-//  */
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+/**
+ * LawComponentテスト
+ */
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { LawComponent } from './law.component';
+import { LawComponent } from './law.component';
 
-// describe('LawComponent', () => {
-//   let component: LawComponent;
-//   let fixture: ComponentFixture<LawComponent>;
+describe('LawComponent', () => {
+    let component: LawComponent;
+    let fixture: ComponentFixture<LawComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ LawComponent ]
-//     })
-//     .compileComponents();
-//   }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [LawComponent]
+        })
+            .compileComponents();
+    }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(LawComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(LawComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+    it('コンポーネント生成', () => {
+        expect(component).toBeTruthy();
+    });
+});

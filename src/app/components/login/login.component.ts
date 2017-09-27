@@ -1,5 +1,5 @@
 /**
- * AuthLoginComponent
+ * LoginComponent
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
 import { SasakiService } from '../../service/sasaki/sasaki.service';
 
 @Component({
-    selector: 'app-auth-login',
-    templateUrl: './auth-login.component.html',
-    styleUrls: ['./auth-login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
-export class AuthLoginComponent implements OnInit {
+export class LoginComponent implements OnInit {
     public isLoading: boolean;
 
     constructor(

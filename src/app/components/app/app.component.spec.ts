@@ -7,10 +7,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
 
-// tslint:disable-next-line:no-stateless-class component-selector
-@Component({ selector: 'router-outlet', template: '' })
-class RouterOutletComponent { }
-
 describe('AppComponent', () => {
     let component: AppComponent;
     let fixture: ComponentFixture<AppComponent>;
@@ -18,8 +14,10 @@ describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
-                AppComponent,
-                RouterOutletComponent
+                AppComponent
+            ],
+            imports: [
+                RouterTestingModule.withRoutes([])
             ]
         })
             .compileComponents();
@@ -31,7 +29,7 @@ describe('AppComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should be created', async () => {
+    it('コンポーネント生成', async () => {
         await expect(component).toBeTruthy();
     });
 

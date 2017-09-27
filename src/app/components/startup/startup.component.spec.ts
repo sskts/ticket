@@ -1,28 +1,42 @@
-// /**
-//  * StartupComponentテスト
-//  */
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+/**
+ * StartupComponentテスト
+ */
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SwiperModule } from 'angular2-useful-swiper';
 
-// import { StartupComponent } from './startup.component';
+import { SasakiService, SasakiStubService } from '../../service/sasaki/sasaki-stub.service';
+import { LoadingComponent } from '../loading/loading.component';
+import { StartupComponent } from './startup.component';
 
-// describe('StartupComponent', () => {
-//   let component: StartupComponent;
-//   let fixture: ComponentFixture<StartupComponent>;
+describe('StartupComponent', () => {
+    let component: StartupComponent;
+    let fixture: ComponentFixture<StartupComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ StartupComponent ]
-//     })
-//     .compileComponents();
-//   }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                StartupComponent,
+                LoadingComponent
+            ],
+            providers: [
+                { provide: SasakiService, useClass: SasakiStubService }
+            ],
+            imports: [
+                SwiperModule,
+                RouterTestingModule.withRoutes([])
+            ]
+        })
+            .compileComponents();
+    }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(StartupComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(StartupComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-//   it('should be created', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+    it('コンポーネント生成', () => {
+        expect(component).toBeTruthy();
+    });
+});

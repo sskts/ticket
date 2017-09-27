@@ -1,5 +1,5 @@
 /**
- * sasaki-api
+ * SasakiService
  */
 import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
