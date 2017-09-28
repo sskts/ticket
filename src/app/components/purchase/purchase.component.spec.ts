@@ -2,6 +2,8 @@
 //  * PurchaseComponentテスト
 //  */
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// import { MomentModule } from 'angular2-moment';
+// import { SwiperModule } from 'angular2-useful-swiper';
 
 // import { PurchaseComponent } from './purchase.component';
 
@@ -11,7 +13,13 @@
 
 //     beforeEach(async(() => {
 //         TestBed.configureTestingModule({
-//             declarations: [PurchaseComponent]
+//             declarations: [
+//                 PurchaseComponent
+//             ],
+//             imports: [
+//                 SwiperModule,
+//                 MomentModule
+//             ]
 //         })
 //             .compileComponents();
 //     }));

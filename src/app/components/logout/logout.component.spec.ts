@@ -1,28 +1,53 @@
-// /**
-//  * LogoutComponentテスト
-//  */
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+/**
+ * LogoutComponentテスト
+ */
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { LogoutComponent } from './logout.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SasakiService, SasakiStubService } from '../../service/sasaki/sasaki-stub.service';
+import { Router, RouterStub } from '../../testing/router-stubs';
+import { LogoutComponent } from './logout.component';
 
-// describe('LogoutComponent', () => {
-//   let component: LogoutComponent;
-//   let fixture: ComponentFixture<LogoutComponent>;
+describe('LogoutComponent', () => {
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ LogoutComponent ]
-//     })
-//     .compileComponents();
-//   }));
+    it('コンポーネント生成', async () => {
+        await TestBed.configureTestingModule({
+            declarations: [
+                LogoutComponent
+            ],
+            imports: [
+                RouterTestingModule.withRoutes([])
+            ],
+            providers: [
+                { provide: SasakiService, useClass: SasakiStubService }
+            ]
+        })
+            .compileComponents();
+        const fixture = TestBed.createComponent(LogoutComponent);
+        const component = fixture.componentInstance;
+        fixture.detectChanges();
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(LogoutComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+        await expect(component).toBeTruthy();
+    });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+    it('logout 正常', async () => {
+        const routerStub = new RouterStub();
+        routerStub.navigate = jasmine.createSpy('navigate');
+        await TestBed.configureTestingModule({
+            declarations: [
+                LogoutComponent
+            ],
+            providers: [
+                { provide: SasakiService, useClass: SasakiStubService },
+                { provide: Router, useValue: routerStub }
+            ]
+        })
+            .compileComponents();
+        const fixture = TestBed.createComponent(LogoutComponent);
+        const component = fixture.componentInstance;
+        fixture.detectChanges();
+
+        await component.logout();
+        await expect(routerStub.navigate).toHaveBeenCalled();
+    });
+});

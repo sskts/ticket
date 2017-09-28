@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif;
 }
 body {
     -webkit-text-size-adjust: 100%;
@@ -171,6 +172,7 @@ select {
 }
 
 .swiper-container {
+    overflow: visible !important;
     .swiper-pagination-bullet {
         background-color: #aaa;
         border: 1px solid #ddd;

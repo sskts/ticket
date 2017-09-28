@@ -22,7 +22,7 @@ describe('AboutComponent', () => {
         fixture.detectChanges();
     });
 
-    it('コンポーネント生成', async () => {
-        await expect(component).toBeTruthy();
-    });
+    it('コンポーネント生成', async(() => {
+        expect(component).toBeTruthy();
+    }));
 });

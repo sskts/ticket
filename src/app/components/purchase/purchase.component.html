@@ -15,7 +15,7 @@
         </li>
     </ul>
 
-    <swiper [config]="config">
+    <swiper *ngIf="!isLoading" [config]="config">
         <div class="swiper-wrapper">
             <div *ngFor="let film of filmList" class="swiper-slide">
                 <app-film-order-of-performance [data]="film" (performanceSelect)="purchaseView($event)"></app-film-order-of-performance>

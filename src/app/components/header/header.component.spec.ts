@@ -44,4 +44,25 @@ describe('HeaderComponent', () => {
         expect(component).toBeTruthy();
     });
 
+    it('menuOpen', () => {
+        component.menuOpen();
+        expect(component.isMenuOpen).toBeTruthy();
+    });
+
+    it('menuClose', () => {
+        component.menuClose();
+        expect(component.isMenuOpen).toBeFalsy();
+    });
+
+    it('logoutModalOpen', () => {
+        component.logoutModalOpen();
+        expect(component.isMenuOpen).toBeFalsy();
+        expect(component.isLogoutModalOpen).toBeTruthy();
+    });
+
+    it('logoutModalClose', () => {
+        component.logoutModalClose();
+        expect(component.isLogoutModalOpen).toBeFalsy();
+    });
+
 });

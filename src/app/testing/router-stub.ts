@@ -10,5 +10,7 @@ export class RouterStub {
     constructor() {
         this.url = '';
     }
-    public navigate(commands: any[], extras?: NavigationExtras) { }
+    public navigate(commands: any[], extras?: NavigationExtras) {
+        console.log('navigate', commands, extras);
+     }
 }

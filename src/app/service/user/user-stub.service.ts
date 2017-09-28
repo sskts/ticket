@@ -18,6 +18,16 @@ export class UserStubService {
             telephone: '',
             email: ''
         };
+        this.creditCards = [{
+            typeOf: '',
+            identifier: '',
+            cardSeq: '',
+            cardName: '',
+            cardNo: '',
+            expire: '',
+            holderName: '',
+            deleteFlag: ''
+        }];
     }
 
 }
