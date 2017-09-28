@@ -174,16 +174,33 @@ select {
     border-color: inherit !important;
 }
 
-.swiper-container {
-    overflow-y: visible !important;
-    .swiper-pagination-bullet {
-        background-color: #aaa;
-        border: 1px solid #ddd;
-        opacity: 0.8;
-    }
-    .swiper-pagination-bullet-active {
-        background-color: #0074A9;
-        border: 1px solid #00B7FF;
+.pagination-wrapper {
+    position: fixed;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    .swiper-pagination {
+        position: static;
+        display: inline-block;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 5px 20px;
+        border-radius: 25px;
+        .swiper-pagination-bullet {
+            background-color: transparent;
+            border: 1px solid #FFF;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #00A0E9;
+            border: 1px solid #00A0E9;
+        }
     }
 }
 

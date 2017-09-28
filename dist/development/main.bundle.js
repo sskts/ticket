@@ -1659,7 +1659,7 @@ var ProfileComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/purchase/purchase.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <p class=\"read mb-small\">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>\n    <ul class=\"conditions mb-small\">\n        <li class=\" mb-x-small\">\n            <div class=\"control-label mb-x-small\">鑑賞劇場</div>\n            <select class=\"form-control\" name=\"theater\" [(ngModel)]=\"theater\" (change)=\"changeConditions($event)\">\n                <option *ngFor=\"let theater of theaters\" value=\"{{ theater.branchCode }}\">{{ theater.name.ja }}</option>\n            </select>\n        </li>\n        <li>\n            <div class=\"control-label mb-x-small\">鑑賞日時</div>\n            <select class=\"form-control\" name=\"date\" [(ngModel)]=\"date\" (change)=\"changeConditions($event)\">\n                <option *ngFor=\"let date of dateList\" value=\"{{ date.value }}\">{{ date.text }}</option>\n            </select>\n        </li>\n    </ul>\n\n    <swiper *ngIf=\"!isLoading\" [config]=\"config\">\n        <div class=\"swiper-wrapper\">\n            <div *ngFor=\"let film of filmList\" class=\"swiper-slide\">\n                <app-film-order-of-performance [data]=\"film\" (performanceSelect)=\"purchaseView($event)\"></app-film-order-of-performance>\n            </div>\n        </div>\n        <div class=\"swiper-pagination\"></div>\n    </swiper>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents\">\n    <p class=\"read mb-small\">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>\n    <ul class=\"conditions mb-small\">\n        <li class=\" mb-x-small\">\n            <div class=\"control-label mb-x-small\">鑑賞劇場</div>\n            <select class=\"form-control\" name=\"theater\" [(ngModel)]=\"theater\" (change)=\"changeConditions($event)\">\n                <option *ngFor=\"let theater of theaters\" value=\"{{ theater.branchCode }}\">{{ theater.name.ja }}</option>\n            </select>\n        </li>\n        <li>\n            <div class=\"control-label mb-x-small\">鑑賞日時</div>\n            <select class=\"form-control\" name=\"date\" [(ngModel)]=\"date\" (change)=\"changeConditions($event)\">\n                <option *ngFor=\"let date of dateList\" value=\"{{ date.value }}\">{{ date.text }}</option>\n            </select>\n        </li>\n    </ul>\n\n    <swiper *ngIf=\"!isLoading\" [config]=\"config\">\n        <div class=\"swiper-wrapper\">\n            <div *ngFor=\"let film of filmList\" class=\"swiper-slide\">\n                <app-film-order-of-performance [data]=\"film\" (performanceSelect)=\"purchaseView($event)\"></app-film-order-of-performance>\n            </div>\n        </div>\n    </swiper>\n    <div class=\"pagination-wrapper\">\n        <div class=\"swiper-pagination\"></div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -1671,7 +1671,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "swiper {\n  margin: 0 -15px; }\n\n.swiper-slide {\n  padding: 0 15px; }\n\n.swiper-pagination {\n  position: fixed;\n  bottom: 70px; }\n", ""]);
+exports.push([module.i, "swiper {\n  margin: 0 -15px; }\n\n.swiper-slide {\n  padding: 0 15px; }\n", ""]);
 
 // exports
 
@@ -2072,7 +2072,7 @@ var StartupComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/ticket-holder/ticket-holder.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <!-- <div class=\"mb-small\"><img src=\"/assets/images/demo_01.png\"></div> -->\n    <ng-template *ngIf=\"reservations?.length > 0; then ticketBlock else noTicketBlock\"></ng-template>\n</div>\n\n<ng-template #ticketBlock>\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper\">\n            <div *ngFor=\"let reservation of reservations\" class=\"swiper-slide\">\n                <app-ticket [reservation]=\"reservation\"></app-ticket>\n            </div>\n        </div>\n        <div class=\"swiper-pagination\"></div>\n    </swiper>\n</ng-template>\n\n<ng-template #noTicketBlock>\n    <app-no-ticket></app-no-ticket>\n</ng-template>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents\">\n    <!-- <div class=\"mb-small\"><img src=\"/assets/images/demo_01.png\"></div> -->\n    <ng-template *ngIf=\"reservations?.length > 0; then ticketBlock else noTicketBlock\"></ng-template>\n</div>\n\n<ng-template #ticketBlock>\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper\">\n            <div *ngFor=\"let reservation of reservations\" class=\"swiper-slide\">\n                <app-ticket [reservation]=\"reservation\"></app-ticket>\n            </div>\n        </div>\n    </swiper>\n    <div class=\"pagination-wrapper\">\n        <div class=\"swiper-pagination\"></div>\n    </div>\n</ng-template>\n\n<ng-template #noTicketBlock>\n    <app-no-ticket></app-no-ticket>\n</ng-template>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -2084,7 +2084,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "swiper {\n  margin: 0 -15px; }\n\n.swiper-slide {\n  padding: 0 15px; }\n\n.swiper-pagination {\n  position: fixed;\n  bottom: 70px; }\n\n.loading {\n  color: #FFF; }\n", ""]);
+exports.push([module.i, "swiper {\n  margin: 0 -15px; }\n\n.swiper-slide {\n  padding: 0 15px; }\n\n.loading {\n  color: #FFF; }\n", ""]);
 
 // exports
 

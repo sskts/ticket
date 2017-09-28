@@ -21,7 +21,9 @@
                 <app-film-order-of-performance [data]="film" (performanceSelect)="purchaseView($event)"></app-film-order-of-performance>
             </div>
         </div>
-        <div class="swiper-pagination"></div>
     </swiper>
+    <div class="pagination-wrapper">
+        <div class="swiper-pagination"></div>
+    </div>
 </div>
 <app-loading *ngIf="isLoading"></app-loading>
