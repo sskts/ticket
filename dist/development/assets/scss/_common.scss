@@ -1,6 +1,7 @@
+$font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif;
+
 * {
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif;
 }
 body {
     -webkit-text-size-adjust: 100%;
@@ -12,6 +13,7 @@ body {
     font-size: 14px;
     color: #FFF;
     min-height: 100vh;
+    font-family: $font-family;
 }
 p {
     line-height: 1.4;
@@ -47,6 +49,7 @@ label {
     padding: 0;
     margin: 0;
     font-size: 14px;
+    font-family: $font-family;
 }
 
 input[type=text],
