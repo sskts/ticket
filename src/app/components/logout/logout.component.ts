@@ -27,7 +27,7 @@ export class LogoutComponent implements OnInit {
       await this.sasaki.auth.signOut();
       console.log('logout');
       this.sasaki.credentials = null;
-      this.router.navigate(['/auth/login']);
+      await this.router.navigate(['/auth/login']);
     } catch (error) {
       console.error(error);
     }

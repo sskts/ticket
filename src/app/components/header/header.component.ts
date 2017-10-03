@@ -4,12 +4,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
-import { environment } from '../../../environments/environment';
-
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
 /**
  * ヘッダー
@@ -18,59 +16,57 @@ import { environment } from '../../../environments/environment';
  */
 export class HeaderComponent implements OnInit {
 
-  public page: {
-    url: string;
-    title: string;
-    prev: boolean;
-  };
-  public isMenuOpen: boolean;
-  public isLogoutModalOpen: boolean;
-  public portalSite: string;
+    public page: {
+        url: string;
+        title: string;
+        prev: boolean;
+    };
+    public isMenuOpen: boolean;
+    public isLogoutModalOpen: boolean;
 
-  constructor(
-    private router: Router
-  ) { }
+    constructor(
+        private router: Router
+    ) { }
 
-  public ngOnInit(): void {
-    this.portalSite = environment.portalSite;
-    this.isMenuOpen = false;
-    this.isLogoutModalOpen = false;
-    this.changePage(this.router.url);
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.changePage(event.url);
-      }
-    });
-  }
-
-  public menuOpen(): void {
-    this.isMenuOpen = true;
-  }
-
-  public menuClose(): void {
-    this.isMenuOpen = false;
-  }
-
-  public logoutModalOpen(): void {
-    this.menuClose();
-    this.isLogoutModalOpen = true;
-  }
-
-  public logoutModalClose(): void {
-    this.isLogoutModalOpen = false;
-  }
-
-  private changePage(url: string): void {
-    const page = pages.find((value) => {
-      return (value.url === url);
-    });
-    if (page === undefined) {
-      this.page = { url: '', title: '', prev: false };
-
-      return;
+    public ngOnInit(): void {
+        this.isMenuOpen = false;
+        this.isLogoutModalOpen = false;
+        this.changePage(this.router.url);
+        this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                this.changePage(event.url);
+            }
+        });
     }
-    this.page = page;
-  }
+
+    public menuOpen(): void {
+        this.isMenuOpen = true;
+    }
+
+    public menuClose(): void {
+        this.isMenuOpen = false;
+    }
+
+    public logoutModalOpen(): void {
+        this.menuClose();
+        this.isLogoutModalOpen = true;
+    }
+
+    public logoutModalClose(): void {
+        this.isLogoutModalOpen = false;
+    }
+
+    private changePage(url: string): void {
+        const page = pages.find((value) => {
+            return (value.url === url);
+        });
+        if (page === undefined) {
+            this.page = { url: '', title: 'NOT FOUND', prev: false };
+
+            return;
+        }
+        this.page = page;
+    }
 }
 
 /**
@@ -78,12 +74,12 @@ export class HeaderComponent implements OnInit {
  * @const pages
  */
 const pages = [
-  { url: '/ticket-holder', title: 'チケットホルダー', prev: false },
-  { url: '/purchase', title: 'チケット購入', prev: false },
-  { url: '/setting', title: '設定変更', prev: false },
-  { url: '/about', title: 'このアプリについて', prev: true },
-  { url: '/profile', title: 'ユーザー情報変更', prev: true },
-  { url: '/policy', title: '利用規約', prev: true },
-  { url: '/law', title: '特定商取引法に基づく表記', prev: true },
-  { url: '/privacy', title: 'プライバシーポリシー', prev: true }
+    { url: '/ticket-holder', title: 'チケットホルダー', prev: false },
+    { url: '/purchase', title: 'チケット購入', prev: false },
+    { url: '/setting', title: '設定変更', prev: false },
+    { url: '/about', title: 'このアプリについて', prev: true },
+    { url: '/profile', title: 'ユーザー情報変更', prev: true },
+    { url: '/policy', title: '利用規約', prev: true },
+    { url: '/law', title: '特定商取引法に基づく表記', prev: true },
+    { url: '/privacy', title: 'プライバシーポリシー', prev: true }
 ];

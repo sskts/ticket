@@ -1,35 +1,21 @@
 .inner {
     display: block;
-    border-radius: 5px;
     background-color: #FFF;
-    overflow: hidden;
 }
 .info {
-    padding: 10px 10px 0;
+    padding: 15px 10px;
     color: #333;
-    border-bottom: 1px solid #CCC;
-    dl {
-        border-bottom: 1px dashed #CCC;
-        display: table;
-        width: 100%;
-        &:last-child {
-            border: none;
-        }
-        dt {
-            width: 80px;
-            text-align: center;
-            display: table-cell;
+    background-color: #EEE;
+    border-bottom: 1px solid #AAA;
+    .title {
+
+    }
+    .date {
+        opacity: 0.75;
+        &:before {
+            display: inline-block;
             vertical-align: middle;
-            &:before {
-                margin: 0 auto 5px;
-            }
-        }
-        dd {
-            width: calc(100% - 80px);
-            padding: 15px 0;
-            display: table-cell;
-            vertical-align: middle;
-            line-height: 1.4;
+            margin-right: 10px;
         }
     }
 }
@@ -37,28 +23,23 @@ ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px 10px 10px;
+    padding: 5px 5px 0;
     li {
-        width: calc(50% - 5px);
+        width: calc(50% - 2.5px);
         background-color: #0074A9;
         padding: 10px;
-        margin: 0 0 10px;
+        margin: 0 0 5px;
         position: relative;
-        border-radius: 5px;
         .screen {
             padding-right: 27px;
         }
         .status {
             position: absolute;
-            bottom: 5px;
-            right: 5px;
-            background-color: #FFF;
-            border-radius: 3px;
-            display: inline-block;
-            padding: 3px;
+            bottom: 10px;
+            right: 10px;
             img {
-                width: 16px;
-                height: 16px;
+                width: 20px;
+                height: 20px;
             }
         }
     }

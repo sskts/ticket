@@ -11,7 +11,6 @@ import { SwiperModule } from 'angular2-useful-swiper';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { AppComponent } from './components/app/app.component';
-import { LoginComponent } from './components/login/login.component';
 import {
   ChronologicalOrderOfPerformanceComponent
 } from './components/chronological-order-of-performance/chronological-order-of-performance.component';
@@ -20,6 +19,7 @@ import { HeaderMenuComponent } from './components/header-menu/header-menu.compon
 import { HeaderComponent } from './components/header/header.component';
 import { LawComponent } from './components/law/law.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MainComponent } from './components/main/main.component';
 import { NavigationComponent } from './components/navigation/navigation.component';

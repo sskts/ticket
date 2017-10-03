@@ -1,14 +1,14 @@
 <div class="cover" [class.active]="isOpen" (click)="close.emit()"></div>
 
 <div class="menu" [class.active]="isOpen">
-    <div class="title text-right">{{ name }}</div>
+    <div class="title">{{ name }}</div>
     <ul>
         <li><span routerLink="/about" routerLinkActive="active" (click)="close.emit()">このアプリについて</span></li>
         <li><span routerLink="/profile" routerLinkActive="active" (click)="close.emit()">ユーザー情報変更</span></li>
         <li><span routerLink="/policy" routerLinkActive="active" (click)="close.emit()">利用規約</span></li>
         <li><span routerLink="/law" routerLinkActive="active" (click)="close.emit()">特定商取引法に基づく表記</span></li>
         <li><span routerLink="/privacy" routerLinkActive="active" (click)="close.emit()">プライバシーポリシー</span></li>
-        <li><a [attr.href]="portalSite" target="_blank">シネマサンシャインポータルサイト</a></li>
+        <li><a [href]="portalSite" target="_blank">シネマサンシャインポータルサイト</a></li>
         <li><span (click)="logout.emit()">ログアウト</span></li>
     </ul>
 </div>

@@ -25,8 +25,8 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_about_about_component__ = __webpack_require__("../../../../../src/app/components/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_main_main_component__ = __webpack_require__("../../../../../src/app/components/main/main.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/components/not-found/not-found.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_policy_policy_component__ = __webpack_require__("../../../../../src/app/components/policy/policy.component.ts");
@@ -71,14 +71,14 @@ var appRoutes = [
             { path: 'about', component: __WEBPACK_IMPORTED_MODULE_2__components_about_about_component__["a" /* AboutComponent */] },
             { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_9__components_profile_profile_component__["a" /* ProfileComponent */] },
             { path: 'policy', component: __WEBPACK_IMPORTED_MODULE_7__components_policy_policy_component__["a" /* PolicyComponent */] },
-            { path: 'law', component: __WEBPACK_IMPORTED_MODULE_4__components_law_law_component__["a" /* LawComponent */] },
+            { path: 'law', component: __WEBPACK_IMPORTED_MODULE_3__components_law_law_component__["a" /* LawComponent */] },
             { path: 'privacy', component: __WEBPACK_IMPORTED_MODULE_8__components_privacy_privacy_component__["a" /* PrivacyComponent */] }
         ]
     },
     {
         path: 'auth',
         children: [
-            { path: 'login', component: __WEBPACK_IMPORTED_MODULE_3__components_login_login_component__["a" /* LoginComponent */] }
+            { path: 'login', component: __WEBPACK_IMPORTED_MODULE_4__components_login_login_component__["a" /* LoginComponent */] }
         ]
     },
     { path: 'startup', component: __WEBPACK_IMPORTED_MODULE_11__components_startup_startup_component__["a" /* StartupComponent */] },
@@ -122,13 +122,13 @@ var AppRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_about_about_component__ = __webpack_require__("../../../../../src/app/components/about/about.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_app_app_component__ = __webpack_require__("../../../../../src/app/components/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_chronological_order_of_performance_chronological_order_of_performance_component__ = __webpack_require__("../../../../../src/app/components/chronological-order-of-performance/chronological-order-of-performance.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_film_order_of_performance_film_order_of_performance_component__ = __webpack_require__("../../../../../src/app/components/film-order-of-performance/film-order-of-performance.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_header_menu_header_menu_component__ = __webpack_require__("../../../../../src/app/components/header-menu/header-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_loading_loading_component__ = __webpack_require__("../../../../../src/app/components/loading/loading.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_chronological_order_of_performance_chronological_order_of_performance_component__ = __webpack_require__("../../../../../src/app/components/chronological-order-of-performance/chronological-order-of-performance.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_film_order_of_performance_film_order_of_performance_component__ = __webpack_require__("../../../../../src/app/components/film-order-of-performance/film-order-of-performance.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_header_menu_header_menu_component__ = __webpack_require__("../../../../../src/app/components/header-menu/header-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_loading_loading_component__ = __webpack_require__("../../../../../src/app/components/loading/loading.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_logout_logout_component__ = __webpack_require__("../../../../../src/app/components/logout/logout.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_main_main_component__ = __webpack_require__("../../../../../src/app/components/main/main.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_navigation_navigation_component__ = __webpack_require__("../../../../../src/app/components/navigation/navigation.component.ts");
@@ -202,25 +202,25 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_27__components_ticket_ticket_component__["a" /* TicketComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__components_startup_startup_component__["a" /* StartupComponent */],
                 __WEBPACK_IMPORTED_MODULE_18__components_navigation_navigation_component__["a" /* NavigationComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__components_header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__components_header_header_component__["a" /* HeaderComponent */],
                 __WEBPACK_IMPORTED_MODULE_24__components_purchase_purchase_component__["a" /* PurchaseComponent */],
                 __WEBPACK_IMPORTED_MODULE_20__components_not_found_not_found_component__["a" /* NotFoundComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__components_main_main_component__["a" /* MainComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__components_login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__components_login_login_component__["a" /* LoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_30__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
-                __WEBPACK_IMPORTED_MODULE_10__components_chronological_order_of_performance_chronological_order_of_performance_component__["a" /* ChronologicalOrderOfPerformanceComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__components_film_order_of_performance_film_order_of_performance_component__["a" /* FilmOrderOfPerformanceComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__components_chronological_order_of_performance_chronological_order_of_performance_component__["a" /* ChronologicalOrderOfPerformanceComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__components_film_order_of_performance_film_order_of_performance_component__["a" /* FilmOrderOfPerformanceComponent */],
                 __WEBPACK_IMPORTED_MODULE_28__pipe_availability_availability_pipe__["a" /* AvailabilityPipe */],
                 __WEBPACK_IMPORTED_MODULE_29__pipe_duration_duration_pipe__["a" /* DurationPipe */],
                 __WEBPACK_IMPORTED_MODULE_19__components_no_ticket_no_ticket_component__["a" /* NoTicketComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__components_about_about_component__["a" /* AboutComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__components_loading_loading_component__["a" /* LoadingComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__components_loading_loading_component__["a" /* LoadingComponent */],
                 __WEBPACK_IMPORTED_MODULE_23__components_profile_profile_component__["a" /* ProfileComponent */],
                 __WEBPACK_IMPORTED_MODULE_21__components_policy_policy_component__["a" /* PolicyComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__components_law_law_component__["a" /* LawComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__components_law_law_component__["a" /* LawComponent */],
                 __WEBPACK_IMPORTED_MODULE_22__components_privacy_privacy_component__["a" /* PrivacyComponent */],
                 __WEBPACK_IMPORTED_MODULE_16__components_logout_logout_component__["a" /* LogoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__components_header_menu_header_menu_component__["a" /* HeaderMenuComponent */]
+                __WEBPACK_IMPORTED_MODULE_11__components_header_menu_header_menu_component__["a" /* HeaderMenuComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
@@ -249,7 +249,7 @@ var AppModule = /** @class */ (function () {
 /***/ "../../../../../src/app/components/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents about bg-image-blue\">\n    <div class=\"inner\">\n        <p class=\"read mb-middle\">\n            このアプリはシネマサンシャイン公式のスマートフォンアプリです。<br>\n            このアプリを使うことで、アプリ会員価格でのチケット購入やチケットの保存機能などシネマサンシャインでの映画鑑賞をお得にお楽しみ頂けます。\n        </p>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center\"><strong>アプリ会員価格でのチケット購入！</strong></h2>\n            <p class=\"mb-middle\">\n                通常のチケット購入価格よりお得なアプリ会員価格でチケットが購入できます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/discount.svg\" width=\"135\" height=\"103\"></div>\n        </div>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center\"><strong>チケットをスマートに購入</strong></h2>\n            <p class=\"mb-middle\">\n                一度アプリ内でチケット購入を行うと、次回から購入者情報やクレジットカード情報を入力せずにご購入頂けます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/buy.svg\" width=\"99\" height=\"171\"></div>\n        </div>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center\"><strong>スマフォがそのままチケットに！</strong></h2>\n            <p class=\"mb-middle\">\n                鑑賞当日は、チケットホルダー内のQRコードを見せるだけでスムーズにご入場頂けます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/ticket.svg\" width=\"115\" height=\"131\"></div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"contents bg-image-blue\">\n    <div class=\"inner\">\n        <p class=\"read mb-middle\">\n            このアプリはシネマサンシャイン公式のスマートフォンアプリです。<br>\n            このアプリを使うことで、アプリ会員価格でのチケット購入やチケットの保存機能などシネマサンシャインでの映画鑑賞をお得にお楽しみ頂けます。\n        </p>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center large-text\">アプリ会員価格でのチケット購入！</h2>\n            <p class=\"mb-middle text-center\">\n                通常のチケット購入価格よりお得な<br>アプリ会員価格でチケットが購入できます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/discount.svg\" width=\"135\" height=\"103\"></div>\n        </div>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center large-text\">チケットをスマートに購入</h2>\n            <p class=\"mb-middle text-center\">\n                一度アプリ内でチケット購入を行うと、<br>次回から購入者情報やクレジットカード情報を<br>入力せずにご購入頂けます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/buy.svg\" width=\"99\" height=\"171\"></div>\n        </div>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center large-text\">スマフォがそのままチケットに！</h2>\n            <p class=\"mb-middle text-center\">\n                鑑賞当日は、チケットホルダー内のQRコードを<br>見せるだけでスムーズにご入場頂けます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/ticket.svg\" width=\"115\" height=\"131\"></div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -261,7 +261,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".about {\n  padding-top: 40px; }\n  .about h2 {\n    background-color: #F4D600;\n    padding: 10px;\n    color: #333; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -421,7 +421,7 @@ var ChronologicalOrderOfPerformanceComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/film-order-of-performance/film-order-of-performance.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <dl class=\"title\">\n            <dt class=\"small-x-text icon-film-name-gray\">作品名</dt>\n            <dd>{{ filmInfo.workPerformed.name }}</dd>\n        </dl>\n        <dl class=\"date\">\n            <dt class=\"small-x-text icon-time-gray\">上映時間</dt>\n            <dd>{{ filmInfo.workPerformed.duration | duration:'minutes' }}分</dd>\n        </dl>\n    </div>\n    <ul>\n        <li *ngFor=\"let film of data.films\" [class]=\"(film.offer.availability | availability).string\" (click)=\"performanceSelect(film)\">\n            <p class=\"mb-x-small text-center\">\n                <strong class=\"large-text\">{{ film.startDate | timeFormat: film.coaInfo.dateJouei }}</strong><br>\n                <span>～ {{ film.endDate | timeFormat: film.coaInfo.dateJouei }}</span>\n            </p>\n            <div class=\"screen text-center\">{{ film.location.name.ja }}</div>\n            <div class=\"status\"><img [src]=\"'/assets/images/purchase/' + (film.offer.availability | availability).image\"></div>\n        </li>\n    </ul>\n</div>"
+module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <p class=\"title mb-x-small\">{{ filmInfo.workPerformed.name }}</p>\n        <div class=\"date small-text icon-time-gray\">{{ filmInfo.workPerformed.duration | duration:'minutes' }}分</div>\n    </div>\n    <ul>\n        <li *ngFor=\"let film of data.films\" [class]=\"(film.offer.availability | availability).string\" (click)=\"performanceSelect(film)\">\n            <p class=\"mb-x-small text-center\">\n                <strong class=\"large-text\">{{ film.startDate | timeFormat: film.coaInfo.dateJouei }}</strong><br>\n                <span>～ {{ film.endDate | timeFormat: film.coaInfo.dateJouei }}</span>\n            </p>\n            <div class=\"screen text-center\">{{ film.location.name.ja }}</div>\n            <div class=\"status\"><img [src]=\"'/assets/images/purchase/' + (film.offer.availability | availability).image\"></div>\n        </li>\n    </ul>\n</div>"
 
 /***/ }),
 
@@ -433,7 +433,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".inner {\n  display: block;\n  border-radius: 5px;\n  background-color: #FFF;\n  overflow: hidden; }\n\n.info {\n  padding: 10px 10px 0;\n  color: #333;\n  border-bottom: 1px solid #CCC; }\n  .info dl {\n    border-bottom: 1px dashed #CCC;\n    display: table;\n    width: 100%; }\n    .info dl:last-child {\n      border: none; }\n    .info dl dt {\n      width: 80px;\n      text-align: center;\n      display: table-cell;\n      vertical-align: middle; }\n      .info dl dt:before {\n        margin: 0 auto 5px; }\n    .info dl dd {\n      width: calc(100% - 80px);\n      padding: 15px 0;\n      display: table-cell;\n      vertical-align: middle;\n      line-height: 1.4; }\n\nul {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  padding: 20px 10px 10px; }\n  ul li {\n    width: calc(50% - 5px);\n    background-color: #0074A9;\n    padding: 10px;\n    margin: 0 0 10px;\n    position: relative;\n    border-radius: 5px; }\n    ul li .screen {\n      padding-right: 27px; }\n    ul li .status {\n      position: absolute;\n      bottom: 5px;\n      right: 5px;\n      background-color: #FFF;\n      border-radius: 3px;\n      display: inline-block;\n      padding: 3px; }\n      ul li .status img {\n        width: 16px;\n        height: 16px; }\n", ""]);
+exports.push([module.i, ".inner {\n  display: block;\n  background-color: #FFF; }\n\n.info {\n  padding: 15px 10px;\n  color: #333;\n  background-color: #EEE;\n  border-bottom: 1px solid #AAA; }\n  .info .date {\n    opacity: 0.75; }\n    .info .date:before {\n      display: inline-block;\n      vertical-align: middle;\n      margin-right: 10px; }\n\nul {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  padding: 5px 5px 0; }\n  ul li {\n    width: calc(50% - 2.5px);\n    background-color: #0074A9;\n    padding: 10px;\n    margin: 0 0 5px;\n    position: relative; }\n    ul li .screen {\n      padding-right: 27px; }\n    ul li .status {\n      position: absolute;\n      bottom: 10px;\n      right: 10px; }\n      ul li .status img {\n        width: 20px;\n        height: 20px; }\n", ""]);
 
 // exports
 
@@ -495,7 +495,7 @@ var FilmOrderOfPerformanceComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/header-menu/header-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"cover\" [class.active]=\"isOpen\" (click)=\"close.emit()\"></div>\n\n<div class=\"menu\" [class.active]=\"isOpen\">\n    <div class=\"title text-right\">{{ name }}</div>\n    <ul>\n        <li><span routerLink=\"/about\" routerLinkActive=\"active\" (click)=\"close.emit()\">このアプリについて</span></li>\n        <li><span routerLink=\"/profile\" routerLinkActive=\"active\" (click)=\"close.emit()\">ユーザー情報変更</span></li>\n        <li><span routerLink=\"/policy\" routerLinkActive=\"active\" (click)=\"close.emit()\">利用規約</span></li>\n        <li><span routerLink=\"/law\" routerLinkActive=\"active\" (click)=\"close.emit()\">特定商取引法に基づく表記</span></li>\n        <li><span routerLink=\"/privacy\" routerLinkActive=\"active\" (click)=\"close.emit()\">プライバシーポリシー</span></li>\n        <li><a [attr.href]=\"portalSite\" target=\"_blank\">シネマサンシャインポータルサイト</a></li>\n        <li><span (click)=\"logout.emit()\">ログアウト</span></li>\n    </ul>\n</div>"
+module.exports = "<div class=\"cover\" [class.active]=\"isOpen\" (click)=\"close.emit()\"></div>\n\n<div class=\"menu\" [class.active]=\"isOpen\">\n    <div class=\"title\">{{ name }}</div>\n    <ul>\n        <li><span routerLink=\"/about\" routerLinkActive=\"active\" (click)=\"close.emit()\">このアプリについて</span></li>\n        <li><span routerLink=\"/profile\" routerLinkActive=\"active\" (click)=\"close.emit()\">ユーザー情報変更</span></li>\n        <li><span routerLink=\"/policy\" routerLinkActive=\"active\" (click)=\"close.emit()\">利用規約</span></li>\n        <li><span routerLink=\"/law\" routerLinkActive=\"active\" (click)=\"close.emit()\">特定商取引法に基づく表記</span></li>\n        <li><span routerLink=\"/privacy\" routerLinkActive=\"active\" (click)=\"close.emit()\">プライバシーポリシー</span></li>\n        <li><a [href]=\"portalSite\" target=\"_blank\">シネマサンシャインポータルサイト</a></li>\n        <li><span (click)=\"logout.emit()\">ログアウト</span></li>\n    </ul>\n</div>"
 
 /***/ }),
 
@@ -507,7 +507,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".cover {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, 0.75);\n  display: none; }\n  .cover.active {\n    display: block; }\n\n.menu {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  right: -100%;\n  z-index: 20;\n  background-color: black;\n  width: 100%;\n  transition: right 0.1s; }\n  .menu.active {\n    right: 0; }\n  .menu .title {\n    background-color: #4D4D4D;\n    padding: 20px; }\n  .menu li {\n    border-bottom: 1px solid rgba(255, 255, 255, 0.2); }\n    .menu li.active {\n      background-color: #202020; }\n    .menu li a, .menu li span {\n      display: block;\n      padding: 20px; }\n", ""]);
+exports.push([module.i, ".cover {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, 0.75);\n  display: none; }\n  .cover.active {\n    display: block; }\n\n.menu {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  right: -100%;\n  z-index: 20;\n  background-color: #000;\n  width: 100%;\n  overflow: scroll;\n  transition: right 0.1s; }\n  .menu.active {\n    right: 0; }\n  .menu .title {\n    background-color: #CCC;\n    color: #333;\n    padding: 30px; }\n  .menu li {\n    border-bottom: 1px solid #CCC; }\n    .menu li a, .menu li span {\n      display: block;\n      background-color: #111;\n      padding: 30px; }\n", ""]);
 
 // exports
 
@@ -523,7 +523,8 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeaderMenuComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -538,6 +539,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
+
 var HeaderMenuComponent = /** @class */ (function () {
     function HeaderMenuComponent(user) {
         this.user = user;
@@ -545,6 +547,7 @@ var HeaderMenuComponent = /** @class */ (function () {
         this.close = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     HeaderMenuComponent.prototype.ngOnInit = function () {
+        this.portalSite = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].portalSite;
         this.name = this.user.contacts.familyName + " " + this.user.contacts.givenName;
     };
     __decorate([
@@ -565,7 +568,7 @@ var HeaderMenuComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/header-menu/header-menu.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/header-menu/header-menu.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__service_user_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_user_user_service__["a" /* UserService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__service_user_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_user_user_service__["a" /* UserService */]) === "function" && _c || Object])
     ], HeaderMenuComponent);
     return HeaderMenuComponent;
     var _a, _b, _c;
@@ -578,7 +581,7 @@ var HeaderMenuComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n    <div class=\"logo\"><img src=\"/assets/images/common/logo.svg\"></div>\n    <h1>{{ page.title }}</h1>\n    <div class=\"button\" [class.active]=\"isMenuOpen\" (click)=\"(isMenuOpen) ? menuClose() : menuOpen()\">\n        <div></div><div></div><div></div>\n    </div>\n</header>\n\n<app-header-menu [isOpen]=\"isMenuOpen\" (logout)=\"logoutModalOpen()\" (close)=\"menuClose()\"></app-header-menu>\n\n<app-logout [isOpen]=\"isLogoutModalOpen\" (close)=\"logoutModalClose()\"></app-logout>\n"
+module.exports = "<header>\n    <h1>{{ page.title }}</h1>\n    <div class=\"button\" [class.active]=\"isMenuOpen\" (click)=\"(isMenuOpen) ? menuClose() : menuOpen()\">\n        <div></div><div></div><div></div>\n    </div>\n</header>\n\n<app-header-menu [isOpen]=\"isMenuOpen\" (logout)=\"logoutModalOpen()\" (close)=\"menuClose()\"></app-header-menu>\n\n<app-logout [isOpen]=\"isLogoutModalOpen\" (close)=\"logoutModalClose()\"></app-logout>\n"
 
 /***/ }),
 
@@ -590,7 +593,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  height: 48px;\n  display: block; }\n\nheader {\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 10;\n  width: 100%;\n  height: 48px;\n  background-color: #000; }\n  header .logo {\n    position: absolute;\n    top: 50%;\n    left: 20px;\n    margin-top: -12px;\n    width: 40px;\n    height: 28px; }\n  header h1 {\n    text-align: center;\n    line-height: 48px; }\n  header .button {\n    display: block;\n    position: absolute;\n    top: 50%;\n    right: 20px;\n    margin-top: -8px;\n    width: 20px;\n    height: 16px; }\n    header .button div {\n      position: absolute;\n      top: 50%;\n      left: 0;\n      margin-top: -1px;\n      width: 100%;\n      height: 2px;\n      background-color: #FFF; }\n      header .button div:first-child {\n        top: 0;\n        margin-top: 0; }\n      header .button div:last-child {\n        top: initial;\n        bottom: 0;\n        margin-top: 0; }\n    header .button.active div {\n      opacity: 0; }\n      header .button.active div:first-child {\n        opacity: 1;\n        top: 50%;\n        margin-top: -1px;\n        -webkit-transform: rotate(45deg);\n                transform: rotate(45deg); }\n      header .button.active div:last-child {\n        opacity: 1;\n        top: 50%;\n        bottom: initial;\n        margin-top: -1px;\n        -webkit-transform: rotate(-45deg);\n                transform: rotate(-45deg); }\n", ""]);
+exports.push([module.i, ":host {\n  height: 48px;\n  display: block; }\n\nheader {\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 10;\n  width: 100%;\n  height: 48px;\n  background-color: #000; }\n  header h1 {\n    text-align: center;\n    line-height: 48px;\n    font-weight: normal; }\n  header .button {\n    display: block;\n    position: absolute;\n    top: 50%;\n    right: 20px;\n    margin-top: -8px;\n    width: 20px;\n    height: 16px; }\n    header .button div {\n      position: absolute;\n      top: 50%;\n      left: 0;\n      margin-top: -0.5px;\n      width: 100%;\n      height: 1px;\n      background-color: #FFF; }\n      header .button div:first-child {\n        top: 0;\n        margin-top: 0; }\n      header .button div:last-child {\n        top: initial;\n        bottom: 0;\n        margin-top: 0; }\n    header .button.active div {\n      opacity: 0; }\n      header .button.active div:first-child {\n        opacity: 1;\n        top: 50%;\n        margin-top: -1px;\n        -webkit-transform: rotate(45deg);\n                transform: rotate(45deg); }\n      header .button.active div:last-child {\n        opacity: 1;\n        top: 50%;\n        bottom: initial;\n        margin-top: -1px;\n        -webkit-transform: rotate(-45deg);\n                transform: rotate(-45deg); }\n", ""]);
 
 // exports
 
@@ -607,7 +610,6 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeaderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -622,14 +624,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
-
 var HeaderComponent = /** @class */ (function () {
     function HeaderComponent(router) {
         this.router = router;
     }
     HeaderComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.portalSite = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].portalSite;
         this.isMenuOpen = false;
         this.isLogoutModalOpen = false;
         this.changePage(this.router.url);
@@ -657,7 +657,7 @@ var HeaderComponent = /** @class */ (function () {
             return (value.url === url);
         });
         if (page === undefined) {
-            this.page = { url: '', title: '', prev: false };
+            this.page = { url: '', title: 'NOT FOUND', prev: false };
             return;
         }
         this.page = page;
@@ -701,7 +701,7 @@ var pages = [
 /***/ "../../../../../src/app/components/law/law.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents bg-image-blue law\">\n  <p>\n    「特定商取引に関する法律」第11条（通信販売についての広告）に基づき、商品の提供条件を次のとおり明示します。<br>\n    事業者<br>\n    <br>\n    販売事業者<br>\n    佐々木興業株式会社<br>\n    お問合せ先<br>\n    〒170-0013  東京都豊島区東池袋1-14-3<br>\n    佐々木興業株式会社  シネマサンシャイン運営部<br>\n    電話<br>\n    03-3982-6101(月曜～金曜  10:00～18:00、ただし祝日・年末年始は除く)<br>\n    ご購入に際して<br>\n    <br>\n    ご購入対象・価格・期間<br>\n    チケットの販売価格は、本サイトにおいて表示された価格となります。<br>\n    その他お客様にご負担いただく費用消費税をご負担いただきます。なお、本サイト内の表示価格は、消費税込みの金額を表示しております。<br>\n    チケットの引渡し方法・時期チケットの発券は、チケットご購入時にWEB上の確認画面または、弊社から送信させていただきます確認の電子メールに 記載された「シネマサンシャイン」に備え付けの自動発券機において、お客様は、「引換番号」および「購入チケット確認用暗証番号」を入力 いただくことによって行います。「引換番号」および「購入チケット確認用暗証番号」を失念された場合、発券することができないことがございます。 また、上映開始時刻を過ぎますと発券できません。予めご了承下さい。なお、郵便または宅配便等によるチケットの送付は行っておりません。<br>\n    購入枚数の制限一回のご購入手続において購入いただけますチケット枚数の上限は、6枚までとさせていただきます。7枚以上購入される場合には、 再度お手続きをお願いいたします。<br>\n    チケットは映画上映当日の上映開始1時間前までご購入いただけます。<br>\n    お支払い方法<br>\n    クレジットカードによる決済のみとなっております。<br>\n    利用可能なクレジットカード：MUFG、DC、UFJ、NICOS、Master、VISA、UC、JCB、American Express<br>\n    お支払い時期：<br>\n    クレジットカード決済画面におけるクレジットカード情報の送信完了時に各カード会社にお客様情報を送信し、決済させていただきます。なお、 ご請求日は各カード会社により異なります。<br>\n    キャンセルおよび払い戻し：<br>\n    ご購入手続完了後においては、上映中止または延期の場合を除き、お客様の不可抗力による来場遅延等の理由にかかわらず、ご鑑賞作品の変更、 他の上映時間または座席への変更、もしくはチケットの払い戻しは一切いたしません。また、ご購入されたチケットのお引き取りがない場合においても、払い戻しはいたしません。\n    弊社の事情により上映を中止または延期した場合、期間および場所を定めて当該中止にかかわるチケットの払い戻しを実施します。ただし、 払い戻しの期間を過ぎた場合、発券済のチケットを紛失・破損し、または甚だしく汚損し判読しがたい場合には、一切払い戻しはいたしません。また、 チケットの購入金額以外の費用（手数料、交通費、宿泊費、通信費、送付料等）はお支払いいたしません。<br>\n    払い戻しの期間・場所：<br>\n    原則として、チケットご購入時にWEB上の確認画面または、弊社から送信させていただきます確認の電子メールに記載された「劇場」において 払い戻しを行います。払い戻しの期間については、各「シネマサンシャイン」までお問い合わせ下さい。<br>\n    払い戻しの方法<br>\n    原則として、チケットとの交換による現金での払い戻しとなります。\n  </p>\n</div>\n"
+module.exports = "<div class=\"contents bg-image-blue\">\n    <div class=\"inner\">\n        <p class=\"box\">\n            「特定商取引に関する法律」第11条（通信販売についての広告）に基づき、商品の提供条件を次のとおり明示します。<br>\n            事業者<br>\n            <br>\n            販売事業者<br>\n            佐々木興業株式会社<br>\n            お問合せ先<br>\n            〒170-0013  東京都豊島区東池袋1-14-3<br>\n            佐々木興業株式会社  シネマサンシャイン運営部<br>\n            電話<br>\n            03-3982-6101(月曜～金曜  10:00～18:00、ただし祝日・年末年始は除く)<br>\n            ご購入に際して<br>\n            <br>\n            ご購入対象・価格・期間<br>\n            チケットの販売価格は、本サイトにおいて表示された価格となります。<br>\n            その他お客様にご負担いただく費用消費税をご負担いただきます。なお、本サイト内の表示価格は、消費税込みの金額を表示しております。<br>\n            チケットの引渡し方法・時期チケットの発券は、チケットご購入時にWEB上の確認画面または、弊社から送信させていただきます確認の電子メールに 記載された「シネマサンシャイン」に備え付けの自動発券機において、お客様は、「引換番号」および「購入チケット確認用暗証番号」を入力 いただくことによって行います。「引換番号」および「購入チケット確認用暗証番号」を失念された場合、発券することができないことがございます。 また、上映開始時刻を過ぎますと発券できません。予めご了承下さい。なお、郵便または宅配便等によるチケットの送付は行っておりません。<br>\n            購入枚数の制限一回のご購入手続において購入いただけますチケット枚数の上限は、6枚までとさせていただきます。7枚以上購入される場合には、 再度お手続きをお願いいたします。<br>\n            チケットは映画上映当日の上映開始1時間前までご購入いただけます。<br>\n            お支払い方法<br>\n            クレジットカードによる決済のみとなっております。<br>\n            利用可能なクレジットカード：MUFG、DC、UFJ、NICOS、Master、VISA、UC、JCB、American Express<br>\n            お支払い時期：<br>\n            クレジットカード決済画面におけるクレジットカード情報の送信完了時に各カード会社にお客様情報を送信し、決済させていただきます。なお、 ご請求日は各カード会社により異なります。<br>\n            キャンセルおよび払い戻し：<br>\n            ご購入手続完了後においては、上映中止または延期の場合を除き、お客様の不可抗力による来場遅延等の理由にかかわらず、ご鑑賞作品の変更、 他の上映時間または座席への変更、もしくはチケットの払い戻しは一切いたしません。また、ご購入されたチケットのお引き取りがない場合においても、払い戻しはいたしません。\n            弊社の事情により上映を中止または延期した場合、期間および場所を定めて当該中止にかかわるチケットの払い戻しを実施します。ただし、 払い戻しの期間を過ぎた場合、発券済のチケットを紛失・破損し、または甚だしく汚損し判読しがたい場合には、一切払い戻しはいたしません。また、 チケットの購入金額以外の費用（手数料、交通費、宿泊費、通信費、送付料等）はお支払いいたしません。<br>\n            払い戻しの期間・場所：<br>\n            原則として、チケットご購入時にWEB上の確認画面または、弊社から送信させていただきます確認の電子メールに記載された「劇場」において 払い戻しを行います。払い戻しの期間については、各「シネマサンシャイン」までお問い合わせ下さい。<br>\n            払い戻しの方法<br>\n            原則として、チケットとの交換による現金での払い戻しとなります。\n        </p>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -713,7 +713,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".law {\n  padding-top: 40px; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -828,7 +828,7 @@ var LoadingComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <div class=\"logo text-center mb-middle\"><img src=\"/assets/images/common/logo.svg\"></div>\n    <p class=\"read mb-small text-center\">初めてアプリをご利用なさる方は<br>下のボタンから会員登録をおこなってください。</p>\n    <button class=\"btn btn-info btn-block mb-middle\" routerLink=\"/startup\">アプリを初めてご利用の方</button>\n    <p class=\"read mb-small text-center\">既に会員登録済みの方は<br>下のボタンよりログインしてください。</p>\n    <button class=\"btn btn-info btn-block\" (click)=\"login()\">会員登録済みの方</button>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents\">\n    <div class=\"inner center\">\n        <div class=\"logo text-center mb-large\"><img src=\"/assets/images/common/logo.svg\"></div>\n        <p class=\"read text-center mb-middle\">初めてアプリをご利用なさる方は<br>下のボタンから会員登録をおこなってください。</p>\n        <button class=\"btn btn-primary btn-block mb-large\" routerLink=\"/startup\">アプリを初めてご利用の方</button>\n        <p class=\"read text-center mb-middle\">既に会員登録済みの方は<br>下のボタンよりログインしてください。</p>\n        <button class=\"btn btn-info btn-block\" (click)=\"login()\">会員登録済みの方</button>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -840,7 +840,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".contents {\n  width: 100%;\n  height: 100vh;\n  padding-top: 50px;\n  background-image: url(/assets/images/auth/bg_01.svg);\n  background-size: 50px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
+exports.push([module.i, ".inner {\n  padding: 50px 0 0;\n  max-width: 300px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
 
 // exports
 
@@ -922,20 +922,22 @@ var LoginComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
+                        _a.trys.push([0, 3, , 4]);
                         return [4 /*yield*/, this.sasaki.auth.signIn()];
                     case 1:
                         result = _a.sent();
                         this.sasaki.credentials = result;
                         this.isLoading = true;
-                        this.router.navigate(['/']);
-                        return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.router.navigate(['/'])];
                     case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
                         error_1 = _a.sent();
                         console.error(error_1);
                         this.isLoading = false;
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
@@ -959,7 +961,7 @@ var LoginComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/logout/logout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"cover\" [class.active]=\"isOpen\" (click)=\"close.emit()\"></div>\n\n<div class=\"modal\" [class.active]=\"isOpen\">\n    <div class=\"inner\">\n        <div class=\"mb-middle text-center\">ログアウトしますか？</div>\n        <button class=\"mb-x-small btn btn-info btn-block\" (click)=\"logout()\">ログアウト</button>\n        <button class=\"btn btn-info btn-block\" (click)=\"close.emit()\">キャンセル</button>\n    </div>\n</div>"
+module.exports = "<div class=\"cover\" [class.active]=\"isOpen\" (click)=\"close.emit()\"></div>\n\n<div class=\"modal position-center\" [class.active]=\"isOpen\">\n    <div class=\"inner\">\n        <div class=\"mb-middle text-center\">ログアウトしますか？</div>\n        <button class=\"mb-x-small btn btn-info btn-block\" (click)=\"logout()\">ログアウト</button>\n        <button class=\"btn btn-info btn-block\" (click)=\"close.emit()\">キャンセル</button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -971,7 +973,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".cover {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, 0.75);\n  display: none; }\n  .cover.active {\n    display: block; }\n\n.modal {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: 20;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  visibility: hidden; }\n  .modal.active {\n    visibility: visible; }\n  .modal .inner {\n    padding: 40px 25px;\n    background-color: #333;\n    min-width: 300px;\n    max-width: 100%;\n    border-radius: 5px;\n    border: 1px solid #FFF; }\n", ""]);
+exports.push([module.i, ".cover {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, 0.75);\n  display: none; }\n  .cover.active {\n    display: block; }\n\n.modal {\n  visibility: hidden;\n  z-index: 20; }\n  .modal.active {\n    visibility: visible; }\n  .modal .inner {\n    padding: 40px 25px;\n    background-color: #333;\n    min-width: 300px;\n    max-width: 100%;\n    border-radius: 5px;\n    border: 1px solid #FFF; }\n", ""]);
 
 // exports
 
@@ -1053,19 +1055,21 @@ var LogoutComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
+                        _a.trys.push([0, 3, , 4]);
                         return [4 /*yield*/, this.sasaki.auth.signOut()];
                     case 1:
                         _a.sent();
                         console.log('logout');
                         this.sasaki.credentials = null;
-                        this.router.navigate(['/auth/login']);
-                        return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.router.navigate(['/auth/login'])];
                     case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
                         error_1 = _a.sent();
                         console.error(error_1);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
@@ -1161,7 +1165,7 @@ var MainComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/navigation/navigation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<ul>\n    <li routerLink=\"/ticket-holder\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-ticket-holder-white\"></div>\n        <div>チケットホルダー</div>\n    </li>\n    <li routerLink=\"/purchase\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>チケット購入</div>\n    </li>\n</ul>"
+module.exports = "<ul>\n    <li routerLink=\"/ticket-holder\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-ticket-holder-white\"></div>\n        <div>チケットホルダー</div>\n    </li>\n    <li routerLink=\"/purchase\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>チケット購入</div>\n    </li>\n    <li routerLink=\"/point\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>ポイント管理</div>\n    </li>\n</ul>"
 
 /***/ }),
 
@@ -1173,7 +1177,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  height: 60px;\n  display: block; }\n\nul {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 10;\n  display: table;\n  table-layout: fixed;\n  width: 100%;\n  height: 60px;\n  background: linear-gradient(135deg, #05418f 0%, #000a2a 100%); }\n  ul li {\n    display: table-cell;\n    border-bottom: 5px solid #4C4C4C;\n    font-size: 10px;\n    text-align: center;\n    vertical-align: middle;\n    opacity: 0.7; }\n    ul li.active {\n      border-bottom-color: #00A0E9;\n      opacity: 1; }\n    ul li .icon-ticket-holder-white:before, ul li .icon-purchase-white:before {\n      margin: auto; }\n", ""]);
+exports.push([module.i, ":host {\n  height: 60px;\n  display: block; }\n\nul {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 10;\n  display: table;\n  table-layout: fixed;\n  width: 100%;\n  height: 60px;\n  background-color: #555; }\n  ul li {\n    display: table-cell;\n    border-bottom: 5px solid #888;\n    font-size: 10px;\n    text-align: center;\n    vertical-align: middle;\n    opacity: 0.7; }\n    ul li.active {\n      background-color: #333;\n      border-bottom-color: #00A0E9;\n      opacity: 1; }\n    ul li .icon-ticket-holder-white:before, ul li .icon-purchase-white:before {\n      margin: auto; }\n", ""]);
 
 // exports
 
@@ -1231,7 +1235,7 @@ var NavigationComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/no-ticket/no-ticket.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"no-ticket\">\n    <div class=\"mb-middle text-center\">現在鑑賞予定の作品はございません。</div>\n    <div class=\"mb-middle text-center\"><img src=\"/assets/images/ticketHolder/no_ticket.svg\" width=\"103\" height=\"66\"></div>\n    <button class=\"btn btn-primary btn-block mb-small\" routerLink=\"/purchase\">チケットを購入</button>\n    <button class=\"btn btn-info btn-block\" routerLink=\"/about\">このアプリについて</button>\n</div>\n"
+module.exports = "<div class=\"position-center\">\n    <div class=\"mb-middle text-center\"><img src=\"/assets/images/ticketHolder/no_ticket.svg\" width=\"103\" height=\"66\"></div>\n    <p class=\"mb-middle text-center\">現在鑑賞予定の作品はございません。</p>\n    <p class=\"text-center\"><a routerLink=\"/about\">このアプリについて</a></p>\n</div>\n<button class=\"btn btn-primary btn-block btn-bottom\" routerLink=\"/purchase\">チケットを購入</button>\n"
 
 /***/ }),
 
@@ -1243,7 +1247,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".no-ticket {\n  background-color: #2d2d2d;\n  padding: 20px 15px;\n  border-radius: 5px;\n  border: 1px solid #FFF; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -1295,7 +1299,7 @@ var NoTicketComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/not-found/not-found.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n    not-found works!\n</p>"
+module.exports = "<div class=\"contents\">\n    <div class=\"position-center\">\n        <p class=\"large-text text-center\">NOT FOUND</p>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1323,6 +1327,7 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotFoundComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1332,14 +1337,61 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 /**
  * NotFoundComponent
  */
 
+
 var NotFoundComponent = /** @class */ (function () {
-    function NotFoundComponent() {
+    function NotFoundComponent(router) {
+        this.router = router;
     }
     NotFoundComponent.prototype.ngOnInit = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.router.navigate([''])];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     NotFoundComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1353,9 +1405,10 @@ var NotFoundComponent = /** @class */ (function () {
          * @implements OnInit
          */
         ,
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object])
     ], NotFoundComponent);
     return NotFoundComponent;
+    var _a;
 }());
 
 //# sourceMappingURL=not-found.component.js.map
@@ -1365,7 +1418,7 @@ var NotFoundComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/policy/policy.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents bg-image-blue policy\">\n  <h2>利用規約について</h2>\n  <p>   \n    本規約は、佐々木興業株式会社（以下「当社」）が独自に規定するものであり、当社の運営する「シネマサンシャイン」が提供するサービスに提供されるものとします。<br>\n    当社が提供するシネマサンシャインをご利用になる場合には、本規約に従っていただく必要があります。ご利用の皆様はシネマサンシャインの利用をもって、本規約の内容を承諾いただけたものとみなします。<br>\n    本規約は必要に応じて適宜見直しを行ないますので、ご利用の際には本ページに掲載されている最新の利用規約をご確認下さい。<br>\n    1.個人登録情報の取り扱いについて<br>\n    個人情報に関してはシネマサンシャインにて最大限の注意を払い管理いたします。個人情報の取り扱いについては、プライバシーポリシーにまとめてありますので、そちらもご覧下さい。<br>\n    またシネマサンシャインの営業譲渡が行なわれる際は、譲渡を受けた獲得者に移管いたします。なお、退会申請には速やかに応じ、個人情報を削除いたします。<br>\n    2.ID及びパスワードの管理について<br>\n    ID及びパスワードの管理は、登録ユーザーの責任において行なっていただきます。ID及びパスワードを利用して行なわれた行為は、そのIDを保有している登録ユーザーの責任とみなします。<br>\n    第三者への漏洩の疑いがある場合は、直ちにシネマサンシャインまでご連絡下さい。シネマサンシャインはID及びパスワードの不正使用などから生じた損害について一切責任を負いません。<br>\n    3.登録事項の変更について<br>\n    ユーザー登録の必須項目に変更があった際には、速やかに情報の変更をお願いいたします。<br>\n    4.禁止事項<br>\n    他の利用者や第三者を誹謗中傷する行為や、不当に足を引っ張ろうとする行為。<br>\n    公正な場を不当に歪めようとする行為。<br>\n    運営者が、不適切と判断した行為。<br>\n    5.登録ユーザーの資格保留又は削除について<br>\n    シネマサンシャインは、上記禁止事項に違反した登録ユーザーに対し、資格を保留・削除する権利を保有します。また、コンテンツを削除する権利も保有します。その判断に関しては、運営者の裁量にて行使されます。これにより損害が発生した場合でもシネマサンシャインは責任を負いません。<br>\n    6.サービスの中断<br>\n    シネマサンシャインは、設備的事情等のやむを得ない場合に限って、利用者に事前通知なくサービスを一時的に中断することがあります。その際に利用者に生じた不利益や損失などに対して、一切の責任を負わないものとします。<br>\n    7.営業の中止について<br>\n    シネマサンシャインは、利用者にWebサイト上またはメールによる通知の上、サービスの全部または一部を中止できるものとします。サービスの終了に伴い生じる利用者の不利益や損害などに対して、一切の責任を負わないものとします。<br>\n    8.免責事項<br>\n    シネマサンシャインは、本サイトの利用に際して利用者が生じた不利益や損害などに対して、一切の責任を負わないものとします。<br>\n    利用者が本サイトから得る情報などについての一切は、その受け手の責任において判断するものとし、シネマサンシャインは、いかなる保証も行なわないものにします。<br>\n    利用者が使用する機器・ソフトウェアについて、シネマサンシャインは、その動作保証は一切行なわないものとします。<br>\n    シネマサンシャインをきっかけに契約に至った案件に関して、その後に生じたトラブルなど、シネマサンシャインでは一切の責任を負わないものとします。<br>\n    9.準拠法および裁判管轄について<br>\n    本規約には、日本法が適用されます。また、本規約に関連する利用者とシネマサンシャイン間の紛争については、東京地方裁判所を第一審専属管轄裁判所とします。<br>\n  </p>\n</div>"
+module.exports = "<div class=\"contents bg-image-blue\">\n    <div class=\"inner\">\n        <p class=\"box\">   \n            本規約は、佐々木興業株式会社（以下「当社」）が独自に規定するものであり、当社の運営する「シネマサンシャイン」が提供するサービスに提供されるものとします。<br>\n            当社が提供するシネマサンシャインをご利用になる場合には、本規約に従っていただく必要があります。ご利用の皆様はシネマサンシャインの利用をもって、本規約の内容を承諾いただけたものとみなします。<br>\n            本規約は必要に応じて適宜見直しを行ないますので、ご利用の際には本ページに掲載されている最新の利用規約をご確認下さい。<br>\n            1.個人登録情報の取り扱いについて<br>\n            個人情報に関してはシネマサンシャインにて最大限の注意を払い管理いたします。個人情報の取り扱いについては、プライバシーポリシーにまとめてありますので、そちらもご覧下さい。<br>\n            またシネマサンシャインの営業譲渡が行なわれる際は、譲渡を受けた獲得者に移管いたします。なお、退会申請には速やかに応じ、個人情報を削除いたします。<br>\n            2.ID及びパスワードの管理について<br>\n            ID及びパスワードの管理は、登録ユーザーの責任において行なっていただきます。ID及びパスワードを利用して行なわれた行為は、そのIDを保有している登録ユーザーの責任とみなします。<br>\n            第三者への漏洩の疑いがある場合は、直ちにシネマサンシャインまでご連絡下さい。シネマサンシャインはID及びパスワードの不正使用などから生じた損害について一切責任を負いません。<br>\n            3.登録事項の変更について<br>\n            ユーザー登録の必須項目に変更があった際には、速やかに情報の変更をお願いいたします。<br>\n            4.禁止事項<br>\n            他の利用者や第三者を誹謗中傷する行為や、不当に足を引っ張ろうとする行為。<br>\n            公正な場を不当に歪めようとする行為。<br>\n            運営者が、不適切と判断した行為。<br>\n            5.登録ユーザーの資格保留又は削除について<br>\n            シネマサンシャインは、上記禁止事項に違反した登録ユーザーに対し、資格を保留・削除する権利を保有します。また、コンテンツを削除する権利も保有します。その判断に関しては、運営者の裁量にて行使されます。これにより損害が発生した場合でもシネマサンシャインは責任を負いません。<br>\n            6.サービスの中断<br>\n            シネマサンシャインは、設備的事情等のやむを得ない場合に限って、利用者に事前通知なくサービスを一時的に中断することがあります。その際に利用者に生じた不利益や損失などに対して、一切の責任を負わないものとします。<br>\n            7.営業の中止について<br>\n            シネマサンシャインは、利用者にWebサイト上またはメールによる通知の上、サービスの全部または一部を中止できるものとします。サービスの終了に伴い生じる利用者の不利益や損害などに対して、一切の責任を負わないものとします。<br>\n            8.免責事項<br>\n            シネマサンシャインは、本サイトの利用に際して利用者が生じた不利益や損害などに対して、一切の責任を負わないものとします。<br>\n            利用者が本サイトから得る情報などについての一切は、その受け手の責任において判断するものとし、シネマサンシャインは、いかなる保証も行なわないものにします。<br>\n            利用者が使用する機器・ソフトウェアについて、シネマサンシャインは、その動作保証は一切行なわないものとします。<br>\n            シネマサンシャインをきっかけに契約に至った案件に関して、その後に生じたトラブルなど、シネマサンシャインでは一切の責任を負わないものとします。<br>\n            9.準拠法および裁判管轄について<br>\n            本規約には、日本法が適用されます。また、本規約に関連する利用者とシネマサンシャイン間の紛争については、東京地方裁判所を第一審専属管轄裁判所とします。<br>\n        </p>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1377,7 +1430,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".policy {\n  padding-top: 40px; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -1429,7 +1482,7 @@ var PolicyComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/privacy/privacy.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents bg-image-blue privacy\">\n  <p>\n    2009年4月15日\n    当社はお客様の氏名・性別・生年月日・お住まい・職種のお申し込み内容等の個人情報の保護に関し、以下の取組みを実施いたしております。<br>\n    1.当社は、個人情報に関する法令おおびその他の規範を遵守し、お客さまの大切な個人情報の保護に万全を尽くします。<br>\n    2.当社はお客さまの個人情報について、下記の目的の範囲内で適正に取り扱いさせていただきます。<br>\n    ・ご本人確認、ご利用サービスの停止・中止の通知並びにその他当社のサービスの提供に係わること。<br>\n    ・電子メールによる当社または提携先の提供するサービスに関する情報提供、販売の推奨、アンケート調査および景品等の送付あるいは提供を行うこと。<br>\n    ・集計、分析処理を行い、個人を認識できない形状に加工して利用または提携先等に提供すること。<br>\n    ・当社のサービス改善または新たなサービスの開発を行うこと。<br>\n    ・お問い合わせ、ご相談にお答えすること。<br>\n    なお、上記利用目的等を定める場合があります。また、お客さまとのお電話での対応時において、ご意見・ご要望等の正確な把握、 今後のサービス向上のために、通話を録音させていただく場合がございます。<br>\n    当社の提供するウェブサイトやサービスをより便利にご利用いただくために、クッキー等の技術を利用する場合があります。<br>\n    クッキー等を利用して取得したサービスの利用状況を個人を特定して利用する場合は、個人情報として取り扱います。<br>\n    3.当社は、お客さまの個人情報を適正に取扱うため、社内規定及び管理体制の整備、従業員の教育、並びに、個人情報への不正アクセスや 個人情報の紛失、破壊、改ざんおよび漏洩防止等に関する適切な措置を行ない、またその見直しを継続して図ることにより、個人情報の保護に 努めてまいります。<br>\n    4.当社は、お客さまの個人情報については、上記利用目的を達成するために、業務委託先または提携先に預託する場合がございます。その場合は個人情報保護の契約を締結する等の必要かつ適切な処置を実施いたします。なお法令等に基づき裁判所からの開示の要請があった場合については、当該公的機関に提供することがございます。<br>\n    5.当社は、本サービスをご利用のお客さまについて、利用目的の達成に必要な範囲でお客様の個人データを共同利用する場合があります。<br>\n    ・共同利用される個人データは、お客さまのお名前、生年月日、お住まい、性別、サービス利用状況等です。<br>\n    ・共同利用者の範囲は当社および当社関連会社です。<br>\n    ・共同利用における利用目的は、当社の利用目的と同じです。<br>\n    ・共同利用における管理責任者佐々木興業株式会社(会社概要)です。\n  </p>\n</div>\n"
+module.exports = "<div class=\"contents bg-image-blue\">\n    <div class=\"inner\">\n        <p class=\"box\">\n            2009年4月15日<br>\n            当社はお客様の氏名・性別・生年月日・お住まい・職種のお申し込み内容等の個人情報の保護に関し、以下の取組みを実施いたしております。<br>\n            1.当社は、個人情報に関する法令おおびその他の規範を遵守し、お客さまの大切な個人情報の保護に万全を尽くします。<br>\n            2.当社はお客さまの個人情報について、下記の目的の範囲内で適正に取り扱いさせていただきます。<br>\n            ・ご本人確認、ご利用サービスの停止・中止の通知並びにその他当社のサービスの提供に係わること。<br>\n            ・電子メールによる当社または提携先の提供するサービスに関する情報提供、販売の推奨、アンケート調査および景品等の送付あるいは提供を行うこと。<br>\n            ・集計、分析処理を行い、個人を認識できない形状に加工して利用または提携先等に提供すること。<br>\n            ・当社のサービス改善または新たなサービスの開発を行うこと。<br>\n            ・お問い合わせ、ご相談にお答えすること。<br>\n            なお、上記利用目的等を定める場合があります。また、お客さまとのお電話での対応時において、ご意見・ご要望等の正確な把握、 今後のサービス向上のために、通話を録音させていただく場合がございます。<br>\n            当社の提供するウェブサイトやサービスをより便利にご利用いただくために、クッキー等の技術を利用する場合があります。<br>\n            クッキー等を利用して取得したサービスの利用状況を個人を特定して利用する場合は、個人情報として取り扱います。<br>\n            3.当社は、お客さまの個人情報を適正に取扱うため、社内規定及び管理体制の整備、従業員の教育、並びに、個人情報への不正アクセスや 個人情報の紛失、破壊、改ざんおよび漏洩防止等に関する適切な措置を行ない、またその見直しを継続して図ることにより、個人情報の保護に 努めてまいります。<br>\n            4.当社は、お客さまの個人情報については、上記利用目的を達成するために、業務委託先または提携先に預託する場合がございます。その場合は個人情報保護の契約を締結する等の必要かつ適切な処置を実施いたします。なお法令等に基づき裁判所からの開示の要請があった場合については、当該公的機関に提供することがございます。<br>\n            5.当社は、本サービスをご利用のお客さまについて、利用目的の達成に必要な範囲でお客様の個人データを共同利用する場合があります。<br>\n            ・共同利用される個人データは、お客さまのお名前、生年月日、お住まい、性別、サービス利用状況等です。<br>\n            ・共同利用者の範囲は当社および当社関連会社です。<br>\n            ・共同利用における利用目的は、当社の利用目的と同じです。<br>\n            ・共同利用における管理責任者佐々木興業株式会社(会社概要)です。\n        </p>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -1493,7 +1546,7 @@ var PrivacyComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents profile bg-image-blue\">\n    <form [formGroup]=\"updateForm\" (ngSubmit)=\"submit()\">\n        <div class=\"mb-small\">\n            <label class=\"control-label mb-x-small\">メールアドレス</label>\n            <input type=\"email\" class=\"form-control\" name=\"mail\" [formControl]=\"updateForm.controls.mail\">\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.required && updateForm.controls.mail.dirty\">必須項目</p>\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.maxlength && updateForm.controls.mail.dirty\">30文字以内で入力してください</p>\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.email && updateForm.controls.mail.dirty\">メール形式で入力してください</p>\n        </div>\n\n        <div class=\"mb-small\">\n            <label class=\"control-label mb-x-small\">せい</label>\n            <input type=\"text\" class=\"form-control\" name=\"familyName\" [formControl]=\"updateForm.controls.familyName\">\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.required && updateForm.controls.familyName.dirty\">必須項目</p>\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.maxlength && updateForm.controls.familyName.dirty\">10文字以内で入力してください</p>\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.pattern && updateForm.controls.familyName.dirty\">ひらがなで入力してください</p>\n        </div>\n\n        <div class=\"mb-small\">\n            <label class=\"control-label mb-x-small\">めい</label>\n            <input type=\"text\" class=\"form-control\" name=\"givenName\" [formControl]=\"updateForm.controls.givenName\">\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.required && updateForm.controls.givenName.dirty\">必須項目</p>\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.maxlength && updateForm.controls.givenName.dirty\">10文字以内で入力してください</p>\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.pattern && updateForm.controls.givenName.dirty\">ひらがなで入力してください</p>\n        </div>\n\n        <div class=\"mb-small\">\n            <label class=\"control-label mb-x-small\">電話番号</label>\n            <input type=\"tel\" class=\"form-control\" name=\"telephone\" [formControl]=\"updateForm.controls.telephone\">\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.required && updateForm.controls.telephone.dirty\">必須項目</p>\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.maxlength && updateForm.controls.telephone.dirty\">15文字以内で入力してください</p>\n            <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.pattern && updateForm.controls.telephone.dirty\">数字で入力してください</p>\n        </div>\n\n        <button [disabled]=\"updateForm.invalid\" type=\"submit\" class=\"btn btn-info btn-block\">更新</button>\n    </form>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents bg-image-blue\">\n    <div class=\"inner\">\n        <p class=\"mb-middle text-center\">該当の項目を編集して更新を押してください。</p>\n        <form [formGroup]=\"updateForm\" (ngSubmit)=\"submit()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">メールアドレス</label>\n                <input type=\"email\" class=\"form-control\" name=\"mail\" [formControl]=\"updateForm.controls.mail\">\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.required && updateForm.controls.mail.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.maxlength && updateForm.controls.mail.dirty\">30文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.email && updateForm.controls.mail.dirty\">メール形式で入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">せい</label>\n                <input type=\"text\" class=\"form-control\" name=\"familyName\" [formControl]=\"updateForm.controls.familyName\">\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.required && updateForm.controls.familyName.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.maxlength && updateForm.controls.familyName.dirty\">10文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.pattern && updateForm.controls.familyName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">めい</label>\n                <input type=\"text\" class=\"form-control\" name=\"givenName\" [formControl]=\"updateForm.controls.givenName\">\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.required && updateForm.controls.givenName.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.maxlength && updateForm.controls.givenName.dirty\">10文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.pattern && updateForm.controls.givenName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">電話番号</label>\n                <input type=\"tel\" class=\"form-control\" name=\"telephone\" [formControl]=\"updateForm.controls.telephone\">\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.required && updateForm.controls.telephone.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.maxlength && updateForm.controls.telephone.dirty\">15文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.pattern && updateForm.controls.telephone.dirty\">数字で入力してください</p>\n            </div>\n\n            <button [disabled]=\"updateForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block btn-bottom\">更新</button>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -1505,7 +1558,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".profile {\n  padding-top: 40px; }\n", ""]);
+exports.push([module.i, ".inner {\n  padding-top: 40px; }\n", ""]);
 
 // exports
 
@@ -1659,7 +1712,7 @@ var ProfileComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/purchase/purchase.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <p class=\"read mb-small\">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>\n    <ul class=\"conditions mb-small\">\n        <li class=\" mb-x-small\">\n            <div class=\"control-label mb-x-small\">鑑賞劇場</div>\n            <select class=\"form-control\" name=\"theater\" [(ngModel)]=\"theater\" (change)=\"changeConditions($event)\">\n                <option *ngFor=\"let theater of theaters\" value=\"{{ theater.branchCode }}\">{{ theater.name.ja }}</option>\n            </select>\n        </li>\n        <li>\n            <div class=\"control-label mb-x-small\">鑑賞日時</div>\n            <select class=\"form-control\" name=\"date\" [(ngModel)]=\"date\" (change)=\"changeConditions($event)\">\n                <option *ngFor=\"let date of dateList\" value=\"{{ date.value }}\">{{ date.text }}</option>\n            </select>\n        </li>\n    </ul>\n\n    <swiper *ngIf=\"!isLoading\" [config]=\"config\">\n        <div class=\"swiper-wrapper\">\n            <div *ngFor=\"let film of filmList\" class=\"swiper-slide\">\n                <app-film-order-of-performance [data]=\"film\" (performanceSelect)=\"purchaseView($event)\"></app-film-order-of-performance>\n            </div>\n        </div>\n    </swiper>\n    <div class=\"pagination-wrapper\">\n        <div class=\"swiper-pagination\"></div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents\">\n    <div class=\"inner\">\n        <p class=\"read mb-small\">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>\n        <ul class=\"conditions mb-small\">\n            <li class=\" mb-x-small\">\n                <div class=\"control-label mb-x-small small-x-text\">鑑賞劇場</div>\n                <select class=\"form-control\" name=\"theater\" [(ngModel)]=\"theater\" (change)=\"changeConditions($event)\">\n                    <option *ngFor=\"let theater of theaters\" value=\"{{ theater.branchCode }}\">{{ theater.name.ja }}</option>\n                </select>\n            </li>\n            <li>\n                <div class=\"control-label mb-x-small small-x-text\">鑑賞日時</div>\n                <select class=\"form-control\" name=\"date\" [(ngModel)]=\"date\" (change)=\"changeConditions($event)\">\n                    <option *ngFor=\"let date of dateList\" value=\"{{ date.value }}\">{{ date.text }}</option>\n                </select>\n            </li>\n        </ul>\n\n        <swiper *ngIf=\"!isLoading\" [config]=\"config\">\n            <div class=\"swiper-wrapper\">\n                <div *ngFor=\"let film of filmList\" class=\"swiper-slide\">\n                    <app-film-order-of-performance [data]=\"film\" (performanceSelect)=\"purchaseView($event)\"></app-film-order-of-performance>\n                </div>\n            </div>\n        </swiper>\n        <div class=\"pagination-wrapper\">\n            <div class=\"swiper-pagination\"></div>\n        </div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -1924,7 +1977,7 @@ var PurchaseComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/startup/startup.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"startup\">\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper walk-through\">\n            <div class=\"swiper-slide step-1\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>シネマサンシャイン<br>公式アプリへようこそ!</strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/01.svg\" width=\"118\" height=\"202\"></div>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-2\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>いつでも<br><span class=\"under-line\">アプリ会員価格！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/02.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">お得なアプリ会員価格で<br>チケットが購入できます。</p>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-3\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>チケットを<br><span class=\"under-line\">スマートに購入！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/03.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">一度、アプリ内で購入すると<br>面倒な購入者情報入力をスキップできます。</p>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-4\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>スマートフォンを<br><span class=\"under-line\">そのままチケットに！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/04.svg\" width=\"274\" height=\"223\"></div>\n                    <p class=\"text-center mb-middle\">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>\n                </div>\n            </div>\n            <!-- <div class=\"swiper-slide step-5\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>アプリでチケットを<br><span class=\"under-line\">6枚購入すると1枚無料！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/06.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">アプリ内で6枚購入すると<br>なんと1枚無料になります。</p>\n                </div>\n            </div> -->\n            <div class=\"swiper-slide step-5\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>それではアプリを<br>お楽しみください！</strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/05.svg\" width=\"269\" height=\"241\"></div>\n                    <button class=\"btn btn-info btn-block\" (click)=\"login()\">アプリを始める</button>\n                </div>\n            </div>\n        </div>\n        <div class=\"swiper-pagination\"></div>\n    </swiper>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"startup\">\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper walk-through\">\n            <div class=\"swiper-slide step-1\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>シネマサンシャイン<br>公式アプリへようこそ!</strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/01.svg\" width=\"118\" height=\"202\"></div>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-2\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>いつでも<br><span class=\"under-line\">アプリ会員価格！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/02.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">お得なアプリ会員価格で<br>チケットが購入できます。</p>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-3\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>チケットを<br><span class=\"under-line\">スマートに購入！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/03.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">一度、アプリ内で購入すると<br>面倒な購入者情報入力をスキップできます。</p>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-4\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>スマートフォンを<br><span class=\"under-line\">そのままチケットに！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/04.svg\" width=\"274\" height=\"223\"></div>\n                    <p class=\"text-center mb-middle\">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>\n                </div>\n            </div>\n            <!-- <div class=\"swiper-slide step-5\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>アプリでチケットを<br><span class=\"under-line\">6枚購入すると1枚無料！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/06.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">アプリ内で6枚購入すると<br>なんと1枚無料になります。</p>\n                </div>\n            </div> -->\n            <div class=\"swiper-slide step-5\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>それではアプリを<br>お楽しみください！</strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/05.svg\" width=\"269\" height=\"241\"></div>\n                    <button class=\"btn btn-primary btn-block\" (click)=\"login()\">アプリを始める</button>\n                </div>\n            </div>\n        </div>\n        <div class=\"swiper-pagination\"></div>\n    </swiper>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -2034,21 +2087,23 @@ var StartupComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
+                        _a.trys.push([0, 3, , 4]);
                         return [4 /*yield*/, this.sasaki.auth.signIn()];
                     case 1:
                         result = _a.sent();
                         console.log('authorize result:', result);
                         this.sasaki.credentials = result;
                         this.isLoading = true;
-                        this.router.navigate(['/']);
-                        return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.router.navigate(['/'])];
                     case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
                         error_1 = _a.sent();
                         console.error(error_1);
                         this.isLoading = false;
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
@@ -2072,7 +2127,7 @@ var StartupComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/ticket-holder/ticket-holder.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <!-- <div class=\"mb-small\"><img src=\"/assets/images/demo_01.png\"></div> -->\n    <ng-template *ngIf=\"reservations?.length > 0; then ticketBlock else noTicketBlock\"></ng-template>\n</div>\n\n<ng-template #ticketBlock>\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper\">\n            <div *ngFor=\"let reservation of reservations\" class=\"swiper-slide\">\n                <app-ticket [reservation]=\"reservation\"></app-ticket>\n            </div>\n        </div>\n    </swiper>\n    <div class=\"pagination-wrapper\">\n        <div class=\"swiper-pagination\"></div>\n    </div>\n</ng-template>\n\n<ng-template #noTicketBlock>\n    <app-no-ticket></app-no-ticket>\n</ng-template>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents\">\n    <div class=\"inner\">\n        <p class=\"mb-small text-center\">購入した鑑賞作品の下記チケットのQRコードを<br>入場口スタッフに提示してください。</p>\n        <div *ngIf=\"!isLoading\">\n            <ng-template *ngIf=\"reservations?.length > 0; then ticketBlock else noTicketBlock\"></ng-template>\n        </div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>\n\n<ng-template #ticketBlock>\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper\">\n            <div *ngFor=\"let reservation of reservations\" class=\"swiper-slide\">\n                <app-ticket [reservation]=\"reservation\"></app-ticket>\n            </div>\n        </div>\n    </swiper>\n    <div class=\"pagination-wrapper\">\n        <div class=\"swiper-pagination\"></div>\n    </div>\n</ng-template>\n\n<ng-template #noTicketBlock>\n    <app-no-ticket></app-no-ticket>\n</ng-template>\n"
 
 /***/ }),
 
@@ -2242,7 +2297,7 @@ var TicketHolderComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/ticket/ticket.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <dl class=\"film\">\n            <dt class=\"small-x-text icon-film-name-gray\">作品名</dt>\n            <dd>{{ reservation.reservationFor.workPerformed.name }}</dd>\n        </dl>\n        <dl class=\"date\">\n            <dt class=\"small-x-text icon-calendar-gray\">鑑賞日時</dt>\n            <dd>{{ reservation.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{ reservation.reservationFor.startDate\n                | timeFormat: reservation.reservationFor.coaInfo.dateJouei }}-{{ reservation.reservationFor.endDate | timeFormat:\n                reservation.reservationFor.coaInfo.dateJouei }}</dd>\n        </dl>\n        <dl class=\"theater\">\n            <dt class=\"small-x-text icon-location-gray\">劇場/スクリーン</dt>\n            <dd>{{ reservation.reservationFor.superEvent.location.name.ja }} / {{ reservation.reservationFor.location.name.ja }}</dd>\n        </dl>\n    </div>\n    <ul>\n        <li *ngFor=\"let reservedTicket of reservation.reservedTickets\">\n            <div class=\"ticket-info\">\n                <div class=\"large-x-text mb-x-small\">{{ reservedTicket.ticketedSeat.seatNumber }}</div>\n                <div *ngIf=\"reservedTicket.coaTicketInfo.addGlasses > 0\">{{ reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>\n                <div *ngIf=\"reservedTicket.coaTicketInfo.addGlasses === 0\">{{ reservedTicket.coaTicketInfo.ticketName }}</div>\n            </div>\n            <qr-code class=\"qr\" [value]=\"reservedTicket.ticketToken\" [size]=\"100\" [padding]=\"10\"></qr-code>\n        </li>\n    </ul>\n</div>"
+module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <dl class=\"film\">\n            <dt class=\"icon-film-name-gray\"></dt>\n            <dd>{{ reservation.reservationFor.workPerformed.name }}</dd>\n        </dl>\n        <dl class=\"date\">\n            <dt class=\"icon-calendar-gray\"></dt>\n            <dd>{{ reservation.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{ reservation.reservationFor.startDate\n                | timeFormat: reservation.reservationFor.coaInfo.dateJouei }}-{{ reservation.reservationFor.endDate | timeFormat:\n                reservation.reservationFor.coaInfo.dateJouei }}</dd>\n        </dl>\n        <dl class=\"theater\">\n            <dt class=\"icon-location-gray\"></dt>\n            <dd>{{ reservation.reservationFor.superEvent.location.name.ja }} / {{ reservation.reservationFor.location.name.ja }}</dd>\n        </dl>\n    </div>\n    <ul>\n        <li *ngFor=\"let reservedTicket of reservation.reservedTickets\">\n            <div class=\"ticket-info\">\n                <div class=\"large-x-text mb-x-small\">{{ reservedTicket.ticketedSeat.seatNumber }}</div>\n                <div *ngIf=\"reservedTicket.coaTicketInfo.addGlasses > 0\">{{ reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>\n                <div *ngIf=\"reservedTicket.coaTicketInfo.addGlasses === 0\">{{ reservedTicket.coaTicketInfo.ticketName }}</div>\n            </div>\n            <div class=\"qr\">\n                <qr-code [value]=\"reservedTicket.ticketToken\" [size]=\"100\"></qr-code>\n            </div>\n        </li>\n    </ul>\n</div>"
 
 /***/ }),
 
@@ -2254,7 +2309,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".inner {\n  display: block;\n  border-radius: 5px;\n  background-color: #FFF;\n  overflow: hidden; }\n\n.info {\n  padding: 10px 10px 0;\n  color: #333; }\n  .info dl {\n    border-bottom: 1px dashed #CCC;\n    display: table;\n    width: 100%; }\n    .info dl:last-child {\n      border: none; }\n    .info dl dt {\n      width: 100px;\n      text-align: center;\n      display: table-cell;\n      vertical-align: middle; }\n      .info dl dt:before {\n        margin: 0 auto 5px; }\n    .info dl dd {\n      width: calc(100% - 100px);\n      padding: 15px 0;\n      display: table-cell;\n      vertical-align: middle;\n      line-height: 1.4; }\n\nul li {\n  background-color: #0074A9;\n  color: #FFF;\n  padding: 10px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  ul li:nth-child(even) {\n    background-color: #008ECF; }\n  ul li .ticket-info {\n    text-align: center;\n    width: calc(100% - 100px); }\n", ""]);
+exports.push([module.i, ".inner {\n  background-color: #EEE;\n  color: #333; }\n\n.info dl {\n  border-bottom: 1px solid #AAA;\n  display: table;\n  width: 100%; }\n  .info dl dt {\n    width: 60px;\n    text-align: center;\n    display: table-cell;\n    vertical-align: middle; }\n    .info dl dt:before {\n      margin: 0 auto; }\n  .info dl dd {\n    width: calc(100% - 60px);\n    padding: 15px 0;\n    display: table-cell;\n    vertical-align: middle;\n    line-height: 1.4; }\n\nul li {\n  background-color: #FFF;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  ul li:nth-child(even) {\n    background-color: #008ECF; }\n  ul li .ticket-info {\n    text-align: center;\n    width: calc(100% - 150px); }\n  ul li .qr {\n    padding: 10px;\n    background-color: #EEE; }\n    ul li .qr qr-code {\n      display: block;\n      padding: 10px;\n      background-color: #FFF; }\n", ""]);
 
 // exports
 
@@ -2287,6 +2342,7 @@ var TicketComponent = /** @class */ (function () {
     function TicketComponent() {
     }
     TicketComponent.prototype.ngOnInit = function () {
+        console.log('app-ticket', this.reservation);
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
@@ -2556,7 +2612,7 @@ var AuthGuardService = /** @class */ (function () {
                         console.log('canActivate');
                         _c.label = 1;
                     case 1:
-                        _c.trys.push([1, 3, , 4]);
+                        _c.trys.push([1, 3, , 5]);
                         return [4 /*yield*/, this.sasaki.auth.isSignedIn()];
                     case 2:
                         isSignedIn = _c.sent();
@@ -2564,31 +2620,33 @@ var AuthGuardService = /** @class */ (function () {
                         if (isSignedIn === null) {
                             throw new Error('isSignedIn is null');
                         }
-                        return [3 /*break*/, 4];
+                        return [3 /*break*/, 5];
                     case 3:
                         err_1 = _c.sent();
                         console.log('非ログイン', err_1);
-                        this.router.navigate(['/auth/login']);
-                        return [2 /*return*/, false];
+                        return [4 /*yield*/, this.router.navigate(['/auth/login'])];
                     case 4:
-                        if (!(this.user.contacts === undefined)) return [3 /*break*/, 6];
+                        _c.sent();
+                        return [2 /*return*/, false];
+                    case 5:
+                        if (!(this.user.contacts === undefined)) return [3 /*break*/, 7];
                         _a = this.user;
                         return [4 /*yield*/, this.sasaki.people.getContacts({
                                 personId: 'me'
                             })];
-                    case 5:
-                        _a.contacts = _c.sent();
-                        _c.label = 6;
                     case 6:
-                        if (!(this.user.creditCards === undefined)) return [3 /*break*/, 8];
+                        _a.contacts = _c.sent();
+                        _c.label = 7;
+                    case 7:
+                        if (!(this.user.creditCards === undefined)) return [3 /*break*/, 9];
                         _b = this.user;
                         return [4 /*yield*/, this.sasaki.people.findCreditCards({
                                 personId: 'me'
                             })];
-                    case 7:
+                    case 8:
                         _b.creditCards = _c.sent();
-                        _c.label = 8;
-                    case 8: return [2 /*return*/, true];
+                        _c.label = 9;
+                    case 9: return [2 /*return*/, true];
                 }
             });
         });

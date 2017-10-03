@@ -5,8 +5,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './components/about/about.component';
-import { LoginComponent } from './components/login/login.component';
 import { LawComponent } from './components/law/law.component';
+import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PolicyComponent } from './components/policy/policy.component';
@@ -18,41 +18,41 @@ import { TicketHolderComponent } from './components/ticket-holder/ticket-holder.
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/ticket-holder', pathMatch: 'full' },
-  {
-    path: '',
-    component: MainComponent,
-    canActivate: [AuthGuardService],
-    children: [
-      { path: 'ticket-holder', component: TicketHolderComponent },
-      { path: 'purchase', component: PurchaseComponent },
-      { path: 'about', component: AboutComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'policy', component: PolicyComponent },
-      { path: 'law', component: LawComponent },
-      { path: 'privacy', component: PrivacyComponent }
-    ]
-  },
-  {
-    path: 'auth',
-    children: [
-      { path: 'login', component: LoginComponent }
-    ]
-  },
-  { path: 'startup', component: StartupComponent },
-  { path: '**', component: NotFoundComponent }
+    { path: '', redirectTo: '/ticket-holder', pathMatch: 'full' },
+    {
+        path: '',
+        component: MainComponent,
+        canActivate: [AuthGuardService],
+        children: [
+            { path: 'ticket-holder', component: TicketHolderComponent },
+            { path: 'purchase', component: PurchaseComponent },
+            { path: 'about', component: AboutComponent },
+            { path: 'profile', component: ProfileComponent },
+            { path: 'policy', component: PolicyComponent },
+            { path: 'law', component: LawComponent },
+            { path: 'privacy', component: PrivacyComponent }
+        ]
+    },
+    {
+        path: 'auth',
+        children: [
+            { path: 'login', component: LoginComponent }
+        ]
+    },
+    { path: 'startup', component: StartupComponent },
+    { path: '**', component: NotFoundComponent }
 ];
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { useHash: true, enableTracing: true } // <-- debugging purposes only
-    )
-  ],
-  exports: [
-    RouterModule
-  ]
+    imports: [
+        RouterModule.forRoot(
+            appRoutes,
+            { useHash: true, enableTracing: true } // <-- debugging purposes only
+        )
+    ],
+    exports: [
+        RouterModule
+    ]
 })
 export class AppRoutingModule { }

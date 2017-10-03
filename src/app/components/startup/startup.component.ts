@@ -50,7 +50,7 @@ export class StartupComponent implements OnInit {
       console.log('authorize result:', result);
       this.sasaki.credentials = result;
       this.isLoading = true;
-      this.router.navigate(['/']);
+      await this.router.navigate(['/']);
     } catch (error) {
       console.error(error);
       this.isLoading = false;

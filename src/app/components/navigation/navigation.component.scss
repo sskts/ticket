@@ -11,15 +11,16 @@ ul {
     table-layout: fixed;
     width: 100%;
     height: 60px;
-    background: linear-gradient(135deg, rgba(5,65,143,1) 0%,rgba(0,10,42,1) 100%);
+    background-color: #555;
     li {
         display: table-cell;
-        border-bottom: 5px solid #4C4C4C;
+        border-bottom: 5px solid #888;
         font-size: 10px;
         text-align: center;
         vertical-align: middle;
         opacity: 0.7;
         &.active {
+            background-color: #333;
             border-bottom-color: #00A0E9;
             opacity: 1;
         }

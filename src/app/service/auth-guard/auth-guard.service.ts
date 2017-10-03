@@ -26,7 +26,7 @@ export class AuthGuardService implements CanActivate {
             }
         } catch (err) {
             console.log('非ログイン', err);
-            this.router.navigate(['/auth/login']);
+            await this.router.navigate(['/auth/login']);
 
             return false;
         }
