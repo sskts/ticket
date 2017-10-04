@@ -19,7 +19,7 @@ export class NotFoundComponent implements OnInit {
     constructor(private router: Router) { }
 
     public async ngOnInit() {
-        await this.router.navigate(['']);
+        this.router.navigate(['']);
     }
 
 }

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
             const result = await this.sasaki.auth.signIn();
             this.sasaki.credentials = result;
             this.isLoading = true;
-            await this.router.navigate(['/']);
+            this.router.navigate(['/']);
         } catch (error) {
             console.error(error);
             this.isLoading = false;

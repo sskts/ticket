@@ -922,22 +922,20 @@ var LoginComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
+                        _a.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, this.sasaki.auth.signIn()];
                     case 1:
                         result = _a.sent();
                         this.sasaki.credentials = result;
                         this.isLoading = true;
-                        return [4 /*yield*/, this.router.navigate(['/'])];
+                        this.router.navigate(['/']);
+                        return [3 /*break*/, 3];
                     case 2:
-                        _a.sent();
-                        return [3 /*break*/, 4];
-                    case 3:
                         error_1 = _a.sent();
                         console.error(error_1);
                         this.isLoading = false;
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -1055,21 +1053,19 @@ var LogoutComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
+                        _a.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, this.sasaki.auth.signOut()];
                     case 1:
                         _a.sent();
                         console.log('logout');
                         this.sasaki.credentials = null;
-                        return [4 /*yield*/, this.router.navigate(['/auth/login'])];
+                        this.router.navigate(['/auth/login']);
+                        return [3 /*break*/, 3];
                     case 2:
-                        _a.sent();
-                        return [3 /*break*/, 4];
-                    case 3:
                         error_1 = _a.sent();
                         console.error(error_1);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -1384,12 +1380,8 @@ var NotFoundComponent = /** @class */ (function () {
     NotFoundComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.router.navigate([''])];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
+                this.router.navigate(['']);
+                return [2 /*return*/];
             });
         });
     };
@@ -2087,23 +2079,21 @@ var StartupComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
+                        _a.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, this.sasaki.auth.signIn()];
                     case 1:
                         result = _a.sent();
                         console.log('authorize result:', result);
                         this.sasaki.credentials = result;
                         this.isLoading = true;
-                        return [4 /*yield*/, this.router.navigate(['/'])];
+                        this.router.navigate(['/']);
+                        return [3 /*break*/, 3];
                     case 2:
-                        _a.sent();
-                        return [3 /*break*/, 4];
-                    case 3:
                         error_1 = _a.sent();
                         console.error(error_1);
                         this.isLoading = false;
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -2612,7 +2602,7 @@ var AuthGuardService = /** @class */ (function () {
                         console.log('canActivate');
                         _c.label = 1;
                     case 1:
-                        _c.trys.push([1, 3, , 5]);
+                        _c.trys.push([1, 3, , 4]);
                         return [4 /*yield*/, this.sasaki.auth.isSignedIn()];
                     case 2:
                         isSignedIn = _c.sent();
@@ -2620,33 +2610,31 @@ var AuthGuardService = /** @class */ (function () {
                         if (isSignedIn === null) {
                             throw new Error('isSignedIn is null');
                         }
-                        return [3 /*break*/, 5];
+                        return [3 /*break*/, 4];
                     case 3:
                         err_1 = _c.sent();
                         console.log('非ログイン', err_1);
-                        return [4 /*yield*/, this.router.navigate(['/auth/login'])];
-                    case 4:
-                        _c.sent();
+                        this.router.navigate(['/auth/login']);
                         return [2 /*return*/, false];
-                    case 5:
-                        if (!(this.user.contacts === undefined)) return [3 /*break*/, 7];
+                    case 4:
+                        if (!(this.user.contacts === undefined)) return [3 /*break*/, 6];
                         _a = this.user;
                         return [4 /*yield*/, this.sasaki.people.getContacts({
                                 personId: 'me'
                             })];
-                    case 6:
+                    case 5:
                         _a.contacts = _c.sent();
-                        _c.label = 7;
-                    case 7:
-                        if (!(this.user.creditCards === undefined)) return [3 /*break*/, 9];
+                        _c.label = 6;
+                    case 6:
+                        if (!(this.user.creditCards === undefined)) return [3 /*break*/, 8];
                         _b = this.user;
                         return [4 /*yield*/, this.sasaki.people.findCreditCards({
                                 personId: 'me'
                             })];
-                    case 8:
+                    case 7:
                         _b.creditCards = _c.sent();
-                        _c.label = 9;
-                    case 9: return [2 /*return*/, true];
+                        _c.label = 8;
+                    case 8: return [2 /*return*/, true];
                 }
             });
         });
