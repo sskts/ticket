@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './components/about/about.component';
 import { LawComponent } from './components/law/law.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginSelectComponent } from './components/login-select/login-select.component';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PolicyComponent } from './components/policy/policy.component';
@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     {
         path: 'auth',
         children: [
-            { path: 'login', component: LoginComponent }
+            { path: 'login-select', component: LoginSelectComponent }
         ]
     },
     { path: 'startup', component: StartupComponent },

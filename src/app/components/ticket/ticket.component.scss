@@ -31,8 +31,9 @@ ul {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        &:nth-child(even) {
-            background-color: #008ECF;
+        border-bottom: 1px solid #AAA;
+        &:last-child {
+            border-bottom: none;
         }
         .ticket-info {
             text-align: center;

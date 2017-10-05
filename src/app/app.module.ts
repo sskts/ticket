@@ -38,6 +38,7 @@ import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { SasakiService } from './service/sasaki/sasaki.service';
 import { UserService } from './service/user/user.service';
+import { LoginSelectComponent } from './components/login-select/login-select.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -65,7 +66,8 @@ import { UserService } from './service/user/user.service';
     LawComponent,
     PrivacyComponent,
     LogoutComponent,
-    HeaderMenuComponent
+    HeaderMenuComponent,
+    LoginSelectComponent
   ],
   imports: [
     BrowserModule,

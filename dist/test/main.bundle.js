@@ -26,7 +26,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_about_about_component__ = __webpack_require__("../../../../../src/app/components/about/about.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_login_select_login_select_component__ = __webpack_require__("../../../../../src/app/components/login-select/login-select.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_main_main_component__ = __webpack_require__("../../../../../src/app/components/main/main.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/components/not-found/not-found.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_policy_policy_component__ = __webpack_require__("../../../../../src/app/components/policy/policy.component.ts");
@@ -78,7 +78,7 @@ var appRoutes = [
     {
         path: 'auth',
         children: [
-            { path: 'login', component: __WEBPACK_IMPORTED_MODULE_4__components_login_login_component__["a" /* LoginComponent */] }
+            { path: 'login-select', component: __WEBPACK_IMPORTED_MODULE_4__components_login_select_login_select_component__["a" /* LoginSelectComponent */] }
         ]
     },
     { path: 'startup', component: __WEBPACK_IMPORTED_MODULE_11__components_startup_startup_component__["a" /* StartupComponent */] },
@@ -147,6 +147,7 @@ var AppRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_login_select_login_select_component__ = __webpack_require__("../../../../../src/app/components/login-select/login-select.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -156,6 +157,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 /**
  * NgModule
  */
+
 
 
 
@@ -220,7 +222,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_13__components_law_law_component__["a" /* LawComponent */],
                 __WEBPACK_IMPORTED_MODULE_22__components_privacy_privacy_component__["a" /* PrivacyComponent */],
                 __WEBPACK_IMPORTED_MODULE_16__components_logout_logout_component__["a" /* LogoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__components_header_menu_header_menu_component__["a" /* HeaderMenuComponent */]
+                __WEBPACK_IMPORTED_MODULE_11__components_header_menu_header_menu_component__["a" /* HeaderMenuComponent */],
+                __WEBPACK_IMPORTED_MODULE_34__components_login_select_login_select_component__["a" /* LoginSelectComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
@@ -825,6 +828,137 @@ var LoadingComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/login-select/login-select.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"contents\">\n  <div class=\"inner center\">\n      <div class=\"logo text-center mb-large\"><img src=\"/assets/images/common/logo.svg\"></div>\n      <p class=\"read text-center mb-middle\">初めてアプリをご利用なさる方は<br>下のボタンから会員登録をおこなってください。</p>\n      <button class=\"btn btn-primary btn-block mb-large\" routerLink=\"/startup\">アプリを初めてご利用の方</button>\n      <p class=\"read text-center mb-middle\">既に会員登録済みの方は<br>下のボタンよりログインしてください。</p>\n      <button class=\"btn btn-info btn-block\" (click)=\"login()\">会員登録済みの方</button>\n  </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/login-select/login-select.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".inner {\n  padding: 50px 0 0;\n  max-width: 300px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/login-select/login-select.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginSelectComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * LoginSelectComponent
+ */
+
+
+
+var LoginSelectComponent = /** @class */ (function () {
+    function LoginSelectComponent(sasaki, router) {
+        this.sasaki = sasaki;
+        this.router = router;
+    }
+    LoginSelectComponent.prototype.ngOnInit = function () {
+        this.isLoading = false;
+    };
+    LoginSelectComponent.prototype.login = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var result, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.sasaki.auth.signIn()];
+                    case 1:
+                        result = _a.sent();
+                        this.sasaki.credentials = result;
+                        this.isLoading = true;
+                        this.router.navigate(['/']);
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_1 = _a.sent();
+                        console.error(error_1);
+                        this.isLoading = false;
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    LoginSelectComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__("../../../../../src/app/components/login-select/login-select.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/login-select/login-select.component.scss")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+    ], LoginSelectComponent);
+    return LoginSelectComponent;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=login-select.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/login/login.component.html":
 /***/ (function(module, exports) {
 
@@ -1059,7 +1193,7 @@ var LogoutComponent = /** @class */ (function () {
                         _a.sent();
                         console.log('logout');
                         this.sasaki.credentials = null;
-                        this.router.navigate(['/auth/login']);
+                        this.router.navigate(['/auth/login-select']);
                         return [3 /*break*/, 3];
                     case 2:
                         error_1 = _a.sent();
@@ -2299,7 +2433,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".inner {\n  background-color: #EEE;\n  color: #333; }\n\n.info dl {\n  border-bottom: 1px solid #AAA;\n  display: table;\n  width: 100%; }\n  .info dl dt {\n    width: 60px;\n    text-align: center;\n    display: table-cell;\n    vertical-align: middle; }\n    .info dl dt:before {\n      margin: 0 auto; }\n  .info dl dd {\n    width: calc(100% - 60px);\n    padding: 15px 0;\n    display: table-cell;\n    vertical-align: middle;\n    line-height: 1.4; }\n\nul li {\n  background-color: #FFF;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  ul li:nth-child(even) {\n    background-color: #008ECF; }\n  ul li .ticket-info {\n    text-align: center;\n    width: calc(100% - 150px); }\n  ul li .qr {\n    padding: 10px;\n    background-color: #EEE; }\n    ul li .qr qr-code {\n      display: block;\n      padding: 10px;\n      background-color: #FFF; }\n", ""]);
+exports.push([module.i, ".inner {\n  background-color: #EEE;\n  color: #333; }\n\n.info dl {\n  border-bottom: 1px solid #AAA;\n  display: table;\n  width: 100%; }\n  .info dl dt {\n    width: 60px;\n    text-align: center;\n    display: table-cell;\n    vertical-align: middle; }\n    .info dl dt:before {\n      margin: 0 auto; }\n  .info dl dd {\n    width: calc(100% - 60px);\n    padding: 15px 0;\n    display: table-cell;\n    vertical-align: middle;\n    line-height: 1.4; }\n\nul li {\n  background-color: #FFF;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #AAA; }\n  ul li:last-child {\n    border-bottom: none; }\n  ul li .ticket-info {\n    text-align: center;\n    width: calc(100% - 150px); }\n  ul li .qr {\n    padding: 10px;\n    background-color: #EEE; }\n    ul li .qr qr-code {\n      display: block;\n      padding: 10px;\n      background-color: #FFF; }\n", ""]);
 
 // exports
 
@@ -2614,7 +2748,7 @@ var AuthGuardService = /** @class */ (function () {
                     case 3:
                         err_1 = _c.sent();
                         console.log('非ログイン', err_1);
-                        this.router.navigate(['/auth/login']);
+                        this.router.navigate(['/auth/login-select']);
                         return [2 /*return*/, false];
                     case 4:
                         if (!(this.user.contacts === undefined)) return [3 /*break*/, 6];
