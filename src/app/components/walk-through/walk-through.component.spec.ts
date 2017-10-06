@@ -1,5 +1,5 @@
 /**
- * StartupComponentテスト
+ * WalkThroughComponentテスト
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -7,16 +7,16 @@ import { SwiperModule } from 'angular2-useful-swiper';
 
 import { SasakiService, SasakiStubService } from '../../service/sasaki/sasaki-stub.service';
 import { LoadingComponent } from '../loading/loading.component';
-import { StartupComponent } from './startup.component';
+import { WalkThroughComponent } from './walk-through.component';
 
-describe('StartupComponent', () => {
-    let component: StartupComponent;
-    let fixture: ComponentFixture<StartupComponent>;
+describe('WalkThroughComponent', () => {
+    let component: WalkThroughComponent;
+    let fixture: ComponentFixture<WalkThroughComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
-                StartupComponent,
+                WalkThroughComponent,
                 LoadingComponent
             ],
             providers: [
@@ -31,7 +31,7 @@ describe('StartupComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(StartupComponent);
+        fixture = TestBed.createComponent(WalkThroughComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

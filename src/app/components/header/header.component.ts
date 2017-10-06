@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit {
  * @const pages
  */
 const pages = [
-    { url: '/ticket-holder', title: 'チケットホルダー', prev: false },
+    { url: '/ticketHolder', title: 'チケットホルダー', prev: false },
     { url: '/purchase', title: 'チケット購入', prev: false },
     { url: '/setting', title: '設定変更', prev: false },
     { url: '/about', title: 'このアプリについて', prev: true },

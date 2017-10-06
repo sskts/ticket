@@ -25,17 +25,21 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_about_about_component__ = __webpack_require__("../../../../../src/app/components/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_login_select_login_select_component__ = __webpack_require__("../../../../../src/app/components/login-select/login-select.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_main_main_component__ = __webpack_require__("../../../../../src/app/components/main/main.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/components/not-found/not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_policy_policy_component__ = __webpack_require__("../../../../../src/app/components/policy/policy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/components/privacy/privacy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_purchase_purchase_component__ = __webpack_require__("../../../../../src/app/components/purchase/purchase.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_startup_startup_component__ = __webpack_require__("../../../../../src/app/components/startup/startup.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/components/ticket-holder/ticket-holder.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_auth_base_auth_base_component__ = __webpack_require__("../../../../../src/app/components/auth-base/auth-base.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_auth_auth_component__ = __webpack_require__("../../../../../src/app/components/auth/auth.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_base_base_component__ = __webpack_require__("../../../../../src/app/components/base/base.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_forgot_password_forgot_password_component__ = __webpack_require__("../../../../../src/app/components/forgot-password/forgot-password.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/components/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_policy_policy_component__ = __webpack_require__("../../../../../src/app/components/policy/policy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/components/privacy/privacy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_purchase_purchase_component__ = __webpack_require__("../../../../../src/app/components/purchase/purchase.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_sign_in_sign_in_component__ = __webpack_require__("../../../../../src/app/components/sign-in/sign-in.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_sign_up_sign_up_component__ = __webpack_require__("../../../../../src/app/components/sign-up/sign-up.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/components/ticket-holder/ticket-holder.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/components/walk-through/walk-through.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,30 +63,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+
 var appRoutes = [
-    { path: '', redirectTo: '/ticket-holder', pathMatch: 'full' },
+    { path: '', redirectTo: '/ticketHolder', pathMatch: 'full' },
     {
         path: '',
-        component: __WEBPACK_IMPORTED_MODULE_5__components_main_main_component__["a" /* MainComponent */],
-        canActivate: [__WEBPACK_IMPORTED_MODULE_13__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */]],
+        component: __WEBPACK_IMPORTED_MODULE_5__components_base_base_component__["a" /* BaseComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_17__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */]],
         children: [
-            { path: 'ticket-holder', component: __WEBPACK_IMPORTED_MODULE_12__components_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */] },
-            { path: 'purchase', component: __WEBPACK_IMPORTED_MODULE_10__components_purchase_purchase_component__["a" /* PurchaseComponent */] },
+            { path: 'ticketHolder', component: __WEBPACK_IMPORTED_MODULE_15__components_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */] },
+            { path: 'purchase', component: __WEBPACK_IMPORTED_MODULE_12__components_purchase_purchase_component__["a" /* PurchaseComponent */] },
             { path: 'about', component: __WEBPACK_IMPORTED_MODULE_2__components_about_about_component__["a" /* AboutComponent */] },
-            { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_9__components_profile_profile_component__["a" /* ProfileComponent */] },
-            { path: 'policy', component: __WEBPACK_IMPORTED_MODULE_7__components_policy_policy_component__["a" /* PolicyComponent */] },
-            { path: 'law', component: __WEBPACK_IMPORTED_MODULE_3__components_law_law_component__["a" /* LawComponent */] },
-            { path: 'privacy', component: __WEBPACK_IMPORTED_MODULE_8__components_privacy_privacy_component__["a" /* PrivacyComponent */] }
+            { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_11__components_profile_profile_component__["a" /* ProfileComponent */] },
+            { path: 'policy', component: __WEBPACK_IMPORTED_MODULE_9__components_policy_policy_component__["a" /* PolicyComponent */] },
+            { path: 'law', component: __WEBPACK_IMPORTED_MODULE_7__components_law_law_component__["a" /* LawComponent */] },
+            { path: 'privacy', component: __WEBPACK_IMPORTED_MODULE_10__components_privacy_privacy_component__["a" /* PrivacyComponent */] }
         ]
     },
+    { path: 'auth', component: __WEBPACK_IMPORTED_MODULE_4__components_auth_auth_component__["a" /* AuthComponent */] },
     {
         path: 'auth',
+        component: __WEBPACK_IMPORTED_MODULE_3__components_auth_base_auth_base_component__["a" /* AuthBaseComponent */],
         children: [
-            { path: 'login-select', component: __WEBPACK_IMPORTED_MODULE_4__components_login_select_login_select_component__["a" /* LoginSelectComponent */] }
+            { path: 'signIn', component: __WEBPACK_IMPORTED_MODULE_13__components_sign_in_sign_in_component__["a" /* SignInComponent */] },
+            { path: 'signUp', component: __WEBPACK_IMPORTED_MODULE_14__components_sign_up_sign_up_component__["a" /* SignUpComponent */] },
+            { path: 'forgotPassword', component: __WEBPACK_IMPORTED_MODULE_6__components_forgot_password_forgot_password_component__["a" /* ForgotPasswordComponent */] },
+            { path: 'walk-through', component: __WEBPACK_IMPORTED_MODULE_16__components_walk_through_walk_through_component__["a" /* WalkThroughComponent */] }
         ]
     },
-    { path: 'startup', component: __WEBPACK_IMPORTED_MODULE_11__components_startup_startup_component__["a" /* StartupComponent */] },
-    { path: '**', component: __WEBPACK_IMPORTED_MODULE_6__components_not_found_not_found_component__["a" /* NotFoundComponent */] }
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_8__components_not_found_not_found_component__["a" /* NotFoundComponent */] }
 ];
 // tslint:disable-next-line:no-stateless-class
 var AppRoutingModule = /** @class */ (function () {
@@ -122,32 +134,36 @@ var AppRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_about_about_component__ = __webpack_require__("../../../../../src/app/components/about/about.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_app_app_component__ = __webpack_require__("../../../../../src/app/components/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_chronological_order_of_performance_chronological_order_of_performance_component__ = __webpack_require__("../../../../../src/app/components/chronological-order-of-performance/chronological-order-of-performance.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_film_order_of_performance_film_order_of_performance_component__ = __webpack_require__("../../../../../src/app/components/film-order-of-performance/film-order-of-performance.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_header_menu_header_menu_component__ = __webpack_require__("../../../../../src/app/components/header-menu/header-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_loading_loading_component__ = __webpack_require__("../../../../../src/app/components/loading/loading.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_logout_logout_component__ = __webpack_require__("../../../../../src/app/components/logout/logout.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_main_main_component__ = __webpack_require__("../../../../../src/app/components/main/main.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_navigation_navigation_component__ = __webpack_require__("../../../../../src/app/components/navigation/navigation.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_no_ticket_no_ticket_component__ = __webpack_require__("../../../../../src/app/components/no-ticket/no-ticket.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/components/not-found/not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_policy_policy_component__ = __webpack_require__("../../../../../src/app/components/policy/policy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/components/privacy/privacy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_purchase_purchase_component__ = __webpack_require__("../../../../../src/app/components/purchase/purchase.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_startup_startup_component__ = __webpack_require__("../../../../../src/app/components/startup/startup.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/components/ticket-holder/ticket-holder.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_ticket_ticket_component__ = __webpack_require__("../../../../../src/app/components/ticket/ticket.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pipe_availability_availability_pipe__ = __webpack_require__("../../../../../src/app/pipe/availability/availability.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pipe_duration_duration_pipe__ = __webpack_require__("../../../../../src/app/pipe/duration/duration.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pipe_time_format_time_format_pipe__ = __webpack_require__("../../../../../src/app/pipe/time-format/time-format.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_login_select_login_select_component__ = __webpack_require__("../../../../../src/app/components/login-select/login-select.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_auth_base_auth_base_component__ = __webpack_require__("../../../../../src/app/components/auth-base/auth-base.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_auth_auth_component__ = __webpack_require__("../../../../../src/app/components/auth/auth.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_base_base_component__ = __webpack_require__("../../../../../src/app/components/base/base.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_chronological_order_of_performance_chronological_order_of_performance_component__ = __webpack_require__("../../../../../src/app/components/chronological-order-of-performance/chronological-order-of-performance.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_film_order_of_performance_film_order_of_performance_component__ = __webpack_require__("../../../../../src/app/components/film-order-of-performance/film-order-of-performance.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_forgot_password_forgot_password_component__ = __webpack_require__("../../../../../src/app/components/forgot-password/forgot-password.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_header_menu_header_menu_component__ = __webpack_require__("../../../../../src/app/components/header-menu/header-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_loading_loading_component__ = __webpack_require__("../../../../../src/app/components/loading/loading.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_logout_logout_component__ = __webpack_require__("../../../../../src/app/components/logout/logout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_navigation_navigation_component__ = __webpack_require__("../../../../../src/app/components/navigation/navigation.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_no_ticket_no_ticket_component__ = __webpack_require__("../../../../../src/app/components/no-ticket/no-ticket.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/components/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_policy_policy_component__ = __webpack_require__("../../../../../src/app/components/policy/policy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/components/privacy/privacy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_purchase_purchase_component__ = __webpack_require__("../../../../../src/app/components/purchase/purchase.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_sign_in_sign_in_component__ = __webpack_require__("../../../../../src/app/components/sign-in/sign-in.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_sign_out_sign_out_component__ = __webpack_require__("../../../../../src/app/components/sign-out/sign-out.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_sign_up_sign_up_component__ = __webpack_require__("../../../../../src/app/components/sign-up/sign-up.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/components/ticket-holder/ticket-holder.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_ticket_ticket_component__ = __webpack_require__("../../../../../src/app/components/ticket/ticket.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/components/walk-through/walk-through.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pipe_availability_availability_pipe__ = __webpack_require__("../../../../../src/app/pipe/availability/availability.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pipe_duration_duration_pipe__ = __webpack_require__("../../../../../src/app/pipe/duration/duration.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pipe_time_format_time_format_pipe__ = __webpack_require__("../../../../../src/app/pipe/time-format/time-format.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -192,6 +208,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+
 // tslint:disable-next-line:no-stateless-class
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -200,30 +220,34 @@ var AppModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_8__components_app_app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__components_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__components_ticket_ticket_component__["a" /* TicketComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components_startup_startup_component__["a" /* StartupComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__components_navigation_navigation_component__["a" /* NavigationComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__components_header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__components_purchase_purchase_component__["a" /* PurchaseComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__components_not_found_not_found_component__["a" /* NotFoundComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__components_main_main_component__["a" /* MainComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__components_login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_30__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
-                __WEBPACK_IMPORTED_MODULE_9__components_chronological_order_of_performance_chronological_order_of_performance_component__["a" /* ChronologicalOrderOfPerformanceComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__components_film_order_of_performance_film_order_of_performance_component__["a" /* FilmOrderOfPerformanceComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__pipe_availability_availability_pipe__["a" /* AvailabilityPipe */],
-                __WEBPACK_IMPORTED_MODULE_29__pipe_duration_duration_pipe__["a" /* DurationPipe */],
-                __WEBPACK_IMPORTED_MODULE_19__components_no_ticket_no_ticket_component__["a" /* NoTicketComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__components_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */],
+                __WEBPACK_IMPORTED_MODULE_31__components_ticket_ticket_component__["a" /* TicketComponent */],
+                __WEBPACK_IMPORTED_MODULE_32__components_walk_through_walk_through_component__["a" /* WalkThroughComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__components_navigation_navigation_component__["a" /* NavigationComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__components_header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__components_purchase_purchase_component__["a" /* PurchaseComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__components_not_found_not_found_component__["a" /* NotFoundComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__components_base_base_component__["a" /* BaseComponent */],
+                __WEBPACK_IMPORTED_MODULE_35__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
+                __WEBPACK_IMPORTED_MODULE_12__components_chronological_order_of_performance_chronological_order_of_performance_component__["a" /* ChronologicalOrderOfPerformanceComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__components_film_order_of_performance_film_order_of_performance_component__["a" /* FilmOrderOfPerformanceComponent */],
+                __WEBPACK_IMPORTED_MODULE_33__pipe_availability_availability_pipe__["a" /* AvailabilityPipe */],
+                __WEBPACK_IMPORTED_MODULE_34__pipe_duration_duration_pipe__["a" /* DurationPipe */],
+                __WEBPACK_IMPORTED_MODULE_21__components_no_ticket_no_ticket_component__["a" /* NoTicketComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__components_about_about_component__["a" /* AboutComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__components_loading_loading_component__["a" /* LoadingComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__components_profile_profile_component__["a" /* ProfileComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__components_policy_policy_component__["a" /* PolicyComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__components_law_law_component__["a" /* LawComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__components_privacy_privacy_component__["a" /* PrivacyComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__components_logout_logout_component__["a" /* LogoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__components_header_menu_header_menu_component__["a" /* HeaderMenuComponent */],
-                __WEBPACK_IMPORTED_MODULE_34__components_login_select_login_select_component__["a" /* LoginSelectComponent */]
+                __WEBPACK_IMPORTED_MODULE_18__components_loading_loading_component__["a" /* LoadingComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__components_profile_profile_component__["a" /* ProfileComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__components_policy_policy_component__["a" /* PolicyComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__components_law_law_component__["a" /* LawComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__components_privacy_privacy_component__["a" /* PrivacyComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_logout_logout_component__["a" /* LogoutComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__components_header_menu_header_menu_component__["a" /* HeaderMenuComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__components_auth_auth_component__["a" /* AuthComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__components_sign_in_sign_in_component__["a" /* SignInComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__components_sign_out_sign_out_component__["a" /* SignOutComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__components_sign_up_sign_up_component__["a" /* SignUpComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__components_forgot_password_forgot_password_component__["a" /* ForgotPasswordComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__components_auth_base_auth_base_component__["a" /* AuthBaseComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
@@ -235,9 +259,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_4_angular2_qrcode__["a" /* QRCodeModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_32__service_sasaki_sasaki_service__["a" /* SasakiService */],
-                __WEBPACK_IMPORTED_MODULE_31__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
-                __WEBPACK_IMPORTED_MODULE_33__service_user_user_service__["a" /* UserService */]
+                __WEBPACK_IMPORTED_MODULE_37__service_sasaki_sasaki_service__["a" /* SasakiService */],
+                __WEBPACK_IMPORTED_MODULE_36__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
+                __WEBPACK_IMPORTED_MODULE_38__service_user_user_service__["a" /* UserService */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_8__components_app_app_component__["a" /* AppComponent */]]
         })
@@ -354,6 +378,262 @@ var AppComponent = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/auth-base/auth-base.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"icon-prev-white\" routerLink=\"/auth\"></div>\n<router-outlet></router-outlet>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/auth-base/auth-base.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".icon-prev-white {\n  position: fixed;\n  top: 10px;\n  left: 10px;\n  z-index: 10; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/auth-base/auth-base.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthBaseComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AuthBaseComponent = /** @class */ (function () {
+    function AuthBaseComponent() {
+    }
+    AuthBaseComponent.prototype.ngOnInit = function () {
+    };
+    AuthBaseComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-auth-base',
+            template: __webpack_require__("../../../../../src/app/components/auth-base/auth-base.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/auth-base/auth-base.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AuthBaseComponent);
+    return AuthBaseComponent;
+}());
+
+//# sourceMappingURL=auth-base.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/auth/auth.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <div class=\"logo text-center mb-large\">\n            <img src=\"/assets/images/common/logo.svg\">\n        </div>\n        <p class=\"read text-center mb-middle\">初めてアプリをご利用なさる方は\n            <br>下のボタンから会員登録をおこなってください。</p>\n        <button class=\"btn btn-primary btn-block mb-large\" routerLink=\"/auth/walk-through\">アプリを初めてご利用の方</button>\n        <p class=\"read text-center mb-middle\">既に会員登録済みの方は\n            <br>下のボタンよりログインしてください。</p>\n        <button class=\"btn btn-info btn-block mb-small\" (click)=\"login()\">Amazon Cognito</button>\n        <button class=\"btn btn-info btn-block\" routerLink=\"/auth/signIn\">会員登録済みの方</button>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/auth/auth.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".inner {\n  padding: 0;\n  width: 300px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/auth/auth.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * AuthComponent
+ */
+
+
+
+var AuthComponent = /** @class */ (function () {
+    function AuthComponent(sasaki, router) {
+        this.sasaki = sasaki;
+        this.router = router;
+    }
+    AuthComponent.prototype.ngOnInit = function () {
+        this.isLoading = false;
+    };
+    AuthComponent.prototype.login = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var result, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.sasaki.auth.signIn()];
+                    case 1:
+                        result = _a.sent();
+                        this.sasaki.credentials = result;
+                        this.isLoading = true;
+                        this.router.navigate(['/']);
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_1 = _a.sent();
+                        console.error(error_1);
+                        this.isLoading = false;
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AuthComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__("../../../../../src/app/components/auth/auth.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/auth/auth.component.scss")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+    ], AuthComponent);
+    return AuthComponent;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=auth.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/base/base.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-header></app-header>\n<router-outlet></router-outlet>\n<app-navigation></app-navigation>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/base/base.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/base/base.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BaseComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/**
+ * BaseComponent
+ */
+
+var BaseComponent = /** @class */ (function () {
+    function BaseComponent() {
+    }
+    BaseComponent.prototype.ngOnInit = function () {
+    };
+    BaseComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-base',
+            template: __webpack_require__("../../../../../src/app/components/base/base.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/base/base.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], BaseComponent);
+    return BaseComponent;
+}());
+
+//# sourceMappingURL=base.component.js.map
 
 /***/ }),
 
@@ -492,6 +772,126 @@ var FilmOrderOfPerformanceComponent = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=film-order-of-performance.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/forgot-password/forgot-password.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <div class=\"logo text-center mb-large\">\n            <img src=\"/assets/images/common/logo.svg\">\n        </div>\n        <form [formGroup]=\"forgotPasswordForm\" (ngSubmit)=\"resetPassword()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">ユーザー</label>\n                <input type=\"text\" class=\"form-control\" name=\"user\" [formControl]=\"forgotPasswordForm.controls.user\">\n                <p class=\"text-danger small-text\" *ngIf=\"forgotPasswordForm.controls.user.errors?.required && forgotPasswordForm.controls.user.dirty\">必須項目</p>\n            </div>\n\n            <button [disabled]=\"forgotPasswordForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block mb-small\">パスワードリセット</button>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/forgot-password/forgot-password.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".inner {\n  padding: 0;\n  width: 300px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/forgot-password/forgot-password.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ForgotPasswordComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * ForgotPasswordComponent
+ */
+
+
+var ForgotPasswordComponent = /** @class */ (function () {
+    function ForgotPasswordComponent(formBuilder) {
+        this.formBuilder = formBuilder;
+        console.log('LoginComponent constructor');
+    }
+    ForgotPasswordComponent.prototype.ngOnInit = function () {
+        this.isLoading = false;
+        this.signInForm = this.formBuilder.group({
+            user: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required
+            ]),
+            password: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required
+            ])
+        });
+    };
+    ForgotPasswordComponent.prototype.resetPassword = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/];
+            });
+        });
+    };
+    ForgotPasswordComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-forgot-password',
+            template: __webpack_require__("../../../../../src/app/components/forgot-password/forgot-password.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/forgot-password/forgot-password.component.scss")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object])
+    ], ForgotPasswordComponent);
+    return ForgotPasswordComponent;
+    var _a;
+}());
+
+//# sourceMappingURL=forgot-password.component.js.map
 
 /***/ }),
 
@@ -688,7 +1088,7 @@ var HeaderComponent = /** @class */ (function () {
  * @const pages
  */
 var pages = [
-    { url: '/ticket-holder', title: 'チケットホルダー', prev: false },
+    { url: '/ticketHolder', title: 'チケットホルダー', prev: false },
     { url: '/purchase', title: 'チケット購入', prev: false },
     { url: '/setting', title: '設定変更', prev: false },
     { url: '/about', title: 'このアプリについて', prev: true },
@@ -828,268 +1228,6 @@ var LoadingComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/login-select/login-select.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"contents\">\n  <div class=\"inner center\">\n      <div class=\"logo text-center mb-large\"><img src=\"/assets/images/common/logo.svg\"></div>\n      <p class=\"read text-center mb-middle\">初めてアプリをご利用なさる方は<br>下のボタンから会員登録をおこなってください。</p>\n      <button class=\"btn btn-primary btn-block mb-large\" routerLink=\"/startup\">アプリを初めてご利用の方</button>\n      <p class=\"read text-center mb-middle\">既に会員登録済みの方は<br>下のボタンよりログインしてください。</p>\n      <button class=\"btn btn-info btn-block\" (click)=\"login()\">会員登録済みの方</button>\n  </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/login-select/login-select.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".inner {\n  padding: 50px 0 0;\n  max-width: 300px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/login-select/login-select.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginSelectComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-/**
- * LoginSelectComponent
- */
-
-
-
-var LoginSelectComponent = /** @class */ (function () {
-    function LoginSelectComponent(sasaki, router) {
-        this.sasaki = sasaki;
-        this.router = router;
-    }
-    LoginSelectComponent.prototype.ngOnInit = function () {
-        this.isLoading = false;
-    };
-    LoginSelectComponent.prototype.login = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.sasaki.auth.signIn()];
-                    case 1:
-                        result = _a.sent();
-                        this.sasaki.credentials = result;
-                        this.isLoading = true;
-                        this.router.navigate(['/']);
-                        return [3 /*break*/, 3];
-                    case 2:
-                        error_1 = _a.sent();
-                        console.error(error_1);
-                        this.isLoading = false;
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    LoginSelectComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-login',
-            template: __webpack_require__("../../../../../src/app/components/login-select/login-select.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/login-select/login-select.component.scss")]
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
-    ], LoginSelectComponent);
-    return LoginSelectComponent;
-    var _a, _b;
-}());
-
-//# sourceMappingURL=login-select.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/login/login.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"contents\">\n    <div class=\"inner center\">\n        <div class=\"logo text-center mb-large\"><img src=\"/assets/images/common/logo.svg\"></div>\n        <p class=\"read text-center mb-middle\">初めてアプリをご利用なさる方は<br>下のボタンから会員登録をおこなってください。</p>\n        <button class=\"btn btn-primary btn-block mb-large\" routerLink=\"/startup\">アプリを初めてご利用の方</button>\n        <p class=\"read text-center mb-middle\">既に会員登録済みの方は<br>下のボタンよりログインしてください。</p>\n        <button class=\"btn btn-info btn-block\" (click)=\"login()\">会員登録済みの方</button>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/login/login.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".inner {\n  padding: 50px 0 0;\n  max-width: 300px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/login/login.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-/**
- * LoginComponent
- */
-
-
-
-var LoginComponent = /** @class */ (function () {
-    function LoginComponent(sasaki, router) {
-        this.sasaki = sasaki;
-        this.router = router;
-    }
-    LoginComponent.prototype.ngOnInit = function () {
-        this.isLoading = false;
-    };
-    LoginComponent.prototype.login = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.sasaki.auth.signIn()];
-                    case 1:
-                        result = _a.sent();
-                        this.sasaki.credentials = result;
-                        this.isLoading = true;
-                        this.router.navigate(['/']);
-                        return [3 /*break*/, 3];
-                    case 2:
-                        error_1 = _a.sent();
-                        console.error(error_1);
-                        this.isLoading = false;
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    LoginComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-login',
-            template: __webpack_require__("../../../../../src/app/components/login/login.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/login/login.component.scss")]
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
-    ], LoginComponent);
-    return LoginComponent;
-    var _a, _b;
-}());
-
-//# sourceMappingURL=login.component.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/components/logout/logout.component.html":
 /***/ (function(module, exports) {
 
@@ -1193,7 +1331,7 @@ var LogoutComponent = /** @class */ (function () {
                         _a.sent();
                         console.log('logout');
                         this.sasaki.credentials = null;
-                        this.router.navigate(['/auth/login-select']);
+                        this.router.navigate(['/auth']);
                         return [3 /*break*/, 3];
                     case 2:
                         error_1 = _a.sent();
@@ -1228,74 +1366,10 @@ var LogoutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/main/main.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<app-header></app-header>\n<router-outlet></router-outlet>\n<app-navigation></app-navigation>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/main/main.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/main/main.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MainComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-/**
- * MainComponent
- */
-
-var MainComponent = /** @class */ (function () {
-    function MainComponent() {
-    }
-    MainComponent.prototype.ngOnInit = function () {
-    };
-    MainComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-main',
-            template: __webpack_require__("../../../../../src/app/components/main/main.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/main/main.component.scss")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], MainComponent);
-    return MainComponent;
-}());
-
-//# sourceMappingURL=main.component.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/components/navigation/navigation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<ul>\n    <li routerLink=\"/ticket-holder\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-ticket-holder-white\"></div>\n        <div>チケットホルダー</div>\n    </li>\n    <li routerLink=\"/purchase\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>チケット購入</div>\n    </li>\n    <li routerLink=\"/point\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>ポイント管理</div>\n    </li>\n</ul>"
+module.exports = "<ul>\n    <li routerLink=\"/ticketHolder\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-ticket-holder-white\"></div>\n        <div>チケットホルダー</div>\n    </li>\n    <li routerLink=\"/purchase\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>チケット購入</div>\n    </li>\n    <li routerLink=\"/point\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>ポイント管理</div>\n    </li>\n</ul>"
 
 /***/ }),
 
@@ -2100,14 +2174,14 @@ var PurchaseComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/startup/startup.component.html":
+/***/ "../../../../../src/app/components/sign-in/sign-in.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"startup\">\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper walk-through\">\n            <div class=\"swiper-slide step-1\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>シネマサンシャイン<br>公式アプリへようこそ!</strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/01.svg\" width=\"118\" height=\"202\"></div>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-2\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>いつでも<br><span class=\"under-line\">アプリ会員価格！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/02.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">お得なアプリ会員価格で<br>チケットが購入できます。</p>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-3\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>チケットを<br><span class=\"under-line\">スマートに購入！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/03.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">一度、アプリ内で購入すると<br>面倒な購入者情報入力をスキップできます。</p>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-4\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>スマートフォンを<br><span class=\"under-line\">そのままチケットに！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/04.svg\" width=\"274\" height=\"223\"></div>\n                    <p class=\"text-center mb-middle\">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>\n                </div>\n            </div>\n            <!-- <div class=\"swiper-slide step-5\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>アプリでチケットを<br><span class=\"under-line\">6枚購入すると1枚無料！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/06.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">アプリ内で6枚購入すると<br>なんと1枚無料になります。</p>\n                </div>\n            </div> -->\n            <div class=\"swiper-slide step-5\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>それではアプリを<br>お楽しみください！</strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/05.svg\" width=\"269\" height=\"241\"></div>\n                    <button class=\"btn btn-primary btn-block\" (click)=\"login()\">アプリを始める</button>\n                </div>\n            </div>\n        </div>\n        <div class=\"swiper-pagination\"></div>\n    </swiper>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <div class=\"logo text-center mb-large\">\n            <img src=\"/assets/images/common/logo.svg\">\n        </div>\n        <form [formGroup]=\"signInForm\" (ngSubmit)=\"signIn()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">ユーザー</label>\n                <input type=\"text\" class=\"form-control\" name=\"user\" [formControl]=\"signInForm.controls.user\">\n                <p class=\"text-danger small-text\" *ngIf=\"signInForm.controls.user.errors?.required && signInForm.controls.user.dirty\">必須項目</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">パスワード</label>\n                <input type=\"password\" class=\"form-control\" name=\"password\" [formControl]=\"signInForm.controls.password\">\n                <p class=\"text-danger small-text\" *ngIf=\"signInForm.controls.password.errors?.required && signInForm.controls.password.dirty\">必須項目</p>\n            </div>\n\n            <button [disabled]=\"signInForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block mb-small\">サインイン</button>\n\n            <div routerLink=\"/auth/forgotPassword\">パスワードを忘れた方はこちら</div>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/startup/startup.component.scss":
+/***/ "../../../../../src/app/components/sign-in/sign-in.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -2115,7 +2189,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".startup {\n  background: linear-gradient(135deg, #00a0e9 0%, #00216b 100%); }\n\n.inner {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  padding: 50px 20px; }\n\n.under-line {\n  border-bottom: 4px solid #F4D600; }\n", ""]);
+exports.push([module.i, ".inner {\n  padding: 0;\n  width: 300px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
 
 // exports
 
@@ -2125,11 +2199,154 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/startup/startup.component.ts":
+/***/ "../../../../../src/app/components/sign-in/sign-in.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StartupComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignInComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * SignInComponent
+ */
+
+
+
+
+var SignInComponent = /** @class */ (function () {
+    function SignInComponent(formBuilder, sasaki, router) {
+        this.formBuilder = formBuilder;
+        this.sasaki = sasaki;
+        this.router = router;
+        console.log('LoginComponent constructor');
+    }
+    SignInComponent.prototype.ngOnInit = function () {
+        this.isLoading = false;
+        this.signInForm = this.formBuilder.group({
+            user: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required
+            ]),
+            password: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required
+            ])
+        });
+    };
+    SignInComponent.prototype.signIn = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var result, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.sasaki.auth.signIn()];
+                    case 1:
+                        result = _a.sent();
+                        this.sasaki.credentials = result;
+                        this.isLoading = true;
+                        this.router.navigate(['/']);
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_1 = _a.sent();
+                        console.error(error_1);
+                        this.isLoading = false;
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    SignInComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-sign-in',
+            template: __webpack_require__("../../../../../src/app/components/sign-in/sign-in.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/sign-in/sign-in.component.scss")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _c || Object])
+    ], SignInComponent);
+    return SignInComponent;
+    var _a, _b, _c;
+}());
+
+//# sourceMappingURL=sign-in.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/sign-out/sign-out.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"cover\" [class.active]=\"isOpen\" (click)=\"close.emit()\"></div>\n\n<div class=\"modal position-center\" [class.active]=\"isOpen\">\n    <div class=\"inner\">\n        <div class=\"mb-middle text-center\">ログアウトしますか？</div>\n        <button class=\"mb-x-small btn btn-info btn-block\" (click)=\"logout()\">ログアウト</button>\n        <button class=\"btn btn-info btn-block\" (click)=\"close.emit()\">キャンセル</button>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/sign-out/sign-out.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".cover {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, 0.75);\n  display: none; }\n  .cover.active {\n    display: block; }\n\n.modal {\n  visibility: hidden;\n  z-index: 20; }\n  .modal.active {\n    visibility: visible; }\n  .modal .inner {\n    padding: 40px 25px;\n    background-color: #333;\n    min-width: 300px;\n    max-width: 100%;\n    border-radius: 5px;\n    border: 1px solid #FFF; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/sign-out/sign-out.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignOutComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
@@ -2178,73 +2395,199 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 /**
- * StartupComponent
+ * LogoutComponent
  */
 
 
 
-var StartupComponent = /** @class */ (function () {
-    function StartupComponent(sasaki, router) {
-        this.sasaki = sasaki;
+var SignOutComponent = /** @class */ (function () {
+    function SignOutComponent(router, sasaki) {
         this.router = router;
+        this.sasaki = sasaki;
+        this.close = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
-    StartupComponent.prototype.ngOnInit = function () {
-        this.isLoading = false;
-        this.step = 0;
-        this.walkThrough = false;
-        this.config = {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-            spaceBetween: 30
-        };
-        this.tutorialStart();
+    SignOutComponent.prototype.ngOnInit = function () {
     };
-    StartupComponent.prototype.tutorialStart = function () {
-        var _this = this;
-        var timeout = 3000;
-        setTimeout(function () {
-            _this.step = 1;
-            _this.walkThrough = true;
-        }, timeout);
-    };
-    StartupComponent.prototype.login = function () {
+    SignOutComponent.prototype.logout = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var result, error_1;
+            var error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.sasaki.auth.signIn()];
+                        return [4 /*yield*/, this.sasaki.auth.signOut()];
                     case 1:
-                        result = _a.sent();
-                        console.log('authorize result:', result);
-                        this.sasaki.credentials = result;
-                        this.isLoading = true;
-                        this.router.navigate(['/']);
+                        _a.sent();
+                        console.log('logout');
+                        this.sasaki.credentials = null;
+                        this.router.navigate(['/auth']);
                         return [3 /*break*/, 3];
                     case 2:
                         error_1 = _a.sent();
                         console.error(error_1);
-                        this.isLoading = false;
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
             });
         });
     };
-    StartupComponent = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], SignOutComponent.prototype, "isOpen", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _a || Object)
+    ], SignOutComponent.prototype, "close", void 0);
+    SignOutComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-startup',
-            template: __webpack_require__("../../../../../src/app/components/startup/startup.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/startup/startup.component.scss")]
+            selector: 'app-sign-out',
+            template: __webpack_require__("../../../../../src/app/components/sign-out/sign-out.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/sign-out/sign-out.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
-    ], StartupComponent);
-    return StartupComponent;
-    var _a, _b;
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _c || Object])
+    ], SignOutComponent);
+    return SignOutComponent;
+    var _a, _b, _c;
 }());
 
-//# sourceMappingURL=startup.component.js.map
+//# sourceMappingURL=sign-out.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/sign-up/sign-up.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <div class=\"logo text-center mb-large\">\n            <img src=\"/assets/images/common/logo.svg\">\n        </div>\n        <form [formGroup]=\"signUpForm\" (ngSubmit)=\"signUp()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">メールアドレス</label>\n                <input type=\"email\" class=\"form-control\" name=\"mail\" [formControl]=\"signUpForm.controls.mail\">\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.mail.errors?.required && signUpForm.controls.mail.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.mail.errors?.maxlength && signUpForm.controls.mail.dirty\">30文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.mail.errors?.email && signUpForm.controls.mail.dirty\">メール形式で入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">せい</label>\n                <input type=\"text\" class=\"form-control\" name=\"familyName\" [formControl]=\"signUpForm.controls.familyName\">\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.familyName.errors?.required && signUpForm.controls.familyName.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.familyName.errors?.maxlength && signUpForm.controls.familyName.dirty\">10文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.familyName.errors?.pattern && signUpForm.controls.familyName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">めい</label>\n                <input type=\"text\" class=\"form-control\" name=\"givenName\" [formControl]=\"signUpForm.controls.givenName\">\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.givenName.errors?.required && signUpForm.controls.givenName.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.givenName.errors?.maxlength && signUpForm.controls.givenName.dirty\">10文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.givenName.errors?.pattern && signUpForm.controls.givenName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">電話番号</label>\n                <input type=\"tel\" class=\"form-control\" name=\"telephone\" [formControl]=\"signUpForm.controls.telephone\">\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.telephone.errors?.required && signUpForm.controls.telephone.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.telephone.errors?.maxlength && signUpForm.controls.telephone.dirty\">15文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.telephone.errors?.pattern && signUpForm.controls.telephone.dirty\">数字で入力してください</p>\n            </div>\n\n            <button [disabled]=\"signUpForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block\">登録</button>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/sign-up/sign-up.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".inner {\n  padding: 0;\n  width: 300px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/sign-up/sign-up.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignUpComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * SignUpComponent
+ */
+
+
+var SignUpComponent = /** @class */ (function () {
+    function SignUpComponent(formBuilder) {
+        this.formBuilder = formBuilder;
+        console.log('SignUpComponent constructor');
+    }
+    SignUpComponent.prototype.ngOnInit = function () {
+        this.isLoading = false;
+        this.updateForm = this.formBuilder.group({
+            mail: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(30),
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].email
+            ]),
+            givenName: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(10),
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(/^[ぁ-ゞー]+$/)
+            ]),
+            familyName: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(10),
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(/^[ぁ-ゞー]+$/)
+            ]),
+            telephone: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(15),
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(/^[0-9]+$/)
+            ])
+        });
+    };
+    SignUpComponent.prototype.signUp = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                this.isLoading = true;
+                this.isLoading = false;
+                return [2 /*return*/];
+            });
+        });
+    };
+    SignUpComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-sign-up',
+            template: __webpack_require__("../../../../../src/app/components/sign-up/sign-up.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/sign-up/sign-up.component.scss")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object])
+    ], SignUpComponent);
+    return SignUpComponent;
+    var _a;
+}());
+
+//# sourceMappingURL=sign-up.component.js.map
 
 /***/ }),
 
@@ -2490,6 +2833,154 @@ var TicketComponent = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=ticket.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/walk-through/walk-through.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"walk-through-wrapper\">\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper walk-through\">\n            <div class=\"swiper-slide step-1\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>シネマサンシャイン<br>公式アプリへようこそ!</strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/01.svg\" width=\"118\" height=\"202\"></div>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-2\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>いつでも<br><span class=\"under-line\">アプリ会員価格！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/02.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">お得なアプリ会員価格で<br>チケットが購入できます。</p>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-3\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>チケットを<br><span class=\"under-line\">スマートに購入！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/03.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">一度、アプリ内で購入すると<br>面倒な購入者情報入力をスキップできます。</p>\n                </div>\n            </div>\n            <div class=\"swiper-slide step-4\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>スマートフォンを<br><span class=\"under-line\">そのままチケットに！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/04.svg\" width=\"274\" height=\"223\"></div>\n                    <p class=\"text-center mb-middle\">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>\n                </div>\n            </div>\n            <!-- <div class=\"swiper-slide step-5\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>アプリでチケットを<br><span class=\"under-line\">6枚購入すると1枚無料！</span></strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/06.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">アプリ内で6枚購入すると<br>なんと1枚無料になります。</p>\n                </div>\n            </div> -->\n            <div class=\"swiper-slide step-5\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\"><strong>それではアプリを<br>お楽しみください！</strong></p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/05.svg\" width=\"269\" height=\"241\"></div>\n                    <button class=\"btn btn-primary btn-block\" routerLink=\"/auth/signUp\">アプリを始める</button>\n                </div>\n            </div>\n        </div>\n        <div class=\"swiper-pagination\"></div>\n    </swiper>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/walk-through/walk-through.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".walk-through-wrapper {\n  background: linear-gradient(135deg, #00a0e9 0%, #00216b 100%); }\n\n.inner {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  padding: 50px 20px; }\n\n.under-line {\n  border-bottom: 4px solid #F4D600; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/walk-through/walk-through.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WalkThroughComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * WalkThroughComponent
+ */
+
+
+
+var WalkThroughComponent = /** @class */ (function () {
+    function WalkThroughComponent(sasaki, router) {
+        this.sasaki = sasaki;
+        this.router = router;
+    }
+    WalkThroughComponent.prototype.ngOnInit = function () {
+        this.isLoading = false;
+        this.step = 0;
+        this.walkThrough = false;
+        this.config = {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            spaceBetween: 30
+        };
+        this.tutorialStart();
+    };
+    WalkThroughComponent.prototype.tutorialStart = function () {
+        var _this = this;
+        var timeout = 3000;
+        setTimeout(function () {
+            _this.step = 1;
+            _this.walkThrough = true;
+        }, timeout);
+    };
+    WalkThroughComponent.prototype.login = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var result, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.sasaki.auth.signIn()];
+                    case 1:
+                        result = _a.sent();
+                        console.log('authorize result:', result);
+                        this.sasaki.credentials = result;
+                        this.isLoading = true;
+                        this.router.navigate(['/']);
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_1 = _a.sent();
+                        console.error(error_1);
+                        this.isLoading = false;
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    WalkThroughComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-walk-through',
+            template: __webpack_require__("../../../../../src/app/components/walk-through/walk-through.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/walk-through/walk-through.component.scss")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+    ], WalkThroughComponent);
+    return WalkThroughComponent;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=walk-through.component.js.map
 
 /***/ }),
 
@@ -2748,7 +3239,7 @@ var AuthGuardService = /** @class */ (function () {
                     case 3:
                         err_1 = _c.sent();
                         console.log('非ログイン', err_1);
-                        this.router.navigate(['/auth/login-select']);
+                        this.router.navigate(['/auth']);
                         return [2 /*return*/, false];
                     case 4:
                         if (!(this.user.contacts === undefined)) return [3 /*break*/, 6];

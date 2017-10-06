@@ -1,4 +1,4 @@
-<div class="startup">
+<div class="walk-through-wrapper">
     <swiper [config]="config">
         <div class="swiper-wrapper walk-through">
             <div class="swiper-slide step-1">
@@ -39,7 +39,7 @@
                 <div class="inner">
                     <p class="text-center large-text mb-middle"><strong>それではアプリを<br>お楽しみください！</strong></p>
                     <div class="image text-center mb-middle"><img src="/assets/images/walkThrough/05.svg" width="269" height="241"></div>
-                    <button class="btn btn-primary btn-block" (click)="login()">アプリを始める</button>
+                    <button class="btn btn-primary btn-block" routerLink="/auth/signUp">アプリを始める</button>
                 </div>
             </div>
         </div>

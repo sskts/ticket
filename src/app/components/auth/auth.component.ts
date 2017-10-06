@@ -1,5 +1,5 @@
 /**
- * LoginComponent
+ * AuthComponent
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -8,16 +8,16 @@ import { SasakiService } from '../../service/sasaki/sasaki.service';
 
 @Component({
     selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    templateUrl: './auth.component.html',
+    styleUrls: ['./auth.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class AuthComponent implements OnInit {
     public isLoading: boolean;
 
     constructor(
         private sasaki: SasakiService,
         private router: Router
-    ) {}
+    ) { }
 
     public ngOnInit() {
         this.isLoading = false;

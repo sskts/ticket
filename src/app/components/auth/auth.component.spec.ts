@@ -6,14 +6,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { SasakiService, SasakiStubService } from '../../service/sasaki/sasaki-stub.service';
 import { Router, RouterStub } from '../../testing/router-stubs';
-import { LoginComponent } from './login.component';
+import { AuthComponent } from './auth.component';
 
 describe('LoginComponent', () => {
 
     it('コンポーネント生成', async () => {
         await TestBed.configureTestingModule({
             declarations: [
-                LoginComponent,
+                AuthComponent,
                 LoadingComponent
             ],
             providers: [
@@ -22,7 +22,7 @@ describe('LoginComponent', () => {
             ]
         })
             .compileComponents();
-        const fixture = TestBed.createComponent(LoginComponent);
+        const fixture = TestBed.createComponent(AuthComponent);
         const component = fixture.componentInstance;
         fixture.detectChanges();
 
@@ -34,7 +34,7 @@ describe('LoginComponent', () => {
         spyOn(routerStub, 'navigate');
         await TestBed.configureTestingModule({
             declarations: [
-                LoginComponent,
+                AuthComponent,
                 LoadingComponent
             ],
             providers: [
@@ -43,7 +43,7 @@ describe('LoginComponent', () => {
             ]
         })
             .compileComponents();
-        const fixture = TestBed.createComponent(LoginComponent);
+        const fixture = TestBed.createComponent(AuthComponent);
         const component = fixture.componentInstance;
         fixture.detectChanges();
 
@@ -56,7 +56,7 @@ describe('LoginComponent', () => {
         spyOn(sasakiStubService.auth, 'signIn').and.throwError('signInエラー');
         await TestBed.configureTestingModule({
             declarations: [
-                LoginComponent,
+                AuthComponent,
                 LoadingComponent
             ],
             providers: [
@@ -65,7 +65,7 @@ describe('LoginComponent', () => {
             ]
         })
             .compileComponents();
-        const fixture = TestBed.createComponent(LoginComponent);
+        const fixture = TestBed.createComponent(AuthComponent);
         const component = fixture.componentInstance;
         fixture.detectChanges();
         await component.login();
