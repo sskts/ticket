@@ -41,7 +41,11 @@ import { AvailabilityPipe } from './pipe/availability/availability.pipe';
 import { DurationPipe } from './pipe/duration/duration.pipe';
 import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
+import { CognitoUtil } from './service/cognito/cognito.service';
 import { SasakiService } from './service/sasaki/sasaki.service';
+import { UserLoginService } from './service/user-login/user-login.service';
+import { UserParametersService } from './service/user-parameters/user-parameters.service';
+import { UserRegistrationService } from './service/user-registration/user-registration.service';
 import { UserService } from './service/user/user.service';
 
 // tslint:disable-next-line:no-stateless-class
@@ -89,7 +93,11 @@ import { UserService } from './service/user/user.service';
   providers: [
     SasakiService,
     AuthGuardService,
-    UserService
+    UserService,
+    CognitoUtil,
+    UserLoginService,
+    UserParametersService,
+    UserRegistrationService
   ],
   bootstrap: [AppComponent]
 })

@@ -162,8 +162,12 @@ var AppRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pipe_duration_duration_pipe__ = __webpack_require__("../../../../../src/app/pipe/duration/duration.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pipe_time_format_time_format_pipe__ = __webpack_require__("../../../../../src/app/pipe/time-format/time-format.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__service_cognito_cognito_service__ = __webpack_require__("../../../../../src/app/service/cognito/cognito.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__service_user_login_user_login_service__ = __webpack_require__("../../../../../src/app/service/user-login/user-login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__service_user_parameters_user_parameters_service__ = __webpack_require__("../../../../../src/app/service/user-parameters/user-parameters.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__service_user_registration_user_registration_service__ = __webpack_require__("../../../../../src/app/service/user-registration/user-registration.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -173,6 +177,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 /**
  * NgModule
  */
+
+
+
+
 
 
 
@@ -259,9 +267,13 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_4_angular2_qrcode__["a" /* QRCodeModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_37__service_sasaki_sasaki_service__["a" /* SasakiService */],
+                __WEBPACK_IMPORTED_MODULE_38__service_sasaki_sasaki_service__["a" /* SasakiService */],
                 __WEBPACK_IMPORTED_MODULE_36__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
-                __WEBPACK_IMPORTED_MODULE_38__service_user_user_service__["a" /* UserService */]
+                __WEBPACK_IMPORTED_MODULE_42__service_user_user_service__["a" /* UserService */],
+                __WEBPACK_IMPORTED_MODULE_37__service_cognito_cognito_service__["a" /* CognitoUtil */],
+                __WEBPACK_IMPORTED_MODULE_39__service_user_login_user_login_service__["a" /* UserLoginService */],
+                __WEBPACK_IMPORTED_MODULE_40__service_user_parameters_user_parameters_service__["a" /* UserParametersService */],
+                __WEBPACK_IMPORTED_MODULE_41__service_user_registration_user_registration_service__["a" /* UserRegistrationService */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_8__components_app_app_component__["a" /* AppComponent */]]
         })
@@ -421,6 +433,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/**
+ * AuthBaseComponent
+ */
 
 var AuthBaseComponent = /** @class */ (function () {
     function AuthBaseComponent() {
@@ -2207,7 +2222,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__ = __webpack_require__("../../../../../src/app/service/user-login/user-login.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2260,10 +2275,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 var SignInComponent = /** @class */ (function () {
-    function SignInComponent(formBuilder, sasaki, router) {
+    function SignInComponent(formBuilder, router, userLogin) {
         this.formBuilder = formBuilder;
-        this.sasaki = sasaki;
         this.router = router;
+        this.userLogin = userLogin;
         console.log('LoginComponent constructor');
     }
     SignInComponent.prototype.ngOnInit = function () {
@@ -2279,24 +2294,24 @@ var SignInComponent = /** @class */ (function () {
     };
     SignInComponent.prototype.signIn = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var result, error_1;
+            var authenticateResult;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.sasaki.auth.signIn()];
-                    case 1:
-                        result = _a.sent();
-                        this.sasaki.credentials = result;
                         this.isLoading = true;
-                        this.router.navigate(['/']);
-                        return [3 /*break*/, 3];
-                    case 2:
-                        error_1 = _a.sent();
-                        console.error(error_1);
-                        this.isLoading = false;
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        this.error = null;
+                        return [4 /*yield*/, this.userLogin.authenticate(this.signInForm.controls.user.value, this.signInForm.controls.password.value)];
+                    case 1:
+                        authenticateResult = _a.sent();
+                        if (authenticateResult.message != null) {
+                            this.error = new Error(authenticateResult.message);
+                            console.log('result', this.error);
+                            this.isLoading = false;
+                        }
+                        else {
+                            this.router.navigate(['/']);
+                        }
+                        return [2 /*return*/];
                 }
             });
         });
@@ -2307,7 +2322,7 @@ var SignInComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/sign-in/sign-in.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/sign-in/sign-in.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__["a" /* UserLoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__["a" /* UserLoginService */]) === "function" && _c || Object])
     ], SignInComponent);
     return SignInComponent;
     var _a, _b, _c;
@@ -3276,6 +3291,309 @@ var AuthGuardService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/service/cognito/cognito.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CognitoUtil; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__ = __webpack_require__("../../../../amazon-cognito-identity-js/es/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aws_sdk_clients_cognitoidentity__ = __webpack_require__("../../../../aws-sdk/clients/cognitoidentity.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aws_sdk_clients_cognitoidentity___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_aws_sdk_clients_cognitoidentity__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aws_sdk_global__ = __webpack_require__("../../../../aws-sdk/browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aws_sdk_global___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_aws_sdk_global__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+var CognitoUtil = /** @class */ (function () {
+    function CognitoUtil() {
+    }
+    CognitoUtil_1 = CognitoUtil;
+    // tslint:disable-next-line:function-name
+    CognitoUtil.getCognitoParametersForIdConsolidation = function (idTokenJwt) {
+        console.log('AwsUtil: enter getCognitoParametersForIdConsolidation()');
+        var url = "cognito-idp." + CognitoUtil_1._REGION.toLowerCase() + ".amazonaws.com/" + CognitoUtil_1._USER_POOL_ID;
+        var logins = {};
+        logins[url] = idTokenJwt;
+        return {
+            IdentityPoolId: CognitoUtil_1._IDENTITY_POOL_ID,
+            Logins: logins
+        };
+    };
+    CognitoUtil.prototype.getUserPool = function (clientId) {
+        var cognitoUserPoolData = CognitoUtil_1._POOL_DATA;
+        // if (environment.cognito_idp_endpoint) {
+        //     cognitoUserPoolData.endpoint = environment.cognito_idp_endpoint;
+        // }
+        if (clientId !== undefined) {
+            cognitoUserPoolData.ClientId = clientId;
+        }
+        console.log('new CognitoUserPool...', cognitoUserPoolData);
+        return new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["d" /* CognitoUserPool */](cognitoUserPoolData);
+    };
+    CognitoUtil.prototype.getCurrentUser = function (clientId) {
+        return this.getUserPool(clientId).getCurrentUser();
+    };
+    // AWS Stores Credentials in many ways, and with TypeScript this means that
+    // getting the base credentials we authenticated with from the AWS globals gets really murky,
+    // having to get around both class extension and unions. Therefore, we're going to give
+    // developers direct access to the raw, unadulterated CognitoIdentityCredentials
+    // object at all times.
+    CognitoUtil.prototype.setCognitoCreds = function (creds) {
+        this.cognitoCreds = creds;
+    };
+    CognitoUtil.prototype.getCognitoCreds = function () {
+        return this.cognitoCreds;
+    };
+    /**
+     * ローカルセッションに認証情報を作成する
+     */
+    CognitoUtil.prototype.buildCognitoCreds = function (logins) {
+        return __awaiter(this, void 0, void 0, function () {
+            var params, creds;
+            return __generator(this, function (_a) {
+                console.log('logins:', logins);
+                this.logins = logins;
+                params = {
+                    IdentityPoolId: CognitoUtil_1._IDENTITY_POOL_ID,
+                    Logins: logins
+                };
+                creds = new __WEBPACK_IMPORTED_MODULE_3_aws_sdk_global__["CognitoIdentityCredentials"](params);
+                console.log('creds:', creds);
+                this.setCognitoCreds(creds);
+                // const getCredentialsForIdentityResponse = await cognitoIdentity.getCredentialsForIdentity({
+                //     IdentityId: getIdResponse.IdentityId,
+                //     Logins: logins
+                // }).promise();
+                // console.log('getCredentialsForIdentityResponse:', getCredentialsForIdentityResponse);
+                return [2 /*return*/, creds];
+            });
+        });
+    };
+    /**
+     * cognito identity idを取得する
+     */
+    CognitoUtil.prototype.getCognitoIdentity = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var cognitoIdentity, getIdResponse;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (this.logins === undefined) {
+                            return [2 /*return*/, null];
+                        }
+                        cognitoIdentity = new __WEBPACK_IMPORTED_MODULE_2_aws_sdk_clients_cognitoidentity__();
+                        return [4 /*yield*/, cognitoIdentity.getId({
+                                IdentityPoolId: CognitoUtil_1._IDENTITY_POOL_ID,
+                                Logins: this.logins
+                            }).promise()];
+                    case 1:
+                        getIdResponse = _a.sent();
+                        console.log('getIdResponse:', getIdResponse);
+                        return [2 /*return*/, getIdResponse.IdentityId];
+                }
+            });
+        });
+    };
+    CognitoUtil.prototype.getAccessToken = function (clientId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                console.log('アクセストークンを取得します...');
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        if (_this.getCurrentUser(clientId) != null) {
+                            _this.getCurrentUser(clientId).getSession(function (err, session) {
+                                if (err) {
+                                    console.log('CognitoUtil: Can\'t set the credentials', err);
+                                    reject(err);
+                                }
+                                else {
+                                    if (session.isValid()) {
+                                        console.log('アクセストークンを取得しました', session.getAccessToken());
+                                        resolve(session.getAccessToken().getJwtToken());
+                                    }
+                                    else {
+                                        reject(new Error('invalid session'));
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            resolve(null);
+                        }
+                    })];
+            });
+        });
+    };
+    CognitoUtil.prototype.getOpenIdToken = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var cognitoIdentity, getOpenIdTokenResponse, _a, _b, _c;
+            return __generator(this, function (_d) {
+                switch (_d.label) {
+                    case 0:
+                        console.log('OpenIDトークンを取得します...');
+                        cognitoIdentity = new __WEBPACK_IMPORTED_MODULE_2_aws_sdk_clients_cognitoidentity__();
+                        _b = (_a = cognitoIdentity).getOpenIdToken;
+                        _c = {};
+                        return [4 /*yield*/, this.getCognitoIdentity()];
+                    case 1: return [4 /*yield*/, _b.apply(_a, [(_c.IdentityId = _d.sent(),
+                                _c.Logins = this.logins,
+                                _c)]).promise()];
+                    case 2:
+                        getOpenIdTokenResponse = _d.sent();
+                        console.log('OpenIDトークンを取得しました', getOpenIdTokenResponse);
+                        return [2 /*return*/, getOpenIdTokenResponse.Token];
+                }
+            });
+        });
+    };
+    CognitoUtil.prototype.getIdToken = function (clientId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                console.log('IDトークンを取得します...clientId:', clientId);
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        if (_this.getCurrentUser(clientId) != null) {
+                            _this.getCurrentUser(clientId).getSession(function (err, session) {
+                                if (err) {
+                                    console.log('CognitoUtil: Can\'t set the credentials', err);
+                                    resolve(null);
+                                }
+                                else {
+                                    if (session.isValid()) {
+                                        console.log('IDトークンを取得しました', session.getIdToken());
+                                        resolve(session.getIdToken().getJwtToken());
+                                    }
+                                    else {
+                                        console.log('CognitoUtil: Got the id token, but the session isn\'t valid');
+                                        reject(new Error('invalid session'));
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            reject(new Error('current user null'));
+                        }
+                    })];
+            });
+        });
+    };
+    CognitoUtil.prototype.getRefreshToken = function (clientId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        if (_this.getCurrentUser(clientId) != null) {
+                            _this.getCurrentUser(clientId).getSession(function (err, session) {
+                                if (err) {
+                                    console.log('CognitoUtil: Can\'t set the credentials', err);
+                                    reject(err);
+                                }
+                                else {
+                                    if (session.isValid()) {
+                                        resolve(session.getRefreshToken());
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            resolve(null);
+                        }
+                    })];
+            });
+        });
+    };
+    CognitoUtil.prototype.refresh = function (clientId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        _this.getCurrentUser(clientId).getSession(function (err, session) { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                if (err) {
+                                    console.log('CognitoUtil: Can\'t set the credentials', err);
+                                    reject(err);
+                                }
+                                else {
+                                    if (session.isValid()) {
+                                        console.log('CognitoUtil: refreshed successfully');
+                                        resolve();
+                                    }
+                                    else {
+                                        console.log('CognitoUtil: refreshed but session is still not valid');
+                                        reject(new Error('CognitoUtil: refreshed but session is still not valid'));
+                                    }
+                                }
+                                return [2 /*return*/];
+                            });
+                        }); });
+                    })];
+            });
+        });
+    };
+    CognitoUtil._REGION = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].region;
+    CognitoUtil._IDENTITY_POOL_ID = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].identityPoolId;
+    CognitoUtil._USER_POOL_ID = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].userPoolId;
+    CognitoUtil._CLIENT_ID = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].clientId;
+    CognitoUtil._POOL_DATA = {
+        UserPoolId: CognitoUtil_1._USER_POOL_ID,
+        ClientId: CognitoUtil_1._CLIENT_ID
+    };
+    CognitoUtil = CognitoUtil_1 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
+    ], CognitoUtil);
+    return CognitoUtil;
+    var CognitoUtil_1;
+}());
+
+//# sourceMappingURL=cognito.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/service/sasaki/sasaki.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3351,6 +3669,536 @@ var SasakiService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/service/user-login/user-login.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserLoginService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__ = __webpack_require__("../../../../amazon-cognito-identity-js/es/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aws_sdk_clients_sts__ = __webpack_require__("../../../../aws-sdk/clients/sts.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aws_sdk_clients_sts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_aws_sdk_clients_sts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aws_sdk_global__ = __webpack_require__("../../../../aws-sdk/browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aws_sdk_global___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_aws_sdk_global__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__cognito_cognito_service__ = __webpack_require__("../../../../../src/app/service/cognito/cognito.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+/**
+ * 会員ログインサービス
+ */
+var UserLoginService = /** @class */ (function () {
+    function UserLoginService(cognitoUtil) {
+        this.cognitoUtil = cognitoUtil;
+    }
+    /**
+     * ユーザーネームとパスワードで認証する
+     * @param username ユーザーネーム
+     * @param password パスワード
+     */
+    UserLoginService.prototype.authenticate = function (username, password) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve) {
+                        console.log('UserLoginService: starting the authentication');
+                        var authenticationData = {
+                            Username: username,
+                            Password: password
+                        };
+                        var authenticationDetails = new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["a" /* AuthenticationDetails */](authenticationData);
+                        var userData = {
+                            Username: username,
+                            Pool: _this.cognitoUtil.getUserPool()
+                        };
+                        console.log('UserLoginService: Params set...Authenticating the user');
+                        var cognitoUser = new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["b" /* CognitoUser */](userData);
+                        console.log("UserLoginService: config is " + __WEBPACK_IMPORTED_MODULE_3_aws_sdk_global__["config"]);
+                        cognitoUser.authenticateUser(authenticationDetails, {
+                            newPasswordRequired: function (userAttributes, requiredAttributes) {
+                                console.log('userAttributes', userAttributes);
+                                console.log('requiredAttributes', requiredAttributes);
+                                resolve({
+                                    message: 'User needs to set password.',
+                                    result: null
+                                });
+                            },
+                            onSuccess: function (result) { return __awaiter(_this, void 0, void 0, function () {
+                                var creds, clientParams, sts;
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0:
+                                            console.log('In authenticateUser onSuccess callback');
+                                            return [4 /*yield*/, this.cognitoUtil.buildCognitoCreds(__WEBPACK_IMPORTED_MODULE_5__cognito_cognito_service__["a" /* CognitoUtil */].getCognitoParametersForIdConsolidation(result.getIdToken().getJwtToken()).Logins)];
+                                        case 1:
+                                            creds = _a.sent();
+                                            __WEBPACK_IMPORTED_MODULE_3_aws_sdk_global__["config"].credentials = creds;
+                                            clientParams = {};
+                                            if (__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].sts_endpoint) {
+                                                clientParams.endpoint = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].sts_endpoint;
+                                            }
+                                            sts = new __WEBPACK_IMPORTED_MODULE_2_aws_sdk_clients_sts__(clientParams);
+                                            sts.getCallerIdentity({}, function (err, data) {
+                                                console.log('UserLoginService: Successfully set the AWS credentials');
+                                                console.log(err, data);
+                                                resolve({
+                                                    message: null,
+                                                    result: result
+                                                });
+                                            });
+                                            return [2 /*return*/];
+                                    }
+                                });
+                            }); },
+                            onFailure: function (err) {
+                                resolve({
+                                    message: err.message,
+                                    result: null
+                                });
+                            }
+                        });
+                    })];
+            });
+        });
+    };
+    /**
+     * ユーザーネームからパスワード忘れプロセスを実行する
+     * @param username ユーザーネーム
+     * @param callback 実行後処理
+     */
+    UserLoginService.prototype.forgotPassword = function (username, callback) {
+        var userData = {
+            Username: username,
+            Pool: this.cognitoUtil.getUserPool()
+        };
+        var cognitoUser = new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["b" /* CognitoUser */](userData);
+        cognitoUser.forgotPassword({
+            onSuccess: function () {
+            },
+            onFailure: function (err) {
+                callback.cognitoCallback(err.message, null);
+            },
+            inputVerificationCode: function () {
+                callback.cognitoCallback(null, null);
+            }
+        });
+    };
+    /**
+     * 新パスワードを登録する
+     * @param username ユーザーネーム
+     * @param verificationCode 確認コード
+     * @param password 新パスワード
+     * @param callback 実行後処理
+     */
+    UserLoginService.prototype.confirmNewPassword = function (username, verificationCode, password, callback) {
+        var userData = {
+            Username: username,
+            Pool: this.cognitoUtil.getUserPool()
+        };
+        var cognitoUser = new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["b" /* CognitoUser */](userData);
+        cognitoUser.confirmPassword(verificationCode, password, {
+            onSuccess: function () {
+                callback.cognitoCallback(null, null);
+            },
+            onFailure: function (err) {
+                callback.cognitoCallback(err.message, null);
+            }
+        });
+    };
+    /**
+     * ログアウト
+     */
+    UserLoginService.prototype.logout = function () {
+        console.log('UserLoginService: Logging out');
+        this.cognitoUtil.getCurrentUser().signOut();
+    };
+    /**
+     * 認証済かどうか
+     */
+    UserLoginService.prototype.isAuthenticated = function (callback) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var cognitoUser;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (callback == null) {
+                            throw new Error('UserLoginService: Callback in isAuthenticated() cannot be null');
+                        }
+                        cognitoUser = this.cognitoUtil.getCurrentUser();
+                        if (!(cognitoUser != null)) return [3 /*break*/, 1];
+                        cognitoUser.getSession(function (err, session) { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        if (!err) return [3 /*break*/, 2];
+                                        console.log('UserLoginService: Couldn\'t get the session', err, err.stack);
+                                        return [4 /*yield*/, callback.isLoggedIn(err, false)];
+                                    case 1:
+                                        _a.sent();
+                                        return [3 /*break*/, 4];
+                                    case 2:
+                                        console.log("UserLoginService: Session is " + session.isValid());
+                                        return [4 /*yield*/, callback.isLoggedIn(err, session.isValid())];
+                                    case 3:
+                                        _a.sent();
+                                        _a.label = 4;
+                                    case 4: return [2 /*return*/];
+                                }
+                            });
+                        }); });
+                        return [3 /*break*/, 3];
+                    case 1:
+                        console.log('UserLoginService: can\'t retrieve the current user');
+                        return [4 /*yield*/, callback.isLoggedIn('Can\'t retrieve the CurrentUser', false)];
+                    case 2:
+                        _a.sent();
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    UserLoginService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__cognito_cognito_service__["a" /* CognitoUtil */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__cognito_cognito_service__["a" /* CognitoUtil */]) === "function" && _a || Object])
+    ], UserLoginService);
+    return UserLoginService;
+    var _a;
+}());
+
+//# sourceMappingURL=user-login.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/service/user-parameters/user-parameters.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserParametersService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cognito_cognito_service__ = __webpack_require__("../../../../../src/app/service/cognito/cognito.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * UserParametersService
+ */
+
+
+var UserParametersService = /** @class */ (function () {
+    function UserParametersService(cognitoUtil) {
+        this.cognitoUtil = cognitoUtil;
+    }
+    UserParametersService.prototype.getParameters = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var cognitoUser = _this.cognitoUtil.getCurrentUser();
+                        if (cognitoUser != null) {
+                            cognitoUser.getSession(function (getSessionErr, session) { return __awaiter(_this, void 0, void 0, function () {
+                                return __generator(this, function (_a) {
+                                    if (getSessionErr) {
+                                        console.log('UserParametersService: Couldn\'t retrieve the user');
+                                        reject(getSessionErr);
+                                    }
+                                    else {
+                                        console.log(session);
+                                        cognitoUser.getUserAttributes(function (getUserAttributesErr, result) {
+                                            if (getUserAttributesErr) {
+                                                var message = "UserParametersService: in getParameters " + getUserAttributesErr;
+                                                console.log(message);
+                                                reject(new Error(message));
+                                            }
+                                            else {
+                                                resolve(result);
+                                            }
+                                        });
+                                    }
+                                    return [2 /*return*/];
+                                });
+                            }); });
+                        }
+                        else {
+                            resolve(null);
+                        }
+                    })];
+            });
+        });
+    };
+    UserParametersService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__cognito_cognito_service__["a" /* CognitoUtil */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__cognito_cognito_service__["a" /* CognitoUtil */]) === "function" && _a || Object])
+    ], UserParametersService);
+    return UserParametersService;
+    var _a;
+}());
+
+//# sourceMappingURL=user-parameters.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/service/user-registration/user-registration.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserRegistrationService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__ = __webpack_require__("../../../../amazon-cognito-identity-js/es/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aws_sdk_global__ = __webpack_require__("../../../../aws-sdk/browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aws_sdk_global___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_aws_sdk_global__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cognito_cognito_service__ = __webpack_require__("../../../../../src/app/service/cognito/cognito.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+/**
+ * 会員登録サービス
+ */
+
+
+
+
+var UserRegistrationService = /** @class */ (function () {
+    function UserRegistrationService(cognitoUtil) {
+        this.cognitoUtil = cognitoUtil;
+    }
+    /**
+     * 登録する
+     * @param {string} user 登録したいユーザー情報
+     * @param {CognitoCallback} callback 実行後処理
+     */
+    UserRegistrationService.prototype.register = function (user, callback) {
+        console.log("UserRegistrationService: user is " + user);
+        var attributeList = [];
+        var dataEmail = {
+            Name: 'email',
+            Value: user.email
+        };
+        var dataGivenName = {
+            Name: 'given_name',
+            Value: user.givenName
+        };
+        var dataFamilyName = {
+            Name: 'family_name',
+            Value: user.familyName
+        };
+        var dataPhoneNumber = {
+            Name: 'phone_number',
+            Value: user.phoneNumber
+        };
+        attributeList.push(new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["c" /* CognitoUserAttribute */](dataEmail));
+        attributeList.push(new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["c" /* CognitoUserAttribute */](dataGivenName));
+        attributeList.push(new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["c" /* CognitoUserAttribute */](dataFamilyName));
+        attributeList.push(new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["c" /* CognitoUserAttribute */](dataPhoneNumber));
+        this.cognitoUtil.getUserPool().signUp(user.username, user.password, attributeList, null, function (err, result) {
+            if (err) {
+                callback.cognitoCallback(err.message, null);
+            }
+            else {
+                console.log("UserRegistrationService: registered user is " + result);
+                callback.cognitoCallback(null, result);
+            }
+        });
+    };
+    /**
+     * 登録確認コードを検証する
+     * @param {string} username ユーザーネーム
+     * @param {string} confirmationCode 確認コード
+     * @param {CognitoCallback} callback 実行後処理
+     */
+    UserRegistrationService.prototype.confirmRegistration = function (username, confirmationCode, callback) {
+        var userData = {
+            Username: username,
+            Pool: this.cognitoUtil.getUserPool()
+        };
+        var cognitoUser = new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["b" /* CognitoUser */](userData);
+        cognitoUser.confirmRegistration(confirmationCode, true, function (err, result) {
+            if (err) {
+                callback.cognitoCallback(err.message, null);
+            }
+            else {
+                callback.cognitoCallback(null, result);
+            }
+        });
+    };
+    /**
+     * 確認コードを再送信する
+     * @param {string} username ユーザーネーム
+     * @param {CognitoCallback} callback 実行後処理
+     */
+    UserRegistrationService.prototype.resendCode = function (username, callback) {
+        var userData = {
+            Username: username,
+            Pool: this.cognitoUtil.getUserPool()
+        };
+        var cognitoUser = new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["b" /* CognitoUser */](userData);
+        cognitoUser.resendConfirmationCode(function (err, result) {
+            if (err) {
+                callback.cognitoCallback(err.message, null);
+            }
+            else {
+                callback.cognitoCallback(null, result);
+            }
+        });
+    };
+    /**
+     * パスワードを変更する
+     * @param {NewPasswordUser} newPasswordUser 新パスワードユーザー
+     * @param {CognitoCallback} callback 実行後処理
+     */
+    UserRegistrationService.prototype.newPassword = function (newPasswordUser, callback) {
+        console.log(newPasswordUser);
+        // Get these details and call
+        // cognitoUser.completeNewPasswordChallenge(newPassword, userAttributes, this);
+        var authenticationData = {
+            Username: newPasswordUser.username,
+            Password: newPasswordUser.existingPassword
+        };
+        var authenticationDetails = new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["a" /* AuthenticationDetails */](authenticationData);
+        var userData = {
+            Username: newPasswordUser.username,
+            Pool: this.cognitoUtil.getUserPool()
+        };
+        console.log('UserLoginService: Params set...Authenticating the user');
+        var cognitoUser = new __WEBPACK_IMPORTED_MODULE_1_amazon_cognito_identity_js__["b" /* CognitoUser */](userData);
+        console.log("UserLoginService: config is " + __WEBPACK_IMPORTED_MODULE_2_aws_sdk_global__["config"]);
+        cognitoUser.authenticateUser(authenticationDetails, {
+            newPasswordRequired: function (userAttributes, requiredAttributes) {
+                // User was signed up by an admin and must provide new
+                // password and required attributes, if any, to complete
+                // authentication.
+                // the api doesn't accept this field back
+                delete userAttributes.email_verified;
+                cognitoUser.completeNewPasswordChallenge(newPasswordUser.password, requiredAttributes, {
+                    onSuccess: function (result) {
+                        console.log(result);
+                        callback.cognitoCallback(null, userAttributes);
+                    },
+                    onFailure: function (err) {
+                        callback.cognitoCallback(err, null);
+                    }
+                });
+            },
+            onSuccess: function (result) {
+                callback.cognitoCallback(null, result);
+            },
+            onFailure: function (err) {
+                callback.cognitoCallback(err, null);
+            }
+        });
+    };
+    UserRegistrationService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_3__cognito_cognito_service__["a" /* CognitoUtil */])),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__cognito_cognito_service__["a" /* CognitoUtil */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__cognito_cognito_service__["a" /* CognitoUtil */]) === "function" && _a || Object])
+    ], UserRegistrationService);
+    return UserRegistrationService;
+    var _a;
+}());
+
+//# sourceMappingURL=user-registration.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/service/user/user.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3405,8 +4253,6 @@ var environment = {
     cognito_idp_endpoint: '',
     cognito_identity_endpoint: '',
     sts_endpoint: '',
-    dynamodb_endpoint: '',
-    s3_endpoint: '',
     sasakiAuthDomain: 'sskts-development.auth.ap-northeast-1.amazoncognito.com',
     sasakiAuthRedirectUri: 'https://sskts-ticket-development.azurewebsites.net/signIn',
     sasakiAuthLogoutUri: 'https://sskts-ticket-development.azurewebsites.net/signOut',
@@ -3700,6 +4546,13 @@ webpackContext.id = "../../../../moment/locale recursive ^\\.\\/.*$";
 /***/ }),
 
 /***/ 0:
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("../../../../../src/main.ts");
@@ -3707,5 +4560,5 @@ module.exports = __webpack_require__("../../../../../src/main.ts");
 
 /***/ })
 
-},[0]);
+},[1]);
 //# sourceMappingURL=main.bundle.js.map

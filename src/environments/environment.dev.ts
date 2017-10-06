@@ -19,8 +19,6 @@ export const environment = {
     cognito_idp_endpoint: '',
     cognito_identity_endpoint: '',
     sts_endpoint: '',
-    dynamodb_endpoint: '',
-    s3_endpoint: '',
 
     sasakiAuthDomain: 'sskts-development.auth.ap-northeast-1.amazoncognito.com',
     sasakiAuthRedirectUri: 'https://sskts-ticket-development.azurewebsites.net/assets/signIn.html',

@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { SasakiService } from '../../service/sasaki/sasaki.service';
+import { UserLoginService } from '../../service/user-login/user-login.service';
 
 @Component({
     selector: 'app-sign-in',
@@ -15,11 +15,12 @@ import { SasakiService } from '../../service/sasaki/sasaki.service';
 export class SignInComponent implements OnInit {
     public isLoading: boolean;
     public signInForm: FormGroup;
+    public error: Error;
 
     constructor(
         private formBuilder: FormBuilder,
-        private sasaki: SasakiService,
-        private router: Router
+        private router: Router,
+        private userLogin: UserLoginService
     ) {
         console.log('LoginComponent constructor');
     }
@@ -37,14 +38,18 @@ export class SignInComponent implements OnInit {
     }
 
     public async signIn() {
-        try {
-            const result = await this.sasaki.auth.signIn();
-            this.sasaki.credentials = result;
-            this.isLoading = true;
-            this.router.navigate(['/']);
-        } catch (error) {
-            console.error(error);
+        this.isLoading = true;
+        this.error = null;
+        const authenticateResult = await this.userLogin.authenticate(
+            this.signInForm.controls.user.value,
+            this.signInForm.controls.password.value
+        );
+        if (authenticateResult.message != null) {
+            this.error = new Error(authenticateResult.message);
+            console.log('result', this.error);
             this.isLoading = false;
+        } else {
+            this.router.navigate(['/']);
         }
     }
 
