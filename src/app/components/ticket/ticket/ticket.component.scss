@@ -1,0 +1,52 @@
+.inner {
+    background-color: #EEE;
+    color: #333;
+}
+.info {
+    dl {
+        border-bottom: 1px solid #AAA;
+        display: table;
+        width: 100%;
+        dt {
+            width: 60px;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            &:before {
+                margin: 0 auto;
+            }
+        }
+        dd {
+            width: calc(100% - 60px);
+            padding: 15px 0;
+            display: table-cell;
+            vertical-align: middle;
+            line-height: 1.4;
+        }
+    }
+}
+ul {
+    li {
+        background-color: #FFF;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #AAA;
+        &:last-child {
+            border-bottom: none;
+        }
+        .ticket-info {
+            text-align: center;
+            width: calc(100% - 150px);
+        }
+        .qr {
+            padding: 10px;
+            background-color: #EEE;
+            qr-code {
+                display: block;
+                padding: 10px;
+                background-color: #FFF;
+            }
+        }
+    }
+}

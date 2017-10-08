@@ -11,31 +11,30 @@ import { SwiperModule } from 'angular2-useful-swiper';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { AppComponent } from './components/app/app.component';
-import { AuthBaseComponent } from './components/auth-base/auth-base.component';
-import { AuthComponent } from './components/auth/auth.component';
+import { AuthBaseComponent } from './components/auth/auth-base/auth-base.component';
+import { AuthIndexComponent } from './components/auth/auth-index/auth-index.component';
+import { ConfirmRegistrationComponent } from './components/auth/confirm-registration/confirm-registration.component';
+import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
+import { SignInComponent } from './components/auth/sign-in/sign-in.component';
+import { SignOutComponent } from './components/auth/sign-out/sign-out.component';
+import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { BaseComponent } from './components/base/base.component';
-import {
-  ChronologicalOrderOfPerformanceComponent
-} from './components/chronological-order-of-performance/chronological-order-of-performance.component';
-import { FilmOrderOfPerformanceComponent } from './components/film-order-of-performance/film-order-of-performance.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LawComponent } from './components/law/law.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { NoTicketComponent } from './components/no-ticket/no-ticket.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PolicyComponent } from './components/policy/policy.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { PurchaseComponent } from './components/purchase/purchase.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignOutComponent } from './components/sign-out/sign-out.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { TicketHolderComponent } from './components/ticket-holder/ticket-holder.component';
-import { TicketComponent } from './components/ticket/ticket.component';
+import { ChronologicalOrderComponent } from './components/purchase/chronological-order/chronological-order.component';
+import { FilmOrderComponent } from './components/purchase/film-order/film-order.component';
+import { ScheduleComponent } from './components/purchase/schedule/schedule.component';
+import { NoTicketComponent } from './components/ticket/no-ticket/no-ticket.component';
+import { TicketHolderComponent } from './components/ticket/ticket-holder/ticket-holder.component';
+import { TicketComponent } from './components/ticket/ticket/ticket.component';
 import { WalkThroughComponent } from './components/walk-through/walk-through.component';
 import { AvailabilityPipe } from './pipe/availability/availability.pipe';
 import { DurationPipe } from './pipe/duration/duration.pipe';
@@ -57,12 +56,12 @@ import { UserService } from './service/user/user.service';
     WalkThroughComponent,
     NavigationComponent,
     HeaderComponent,
-    PurchaseComponent,
+    ScheduleComponent,
     NotFoundComponent,
     BaseComponent,
     TimeFormatPipe,
-    ChronologicalOrderOfPerformanceComponent,
-    FilmOrderOfPerformanceComponent,
+    ChronologicalOrderComponent,
+    FilmOrderComponent,
     AvailabilityPipe,
     DurationPipe,
     NoTicketComponent,
@@ -74,12 +73,13 @@ import { UserService } from './service/user/user.service';
     PrivacyComponent,
     LogoutComponent,
     HeaderMenuComponent,
-    AuthComponent,
+    AuthIndexComponent,
     SignInComponent,
     SignOutComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    AuthBaseComponent
+    AuthBaseComponent,
+    ConfirmRegistrationComponent
   ],
   imports: [
     BrowserModule,

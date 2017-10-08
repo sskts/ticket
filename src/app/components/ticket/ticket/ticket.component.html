@@ -1,0 +1,30 @@
+<div class="inner">
+    <div class="info">
+        <dl class="film">
+            <dt class="icon-film-name-gray"></dt>
+            <dd>{{ reservation.reservationFor.workPerformed.name }}</dd>
+        </dl>
+        <dl class="date">
+            <dt class="icon-calendar-gray"></dt>
+            <dd>{{ reservation.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{ reservation.reservationFor.startDate
+                | timeFormat: reservation.reservationFor.coaInfo.dateJouei }}-{{ reservation.reservationFor.endDate | timeFormat:
+                reservation.reservationFor.coaInfo.dateJouei }}</dd>
+        </dl>
+        <dl class="theater">
+            <dt class="icon-location-gray"></dt>
+            <dd>{{ reservation.reservationFor.superEvent.location.name.ja }} / {{ reservation.reservationFor.location.name.ja }}</dd>
+        </dl>
+    </div>
+    <ul>
+        <li *ngFor="let reservedTicket of reservation.reservedTickets">
+            <div class="ticket-info">
+                <div class="large-x-text mb-x-small">{{ reservedTicket.ticketedSeat.seatNumber }}</div>
+                <div *ngIf="reservedTicket.coaTicketInfo.addGlasses > 0">{{ reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>
+                <div *ngIf="reservedTicket.coaTicketInfo.addGlasses === 0">{{ reservedTicket.coaTicketInfo.ticketName }}</div>
+            </div>
+            <div class="qr">
+                <qr-code [value]="reservedTicket.ticketToken" [size]="100"></qr-code>
+            </div>
+        </li>
+    </ul>
+</div>
