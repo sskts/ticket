@@ -18,8 +18,8 @@ export class SignUpComponent implements OnInit, CognitoCallback {
     public signUpForm: FormGroup;
     public registrationUser: {
         username: string;
-        email: string;
         password: string;
+        email: string;
         givenName: string;
         familyName: string;
         phoneNumber: string;
@@ -38,6 +38,13 @@ export class SignUpComponent implements OnInit, CognitoCallback {
         this.isLoading = false;
         this.error = null;
         this.signUpForm = this.formBuilder.group({
+            userName: new FormControl('', [
+                Validators.required
+            ]),
+            password: new FormControl('', [
+                Validators.required,
+                Validators.minLength(8)
+            ]),
             mail: new FormControl('', [
                 Validators.required,
                 Validators.maxLength(30),
@@ -63,6 +70,14 @@ export class SignUpComponent implements OnInit, CognitoCallback {
 
     public async signUp() {
         this.isLoading = true;
+        this.registrationUser = {
+            username: this.signUpForm.controls.userName.value,
+            password: this.signUpForm.controls.password.value,
+            email: this.signUpForm.controls.mail.value,
+            familyName: this.signUpForm.controls.familyName.value,
+            givenName: this.signUpForm.controls.givenName.value,
+            phoneNumber: this.signUpForm.controls.telephone.value
+        };
         this.userRegistration.register(this.registrationUser, this);
     }
 

@@ -29,7 +29,7 @@ export class SignInComponent implements OnInit, CognitoCallback {
     public ngOnInit() {
         this.isLoading = false;
         this.signInForm = this.formBuilder.group({
-            user: new FormControl('', [
+            userName: new FormControl('', [
                 Validators.required
             ]),
             password: new FormControl('', [
@@ -42,7 +42,7 @@ export class SignInComponent implements OnInit, CognitoCallback {
         this.isLoading = true;
         this.error = null;
         const authenticateResult = await this.userLogin.authenticate(
-            this.signInForm.controls.user.value,
+            this.signInForm.controls.userName.value,
             this.signInForm.controls.password.value
         );
         this.cognitoCallback(authenticateResult.message, authenticateResult.result);

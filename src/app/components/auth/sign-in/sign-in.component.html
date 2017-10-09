@@ -1,19 +1,17 @@
 <div class="contents position-center">
     <div class="inner center">
-        <div class="logo text-center mb-large">
-            <img src="/assets/images/common/logo.svg">
-        </div>
         <form [formGroup]="signInForm" (ngSubmit)="signIn()">
             <div class="mb-small">
                 <label class="control-label small-text">ユーザー</label>
-                <input type="text" class="form-control" name="user" [formControl]="signInForm.controls.user">
-                <p class="text-danger small-text" *ngIf="signInForm.controls.user.errors?.required && signInForm.controls.user.dirty">必須項目</p>
+                <input type="text" class="form-control" name="userName" [formControl]="signInForm.controls.userName">
+                <p class="text-danger small-text" *ngIf="signInForm.controls.userName.errors?.required && signInForm.controls.userName.dirty">必須項目</p>
             </div>
 
             <div class="mb-small">
                 <label class="control-label small-text">パスワード</label>
                 <input type="password" class="form-control" name="password" [formControl]="signInForm.controls.password">
                 <p class="text-danger small-text" *ngIf="signInForm.controls.password.errors?.required && signInForm.controls.password.dirty">必須項目</p>
+                <p class="text-danger small-text" *ngIf="signInForm.controls.password.errors?.minlength && signInForm.controls.password.dirty">8文字以上で入力してください</p>
             </div>
 
             <button [disabled]="signInForm.invalid" type="submit" class="btn btn-primary btn-block mb-small">サインイン</button>

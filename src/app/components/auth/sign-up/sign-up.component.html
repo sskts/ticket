@@ -1,9 +1,19 @@
 <div class="contents position-center">
     <div class="inner center">
-        <div class="logo text-center mb-large">
-            <img src="/assets/images/common/logo.svg">
-        </div>
         <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+            <div class="mb-small">
+                <label class="control-label small-text">ユーザー</label>
+                <input type="text" class="form-control" name="userName" [formControl]="signUpForm.controls.userName">
+                <p class="text-danger small-text" *ngIf="signUpForm.controls.userName.errors?.required && signUpForm.controls.userName.dirty">必須項目</p>
+            </div>
+
+            <div class="mb-small">
+                <label class="control-label small-text">パスワード</label>
+                <input type="password" class="form-control" name="password" [formControl]="signUpForm.controls.password">
+                <p class="text-danger small-text" *ngIf="signUpForm.controls.password.errors?.required && signUpForm.controls.password.dirty">必須項目</p>
+                <p class="text-danger small-text" *ngIf="signUpForm.controls.password.errors?.minlength && signUpForm.controls.password.dirty">8文字以上で入力してください</p>
+            </div>
+
             <div class="mb-small">
                 <label class="control-label small-text">メールアドレス</label>
                 <input type="email" class="form-control" name="mail" [formControl]="signUpForm.controls.mail">
