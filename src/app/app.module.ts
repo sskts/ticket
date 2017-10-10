@@ -46,6 +46,7 @@ import { UserLoginService } from './service/user-login/user-login.service';
 import { UserParametersService } from './service/user-parameters/user-parameters.service';
 import { UserRegistrationService } from './service/user-registration/user-registration.service';
 import { UserService } from './service/user/user.service';
+import { ForgotPasswordResetComponent } from './components/auth/forgot-password-reset/forgot-password-reset.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -79,7 +80,8 @@ import { UserService } from './service/user/user.service';
     SignUpComponent,
     ForgotPasswordComponent,
     AuthBaseComponent,
-    ConfirmRegistrationComponent
+    ConfirmRegistrationComponent,
+    ForgotPasswordResetComponent
   ],
   imports: [
     BrowserModule,

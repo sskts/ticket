@@ -63,7 +63,7 @@ export class SignUpComponent implements OnInit, CognitoCallback {
             telephone: new FormControl('', [
                 Validators.required,
                 Validators.maxLength(15),
-                Validators.pattern(/^[0-9]+$/)
+                Validators.pattern(/^\+?[1-9]\d{1,14}$/)
             ])
         });
     }

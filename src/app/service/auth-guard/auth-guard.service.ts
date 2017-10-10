@@ -17,15 +17,12 @@ export class AuthGuardService implements CanActivate {
     ) { }
 
     public async canActivate(): Promise<boolean> {
-        console.log('canActivate');
         try {
             const isSignedIn = await this.sasaki.auth.isSignedIn();
-            console.log('isSignedIn', isSignedIn);
             if (isSignedIn === null) {
                 throw new Error('isSignedIn is null');
             }
         } catch (err) {
-            console.log('非ログイン', err);
             this.router.navigate(['/auth']);
 
             return false;

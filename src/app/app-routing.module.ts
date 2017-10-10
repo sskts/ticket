@@ -7,8 +7,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { AuthBaseComponent } from './components/auth/auth-base/auth-base.component';
 import { AuthIndexComponent } from './components/auth/auth-index/auth-index.component';
+import { ConfirmRegistrationComponent } from './components/auth/confirm-registration/confirm-registration.component';
+import { ForgotPasswordResetComponent } from './components/auth/forgot-password-reset/forgot-password-reset.component';
 import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
+import { SignOutComponent } from './components/auth/sign-out/sign-out.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { BaseComponent } from './components/base/base.component';
 import { LawComponent } from './components/law/law.component';
@@ -43,9 +46,12 @@ const appRoutes: Routes = [
         component: AuthBaseComponent,
         children: [
             { path: 'signIn', component: SignInComponent },
+            { path: 'signOut', component: SignOutComponent },
             { path: 'signUp', component: SignUpComponent },
             { path: 'forgotPassword', component: ForgotPasswordComponent },
-            { path: 'walk-through', component: WalkThroughComponent }
+            { path: 'forgotPasswordReset/:userName', component: ForgotPasswordResetComponent },
+            { path: 'confirmRegistration/:userName', component: ConfirmRegistrationComponent },
+            { path: 'walkThrough', component: WalkThroughComponent }
         ]
     },
     { path: '**', component: NotFoundComponent }

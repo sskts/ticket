@@ -1,35 +1,32 @@
 /**
- * LogoutComponent
+ * SignOutComponent
  */
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { SasakiService } from '../../../service/sasaki/sasaki.service';
+import { LoggedInCallback } from '../../../service/cognito/cognito.service';
+import { UserLoginService } from '../../../service/user-login/user-login.service';
 
 @Component({
     selector: 'app-sign-out',
     templateUrl: './sign-out.component.html',
     styleUrls: ['./sign-out.component.scss']
 })
-export class SignOutComponent implements OnInit {
-    @Input() public isOpen: boolean;
-    @Output() public close: EventEmitter<{}> = new EventEmitter();
+export class SignOutComponent implements OnInit, LoggedInCallback {
     constructor(
         private router: Router,
-        private sasaki: SasakiService
-    ) { }
+        private userLogin: UserLoginService
+    ) {}
 
     public ngOnInit() {
+        this.userLogin.isAuthenticated(this);
     }
 
-    public async logout() {
-        try {
-            await this.sasaki.auth.signOut();
-            console.log('logout');
-            this.sasaki.credentials = null;
-            this.router.navigate(['/auth']);
-        } catch (error) {
-            console.error(error);
+    public async isLoggedIn(message: string, isLoggedIn: boolean) {
+        console.log('message', message);
+        if (isLoggedIn) {
+            this.userLogin.logout();
         }
+        this.router.navigate(['/']);
     }
 }

@@ -27,19 +27,22 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_about_about_component__ = __webpack_require__("../../../../../src/app/components/about/about.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_auth_auth_base_auth_base_component__ = __webpack_require__("../../../../../src/app/components/auth/auth-base/auth-base.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_auth_auth_index_auth_index_component__ = __webpack_require__("../../../../../src/app/components/auth/auth-index/auth-index.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_auth_forgot_password_forgot_password_component__ = __webpack_require__("../../../../../src/app/components/auth/forgot-password/forgot-password.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_auth_sign_in_sign_in_component__ = __webpack_require__("../../../../../src/app/components/auth/sign-in/sign-in.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_auth_sign_up_sign_up_component__ = __webpack_require__("../../../../../src/app/components/auth/sign-up/sign-up.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_base_base_component__ = __webpack_require__("../../../../../src/app/components/base/base.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/components/not-found/not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_policy_policy_component__ = __webpack_require__("../../../../../src/app/components/policy/policy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/components/privacy/privacy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/components/purchase/schedule/schedule.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_ticket_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/components/ticket/ticket-holder/ticket-holder.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/components/walk-through/walk-through.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_auth_confirm_registration_confirm_registration_component__ = __webpack_require__("../../../../../src/app/components/auth/confirm-registration/confirm-registration.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_auth_forgot_password_reset_forgot_password_reset_component__ = __webpack_require__("../../../../../src/app/components/auth/forgot-password-reset/forgot-password-reset.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_auth_forgot_password_forgot_password_component__ = __webpack_require__("../../../../../src/app/components/auth/forgot-password/forgot-password.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_auth_sign_in_sign_in_component__ = __webpack_require__("../../../../../src/app/components/auth/sign-in/sign-in.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_auth_sign_out_sign_out_component__ = __webpack_require__("../../../../../src/app/components/auth/sign-out/sign-out.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_auth_sign_up_sign_up_component__ = __webpack_require__("../../../../../src/app/components/auth/sign-up/sign-up.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_base_base_component__ = __webpack_require__("../../../../../src/app/components/base/base.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/components/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_policy_policy_component__ = __webpack_require__("../../../../../src/app/components/policy/policy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/components/privacy/privacy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/components/purchase/schedule/schedule.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_ticket_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/components/ticket/ticket-holder/ticket-holder.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/components/walk-through/walk-through.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,20 +70,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 var appRoutes = [
     { path: '', redirectTo: '/ticket', pathMatch: 'full' },
     {
         path: '',
-        component: __WEBPACK_IMPORTED_MODULE_8__components_base_base_component__["a" /* BaseComponent */],
-        canActivate: [__WEBPACK_IMPORTED_MODULE_17__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */]],
+        component: __WEBPACK_IMPORTED_MODULE_11__components_base_base_component__["a" /* BaseComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_20__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */]],
         children: [
-            { path: 'ticket', component: __WEBPACK_IMPORTED_MODULE_15__components_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */] },
-            { path: 'purchase', component: __WEBPACK_IMPORTED_MODULE_14__components_purchase_schedule_schedule_component__["a" /* ScheduleComponent */] },
+            { path: 'ticket', component: __WEBPACK_IMPORTED_MODULE_18__components_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */] },
+            { path: 'purchase', component: __WEBPACK_IMPORTED_MODULE_17__components_purchase_schedule_schedule_component__["a" /* ScheduleComponent */] },
             { path: 'about', component: __WEBPACK_IMPORTED_MODULE_2__components_about_about_component__["a" /* AboutComponent */] },
-            { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_13__components_profile_profile_component__["a" /* ProfileComponent */] },
-            { path: 'policy', component: __WEBPACK_IMPORTED_MODULE_11__components_policy_policy_component__["a" /* PolicyComponent */] },
-            { path: 'law', component: __WEBPACK_IMPORTED_MODULE_9__components_law_law_component__["a" /* LawComponent */] },
-            { path: 'privacy', component: __WEBPACK_IMPORTED_MODULE_12__components_privacy_privacy_component__["a" /* PrivacyComponent */] }
+            { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_16__components_profile_profile_component__["a" /* ProfileComponent */] },
+            { path: 'policy', component: __WEBPACK_IMPORTED_MODULE_14__components_policy_policy_component__["a" /* PolicyComponent */] },
+            { path: 'law', component: __WEBPACK_IMPORTED_MODULE_12__components_law_law_component__["a" /* LawComponent */] },
+            { path: 'privacy', component: __WEBPACK_IMPORTED_MODULE_15__components_privacy_privacy_component__["a" /* PrivacyComponent */] }
         ]
     },
     { path: 'auth', component: __WEBPACK_IMPORTED_MODULE_4__components_auth_auth_index_auth_index_component__["a" /* AuthIndexComponent */] },
@@ -88,13 +94,16 @@ var appRoutes = [
         path: 'auth',
         component: __WEBPACK_IMPORTED_MODULE_3__components_auth_auth_base_auth_base_component__["a" /* AuthBaseComponent */],
         children: [
-            { path: 'signIn', component: __WEBPACK_IMPORTED_MODULE_6__components_auth_sign_in_sign_in_component__["a" /* SignInComponent */] },
-            { path: 'signUp', component: __WEBPACK_IMPORTED_MODULE_7__components_auth_sign_up_sign_up_component__["a" /* SignUpComponent */] },
-            { path: 'forgotPassword', component: __WEBPACK_IMPORTED_MODULE_5__components_auth_forgot_password_forgot_password_component__["a" /* ForgotPasswordComponent */] },
-            { path: 'walk-through', component: __WEBPACK_IMPORTED_MODULE_16__components_walk_through_walk_through_component__["a" /* WalkThroughComponent */] }
+            { path: 'signIn', component: __WEBPACK_IMPORTED_MODULE_8__components_auth_sign_in_sign_in_component__["a" /* SignInComponent */] },
+            { path: 'signOut', component: __WEBPACK_IMPORTED_MODULE_9__components_auth_sign_out_sign_out_component__["a" /* SignOutComponent */] },
+            { path: 'signUp', component: __WEBPACK_IMPORTED_MODULE_10__components_auth_sign_up_sign_up_component__["a" /* SignUpComponent */] },
+            { path: 'forgotPassword', component: __WEBPACK_IMPORTED_MODULE_7__components_auth_forgot_password_forgot_password_component__["a" /* ForgotPasswordComponent */] },
+            { path: 'forgotPasswordReset/:userName', component: __WEBPACK_IMPORTED_MODULE_6__components_auth_forgot_password_reset_forgot_password_reset_component__["a" /* ForgotPasswordResetComponent */] },
+            { path: 'confirmRegistration/:userName', component: __WEBPACK_IMPORTED_MODULE_5__components_auth_confirm_registration_confirm_registration_component__["a" /* ConfirmRegistrationComponent */] },
+            { path: 'walkThrough', component: __WEBPACK_IMPORTED_MODULE_19__components_walk_through_walk_through_component__["a" /* WalkThroughComponent */] }
         ]
     },
-    { path: '**', component: __WEBPACK_IMPORTED_MODULE_10__components_not_found_not_found_component__["a" /* NotFoundComponent */] }
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_13__components_not_found_not_found_component__["a" /* NotFoundComponent */] }
 ];
 // tslint:disable-next-line:no-stateless-class
 var AppRoutingModule = /** @class */ (function () {
@@ -103,11 +112,11 @@ var AppRoutingModule = /** @class */ (function () {
     AppRoutingModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forRoot(appRoutes, { useHash: true, enableTracing: true } // <-- debugging purposes only
+                __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forRoot(appRoutes, { useHash: true, enableTracing: true } // <-- debugging purposes only
                 )
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */]
+                __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]
             ]
         })
     ], AppRoutingModule);
@@ -169,6 +178,7 @@ var AppRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__service_user_parameters_user_parameters_service__ = __webpack_require__("../../../../../src/app/service/user-parameters/user-parameters.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__service_user_registration_user_registration_service__ = __webpack_require__("../../../../../src/app/service/user-registration/user-registration.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__components_auth_forgot_password_reset_forgot_password_reset_component__ = __webpack_require__("../../../../../src/app/components/auth/forgot-password-reset/forgot-password-reset.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -178,6 +188,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 /**
  * NgModule
  */
+
 
 
 
@@ -258,7 +269,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_15__components_auth_sign_up_sign_up_component__["a" /* SignUpComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__components_auth_forgot_password_forgot_password_component__["a" /* ForgotPasswordComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__components_auth_auth_base_auth_base_component__["a" /* AuthBaseComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__components_auth_confirm_registration_confirm_registration_component__["a" /* ConfirmRegistrationComponent */]
+                __WEBPACK_IMPORTED_MODULE_11__components_auth_confirm_registration_confirm_registration_component__["a" /* ConfirmRegistrationComponent */],
+                __WEBPACK_IMPORTED_MODULE_44__components_auth_forgot_password_reset_forgot_password_reset_component__["a" /* ForgotPasswordResetComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
@@ -463,7 +475,7 @@ var AuthBaseComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/auth/auth-index/auth-index.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <div class=\"logo text-center mb-large\">\n            <img src=\"/assets/images/common/logo.svg\">\n        </div>\n        <p class=\"read text-center mb-middle\">初めてアプリをご利用なさる方は\n            <br>下のボタンから会員登録をおこなってください。</p>\n        <button class=\"btn btn-primary btn-block mb-large\" routerLink=\"/auth/walk-through\">アプリを初めてご利用の方</button>\n        <p class=\"read text-center mb-middle\">既に会員登録済みの方は\n            <br>下のボタンよりログインしてください。</p>\n        <button class=\"btn btn-info btn-block mb-small\" (click)=\"login()\">Amazon Cognito</button>\n        <button class=\"btn btn-info btn-block\" routerLink=\"/auth/signIn\">会員登録済みの方</button>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <div class=\"logo text-center mb-large\">\n            <img src=\"/assets/images/common/logo.svg\">\n        </div>\n        <p class=\"read text-center mb-middle\">初めてアプリをご利用なさる方は\n            <br>下のボタンから会員登録をおこなってください。</p>\n        <button class=\"btn btn-primary btn-block mb-large\" routerLink=\"/auth/walkThrough\">アプリを初めてご利用の方</button>\n        <p class=\"read text-center mb-middle\">既に会員登録済みの方は\n            <br>下のボタンよりログインしてください。</p>\n        <button class=\"btn btn-info btn-block mb-small\" (click)=\"login()\">Amazon Cognito</button>\n        <button class=\"btn btn-info btn-block\" routerLink=\"/auth/signIn\">会員登録済みの方</button>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -581,7 +593,7 @@ var AuthIndexComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/auth/auth-index/auth-index.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/auth/auth-index/auth-index.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object])
     ], AuthIndexComponent);
     return AuthIndexComponent;
     var _a, _b;
@@ -594,7 +606,7 @@ var AuthIndexComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/auth/confirm-registration/confirm-registration.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  confirm-registration works!\n</p>\n"
+module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <form [formGroup]=\"confirmRegistrationForm\" (ngSubmit)=\"confirmRegistration()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">認証コード</label>\n                <input type=\"text\" class=\"form-control\" name=\"confirmationCode\" [formControl]=\"confirmRegistrationForm.controls.confirmationCode\">\n                <p class=\"validation text-danger small-text\" \n                *ngIf=\"confirmRegistrationForm.controls.confirmationCode.errors?.required && confirmRegistrationForm.controls.confirmationCode.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" \n                *ngIf=\"confirmRegistrationForm.controls.confirmationCode.errors?.pattern && confirmRegistrationForm.controls.confirmationCode.dirty\">数字で入力してください</p>\n            </div>\n            <button [disabled]=\"confirmRegistrationForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block mb-small\">認証</button>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -606,7 +618,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".inner {\n  padding: 0;\n  width: 300px; }\n", ""]);
 
 // exports
 
@@ -622,6 +634,9 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmRegistrationComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_user_registration_user_registration_service__ = __webpack_require__("../../../../../src/app/service/user-registration/user-registration.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -631,11 +646,49 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/**
+ * ConfirmRegistrationComponent
+ */
+
+
+
 
 var ConfirmRegistrationComponent = /** @class */ (function () {
-    function ConfirmRegistrationComponent() {
+    function ConfirmRegistrationComponent(formBuilder, userRegistration, router, activatedRoute) {
+        this.formBuilder = formBuilder;
+        this.userRegistration = userRegistration;
+        this.router = router;
+        this.activatedRoute = activatedRoute;
     }
     ConfirmRegistrationComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.error = null;
+        this.confirmRegistrationForm = this.formBuilder.group({
+            confirmationCode: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(/^[0-9]+$/)
+            ])
+        });
+        this.activatedRoute.params.subscribe(function (params) {
+            return _this.userName = params.userName;
+        });
+    };
+    ConfirmRegistrationComponent.prototype.confirmRegistration = function () {
+        this.isLoading = true;
+        this.error = null;
+        this.userRegistration.confirmRegistration(this.userName, this.confirmRegistrationForm.controls.confirmationCode.value, this);
+    };
+    ConfirmRegistrationComponent.prototype.cognitoCallback = function (message, result) {
+        if (message != null) {
+            this.error = new Error(message);
+            console.log('message', this.error.message);
+            this.isLoading = false;
+        }
+        else {
+            // move to the next step
+            console.log('Moving to securehome', result);
+            this.router.navigate(['/']);
+        }
     };
     ConfirmRegistrationComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -643,19 +696,126 @@ var ConfirmRegistrationComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/auth/confirm-registration/confirm-registration.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/auth/confirm-registration/confirm-registration.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_user_registration_user_registration_service__["a" /* UserRegistrationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_user_registration_user_registration_service__["a" /* UserRegistrationService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
     ], ConfirmRegistrationComponent);
     return ConfirmRegistrationComponent;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=confirm-registration.component.js.map
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/auth/forgot-password-reset/forgot-password-reset.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"contents position-center\">\n  <div class=\"inner center\">\n      <form [formGroup]=\"forgotPasswordResetForm\" (ngSubmit)=\"changePassword()\">\n          <div class=\"mb-small\">\n              <label class=\"control-label small-text\">認証コード</label>\n              <input type=\"text\" class=\"form-control\" name=\"verificationCode\" [formControl]=\"forgotPasswordResetForm.controls.verificationCode\">\n              <p class=\"validation text-danger small-text\" *ngIf=\"forgotPasswordResetForm.controls.verificationCode.errors?.required && forgotPasswordResetForm.controls.verificationCode.dirty\">必須項目</p>\n              <p class=\"validation text-danger small-text\" *ngIf=\"forgotPasswordResetForm.controls.verificationCode.errors?.pattern && forgotPasswordResetForm.controls.verificationCode.dirty\">数字で入力してください</p>\n          </div>\n          <div class=\"mb-small\">\n            <label class=\"control-label small-text\">新しいパスワード</label>\n            <input type=\"password\" class=\"form-control\" name=\"password\" [formControl]=\"forgotPasswordResetForm.controls.password\">\n            <p class=\"validation text-danger small-text\" *ngIf=\"forgotPasswordResetForm.controls.password.errors?.required && forgotPasswordResetForm.controls.password.dirty\">必須項目</p>\n            <p class=\"validation text-danger small-text\" *ngIf=\"forgotPasswordResetForm.controls.password.errors?.minlength && forgotPasswordResetForm.controls.password.dirty\">8文字以上で入力してください</p>\n        </div>\n\n          <button [disabled]=\"forgotPasswordResetForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block mb-small\">パスワード変更</button>\n      </form>\n  </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/auth/forgot-password-reset/forgot-password-reset.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".inner {\n  padding: 0;\n  width: 300px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/auth/forgot-password-reset/forgot-password-reset.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ForgotPasswordResetComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__ = __webpack_require__("../../../../../src/app/service/user-login/user-login.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/**
+ * ForgotPasswordResetComponent
+ */
+
+
+
+
+var ForgotPasswordResetComponent = /** @class */ (function () {
+    function ForgotPasswordResetComponent(formBuilder, router, route, userLogin) {
+        this.formBuilder = formBuilder;
+        this.router = router;
+        this.route = route;
+        this.userLogin = userLogin;
+    }
+    ForgotPasswordResetComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.isLoading = false;
+        this.error = null;
+        this.forgotPasswordResetForm = this.formBuilder.group({
+            verificationCode: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(/^[0-9]+$/)
+            ]),
+            password: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].minLength(8)
+            ])
+        });
+        this.route.params.subscribe(function (params) {
+            _this.userName = params.userName;
+        });
+    };
+    ForgotPasswordResetComponent.prototype.changePassword = function () {
+        this.isLoading = true;
+        this.error = null;
+        this.userLogin.confirmNewPassword(this.userName, this.forgotPasswordResetForm.controls.verificationCode.value, this.forgotPasswordResetForm.controls.password.value, this);
+    };
+    ForgotPasswordResetComponent.prototype.cognitoCallback = function (message) {
+        if (message !== null) {
+            this.error = new Error(message);
+            console.log('message', this.error.message);
+            this.isLoading = false;
+        }
+        else {
+            this.router.navigate(['/auth/signIn']);
+        }
+    };
+    ForgotPasswordResetComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-forgot-password-reset',
+            template: __webpack_require__("../../../../../src/app/components/auth/forgot-password-reset/forgot-password-reset.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/auth/forgot-password-reset/forgot-password-reset.component.scss")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__["a" /* UserLoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__["a" /* UserLoginService */]) === "function" && _d || Object])
+    ], ForgotPasswordResetComponent);
+    return ForgotPasswordResetComponent;
+    var _a, _b, _c, _d;
+}());
+
+//# sourceMappingURL=forgot-password-reset.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/auth/forgot-password/forgot-password.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <form [formGroup]=\"forgotPasswordForm\" (ngSubmit)=\"resetPassword()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">ユーザー</label>\n                <input type=\"text\" class=\"form-control\" name=\"user\" [formControl]=\"forgotPasswordForm.controls.user\">\n                <p class=\"text-danger small-text\" *ngIf=\"forgotPasswordForm.controls.user.errors?.required && forgotPasswordForm.controls.user.dirty\">必須項目</p>\n            </div>\n\n            <button [disabled]=\"forgotPasswordForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block mb-small\">パスワードリセット</button>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <form [formGroup]=\"forgotPasswordForm\" (ngSubmit)=\"sendVerificationCode()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">ユーザー</label>\n                <input type=\"text\" class=\"form-control\" name=\"userName\" [formControl]=\"forgotPasswordForm.controls.userName\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"forgotPasswordForm.controls.userName.errors?.required && forgotPasswordForm.controls.userName.dirty\">必須項目</p>\n            </div>\n\n            <button [disabled]=\"forgotPasswordForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block mb-small\">次へ</button>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -684,6 +844,8 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ForgotPasswordComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__ = __webpack_require__("../../../../../src/app/service/user-login/user-login.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -733,28 +895,43 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
  */
 
 
+
+
 var ForgotPasswordComponent = /** @class */ (function () {
-    function ForgotPasswordComponent(formBuilder) {
+    function ForgotPasswordComponent(formBuilder, router, userLogin) {
         this.formBuilder = formBuilder;
-        console.log('LoginComponent constructor');
+        this.router = router;
+        this.userLogin = userLogin;
     }
     ForgotPasswordComponent.prototype.ngOnInit = function () {
         this.isLoading = false;
+        this.error = null;
         this.forgotPasswordForm = this.formBuilder.group({
-            user: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required
-            ]),
-            password: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+            userName: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
                 __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required
             ])
         });
     };
-    ForgotPasswordComponent.prototype.resetPassword = function () {
+    ForgotPasswordComponent.prototype.sendVerificationCode = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
+                this.isLoading = true;
+                this.userLogin.forgotPassword(this.forgotPasswordForm.controls.userName.value, this);
                 return [2 /*return*/];
             });
         });
+    };
+    ForgotPasswordComponent.prototype.cognitoCallback = function (message, result) {
+        if (message == null && result == null) {
+            this.router.navigate([
+                '/auth/forgotPasswordReset',
+                this.forgotPasswordForm.controls.userName.value
+            ]);
+        }
+        else {
+            this.error = new Error(message);
+            this.isLoading = false;
+        }
     };
     ForgotPasswordComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -762,10 +939,10 @@ var ForgotPasswordComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/auth/forgot-password/forgot-password.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/auth/forgot-password/forgot-password.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__["a" /* UserLoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__["a" /* UserLoginService */]) === "function" && _c || Object])
     ], ForgotPasswordComponent);
     return ForgotPasswordComponent;
-    var _a;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=forgot-password.component.js.map
@@ -775,7 +952,7 @@ var ForgotPasswordComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/auth/sign-in/sign-in.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <form [formGroup]=\"signInForm\" (ngSubmit)=\"signIn()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">ユーザー</label>\n                <input type=\"text\" class=\"form-control\" name=\"userName\" [formControl]=\"signInForm.controls.userName\">\n                <p class=\"text-danger small-text\" *ngIf=\"signInForm.controls.userName.errors?.required && signInForm.controls.userName.dirty\">必須項目</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">パスワード</label>\n                <input type=\"password\" class=\"form-control\" name=\"password\" [formControl]=\"signInForm.controls.password\">\n                <p class=\"text-danger small-text\" *ngIf=\"signInForm.controls.password.errors?.required && signInForm.controls.password.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signInForm.controls.password.errors?.minlength && signInForm.controls.password.dirty\">8文字以上で入力してください</p>\n            </div>\n\n            <button [disabled]=\"signInForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block mb-small\">サインイン</button>\n\n            <div routerLink=\"/auth/forgotPassword\">パスワードを忘れた方はこちら</div>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <form [formGroup]=\"signInForm\" (ngSubmit)=\"signIn()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">ユーザー</label>\n                <input type=\"text\" class=\"form-control\" name=\"userName\" [formControl]=\"signInForm.controls.userName\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"signInForm.controls.userName.errors?.required && signInForm.controls.userName.dirty\">必須項目</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">パスワード</label>\n                <input type=\"password\" class=\"form-control\" name=\"password\" [formControl]=\"signInForm.controls.password\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"signInForm.controls.password.errors?.required && signInForm.controls.password.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"signInForm.controls.password.errors?.minlength && signInForm.controls.password.dirty\">8文字以上で入力してください</p>\n            </div>\n\n            <button [disabled]=\"signInForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block mb-small\">サインイン</button>\n\n            <div routerLink=\"/auth/forgotPassword\">パスワードを忘れた方はこちら</div>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -871,7 +1048,8 @@ var SignInComponent = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required
             ]),
             password: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].minLength(8)
             ])
         });
     };
@@ -886,6 +1064,7 @@ var SignInComponent = /** @class */ (function () {
                         return [4 /*yield*/, this.userLogin.authenticate(this.signInForm.controls.userName.value, this.signInForm.controls.password.value)];
                     case 1:
                         authenticateResult = _a.sent();
+                        console.log('authenticateResult', authenticateResult);
                         this.cognitoCallback(authenticateResult.message, authenticateResult.result);
                         return [2 /*return*/];
                 }
@@ -915,7 +1094,7 @@ var SignInComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/auth/sign-in/sign-in.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/auth/sign-in/sign-in.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__["a" /* UserLoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__["a" /* UserLoginService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__["a" /* UserLoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_user_login_user_login_service__["a" /* UserLoginService */]) === "function" && _c || Object])
     ], SignInComponent);
     return SignInComponent;
     var _a, _b, _c;
@@ -928,7 +1107,7 @@ var SignInComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/auth/sign-out/sign-out.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"cover\" [class.active]=\"isOpen\" (click)=\"close.emit()\"></div>\n\n<div class=\"modal position-center\" [class.active]=\"isOpen\">\n    <div class=\"inner\">\n        <div class=\"mb-middle text-center\">ログアウトしますか？</div>\n        <button class=\"mb-x-small btn btn-info btn-block\" (click)=\"logout()\">ログアウト</button>\n        <button class=\"btn btn-info btn-block\" (click)=\"close.emit()\">キャンセル</button>\n    </div>\n</div>"
+module.exports = "<div>SignOutComponent</div>"
 
 /***/ }),
 
@@ -957,7 +1136,7 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignOutComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_user_login_user_login_service__ = __webpack_require__("../../../../../src/app/service/user-login/user-login.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1003,60 +1182,41 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 /**
- * LogoutComponent
+ * SignOutComponent
  */
 
 
 
 var SignOutComponent = /** @class */ (function () {
-    function SignOutComponent(router, sasaki) {
+    function SignOutComponent(router, userLogin) {
         this.router = router;
-        this.sasaki = sasaki;
-        this.close = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.userLogin = userLogin;
     }
     SignOutComponent.prototype.ngOnInit = function () {
+        this.userLogin.isAuthenticated(this);
     };
-    SignOutComponent.prototype.logout = function () {
+    SignOutComponent.prototype.isLoggedIn = function (message, isLoggedIn) {
         return __awaiter(this, void 0, void 0, function () {
-            var error_1;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.sasaki.auth.signOut()];
-                    case 1:
-                        _a.sent();
-                        console.log('logout');
-                        this.sasaki.credentials = null;
-                        this.router.navigate(['/auth']);
-                        return [3 /*break*/, 3];
-                    case 2:
-                        error_1 = _a.sent();
-                        console.error(error_1);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                console.log('message', message);
+                if (isLoggedIn) {
+                    this.userLogin.logout();
                 }
+                this.router.navigate(['/']);
+                return [2 /*return*/];
             });
         });
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-        __metadata("design:type", Boolean)
-    ], SignOutComponent.prototype, "isOpen", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _a || Object)
-    ], SignOutComponent.prototype, "close", void 0);
     SignOutComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-sign-out',
             template: __webpack_require__("../../../../../src/app/components/auth/sign-out/sign-out.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/auth/sign-out/sign-out.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_user_login_user_login_service__["a" /* UserLoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_user_login_user_login_service__["a" /* UserLoginService */]) === "function" && _b || Object])
     ], SignOutComponent);
     return SignOutComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=sign-out.component.js.map
@@ -1066,7 +1226,7 @@ var SignOutComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/auth/sign-up/sign-up.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <form [formGroup]=\"signUpForm\" (ngSubmit)=\"signUp()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">ユーザー</label>\n                <input type=\"text\" class=\"form-control\" name=\"userName\" [formControl]=\"signUpForm.controls.userName\">\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.userName.errors?.required && signUpForm.controls.userName.dirty\">必須項目</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">パスワード</label>\n                <input type=\"password\" class=\"form-control\" name=\"password\" [formControl]=\"signUpForm.controls.password\">\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.password.errors?.required && signUpForm.controls.password.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.password.errors?.minlength && signUpForm.controls.password.dirty\">8文字以上で入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">メールアドレス</label>\n                <input type=\"email\" class=\"form-control\" name=\"mail\" [formControl]=\"signUpForm.controls.mail\">\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.mail.errors?.required && signUpForm.controls.mail.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.mail.errors?.maxlength && signUpForm.controls.mail.dirty\">30文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.mail.errors?.email && signUpForm.controls.mail.dirty\">メール形式で入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">せい</label>\n                <input type=\"text\" class=\"form-control\" name=\"familyName\" [formControl]=\"signUpForm.controls.familyName\">\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.familyName.errors?.required && signUpForm.controls.familyName.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.familyName.errors?.maxlength && signUpForm.controls.familyName.dirty\">10文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.familyName.errors?.pattern && signUpForm.controls.familyName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">めい</label>\n                <input type=\"text\" class=\"form-control\" name=\"givenName\" [formControl]=\"signUpForm.controls.givenName\">\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.givenName.errors?.required && signUpForm.controls.givenName.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.givenName.errors?.maxlength && signUpForm.controls.givenName.dirty\">10文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.givenName.errors?.pattern && signUpForm.controls.givenName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">電話番号</label>\n                <input type=\"tel\" class=\"form-control\" name=\"telephone\" [formControl]=\"signUpForm.controls.telephone\">\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.telephone.errors?.required && signUpForm.controls.telephone.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.telephone.errors?.maxlength && signUpForm.controls.telephone.dirty\">15文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"signUpForm.controls.telephone.errors?.pattern && signUpForm.controls.telephone.dirty\">数字で入力してください</p>\n            </div>\n\n            <button [disabled]=\"signUpForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block\">登録</button>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <form [formGroup]=\"signUpForm\" (ngSubmit)=\"signUp()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">ユーザー</label>\n                <input type=\"text\" class=\"form-control\" name=\"userName\" [formControl]=\"signUpForm.controls.userName\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.userName.errors?.required && signUpForm.controls.userName.dirty\">必須項目</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">パスワード</label>\n                <input type=\"password\" class=\"form-control\" name=\"password\" [formControl]=\"signUpForm.controls.password\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.password.errors?.required && signUpForm.controls.password.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.password.errors?.minlength && signUpForm.controls.password.dirty\">8文字以上で入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">メールアドレス</label>\n                <input type=\"email\" class=\"form-control\" name=\"mail\" [formControl]=\"signUpForm.controls.mail\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.mail.errors?.required && signUpForm.controls.mail.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.mail.errors?.maxlength && signUpForm.controls.mail.dirty\">30文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.mail.errors?.email && signUpForm.controls.mail.dirty\">メール形式で入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">せい</label>\n                <input type=\"text\" class=\"form-control\" name=\"familyName\" [formControl]=\"signUpForm.controls.familyName\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.familyName.errors?.required && signUpForm.controls.familyName.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.familyName.errors?.maxlength && signUpForm.controls.familyName.dirty\">10文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.familyName.errors?.pattern && signUpForm.controls.familyName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">めい</label>\n                <input type=\"text\" class=\"form-control\" name=\"givenName\" [formControl]=\"signUpForm.controls.givenName\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.givenName.errors?.required && signUpForm.controls.givenName.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.givenName.errors?.maxlength && signUpForm.controls.givenName.dirty\">10文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.givenName.errors?.pattern && signUpForm.controls.givenName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">電話番号</label>\n                <input type=\"tel\" class=\"form-control\" name=\"telephone\" [formControl]=\"signUpForm.controls.telephone\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.telephone.errors?.required && signUpForm.controls.telephone.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.telephone.errors?.maxlength && signUpForm.controls.telephone.dirty\">15文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"signUpForm.controls.telephone.errors?.pattern && signUpForm.controls.telephone.dirty\">数字で入力してください</p>\n            </div>\n\n            <button [disabled]=\"signUpForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block\">登録</button>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -1184,7 +1344,7 @@ var SignUpComponent = /** @class */ (function () {
             telephone: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
                 __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
                 __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(15),
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(/^[0-9]+$/)
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(/^\+?[1-9]\d{1,14}$/)
             ])
         });
     };
@@ -1227,7 +1387,7 @@ var SignUpComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/auth/sign-up/sign-up.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/auth/sign-up/sign-up.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_user_registration_user_registration_service__["a" /* UserRegistrationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_user_registration_user_registration_service__["a" /* UserRegistrationService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_user_registration_user_registration_service__["a" /* UserRegistrationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_user_registration_user_registration_service__["a" /* UserRegistrationService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _c || Object])
     ], SignUpComponent);
     return SignUpComponent;
     var _a, _b, _c;
@@ -1443,7 +1603,7 @@ var HeaderComponent = /** @class */ (function () {
         this.isLogoutModalOpen = false;
         this.changePage(this.router.url);
         this.router.events.subscribe(function (event) {
-            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* NavigationEnd */]) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]) {
                 _this.changePage(event.url);
             }
         });
@@ -1483,7 +1643,7 @@ var HeaderComponent = /** @class */ (function () {
          * @implements OnInit
          */
         ,
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object])
     ], HeaderComponent);
     return HeaderComponent;
     var _a;
@@ -1762,7 +1922,7 @@ var LogoutComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/logout/logout.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/logout/logout.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _c || Object])
     ], LogoutComponent);
     return LogoutComponent;
     var _a, _b, _c;
@@ -1947,7 +2107,7 @@ var NotFoundComponent = /** @class */ (function () {
          * @implements OnInit
          */
         ,
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object])
     ], NotFoundComponent);
     return NotFoundComponent;
     var _a;
@@ -2088,7 +2248,7 @@ var PrivacyComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents bg-image-blue\">\n    <div class=\"inner\">\n        <p class=\"mb-middle text-center\">該当の項目を編集して更新を押してください。</p>\n        <form [formGroup]=\"updateForm\" (ngSubmit)=\"submit()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">メールアドレス</label>\n                <input type=\"email\" class=\"form-control\" name=\"mail\" [formControl]=\"updateForm.controls.mail\">\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.required && updateForm.controls.mail.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.maxlength && updateForm.controls.mail.dirty\">30文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.email && updateForm.controls.mail.dirty\">メール形式で入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">せい</label>\n                <input type=\"text\" class=\"form-control\" name=\"familyName\" [formControl]=\"updateForm.controls.familyName\">\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.required && updateForm.controls.familyName.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.maxlength && updateForm.controls.familyName.dirty\">10文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.pattern && updateForm.controls.familyName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">めい</label>\n                <input type=\"text\" class=\"form-control\" name=\"givenName\" [formControl]=\"updateForm.controls.givenName\">\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.required && updateForm.controls.givenName.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.maxlength && updateForm.controls.givenName.dirty\">10文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.pattern && updateForm.controls.givenName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">電話番号</label>\n                <input type=\"tel\" class=\"form-control\" name=\"telephone\" [formControl]=\"updateForm.controls.telephone\">\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.required && updateForm.controls.telephone.dirty\">必須項目</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.maxlength && updateForm.controls.telephone.dirty\">15文字以内で入力してください</p>\n                <p class=\"text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.pattern && updateForm.controls.telephone.dirty\">数字で入力してください</p>\n            </div>\n\n            <button [disabled]=\"updateForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block btn-bottom\">更新</button>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents\">\n    <div class=\"inner\">\n        <p class=\"mb-middle text-center\">該当の項目を編集して更新を押してください。</p>\n        <form [formGroup]=\"updateForm\" (ngSubmit)=\"submit()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">メールアドレス</label>\n                <input type=\"email\" class=\"form-control\" name=\"mail\" [formControl]=\"updateForm.controls.mail\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.required && updateForm.controls.mail.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.maxlength && updateForm.controls.mail.dirty\">30文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.email && updateForm.controls.mail.dirty\">メール形式で入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">せい</label>\n                <input type=\"text\" class=\"form-control\" name=\"familyName\" [formControl]=\"updateForm.controls.familyName\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.required && updateForm.controls.familyName.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.maxlength && updateForm.controls.familyName.dirty\">10文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.pattern && updateForm.controls.familyName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">めい</label>\n                <input type=\"text\" class=\"form-control\" name=\"givenName\" [formControl]=\"updateForm.controls.givenName\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.required && updateForm.controls.givenName.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.maxlength && updateForm.controls.givenName.dirty\">10文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.pattern && updateForm.controls.givenName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">電話番号</label>\n                <input type=\"tel\" class=\"form-control\" name=\"telephone\" [formControl]=\"updateForm.controls.telephone\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.required && updateForm.controls.telephone.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.maxlength && updateForm.controls.telephone.dirty\">15文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.pattern && updateForm.controls.telephone.dirty\">数字で入力してください</p>\n            </div>\n\n            <button [disabled]=\"updateForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block\">更新</button>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -3101,7 +3261,7 @@ var WalkThroughComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/walk-through/walk-through.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/walk-through/walk-through.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object])
     ], WalkThroughComponent);
     return WalkThroughComponent;
     var _a, _b;
@@ -3351,49 +3511,44 @@ var AuthGuardService = /** @class */ (function () {
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
-                        console.log('canActivate');
-                        _c.label = 1;
-                    case 1:
-                        _c.trys.push([1, 3, , 4]);
+                        _c.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, this.sasaki.auth.isSignedIn()];
-                    case 2:
+                    case 1:
                         isSignedIn = _c.sent();
-                        console.log('isSignedIn', isSignedIn);
                         if (isSignedIn === null) {
                             throw new Error('isSignedIn is null');
                         }
-                        return [3 /*break*/, 4];
-                    case 3:
+                        return [3 /*break*/, 3];
+                    case 2:
                         err_1 = _c.sent();
-                        console.log('非ログイン', err_1);
                         this.router.navigate(['/auth']);
                         return [2 /*return*/, false];
-                    case 4:
-                        if (!(this.user.contacts === undefined)) return [3 /*break*/, 6];
+                    case 3:
+                        if (!(this.user.contacts === undefined)) return [3 /*break*/, 5];
                         _a = this.user;
                         return [4 /*yield*/, this.sasaki.people.getContacts({
                                 personId: 'me'
                             })];
-                    case 5:
+                    case 4:
                         _a.contacts = _c.sent();
-                        _c.label = 6;
-                    case 6:
-                        if (!(this.user.creditCards === undefined)) return [3 /*break*/, 8];
+                        _c.label = 5;
+                    case 5:
+                        if (!(this.user.creditCards === undefined)) return [3 /*break*/, 7];
                         _b = this.user;
                         return [4 /*yield*/, this.sasaki.people.findCreditCards({
                                 personId: 'me'
                             })];
-                    case 7:
+                    case 6:
                         _b.creditCards = _c.sent();
-                        _c.label = 8;
-                    case 8: return [2 /*return*/, true];
+                        _c.label = 7;
+                    case 7: return [2 /*return*/, true];
                 }
             });
         });
     };
     AuthGuardService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__service_user_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_user_user_service__["a" /* UserService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__service_user_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_user_user_service__["a" /* UserService */]) === "function" && _c || Object])
     ], AuthGuardService);
     return AuthGuardService;
     var _a, _b, _c;
@@ -4357,7 +4512,7 @@ var environment = {
     region: 'ap-northeast-1',
     identityPoolId: 'ap-northeast-1:6a67f523-93c3-4766-b96f-6552f21abd8d',
     userPoolId: 'ap-northeast-1_bQcyLA7Jq',
-    clientId: '1618r3pm156vu09l6m94vo1t72',
+    clientId: '5b7cliq3435qf72gvt6sh0otui',
     rekognitionBucket: 'rekognition-pics',
     albumName: 'usercontent',
     bucketRegion: 'us-east-1',

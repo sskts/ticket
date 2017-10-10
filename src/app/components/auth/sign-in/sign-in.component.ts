@@ -33,7 +33,8 @@ export class SignInComponent implements OnInit, CognitoCallback {
                 Validators.required
             ]),
             password: new FormControl('', [
-                Validators.required
+                Validators.required,
+                Validators.minLength(8)
             ])
         });
     }
@@ -45,6 +46,7 @@ export class SignInComponent implements OnInit, CognitoCallback {
             this.signInForm.controls.userName.value,
             this.signInForm.controls.password.value
         );
+        console.log('authenticateResult', authenticateResult);
         this.cognitoCallback(authenticateResult.message, authenticateResult.result);
     }
 
