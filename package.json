@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "ng serve --port 3333 --ssl true --ssl-key \"./certificate/server.key\" --ssl-cert \"./certificate/server.crt\" --env=source",
+    "start": "ng serve --port 3333 --env=source",
     "ng": "ng",
     "build": "ng build --environment=dev --output-path=./dist/development && ng build --environment=test --output-path=./dist/test",
     "test": "ng test --watch=false --code-coverage",
@@ -28,15 +28,15 @@
     "angular2-moment": "^1.7.0",
     "angular2-qrcode": "^2.0.1",
     "angular2-useful-swiper": "^5.0.0",
-    "aws-sdk": "^2.130.0",
+    "aws-sdk": "^2.132.0",
     "core-js": "^2.4.1",
-    "moment": "^2.19.0",
+    "moment": "^2.19.1",
     "rxjs": "^5.1.0",
     "swiper": "^3.4.2",
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "@angular/cli": "^1.4.5",
+    "@angular/cli": "^1.4.6",
     "@angular/compiler-cli": "^4.4.4",
     "@angular/language-service": "^4.4.4",
     "@types/jasmine": "^2.6.0",

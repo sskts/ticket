@@ -4,6 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.service';
 import { SasakiService } from '../../../service/sasaki/sasaki.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class AuthIndexComponent implements OnInit {
 
     constructor(
         private sasaki: SasakiService,
+        private awsCognito: AwsCognitoService,
         private router: Router
     ) { }
 
@@ -23,7 +25,7 @@ export class AuthIndexComponent implements OnInit {
         this.isLoading = false;
     }
 
-    public async login() {
+    public async signIn() {
         try {
             const result = await this.sasaki.auth.signIn();
             this.sasaki.credentials = result;
@@ -32,6 +34,19 @@ export class AuthIndexComponent implements OnInit {
         } catch (error) {
             console.error(error);
             this.isLoading = false;
+        }
+    }
+
+    public async signInWithTerminal() {
+        try {
+            await this.awsCognito.authenticateWithTerminal();
+            await this.awsCognito.updateRecords('test', {
+                test: 'test1',
+                test2: 'test2'
+            });
+            await this.awsCognito.getRecords('test');
+        } catch (err) {
+            console.log(err);
         }
     }
 }

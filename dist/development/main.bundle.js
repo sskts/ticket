@@ -146,39 +146,40 @@ var AppRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_auth_auth_base_auth_base_component__ = __webpack_require__("../../../../../src/app/components/auth/auth-base/auth-base.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_auth_auth_index_auth_index_component__ = __webpack_require__("../../../../../src/app/components/auth/auth-index/auth-index.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_auth_confirm_registration_confirm_registration_component__ = __webpack_require__("../../../../../src/app/components/auth/confirm-registration/confirm-registration.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_auth_forgot_password_forgot_password_component__ = __webpack_require__("../../../../../src/app/components/auth/forgot-password/forgot-password.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_auth_sign_in_sign_in_component__ = __webpack_require__("../../../../../src/app/components/auth/sign-in/sign-in.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_auth_sign_out_sign_out_component__ = __webpack_require__("../../../../../src/app/components/auth/sign-out/sign-out.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_auth_sign_up_sign_up_component__ = __webpack_require__("../../../../../src/app/components/auth/sign-up/sign-up.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_base_base_component__ = __webpack_require__("../../../../../src/app/components/base/base.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_header_menu_header_menu_component__ = __webpack_require__("../../../../../src/app/components/header-menu/header-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_loading_loading_component__ = __webpack_require__("../../../../../src/app/components/loading/loading.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_logout_logout_component__ = __webpack_require__("../../../../../src/app/components/logout/logout.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_navigation_navigation_component__ = __webpack_require__("../../../../../src/app/components/navigation/navigation.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/components/not-found/not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_policy_policy_component__ = __webpack_require__("../../../../../src/app/components/policy/policy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/components/privacy/privacy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_purchase_chronological_order_chronological_order_component__ = __webpack_require__("../../../../../src/app/components/purchase/chronological-order/chronological-order.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_purchase_film_order_film_order_component__ = __webpack_require__("../../../../../src/app/components/purchase/film-order/film-order.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/components/purchase/schedule/schedule.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_ticket_no_ticket_no_ticket_component__ = __webpack_require__("../../../../../src/app/components/ticket/no-ticket/no-ticket.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_ticket_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/components/ticket/ticket-holder/ticket-holder.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_ticket_ticket_ticket_component__ = __webpack_require__("../../../../../src/app/components/ticket/ticket/ticket.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/components/walk-through/walk-through.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pipe_availability_availability_pipe__ = __webpack_require__("../../../../../src/app/pipe/availability/availability.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pipe_duration_duration_pipe__ = __webpack_require__("../../../../../src/app/pipe/duration/duration.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__pipe_time_format_time_format_pipe__ = __webpack_require__("../../../../../src/app/pipe/time-format/time-format.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__service_cognito_cognito_service__ = __webpack_require__("../../../../../src/app/service/cognito/cognito.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__service_user_login_user_login_service__ = __webpack_require__("../../../../../src/app/service/user-login/user-login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__service_user_parameters_user_parameters_service__ = __webpack_require__("../../../../../src/app/service/user-parameters/user-parameters.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__service_user_registration_user_registration_service__ = __webpack_require__("../../../../../src/app/service/user-registration/user-registration.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__components_auth_forgot_password_reset_forgot_password_reset_component__ = __webpack_require__("../../../../../src/app/components/auth/forgot-password-reset/forgot-password-reset.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_auth_forgot_password_reset_forgot_password_reset_component__ = __webpack_require__("../../../../../src/app/components/auth/forgot-password-reset/forgot-password-reset.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_auth_forgot_password_forgot_password_component__ = __webpack_require__("../../../../../src/app/components/auth/forgot-password/forgot-password.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_auth_sign_in_sign_in_component__ = __webpack_require__("../../../../../src/app/components/auth/sign-in/sign-in.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_auth_sign_out_sign_out_component__ = __webpack_require__("../../../../../src/app/components/auth/sign-out/sign-out.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_auth_sign_up_sign_up_component__ = __webpack_require__("../../../../../src/app/components/auth/sign-up/sign-up.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_base_base_component__ = __webpack_require__("../../../../../src/app/components/base/base.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_header_menu_header_menu_component__ = __webpack_require__("../../../../../src/app/components/header-menu/header-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_law_law_component__ = __webpack_require__("../../../../../src/app/components/law/law.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_loading_loading_component__ = __webpack_require__("../../../../../src/app/components/loading/loading.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_logout_logout_component__ = __webpack_require__("../../../../../src/app/components/logout/logout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_navigation_navigation_component__ = __webpack_require__("../../../../../src/app/components/navigation/navigation.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/components/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_policy_policy_component__ = __webpack_require__("../../../../../src/app/components/policy/policy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/components/privacy/privacy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_purchase_chronological_order_chronological_order_component__ = __webpack_require__("../../../../../src/app/components/purchase/chronological-order/chronological-order.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_purchase_film_order_film_order_component__ = __webpack_require__("../../../../../src/app/components/purchase/film-order/film-order.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/components/purchase/schedule/schedule.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_ticket_no_ticket_no_ticket_component__ = __webpack_require__("../../../../../src/app/components/ticket/no-ticket/no-ticket.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_ticket_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/components/ticket/ticket-holder/ticket-holder.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_ticket_ticket_ticket_component__ = __webpack_require__("../../../../../src/app/components/ticket/ticket/ticket.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/components/walk-through/walk-through.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pipe_availability_availability_pipe__ = __webpack_require__("../../../../../src/app/pipe/availability/availability.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__pipe_duration_duration_pipe__ = __webpack_require__("../../../../../src/app/pipe/duration/duration.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pipe_time_format_time_format_pipe__ = __webpack_require__("../../../../../src/app/pipe/time-format/time-format.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__service_cognito_cognito_service__ = __webpack_require__("../../../../../src/app/service/cognito/cognito.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__service_user_login_user_login_service__ = __webpack_require__("../../../../../src/app/service/user-login/user-login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__service_user_parameters_user_parameters_service__ = __webpack_require__("../../../../../src/app/service/user-parameters/user-parameters.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__service_user_registration_user_registration_service__ = __webpack_require__("../../../../../src/app/service/user-registration/user-registration.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -233,6 +234,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // tslint:disable-next-line:no-stateless-class
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -241,36 +243,36 @@ var AppModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_8__components_app_app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__components_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */],
-                __WEBPACK_IMPORTED_MODULE_32__components_ticket_ticket_ticket_component__["a" /* TicketComponent */],
-                __WEBPACK_IMPORTED_MODULE_33__components_walk_through_walk_through_component__["a" /* WalkThroughComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__components_navigation_navigation_component__["a" /* NavigationComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__components_header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__components_purchase_schedule_schedule_component__["a" /* ScheduleComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__components_not_found_not_found_component__["a" /* NotFoundComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__components_base_base_component__["a" /* BaseComponent */],
-                __WEBPACK_IMPORTED_MODULE_36__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
-                __WEBPACK_IMPORTED_MODULE_27__components_purchase_chronological_order_chronological_order_component__["a" /* ChronologicalOrderComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__components_purchase_film_order_film_order_component__["a" /* FilmOrderComponent */],
-                __WEBPACK_IMPORTED_MODULE_34__pipe_availability_availability_pipe__["a" /* AvailabilityPipe */],
-                __WEBPACK_IMPORTED_MODULE_35__pipe_duration_duration_pipe__["a" /* DurationPipe */],
-                __WEBPACK_IMPORTED_MODULE_30__components_ticket_no_ticket_no_ticket_component__["a" /* NoTicketComponent */],
+                __WEBPACK_IMPORTED_MODULE_32__components_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */],
+                __WEBPACK_IMPORTED_MODULE_33__components_ticket_ticket_ticket_component__["a" /* TicketComponent */],
+                __WEBPACK_IMPORTED_MODULE_34__components_walk_through_walk_through_component__["a" /* WalkThroughComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__components_navigation_navigation_component__["a" /* NavigationComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__components_purchase_schedule_schedule_component__["a" /* ScheduleComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__components_not_found_not_found_component__["a" /* NotFoundComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__components_base_base_component__["a" /* BaseComponent */],
+                __WEBPACK_IMPORTED_MODULE_37__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
+                __WEBPACK_IMPORTED_MODULE_28__components_purchase_chronological_order_chronological_order_component__["a" /* ChronologicalOrderComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__components_purchase_film_order_film_order_component__["a" /* FilmOrderComponent */],
+                __WEBPACK_IMPORTED_MODULE_35__pipe_availability_availability_pipe__["a" /* AvailabilityPipe */],
+                __WEBPACK_IMPORTED_MODULE_36__pipe_duration_duration_pipe__["a" /* DurationPipe */],
+                __WEBPACK_IMPORTED_MODULE_31__components_ticket_no_ticket_no_ticket_component__["a" /* NoTicketComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__components_about_about_component__["a" /* AboutComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__components_loading_loading_component__["a" /* LoadingComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__components_profile_profile_component__["a" /* ProfileComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__components_policy_policy_component__["a" /* PolicyComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__components_law_law_component__["a" /* LawComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components_privacy_privacy_component__["a" /* PrivacyComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__components_logout_logout_component__["a" /* LogoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__components_header_menu_header_menu_component__["a" /* HeaderMenuComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__components_loading_loading_component__["a" /* LoadingComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__components_profile_profile_component__["a" /* ProfileComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__components_policy_policy_component__["a" /* PolicyComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__components_law_law_component__["a" /* LawComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__components_privacy_privacy_component__["a" /* PrivacyComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__components_logout_logout_component__["a" /* LogoutComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__components_header_menu_header_menu_component__["a" /* HeaderMenuComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__components_auth_auth_index_auth_index_component__["a" /* AuthIndexComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__components_auth_sign_in_sign_in_component__["a" /* SignInComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__components_auth_sign_out_sign_out_component__["a" /* SignOutComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__components_auth_sign_up_sign_up_component__["a" /* SignUpComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__components_auth_forgot_password_forgot_password_component__["a" /* ForgotPasswordComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__components_auth_sign_in_sign_in_component__["a" /* SignInComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__components_auth_sign_out_sign_out_component__["a" /* SignOutComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__components_auth_sign_up_sign_up_component__["a" /* SignUpComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__components_auth_forgot_password_forgot_password_component__["a" /* ForgotPasswordComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__components_auth_auth_base_auth_base_component__["a" /* AuthBaseComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__components_auth_confirm_registration_confirm_registration_component__["a" /* ConfirmRegistrationComponent */],
-                __WEBPACK_IMPORTED_MODULE_44__components_auth_forgot_password_reset_forgot_password_reset_component__["a" /* ForgotPasswordResetComponent */]
+                __WEBPACK_IMPORTED_MODULE_12__components_auth_forgot_password_reset_forgot_password_reset_component__["a" /* ForgotPasswordResetComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
@@ -282,13 +284,14 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_4_angular2_qrcode__["a" /* QRCodeModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_39__service_sasaki_sasaki_service__["a" /* SasakiService */],
-                __WEBPACK_IMPORTED_MODULE_37__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
-                __WEBPACK_IMPORTED_MODULE_43__service_user_user_service__["a" /* UserService */],
-                __WEBPACK_IMPORTED_MODULE_38__service_cognito_cognito_service__["a" /* CognitoUtil */],
-                __WEBPACK_IMPORTED_MODULE_40__service_user_login_user_login_service__["a" /* UserLoginService */],
-                __WEBPACK_IMPORTED_MODULE_41__service_user_parameters_user_parameters_service__["a" /* UserParametersService */],
-                __WEBPACK_IMPORTED_MODULE_42__service_user_registration_user_registration_service__["a" /* UserRegistrationService */]
+                __WEBPACK_IMPORTED_MODULE_41__service_sasaki_sasaki_service__["a" /* SasakiService */],
+                __WEBPACK_IMPORTED_MODULE_38__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
+                __WEBPACK_IMPORTED_MODULE_45__service_user_user_service__["a" /* UserService */],
+                __WEBPACK_IMPORTED_MODULE_40__service_cognito_cognito_service__["a" /* CognitoUtil */],
+                __WEBPACK_IMPORTED_MODULE_42__service_user_login_user_login_service__["a" /* UserLoginService */],
+                __WEBPACK_IMPORTED_MODULE_43__service_user_parameters_user_parameters_service__["a" /* UserParametersService */],
+                __WEBPACK_IMPORTED_MODULE_44__service_user_registration_user_registration_service__["a" /* UserRegistrationService */],
+                __WEBPACK_IMPORTED_MODULE_39__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_8__components_app_app_component__["a" /* AppComponent */]]
         })
@@ -475,7 +478,7 @@ var AuthBaseComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/components/auth/auth-index/auth-index.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <div class=\"logo text-center mb-large\">\n            <img src=\"/assets/images/common/logo.svg\">\n        </div>\n        <p class=\"read text-center mb-middle\">初めてアプリをご利用なさる方は\n            <br>下のボタンから会員登録をおこなってください。</p>\n        <button class=\"btn btn-primary btn-block mb-large\" routerLink=\"/auth/walkThrough\">アプリを初めてご利用の方</button>\n        <p class=\"read text-center mb-middle\">既に会員登録済みの方は\n            <br>下のボタンよりログインしてください。</p>\n        <button class=\"btn btn-info btn-block mb-small\" (click)=\"login()\">Amazon Cognito</button>\n        <button class=\"btn btn-info btn-block\" routerLink=\"/auth/signIn\">会員登録済みの方</button>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <div class=\"logo text-center mb-large\">\n            <img src=\"/assets/images/common/logo.svg\">\n        </div>\n        <p class=\"read text-center mb-middle\">初めてアプリをご利用なさる方は\n            <br>下のボタンから会員登録をおこなってください。</p>\n        <button class=\"btn btn-primary btn-block mb-large\" routerLink=\"/auth/walkThrough\">アプリを初めてご利用の方</button>\n        <p class=\"read text-center mb-middle\">既に会員登録済みの方は\n            <br>下のボタンよりログインしてください。</p>\n            <button class=\"btn btn-info btn-block mb-small\" (click)=\"signInWithTerminal()\">端末IDで認証</button>\n        <button class=\"btn btn-info btn-block mb-small\" (click)=\"signIn()\">Amazon Cognito</button>\n        <button class=\"btn btn-info btn-block\" routerLink=\"/auth/signIn\">会員登録済みの方</button>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -504,7 +507,8 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthIndexComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -555,15 +559,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var AuthIndexComponent = /** @class */ (function () {
-    function AuthIndexComponent(sasaki, router) {
+    function AuthIndexComponent(sasaki, awsCognito, router) {
         this.sasaki = sasaki;
+        this.awsCognito = awsCognito;
         this.router = router;
     }
     AuthIndexComponent.prototype.ngOnInit = function () {
         this.isLoading = false;
     };
-    AuthIndexComponent.prototype.login = function () {
+    AuthIndexComponent.prototype.signIn = function () {
         return __awaiter(this, void 0, void 0, function () {
             var result, error_1;
             return __generator(this, function (_a) {
@@ -587,16 +593,45 @@ var AuthIndexComponent = /** @class */ (function () {
             });
         });
     };
+    AuthIndexComponent.prototype.signInWithTerminal = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var err_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 4, , 5]);
+                        return [4 /*yield*/, this.awsCognito.authenticateWithTerminal()];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.awsCognito.updateRecords('test', {
+                                test: 'test1',
+                                test2: 'test2'
+                            })];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, this.awsCognito.getRecords('test')];
+                    case 3:
+                        _a.sent();
+                        return [3 /*break*/, 5];
+                    case 4:
+                        err_1 = _a.sent();
+                        console.log(err_1);
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
+    };
     AuthIndexComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-auth-index',
             template: __webpack_require__("../../../../../src/app/components/auth/auth-index/auth-index.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/auth/auth-index/auth-index.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object])
     ], AuthIndexComponent);
     return AuthIndexComponent;
-    var _a, _b;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=auth-index.component.js.map
@@ -3558,6 +3593,212 @@ var AuthGuardService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/service/aws-cognito/aws-cognito.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AwsCognitoService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aws_sdk__ = __webpack_require__("../../../../aws-sdk/lib/browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aws_sdk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_aws_sdk__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * AwsCognitoService
+ */
+
+
+
+var AwsCognitoService = /** @class */ (function () {
+    function AwsCognitoService() {
+        this.credentials = null;
+    }
+    AwsCognitoService_1 = AwsCognitoService;
+    /**
+     * 端末IDで認証
+     */
+    AwsCognitoService.prototype.authenticateWithTerminal = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].region = AwsCognitoService_1.REGION;
+                        __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials = new __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["CognitoIdentityCredentials"]({
+                            IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID
+                        });
+                        this.credentials = __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials;
+                        return [4 /*yield*/, this.credentials.getPromise()];
+                    case 1:
+                        _a.sent();
+                        console.log(this.credentials.identityId);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * 認証確認
+     */
+    AwsCognitoService.prototype.isAuthenticate = function () {
+        return (this.credentials !== null);
+    };
+    /**
+     * レコード更新
+     * @param {string} datasetName
+     * @param {value} value
+     */
+    AwsCognitoService.prototype.updateRecords = function (datasetName, value) {
+        return __awaiter(this, void 0, void 0, function () {
+            var cognitoSync, listRecords;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.credentials.getPromise()];
+                    case 1:
+                        _a.sent();
+                        cognitoSync = new __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["CognitoSync"]({
+                            credentials: this.credentials
+                        });
+                        return [4 /*yield*/, cognitoSync.listRecords({
+                                DatasetName: datasetName,
+                                IdentityId: this.credentials.identityId,
+                                IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID,
+                                LastSyncCount: 0
+                            }).promise()];
+                    case 2:
+                        listRecords = _a.sent();
+                        return [4 /*yield*/, cognitoSync.updateRecords({
+                                DatasetName: datasetName,
+                                IdentityId: this.credentials.identityId,
+                                IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID,
+                                SyncSessionToken: listRecords.SyncSessionToken,
+                                RecordPatches: this.convertToRecords(value, listRecords.DatasetSyncCount)
+                            }).promise()];
+                    case 3:
+                        _a.sent();
+                        console.log('updateRecords');
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * レコード取得
+     * @param {string} datasetName
+     */
+    AwsCognitoService.prototype.getRecords = function (datasetName) {
+        return __awaiter(this, void 0, void 0, function () {
+            var cognitoSync, listRecords;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.credentials.getPromise()];
+                    case 1:
+                        _a.sent();
+                        cognitoSync = new __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["CognitoSync"]({
+                            credentials: this.credentials
+                        });
+                        return [4 /*yield*/, cognitoSync.listRecords({
+                                DatasetName: datasetName,
+                                IdentityId: this.credentials.identityId,
+                                IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID,
+                                LastSyncCount: 0
+                            }).promise()];
+                    case 2:
+                        listRecords = _a.sent();
+                        console.log('getRecords', this.convertToObjects(listRecords.Records));
+                        return [2 /*return*/, this.convertToObjects(listRecords.Records)];
+                }
+            });
+        });
+    };
+    /**
+     * レコードの形式へ変換
+     * @param {any} value
+     * @param {number} count
+     */
+    AwsCognitoService.prototype.convertToRecords = function (value, count) {
+        return Object.keys(value).map(function (key) {
+            return {
+                Key: key,
+                Op: 'replace',
+                SyncCount: count,
+                Value: JSON.stringify(value[key])
+            };
+        });
+    };
+    /**
+     * レコードの形式へ変換
+     * @param {any} records
+     * @param {number} count
+     */
+    AwsCognitoService.prototype.convertToObjects = function (records) {
+        return records.map(function (record) {
+            return {
+                Key: record.Key,
+                Op: record.Op,
+                SyncCount: record.SyncCount,
+                Value: JSON.parse(record.Value)
+            };
+        });
+    };
+    AwsCognitoService.REGION = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].region;
+    AwsCognitoService.IDENTITY_POOL_ID = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].identityPoolId;
+    AwsCognitoService.USER_POOL_ID = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].userPoolId;
+    AwsCognitoService.CLIENT_ID = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].clientId;
+    AwsCognitoService = AwsCognitoService_1 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [])
+    ], AwsCognitoService);
+    return AwsCognitoService;
+    var AwsCognitoService_1;
+}());
+
+//# sourceMappingURL=aws-cognito.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/service/cognito/cognito.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4077,6 +4318,74 @@ var UserLoginService = /** @class */ (function () {
         });
     };
     /**
+     * 識別IDで認証
+     */
+    // public async authenticateWithAnonymous() {
+    //     return new Promise<{
+    //         message: string;
+    //         result: any
+    //     }>(async (resolve) => {
+    //         console.log('UserLoginService: starting the authenticateWithAnonymous');
+    //         // 端末識別子のみでログインしてみる
+    //         const creds = await this.cognitoUtil.buildCognitoCreds(<any>null);
+    //         AWS.config.credentials = creds;
+    //         // Cognito Sync クライアントを初期化します
+    //         await (<AWS.CognitoIdentityCredentials>AWS.config.credentials).getPromise();
+    //         console.log('identityId:', (<AWS.CognitoIdentityCredentials>AWS.config.credentials).identityId);
+    //         console.log('sessionToken:', AWS.config.credentials.sessionToken);
+    //         // cognitoSyncサービスを使ってみる
+    //         const sync = new CognitoSyncService(this.cognitoUtil);
+    //         let response = await sync.cognitoSync.listRecords({
+    //             DatasetName: 'profile',
+    //             IdentityId: (<AWS.CognitoIdentityCredentials>AWS.config.credentials).identityId,
+    //             IdentityPoolId: CognitoUtil._IDENTITY_POOL_ID,
+    //             LastSyncCount: 0,
+    //             // MaxResults: 0,
+    //             // NextToken: 'STRING_VALUE',
+    //             SyncSessionToken: sync.syncSessionToken
+    //         }).promise();
+    //         console.log('listRecordsResonse:', response);
+    //         sync.syncSessionToken = response.SyncSessionToken;
+    //         sync.syncCount = response.DatasetSyncCount;
+    //         // const sync = new CognitoSyncService(this.cognitoUtil);
+    //         // let profile = await sync.getProfile();
+    //         // console.log('profile:', profile);
+    //         await this.cognitoUtil.getOpenIdToken();
+    //         const profile = {
+    //             givenName: 'givenName',
+    //             familyName: 'familyName',
+    //             phoneNumber: '09012345678',
+    //         };
+    //         const recordPatches = Object.keys(profile).map((key) => {
+    //             return {
+    //                 Key: key,
+    //                 Op: 'replace',
+    //                 SyncCount: sync.syncCount,
+    //                 // DeviceLastModifiedDate: new Date || 'Wed Dec 31 1969 16:00:00 GMT-0800 (PST)' || 123456789,
+    //                 Value: profile[key]
+    //             };
+    //         });
+    //         response = await sync.cognitoSync.updateRecords({
+    //             DatasetName: 'profile',
+    //             IdentityId: (<AWS.CognitoIdentityCredentials>AWS.config.credentials).identityId,
+    //             IdentityPoolId: CognitoUtil._IDENTITY_POOL_ID,
+    //             SyncSessionToken: sync.syncSessionToken,
+    //             // ClientContext: 'STRING_VALUE',
+    //             // DeviceId: 'STRING_VALUE',
+    //             RecordPatches: recordPatches
+    //         }).promise();
+    //         console.log('updateRecordsResponse:', response);
+    //         sync.syncSessionToken = undefined;
+    //         sync.syncCount = response.DatasetSyncCount;
+    //         console.log('profile:', profile);
+    //         resolve({
+    //             message: null,
+    //             result: null
+    //         });
+    //         // callback.isSignedInWithGoogle('', (cognitoUser != null));
+    //     });
+    // }
+    /**
      * ユーザーネームからパスワード忘れプロセスを実行する
      * @param username ユーザーネーム
      * @param callback 実行後処理
@@ -4585,6 +4894,8 @@ var map = {
 	"./be.js": "../../../../moment/locale/be.js",
 	"./bg": "../../../../moment/locale/bg.js",
 	"./bg.js": "../../../../moment/locale/bg.js",
+	"./bm": "../../../../moment/locale/bm.js",
+	"./bm.js": "../../../../moment/locale/bm.js",
 	"./bn": "../../../../moment/locale/bn.js",
 	"./bn.js": "../../../../moment/locale/bn.js",
 	"./bo": "../../../../moment/locale/bo.js",
@@ -4628,6 +4939,8 @@ var map = {
 	"./es": "../../../../moment/locale/es.js",
 	"./es-do": "../../../../moment/locale/es-do.js",
 	"./es-do.js": "../../../../moment/locale/es-do.js",
+	"./es-us": "../../../../moment/locale/es-us.js",
+	"./es-us.js": "../../../../moment/locale/es-us.js",
 	"./es.js": "../../../../moment/locale/es.js",
 	"./et": "../../../../moment/locale/et.js",
 	"./et.js": "../../../../moment/locale/et.js",
@@ -4653,6 +4966,8 @@ var map = {
 	"./gl.js": "../../../../moment/locale/gl.js",
 	"./gom-latn": "../../../../moment/locale/gom-latn.js",
 	"./gom-latn.js": "../../../../moment/locale/gom-latn.js",
+	"./gu": "../../../../moment/locale/gu.js",
+	"./gu.js": "../../../../moment/locale/gu.js",
 	"./he": "../../../../moment/locale/he.js",
 	"./he.js": "../../../../moment/locale/he.js",
 	"./hi": "../../../../moment/locale/hi.js",
