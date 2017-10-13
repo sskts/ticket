@@ -44,7 +44,7 @@ export class AuthIndexComponent implements OnInit {
                 test: 'test1',
                 test2: 'test2'
             });
-            await this.awsCognito.getRecords('test');
+            await this.awsCognito.getRecords('tttt');
         } catch (err) {
             console.log(err);
         }

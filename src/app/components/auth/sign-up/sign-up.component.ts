@@ -3,17 +3,13 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
-import { CognitoCallback } from '../../../service/cognito/cognito.service';
-import { UserRegistrationService } from '../../../service/user-registration/user-registration.service';
 
 @Component({
     selector: 'app-sign-up',
     templateUrl: './sign-up.component.html',
     styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit, CognitoCallback {
+export class SignUpComponent implements OnInit {
     public isLoading: boolean;
     public signUpForm: FormGroup;
     public registrationUser: {
@@ -27,9 +23,7 @@ export class SignUpComponent implements OnInit, CognitoCallback {
     public error: Error | null;
 
     constructor(
-        private formBuilder: FormBuilder,
-        private userRegistration: UserRegistrationService,
-        private router: Router
+        private formBuilder: FormBuilder
     ) {
         console.log('SignUpComponent constructor');
     }
@@ -78,23 +72,6 @@ export class SignUpComponent implements OnInit, CognitoCallback {
             givenName: this.signUpForm.controls.givenName.value,
             phoneNumber: this.signUpForm.controls.telephone.value
         };
-        this.userRegistration.register(this.registrationUser, this);
-    }
-
-    /**
-     * 会員登録後の遷移
-     * @param message 登録失敗時のメッセージ
-     * @param result 登録成功時の結果
-     */
-    public cognitoCallback(message: string, result: any) {
-        if (message != null) {
-            this.error = new Error(message);
-            console.log('result:', this.error.message);
-            this.isLoading = false;
-        } else {
-            // move to the next step
-            this.router.navigate(['/auth/confirmRegistration', result.user.username]);
-        }
     }
 
 }

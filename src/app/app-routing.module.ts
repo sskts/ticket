@@ -8,10 +8,6 @@ import { AboutComponent } from './components/about/about.component';
 import { AuthBaseComponent } from './components/auth/auth-base/auth-base.component';
 import { AuthIndexComponent } from './components/auth/auth-index/auth-index.component';
 import { ConfirmRegistrationComponent } from './components/auth/confirm-registration/confirm-registration.component';
-import { ForgotPasswordResetComponent } from './components/auth/forgot-password-reset/forgot-password-reset.component';
-import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
-import { SignInComponent } from './components/auth/sign-in/sign-in.component';
-import { SignOutComponent } from './components/auth/sign-out/sign-out.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { BaseComponent } from './components/base/base.component';
 import { LawComponent } from './components/law/law.component';
@@ -45,15 +41,11 @@ const appRoutes: Routes = [
         path: 'auth',
         component: AuthBaseComponent,
         children: [
-            { path: 'signIn', component: SignInComponent },
-            { path: 'signOut', component: SignOutComponent },
             { path: 'signUp', component: SignUpComponent },
-            { path: 'forgotPassword', component: ForgotPasswordComponent },
-            { path: 'forgotPasswordReset/:userName', component: ForgotPasswordResetComponent },
-            { path: 'confirmRegistration/:userName', component: ConfirmRegistrationComponent },
-            { path: 'walkThrough', component: WalkThroughComponent }
+            { path: 'confirmRegistration/:userName', component: ConfirmRegistrationComponent }
         ]
     },
+    { path: 'walkThrough', component: WalkThroughComponent },
     { path: '**', component: NotFoundComponent }
 ];
 
@@ -62,7 +54,7 @@ const appRoutes: Routes = [
     imports: [
         RouterModule.forRoot(
             appRoutes,
-            { useHash: true, enableTracing: true } // <-- debugging purposes only
+            { useHash: true, enableTracing: true }
         )
     ],
     exports: [

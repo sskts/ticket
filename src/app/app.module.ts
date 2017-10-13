@@ -14,10 +14,6 @@ import { AppComponent } from './components/app/app.component';
 import { AuthBaseComponent } from './components/auth/auth-base/auth-base.component';
 import { AuthIndexComponent } from './components/auth/auth-index/auth-index.component';
 import { ConfirmRegistrationComponent } from './components/auth/confirm-registration/confirm-registration.component';
-import { ForgotPasswordResetComponent } from './components/auth/forgot-password-reset/forgot-password-reset.component';
-import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
-import { SignInComponent } from './components/auth/sign-in/sign-in.component';
-import { SignOutComponent } from './components/auth/sign-out/sign-out.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { BaseComponent } from './components/base/base.component';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
@@ -42,12 +38,9 @@ import { DurationPipe } from './pipe/duration/duration.pipe';
 import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { AwsCognitoService } from './service/aws-cognito/aws-cognito.service';
-import { CognitoUtil } from './service/cognito/cognito.service';
 import { SasakiService } from './service/sasaki/sasaki.service';
-import { UserLoginService } from './service/user-login/user-login.service';
-import { UserParametersService } from './service/user-parameters/user-parameters.service';
-import { UserRegistrationService } from './service/user-registration/user-registration.service';
 import { UserService } from './service/user/user.service';
+import { ErrorComponent } from './components/error/error.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -76,13 +69,10 @@ import { UserService } from './service/user/user.service';
     LogoutComponent,
     HeaderMenuComponent,
     AuthIndexComponent,
-    SignInComponent,
-    SignOutComponent,
     SignUpComponent,
-    ForgotPasswordComponent,
     AuthBaseComponent,
     ConfirmRegistrationComponent,
-    ForgotPasswordResetComponent
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -97,10 +87,6 @@ import { UserService } from './service/user/user.service';
     SasakiService,
     AuthGuardService,
     UserService,
-    CognitoUtil,
-    UserLoginService,
-    UserParametersService,
-    UserRegistrationService,
     AwsCognitoService
   ],
   bootstrap: [AppComponent]
