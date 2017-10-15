@@ -8,7 +8,7 @@ import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 
 import { environment } from '../../../../environments/environment';
-import { ScreeningEventsModel } from '../../../model/screening-events/screening-events.model';
+import { IFilmOrder, ScreeningEventsModel } from '../../../model/screening-events/screening-events.model';
 
 // tslint:disable:no-import-side-effect
 import 'rxjs/add/operator/retry';
@@ -33,6 +33,7 @@ export class ScheduleComponent implements OnInit {
     public movieTheater: string;
     public date: string;
     public screeningEvents: ScreeningEventsModel;
+    public filmOrder: IFilmOrder[];
     public config: SwiperOptions;
     public error: string;
 
@@ -54,7 +55,7 @@ export class ScheduleComponent implements OnInit {
             this.createDate();
             this.date = this.dateList[0].value;
             this.screeningEvents = new ScreeningEventsModel();
-            console.log(this.screeningEvents.convertToFilmOrder());
+            this.filmOrder = [];
             this.isLoading = false;
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
@@ -94,7 +95,8 @@ export class ScheduleComponent implements OnInit {
 
     public async fitchMovieTheaters() {
         const url = `${environment.ticketingSite}/purchase/performances/getMovieTheaters`;
-        const response = await this.http.post<any>(url, {}).retry(3).toPromise();
+        const body = {};
+        const response = await this.http.post<any>(url, body).retry(3).toPromise();
         if (response.error !== null) {
             throw new Error(response.error);
         }
@@ -103,14 +105,16 @@ export class ScheduleComponent implements OnInit {
 
     public async fitchPerformances() {
         const url = `${environment.ticketingSite}/purchase/performances/getPerformances`;
-        const response = await this.http.post<any>(url, {
+        const body = {
             theater: this.movieTheater,
             day: this.date
-        }).retry(3).toPromise();
+        };
+        const response = await this.http.post<any>(url, body).retry(3).toPromise();
         if (response.error !== null) {
             throw new Error(response.error);
         }
         this.screeningEvents.individualScreeningEvents = response.result;
+        this.filmOrder = this.screeningEvents.convertToFilmOrder();
     }
 
 }

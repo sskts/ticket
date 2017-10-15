@@ -5,9 +5,9 @@ import * as moment from 'moment';
 
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 
-type IIndividualScreeningEvent = sasaki.factory.event.individualScreeningEvent.IEventWithOffer;
+export type IIndividualScreeningEvent = sasaki.factory.event.individualScreeningEvent.IEventWithOffer;
 
-interface IFilmOrder {
+export interface IFilmOrder {
     id: string;
     films: IIndividualScreeningEvent[];
 }

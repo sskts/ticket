@@ -17,11 +17,11 @@
             </li>
         </ul>
 
-        <div *ngIf="!isLoading && screeningEvents.convertToFilmOrder().length > 0">
+        <div *ngIf="!isLoading && filmOrder.length > 0">
             <swiper [config]="config">
                 <div class="swiper-wrapper">
-                    <div *ngFor="let filmOrder of screeningEvents.convertToFilmOrder()" class="swiper-slide">
-                        <app-film-order [data]="filmOrder" (performanceSelect)="purchaseView($event)"></app-film-order>
+                    <div *ngFor="let filmOrder of filmOrder" class="swiper-slide">
+                        <app-film-order [data]="filmOrder" (select)="purchaseView($event)"></app-film-order>
                     </div>
                 </div>
             </swiper>
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div class="no-schedule" *ngIf="!isLoading && screeningEvents.convertToFilmOrder().length === 0">
+        <div class="no-schedule" *ngIf="!isLoading && filmOrder.length === 0">
             <div *ngIf="movieTheater === ''">鑑賞劇場が選択されていません。</div>
             <div *ngIf="movieTheater !== ''">上映作品がありません。</div>
         </div>

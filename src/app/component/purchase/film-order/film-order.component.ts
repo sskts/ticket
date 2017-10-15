@@ -2,30 +2,30 @@
  * FilmOrderComponent
  */
 import { Component, Input, OnInit } from '@angular/core';
-import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 
 import { environment } from '../../../../environments/environment';
+import { IIndividualScreeningEvent } from '../../../model/screening-events/screening-events.model';
 
 @Component({
-  selector: 'app-film-order',
-  templateUrl: './film-order.component.html',
-  styleUrls: ['./film-order.component.scss']
+    selector: 'app-film-order',
+    templateUrl: './film-order.component.html',
+    styleUrls: ['./film-order.component.scss']
 })
 export class FilmOrderComponent implements OnInit {
-  @Input() public data: {
-    id: string;
-    films: sasaki.factory.event.individualScreeningEvent.IEventWithOffer[];
-  };
-  public filmInfo: sasaki.factory.event.individualScreeningEvent.IEventWithOffer;
+    @Input() public data: {
+        id: string;
+        films: IIndividualScreeningEvent[];
+    };
+    public filmInfo: IIndividualScreeningEvent;
 
-  constructor() { }
+    constructor() { }
 
-  public ngOnInit() {
-    this.filmInfo = this.data.films[0];
-  }
+    public ngOnInit() {
+        this.filmInfo = this.data.films[0];
+    }
 
-  public performanceSelect(data: sasaki.factory.event.individualScreeningEvent.IEventWithOffer) {
-    location.href = `${environment.ticketingSite}/signIn?id=${data.identifier}`;
-  }
+    public performanceSelect(data: IIndividualScreeningEvent) {
+        location.href = `${environment.ticketingSite}/purchase/app.html?id=${data.identifier}`;
+    }
 
 }

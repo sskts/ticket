@@ -1789,7 +1789,7 @@ var FilmOrderComponent = /** @class */ (function () {
         this.filmInfo = this.data.films[0];
     };
     FilmOrderComponent.prototype.performanceSelect = function (data) {
-        location.href = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].ticketingSite + "/signIn?id=" + data.identifier;
+        location.href = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].ticketingSite + "/purchase/app.html?id=" + data.identifier;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
@@ -1813,7 +1813,7 @@ var FilmOrderComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/purchase/schedule/schedule.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <div class=\"inner\">\n        <p class=\"read mb-small\">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>\n        <ul class=\"conditions mb-small\">\n            <li class=\" mb-x-small\">\n                <div class=\"control-label mb-x-small small-x-text\">鑑賞劇場</div>\n                <select class=\"form-control\" name=\"movieTheater\" [(ngModel)]=\"movieTheater\" (change)=\"changeConditions($event)\">\n                    <option value=\"\">選択してください</option>\n                    <option *ngFor=\"let theater of movieTheaters\" value=\"{{ theater.location.branchCode }}\">{{ theater.name.ja }}</option>\n                </select>\n            </li>\n            <li>\n                <div class=\"control-label mb-x-small small-x-text\">鑑賞日時</div>\n                <select class=\"form-control\" name=\"date\" [(ngModel)]=\"date\" (change)=\"changeConditions($event)\">\n                    <option *ngFor=\"let date of dateList\" value=\"{{ date.value }}\">{{ date.text }}</option>\n                </select>\n            </li>\n        </ul>\n\n        <div *ngIf=\"!isLoading && screeningEvents.convertToFilmOrder().length > 0\">\n            <swiper [config]=\"config\">\n                <div class=\"swiper-wrapper\">\n                    <div *ngFor=\"let filmOrder of screeningEvents.convertToFilmOrder()\" class=\"swiper-slide\">\n                        <app-film-order [data]=\"filmOrder\" (performanceSelect)=\"purchaseView($event)\"></app-film-order>\n                    </div>\n                </div>\n            </swiper>\n            <div class=\"pagination-wrapper\">\n                <div class=\"swiper-pagination\"></div>\n            </div>\n        </div>\n\n        <div class=\"no-schedule\" *ngIf=\"!isLoading && screeningEvents.convertToFilmOrder().length === 0\">\n            <div *ngIf=\"movieTheater === ''\">鑑賞劇場が選択されていません。</div>\n            <div *ngIf=\"movieTheater !== ''\">上映作品がありません。</div>\n        </div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents\">\n    <div class=\"inner\">\n        <p class=\"read mb-small\">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>\n        <ul class=\"conditions mb-small\">\n            <li class=\" mb-x-small\">\n                <div class=\"control-label mb-x-small small-x-text\">鑑賞劇場</div>\n                <select class=\"form-control\" name=\"movieTheater\" [(ngModel)]=\"movieTheater\" (change)=\"changeConditions($event)\">\n                    <option value=\"\">選択してください</option>\n                    <option *ngFor=\"let theater of movieTheaters\" value=\"{{ theater.location.branchCode }}\">{{ theater.name.ja }}</option>\n                </select>\n            </li>\n            <li>\n                <div class=\"control-label mb-x-small small-x-text\">鑑賞日時</div>\n                <select class=\"form-control\" name=\"date\" [(ngModel)]=\"date\" (change)=\"changeConditions($event)\">\n                    <option *ngFor=\"let date of dateList\" value=\"{{ date.value }}\">{{ date.text }}</option>\n                </select>\n            </li>\n        </ul>\n\n        <div *ngIf=\"!isLoading && filmOrder.length > 0\">\n            <swiper [config]=\"config\">\n                <div class=\"swiper-wrapper\">\n                    <div *ngFor=\"let filmOrder of filmOrder\" class=\"swiper-slide\">\n                        <app-film-order [data]=\"filmOrder\" (select)=\"purchaseView($event)\"></app-film-order>\n                    </div>\n                </div>\n            </swiper>\n            <div class=\"pagination-wrapper\">\n                <div class=\"swiper-pagination\"></div>\n            </div>\n        </div>\n\n        <div class=\"no-schedule\" *ngIf=\"!isLoading && filmOrder.length === 0\">\n            <div *ngIf=\"movieTheater === ''\">鑑賞劇場が選択されていません。</div>\n            <div *ngIf=\"movieTheater !== ''\">上映作品がありません。</div>\n        </div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -1934,7 +1934,7 @@ var ScheduleComponent = /** @class */ (function () {
                         this.createDate();
                         this.date = this.dateList[0].value;
                         this.screeningEvents = new __WEBPACK_IMPORTED_MODULE_5__model_screening_events_screening_events_model__["a" /* ScreeningEventsModel */]();
-                        console.log(this.screeningEvents.convertToFilmOrder());
+                        this.filmOrder = [];
                         this.isLoading = false;
                         return [3 /*break*/, 4];
                     case 3:
@@ -1992,12 +1992,13 @@ var ScheduleComponent = /** @class */ (function () {
     };
     ScheduleComponent.prototype.fitchMovieTheaters = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var url, response;
+            var url, body, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         url = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].ticketingSite + "/purchase/performances/getMovieTheaters";
-                        return [4 /*yield*/, this.http.post(url, {}).retry(3).toPromise()];
+                        body = {};
+                        return [4 /*yield*/, this.http.post(url, body).retry(3).toPromise()];
                     case 1:
                         response = _a.sent();
                         if (response.error !== null) {
@@ -2011,21 +2012,23 @@ var ScheduleComponent = /** @class */ (function () {
     };
     ScheduleComponent.prototype.fitchPerformances = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var url, response;
+            var url, body, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         url = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].ticketingSite + "/purchase/performances/getPerformances";
-                        return [4 /*yield*/, this.http.post(url, {
-                                theater: this.movieTheater,
-                                day: this.date
-                            }).retry(3).toPromise()];
+                        body = {
+                            theater: this.movieTheater,
+                            day: this.date
+                        };
+                        return [4 /*yield*/, this.http.post(url, body).retry(3).toPromise()];
                     case 1:
                         response = _a.sent();
                         if (response.error !== null) {
                             throw new Error(response.error);
                         }
                         this.screeningEvents.individualScreeningEvents = response.result;
+                        this.filmOrder = this.screeningEvents.convertToFilmOrder();
                         return [2 /*return*/];
                 }
             });
