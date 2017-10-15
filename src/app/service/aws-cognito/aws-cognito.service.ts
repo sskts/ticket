@@ -56,12 +56,15 @@ export class AwsCognitoService {
             LastSyncCount: 0
         }).promise();
 
+        const mergeValue = this.convertToObjects(listRecords.Records);
+        Object.assign(mergeValue, value);
+
         await cognitoSync.updateRecords({
             DatasetName: datasetName,
             IdentityId: this.credentials.identityId,
             IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
             SyncSessionToken: listRecords.SyncSessionToken,
-            RecordPatches: this.convertToRecords(value, listRecords.DatasetSyncCount)
+            RecordPatches: this.convertToRecords(mergeValue, listRecords.DatasetSyncCount)
         }).promise();
         console.log('updateRecords');
     }
@@ -112,25 +115,18 @@ export class AwsCognitoService {
      * @param {any} records
      * @param {number} count
      */
-    private convertToObjects(records: any): {
-        Key: string;
-        Op: string;
-        SyncCount: number;
-        Value: any;
-    }[] {
-        return records.map((record: {
+    private convertToObjects(records: any): Object {
+        const result: any = {};
+        records.forEach((record: {
             Key: string;
             Op: string;
             SyncCount: number;
             Value: string;
         }) => {
-            return {
-                Key: record.Key,
-                Op: record.Op,
-                SyncCount: record.SyncCount,
-                Value: JSON.parse(record.Value)
-            };
+            result[record.Key] = JSON.parse(record.Value);
         });
+
+        return result;
     }
 
 }
