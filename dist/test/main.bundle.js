@@ -1768,6 +1768,7 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilmOrderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1782,14 +1783,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
+
 var FilmOrderComponent = /** @class */ (function () {
-    function FilmOrderComponent() {
+    function FilmOrderComponent(awsCognito) {
+        this.awsCognito = awsCognito;
     }
     FilmOrderComponent.prototype.ngOnInit = function () {
         this.filmInfo = this.data.films[0];
     };
     FilmOrderComponent.prototype.performanceSelect = function (data) {
-        location.href = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].ticketingSite + "/purchase/app.html?id=" + data.identifier;
+        location.href =
+            __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].ticketingSite + "/purchase/app.html?id=" + data.identifier + "&identityId=" + this.awsCognito.credentials.identityId;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
@@ -1801,9 +1805,10 @@ var FilmOrderComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.html"),
             styles: [__webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _a || Object])
     ], FilmOrderComponent);
     return FilmOrderComponent;
+    var _a;
 }());
 
 //# sourceMappingURL=film-order.component.js.map

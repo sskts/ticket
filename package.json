@@ -24,8 +24,6 @@
     "@angular/router": "^4.4.5",
     "@motionpicture/sskts-api-javascript-client": "^1.1.1",
     "@types/swiper": "^3.4.4",
-    "amazon-cognito-identity-js": "^1.21.0",
-    "amazon-cognito-js": "^1.1.0",
     "angular2-moment": "^1.7.0",
     "angular2-qrcode": "^2.0.1",
     "angular2-useful-swiper": "^5.0.0",

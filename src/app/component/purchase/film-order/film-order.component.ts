@@ -5,6 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { environment } from '../../../../environments/environment';
 import { IIndividualScreeningEvent } from '../../../model/screening-events/screening-events.model';
+import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.service';
 
 @Component({
     selector: 'app-film-order',
@@ -18,14 +19,17 @@ export class FilmOrderComponent implements OnInit {
     };
     public filmInfo: IIndividualScreeningEvent;
 
-    constructor() { }
+    constructor(
+        private awsCognito: AwsCognitoService
+    ) { }
 
     public ngOnInit() {
         this.filmInfo = this.data.films[0];
     }
 
     public performanceSelect(data: IIndividualScreeningEvent) {
-        location.href = `${environment.ticketingSite}/purchase/app.html?id=${data.identifier}`;
+        location.href =
+            `${environment.ticketingSite}/purchase/app.html?id=${data.identifier}&identityId=${this.awsCognito.credentials.identityId}`;
     }
 
 }
