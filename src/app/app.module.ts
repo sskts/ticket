@@ -1,9 +1,9 @@
 /**
  * NgModule
  */
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JsonpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { MomentModule } from 'angular2-moment';
 import { QRCodeModule } from 'angular2-qrcode';
@@ -66,7 +66,7 @@ import { UserService } from './service/user/user.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    JsonpModule,
     MomentModule,
     SwiperModule,
     AppRoutingModule,

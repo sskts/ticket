@@ -1,8 +1,8 @@
 /**
  * ScheduleComponent
  */
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Jsonp } from '@angular/http';
 import { Router } from '@angular/router';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
@@ -37,7 +37,7 @@ export class ScheduleComponent implements OnInit {
     public error: string;
 
     constructor(
-        private http: HttpClient,
+        private jsonp: Jsonp,
         private router: Router
     ) { }
 
@@ -94,25 +94,33 @@ export class ScheduleComponent implements OnInit {
 
     public async fitchMovieTheaters() {
         const url = `${environment.ticketingSite}/purchase/performances/getMovieTheaters`;
-        const body = {};
-        const response = await this.http.post<any>(url, body).retry(3).toPromise();
-        if (response.error !== null) {
-            throw new Error(response.error);
+        const options = {
+            search: {
+                callback: 'JSONP_CALLBACK'
+            }
+        };
+        const response = await this.jsonp.get(url, options).retry(3).toPromise();
+        console.log('response', response);
+        if (response.json().error !== null) {
+            throw new Error(response.json().error);
         }
-        this.movieTheaters = response.result;
+        this.movieTheaters = response.json().result;
     }
 
     public async fitchPerformances() {
         const url = `${environment.ticketingSite}/purchase/performances/getPerformances`;
-        const body = {
-            theater: this.movieTheater,
-            day: this.date
+        const options = {
+            search: {
+                callback: 'JSONP_CALLBACK',
+                theater: this.movieTheater,
+                day: this.date
+            }
         };
-        const response = await this.http.post<any>(url, body).retry(3).toPromise();
-        if (response.error !== null) {
-            throw new Error(response.error);
+        const response = await this.jsonp.get(url, options).retry(3).toPromise();
+        if (response.json().error !== null) {
+            throw new Error(response.json().error);
         }
-        this.screeningEvents.individualScreeningEvents = response.result;
+        this.screeningEvents.individualScreeningEvents = response.json().result;
         this.filmOrder = this.screeningEvents.getEventByFilmOrder();
     }
 

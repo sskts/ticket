@@ -103,9 +103,9 @@ var AppRoutingModule = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_moment__ = __webpack_require__("../../../../angular2-moment/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angular2_moment__);
@@ -187,7 +187,7 @@ var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_9__component_app_app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__component_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */],
@@ -215,12 +215,12 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* JsonpModule */],
                 __WEBPACK_IMPORTED_MODULE_4_angular2_moment__["MomentModule"],
                 __WEBPACK_IMPORTED_MODULE_6_angular2_useful_swiper__["SwiperModule"],
                 __WEBPACK_IMPORTED_MODULE_7__app_routing_module__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* ReactiveFormsModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* ReactiveFormsModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_5_angular2_qrcode__["a" /* QRCodeModule */]
             ],
             providers: [
@@ -1495,8 +1495,8 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ScheduleComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__("../../../../moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
@@ -1563,8 +1563,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 var ScheduleComponent = /** @class */ (function () {
-    function ScheduleComponent(http, router) {
-        this.http = http;
+    function ScheduleComponent(jsonp, router) {
+        this.jsonp = jsonp;
         this.router = router;
     }
     ScheduleComponent.prototype.ngOnInit = function () {
@@ -1647,19 +1647,24 @@ var ScheduleComponent = /** @class */ (function () {
     };
     ScheduleComponent.prototype.fitchMovieTheaters = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var url, body, response;
+            var url, options, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         url = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].ticketingSite + "/purchase/performances/getMovieTheaters";
-                        body = {};
-                        return [4 /*yield*/, this.http.post(url, body).retry(3).toPromise()];
+                        options = {
+                            search: {
+                                callback: 'JSONP_CALLBACK'
+                            }
+                        };
+                        return [4 /*yield*/, this.jsonp.get(url, options).retry(3).toPromise()];
                     case 1:
                         response = _a.sent();
-                        if (response.error !== null) {
-                            throw new Error(response.error);
+                        console.log('response', response);
+                        if (response.json().error !== null) {
+                            throw new Error(response.json().error);
                         }
-                        this.movieTheaters = response.result;
+                        this.movieTheaters = response.json().result;
                         return [2 /*return*/];
                 }
             });
@@ -1667,22 +1672,25 @@ var ScheduleComponent = /** @class */ (function () {
     };
     ScheduleComponent.prototype.fitchPerformances = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var url, body, response;
+            var url, options, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         url = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].ticketingSite + "/purchase/performances/getPerformances";
-                        body = {
-                            theater: this.movieTheater,
-                            day: this.date
+                        options = {
+                            search: {
+                                callback: 'JSONP_CALLBACK',
+                                theater: this.movieTheater,
+                                day: this.date
+                            }
                         };
-                        return [4 /*yield*/, this.http.post(url, body).retry(3).toPromise()];
+                        return [4 /*yield*/, this.jsonp.get(url, options).retry(3).toPromise()];
                     case 1:
                         response = _a.sent();
-                        if (response.error !== null) {
-                            throw new Error(response.error);
+                        if (response.json().error !== null) {
+                            throw new Error(response.json().error);
                         }
-                        this.screeningEvents.individualScreeningEvents = response.result;
+                        this.screeningEvents.individualScreeningEvents = response.json().result;
                         this.filmOrder = this.screeningEvents.getEventByFilmOrder();
                         return [2 /*return*/];
                 }
@@ -1690,7 +1698,7 @@ var ScheduleComponent = /** @class */ (function () {
         });
     };
     ScheduleComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-schedule',
             template: __webpack_require__("../../../../../src/app/component/purchase/schedule/schedule.component.html"),
             styles: [__webpack_require__("../../../../../src/app/component/purchase/schedule/schedule.component.scss")]
@@ -1701,7 +1709,7 @@ var ScheduleComponent = /** @class */ (function () {
          * @implements OnInit
          */
         ,
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object])
     ], ScheduleComponent);
     return ScheduleComponent;
     var _a, _b;
