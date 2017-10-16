@@ -25,18 +25,16 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_about_about_component__ = __webpack_require__("../../../../../src/app/component/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_auth_auth_component__ = __webpack_require__("../../../../../src/app/component/auth/auth.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__component_base_base_component__ = __webpack_require__("../../../../../src/app/component/base/base.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component_error_error_component__ = __webpack_require__("../../../../../src/app/component/error/error.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__component_law_law_component__ = __webpack_require__("../../../../../src/app/component/law/law.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__component_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/component/not-found/not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__component_policy_policy_component__ = __webpack_require__("../../../../../src/app/component/policy/policy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__component_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/component/privacy/privacy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__component_profile_profile_component__ = __webpack_require__("../../../../../src/app/component/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__component_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/component/purchase/schedule/schedule.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__component_ticket_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket-holder/ticket-holder.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__component_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/component/walk-through/walk-through.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_base_base_component__ = __webpack_require__("../../../../../src/app/component/base/base.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__component_error_error_component__ = __webpack_require__("../../../../../src/app/component/error/error.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component_law_law_component__ = __webpack_require__("../../../../../src/app/component/law/law.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__component_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/component/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__component_policy_policy_component__ = __webpack_require__("../../../../../src/app/component/policy/policy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__component_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/component/privacy/privacy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__component_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/component/purchase/schedule/schedule.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__component_ticket_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket-holder/ticket-holder.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__component_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/component/walk-through/walk-through.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,29 +57,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-
 var appRoutes = [
     { path: '', redirectTo: '/ticket', pathMatch: 'full' },
     {
         path: '',
-        component: __WEBPACK_IMPORTED_MODULE_4__component_base_base_component__["a" /* BaseComponent */],
-        canActivate: [__WEBPACK_IMPORTED_MODULE_14__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */]],
+        component: __WEBPACK_IMPORTED_MODULE_3__component_base_base_component__["a" /* BaseComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_12__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */]],
         children: [
-            { path: 'ticket', component: __WEBPACK_IMPORTED_MODULE_12__component_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */] },
-            { path: 'purchase', component: __WEBPACK_IMPORTED_MODULE_11__component_purchase_schedule_schedule_component__["a" /* ScheduleComponent */] },
+            { path: 'ticket', component: __WEBPACK_IMPORTED_MODULE_10__component_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */] },
+            { path: 'purchase', component: __WEBPACK_IMPORTED_MODULE_9__component_purchase_schedule_schedule_component__["a" /* ScheduleComponent */] },
             { path: 'about', component: __WEBPACK_IMPORTED_MODULE_2__component_about_about_component__["a" /* AboutComponent */] },
-            { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_10__component_profile_profile_component__["a" /* ProfileComponent */] },
-            { path: 'policy', component: __WEBPACK_IMPORTED_MODULE_8__component_policy_policy_component__["a" /* PolicyComponent */] },
-            { path: 'law', component: __WEBPACK_IMPORTED_MODULE_6__component_law_law_component__["a" /* LawComponent */] },
-            { path: 'privacy', component: __WEBPACK_IMPORTED_MODULE_9__component_privacy_privacy_component__["a" /* PrivacyComponent */] }
+            { path: 'policy', component: __WEBPACK_IMPORTED_MODULE_7__component_policy_policy_component__["a" /* PolicyComponent */] },
+            { path: 'law', component: __WEBPACK_IMPORTED_MODULE_5__component_law_law_component__["a" /* LawComponent */] },
+            { path: 'privacy', component: __WEBPACK_IMPORTED_MODULE_8__component_privacy_privacy_component__["a" /* PrivacyComponent */] }
         ]
     },
-    { path: 'auth', component: __WEBPACK_IMPORTED_MODULE_3__component_auth_auth_component__["a" /* AuthComponent */] },
-    { path: 'walkThrough', component: __WEBPACK_IMPORTED_MODULE_13__component_walk_through_walk_through_component__["a" /* WalkThroughComponent */] },
-    { path: 'error/:redirect', component: __WEBPACK_IMPORTED_MODULE_5__component_error_error_component__["a" /* ErrorComponent */] },
-    { path: 'error', component: __WEBPACK_IMPORTED_MODULE_5__component_error_error_component__["a" /* ErrorComponent */] },
-    { path: '**', component: __WEBPACK_IMPORTED_MODULE_7__component_not_found_not_found_component__["a" /* NotFoundComponent */] }
+    { path: 'walkThrough', component: __WEBPACK_IMPORTED_MODULE_11__component_walk_through_walk_through_component__["a" /* WalkThroughComponent */] },
+    { path: 'error/:redirect', component: __WEBPACK_IMPORTED_MODULE_4__component_error_error_component__["a" /* ErrorComponent */] },
+    { path: 'error', component: __WEBPACK_IMPORTED_MODULE_4__component_error_error_component__["a" /* ErrorComponent */] },
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_6__component_not_found_not_found_component__["a" /* NotFoundComponent */] }
 ];
 // tslint:disable-next-line:no-stateless-class
 var AppRoutingModule = /** @class */ (function () {
@@ -121,33 +115,30 @@ var AppRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__component_about_about_component__ = __webpack_require__("../../../../../src/app/component/about/about.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__component_app_app_component__ = __webpack_require__("../../../../../src/app/component/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__component_auth_auth_component__ = __webpack_require__("../../../../../src/app/component/auth/auth.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__component_base_base_component__ = __webpack_require__("../../../../../src/app/component/base/base.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__component_error_error_component__ = __webpack_require__("../../../../../src/app/component/error/error.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__component_header_menu_header_menu_component__ = __webpack_require__("../../../../../src/app/component/header-menu/header-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__component_header_header_component__ = __webpack_require__("../../../../../src/app/component/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__component_law_law_component__ = __webpack_require__("../../../../../src/app/component/law/law.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__component_loading_loading_component__ = __webpack_require__("../../../../../src/app/component/loading/loading.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__component_logout_logout_component__ = __webpack_require__("../../../../../src/app/component/logout/logout.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__component_navigation_navigation_component__ = __webpack_require__("../../../../../src/app/component/navigation/navigation.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__component_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/component/not-found/not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__component_policy_policy_component__ = __webpack_require__("../../../../../src/app/component/policy/policy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__component_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/component/privacy/privacy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__component_profile_profile_component__ = __webpack_require__("../../../../../src/app/component/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__component_purchase_chronological_order_chronological_order_component__ = __webpack_require__("../../../../../src/app/component/purchase/chronological-order/chronological-order.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__component_purchase_film_order_film_order_component__ = __webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__component_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/component/purchase/schedule/schedule.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__component_ticket_no_ticket_no_ticket_component__ = __webpack_require__("../../../../../src/app/component/ticket/no-ticket/no-ticket.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__component_ticket_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket-holder/ticket-holder.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__component_ticket_ticket_ticket_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket/ticket.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__component_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/component/walk-through/walk-through.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pipe_availability_availability_pipe__ = __webpack_require__("../../../../../src/app/pipe/availability/availability.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pipe_duration_duration_pipe__ = __webpack_require__("../../../../../src/app/pipe/duration/duration.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pipe_time_format_time_format_pipe__ = __webpack_require__("../../../../../src/app/pipe/time-format/time-format.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__component_base_base_component__ = __webpack_require__("../../../../../src/app/component/base/base.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__component_error_error_component__ = __webpack_require__("../../../../../src/app/component/error/error.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__component_header_menu_header_menu_component__ = __webpack_require__("../../../../../src/app/component/header-menu/header-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__component_header_header_component__ = __webpack_require__("../../../../../src/app/component/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__component_law_law_component__ = __webpack_require__("../../../../../src/app/component/law/law.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__component_loading_loading_component__ = __webpack_require__("../../../../../src/app/component/loading/loading.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__component_logout_logout_component__ = __webpack_require__("../../../../../src/app/component/logout/logout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__component_navigation_navigation_component__ = __webpack_require__("../../../../../src/app/component/navigation/navigation.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__component_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/component/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__component_policy_policy_component__ = __webpack_require__("../../../../../src/app/component/policy/policy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__component_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/component/privacy/privacy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__component_purchase_chronological_order_chronological_order_component__ = __webpack_require__("../../../../../src/app/component/purchase/chronological-order/chronological-order.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__component_purchase_film_order_film_order_component__ = __webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__component_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/component/purchase/schedule/schedule.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__component_ticket_no_ticket_no_ticket_component__ = __webpack_require__("../../../../../src/app/component/ticket/no-ticket/no-ticket.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__component_ticket_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket-holder/ticket-holder.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__component_ticket_ticket_ticket_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket/ticket.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__component_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/component/walk-through/walk-through.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pipe_availability_availability_pipe__ = __webpack_require__("../../../../../src/app/pipe/availability/availability.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pipe_duration_duration_pipe__ = __webpack_require__("../../../../../src/app/pipe/duration/duration.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pipe_time_format_time_format_pipe__ = __webpack_require__("../../../../../src/app/pipe/time-format/time-format.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -191,9 +182,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-
-
 // tslint:disable-next-line:no-stateless-class
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -202,30 +190,28 @@ var AppModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_9__component_app_app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__component_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__component_ticket_ticket_ticket_component__["a" /* TicketComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__component_walk_through_walk_through_component__["a" /* WalkThroughComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__component_navigation_navigation_component__["a" /* NavigationComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__component_header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__component_purchase_schedule_schedule_component__["a" /* ScheduleComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__component_not_found_not_found_component__["a" /* NotFoundComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__component_base_base_component__["a" /* BaseComponent */],
-                __WEBPACK_IMPORTED_MODULE_32__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
-                __WEBPACK_IMPORTED_MODULE_23__component_purchase_chronological_order_chronological_order_component__["a" /* ChronologicalOrderComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__component_purchase_film_order_film_order_component__["a" /* FilmOrderComponent */],
-                __WEBPACK_IMPORTED_MODULE_30__pipe_availability_availability_pipe__["a" /* AvailabilityPipe */],
-                __WEBPACK_IMPORTED_MODULE_31__pipe_duration_duration_pipe__["a" /* DurationPipe */],
-                __WEBPACK_IMPORTED_MODULE_26__component_ticket_no_ticket_no_ticket_component__["a" /* NoTicketComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__component_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__component_ticket_ticket_ticket_component__["a" /* TicketComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__component_walk_through_walk_through_component__["a" /* WalkThroughComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__component_navigation_navigation_component__["a" /* NavigationComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__component_header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__component_purchase_schedule_schedule_component__["a" /* ScheduleComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__component_not_found_not_found_component__["a" /* NotFoundComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__component_base_base_component__["a" /* BaseComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
+                __WEBPACK_IMPORTED_MODULE_21__component_purchase_chronological_order_chronological_order_component__["a" /* ChronologicalOrderComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__component_purchase_film_order_film_order_component__["a" /* FilmOrderComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__pipe_availability_availability_pipe__["a" /* AvailabilityPipe */],
+                __WEBPACK_IMPORTED_MODULE_29__pipe_duration_duration_pipe__["a" /* DurationPipe */],
+                __WEBPACK_IMPORTED_MODULE_24__component_ticket_no_ticket_no_ticket_component__["a" /* NoTicketComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__component_about_about_component__["a" /* AboutComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__component_loading_loading_component__["a" /* LoadingComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__component_profile_profile_component__["a" /* ProfileComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__component_policy_policy_component__["a" /* PolicyComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__component_law_law_component__["a" /* LawComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__component_privacy_privacy_component__["a" /* PrivacyComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__component_logout_logout_component__["a" /* LogoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__component_header_menu_header_menu_component__["a" /* HeaderMenuComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__component_auth_auth_component__["a" /* AuthComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__component_error_error_component__["a" /* ErrorComponent */]
+                __WEBPACK_IMPORTED_MODULE_15__component_loading_loading_component__["a" /* LoadingComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__component_policy_policy_component__["a" /* PolicyComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__component_law_law_component__["a" /* LawComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__component_privacy_privacy_component__["a" /* PrivacyComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__component_logout_logout_component__["a" /* LogoutComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__component_header_menu_header_menu_component__["a" /* HeaderMenuComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__component_error_error_component__["a" /* ErrorComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
@@ -233,15 +219,14 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_4_angular2_moment__["MomentModule"],
                 __WEBPACK_IMPORTED_MODULE_6_angular2_useful_swiper__["SwiperModule"],
                 __WEBPACK_IMPORTED_MODULE_7__app_routing_module__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* ReactiveFormsModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* ReactiveFormsModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_5_angular2_qrcode__["a" /* QRCodeModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_35__service_sasaki_sasaki_service__["a" /* SasakiService */],
-                __WEBPACK_IMPORTED_MODULE_33__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
-                __WEBPACK_IMPORTED_MODULE_36__service_user_user_service__["a" /* UserService */],
-                __WEBPACK_IMPORTED_MODULE_34__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]
+                __WEBPACK_IMPORTED_MODULE_31__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
+                __WEBPACK_IMPORTED_MODULE_33__service_user_user_service__["a" /* UserService */],
+                __WEBPACK_IMPORTED_MODULE_32__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__component_app_app_component__["a" /* AppComponent */]]
         })
@@ -358,162 +343,6 @@ var AppComponent = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/component/auth/auth.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"contents position-center\">\n    <div class=\"inner center\">\n        <div class=\"logo text-center mb-large\">\n            <img src=\"/assets/images/common/logo.svg\">\n        </div>\n        <p class=\"read text-center mb-middle\">初めてアプリをご利用なさる方は\n            <br>下のボタンから会員登録をおこなってください。</p>\n        <button class=\"btn btn-primary btn-block mb-large\" routerLink=\"/auth/walkThrough\">アプリを初めてご利用の方</button>\n        <p class=\"read text-center mb-middle\">既に会員登録済みの方は\n            <br>下のボタンよりログインしてください。</p>\n            <button class=\"btn btn-info btn-block mb-small\" (click)=\"signInWithTerminal()\">端末IDで認証</button>\n        <button class=\"btn btn-info btn-block mb-small\" (click)=\"signIn()\">Amazon Cognito</button>\n        <button class=\"btn btn-info btn-block\" routerLink=\"/auth/signIn\">会員登録済みの方</button>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/component/auth/auth.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".inner {\n  padding: 0;\n  width: 300px; }\n\n.logo img {\n  width: 80px;\n  height: 49px; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/component/auth/auth.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-/**
- * AuthComponent
- */
-
-
-
-// import { SasakiService } from '../../service/sasaki/sasaki.service';
-var AuthComponent = /** @class */ (function () {
-    function AuthComponent(
-        // private sasaki: SasakiService,
-        awsCognito, router) {
-        this.awsCognito = awsCognito;
-        this.router = router;
-    }
-    AuthComponent.prototype.ngOnInit = function () {
-        this.isLoading = false;
-    };
-    AuthComponent.prototype.signIn = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                try {
-                    // const result = await this.sasaki.auth.signIn();
-                    // this.sasaki.credentials = result;
-                    this.isLoading = true;
-                    this.router.navigate(['/']);
-                }
-                catch (error) {
-                    console.error(error);
-                    this.isLoading = false;
-                }
-                return [2 /*return*/];
-            });
-        });
-    };
-    AuthComponent.prototype.signInWithTerminal = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var err_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 4, , 5]);
-                        return [4 /*yield*/, this.awsCognito.authenticateWithTerminal()];
-                    case 1:
-                        _a.sent();
-                        return [4 /*yield*/, this.awsCognito.updateRecords('test', {
-                                test: 'test1',
-                                test2: 'test2'
-                            })];
-                    case 2:
-                        _a.sent();
-                        return [4 /*yield*/, this.awsCognito.getRecords('tttt')];
-                    case 3:
-                        _a.sent();
-                        return [3 /*break*/, 5];
-                    case 4:
-                        err_1 = _a.sent();
-                        console.log(err_1);
-                        return [3 /*break*/, 5];
-                    case 5: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    AuthComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-auth',
-            template: __webpack_require__("../../../../../src/app/component/auth/auth.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/component/auth/auth.component.scss")]
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object])
-    ], AuthComponent);
-    return AuthComponent;
-    var _a, _b;
-}());
-
-//# sourceMappingURL=auth.component.js.map
 
 /***/ }),
 
@@ -1087,7 +916,6 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogoutComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1137,35 +965,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
  */
 
 
-
 var LogoutComponent = /** @class */ (function () {
-    function LogoutComponent(router, sasaki) {
+    function LogoutComponent(router) {
         this.router = router;
-        this.sasaki = sasaki;
         this.close = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     LogoutComponent.prototype.ngOnInit = function () {
     };
     LogoutComponent.prototype.logout = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var error_1;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.sasaki.auth.signOut()];
-                    case 1:
-                        _a.sent();
-                        console.log('logout');
-                        this.sasaki.credentials = null;
-                        this.router.navigate(['/auth']);
-                        return [3 /*break*/, 3];
-                    case 2:
-                        error_1 = _a.sent();
-                        console.error(error_1);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                try {
+                    this.router.navigate(['/']);
                 }
+                catch (error) {
+                    console.error(error);
+                }
+                return [2 /*return*/];
             });
         });
     };
@@ -1183,10 +999,10 @@ var LogoutComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/component/logout/logout.component.html"),
             styles: [__webpack_require__("../../../../../src/app/component/logout/logout.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object])
     ], LogoutComponent);
     return LogoutComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=logout.component.js.map
@@ -1196,7 +1012,7 @@ var LogoutComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/navigation/navigation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<ul>\n    <li routerLink=\"/ticket\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-ticket-holder-white\"></div>\n        <div>チケットホルダー</div>\n    </li>\n    <li routerLink=\"/purchase\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>チケット購入</div>\n    </li>\n    <li routerLink=\"/point\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>ポイント管理</div>\n    </li>\n</ul>"
+module.exports = "<ul>\n    <li routerLink=\"/ticket\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-ticket-holder-white\"></div>\n        <div>チケットホルダー</div>\n    </li>\n    <li routerLink=\"/purchase\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>チケット購入</div>\n    </li>\n</ul>"
 
 /***/ }),
 
@@ -1503,172 +1319,6 @@ var PrivacyComponent = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=privacy.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/component/profile/profile.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"contents\">\n    <div class=\"inner\">\n        <p class=\"mb-middle text-center\">該当の項目を編集して更新を押してください。</p>\n        <form [formGroup]=\"updateForm\" (ngSubmit)=\"submit()\">\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">メールアドレス</label>\n                <input type=\"email\" class=\"form-control\" name=\"mail\" [formControl]=\"updateForm.controls.mail\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.required && updateForm.controls.mail.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.maxlength && updateForm.controls.mail.dirty\">30文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.mail.errors?.email && updateForm.controls.mail.dirty\">メール形式で入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">せい</label>\n                <input type=\"text\" class=\"form-control\" name=\"familyName\" [formControl]=\"updateForm.controls.familyName\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.required && updateForm.controls.familyName.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.maxlength && updateForm.controls.familyName.dirty\">10文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.familyName.errors?.pattern && updateForm.controls.familyName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">めい</label>\n                <input type=\"text\" class=\"form-control\" name=\"givenName\" [formControl]=\"updateForm.controls.givenName\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.required && updateForm.controls.givenName.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.maxlength && updateForm.controls.givenName.dirty\">10文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.givenName.errors?.pattern && updateForm.controls.givenName.dirty\">ひらがなで入力してください</p>\n            </div>\n\n            <div class=\"mb-small\">\n                <label class=\"control-label small-text\">電話番号</label>\n                <input type=\"tel\" class=\"form-control\" name=\"telephone\" [formControl]=\"updateForm.controls.telephone\">\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.required && updateForm.controls.telephone.dirty\">必須項目</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.maxlength && updateForm.controls.telephone.dirty\">15文字以内で入力してください</p>\n                <p class=\"validation text-danger small-text\" *ngIf=\"updateForm.controls.telephone.errors?.pattern && updateForm.controls.telephone.dirty\">数字で入力してください</p>\n            </div>\n\n            <button [disabled]=\"updateForm.invalid\" type=\"submit\" class=\"btn btn-primary btn-block\">更新</button>\n        </form>\n    </div>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/component/profile/profile.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".inner {\n  padding-top: 40px; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/component/profile/profile.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__ = __webpack_require__("../../../../../src/app/service/sasaki/sasaki.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-/**
- * ProfileComponent
- */
-
-
-
-
-var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent(formBuilder, user, sasaki) {
-        this.formBuilder = formBuilder;
-        this.user = user;
-        this.sasaki = sasaki;
-        console.log('LoginComponent constructor');
-    }
-    ProfileComponent.prototype.ngOnInit = function () {
-        this.isLoading = false;
-        this.updateForm = this.formBuilder.group({
-            mail: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */](this.user.contacts.email, [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(30),
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].email
-            ]),
-            givenName: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */](this.user.contacts.givenName, [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(10),
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(/^[ぁ-ゞー]+$/)
-            ]),
-            familyName: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */](this.user.contacts.familyName, [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(10),
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(/^[ぁ-ゞー]+$/)
-            ]),
-            telephone: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */](this.user.contacts.telephone.replace(/\-/g, ''), [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(15),
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern(/^[0-9]+$/)
-            ])
-        });
-    };
-    ProfileComponent.prototype.submit = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var err_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.isLoading = true;
-                        _a.label = 1;
-                    case 1:
-                        _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, this.sasaki.people.updateContacts({
-                                personId: 'me',
-                                contacts: {
-                                    email: this.updateForm.controls.mail.value,
-                                    familyName: this.updateForm.controls.familyName.value,
-                                    givenName: this.updateForm.controls.givenName.value,
-                                    telephone: this.updateForm.controls.telephone.value
-                                }
-                            })];
-                    case 2:
-                        _a.sent();
-                        return [3 /*break*/, 4];
-                    case 3:
-                        err_1 = _a.sent();
-                        console.error('updateContacts 失敗', err_1);
-                        return [3 /*break*/, 4];
-                    case 4:
-                        this.isLoading = false;
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ProfileComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-profile',
-            template: __webpack_require__("../../../../../src/app/component/profile/profile.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/component/profile/profile.component.scss")]
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_user_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_user_user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_sasaki_sasaki_service__["a" /* SasakiService */]) === "function" && _c || Object])
-    ], ProfileComponent);
-    return ProfileComponent;
-    var _a, _b, _c;
-}());
-
-//# sourceMappingURL=profile.component.js.map
 
 /***/ }),
 
@@ -2033,7 +1683,7 @@ var ScheduleComponent = /** @class */ (function () {
                             throw new Error(response.error);
                         }
                         this.screeningEvents.individualScreeningEvents = response.result;
-                        this.filmOrder = this.screeningEvents.convertToFilmOrder();
+                        this.filmOrder = this.screeningEvents.getEventByFilmOrder();
                         return [2 /*return*/];
                 }
             });
@@ -2128,7 +1778,7 @@ var NoTicketComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/ticket/ticket-holder/ticket-holder.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <div class=\"inner\">\n        <p class=\"mb-small text-center\">購入した鑑賞作品の下記チケットのQRコードを<br>入場口スタッフに提示してください。</p>\n        <div *ngIf=\"!isLoading\">\n            <ng-template *ngIf=\"reservation.getReservationByPerformance()?.length > 0; then ticketBlock else noTicketBlock\"></ng-template>\n        </div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>\n\n<ng-template #ticketBlock>\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper\">\n            <div *ngFor=\"let reservationByPerformance of reservation.getReservationByPerformance()\" class=\"swiper-slide\">\n                <app-ticket [reservation]=\"reservationByPerformance\"></app-ticket>\n            </div>\n        </div>\n    </swiper>\n    <div class=\"pagination-wrapper\">\n        <div class=\"swiper-pagination\"></div>\n    </div>\n</ng-template>\n\n<ng-template #noTicketBlock>\n    <app-no-ticket></app-no-ticket>\n</ng-template>\n"
+module.exports = "<div class=\"contents\">\n    <div class=\"inner\">\n        <p class=\"mb-small text-center\">購入した鑑賞作品の下記チケットのQRコードを<br>入場口スタッフに提示してください。</p>\n        <div *ngIf=\"!isLoading\">\n            <div *ngIf=\"purchaseNumberOrders.length > 0;\">\n                <swiper [config]=\"config\">\n                    <div class=\"swiper-wrapper\">\n                        <div *ngFor=\"let order of purchaseNumberOrders\" class=\"swiper-slide\">\n                            <app-ticket [reservation]=\"order\"></app-ticket>\n                        </div>\n                    </div>\n                </swiper>\n                <div class=\"pagination-wrapper\">\n                    <div class=\"swiper-pagination\"></div>\n                </div>\n            </div>\n            <app-no-ticket *ngIf=\"purchaseNumberOrders.length === 0;\"></app-no-ticket>\n        </div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>\n\n"
 
 /***/ }),
 
@@ -2219,6 +1869,7 @@ var TicketHolderComponent = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         this.isLoading = true;
+                        this.purchaseNumberOrders = [];
                         this.config = {
                             pagination: '.swiper-pagination',
                             paginationClickable: true,
@@ -2231,6 +1882,7 @@ var TicketHolderComponent = /** @class */ (function () {
                     case 2:
                         reservationRecord = _a.sent();
                         this.reservation = new __WEBPACK_IMPORTED_MODULE_1__model_reservation_reservation_model__["a" /* ReservationModel */](reservationRecord);
+                        this.purchaseNumberOrders = this.reservation.getReservationByPurchaseNumberOrder();
                         return [3 /*break*/, 4];
                     case 3:
                         err_1 = _a.sent();
@@ -2268,7 +1920,7 @@ var TicketHolderComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/ticket/ticket/ticket.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <dl class=\"film\">\n            <dt class=\"icon-film-name-gray\"></dt>\n            <dd>{{ reservation.reservationFor.workPerformed.name }}</dd>\n        </dl>\n        <dl class=\"date\">\n            <dt class=\"icon-calendar-gray\"></dt>\n            <dd>{{ reservation.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{ reservation.reservationFor.startDate\n                | timeFormat: reservation.reservationFor.coaInfo.dateJouei }}-{{ reservation.reservationFor.endDate | timeFormat:\n                reservation.reservationFor.coaInfo.dateJouei }}</dd>\n        </dl>\n        <dl class=\"theater\">\n            <dt class=\"icon-location-gray\"></dt>\n            <dd>{{ reservation.reservationFor.superEvent.location.name.ja }} / {{ reservation.reservationFor.location.name.ja }}</dd>\n        </dl>\n    </div>\n    <ul>\n        <li *ngFor=\"let reservedTicket of reservation.reservedTickets\">\n            <div class=\"ticket-info\">\n                <div class=\"large-x-text mb-x-small\">{{ reservedTicket.ticketedSeat.seatNumber }}</div>\n                <div *ngIf=\"reservedTicket.coaTicketInfo.addGlasses > 0\">{{ reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>\n                <div *ngIf=\"reservedTicket.coaTicketInfo.addGlasses === 0\">{{ reservedTicket.coaTicketInfo.ticketName }}</div>\n            </div>\n            <div class=\"qr\">\n                <qr-code [value]=\"reservedTicket.ticketToken\" [size]=\"100\"></qr-code>\n            </div>\n        </li>\n    </ul>\n</div>"
+module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <dl class=\"film\">\n            <dt class=\"icon-film-name-gray\"></dt>\n            <dd>{{ reservation.acceptedOffers[0].itemOffered.reservationFor.workPerformed.name }}</dd>\n        </dl>\n        <dl class=\"date\">\n            <dt class=\"icon-calendar-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{\n                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}\n            </dd>\n        </dl>\n        <dl class=\"theater\">\n            <dt class=\"icon-location-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.superEvent.location.name.ja }} / {{ reservation.acceptedOffers[0].itemOffered.reservationFor.location.name.ja\n                }}\n            </dd>\n        </dl>\n    </div>\n    <ul>\n        <li *ngFor=\"let offer of reservation.acceptedOffers\">\n            <div class=\"ticket-info\">\n                <div class=\"mb-x-small\">{{ reservation.confirmationNumber }}</div>\n                <div class=\"large-x-text mb-x-small\">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>\n                <div *ngIf=\"offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses > 0\">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>\n                <div *ngIf=\"offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses === 0\">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>\n            </div>\n            <div class=\"qr\">\n                <qr-code [value]=\"offer.itemOffered.reservedTicket.ticketToken\" [size]=\"100\"></qr-code>\n            </div>\n        </li>\n    </ul>\n</div>"
 
 /***/ }),
 
@@ -2296,6 +1948,8 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TicketComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__ = __webpack_require__("../../../../@motionpicture/sskts-api-javascript-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2309,6 +1963,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * TicketComponent
  */
 
+
 var TicketComponent = /** @class */ (function () {
     function TicketComponent() {
     }
@@ -2317,7 +1972,7 @@ var TicketComponent = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-        __metadata("design:type", Object)
+        __metadata("design:type", typeof (_a = ((_b = ((_c = (typeof __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__ !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__).factory) && _c).order) && _b).IOrder) === "function" && _a || Object)
     ], TicketComponent.prototype, "reservation", void 0);
     TicketComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -2334,6 +1989,7 @@ var TicketComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], TicketComponent);
     return TicketComponent;
+    var _b, _c, _a;
 }());
 
 //# sourceMappingURL=ticket.component.js.map
@@ -2446,22 +2102,25 @@ var WalkThroughComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
+                        _a.trys.push([0, 4, , 5]);
                         this.isLoading = true;
+                        return [4 /*yield*/, this.awsCognito.authenticateWithTerminal()];
+                    case 1:
+                        _a.sent();
                         return [4 /*yield*/, this.awsCognito.updateRecords('user', {
                                 updateAt: __WEBPACK_IMPORTED_MODULE_2_moment__().toISOString()
                             })];
-                    case 1:
-                        _a.sent();
-                        return [4 /*yield*/, this.router.navigate(['/'])];
                     case 2:
                         _a.sent();
-                        return [3 /*break*/, 4];
+                        return [4 /*yield*/, this.router.navigate(['/'])];
                     case 3:
+                        _a.sent();
+                        return [3 /*break*/, 5];
+                    case 4:
                         error_1 = _a.sent();
                         console.error(error_1);
-                        return [3 /*break*/, 4];
-                    case 4:
+                        return [3 /*break*/, 5];
+                    case 5:
                         this.isLoading = false;
                         return [2 /*return*/];
                 }
@@ -2489,44 +2148,32 @@ var WalkThroughComponent = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReservationModel; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__("../../../../moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
+
 var ReservationModel = /** @class */ (function () {
     function ReservationModel(args) {
         if (args === undefined) {
             args = {};
         }
-        this.reservationOwnerships = (args.reservationOwnerships === undefined) ? [] : args.reservationOwnerships;
+        this.orders = (args.orders === undefined) ? [] : args.orders;
     }
     /**
      * パフォーマンスごとの予約情報取得
-     * @method getReservationByPerformance
+     * @method getReservationByPurchaseNumber
      */
-    ReservationModel.prototype.getReservationByPerformance = function () {
-        var _this = this;
-        var reservationsIdList = [];
-        this.reservationOwnerships.forEach(function (reservationOwnership) {
-            var reservationsId = reservationOwnership.typeOfGood.reservationFor.identifier;
-            if (reservationsIdList.indexOf(reservationsId) === -1) {
-                reservationsIdList.push(reservationsId);
+    ReservationModel.prototype.getReservationByPurchaseNumberOrder = function () {
+        return this.orders.filter(function (order) {
+            if (order.acceptedOffers.length === 0) {
+                return false;
             }
+            var endDate = __WEBPACK_IMPORTED_MODULE_0_moment__(order.acceptedOffers[0].itemOffered.reservationFor.endDate);
+            return (endDate.unix() > __WEBPACK_IMPORTED_MODULE_0_moment__().unix());
         });
-        var reservations = reservationsIdList.map(function (reservationsId) {
-            var reservationOwnerships = _this.reservationOwnerships.filter(function (reservationOwnership) {
-                return (reservationOwnership.typeOfGood.reservationFor.identifier === reservationsId);
-            });
-            return {
-                id: reservationsId,
-                reservationFor: reservationOwnerships[0].typeOfGood.reservationFor,
-                reservedTickets: reservationOwnerships.map(function (reservationOwnership) {
-                    return reservationOwnership.typeOfGood.reservedTicket;
-                })
-            };
-        });
-        console.log('reservations:', reservations);
-        return reservations;
     };
     ReservationModel.prototype.convertToRecord = function () {
         return {
-            reservationOwnerships: this.reservationOwnerships
+            reservationOwnerships: this.orders
         };
     };
     return ReservationModel;
@@ -2543,9 +2190,6 @@ var ReservationModel = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ScreeningEventsModel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__("../../../../moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
-/**
- * ScreeningEventsModel
- */
 
 /**
  * 販売終了時間 30分前
@@ -2560,10 +2204,10 @@ var ScreeningEventsModel = /** @class */ (function () {
     }
     /**
      * 時間別へ変換
-     * @function convertToChronologicalOrder
+     * @function getEventByChronologicalOrder
      * @returns {chronological[]}
      */
-    ScreeningEventsModel.prototype.convertToChronologicalOrder = function () {
+    ScreeningEventsModel.prototype.getEventByChronologicalOrder = function () {
         var results = [];
         this.individualScreeningEvents.forEach(function (performance) {
             // 販売可能時間判定
@@ -2577,10 +2221,10 @@ var ScreeningEventsModel = /** @class */ (function () {
     };
     /**
      * 作品別へ変換
-     * @function convertToFilmOrder
+     * @function getEventByFilmOrder
      * @returns {IFilmOrder[]}
      */
-    ScreeningEventsModel.prototype.convertToFilmOrder = function () {
+    ScreeningEventsModel.prototype.getEventByFilmOrder = function () {
         var results = [];
         this.individualScreeningEvents.forEach(function (performance) {
             // 販売可能時間判定
@@ -3037,19 +2681,12 @@ var AwsCognitoService = /** @class */ (function () {
     AwsCognitoService.prototype.authenticateWithTerminal = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].region = AwsCognitoService_1.REGION;
-                        __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials = new __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["CognitoIdentityCredentials"]({
-                            IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID
-                        });
-                        this.credentials = __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials;
-                        return [4 /*yield*/, this.credentials.getPromise()];
-                    case 1:
-                        _a.sent();
-                        console.log(this.credentials.identityId);
-                        return [2 /*return*/];
-                }
+                __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].region = AwsCognitoService_1.REGION;
+                __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials = new __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["CognitoIdentityCredentials"]({
+                    IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID
+                });
+                this.credentials = __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials;
+                return [2 /*return*/];
             });
         });
     };
@@ -3170,81 +2807,6 @@ var AwsCognitoService = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=aws-cognito.service.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/service/sasaki/sasaki.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SasakiService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__ = __webpack_require__("../../../../@motionpicture/sskts-api-javascript-client/lib/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-/**
- * SasakiService
- */
-
-
-
-var SasakiService = /** @class */ (function () {
-    function SasakiService() {
-        this.credentials = null;
-        var scopes = [
-            'phone', 'openid', 'email', 'aws.cognito.signin.user.admin', 'profile',
-            'https://sskts-api-development.azurewebsites.net/transactions',
-            'https://sskts-api-development.azurewebsites.net/events.read-only',
-            'https://sskts-api-development.azurewebsites.net/organizations.read-only',
-            'https://sskts-api-development.azurewebsites.net/people.contacts',
-            'https://sskts-api-development.azurewebsites.net/people.creditCards',
-            'https://sskts-api-development.azurewebsites.net/people.ownershipInfos.read-only',
-            'https://sskts-api-development.azurewebsites.net/places.read-only'
-        ];
-        var options = {
-            domain: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].sasakiAuthDomain,
-            clientId: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].clientId,
-            responseType: 'token',
-            redirectUri: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].sasakiAuthRedirectUri,
-            logoutUri: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].sasakiAuthLogoutUri,
-            scope: scopes.join(' '),
-            state: '12345',
-            nonce: null,
-            tokenIssuer: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].tokenIssuer
-        };
-        console.log('options-----', options, process);
-        this.auth = __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__["createAuthInstance"](options);
-        this.people = new __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__["service"].Person({
-            auth: this.auth,
-            endpoint: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].sasakiAPIEndpoint
-        });
-        this.events = new __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__["service"].Event({
-            auth: this.auth,
-            endpoint: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].sasakiAPIEndpoint
-        });
-        this.place = new __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__["service"].Place({
-            auth: this.auth,
-            endpoint: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].sasakiAPIEndpoint
-        });
-    }
-    SasakiService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [])
-    ], SasakiService);
-    return SasakiService;
-}());
-
-//# sourceMappingURL=sasaki.service.js.map
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("../../../../process/browser.js")))
 
 /***/ }),
 

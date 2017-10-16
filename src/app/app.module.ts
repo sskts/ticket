@@ -12,7 +12,6 @@ import { SwiperModule } from 'angular2-useful-swiper';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './component/about/about.component';
 import { AppComponent } from './component/app/app.component';
-import { AuthComponent } from './component/auth/auth.component';
 import { BaseComponent } from './component/base/base.component';
 import { ErrorComponent } from './component/error/error.component';
 import { HeaderMenuComponent } from './component/header-menu/header-menu.component';
@@ -24,7 +23,6 @@ import { NavigationComponent } from './component/navigation/navigation.component
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { PolicyComponent } from './component/policy/policy.component';
 import { PrivacyComponent } from './component/privacy/privacy.component';
-import { ProfileComponent } from './component/profile/profile.component';
 import { ChronologicalOrderComponent } from './component/purchase/chronological-order/chronological-order.component';
 import { FilmOrderComponent } from './component/purchase/film-order/film-order.component';
 import { ScheduleComponent } from './component/purchase/schedule/schedule.component';
@@ -37,7 +35,6 @@ import { DurationPipe } from './pipe/duration/duration.pipe';
 import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { AwsCognitoService } from './service/aws-cognito/aws-cognito.service';
-import { SasakiService } from './service/sasaki/sasaki.service';
 import { UserService } from './service/user/user.service';
 
 // tslint:disable-next-line:no-stateless-class
@@ -60,13 +57,11 @@ import { UserService } from './service/user/user.service';
     NoTicketComponent,
     AboutComponent,
     LoadingComponent,
-    ProfileComponent,
     PolicyComponent,
     LawComponent,
     PrivacyComponent,
     LogoutComponent,
     HeaderMenuComponent,
-    AuthComponent,
     ErrorComponent
   ],
   imports: [
@@ -80,7 +75,6 @@ import { UserService } from './service/user/user.service';
     QRCodeModule
   ],
   providers: [
-    SasakiService,
     AuthGuardService,
     UserService,
     AwsCognitoService

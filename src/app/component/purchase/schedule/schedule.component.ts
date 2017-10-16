@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
-
 import { environment } from '../../../../environments/environment';
 import { IFilmOrder, ScreeningEventsModel } from '../../../model/screening-events/screening-events.model';
 
@@ -114,7 +113,7 @@ export class ScheduleComponent implements OnInit {
             throw new Error(response.error);
         }
         this.screeningEvents.individualScreeningEvents = response.result;
-        this.filmOrder = this.screeningEvents.convertToFilmOrder();
+        this.filmOrder = this.screeningEvents.getEventByFilmOrder();
     }
 
 }

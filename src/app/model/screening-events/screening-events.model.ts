@@ -1,9 +1,8 @@
 /**
  * ScreeningEventsModel
  */
-import * as moment from 'moment';
-
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
+import * as moment from 'moment';
 
 export type IIndividualScreeningEvent = sasaki.factory.event.individualScreeningEvent.IEventWithOffer;
 
@@ -29,10 +28,10 @@ export class ScreeningEventsModel {
 
     /**
      * 時間別へ変換
-     * @function convertToChronologicalOrder
+     * @function getEventByChronologicalOrder
      * @returns {chronological[]}
      */
-    public convertToChronologicalOrder() {
+    public getEventByChronologicalOrder() {
         const results: IIndividualScreeningEvent[] = [];
         this.individualScreeningEvents.forEach((performance) => {
             // 販売可能時間判定
@@ -47,10 +46,10 @@ export class ScreeningEventsModel {
     }
     /**
      * 作品別へ変換
-     * @function convertToFilmOrder
+     * @function getEventByFilmOrder
      * @returns {IFilmOrder[]}
      */
-    public convertToFilmOrder() {
+    public getEventByFilmOrder() {
         const results: IFilmOrder[] = [];
         this.individualScreeningEvents.forEach((performance) => {
             // 販売可能時間判定

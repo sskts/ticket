@@ -4,8 +4,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { SasakiService } from '../../service/sasaki/sasaki.service';
-
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.component.html',
@@ -16,7 +14,6 @@ export class LogoutComponent implements OnInit {
   @Output() public close: EventEmitter<{}> = new EventEmitter();
   constructor(
     private router: Router,
-    private sasaki: SasakiService
   ) { }
 
   public ngOnInit() {
@@ -24,10 +21,7 @@ export class LogoutComponent implements OnInit {
 
   public async logout() {
     try {
-      await this.sasaki.auth.signOut();
-      console.log('logout');
-      this.sasaki.credentials = null;
-      this.router.navigate(['/auth']);
+      this.router.navigate(['/']);
     } catch (error) {
       console.error(error);
     }

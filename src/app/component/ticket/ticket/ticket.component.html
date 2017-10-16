@@ -2,28 +2,35 @@
     <div class="info">
         <dl class="film">
             <dt class="icon-film-name-gray"></dt>
-            <dd>{{ reservation.reservationFor.workPerformed.name }}</dd>
+            <dd>{{ reservation.acceptedOffers[0].itemOffered.reservationFor.workPerformed.name }}</dd>
         </dl>
         <dl class="date">
             <dt class="icon-calendar-gray"></dt>
-            <dd>{{ reservation.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{ reservation.reservationFor.startDate
-                | timeFormat: reservation.reservationFor.coaInfo.dateJouei }}-{{ reservation.reservationFor.endDate | timeFormat:
-                reservation.reservationFor.coaInfo.dateJouei }}</dd>
+            <dd>
+                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{
+                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei
+                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei
+                }}
+            </dd>
         </dl>
         <dl class="theater">
             <dt class="icon-location-gray"></dt>
-            <dd>{{ reservation.reservationFor.superEvent.location.name.ja }} / {{ reservation.reservationFor.location.name.ja }}</dd>
+            <dd>
+                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.superEvent.location.name.ja }} / {{ reservation.acceptedOffers[0].itemOffered.reservationFor.location.name.ja
+                }}
+            </dd>
         </dl>
     </div>
     <ul>
-        <li *ngFor="let reservedTicket of reservation.reservedTickets">
+        <li *ngFor="let offer of reservation.acceptedOffers">
             <div class="ticket-info">
-                <div class="large-x-text mb-x-small">{{ reservedTicket.ticketedSeat.seatNumber }}</div>
-                <div *ngIf="reservedTicket.coaTicketInfo.addGlasses > 0">{{ reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>
-                <div *ngIf="reservedTicket.coaTicketInfo.addGlasses === 0">{{ reservedTicket.coaTicketInfo.ticketName }}</div>
+                <div class="mb-x-small">{{ reservation.confirmationNumber }}</div>
+                <div class="large-x-text mb-x-small">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>
+                <div *ngIf="offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses > 0">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>
+                <div *ngIf="offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses === 0">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>
             </div>
             <div class="qr">
-                <qr-code [value]="reservedTicket.ticketToken" [size]="100"></qr-code>
+                <qr-code [value]="offer.itemOffered.reservedTicket.ticketToken" [size]="100"></qr-code>
             </div>
         </li>
     </ul>

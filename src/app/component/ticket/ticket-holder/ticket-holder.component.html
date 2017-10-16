@@ -2,25 +2,21 @@
     <div class="inner">
         <p class="mb-small text-center">購入した鑑賞作品の下記チケットのQRコードを<br>入場口スタッフに提示してください。</p>
         <div *ngIf="!isLoading">
-            <ng-template *ngIf="reservation.getReservationByPerformance()?.length > 0; then ticketBlock else noTicketBlock"></ng-template>
+            <div *ngIf="purchaseNumberOrders.length > 0;">
+                <swiper [config]="config">
+                    <div class="swiper-wrapper">
+                        <div *ngFor="let order of purchaseNumberOrders" class="swiper-slide">
+                            <app-ticket [reservation]="order"></app-ticket>
+                        </div>
+                    </div>
+                </swiper>
+                <div class="pagination-wrapper">
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <app-no-ticket *ngIf="purchaseNumberOrders.length === 0;"></app-no-ticket>
         </div>
     </div>
 </div>
 <app-loading *ngIf="isLoading"></app-loading>
 
-<ng-template #ticketBlock>
-    <swiper [config]="config">
-        <div class="swiper-wrapper">
-            <div *ngFor="let reservationByPerformance of reservation.getReservationByPerformance()" class="swiper-slide">
-                <app-ticket [reservation]="reservationByPerformance"></app-ticket>
-            </div>
-        </div>
-    </swiper>
-    <div class="pagination-wrapper">
-        <div class="swiper-pagination"></div>
-    </div>
-</ng-template>
-
-<ng-template #noTicketBlock>
-    <app-no-ticket></app-no-ticket>
-</ng-template>

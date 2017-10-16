@@ -2,7 +2,6 @@
  * FilmOrderComponent
  */
 import { Component, Input, OnInit } from '@angular/core';
-
 import { environment } from '../../../../environments/environment';
 import { IIndividualScreeningEvent } from '../../../model/screening-events/screening-events.model';
 import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.service';

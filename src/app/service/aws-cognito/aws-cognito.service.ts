@@ -27,8 +27,6 @@ export class AwsCognitoService {
             IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
         });
         this.credentials = (<AWS.CognitoIdentityCredentials>AWS.config.credentials);
-        await this.credentials.getPromise();
-        console.log(this.credentials.identityId);
     }
 
     /**

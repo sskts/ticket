@@ -4,7 +4,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
-
 import { AwsCognitoService } from '../../service/aws-cognito/aws-cognito.service';
 
 @Component({
@@ -35,6 +34,7 @@ export class WalkThroughComponent implements OnInit {
     public async signIn() {
         try {
             this.isLoading = true;
+            await this.awsCognito.authenticateWithTerminal();
             await this.awsCognito.updateRecords('user', {
                 updateAt: moment().toISOString()
             });
