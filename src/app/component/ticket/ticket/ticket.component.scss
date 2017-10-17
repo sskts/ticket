@@ -32,15 +32,22 @@ ul {
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid #AAA;
+        position: relative;
         &:last-child {
             border-bottom: none;
         }
         .ticket-info {
             text-align: center;
-            width: calc(100% - 150px);
+            width: calc(100% - 140px);
+            .index {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                color: #BCBCBC;
+            }
         }
         .qr {
-            padding: 10px;
+            padding: 20px;
             background-color: #EEE;
             qr-code {
                 display: block;

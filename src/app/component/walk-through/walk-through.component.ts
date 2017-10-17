@@ -27,7 +27,10 @@ export class WalkThroughComponent implements OnInit {
         this.config = {
             pagination: '.swiper-pagination',
             paginationClickable: true,
-            spaceBetween: 30
+            spaceBetween: 30,
+            onSlideChangeEnd: (swiper) => {
+                this.step = swiper.activeIndex;
+            }
         };
     }
 

@@ -1,11 +1,30 @@
-.walk-through-wrapper {
-    background: linear-gradient(135deg, rgba(0,160,233,1) 0%,rgba(0,33,107,1) 100%);
+.contents {
+    transition: all 1s;
 }
+.step-0 {
+    background-color: rgb(0, 124, 177);
+}
+.step-1 {
+    background-color: rgb(0, 107, 150);
+}
+.step-2 {
+    background-color: rgb(0, 90, 126);
+}
+.step-3 {
+    background-color: rgb(0, 73, 100);
+}
+.step-4 {
+    background-color: rgb(0, 36, 48);
+}
+
 .inner {
     position: relative;
     width: 100vw;
     height: 100vh;
     padding: 50px 20px;
+    .btn-primary {
+        bottom: 30px;
+    }
 }
 .under-line {
     border-bottom: 4px solid #F4D600;
