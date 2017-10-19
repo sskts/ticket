@@ -24,7 +24,7 @@ export const environment = {
     sasakiAuthRedirectUri: 'https://localhost:3333/assets/signIn.html',
     sasakiAuthLogoutUri: 'https://localhost:3333/assets/signOut.html',
     tokenIssuer: 'https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_bQcyLA7Jq',
-    sasakiAPIEndpoint: 'https://sskts-api-development-preview.azurewebsites.net',
+    sasakiAPIEndpoint: 'https://sskts-api-development.azurewebsites.net',
 
     resourceServerDomain: 'https://sskts-api-development.azurewebsites.net',
 

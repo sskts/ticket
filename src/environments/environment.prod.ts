@@ -26,12 +26,12 @@ export const environment = {
     sasakiAuthRedirectUri: 'https://sskts-ticket-development.azurewebsites.net/signIn',
     sasakiAuthLogoutUri: 'https://sskts-ticket-development.azurewebsites.net/signOut',
     tokenIssuer: 'https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_bQcyLA7Jq',
-    sasakiAPIEndpoint: 'https://sskts-api-development-preview.azurewebsites.net',
+    sasakiAPIEndpoint: 'https://sskts-api-development.azurewebsites.net',
 
     resourceServerDomain: 'https://sskts-api-development.azurewebsites.net',
 
     // tslint:disable-next-line:no-http-string
     portalSite: 'http://www.cinemasunshine.co.jp',
     // tslint:disable-next-line:no-http-string
-    ticketingSite: 'https://sskts-frontend-development-preview.azurewebsites.net'
+    ticketingSite: 'https://sskts-frontend-development.azurewebsites.net'
 };
