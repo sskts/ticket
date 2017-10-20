@@ -2,6 +2,7 @@
  * FilmOrderComponent
  */
 import { Component, Input, OnInit } from '@angular/core';
+import * as moment from 'moment';
 import { environment } from '../../../../environments/environment';
 import { IIndividualScreeningEvent } from '../../../model/screening-events/screening-events.model';
 import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.service';
@@ -17,13 +18,18 @@ export class FilmOrderComponent implements OnInit {
         films: IIndividualScreeningEvent[];
     };
     public filmInfo: IIndividualScreeningEvent;
+    public moment: typeof moment;
+    public nowDate: moment.Moment;
 
     constructor(
         private awsCognito: AwsCognitoService
     ) { }
 
     public ngOnInit() {
+        this.moment = moment;
+        this.nowDate = moment();
         this.filmInfo = this.data.films[0];
+        console.log(10 <= 111);
     }
 
     public performanceSelect(data: IIndividualScreeningEvent) {

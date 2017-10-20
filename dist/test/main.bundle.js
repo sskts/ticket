@@ -127,18 +127,19 @@ var AppRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__component_policy_policy_component__ = __webpack_require__("../../../../../src/app/component/policy/policy.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__component_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/component/privacy/privacy.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__component_purchase_chronological_order_chronological_order_component__ = __webpack_require__("../../../../../src/app/component/purchase/chronological-order/chronological-order.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__component_purchase_film_order_film_order_component__ = __webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__component_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/component/purchase/schedule/schedule.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__component_ticket_no_ticket_no_ticket_component__ = __webpack_require__("../../../../../src/app/component/ticket/no-ticket/no-ticket.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__component_ticket_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket-holder/ticket-holder.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__component_ticket_ticket_ticket_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket/ticket.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__component_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/component/walk-through/walk-through.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pipe_availability_availability_pipe__ = __webpack_require__("../../../../../src/app/pipe/availability/availability.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pipe_duration_duration_pipe__ = __webpack_require__("../../../../../src/app/pipe/duration/duration.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pipe_time_format_time_format_pipe__ = __webpack_require__("../../../../../src/app/pipe/time-format/time-format.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__component_purchase_film_order_performance_film_order_performance_component__ = __webpack_require__("../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__component_purchase_film_order_film_order_component__ = __webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__component_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/component/purchase/schedule/schedule.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__component_ticket_no_ticket_no_ticket_component__ = __webpack_require__("../../../../../src/app/component/ticket/no-ticket/no-ticket.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__component_ticket_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket-holder/ticket-holder.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__component_ticket_ticket_ticket_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket/ticket.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__component_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/component/walk-through/walk-through.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pipe_availability_availability_pipe__ = __webpack_require__("../../../../../src/app/pipe/availability/availability.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pipe_duration_duration_pipe__ = __webpack_require__("../../../../../src/app/pipe/duration/duration.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pipe_time_format_time_format_pipe__ = __webpack_require__("../../../../../src/app/pipe/time-format/time-format.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__service_auth_guard_auth_guard_service__ = __webpack_require__("../../../../../src/app/service/auth-guard/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -182,6 +183,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // tslint:disable-next-line:no-stateless-class
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -190,20 +192,20 @@ var AppModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_9__component_app_app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__component_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__component_ticket_ticket_ticket_component__["a" /* TicketComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__component_walk_through_walk_through_component__["a" /* WalkThroughComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__component_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__component_ticket_ticket_ticket_component__["a" /* TicketComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__component_walk_through_walk_through_component__["a" /* WalkThroughComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__component_navigation_navigation_component__["a" /* NavigationComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__component_header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__component_purchase_schedule_schedule_component__["a" /* ScheduleComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__component_purchase_schedule_schedule_component__["a" /* ScheduleComponent */],
                 __WEBPACK_IMPORTED_MODULE_18__component_not_found_not_found_component__["a" /* NotFoundComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__component_base_base_component__["a" /* BaseComponent */],
-                __WEBPACK_IMPORTED_MODULE_30__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
+                __WEBPACK_IMPORTED_MODULE_31__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
                 __WEBPACK_IMPORTED_MODULE_21__component_purchase_chronological_order_chronological_order_component__["a" /* ChronologicalOrderComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__component_purchase_film_order_film_order_component__["a" /* FilmOrderComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__pipe_availability_availability_pipe__["a" /* AvailabilityPipe */],
-                __WEBPACK_IMPORTED_MODULE_29__pipe_duration_duration_pipe__["a" /* DurationPipe */],
-                __WEBPACK_IMPORTED_MODULE_24__component_ticket_no_ticket_no_ticket_component__["a" /* NoTicketComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__component_purchase_film_order_film_order_component__["a" /* FilmOrderComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__pipe_availability_availability_pipe__["a" /* AvailabilityPipe */],
+                __WEBPACK_IMPORTED_MODULE_30__pipe_duration_duration_pipe__["a" /* DurationPipe */],
+                __WEBPACK_IMPORTED_MODULE_25__component_ticket_no_ticket_no_ticket_component__["a" /* NoTicketComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__component_about_about_component__["a" /* AboutComponent */],
                 __WEBPACK_IMPORTED_MODULE_15__component_loading_loading_component__["a" /* LoadingComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__component_policy_policy_component__["a" /* PolicyComponent */],
@@ -211,7 +213,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_20__component_privacy_privacy_component__["a" /* PrivacyComponent */],
                 __WEBPACK_IMPORTED_MODULE_16__component_logout_logout_component__["a" /* LogoutComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__component_header_menu_header_menu_component__["a" /* HeaderMenuComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__component_error_error_component__["a" /* ErrorComponent */]
+                __WEBPACK_IMPORTED_MODULE_11__component_error_error_component__["a" /* ErrorComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__component_purchase_film_order_performance_film_order_performance_component__["a" /* FilmOrderPerformanceComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
@@ -224,9 +227,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5_angular2_qrcode__["a" /* QRCodeModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_31__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
-                __WEBPACK_IMPORTED_MODULE_33__service_user_user_service__["a" /* UserService */],
-                __WEBPACK_IMPORTED_MODULE_32__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]
+                __WEBPACK_IMPORTED_MODULE_32__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
+                __WEBPACK_IMPORTED_MODULE_34__service_user_user_service__["a" /* UserService */],
+                __WEBPACK_IMPORTED_MODULE_33__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__component_app_app_component__["a" /* AppComponent */]]
         })
@@ -558,7 +561,7 @@ var ErrorComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/header-menu/header-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"cover\" [class.active]=\"isOpen\" (click)=\"close.emit()\"></div>\n\n<div class=\"menu\" [class.active]=\"isOpen\">\n    <!-- <div class=\"title\">{{ name }}</div> -->\n    <ul>\n        <li><span routerLink=\"/about\" routerLinkActive=\"active\" (click)=\"close.emit()\">このアプリについて</span></li>\n        <!-- <li><span routerLink=\"/profile\" routerLinkActive=\"active\" (click)=\"close.emit()\">ユーザー情報変更</span></li> -->\n        <li><span routerLink=\"/policy\" routerLinkActive=\"active\" (click)=\"close.emit()\">利用規約</span></li>\n        <li><span routerLink=\"/law\" routerLinkActive=\"active\" (click)=\"close.emit()\">特定商取引法に基づく表記</span></li>\n        <li><span routerLink=\"/privacy\" routerLinkActive=\"active\" (click)=\"close.emit()\">プライバシーポリシー</span></li>\n        <li><a [href]=\"portalSite\" target=\"_blank\">シネマサンシャインポータルサイト</a></li>\n        <!-- <li><span (click)=\"logout.emit()\">ログアウト</span></li> -->\n    </ul>\n</div>"
+module.exports = "<div class=\"cover\" [class.active]=\"isOpen\" (click)=\"close.emit()\"></div>\n\n<div class=\"menu\" [class.active]=\"isOpen\">\n    <!-- <div class=\"title\">{{ name }}</div> -->\n    <ul>\n        <li><span routerLink=\"/about\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-about-white\">このアプリについて</span></li>\n        <!-- <li><span routerLink=\"/profile\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-user-white\">ユーザー情報変更</span></li> -->\n        <li><span routerLink=\"/policy\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-text-white\">利用規約</span></li>\n        <li><span routerLink=\"/law\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-text-white\">特定商取引法に基づく表記</span></li>\n        <li><span routerLink=\"/privacy\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-text-white\">プライバシーポリシー</span></li>\n        <li><a [href]=\"portalSite\" target=\"_blank\" class=\"icon-inline icon-external-link-white\">シネマサンシャインポータルサイト</a></li>\n        <!-- <li><span (click)=\"logout.emit()\" class=\"icon-inline icon-logout-white\">ログアウト</span></li> -->\n    </ul>\n</div>"
 
 /***/ }),
 
@@ -570,7 +573,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".cover {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, 0.75);\n  display: none; }\n  .cover.active {\n    display: block; }\n\n.menu {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  right: -100%;\n  z-index: 20;\n  background-color: #000;\n  width: 100%;\n  overflow: scroll;\n  transition: right 0.1s; }\n  .menu.active {\n    right: 0; }\n  .menu .title {\n    background-color: #CCC;\n    color: #333;\n    padding: 30px; }\n  .menu li {\n    border-bottom: 1px solid #CCC; }\n    .menu li a, .menu li span {\n      display: block;\n      background-color: #111;\n      padding: 30px; }\n", ""]);
+exports.push([module.i, ".cover {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, 0.75);\n  display: none; }\n  .cover.active {\n    display: block; }\n\n.menu {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  right: -100%;\n  z-index: 20;\n  background-color: #000;\n  width: 100%;\n  overflow: scroll;\n  transition: right 0.1s; }\n  .menu.active {\n    right: 0; }\n  .menu .title {\n    background-color: #CCC;\n    color: #333;\n    padding: 30px 20px; }\n  .menu li {\n    border-bottom: 1px solid #CCC; }\n    .menu li a, .menu li span {\n      display: block;\n      background-color: #111;\n      padding: 30px 20px; }\n    .menu li .icon-inline:before {\n      margin-right: 20px; }\n", ""]);
 
 // exports
 
@@ -1012,7 +1015,7 @@ var LogoutComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/navigation/navigation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<ul>\n    <li routerLink=\"/ticket\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-ticket-holder-white\"></div>\n        <div>チケットホルダー</div>\n    </li>\n    <li routerLink=\"/purchase\" routerLinkActive=\"active\">\n        <div class=\"mb-x-small icon-purchase-white\"></div>\n        <div>チケット購入</div>\n    </li>\n</ul>"
+module.exports = "<ul>\n    <li routerLink=\"/ticket\" routerLinkActive=\"active\">\n        <div class=\"mb-xx-small icon-ticket-holder-white\"></div>\n        <div>チケットホルダー</div>\n    </li>\n    <li routerLink=\"/purchase\" routerLinkActive=\"active\">\n        <div class=\"mb-xx-small icon-purchase-white\"></div>\n        <div>チケット購入</div>\n    </li>\n</ul>"
 
 /***/ }),
 
@@ -1024,7 +1027,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  height: 60px;\n  display: block; }\n\nul {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 10;\n  display: table;\n  table-layout: fixed;\n  width: 100%;\n  height: 60px;\n  background-color: #555; }\n  ul li {\n    display: table-cell;\n    border-bottom: 5px solid #888;\n    font-size: 10px;\n    text-align: center;\n    vertical-align: middle;\n    opacity: 0.7; }\n    ul li.active {\n      background-color: #333;\n      border-bottom-color: #00A0E9;\n      opacity: 1; }\n    ul li .icon-ticket-holder-white:before, ul li .icon-purchase-white:before {\n      margin: auto; }\n", ""]);
+exports.push([module.i, ":host {\n  height: 60px;\n  display: block; }\n\nul {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 10;\n  display: table;\n  table-layout: fixed;\n  width: 100%;\n  height: 60px;\n  background-color: #2B2B2B; }\n  ul li {\n    display: table-cell;\n    border-bottom: 5px solid #4C4C4C;\n    font-size: 10px;\n    text-align: center;\n    vertical-align: middle;\n    opacity: 0.7; }\n    ul li.active {\n      background-color: #383838;\n      border-bottom-color: #00A0E9;\n      opacity: 1; }\n    ul li .icon-ticket-holder-white:before, ul li .icon-purchase-white:before {\n      margin: auto;\n      width: 25px;\n      height: 25px;\n      background-size: 25px; }\n", ""]);
 
 // exports
 
@@ -1386,10 +1389,83 @@ var ChronologicalOrderComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"performance\" [ngClass]=\"(salseFlg) ? (performance.offer.availability | availability).string : ''\" (click)=\"(salseFlg) ? performanceSelect(film) : null;\"> \n    <p class=\"mb-x-small text-center\">\n        <strong class=\"large-text\">{{ performance.startDate | timeFormat: performance.coaInfo.dateJouei }}</strong>\n        <br>\n        <span>～ {{ performance.endDate | timeFormat: performance.coaInfo.dateJouei }}</span>\n    </p>\n    <div class=\"screen text-center\">{{ performance.location.name.ja }}</div>\n    <div *ngIf=\"salseFlg\" class=\"status\" [ngClass]=\"(performance.offer.availability | availability).icon\"></div>\n    <div *ngIf=\"!salseFlg\" class=\"status window small-text\">窓口</div>\n    <div *ngIf=\"performance.coaInfo.kbnService.kubunCode === '001'\" class=\"service icon-first-show-white\"></div>\n    <div *ngIf=\"performance.coaInfo.kbnService.kubunCode === '002'\" class=\"service icon-late-show-white\"></div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  width: calc(50% - 2.5px); }\n\n.performance {\n  background-color: #B2B2B2;\n  padding: 10px;\n  margin: 0 0 5px;\n  position: relative; }\n  .performance.vacancy-large {\n    background-color: #0563C1; }\n  .performance.vacancy-little {\n    background-color: #F2C300; }\n  .performance.vacancy-full {\n    background-color: #B2B2B2; }\n  .performance .screen {\n    padding-right: 27px; }\n  .performance .status {\n    position: absolute;\n    bottom: 10px;\n    right: 10px; }\n    .performance .status.window {\n      border: 1px solid #6D6D6D;\n      padding: 2px;\n      color: #6D6D6D; }\n  .performance .service {\n    position: absolute;\n    top: 10px;\n    left: 10px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilmOrderPerformanceComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__("../../../../moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/**
+ * FilmOrderPerformanceComponent
+ */
+
+
+var FilmOrderPerformanceComponent = /** @class */ (function () {
+    function FilmOrderPerformanceComponent() {
+    }
+    FilmOrderPerformanceComponent.prototype.ngOnInit = function () {
+        this.salseFlg = __WEBPACK_IMPORTED_MODULE_1_moment__(this.performance.startDate).unix() > __WEBPACK_IMPORTED_MODULE_1_moment__().add(30, 'minutes').unix();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", typeof (_a = typeof IIndividualScreeningEvent !== "undefined" && IIndividualScreeningEvent) === "function" && _a || Object)
+    ], FilmOrderPerformanceComponent.prototype, "performance", void 0);
+    FilmOrderPerformanceComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-film-order-performance',
+            template: __webpack_require__("../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], FilmOrderPerformanceComponent);
+    return FilmOrderPerformanceComponent;
+    var _a;
+}());
+
+//# sourceMappingURL=film-order-performance.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/component/purchase/film-order/film-order.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <p class=\"title mb-x-small\">{{ filmInfo.workPerformed.name }}</p>\n        <div class=\"date small-text icon-time-gray\">{{ filmInfo.workPerformed.duration | duration:'minutes' }}分</div>\n    </div>\n    <ul>\n        <li *ngFor=\"let film of data.films\" [class]=\"(film.offer.availability | availability).string\" (click)=\"performanceSelect(film)\">\n            <p class=\"mb-x-small text-center\">\n                <strong class=\"large-text\">{{ film.startDate | timeFormat: film.coaInfo.dateJouei }}</strong><br>\n                <span>～ {{ film.endDate | timeFormat: film.coaInfo.dateJouei }}</span>\n            </p>\n            <div class=\"screen text-center\">{{ film.location.name.ja }}</div>\n            <div class=\"status\"><img [src]=\"'/assets/images/purchase/' + (film.offer.availability | availability).image\"></div>\n        </li>\n    </ul>\n</div>"
+module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <p class=\"title mb-x-small\">{{ filmInfo.workPerformed.name }}</p>\n        <div class=\"date small-text icon-time-gray text-light-gray\">{{ filmInfo.workPerformed.duration | duration: 'minutes' }}分</div>\n    </div>\n    <div class=\"performances\">\n        <app-film-order-performance *ngFor=\"let film of data.films\" [performance]=\"film\"></app-film-order-performance>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1401,7 +1477,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".inner {\n  display: block;\n  background-color: #FFF; }\n\n.info {\n  padding: 15px 10px;\n  color: #333;\n  background-color: #EEE;\n  border-bottom: 1px solid #AAA; }\n  .info .date {\n    opacity: 0.75; }\n    .info .date:before {\n      display: inline-block;\n      vertical-align: middle;\n      margin-right: 10px; }\n\nul {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  padding: 5px 5px 0; }\n  ul li {\n    width: calc(50% - 2.5px);\n    background-color: #0074A9;\n    padding: 10px;\n    margin: 0 0 5px;\n    position: relative; }\n    ul li .screen {\n      padding-right: 27px; }\n    ul li .status {\n      position: absolute;\n      bottom: 10px;\n      right: 10px; }\n      ul li .status img {\n        width: 20px;\n        height: 20px; }\n", ""]);
+exports.push([module.i, ".inner {\n  display: block;\n  background-color: #FFF; }\n\n.info {\n  padding: 15px 10px;\n  color: #333;\n  background-color: #EEE;\n  border-bottom: 1px solid #AAA; }\n  .info .date:before {\n    display: inline-block;\n    vertical-align: middle;\n    margin-right: 10px; }\n\n.performances {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  padding: 5px 5px 0; }\n", ""]);
 
 // exports
 
@@ -1417,8 +1493,10 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilmOrderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__("../../../../moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1434,16 +1512,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var FilmOrderComponent = /** @class */ (function () {
     function FilmOrderComponent(awsCognito) {
         this.awsCognito = awsCognito;
     }
     FilmOrderComponent.prototype.ngOnInit = function () {
+        this.moment = __WEBPACK_IMPORTED_MODULE_1_moment__;
+        this.nowDate = __WEBPACK_IMPORTED_MODULE_1_moment__();
         this.filmInfo = this.data.films[0];
+        console.log(10 <= 111);
     };
     FilmOrderComponent.prototype.performanceSelect = function (data) {
         location.href =
-            __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].ticketingSite + "/purchase/app.html?id=" + data.identifier + "&identityId=" + this.awsCognito.credentials.identityId;
+            __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].ticketingSite + "/purchase/app.html?id=" + data.identifier + "&identityId=" + this.awsCognito.credentials.identityId;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
@@ -1455,7 +1537,7 @@ var FilmOrderComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.html"),
             styles: [__webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _a || Object])
     ], FilmOrderComponent);
     return FilmOrderComponent;
     var _a;
@@ -1502,9 +1584,8 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__model_screening_events_screening_events_model__ = __webpack_require__("../../../../../src/app/model/screening-events/screening-events.model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_retry__ = __webpack_require__("../../../../rxjs/add/operator/retry.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_retry___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_retry__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_toPromise__ = __webpack_require__("../../../../rxjs/add/operator/toPromise.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_retry__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/retry.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_toPromise__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/toPromise.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_toPromise__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1722,7 +1803,7 @@ var ScheduleComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/ticket/no-ticket/no-ticket.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"position-center\">\n    <div class=\"mb-middle text-center\"><img src=\"/assets/images/ticket/no_ticket.svg\" width=\"103\" height=\"66\"></div>\n    <p class=\"mb-middle text-center\">現在鑑賞予定の作品はございません。</p>\n    <p class=\"text-center\"><a routerLink=\"/about\">このアプリについて</a></p>\n</div>\n<button class=\"btn btn-primary btn-block btn-bottom\" routerLink=\"/purchase\">チケットを購入</button>\n"
+module.exports = "<div class=\"position-center\">\n    <div class=\"mb-middle text-center\"><img src=\"/assets/images/ticket/no_ticket.svg\" width=\"145\" height=\"74\"></div>\n    <p class=\"mb-middle text-center\">現在鑑賞予定の作品はございません。</p>\n    <p class=\"text-center\"><a routerLink=\"/about\">このアプリについて</a></p>\n</div>\n<button class=\"btn btn-primary btn-block btn-bottom icon-purchase-white icon-inline\" routerLink=\"/purchase\">チケットを購入</button>\n"
 
 /***/ }),
 
@@ -1928,7 +2009,7 @@ var TicketHolderComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/ticket/ticket/ticket.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <dl class=\"film\">\n            <dt class=\"icon-film-name-gray\"></dt>\n            <dd>{{ reservation.acceptedOffers[0].itemOffered.reservationFor.workPerformed.name }}</dd>\n        </dl>\n        <dl class=\"date\">\n            <dt class=\"icon-calendar-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{\n                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}\n            </dd>\n        </dl>\n        <dl class=\"theater\">\n            <dt class=\"icon-location-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.superEvent.location.name.ja }} / {{ reservation.acceptedOffers[0].itemOffered.reservationFor.location.name.ja\n                }}\n            </dd>\n        </dl>\n    </div>\n    <ul>\n        <li *ngFor=\"let offer of reservation.acceptedOffers; let index = index;\">\n            <div class=\"ticket-info\">\n                <div class=\"index\">{{ (index + 1) }}/{{ reservation.acceptedOffers.length }}</div>\n                <div class=\"mb-x-small\">{{ reservation.confirmationNumber }}</div>\n                <div class=\"large-x-text mb-x-small\">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>\n                <div *ngIf=\"offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses > 0\">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>\n                <div *ngIf=\"offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses === 0\">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>\n            </div>\n            <div class=\"qr\">\n                <qr-code [value]=\"offer.itemOffered.reservedTicket.ticketToken\" [size]=\"80\"></qr-code>\n            </div>\n        </li>\n    </ul>\n</div>"
+module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <dl class=\"film\">\n            <dt class=\"icon-film-name-gray\"></dt>\n            <dd>{{ reservation.acceptedOffers[0].itemOffered.reservationFor.workPerformed.name }}</dd>\n        </dl>\n        <dl class=\"date\">\n            <dt class=\"icon-date-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{\n                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}\n            </dd>\n        </dl>\n        <dl class=\"theater\">\n            <dt class=\"icon-location-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.superEvent.location.name.ja }} / {{ reservation.acceptedOffers[0].itemOffered.reservationFor.location.name.ja\n                }}\n            </dd>\n        </dl>\n    </div>\n    <ul>\n        <li *ngFor=\"let offer of reservation.acceptedOffers; let index = index;\">\n            <div class=\"ticket-info\">\n                <div class=\"index\">{{ (index + 1) }}/{{ reservation.acceptedOffers.length }}</div>\n                <div class=\"mb-x-small\">{{ reservation.confirmationNumber }}</div>\n                <div class=\"large-x-text mb-x-small\">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>\n                <div *ngIf=\"offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses > 0\">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>\n                <div *ngIf=\"offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses === 0\">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>\n            </div>\n            <div class=\"qr\">\n                <qr-code [value]=\"offer.itemOffered.reservedTicket.ticketToken\" [size]=\"80\"></qr-code>\n            </div>\n        </li>\n    </ul>\n</div>"
 
 /***/ }),
 
@@ -2007,7 +2088,7 @@ var TicketComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/walk-through/walk-through.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\" [ngClass]=\"'step-' + step\">\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper walk-through\">\n            <div class=\"swiper-slide\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\">シネマサンシャイン<br>公式アプリへようこそ!</p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/01.svg\" width=\"118\" height=\"202\"></div>\n                </div>\n            </div>\n            <div class=\"swiper-slide\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\">いつでも<br>アプリ会員価格！</p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/02.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">お得なアプリ会員価格で<br>チケットが購入できます。</p>\n                </div>\n            </div>\n            <div class=\"swiper-slide\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\">チケットを<br>スマートに購入！</p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/03.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">一度、アプリ内で購入すると<br>面倒な購入者情報入力をスキップできます。</p>\n                </div>\n            </div>\n            <div class=\"swiper-slide\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\">スマートフォンを<br>そのままチケットに！</p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/04.svg\" width=\"274\" height=\"223\"></div>\n                    <p class=\"text-center mb-middle\">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>\n                </div>\n            </div>\n            <!-- <div class=\"swiper-slide\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\">アプリでチケットを<br>6枚購入すると1枚無料！</p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/06.svg\" width=\"118\" height=\"202\"></div>\n                    <p class=\"text-center mb-middle\">アプリ内で6枚購入すると<br>なんと1枚無料になります。</p>\n                </div>\n            </div> -->\n            <div class=\"swiper-slide\">\n                <div class=\"inner\">\n                    <p class=\"text-center large-text mb-middle\">それではアプリを<br>お楽しみください！</p>\n                    <div class=\"image text-center mb-middle\"><img src=\"/assets/images/walkThrough/05.svg\" width=\"269\" height=\"241\"></div>\n                    <button class=\"btn btn-primary btn-block btn-bottom\" (click)=\"signIn()\">アプリを始める</button>\n                </div>\n            </div>\n        </div>\n        <div class=\"swiper-pagination\"></div>\n    </swiper>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents\" [ngClass]=\"'step-' + step\">\n    <swiper [config]=\"config\">\n        <div class=\"swiper-wrapper walk-through\">\n            <div class=\"swiper-slide\">\n                <div class=\"inner\">\n                    <div class=\"position-center\">\n                        <p class=\"text-center large-text mb-middle\">シネマサンシャイン<br>公式アプリへようこそ!</p>\n                        <div class=\"image text-center\"><img src=\"/assets/images/walkThrough/welcome.svg\" width=\"230\" height=\"150\"></div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"swiper-slide\">\n                <div class=\"inner\">\n                    <div class=\"position-center\">\n                        <p class=\"text-center large-text mb-middle\">いつでも<br>アプリ会員価格！</p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/about/app_price.svg\" width=\"230\" height=\"150\"></div>\n                        <p class=\"text-center\">お得なアプリ会員価格で<br>チケットが購入できます。</p>\n                    </div>\n                </div>\n            </div>\n            <div class=\"swiper-slide\">\n                <div class=\"inner\">\n                    <div class=\"position-center\">\n                        <p class=\"text-center large-text mb-middle\">チケットを<br>スマートに購入！</p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/about/purchase_smartly.svg\" width=\"230\" height=\"150\"></div>\n                        <p class=\"text-center\">一度、アプリ内で購入すると<br>面倒な購入者情報入力をスキップできます。</p>\n                    </div>\n                </div>\n            </div>\n            <div class=\"swiper-slide\">\n                <div class=\"inner\">\n                    <div class=\"position-center\">\n                        <p class=\"text-center large-text mb-middle\">スマートフォンを<br>そのままチケットに！</p>\n                        <div class=\"image text-center mb-middle\"><img src=\"/assets/images/about/app_ticket.svg\" width=\"230\" height=\"150\"></div>\n                        <p class=\"text-center\">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>\n                    </div>\n                </div>\n            </div>\n            <div class=\"swiper-slide\">\n                <div class=\"inner\">\n                    <div class=\"position-center\">\n                        <p class=\"text-center large-text mb-xx-large\">それではアプリを<br>お楽しみください！</p>\n                        <div class=\"image text-center\"><img src=\"/assets/images/common/logo_text.svg\" width=\"150\" height=\"17\"></div>\n                    </div>\n                    <button class=\"btn btn-primary btn-block btn-bottom\" (click)=\"signIn()\">アプリを始める</button>\n                </div>\n            </div>\n        </div>\n        <div class=\"swiper-pagination\"></div>\n    </swiper>\n</div>\n\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -2019,7 +2100,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".contents {\n  transition: all 1s; }\n\n.step-0 {\n  background-color: #007cb1; }\n\n.step-1 {\n  background-color: #006b96; }\n\n.step-2 {\n  background-color: #005a7e; }\n\n.step-3 {\n  background-color: #004964; }\n\n.step-4 {\n  background-color: #002430; }\n\n.inner {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  padding: 50px 20px; }\n  .inner .btn-primary {\n    bottom: 30px; }\n\n.under-line {\n  border-bottom: 4px solid #F4D600; }\n", ""]);
+exports.push([module.i, ".contents {\n  transition: all 1s; }\n\n.step-0 {\n  background-color: #007cb1; }\n\n.step-1 {\n  background-color: #006b96; }\n\n.step-2 {\n  background-color: #005a7e; }\n\n.step-3 {\n  background-color: #004964; }\n\n.step-4 {\n  background-color: #002430; }\n\n.inner {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  padding: 50px 20px; }\n  .inner .position-center {\n    height: 300px; }\n  .inner .btn-primary {\n    bottom: 30px; }\n\n.under-line {\n  border-bottom: 4px solid #F4D600; }\n", ""]);
 
 // exports
 
@@ -2316,18 +2397,18 @@ var AvailabilityPipe = /** @class */ (function () {
         var availability = [
             {
                 symbol: '×',
-                image: 'status_03.svg',
-                string: 'full'
+                icon: 'icon-vacancy-full-white',
+                string: 'vacancy-full'
             },
             {
                 symbol: '△',
-                image: 'status_02.svg',
-                string: 'little'
+                icon: 'icon-vacancy-little-white',
+                string: 'vacancy-little'
             },
             {
                 symbol: '○',
-                image: 'status_01.svg',
-                string: 'large'
+                icon: 'icon-vacancy-large-white',
+                string: 'vacancy-large'
             }
         ];
         return (value === 0)

@@ -1,16 +1,9 @@
 <div class="inner">
     <div class="info">
         <p class="title mb-x-small">{{ filmInfo.workPerformed.name }}</p>
-        <div class="date small-text icon-time-gray">{{ filmInfo.workPerformed.duration | duration:'minutes' }}分</div>
+        <div class="date small-text icon-time-gray text-light-gray">{{ filmInfo.workPerformed.duration | duration: 'minutes' }}分</div>
     </div>
-    <ul>
-        <li *ngFor="let film of data.films" [class]="(film.offer.availability | availability).string" (click)="performanceSelect(film)">
-            <p class="mb-x-small text-center">
-                <strong class="large-text">{{ film.startDate | timeFormat: film.coaInfo.dateJouei }}</strong><br>
-                <span>～ {{ film.endDate | timeFormat: film.coaInfo.dateJouei }}</span>
-            </p>
-            <div class="screen text-center">{{ film.location.name.ja }}</div>
-            <div class="status"><img [src]="'/assets/images/purchase/' + (film.offer.availability | availability).image"></div>
-        </li>
-    </ul>
+    <div class="performances">
+        <app-film-order-performance *ngFor="let film of data.films" [performance]="film"></app-film-order-performance>
+    </div>
 </div>

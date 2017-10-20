@@ -24,6 +24,7 @@ import { NotFoundComponent } from './component/not-found/not-found.component';
 import { PolicyComponent } from './component/policy/policy.component';
 import { PrivacyComponent } from './component/privacy/privacy.component';
 import { ChronologicalOrderComponent } from './component/purchase/chronological-order/chronological-order.component';
+import { FilmOrderPerformanceComponent } from './component/purchase/film-order-performance/film-order-performance.component';
 import { FilmOrderComponent } from './component/purchase/film-order/film-order.component';
 import { ScheduleComponent } from './component/purchase/schedule/schedule.component';
 import { NoTicketComponent } from './component/ticket/no-ticket/no-ticket.component';
@@ -62,7 +63,8 @@ import { UserService } from './service/user/user.service';
     PrivacyComponent,
     LogoutComponent,
     HeaderMenuComponent,
-    ErrorComponent
+    ErrorComponent,
+    FilmOrderPerformanceComponent
   ],
   imports: [
     BrowserModule,

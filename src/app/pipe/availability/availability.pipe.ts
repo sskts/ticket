@@ -13,18 +13,18 @@ export class AvailabilityPipe implements PipeTransform {
     const availability = [
       {
         symbol: '×',
-        image: 'status_03.svg',
-        string: 'full'
+        icon: 'icon-vacancy-full-white',
+        string: 'vacancy-full'
       },
       {
         symbol: '△',
-        image: 'status_02.svg',
-        string: 'little'
+        icon: 'icon-vacancy-little-white',
+        string: 'vacancy-little'
       },
       {
         symbol: '○',
-        image: 'status_01.svg',
-        string: 'large'
+        icon: 'icon-vacancy-large-white',
+        string: 'vacancy-large'
       }
     ];
 

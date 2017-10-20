@@ -38,9 +38,7 @@ p {
 div {
     line-height: 1;
 }
-img {
-    width: 100%;
-}
+
 input[type=text],
 input[type=number],
 input[type=password],
@@ -123,6 +121,9 @@ option {
     transform: translate(-50%,-50%);
 }
 
+.mb-xx-small {
+    margin-bottom: 5px;
+}
 .mb-x-small {
     margin-bottom: 10px;
 }
@@ -134,6 +135,12 @@ option {
 }
 .mb-large {
     margin-bottom: 40px;
+}
+.mb-x-large {
+    margin-bottom: 50px;
+}
+.mb-xx-large {
+    margin-bottom: 100px;
 }
 
 .small-text {
@@ -170,8 +177,12 @@ option {
     color: #FFF;
 }
 
-.text-danger {
+.text-red {
     color: red;
+}
+
+.text-light-gray {
+    color: #6D6D6D;
 }
 
 .validation {
