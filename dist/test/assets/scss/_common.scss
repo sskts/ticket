@@ -8,7 +8,6 @@ body {
     -webkit-touch-callout: none;
     user-select: none;
     background-color: #000;
-    background: linear-gradient(to bottom, rgba(45,45,45,1) 0%,rgba(0,0,0,1) 100%);
     background-attachment: fixed;
     font-size: 12px;
     color: #FFF;
@@ -261,7 +260,7 @@ option {
     }
 }
 
-.bg-image-blue {
-    background: url(/assets/images/common/bg_01.svg);
-    background-size: cover;
+.bg-01 {
+    background: url(/assets/images/common/bg_01.png);
+    background-size: 100% auto;
 }
