@@ -10,5 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
     constructor() {}
 
-    public ngOnInit() {}
+    public ngOnInit() {
+        console.log('AppComponent');
+    }
 }

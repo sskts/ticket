@@ -334,7 +334,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
     }
-    AppComponent.prototype.ngOnInit = function () { };
+    AppComponent.prototype.ngOnInit = function () {
+        console.log('AppComponent');
+    };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
@@ -1392,7 +1394,7 @@ var ChronologicalOrderComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"performance\" [ngClass]=\"(salseFlg) ? (performance.offer.availability | availability).string : ''\" (click)=\"(salseFlg) ? performanceSelect(film) : null;\"> \n    <p class=\"mb-x-small text-center\">\n        <strong class=\"large-text\">{{ performance.startDate | timeFormat: performance.coaInfo.dateJouei }}</strong>\n        <br>\n        <span>～ {{ performance.endDate | timeFormat: performance.coaInfo.dateJouei }}</span>\n    </p>\n    <div class=\"screen text-center\">{{ performance.location.name.ja }}</div>\n    <div *ngIf=\"salseFlg\" class=\"status\" [ngClass]=\"(performance.offer.availability | availability).icon\"></div>\n    <div *ngIf=\"!salseFlg\" class=\"status window small-text\">窓口</div>\n    <div *ngIf=\"performance.coaInfo.kbnService.kubunCode === '001'\" class=\"service icon-first-show-white\"></div>\n    <div *ngIf=\"performance.coaInfo.kbnService.kubunCode === '002'\" class=\"service icon-late-show-white\"></div>\n</div>"
+module.exports = "<div class=\"performance\" [ngClass]=\"(salseFlg) ? (performance.offer.availability | availability).string : ''\" (click)=\"(salseFlg) ? performanceSelect(performance) : null;\"> \n    <p class=\"mb-x-small text-center\">\n        <strong class=\"large-text\">{{ performance.startDate | timeFormat: performance.coaInfo.dateJouei }}</strong>\n        <br>\n        <span>～ {{ performance.endDate | timeFormat: performance.coaInfo.dateJouei }}</span>\n    </p>\n    <div class=\"screen text-center\">{{ performance.location.name.ja }}</div>\n    <div *ngIf=\"salseFlg\" class=\"status\" [ngClass]=\"(performance.offer.availability | availability).icon\"></div>\n    <div *ngIf=\"!salseFlg\" class=\"status window small-text\">窓口</div>\n    <div *ngIf=\"performance.coaInfo.kbnService.kubunCode === '001'\" class=\"service icon-first-show-white\"></div>\n    <div *ngIf=\"performance.coaInfo.kbnService.kubunCode === '002'\" class=\"service icon-late-show-white\"></div>\n</div>"
 
 /***/ }),
 
@@ -1422,6 +1424,8 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__("../../../../moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1436,11 +1440,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
+
+
 var FilmOrderPerformanceComponent = /** @class */ (function () {
-    function FilmOrderPerformanceComponent() {
+    function FilmOrderPerformanceComponent(awsCognito) {
+        this.awsCognito = awsCognito;
     }
     FilmOrderPerformanceComponent.prototype.ngOnInit = function () {
         this.salseFlg = __WEBPACK_IMPORTED_MODULE_1_moment__(this.performance.startDate).unix() > __WEBPACK_IMPORTED_MODULE_1_moment__().add(30, 'minutes').unix();
+    };
+    FilmOrderPerformanceComponent.prototype.performanceSelect = function (data) {
+        location.href =
+            __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].ticketingSite + "/purchase/app.html?id=" + data.identifier + "&identityId=" + this.awsCognito.credentials.identityId;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
@@ -1452,10 +1463,10 @@ var FilmOrderPerformanceComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.html"),
             styles: [__webpack_require__("../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _b || Object])
     ], FilmOrderPerformanceComponent);
     return FilmOrderPerformanceComponent;
-    var _a;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=film-order-performance.component.js.map
@@ -1495,8 +1506,6 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__("../../../../moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1511,21 +1520,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
-
-
 var FilmOrderComponent = /** @class */ (function () {
-    function FilmOrderComponent(awsCognito) {
-        this.awsCognito = awsCognito;
+    function FilmOrderComponent() {
     }
     FilmOrderComponent.prototype.ngOnInit = function () {
         this.moment = __WEBPACK_IMPORTED_MODULE_1_moment__;
         this.nowDate = __WEBPACK_IMPORTED_MODULE_1_moment__();
         this.filmInfo = this.data.films[0];
-        console.log(10 <= 111);
-    };
-    FilmOrderComponent.prototype.performanceSelect = function (data) {
-        location.href =
-            __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].ticketingSite + "/purchase/app.html?id=" + data.identifier + "&identityId=" + this.awsCognito.credentials.identityId;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
@@ -1537,10 +1538,9 @@ var FilmOrderComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.html"),
             styles: [__webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [])
     ], FilmOrderComponent);
     return FilmOrderComponent;
-    var _a;
 }());
 
 //# sourceMappingURL=film-order.component.js.map

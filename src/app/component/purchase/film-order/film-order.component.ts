@@ -3,9 +3,7 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { environment } from '../../../../environments/environment';
 import { IIndividualScreeningEvent } from '../../../model/screening-events/screening-events.model';
-import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.service';
 
 @Component({
     selector: 'app-film-order',
@@ -21,20 +19,12 @@ export class FilmOrderComponent implements OnInit {
     public moment: typeof moment;
     public nowDate: moment.Moment;
 
-    constructor(
-        private awsCognito: AwsCognitoService
-    ) { }
+    constructor() { }
 
     public ngOnInit() {
         this.moment = moment;
         this.nowDate = moment();
         this.filmInfo = this.data.films[0];
-        console.log(10 <= 111);
-    }
-
-    public performanceSelect(data: IIndividualScreeningEvent) {
-        location.href =
-            `${environment.ticketingSite}/purchase/app.html?id=${data.identifier}&identityId=${this.awsCognito.credentials.identityId}`;
     }
 
 }

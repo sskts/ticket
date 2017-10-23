@@ -1,4 +1,4 @@
-<div class="performance" [ngClass]="(salseFlg) ? (performance.offer.availability | availability).string : ''" (click)="(salseFlg) ? performanceSelect(film) : null;"> 
+<div class="performance" [ngClass]="(salseFlg) ? (performance.offer.availability | availability).string : ''" (click)="(salseFlg) ? performanceSelect(performance) : null;"> 
     <p class="mb-x-small text-center">
         <strong class="large-text">{{ performance.startDate | timeFormat: performance.coaInfo.dateJouei }}</strong>
         <br>
