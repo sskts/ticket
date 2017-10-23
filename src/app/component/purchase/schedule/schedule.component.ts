@@ -12,6 +12,7 @@ import { IFilmOrder, ScreeningEventsModel } from '../../../model/screening-event
 // tslint:disable:no-import-side-effect
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/toPromise';
+import { UserService } from '../../../service/user/user.service';
 
 type IMovieTheater = sasaki.factory.place.movieTheater.IPlaceWithoutScreeningRoom;
 
@@ -38,7 +39,8 @@ export class ScheduleComponent implements OnInit {
 
     constructor(
         private jsonp: Jsonp,
-        private router: Router
+        private router: Router,
+        private user: UserService
     ) { }
 
     public async ngOnInit() {
@@ -49,12 +51,14 @@ export class ScheduleComponent implements OnInit {
             autoHeight: true
         };
         try {
-            await this.fitchMovieTheaters();
-            this.movieTheater = '';
-            this.createDate();
-            this.date = this.dateList[0].value;
+            this.movieTheaters = await this.user.getMovieTheaters();
+            this.movieTheater = (this.user.select.purchase.theater === null) ? '' : this.user.select.purchase.theater;
+            this.dateList = this.createDate();
+            const selectDate = this.dateList.find((date) => (this.user.select.purchase.date === date.value));
+            this.date = (selectDate === undefined) ? this.dateList[0].value : selectDate.value;
             this.screeningEvents = new ScreeningEventsModel();
             this.filmOrder = [];
+            await this.changeConditions();
             this.isLoading = false;
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
@@ -75,10 +79,15 @@ export class ScheduleComponent implements OnInit {
                             : date.format('YYYY年MM月DD日')
             });
         }
-        this.dateList = results;
+
+        return results;
     }
 
     public async changeConditions() {
+        this.user.select.purchase = {
+            theater: this.movieTheater,
+            date: this.date
+        };
         if (this.movieTheater === '' && this.movieTheater === '') {
             return;
         }
@@ -90,21 +99,6 @@ export class ScheduleComponent implements OnInit {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
             console.log(err);
         }
-    }
-
-    public async fitchMovieTheaters() {
-        const url = `${environment.ticketingSite}/purchase/performances/getMovieTheaters`;
-        const options = {
-            search: {
-                callback: 'JSONP_CALLBACK'
-            }
-        };
-        const response = await this.jsonp.get(url, options).retry(3).toPromise();
-        console.log('response', response);
-        if (response.json().error !== null) {
-            throw new Error(response.json().error);
-        }
-        this.movieTheaters = response.json().result;
     }
 
     public async fitchPerformances() {

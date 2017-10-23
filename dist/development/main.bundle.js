@@ -418,7 +418,7 @@ var BaseComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/error/error.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n  <div class=\"inner position-center\">\n      <p class=\"large-text text-center mb-small\">接続に失敗しました。</p>\n      <button class=\"btn btn-info btn-block\" (click)=\"connect()\">再接続</button>\n  </div>\n</div>"
+module.exports = "<div class=\"contents\">\n  <div class=\"inner position-center\">\n      <div class=\"text-center mb-middle\"><img src=\"/assets/images/error/off_line.svg\" width=\"100\" height=\"75\"></div>\n      <p class=\"large-text text-center mb-small\">読み込みができません。</p>\n      <p class=\"text-center mb-middle\">回線の状態を確認して<br>再度読み込みを行ってください</p>\n      <button class=\"btn btn-primary btn-block\" (click)=\"connect()\">再度読み込み</button>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1587,6 +1587,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_retry__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/retry.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_toPromise__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/toPromise.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_toPromise__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__service_user_user_service__ = __webpack_require__("../../../../../src/app/service/user/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1643,16 +1644,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 // tslint:disable:no-import-side-effect
 
 
+
 var ScheduleComponent = /** @class */ (function () {
-    function ScheduleComponent(jsonp, router) {
+    function ScheduleComponent(jsonp, router, user) {
         this.jsonp = jsonp;
         this.router = router;
+        this.user = user;
     }
     ScheduleComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var err_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var _this = this;
+            var _a, selectDate, err_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
                         this.isLoading = true;
                         this.config = {
@@ -1660,25 +1664,30 @@ var ScheduleComponent = /** @class */ (function () {
                             paginationClickable: true,
                             autoHeight: true
                         };
-                        _a.label = 1;
+                        _b.label = 1;
                     case 1:
-                        _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, this.fitchMovieTheaters()];
+                        _b.trys.push([1, 4, , 5]);
+                        _a = this;
+                        return [4 /*yield*/, this.user.getMovieTheaters()];
                     case 2:
-                        _a.sent();
-                        this.movieTheater = '';
-                        this.createDate();
-                        this.date = this.dateList[0].value;
+                        _a.movieTheaters = _b.sent();
+                        this.movieTheater = (this.user.select.purchase.theater === null) ? '' : this.user.select.purchase.theater;
+                        this.dateList = this.createDate();
+                        selectDate = this.dateList.find(function (date) { return (_this.user.select.purchase.date === date.value); });
+                        this.date = (selectDate === undefined) ? this.dateList[0].value : selectDate.value;
                         this.screeningEvents = new __WEBPACK_IMPORTED_MODULE_5__model_screening_events_screening_events_model__["a" /* ScreeningEventsModel */]();
                         this.filmOrder = [];
-                        this.isLoading = false;
-                        return [3 /*break*/, 4];
+                        return [4 /*yield*/, this.changeConditions()];
                     case 3:
-                        err_1 = _a.sent();
+                        _b.sent();
+                        this.isLoading = false;
+                        return [3 /*break*/, 5];
+                    case 4:
+                        err_1 = _b.sent();
                         this.router.navigate(['/error', { redirect: '/purchase' }]);
                         console.log(err_1);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
                 }
             });
         });
@@ -1696,7 +1705,7 @@ var ScheduleComponent = /** @class */ (function () {
                             : date.format('YYYY年MM月DD日')
             });
         }
-        this.dateList = results;
+        return results;
     };
     ScheduleComponent.prototype.changeConditions = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -1704,6 +1713,10 @@ var ScheduleComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        this.user.select.purchase = {
+                            theater: this.movieTheater,
+                            date: this.date
+                        };
                         if (this.movieTheater === '' && this.movieTheater === '') {
                             return [2 /*return*/];
                         }
@@ -1722,31 +1735,6 @@ var ScheduleComponent = /** @class */ (function () {
                         console.log(err_2);
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ScheduleComponent.prototype.fitchMovieTheaters = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var url, options, response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        url = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].ticketingSite + "/purchase/performances/getMovieTheaters";
-                        options = {
-                            search: {
-                                callback: 'JSONP_CALLBACK'
-                            }
-                        };
-                        return [4 /*yield*/, this.jsonp.get(url, options).retry(3).toPromise()];
-                    case 1:
-                        response = _a.sent();
-                        console.log('response', response);
-                        if (response.json().error !== null) {
-                            throw new Error(response.json().error);
-                        }
-                        this.movieTheaters = response.json().result;
-                        return [2 /*return*/];
                 }
             });
         });
@@ -1790,10 +1778,10 @@ var ScheduleComponent = /** @class */ (function () {
          * @implements OnInit
          */
         ,
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_8__service_user_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__service_user_user_service__["a" /* UserService */]) === "function" && _c || Object])
     ], ScheduleComponent);
     return ScheduleComponent;
-    var _a, _b;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=schedule.component.js.map
@@ -2909,6 +2897,8 @@ var AwsCognitoService = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2918,18 +2908,111 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 /**
  * UserService
  */
 
+
+
 var UserService = /** @class */ (function () {
-    function UserService() {
+    function UserService(jsonp) {
+        this.jsonp = jsonp;
+        this.movieTheaters = [];
+        this.select = {
+            purchase: {
+                date: '',
+                theater: ''
+            }
+        };
     }
+    UserService.prototype.getMovieTheaters = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, err_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        if (!(this.movieTheaters.length === 0)) return [3 /*break*/, 4];
+                        _b.label = 1;
+                    case 1:
+                        _b.trys.push([1, 3, , 4]);
+                        _a = this;
+                        return [4 /*yield*/, this.fitchMovieTheaters()];
+                    case 2:
+                        _a.movieTheaters = _b.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        err_1 = _b.sent();
+                        throw err_1;
+                    case 4: return [2 /*return*/, this.movieTheaters];
+                }
+            });
+        });
+    };
+    UserService.prototype.fitchMovieTheaters = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, options, response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        url = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].ticketingSite + "/purchase/performances/getMovieTheaters";
+                        options = {
+                            search: {
+                                callback: 'JSONP_CALLBACK'
+                            }
+                        };
+                        return [4 /*yield*/, this.jsonp.get(url, options).retry(3).toPromise()];
+                    case 1:
+                        response = _a.sent();
+                        console.log('response', response);
+                        if (response.json().error !== null) {
+                            throw new Error(response.json().error);
+                        }
+                        return [2 /*return*/, response.json().result];
+                }
+            });
+        });
+    };
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */]) === "function" && _a || Object])
     ], UserService);
     return UserService;
+    var _a;
 }());
 
 //# sourceMappingURL=user.service.js.map
