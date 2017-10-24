@@ -52,9 +52,10 @@ export class ScheduleComponent implements OnInit {
         };
         try {
             this.movieTheaters = await this.user.getMovieTheaters();
-            this.movieTheater = (this.user.select.purchase.theater === null) ? '' : this.user.select.purchase.theater;
+            const select = await this.user.getSelect();
+            this.movieTheater = select.purchase.theater;
             this.dateList = this.createDate();
-            const selectDate = this.dateList.find((date) => (this.user.select.purchase.date === date.value));
+            const selectDate = this.dateList.find((date) => (select.purchase.date === date.value));
             this.date = (selectDate === undefined) ? this.dateList[0].value : selectDate.value;
             this.screeningEvents = new ScreeningEventsModel();
             this.filmOrder = [];
@@ -84,14 +85,18 @@ export class ScheduleComponent implements OnInit {
     }
 
     public async changeConditions() {
+        this.isLoading = true;
         this.user.select.purchase = {
             theater: this.movieTheater,
             date: this.date
         };
-        if (this.movieTheater === '' && this.movieTheater === '') {
+        await this.user.save();
+        if (this.date === '' || this.movieTheater === '') {
+            this.filmOrder = [];
+            this.isLoading = false;
+
             return;
         }
-        this.isLoading = true;
         try {
             await this.fitchPerformances();
             this.isLoading = false;

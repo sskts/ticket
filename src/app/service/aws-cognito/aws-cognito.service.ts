@@ -84,7 +84,7 @@ export class AwsCognitoService {
         }).promise();
         console.log('getRecords', this.convertToObjects(listRecords.Records));
 
-        return this.convertToObjects(listRecords.Records);
+        return (<any>this.convertToObjects(listRecords.Records));
     }
 
     /**

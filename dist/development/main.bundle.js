@@ -1087,7 +1087,7 @@ var NavigationComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/not-found/not-found.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <div class=\"position-center\">\n        <p class=\"large-text text-center\">NOT FOUND</p>\n    </div>\n</div>"
+module.exports = "<div class=\"contents\">\n    <div class=\"inner position-center\">\n        <p class=\"large-text text-center mb-middle\">ページが見つかりません。</p>\n        <button class=\"btn btn-primary btn-block\" routerLink=\"/ticket\">チケットホルダーへ戻る</button>\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -1115,7 +1115,6 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotFoundComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1164,18 +1163,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
  * NotFoundComponent
  */
 
-
 var NotFoundComponent = /** @class */ (function () {
-    function NotFoundComponent(router) {
-        this.router = router;
+    function NotFoundComponent() {
     }
     NotFoundComponent.prototype.ngOnInit = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                this.router.navigate(['']);
-                return [2 /*return*/];
-            });
-        });
+        return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
+            return [2 /*return*/];
+        }); });
     };
     NotFoundComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1189,10 +1183,9 @@ var NotFoundComponent = /** @class */ (function () {
          * @implements OnInit
          */
         ,
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [])
     ], NotFoundComponent);
     return NotFoundComponent;
-    var _a;
 }());
 
 //# sourceMappingURL=not-found.component.js.map
@@ -1653,8 +1646,7 @@ var ScheduleComponent = /** @class */ (function () {
     }
     ScheduleComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            var _a, selectDate, err_1;
+            var _a, select_1, selectDate, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -1666,28 +1658,31 @@ var ScheduleComponent = /** @class */ (function () {
                         };
                         _b.label = 1;
                     case 1:
-                        _b.trys.push([1, 4, , 5]);
+                        _b.trys.push([1, 5, , 6]);
                         _a = this;
                         return [4 /*yield*/, this.user.getMovieTheaters()];
                     case 2:
                         _a.movieTheaters = _b.sent();
-                        this.movieTheater = (this.user.select.purchase.theater === null) ? '' : this.user.select.purchase.theater;
+                        return [4 /*yield*/, this.user.getSelect()];
+                    case 3:
+                        select_1 = _b.sent();
+                        this.movieTheater = select_1.purchase.theater;
                         this.dateList = this.createDate();
-                        selectDate = this.dateList.find(function (date) { return (_this.user.select.purchase.date === date.value); });
+                        selectDate = this.dateList.find(function (date) { return (select_1.purchase.date === date.value); });
                         this.date = (selectDate === undefined) ? this.dateList[0].value : selectDate.value;
                         this.screeningEvents = new __WEBPACK_IMPORTED_MODULE_5__model_screening_events_screening_events_model__["a" /* ScreeningEventsModel */]();
                         this.filmOrder = [];
                         return [4 /*yield*/, this.changeConditions()];
-                    case 3:
+                    case 4:
                         _b.sent();
                         this.isLoading = false;
-                        return [3 /*break*/, 5];
-                    case 4:
+                        return [3 /*break*/, 6];
+                    case 5:
                         err_1 = _b.sent();
                         this.router.navigate(['/error', { redirect: '/purchase' }]);
                         console.log(err_1);
-                        return [3 /*break*/, 5];
-                    case 5: return [2 /*return*/];
+                        return [3 /*break*/, 6];
+                    case 6: return [2 /*return*/];
                 }
             });
         });
@@ -1713,28 +1708,33 @@ var ScheduleComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        this.isLoading = true;
                         this.user.select.purchase = {
                             theater: this.movieTheater,
                             date: this.date
                         };
-                        if (this.movieTheater === '' && this.movieTheater === '') {
+                        return [4 /*yield*/, this.user.save()];
+                    case 1:
+                        _a.sent();
+                        if (this.date === '' || this.movieTheater === '') {
+                            this.filmOrder = [];
+                            this.isLoading = false;
                             return [2 /*return*/];
                         }
-                        this.isLoading = true;
-                        _a.label = 1;
-                    case 1:
-                        _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, this.fitchPerformances()];
+                        _a.label = 2;
                     case 2:
+                        _a.trys.push([2, 4, , 5]);
+                        return [4 /*yield*/, this.fitchPerformances()];
+                    case 3:
                         _a.sent();
                         this.isLoading = false;
-                        return [3 /*break*/, 4];
-                    case 3:
+                        return [3 /*break*/, 5];
+                    case 4:
                         err_2 = _a.sent();
                         this.router.navigate(['/error', { redirect: '/purchase' }]);
                         console.log(err_2);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
                 }
             });
         });
@@ -2898,7 +2898,10 @@ var AwsCognitoService = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__("../../../../moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2949,20 +2952,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
+
 var UserService = /** @class */ (function () {
-    function UserService(jsonp) {
+    function UserService(jsonp, awsCognito) {
         this.jsonp = jsonp;
+        this.awsCognito = awsCognito;
         this.movieTheaters = [];
         this.select = {
-            purchase: {
-                date: '',
-                theater: ''
-            }
+            purchase: undefined
         };
     }
+    UserService.prototype.getSelect = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var user, err_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!(this.select.purchase === undefined)) return [3 /*break*/, 4];
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.awsCognito.getRecords('user')];
+                    case 2:
+                        user = _a.sent();
+                        this.select.purchase = (user.select !== undefined && user.select.purchase !== undefined)
+                            ? user.select.purchase
+                            : { date: '', theater: '' };
+                        return [3 /*break*/, 4];
+                    case 3:
+                        err_1 = _a.sent();
+                        throw err_1;
+                    case 4: return [2 /*return*/, this.select];
+                }
+            });
+        });
+    };
     UserService.prototype.getMovieTheaters = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, err_1;
+            var _a, err_2;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -2976,8 +3004,8 @@ var UserService = /** @class */ (function () {
                         _a.movieTheaters = _b.sent();
                         return [3 /*break*/, 4];
                     case 3:
-                        err_1 = _b.sent();
-                        throw err_1;
+                        err_2 = _b.sent();
+                        throw err_2;
                     case 4: return [2 /*return*/, this.movieTheaters];
                 }
             });
@@ -2989,7 +3017,7 @@ var UserService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        url = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].ticketingSite + "/purchase/performances/getMovieTheaters";
+                        url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].ticketingSite + "/purchase/performances/getMovieTheaters";
                         options = {
                             search: {
                                 callback: 'JSONP_CALLBACK'
@@ -3007,12 +3035,23 @@ var UserService = /** @class */ (function () {
             });
         });
     };
+    UserService.prototype.save = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                this.awsCognito.updateRecords('user', {
+                    updateAt: __WEBPACK_IMPORTED_MODULE_2_moment__().toISOString(),
+                    select: this.select
+                });
+                return [2 /*return*/];
+            });
+        });
+    };
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _b || Object])
     ], UserService);
     return UserService;
-    var _a;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=user.service.js.map

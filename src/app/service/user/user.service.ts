@@ -4,7 +4,9 @@
 import { Injectable } from '@angular/core';
 import { Jsonp } from '@angular/http';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
+import * as moment from 'moment';
 import { environment } from '../../../environments/environment';
+import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 
 type IMovieTheater = sasaki.factory.place.movieTheater.IPlaceWithoutScreeningRoom;
 
@@ -14,20 +16,32 @@ export class UserService {
     public creditCards: sasaki.factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
     public movieTheaters: IMovieTheater[];
     public select: {
-        purchase: {
-            date: string;
-            theater: string;
-        }
+        purchase: { date: string; theater: string; } | undefined;
     };
 
-    constructor(private jsonp: Jsonp) {
+    constructor(
+        private jsonp: Jsonp,
+        private awsCognito: AwsCognitoService
+    ) {
         this.movieTheaters = [];
         this.select = {
-            purchase : {
-                date: '',
-                theater: ''
-            }
+            purchase: undefined
         };
+    }
+
+    public async getSelect() {
+        if (this.select.purchase === undefined) {
+            try {
+                const user = await this.awsCognito.getRecords('user');
+                this.select.purchase = (user.select !== undefined && user.select.purchase !== undefined)
+                    ? user.select.purchase
+                    : { date: '', theater: '' };
+            } catch (err) {
+                throw err;
+            }
+        }
+
+        return this.select;
     }
 
     public async getMovieTheaters() {
@@ -56,6 +70,13 @@ export class UserService {
         }
 
         return response.json().result;
+    }
+
+    public async save() {
+        this.awsCognito.updateRecords('user', {
+            updateAt: moment().toISOString(),
+            select: this.select
+        });
     }
 
 }
