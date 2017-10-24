@@ -23,7 +23,7 @@
 //         console.log('LoginComponent constructor');
 //     }
 
-//     public ngOnInit() {
+//     public ngOnInit(): void {
 //         this.isLoading = false;
 //         this.updateForm = this.formBuilder.group({
 //             mail: new FormControl(this.user.contacts.email, [

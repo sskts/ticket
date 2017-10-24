@@ -3,8 +3,6 @@
  */
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import * as moment from 'moment';
-
 import { UserModel } from '../../model/user/user.model';
 import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 
@@ -36,10 +34,9 @@ export class AuthGuardService implements CanActivate {
             try {
                 await this.awsCognito.authenticateWithTerminal();
                 const userRecord = await this.awsCognito.getRecords('user');
-                const user = new UserModel(userRecord);
-                if (user.updateAt !== undefined) {
-                    user.updateAt = moment().toISOString();
-                    await this.awsCognito.updateRecords('user', user.convertToRecord());
+                const userModel = new UserModel(userRecord);
+                if (userModel.isFirst()) {
+                    await this.awsCognito.updateRecords('user', userModel.convertToRecord());
                 }
             } catch (err) {
                 this.router.navigate(['/error']);
@@ -53,9 +50,9 @@ export class AuthGuardService implements CanActivate {
      */
     private async userCheck(): Promise<void> {
         const userRecord = await this.awsCognito.getRecords('user');
-        const user = new UserModel(userRecord);
-        console.log('user', user);
-        if (user.updateAt === undefined) {
+        const userModel = new UserModel(userRecord);
+        console.log('user', userModel);
+        if (userModel.isFirst()) {
             this.router.navigate(['/walkThrough']);
             throw new Error('userRecords.length === 0');
         }

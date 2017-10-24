@@ -19,6 +19,11 @@ export class TicketComponent implements OnInit {
 
     constructor() { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     * @returns {Promise<void>}
+     */
     public ngOnInit(): void {
         console.log('app-ticket', this.reservation);
     }

@@ -3,7 +3,6 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import * as moment from 'moment';
 import { AwsCognitoService } from '../../service/aws-cognito/aws-cognito.service';
 
 @Component({
@@ -21,7 +20,12 @@ export class WalkThroughComponent implements OnInit {
         private awsCognito: AwsCognitoService
     ) { }
 
-    public ngOnInit() {
+    /**
+     * 初期化
+     * @method ngOnInit
+     * @returns {Promise<void>}
+     */
+    public ngOnInit(): void {
         this.isLoading = false;
         this.step = 0;
         this.config = {
@@ -34,13 +38,16 @@ export class WalkThroughComponent implements OnInit {
         };
     }
 
-    public async signIn() {
+    /**
+     * スタート
+     * @method start
+     * @returns {Promise<void>}
+     */
+    public async start() {
         try {
             this.isLoading = true;
             await this.awsCognito.authenticateWithTerminal();
-            await this.awsCognito.updateRecords('user', {
-                updateAt: moment().toISOString()
-            });
+            await this.awsCognito.updateRecords('user', {});
             await this.router.navigate(['/']);
         } catch (error) {
             console.error(error);

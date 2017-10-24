@@ -4,15 +4,20 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-policy',
-  templateUrl: './policy.component.html',
-  styleUrls: ['./policy.component.scss']
+    selector: 'app-policy',
+    templateUrl: './policy.component.html',
+    styleUrls: ['./policy.component.scss']
 })
 export class PolicyComponent implements OnInit {
 
-  constructor() { }
+    constructor() { }
 
-  public ngOnInit() {
-  }
+    /**
+     * 初期化
+     * @method ngOnInit
+     * @returns {Promise<void>}
+     */
+    public ngOnInit(): void {
+    }
 
 }

@@ -20,7 +20,12 @@ export class ErrorComponent implements OnInit {
         private awsCognito: AwsCognitoService
     ) { }
 
-    public ngOnInit() {
+    /**
+     * 初期化
+     * @method ngOnInit
+     * @returns {Promise<void>}
+     */
+    public ngOnInit(): void {
     }
 
     public async connect() {

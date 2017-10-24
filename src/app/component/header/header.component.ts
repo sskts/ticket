@@ -28,6 +28,11 @@ export class HeaderComponent implements OnInit {
         private router: Router
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     * @returns {Promise<void>}
+     */
     public ngOnInit(): void {
         this.isMenuOpen = false;
         this.isLogoutModalOpen = false;

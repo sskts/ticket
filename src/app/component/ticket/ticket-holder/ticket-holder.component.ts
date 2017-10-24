@@ -19,14 +19,19 @@ import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.serv
 export class TicketHolderComponent implements OnInit {
     public config: SwiperOptions;
     public isLoading: boolean;
-    public reservation: ReservationModel;
+    public reservationnModel: ReservationModel;
     public purchaseNumberOrders: sasaki.factory.order.IOrder[];
 
     constructor(
         private awsCognito: AwsCognitoService
     ) { }
 
-    public async ngOnInit() {
+    /**
+     * 初期化
+     * @method ngOnInit
+     * @returns {Promise<void>}
+     */
+    public async ngOnInit(): Promise<void> {
         this.isLoading = true;
         this.purchaseNumberOrders = [];
         this.config = {
@@ -36,8 +41,8 @@ export class TicketHolderComponent implements OnInit {
         };
         try {
             const reservationRecord = await this.awsCognito.getRecords('reservation');
-            this.reservation = new ReservationModel(reservationRecord);
-            this.purchaseNumberOrders = this.reservation.getReservationByPurchaseNumberOrder();
+            this.reservationnModel = new ReservationModel(reservationRecord);
+            this.purchaseNumberOrders = this.reservationnModel.getReservationByPurchaseNumberOrder();
         } catch (err) {
             console.log(err);
         }

@@ -4,14 +4,14 @@
         <ul class="conditions mb-small">
             <li class=" mb-x-small">
                 <div class="control-label mb-x-small small-x-text">鑑賞劇場</div>
-                <select class="form-control" name="movieTheater" [(ngModel)]="movieTheater" (change)="changeConditions($event)">
+                <select class="form-control" name="movieTheater" [(ngModel)]="userModel.select.purchase.theater" (change)="changeConditions($event)">
                     <option value="">選択してください</option>
                     <option *ngFor="let theater of movieTheaters" value="{{ theater.location.branchCode }}">{{ theater.name.ja }}</option>
                 </select>
             </li>
             <li>
                 <div class="control-label mb-x-small small-x-text">鑑賞日時</div>
-                <select class="form-control" name="date" [(ngModel)]="date" (change)="changeConditions($event)">
+                <select class="form-control" name="date" [(ngModel)]="this.userModel.select.purchase.date" (change)="changeConditions($event)">
                     <option *ngFor="let date of dateList" value="{{ date.value }}">{{ date.text }}</option>
                 </select>
             </li>

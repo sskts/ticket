@@ -20,7 +20,7 @@
 //         private router: Router
 //     ) { }
 
-//     public ngOnInit() {
+//     public ngOnInit(): void {
 //         this.isLoading = false;
 //     }
 

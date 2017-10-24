@@ -36,7 +36,7 @@ import { DurationPipe } from './pipe/duration/duration.pipe';
 import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { AwsCognitoService } from './service/aws-cognito/aws-cognito.service';
-import { UserService } from './service/user/user.service';
+import { PurchaseService } from './service/purchase/purchase.service';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -78,7 +78,7 @@ import { UserService } from './service/user/user.service';
   ],
   providers: [
     AuthGuardService,
-    UserService,
+    PurchaseService,
     AwsCognitoService
   ],
   bootstrap: [AppComponent]

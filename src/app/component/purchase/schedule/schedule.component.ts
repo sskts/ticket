@@ -6,13 +6,14 @@ import { Jsonp } from '@angular/http';
 import { Router } from '@angular/router';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
-import { environment } from '../../../../environments/environment';
-import { IFilmOrder, ScreeningEventsModel } from '../../../model/screening-events/screening-events.model';
-
 // tslint:disable:no-import-side-effect
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/toPromise';
-import { UserService } from '../../../service/user/user.service';
+import { environment } from '../../../../environments/environment';
+import { IFilmOrder, ScreeningEventsModel } from '../../../model/screening-events/screening-events.model';
+import { UserModel } from '../../../model/user/user.model';
+import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.service';
+import { PurchaseService } from '../../../service/purchase/purchase.service';
 
 type IMovieTheater = sasaki.factory.place.movieTheater.IPlaceWithoutScreeningRoom;
 
@@ -27,12 +28,11 @@ type IMovieTheater = sasaki.factory.place.movieTheater.IPlaceWithoutScreeningRoo
  * @implements OnInit
  */
 export class ScheduleComponent implements OnInit {
+    public userModel: UserModel;
     public isLoading: boolean;
     public movieTheaters: IMovieTheater[];
     public dateList: { value: string; text: string; }[];
-    public movieTheater: string;
-    public date: string;
-    public screeningEvents: ScreeningEventsModel;
+    public screeningEventsModel: ScreeningEventsModel;
     public filmOrder: IFilmOrder[];
     public config: SwiperOptions;
     public error: string;
@@ -40,24 +40,31 @@ export class ScheduleComponent implements OnInit {
     constructor(
         private jsonp: Jsonp,
         private router: Router,
-        private user: UserService
+        private purchase: PurchaseService,
+        private awsCognito: AwsCognitoService
     ) { }
 
-    public async ngOnInit() {
+    /**
+     * 初期化
+     * @method ngOnInit
+     * @returns {Promise<void>}
+     */
+    public async ngOnInit(): Promise<void> {
         this.isLoading = true;
         this.config = {
             pagination: '.swiper-pagination',
             paginationClickable: true,
             autoHeight: true
         };
+        this.userModel = new UserModel();
         try {
-            this.movieTheaters = await this.user.getMovieTheaters();
-            const select = await this.user.getSelect();
-            this.movieTheater = select.purchase.theater;
+            this.movieTheaters = await this.purchase.getMovieTheaters();
+            const userRecord = await this.awsCognito.getRecords('user');
+            this.userModel = new UserModel(userRecord);
             this.dateList = this.createDate();
-            const selectDate = this.dateList.find((date) => (select.purchase.date === date.value));
-            this.date = (selectDate === undefined) ? this.dateList[0].value : selectDate.value;
-            this.screeningEvents = new ScreeningEventsModel();
+            const selectDate = this.dateList.find((date) => (this.userModel.select.purchase.date === date.value));
+            this.userModel.select.purchase.date = (selectDate === undefined) ? this.dateList[0].value : selectDate.value;
+            this.screeningEventsModel = new ScreeningEventsModel();
             this.filmOrder = [];
             await this.changeConditions();
             this.isLoading = false;
@@ -67,7 +74,12 @@ export class ScheduleComponent implements OnInit {
         }
     }
 
-    private createDate() {
+    /**
+     * 初期化
+     * @method createDate
+     * @returns { value: string; text: string; }
+     */
+    private createDate(): { value: string; text: string; }[] {
         const limit = 3;
         const results: { value: string; text: string; }[] = [];
         for (let i = 0; i < limit; i += 1) {
@@ -84,14 +96,16 @@ export class ScheduleComponent implements OnInit {
         return results;
     }
 
-    public async changeConditions() {
+    /**
+     * 条件変更
+     * @method changeConditions
+     * @returns {Promise<void>}
+     */
+    public async changeConditions(): Promise<void> {
         this.isLoading = true;
-        this.user.select.purchase = {
-            theater: this.movieTheater,
-            date: this.date
-        };
-        await this.user.save();
-        if (this.date === '' || this.movieTheater === '') {
+        await this.awsCognito.updateRecords('user', this.userModel.convertToRecord());
+        if (this.userModel.select.purchase.date === ''
+            || this.userModel.select.purchase.theater === '') {
             this.filmOrder = [];
             this.isLoading = false;
 
@@ -106,21 +120,26 @@ export class ScheduleComponent implements OnInit {
         }
     }
 
-    public async fitchPerformances() {
+    /**
+     * パフォーマンス一覧をAPI経由で取得
+     * @method fitchPerformances
+     * @returns {Promise<void>}
+     */
+    public async fitchPerformances(): Promise<void> {
         const url = `${environment.ticketingSite}/purchase/performances/getPerformances`;
         const options = {
             search: {
                 callback: 'JSONP_CALLBACK',
-                theater: this.movieTheater,
-                day: this.date
+                theater: this.userModel.select.purchase.theater,
+                day: this.userModel.select.purchase.date
             }
         };
         const response = await this.jsonp.get(url, options).retry(3).toPromise();
         if (response.json().error !== null) {
             throw new Error(response.json().error);
         }
-        this.screeningEvents.individualScreeningEvents = response.json().result;
-        this.filmOrder = this.screeningEvents.getEventByFilmOrder();
+        this.screeningEventsModel.individualScreeningEvents = response.json().result;
+        this.filmOrder = this.screeningEventsModel.getEventByFilmOrder();
     }
 
 }

@@ -4,15 +4,20 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-no-ticket',
-  templateUrl: './no-ticket.component.html',
-  styleUrls: ['./no-ticket.component.scss']
+    selector: 'app-no-ticket',
+    templateUrl: './no-ticket.component.html',
+    styleUrls: ['./no-ticket.component.scss']
 })
 export class NoTicketComponent implements OnInit {
 
-  constructor() { }
+    constructor() { }
 
-  public ngOnInit() {
-  }
+    /**
+     * 初期化
+     * @method ngOnInit
+     * @returns {Promise<void>}
+     */
+    public ngOnInit(): void {
+    }
 
 }

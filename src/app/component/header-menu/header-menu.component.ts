@@ -18,7 +18,12 @@ export class HeaderMenuComponent implements OnInit {
 
     constructor() { }
 
-    public ngOnInit() {
+    /**
+     * 初期化
+     * @method ngOnInit
+     * @returns {Promise<void>}
+     */
+    public ngOnInit(): void {
         this.portalSite = environment.portalSite;
     }
 }

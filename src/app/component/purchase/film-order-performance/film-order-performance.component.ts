@@ -20,7 +20,12 @@ export class FilmOrderPerformanceComponent implements OnInit {
 
     constructor(private awsCognito: AwsCognitoService) { }
 
-    public ngOnInit() {
+    /**
+     * 初期化
+     * @method ngOnInit
+     * @returns {Promise<void>}
+     */
+    public ngOnInit(): void {
         this.salseFlg = moment(this.performance.startDate).unix() > moment().add(30, 'minutes').unix();
     }
 

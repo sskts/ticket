@@ -3,6 +3,7 @@
  */
 import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk';
+import * as moment from 'moment';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
@@ -42,7 +43,7 @@ export class AwsCognitoService {
      * @param {string} datasetName
      * @param {value} value
      */
-    public async updateRecords(datasetName: string, value: object) {
+    public async updateRecords(datasetName: string, value: any) {
         await this.credentials.getPromise();
         const cognitoSync = new AWS.CognitoSync({
             credentials: this.credentials
@@ -53,7 +54,7 @@ export class AwsCognitoService {
             IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
             LastSyncCount: 0
         }).promise();
-
+        value.updateAt = moment().toISOString();
         const mergeValue = this.convertToObjects(listRecords.Records);
         Object.assign(mergeValue, value);
 
