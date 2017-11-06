@@ -2,13 +2,28 @@
  * AppComponent
  */
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+
+declare const ga: Function;
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-    constructor() {}
+    constructor(private router: Router) {
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationEnd) {
+                // Googleアナリティクス pageview
+                try {
+                    ga('set', 'page', event.urlAfterRedirects);
+                    ga('send', 'pageview');
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+        });
+    }
 
     public ngOnInit(): void {
         console.log('AppComponent');
