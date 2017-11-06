@@ -15,7 +15,7 @@ import { ScheduleComponent } from './component/purchase/schedule/schedule.compon
 import { TicketHolderComponent } from './component/ticket/ticket-holder/ticket-holder.component';
 import { WalkThroughComponent } from './component/walk-through/walk-through.component';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
-
+console.log('111111111111111111111111111111111');
 const appRoutes: Routes = [
     { path: '', redirectTo: '/ticket', pathMatch: 'full' },
     {

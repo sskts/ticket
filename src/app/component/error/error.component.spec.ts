@@ -1,25 +1,97 @@
+/**
+ * ErrorComponent
+ */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { AwsCognitoService } from '../../service/aws-cognito/aws-cognito.service';
 import { ErrorComponent } from './error.component';
 
 describe('ErrorComponent', () => {
-  let component: ErrorComponent;
-  let fixture: ComponentFixture<ErrorComponent>;
+    it('コンポーネント生成', async () => {
+        const awsCognitoServiceStub = {};
+        await TestBed.configureTestingModule({
+            declarations: [
+                ErrorComponent
+            ],
+            imports: [
+                RouterTestingModule.withRoutes([])
+            ],
+            providers: [
+                { provide: AwsCognitoService, useValue: awsCognitoServiceStub }
+            ]
+        }).compileComponents();
+        const fixture = TestBed.createComponent(ErrorComponent);
+        const component = fixture.componentInstance;
+        fixture.detectChanges();
+        expect(component).toBeTruthy();
+    });
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ErrorComponent ]
-    })
-    .compileComponents();
-  }));
+    it('connect 正常', async () => {
+        const awsCognitoServiceStub = {
+            authenticateWithTerminal: () => { },
+            isAuthenticate: () => true
+        };
+        await TestBed.configureTestingModule({
+            declarations: [
+                ErrorComponent
+            ],
+            imports: [
+                RouterTestingModule.withRoutes([])
+            ],
+            providers: [
+                { provide: AwsCognitoService, useValue: awsCognitoServiceStub }
+            ]
+        }).compileComponents();
+        const fixture = TestBed.createComponent(ErrorComponent);
+        const component = fixture.componentInstance;
+        fixture.detectChanges();
+        await component.connect();
+        expect(component.isLoading).toBeTruthy();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ErrorComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    it('connect 端末IDで認証エラー', async () => {
+        const awsCognitoServiceStub = {
+            authenticateWithTerminal: () => { throw new Error('端末IDで認証エラー'); },
+            isAuthenticate: () => true
+        };
+        await TestBed.configureTestingModule({
+            declarations: [
+                ErrorComponent
+            ],
+            imports: [
+                RouterTestingModule.withRoutes([])
+            ],
+            providers: [
+                { provide: AwsCognitoService, useValue: awsCognitoServiceStub }
+            ]
+        }).compileComponents();
+        const fixture = TestBed.createComponent(ErrorComponent);
+        const component = fixture.componentInstance;
+        fixture.detectChanges();
+        await component.connect();
+        expect(component.isLoading).toBeFalsy();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('connect 認証確認エラー', async () => {
+        const awsCognitoServiceStub = {
+            authenticateWithTerminal: () => { },
+            isAuthenticate: () => false
+        };
+        await TestBed.configureTestingModule({
+            declarations: [
+                ErrorComponent
+            ],
+            imports: [
+                RouterTestingModule.withRoutes([])
+            ],
+            providers: [
+                { provide: AwsCognitoService, useValue: awsCognitoServiceStub }
+            ]
+        }).compileComponents();
+        const fixture = TestBed.createComponent(ErrorComponent);
+        const component = fixture.componentInstance;
+        fixture.detectChanges();
+        await component.connect();
+        expect(component.isLoading).toBeFalsy();
+    });
 });

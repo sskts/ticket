@@ -6,7 +6,7 @@
     "start": "ng serve --port 3333 --env=source",
     "ng": "ng",
     "build": "ng build --environment=dev --output-path=./dist/development && ng build --environment=test --output-path=./dist/test",
-    "test": "ng test --watch=false --code-coverage",
+    "test": "ng test --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "check": "ng lint && nsp check"
@@ -26,20 +26,20 @@
     "@types/swiper": "^3.4.4",
     "angular2-moment": "^1.7.0",
     "angular2-qrcode": "^2.0.1",
-    "angular2-useful-swiper": "^5.0.0",
-    "aws-sdk": "^2.137.0",
+    "angular2-useful-swiper": "^5.0.1",
+    "aws-sdk": "^2.145.0",
     "core-js": "^2.4.1",
     "moment": "^2.19.1",
-    "rxjs": "^5.5.0",
+    "rxjs": "^5.5.2",
     "swiper": "^3.4.2",
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "@angular/cli": "^1.4.9",
+    "@angular/cli": "^1.5.0",
     "@angular/compiler-cli": "^4.4.6",
     "@angular/language-service": "^4.4.6",
     "@types/google.analytics": "0.0.36",
-    "@types/jasmine": "^2.6.0",
+    "@types/jasmine": "^2.6.2",
     "@types/jasminewd2": "^2.0.3",
     "@types/node": "^6.0.90",
     "codelyzer": "~3.0.1",
@@ -56,6 +56,6 @@
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "tslint-microsoft-contrib": "^5.0.1",
-    "typescript": "^2.5.3"
+    "typescript": "^2.6.1"
   }
 }

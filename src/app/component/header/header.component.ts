@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
         prev: boolean;
     };
     public isMenuOpen: boolean;
-    public isLogoutModalOpen: boolean;
 
     constructor(
         private router: Router
@@ -35,7 +34,6 @@ export class HeaderComponent implements OnInit {
      */
     public ngOnInit(): void {
         this.isMenuOpen = false;
-        this.isLogoutModalOpen = false;
         this.changePage(this.router.url);
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
@@ -50,15 +48,6 @@ export class HeaderComponent implements OnInit {
 
     public menuClose(): void {
         this.isMenuOpen = false;
-    }
-
-    public logoutModalOpen(): void {
-        this.menuClose();
-        this.isLogoutModalOpen = true;
-    }
-
-    public logoutModalClose(): void {
-        this.isLogoutModalOpen = false;
     }
 
     private changePage(url: string): void {

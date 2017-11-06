@@ -20,15 +20,15 @@
     top: 50%;
     left: 50%;
     z-index: 11;
-    width: 70px;
-    height: 30px;
-    margin-top: -15px;
-    margin-left: -35px;
+    width: 40px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -20px;
     animation: fadein 0.4s both;
     display: flex;
     div {
-        height: 30px;
-        width: 3px;
+        height: 20px;
+        width: 2px;
         background-color: #FFF;
         animation: loading 1s infinite;
     }

@@ -18,7 +18,6 @@ import { HeaderMenuComponent } from './component/header-menu/header-menu.compone
 import { HeaderComponent } from './component/header/header.component';
 import { LawComponent } from './component/law/law.component';
 import { LoadingComponent } from './component/loading/loading.component';
-import { LogoutComponent } from './component/logout/logout.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { PolicyComponent } from './component/policy/policy.component';
@@ -61,7 +60,6 @@ import { PurchaseService } from './service/purchase/purchase.service';
     PolicyComponent,
     LawComponent,
     PrivacyComponent,
-    LogoutComponent,
     HeaderMenuComponent,
     ErrorComponent,
     FilmOrderPerformanceComponent

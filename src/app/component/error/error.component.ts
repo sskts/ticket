@@ -38,7 +38,6 @@ export class ErrorComponent implements OnInit {
             this.activatedRoute.params.subscribe(
                 (params) => {
                     const redirect = params.redirect;
-                    console.log('redirect', redirect);
                     let url = '/';
                     if (redirect !== undefined) {
                         url = redirect;
@@ -46,8 +45,10 @@ export class ErrorComponent implements OnInit {
                     this.router.navigate([url]);
                 }
             );
+
+            return;
         } catch (err) {
-            console.log(err);
+            console.log('connect', err);
         }
         this.isLoading = false;
     }
