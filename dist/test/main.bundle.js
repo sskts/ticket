@@ -319,6 +319,7 @@ module.exports = "<router-outlet></router-outlet>"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -333,6 +334,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
+
 var AppComponent = /** @class */ (function () {
     function AppComponent(router) {
         this.router = router;
@@ -340,6 +342,7 @@ var AppComponent = /** @class */ (function () {
             if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]) {
                 // Googleアナリティクス pageview
                 try {
+                    ga('create', __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].analyticsId, 'auto');
                     ga('set', 'page', event.urlAfterRedirects);
                     ga('send', 'pageview');
                 }
@@ -3184,7 +3187,8 @@ var environment = {
     // tslint:disable-next-line:no-http-string
     portalSite: 'http://www.cinemasunshine.co.jp',
     // tslint:disable-next-line:no-http-string
-    ticketingSite: 'https://sskts-frontend-development.azurewebsites.net'
+    ticketingSite: 'https://sskts-frontend-development.azurewebsites.net',
+    analyticsId: 'UA-99018492-5'
 };
 //# sourceMappingURL=environment.js.map
 

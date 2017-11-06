@@ -3,6 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 declare const ga: Function;
 
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit {
             if (event instanceof NavigationEnd) {
                 // Googleアナリティクス pageview
                 try {
+                    ga('create', environment.analyticsId, 'auto');
                     ga('set', 'page', event.urlAfterRedirects);
                     ga('send', 'pageview');
                 } catch (err) {
