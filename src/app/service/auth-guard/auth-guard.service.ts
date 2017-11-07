@@ -18,11 +18,11 @@ export class AuthGuardService implements CanActivate {
         try {
             await this.awsCognitoAuthenticateCheck();
             await this.userCheck();
-        } catch (err) {
-            console.log('AuthGuardService', err);
-        }
 
-        return true;
+            return true;
+        } catch (err) {
+            return false;
+        }
     }
 
     /**
@@ -51,10 +51,9 @@ export class AuthGuardService implements CanActivate {
     private async userCheck(): Promise<void> {
         const userRecord = await this.awsCognito.getRecords('user');
         const userModel = new UserModel(userRecord);
-        console.log('user', userModel);
         if (userModel.isFirst()) {
             this.router.navigate(['/walkThrough']);
-            throw new Error('userRecords.length === 0');
+            throw new Error('userCheck Error');
         }
     }
 

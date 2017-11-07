@@ -32,17 +32,10 @@ export class ScreeningEventsModel {
      * @returns {chronological[]}
      */
     public getEventByChronologicalOrder() {
-        const results: IIndividualScreeningEvent[] = [];
-        this.individualScreeningEvents.forEach((performance) => {
+        return this.individualScreeningEvents.filter((performance) => {
             // 販売可能時間判定
-            const limitTime = moment().add(END_TIME, 'minutes');
-            if (limitTime.unix() > moment(`${performance.startDate}`).unix()) {
-                return;
-            }
-            results.push(performance);
+            return this.isSalse(performance.startDate);
         });
-
-        return results;
     }
     /**
      * 作品別へ変換
@@ -53,8 +46,7 @@ export class ScreeningEventsModel {
         const results: IFilmOrder[] = [];
         this.individualScreeningEvents.forEach((performance) => {
             // 販売可能時間判定
-            const limitTime = moment().add(END_TIME, 'minutes');
-            if (limitTime.unix() > moment(`${performance.startDate}`).unix()) {
+            if (!this.isSalse(performance.startDate)) {
                 return;
             }
             const film = results.find((event) => {
@@ -71,5 +63,14 @@ export class ScreeningEventsModel {
         });
 
         return results;
+    }
+
+    /**
+     * 販売可能判定
+     * @param {Date | string} startDate
+     * @returns {boolean}
+     */
+    private isSalse(startDate: Date | string): boolean {
+        return (moment().unix() < moment(startDate).subtract(END_TIME, 'minutes').unix())
     }
 }

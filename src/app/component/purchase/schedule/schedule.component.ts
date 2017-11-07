@@ -70,7 +70,7 @@ export class ScheduleComponent implements OnInit {
             this.isLoading = false;
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
-            console.log(err);
+            console.log('ScheduleComponent.ngOnInit', err);
         }
     }
 

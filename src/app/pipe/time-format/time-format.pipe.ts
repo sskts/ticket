@@ -12,10 +12,10 @@ export class TimeFormatPipe implements PipeTransform {
   /**
    * 時間変換
    * @method transform
-   * @param {Date} screeningTime
+   * @param {Date | string} screeningTime
    * @param {string} referenceDate
    */
-  public transform(screeningTime: Date, referenceDate: string): string {
+  public transform(screeningTime: Date | string, referenceDate: string): string {
     const HOUR = 60;
     const DIGITS = -2;
     const diff = moment(screeningTime).diff(moment(referenceDate), 'minutes');

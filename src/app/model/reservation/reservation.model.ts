@@ -7,7 +7,7 @@ import * as moment from 'moment';
 export class ReservationModel {
     public orders: sasaki.factory.order.IOrder[];
 
-    constructor(args: any) {
+    constructor(args?: any) {
         if (args === undefined) {
             args = {};
         }

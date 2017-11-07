@@ -2,7 +2,6 @@
  * FilmOrderComponent
  */
 import { Component, Input, OnInit } from '@angular/core';
-import * as moment from 'moment';
 import { IIndividualScreeningEvent } from '../../../model/screening-events/screening-events.model';
 
 @Component({
@@ -16,8 +15,6 @@ export class FilmOrderComponent implements OnInit {
         films: IIndividualScreeningEvent[];
     };
     public filmInfo: IIndividualScreeningEvent;
-    public moment: typeof moment;
-    public nowDate: moment.Moment;
 
     constructor() { }
 
@@ -27,8 +24,6 @@ export class FilmOrderComponent implements OnInit {
      * @returns {Promise<void>}
      */
     public ngOnInit(): void {
-        this.moment = moment;
-        this.nowDate = moment();
         this.filmInfo = this.data.films[0];
     }
 

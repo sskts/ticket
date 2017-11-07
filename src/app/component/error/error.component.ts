@@ -48,7 +48,7 @@ export class ErrorComponent implements OnInit {
 
             return;
         } catch (err) {
-            console.log('connect', err);
+            console.log('ErrorComponent.connect', err);
         }
         this.isLoading = false;
     }

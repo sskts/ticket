@@ -14,8 +14,8 @@ import { AboutComponent } from './component/about/about.component';
 import { AppComponent } from './component/app/app.component';
 import { BaseComponent } from './component/base/base.component';
 import { ErrorComponent } from './component/error/error.component';
-import { HeaderMenuComponent } from './component/header-menu/header-menu.component';
-import { HeaderComponent } from './component/header/header.component';
+import { HeaderComponent } from './component/header/header/header.component';
+import { MenuComponent } from './component/header/menu/menu.component';
 import { LawComponent } from './component/law/law.component';
 import { LoadingComponent } from './component/loading/loading.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
@@ -46,6 +46,7 @@ import { PurchaseService } from './service/purchase/purchase.service';
     WalkThroughComponent,
     NavigationComponent,
     HeaderComponent,
+    MenuComponent,
     ScheduleComponent,
     NotFoundComponent,
     BaseComponent,
@@ -60,7 +61,6 @@ import { PurchaseService } from './service/purchase/purchase.service';
     PolicyComponent,
     LawComponent,
     PrivacyComponent,
-    HeaderMenuComponent,
     ErrorComponent,
     FilmOrderPerformanceComponent
   ],

@@ -1,28 +1,28 @@
-// /**
-//  * ChronologicalOrderOfPerformanceComponentテスト
-//  */
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+/**
+ * ChronologicalOrderComponentテスト
+ */
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { ChronologicalOrderOfPerformanceComponent } from './chronological-order-of-performance.component';
+import { ChronologicalOrderComponent } from './chronological-order.component';
 
-// describe('ChronologicalOrderOfPerformanceComponent', () => {
-//   let component: ChronologicalOrderOfPerformanceComponent;
-//   let fixture: ComponentFixture<ChronologicalOrderOfPerformanceComponent>;
+describe('ChronologicalOrderComponent', () => {
+    let component: ChronologicalOrderComponent;
+    let fixture: ComponentFixture<ChronologicalOrderComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ ChronologicalOrderOfPerformanceComponent ]
-//     })
-//     .compileComponents();
-//   }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [ChronologicalOrderComponent]
+        })
+            .compileComponents();
+    }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(ChronologicalOrderOfPerformanceComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ChronologicalOrderComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-//   it('should be created', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+    it('コンポーネント生成', () => {
+        expect(component).toBeTruthy();
+    });
+});

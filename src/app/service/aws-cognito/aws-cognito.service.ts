@@ -43,7 +43,7 @@ export class AwsCognitoService {
      * @param {string} datasetName
      * @param {value} value
      */
-    public async updateRecords(datasetName: string, value: any) {
+    public async updateRecords(datasetName: string, value: any): Promise<any> {
         await this.credentials.getPromise();
         const cognitoSync = new AWS.CognitoSync({
             credentials: this.credentials
@@ -58,14 +58,15 @@ export class AwsCognitoService {
         const mergeValue = this.convertToObjects(listRecords.Records);
         Object.assign(mergeValue, value);
 
-        await cognitoSync.updateRecords({
+        const updateRecords = await cognitoSync.updateRecords({
             DatasetName: datasetName,
             IdentityId: this.credentials.identityId,
             IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
             SyncSessionToken: listRecords.SyncSessionToken,
             RecordPatches: this.convertToRecords(mergeValue, listRecords.DatasetSyncCount)
         }).promise();
-        console.log('updateRecords');
+
+        return this.convertToObjects(updateRecords.Records);
     }
 
     /**
@@ -110,11 +111,11 @@ export class AwsCognitoService {
     }
 
     /**
-     * レコードの形式へ変換
-     * @param {any} records
+     * オブジェクトの形式へ変換
+     * @param {any[]} records
      * @param {number} count
      */
-    private convertToObjects(records: any): Object {
+    private convertToObjects(records: any[]): Object {
         const result: any = {};
         records.forEach((record: {
             Key: string;
