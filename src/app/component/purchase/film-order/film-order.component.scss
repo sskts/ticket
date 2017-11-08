@@ -1,12 +1,16 @@
+:host {
+    display: block;
+}
 .inner {
     display: block;
     background-color: #FFF;
+    display: flex;
 }
 .info {
     padding: 15px 10px;
     color: #333;
     background-color: #EEE;
-    border-bottom: 1px solid #AAA;
+    width: 140px;
     .title {
 
     }
@@ -20,7 +24,8 @@
 }
 .performances {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 5px 5px 0;
+    padding: 5px 5px;
+    width: calc(100% - 140px);
+    overflow-x: scroll;
+    align-items: center;
 }

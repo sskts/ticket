@@ -34,7 +34,6 @@ export class ScheduleComponent implements OnInit {
     public dateList: { value: string; text: string; }[];
     public screeningEventsModel: ScreeningEventsModel;
     public filmOrder: IFilmOrder[];
-    public config: SwiperOptions;
     public error: string;
 
     constructor(
@@ -51,11 +50,6 @@ export class ScheduleComponent implements OnInit {
      */
     public async ngOnInit(): Promise<void> {
         this.isLoading = true;
-        this.config = {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-            autoHeight: true
-        };
         this.userModel = new UserModel();
         try {
             this.movieTheaters = await this.purchase.getMovieTheaters();

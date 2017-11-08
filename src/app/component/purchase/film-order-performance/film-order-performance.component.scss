@@ -1,11 +1,11 @@
 :host {
-    width: calc(50% - 2.5px);
+    padding-right: 5px;
 }
 .performance {
     background-color: #B2B2B2;
     padding: 10px;
-    margin: 0 0 5px;
     position: relative;
+    width: 120px;
     &.vacancy-large {
         background-color: #0563C1;
     }

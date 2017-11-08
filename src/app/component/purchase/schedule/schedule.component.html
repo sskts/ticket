@@ -18,13 +18,7 @@
         </ul>
 
         <div *ngIf="!isLoading && filmOrder.length > 0">
-            <swiper [config]="config">
-                <div class="swiper-wrapper">
-                    <div *ngFor="let filmOrder of filmOrder" class="swiper-slide">
-                        <app-film-order [data]="filmOrder" (select)="purchaseView($event)"></app-film-order>
-                    </div>
-                </div>
-            </swiper>
+            <app-film-order *ngFor="let filmOrder of filmOrder" class="mb-x-small" [data]="filmOrder" (select)="purchaseView($event)"></app-film-order>
             <div class="pagination-wrapper">
                 <div class="swiper-pagination"></div>
             </div>
