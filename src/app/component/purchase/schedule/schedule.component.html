@@ -19,9 +19,6 @@
 
         <div *ngIf="!isLoading && filmOrder.length > 0">
             <app-film-order *ngFor="let filmOrder of filmOrder" class="mb-x-small" [data]="filmOrder" (select)="purchaseView($event)"></app-film-order>
-            <div class="pagination-wrapper">
-                <div class="swiper-pagination"></div>
-            </div>
         </div>
 
         <div class="no-schedule" *ngIf="!isLoading && filmOrder.length === 0">
