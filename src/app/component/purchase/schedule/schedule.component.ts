@@ -84,12 +84,10 @@ export class ScheduleComponent implements OnInit {
         const results: { value: string; text: string; }[] = [];
         for (let i = 0; i < limit; i += 1) {
             const date = moment().add(i, 'day');
+            const formatDate = date.format('YYYY年MM月DD日');
             results.push({
                 value: date.format('YYYYMMDD'),
-                text: (i === 0) ? '本日'
-                    : (i === 1) ? '明日'
-                        : (i === 2) ? '明後日'
-                            : date.format('YYYY年MM月DD日')
+                text: (i === 0) ? `本日 (${formatDate})` : (i === 1) ? `明日 (${formatDate})` : (i === 2) ? `明後日 (${formatDate})` : formatDate
             });
         }
 
