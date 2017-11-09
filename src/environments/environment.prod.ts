@@ -3,6 +3,7 @@
  */
 export const environment = {
     production: true,
+    version: '1.0.0',
 
     region: 'ap-northeast-1', // identity poolのリージョンを指定する
 

@@ -8,7 +8,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MomentModule } from 'angular2-moment';
 import { QRCodeModule } from 'angular2-qrcode';
 import { SwiperModule } from 'angular2-useful-swiper';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './component/about/about.component';
 import { AppComponent } from './component/app/app.component';
@@ -35,7 +34,10 @@ import { DurationPipe } from './pipe/duration/duration.pipe';
 import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { AwsCognitoService } from './service/aws-cognito/aws-cognito.service';
-import { PurchaseService } from './service/purchase/purchase.service';
+import { ReservationService } from './service/reservation/reservation.service';
+import { ScheduleService } from './service/schedule/schedule.service';
+import { SelectService } from './service/select/select.service';
+import { StorageService } from './service/storage/storage.service';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -76,8 +78,11 @@ import { PurchaseService } from './service/purchase/purchase.service';
   ],
   providers: [
     AuthGuardService,
-    PurchaseService,
-    AwsCognitoService
+    AwsCognitoService,
+    ReservationService,
+    ScheduleService,
+    SelectService,
+    StorageService
   ],
   bootstrap: [AppComponent]
 })

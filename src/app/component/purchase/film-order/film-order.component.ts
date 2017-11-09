@@ -2,7 +2,7 @@
  * FilmOrderComponent
  */
 import { Component, Input, OnInit } from '@angular/core';
-import { IIndividualScreeningEvent } from '../../../model/screening-events/screening-events.model';
+import { IIndividualScreeningEvent } from '../../../service/schedule/schedule.service';
 
 @Component({
     selector: 'app-film-order',

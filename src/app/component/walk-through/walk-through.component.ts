@@ -3,7 +3,9 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 import { AwsCognitoService } from '../../service/aws-cognito/aws-cognito.service';
+import { StorageService } from '../../service/storage/storage.service';
 
 @Component({
     selector: 'app-walk-through',
@@ -17,7 +19,8 @@ export class WalkThroughComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private awsCognito: AwsCognitoService
+        private awsCognito: AwsCognitoService,
+        private storage: StorageService
     ) { }
 
     /**
@@ -47,7 +50,9 @@ export class WalkThroughComponent implements OnInit {
         try {
             this.isLoading = true;
             await this.awsCognito.authenticateWithTerminal();
-            await this.awsCognito.updateRecords('user', {});
+            await this.storage.save('info', {
+                version: environment.version
+            });
             await this.router.navigate(['/']);
         } catch (error) {
             console.error(error);

@@ -2,12 +2,10 @@
  * FilmOrderPerformanceComponent
  */
 import { Component, Input, OnInit } from '@angular/core';
-import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 import { environment } from '../../../../environments/environment';
 import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.service';
-
-export type IIndividualScreeningEvent = sasaki.factory.event.individualScreeningEvent.IEventWithOffer;
+import { IIndividualScreeningEvent } from '../../../service/schedule/schedule.service';
 
 @Component({
     selector: 'app-film-order-performance',

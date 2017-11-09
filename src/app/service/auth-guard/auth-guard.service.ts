@@ -3,24 +3,27 @@
  */
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { UserModel } from '../../model/user/user.model';
 import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
+import { StorageService } from '../storage/storage.service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
     constructor(
         private router: Router,
-        private awsCognito: AwsCognitoService
+        private awsCognito: AwsCognitoService,
+        private storage: StorageService
     ) { }
 
     public async canActivate(): Promise<boolean> {
         try {
             await this.awsCognitoAuthenticateCheck();
-            await this.userCheck();
+            await this.walkThroughCheck();
 
             return true;
         } catch (err) {
+            console.log('canActivate', err);
+
             return false;
         }
     }
@@ -33,11 +36,6 @@ export class AuthGuardService implements CanActivate {
         if (!isAuthenticate) {
             try {
                 await this.awsCognito.authenticateWithTerminal();
-                const userRecord = await this.awsCognito.getRecords('user');
-                const userModel = new UserModel(userRecord);
-                if (userModel.isFirst()) {
-                    await this.awsCognito.updateRecords('user', userModel.convertToRecord());
-                }
             } catch (err) {
                 this.router.navigate(['/error']);
                 throw err;
@@ -46,12 +44,11 @@ export class AuthGuardService implements CanActivate {
     }
 
     /**
-     * ユーザー確認
+     * walkThrough確認
      */
-    private async userCheck(): Promise<void> {
-        const userRecord = await this.awsCognito.getRecords('user');
-        const userModel = new UserModel(userRecord);
-        if (userModel.isFirst()) {
+    private async walkThroughCheck(): Promise<void> {
+        const info = this.storage.load('info');
+        if (info === null) {
             this.router.navigate(['/walkThrough']);
             throw new Error('userCheck Error');
         }
