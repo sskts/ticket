@@ -3,15 +3,15 @@
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Jsonp } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SwiperModule } from 'angular2-useful-swiper';
+import * as moment from 'moment';
 import { Observable } from 'rxjs/Observable';
 import { AvailabilityPipe } from '../../../pipe/availability/availability.pipe';
 import { DurationPipe } from '../../../pipe/duration/duration.pipe';
 import { TimeFormatPipe } from '../../../pipe/time-format/time-format.pipe';
-import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.service';
-import { PurchaseService } from '../../../service/purchase/purchase.service';
+import { ScheduleService } from '../../../service/schedule/schedule.service';
+import { SelectService } from '../../../service/select/select.service';
 import { LoadingComponent } from '../../loading/loading.component';
 import { FilmOrderPerformanceComponent } from '../film-order-performance/film-order-performance.component';
 import { FilmOrderComponent } from '../film-order/film-order.component';
@@ -20,28 +20,43 @@ import { ScheduleComponent } from './schedule.component';
 describe('ScheduleComponent', () => {
 
     it('コンポーネント生成', async () => {
-        const jsonpStub = {
-            get: () => {
-                return new Observable();
-            }
-        };
-        const purchaseServiceStub = {
-            getMovieTheaters: () => {
-                return Promise.resolve([
+        const scheduleServiceStub = {
+            data: {
+                schedule: [],
+                expired: moment().add(1, 'days').unix()
+            },
+            getSchedule: () => {
+                return Promise.resolve();
+            },
+            getTheater: () => {
+                return [
                     {
                         location: { branchCode: '123' },
                         name: { ja: 'TEST' }
                     }
-                ]);
+                ];
+            },
+            getDate: () => {
+                return [
+                    {
+                        value: '20171110',
+                        displayText: 'TEST',
+                        serviceDay: ''
+                    }
+                ];
+            },
+            getScreeningEvents: () => {
+                return Promise.resolve([]);
             }
         };
-        const awsCognitoServiceStub = {
-            getRecords: () => {
-                return Promise.resolve({});
+        const selectServiceStub = {
+            data: {
+                purchase: {theater: '123', date: '20171110'}
             },
-            updateRecords: () => {
-                return Promise.resolve();
-            }
+            getSelect: () => {
+                return { purchase: {theater: '123', date: '20171110'} };
+            },
+            save: () => { }
         };
         await TestBed.configureTestingModule({
             declarations: [
@@ -56,18 +71,15 @@ describe('ScheduleComponent', () => {
             imports: [
                 RouterTestingModule.withRoutes([]),
                 ReactiveFormsModule,
-                FormsModule,
-                SwiperModule
+                FormsModule
             ],
             providers: [
-                { provide: Jsonp, useValue: jsonpStub },
-                { provide: PurchaseService, useValue: purchaseServiceStub },
-                { provide: AwsCognitoService, useValue: awsCognitoServiceStub }
+                { provide: SelectService, useValue: selectServiceStub },
+                { provide: ScheduleService, useValue: scheduleServiceStub }
             ]
         }).compileComponents();
         const fixture = TestBed.createComponent(ScheduleComponent);
         const component = fixture.componentInstance;
-        fixture.detectChanges();
         await component.ngOnInit();
         expect(component.isLoading).toBeFalsy();
     });

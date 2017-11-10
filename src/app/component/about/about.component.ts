@@ -12,7 +12,6 @@ export class AboutComponent implements OnInit {
 
     constructor() { }
 
-    public ngOnInit(): void {
-    }
+    public ngOnInit(): void { }
 
 }

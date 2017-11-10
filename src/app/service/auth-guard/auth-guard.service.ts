@@ -15,6 +15,11 @@ export class AuthGuardService implements CanActivate {
         private storage: StorageService
     ) { }
 
+    /**
+     * 認証
+     * @method canActivate
+     * @returns {Promise<boolean>}
+     */
     public async canActivate(): Promise<boolean> {
         try {
             await this.awsCognitoAuthenticateCheck();
@@ -30,6 +35,8 @@ export class AuthGuardService implements CanActivate {
 
     /**
      * awsCognitoへ認証確認
+     * @method awsCognitoAuthenticateCheck
+     * @returns {Promise<void>}
      */
     private async awsCognitoAuthenticateCheck(): Promise<void> {
         const isAuthenticate = this.awsCognito.isAuthenticate();
@@ -45,6 +52,8 @@ export class AuthGuardService implements CanActivate {
 
     /**
      * walkThrough確認
+     * @method walkThroughCheck
+     * @returns {Promise<void>}
      */
     private async walkThroughCheck(): Promise<void> {
         const info = this.storage.load('info');

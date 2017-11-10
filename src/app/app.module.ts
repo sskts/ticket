@@ -21,7 +21,6 @@ import { NavigationComponent } from './component/navigation/navigation.component
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { PolicyComponent } from './component/policy/policy.component';
 import { PrivacyComponent } from './component/privacy/privacy.component';
-import { ChronologicalOrderComponent } from './component/purchase/chronological-order/chronological-order.component';
 import { FilmOrderPerformanceComponent } from './component/purchase/film-order-performance/film-order-performance.component';
 import { FilmOrderComponent } from './component/purchase/film-order/film-order.component';
 import { ScheduleComponent } from './component/purchase/schedule/schedule.component';
@@ -53,7 +52,6 @@ import { StorageService } from './service/storage/storage.service';
     NotFoundComponent,
     BaseComponent,
     TimeFormatPipe,
-    ChronologicalOrderComponent,
     FilmOrderComponent,
     AvailabilityPipe,
     DurationPipe,

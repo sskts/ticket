@@ -21,8 +21,10 @@ export class AwsCognitoService {
 
     /**
      * 端末IDで認証
+     * @method authenticateWithTerminal
+     * @returns {Promise<void>}
      */
-    public async authenticateWithTerminal() {
+    public async authenticateWithTerminal(): Promise<void> {
         AWS.config.region = AwsCognitoService.REGION;
         AWS.config.credentials = new AWS.CognitoIdentityCredentials({
             IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
@@ -32,6 +34,8 @@ export class AwsCognitoService {
 
     /**
      * 認証確認
+     * @method isAuthenticate
+     * @returns {boolean}
      */
     public isAuthenticate(): boolean {
         return (this.credentials !== null
@@ -42,6 +46,7 @@ export class AwsCognitoService {
      * レコード更新
      * @param {string} datasetName
      * @param {value} value
+     * @returns {Promise<any>}
      */
     public async updateRecords(datasetName: string, value: any): Promise<any> {
         await this.credentials.getPromise();
@@ -72,8 +77,9 @@ export class AwsCognitoService {
     /**
      * レコード取得
      * @param {string} datasetName
+     * @returns {Promise<any>}
      */
-    public async getRecords(datasetName: string) {
+    public async getRecords(datasetName: string): Promise<any> {
         await this.credentials.getPromise();
         const cognitoSync = new AWS.CognitoSync({
             credentials: this.credentials
@@ -93,6 +99,7 @@ export class AwsCognitoService {
      * レコードの形式へ変換
      * @param {any} value
      * @param {number} count
+     * @returns {{ Key: string; Op: string; SyncCount: number; Value: string; }[]}
      */
     private convertToRecords(value: any, count: number): {
         Key: string;
@@ -114,6 +121,7 @@ export class AwsCognitoService {
      * オブジェクトの形式へ変換
      * @param {any[]} records
      * @param {number} count
+     * @returns {Object}
      */
     private convertToObjects(records: any[]): Object {
         const result: any = {};

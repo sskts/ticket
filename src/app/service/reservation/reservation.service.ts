@@ -51,12 +51,12 @@ export class ReservationService {
      * @method fitchReservation
      * @returns {Promise<IReservationData>}
      */
-    public async fitchReservation(): Promise<IReservationData> {
+    private async fitchReservation(): Promise<IReservationData> {
         const reservationRecord = await this.awsCognito.getRecords('reservation');
         const expired = 10;
 
         return {
-            reservations: reservationRecord.orders,
+            reservations: (reservationRecord.orders === undefined ) ? [] : reservationRecord.orders,
             expired: moment().add(expired, 'milliseconds').unix()
         };
     }
@@ -66,8 +66,6 @@ export class ReservationService {
      * @method getReservationByPurchaseNumber
      */
     public getReservationByPurchaseNumberOrder(): IReservation[] {
-        console.log(this.data);
-
         return this.data.reservations.filter((reservation) => {
             if (reservation.acceptedOffers.length === 0) {
                 return false;

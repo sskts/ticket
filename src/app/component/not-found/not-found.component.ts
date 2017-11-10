@@ -22,6 +22,6 @@ export class NotFoundComponent implements OnInit {
      * @method ngOnInit
      * @returns {Promise<void>}
      */
-    public async ngOnInit(): Promise<void> {}
+    public async ngOnInit(): Promise<void> { }
 
 }

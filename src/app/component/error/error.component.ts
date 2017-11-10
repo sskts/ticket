@@ -25,9 +25,12 @@ export class ErrorComponent implements OnInit {
      * @method ngOnInit
      * @returns {Promise<void>}
      */
-    public ngOnInit(): void {
-    }
+    public ngOnInit(): void { }
 
+    /**
+     * 接続
+     * @method connect
+     */
     public async connect() {
         this.isLoading = true;
         try {

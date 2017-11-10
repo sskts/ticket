@@ -7,6 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import * as moment from 'moment';
 import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 import { AuthGuardService } from './auth-guard.service';
+import { retry } from 'rxjs/operator/retry';
 
 describe('AuthGuardService', () => {
 
@@ -18,22 +19,19 @@ describe('AuthGuardService', () => {
             },
             isAuthenticate: () => {
                 return true;
-            },
-            getRecords: () => {
-                return Promise.resolve({
-                    updateAt: moment().toISOString()
-                });
-            },
-            updateRecords: () => {
-                return Promise.resolve();
             }
         };
-        const service = new AuthGuardService(routerStub, awsCognitoServiceStub);
+        const storageServiceStub: any = {
+            load: () => {
+                return {};
+            }
+        };
+        const service = new AuthGuardService(routerStub, awsCognitoServiceStub, storageServiceStub);
         const canActivate = await service.canActivate();
         expect(canActivate).toBeTruthy();
     });
 
-    it('canActivate ユーザー情報なし', async () => {
+    it('canActivate walkThroughへ', async () => {
         const routerStub: any = {
             navigate: () => { }
         };
@@ -43,15 +41,14 @@ describe('AuthGuardService', () => {
             },
             isAuthenticate: () => {
                 return true;
-            },
-            getRecords: () => {
-                return Promise.resolve({});
-            },
-            updateRecords: () => {
-                return Promise.resolve();
             }
         };
-        const service = new AuthGuardService(routerStub, awsCognitoServiceStub);
+        const storageServiceStub: any = {
+            load: () => {
+                return null;
+            }
+        };
+        const service = new AuthGuardService(routerStub, awsCognitoServiceStub, storageServiceStub);
         const canActivate = await service.canActivate();
         expect(canActivate).toBeFalsy();
     });
@@ -66,16 +63,15 @@ describe('AuthGuardService', () => {
             },
             isAuthenticate: () => {
                 return false;
-            },
-            getRecords: () => {
-                return Promise.resolve({});
-            },
-            updateRecords: () => {
-                return Promise.resolve();
             }
         };
-        const service = new AuthGuardService(routerStub, awsCognitoServiceStub);
+        const storageServiceStub: any = {
+            load: () => {
+                return {};
+            }
+        };
+        const service = new AuthGuardService(routerStub, awsCognitoServiceStub, storageServiceStub);
         const canActivate = await service.canActivate();
-        expect(canActivate).toBeFalsy();
+        expect(canActivate).toBeTruthy();
     });
 });

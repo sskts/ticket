@@ -42,14 +42,27 @@ export class HeaderComponent implements OnInit {
         });
     }
 
+    /**
+     * メニューを開く
+     * @method menuOpen
+     */
     public menuOpen(): void {
         this.isMenuOpen = true;
     }
 
+    /**
+     * メニューを閉じる
+     * @method menuClose
+     */
     public menuClose(): void {
         this.isMenuOpen = false;
     }
 
+    /**
+     * ページ変更
+     * @method changePage
+     * @param {string} url
+     */
     private changePage(url: string): void {
         const page = pages.find((value) => {
             return (value.url === url);

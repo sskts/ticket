@@ -54,4 +54,5 @@ describe('FilmOrderPerformanceComponent', () => {
         fixture.detectChanges();
         expect(component).toBeTruthy();
     });
+
 });

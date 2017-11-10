@@ -15,16 +15,16 @@ export interface IPurchaseSelect {
 
 @Injectable()
 export class SelectService {
-    public select: ISelect;
+    public data: ISelect;
 
     constructor(private storage: StorageService) { }
 
     public getSelect(): ISelect {
-        if (this.select === undefined) {
-            this.select = this.storage.load('select');
+        if (this.data === undefined) {
+            this.data = this.storage.load('select');
         }
-        if (this.select === undefined || this.select === null) {
-            this.select = {
+        if (this.data === undefined || this.data === null) {
+            this.data = {
                 purchase: {
                     theater: '',
                     date: ''
@@ -32,15 +32,15 @@ export class SelectService {
             };
         }
 
-        return this.select;
+        return this.data;
     }
 
     public save(): void {
-        if (this.select === undefined) {
+        if (this.data === undefined) {
             this.getSelect();
         }
 
-        this.storage.save('select', this.select);
+        this.storage.save('select', this.data);
     }
 
 }

@@ -2,6 +2,7 @@
  * TicketHolderComponent
  */
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IReservation, ReservationService } from '../../../service/reservation/reservation.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class TicketHolderComponent implements OnInit {
     public purchaseNumberOrders: IReservation[];
 
     constructor(
+        private router: Router,
         private reservation: ReservationService
     ) { }
 
@@ -40,6 +42,7 @@ export class TicketHolderComponent implements OnInit {
             await this.reservation.getReservation();
             this.purchaseNumberOrders = this.reservation.getReservationByPurchaseNumberOrder();
         } catch (err) {
+            this.router.navigate(['/error', { redirect: '/purchase' }]);
             console.log(err);
         }
         this.isLoading = false;

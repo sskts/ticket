@@ -15,9 +15,8 @@ export class NoTicketComponent implements OnInit {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
+     * @returns {void}
      */
-    public ngOnInit(): void {
-    }
+    public ngOnInit(): void { }
 
 }

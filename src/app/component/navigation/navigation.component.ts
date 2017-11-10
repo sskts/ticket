@@ -22,7 +22,6 @@ export class NavigationComponent implements OnInit {
      * @method ngOnInit
      * @returns {Promise<void>}
      */
-    public ngOnInit(): void {
-    }
+    public ngOnInit(): void { }
 
 }

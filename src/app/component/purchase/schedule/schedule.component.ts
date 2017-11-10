@@ -44,8 +44,8 @@ export class ScheduleComponent implements OnInit {
         try {
             this.conditions = this.select.getSelect().purchase;
             await this.schedule.getSchedule();
-            this.theaters = await this.schedule.getTheater();
-            this.changeConditions();
+            this.theaters = this.schedule.getTheater();
+            await this.changeConditions();
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
             console.log('ScheduleComponent.ngOnInit', err);
@@ -61,18 +61,18 @@ export class ScheduleComponent implements OnInit {
      */
     public async changeConditions(): Promise<void> {
         this.isLoading = true;
-        this.select.select.purchase = this.conditions;
+        this.select.data.purchase = this.conditions;
         this.select.save();
         this.filmOrder = [];
         try {
             await this.schedule.getSchedule();
-            this.theaters = await this.schedule.getTheater();
+            this.theaters = this.schedule.getTheater();
             const selectTheater = this.theaters.find((theater) => {
                 return (theater.location.branchCode === this.conditions.theater);
             });
             if (selectTheater === undefined) {
-                this.select.select.purchase.theater = '';
-                this.select.select.purchase.date = '';
+                this.select.data.purchase.theater = '';
+                this.select.data.purchase.date = '';
                 this.select.save();
                 this.isLoading = false;
 
@@ -83,7 +83,7 @@ export class ScheduleComponent implements OnInit {
                 return (date.value === this.conditions.date);
             });
             if (selectDate === undefined) {
-                this.select.select.purchase.date = '';
+                this.select.data.purchase.date = '';
                 this.select.save();
                 this.isLoading = false;
 

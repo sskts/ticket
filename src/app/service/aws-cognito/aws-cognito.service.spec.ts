@@ -6,7 +6,7 @@ import * as AWS from 'aws-sdk';
 import { AwsCognitoService } from './aws-cognito.service';
 
 describe('AwsCognitoService', () => {
-    it('authenticateWithTerminal 正常', async () => {
+    it('authenticateWithTerminal', async () => {
         spyOn(AWS, 'CognitoIdentityCredentials').and.returnValue({});
         const service = new AwsCognitoService();
         service.authenticateWithTerminal();
@@ -20,7 +20,7 @@ describe('AwsCognitoService', () => {
         expect(service.isAuthenticate()).toBeTruthy();
     });
 
-    it('updateRecords 正常', async () => {
+    it('updateRecords', async () => {
         spyOn(AWS, 'CognitoIdentityCredentials').and.returnValue({
             getPromise: () => {
                 return Promise.resolve();
@@ -56,7 +56,7 @@ describe('AwsCognitoService', () => {
         expect(updateRecords).toBeTruthy();
     });
 
-    it('getRecords 正常', async () => {
+    it('getRecords', async () => {
         spyOn(AWS, 'CognitoIdentityCredentials').and.returnValue({
             getPromise: () => {
                 return Promise.resolve();

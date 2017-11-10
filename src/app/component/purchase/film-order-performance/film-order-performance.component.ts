@@ -21,15 +21,20 @@ export class FilmOrderPerformanceComponent implements OnInit {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
+     * @returns {void}
      */
     public ngOnInit(): void {
         this.salseFlg = moment(this.performance.startDate).unix() > moment().add(30, 'minutes').unix();
     }
 
-    public performanceSelect(data: IIndividualScreeningEvent) {
+    /**
+     * パフォーマンス選択
+     * @method performanceSelect
+     */
+    public performanceSelect() {
+        const params = `id=${this.performance.identifier}&identityId=${this.awsCognito.credentials.identityId}`;
         location.href =
-            `${environment.ticketingSite}/purchase/app.html?id=${data.identifier}&identityId=${this.awsCognito.credentials.identityId}`;
+            `${environment.ticketingSite}/purchase/app.html?${params}`;
     }
 
 }

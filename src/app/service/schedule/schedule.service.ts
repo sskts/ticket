@@ -75,7 +75,7 @@ export class ScheduleService {
      * @method fitchISchedule
      * @returns {Promise<IScheduleData>}
      */
-    public async fitchSchedule(
+    private async fitchSchedule(
         args: { beginDate: string; endDate: string; }
     ): Promise<IScheduleData> {
         const url = `${environment.ticketingSite}/purchase/performances/getSchedule`;
@@ -105,7 +105,7 @@ export class ScheduleService {
      */
     public getTheater(): IMovieTheater[] {
         if (this.data === undefined) {
-            throw new Error('schedule is undefined');
+            throw new Error('getTheater: schedule is undefined');
         }
 
         return this.data.schedule.map((schedule) => {
@@ -120,7 +120,7 @@ export class ScheduleService {
      */
     public getDate(theaterCode: string): IDate[] {
         if (this.data === undefined) {
-            throw new Error('schedule is undefined');
+            throw new Error('getDate: schedule is undefined');
         }
 
         const theaterSchedule = this.data.schedule.find((schedule) => {
@@ -159,7 +159,7 @@ export class ScheduleService {
      */
     public async getScreeningEvents(args: { theater: string, date: string }): Promise<IFilmOrder[]> {
         if (this.data === undefined) {
-            throw new Error('schedule is undefined');
+            throw new Error('getScreeningEvents: schedule is undefined');
         }
         const results: IFilmOrder[] = [];
         const theaterSchedule = this.data.schedule.find((schedule) => {

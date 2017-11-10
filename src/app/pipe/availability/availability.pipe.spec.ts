@@ -8,20 +8,20 @@ describe('AvailabilityPipe', () => {
         const pipe = new AvailabilityPipe();
         expect(pipe).toBeTruthy();
         const result = pipe.transform(100);
-        expect(result.symbol).toEqual('○');
+        expect(result.symbolText).toEqual('○');
     });
 
     it('transform 空席残りわずか', () => {
         const pipe = new AvailabilityPipe();
         expect(pipe).toBeTruthy();
         const result = pipe.transform(5);
-        expect(result.symbol).toEqual('△');
+        expect(result.symbolText).toEqual('△');
     });
 
     it('transform 空席なし', () => {
         const pipe = new AvailabilityPipe();
         expect(pipe).toBeTruthy();
         const result = pipe.transform(0);
-        expect(result.symbol).toEqual('×');
+        expect(result.symbolText).toEqual('×');
     });
 });

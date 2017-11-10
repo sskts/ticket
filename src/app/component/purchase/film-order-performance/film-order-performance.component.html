@@ -1,6 +1,6 @@
 <div class="performance" 
-[ngClass]="(salseFlg) ? (performance.offer.availability | availability).string : ''" 
-(click)="(salseFlg) ? performanceSelect(performance) : null;"> 
+[ngClass]="(salseFlg) ? (performance.offer.availability | availability).className : ''" 
+(click)="(salseFlg) ? performanceSelect() : null;"> 
     <p class="mb-x-small text-center">
         <strong class="large-text">{{ performance.startDate | timeFormat: performance.coaInfo.dateJouei }}</strong>
         <br>

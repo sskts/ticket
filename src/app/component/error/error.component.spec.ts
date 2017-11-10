@@ -26,7 +26,7 @@ describe('ErrorComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('connect 正常', async () => {
+    it('connect', async () => {
         const awsCognitoServiceStub = {
             authenticateWithTerminal: () => { },
             isAuthenticate: () => true
