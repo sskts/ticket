@@ -2,9 +2,7 @@
  * TicketHolderComponent
  */
 import { Component, OnInit } from '@angular/core';
-import * as sasaki from '@motionpicture/sskts-api-javascript-client';
-import { ReservationModel } from '../../../model/reservation/reservation.model';
-import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.service';
+import { IReservation, ReservationService } from '../../../service/reservation/reservation.service';
 
 @Component({
     selector: 'app-ticket-holder',
@@ -19,11 +17,10 @@ import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.serv
 export class TicketHolderComponent implements OnInit {
     public config: SwiperOptions;
     public isLoading: boolean;
-    public reservationnModel: ReservationModel;
-    public purchaseNumberOrders: sasaki.factory.order.IOrder[];
+    public purchaseNumberOrders: IReservation[];
 
     constructor(
-        private awsCognito: AwsCognitoService
+        private reservation: ReservationService
     ) { }
 
     /**
@@ -40,9 +37,8 @@ export class TicketHolderComponent implements OnInit {
             autoHeight: true
         };
         try {
-            const reservationRecord = await this.awsCognito.getRecords('reservation');
-            this.reservationnModel = new ReservationModel(reservationRecord);
-            this.purchaseNumberOrders = this.reservationnModel.getReservationByPurchaseNumberOrder();
+            await this.reservation.getReservation();
+            this.purchaseNumberOrders = this.reservation.getReservationByPurchaseNumberOrder();
         } catch (err) {
             console.log(err);
         }

@@ -17,15 +17,16 @@ export interface IFilmOrder {
     id: string;
     films: IIndividualScreeningEvent[];
 }
-export interface ISchedule {
-    schedule: {
-        theater: IMovieTheater;
-        schedule: {
-            date: string;
-            individualScreeningEvents: IIndividualScreeningEvent[];
-        }[];
-    }[];
+export interface IScheduleData {
+    schedule: ISchedule[];
     expired: number;
+}
+export interface ISchedule {
+    theater: IMovieTheater;
+    schedule: {
+        date: string;
+        individualScreeningEvents: IIndividualScreeningEvent[];
+    }[];
 }
 export interface IDate {
     value: string;
@@ -33,14 +34,9 @@ export interface IDate {
     serviceDay: string;
 }
 
-/**
- * 先行販売
- */
-const PRE_SALE = '1';
-
 @Injectable()
 export class ScheduleService {
-    public schedule: ISchedule;
+    public data: IScheduleData;
 
     constructor(
         private jsonp: Jsonp,
@@ -50,36 +46,38 @@ export class ScheduleService {
     /**
      * スケジュール取得
      * @method getSchedule
-     * @returns {Promise<ISchedule>}
+     * @returns {Promise<IScheduleData>}
      */
-    public async getSchedule(): Promise<ISchedule> {
-        const schedule: ISchedule = (this.schedule === undefined)
+    public async getSchedule(): Promise<IScheduleData> {
+        const schedule: IScheduleData = (this.data === undefined)
             ? this.storage.load('schedule')
-            : this.schedule;
+            : this.data;
         if (schedule === undefined || schedule === null || schedule.expired < moment().unix()) {
             try {
-                this.schedule = await this.fitchSchedule({
+                this.data = await this.fitchSchedule({
                     beginDate: moment().format('YYYYMMDD'),
                     endDate: moment().add(1, 'month').format('YYYYMMDD')
                 });
-                this.storage.save('schedule', this.schedule);
+                this.storage.save('schedule', this.data);
             } catch (err) {
                 this.storage.remove('schedule');
                 throw err;
             }
         } else {
-            this.schedule = schedule;
+            this.data = schedule;
         }
 
-        return this.schedule;
+        return this.data;
     }
 
     /**
      * スケジュールをAPI経由で取得
      * @method fitchISchedule
-     * @returns {Promise<void>}
+     * @returns {Promise<IScheduleData>}
      */
-    public async fitchSchedule(args: { beginDate: string; endDate: string; }): Promise<ISchedule> {
+    public async fitchSchedule(
+        args: { beginDate: string; endDate: string; }
+    ): Promise<IScheduleData> {
         const url = `${environment.ticketingSite}/purchase/performances/getSchedule`;
         const options = {
             search: {
@@ -106,11 +104,11 @@ export class ScheduleService {
      * @returns {<IMovieTheater[]}
      */
     public getTheater(): IMovieTheater[] {
-        if (this.schedule === undefined) {
+        if (this.data === undefined) {
             throw new Error('schedule is undefined');
         }
 
-        return this.schedule.schedule.map((schedule) => {
+        return this.data.schedule.map((schedule) => {
             return schedule.theater;
         });
     }
@@ -121,18 +119,17 @@ export class ScheduleService {
      * @returns {IDate[]}
      */
     public getDate(theaterCode: string): IDate[] {
-        if (this.schedule === undefined) {
+        if (this.data === undefined) {
             throw new Error('schedule is undefined');
         }
 
-        const theaterSchedule = this.schedule.schedule.find((schedule) => {
+        const theaterSchedule = this.data.schedule.find((schedule) => {
             return (schedule.theater.location.branchCode === theaterCode);
         });
 
         const dateList = theaterSchedule.schedule.filter((schedule) => {
             const screeningEvents = schedule.individualScreeningEvents.filter((screeningEvent) => {
-                return (screeningEvent.coaInfo.rsvStartDate <= moment().format('YYYYMMDD')
-                    || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE);
+                return (this.isSalse(screeningEvent));
             });
 
             return (screeningEvents.length > 0);
@@ -161,11 +158,11 @@ export class ScheduleService {
      * @returns {Promise<IFilmOrder[]>}
      */
     public async getScreeningEvents(args: { theater: string, date: string }): Promise<IFilmOrder[]> {
-        if (this.schedule === undefined) {
+        if (this.data === undefined) {
             throw new Error('schedule is undefined');
         }
         const results: IFilmOrder[] = [];
-        const theaterSchedule = this.schedule.schedule.find((schedule) => {
+        const theaterSchedule = this.data.schedule.find((schedule) => {
             return (schedule.theater.location.branchCode === args.theater);
         });
         const dateSchedule = theaterSchedule.schedule.find((schedule) => {
@@ -173,25 +170,24 @@ export class ScheduleService {
         });
 
         const screeningEvents = dateSchedule.individualScreeningEvents.filter((screeningEvent) => {
-            return (screeningEvent.coaInfo.rsvStartDate <= moment().format('YYYYMMDD')
-                || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE);
+            return (this.isSalse(screeningEvent));
         });
 
-        screeningEvents.forEach((performance) => {
+        screeningEvents.forEach((screeningEvent) => {
             // 販売可能時間判定
-            if (!this.isSalseTime(performance.startDate)) {
+            if (!this.isSalseTime(screeningEvent)) {
                 return;
             }
             const film = results.find((event) => {
-                return (event.id === performance.workPerformed.identifier);
+                return (event.id === screeningEvent.workPerformed.identifier);
             });
             if (film === undefined) {
                 results.push({
-                    id: performance.workPerformed.identifier,
-                    films: [performance]
+                    id: screeningEvent.workPerformed.identifier,
+                    films: [screeningEvent]
                 });
             } else {
-                film.films.push(performance);
+                film.films.push(screeningEvent);
             }
         });
 
@@ -200,13 +196,25 @@ export class ScheduleService {
 
     /**
      * 販売可能時間判定
-     * @param {Date | string} startDate
+     * @param {IIndividualScreeningEvent} screeningEvent
      * @returns {boolean}
      */
-    private isSalseTime(startDate: Date | string): boolean {
-        const END_TIME = 30;
+    private isSalseTime(screeningEvent: IIndividualScreeningEvent): boolean {
+        const END_TIME = 30; // 30分前
 
-        return (moment().unix() < moment(startDate).subtract(END_TIME, 'minutes').unix());
+        return (moment().unix() < moment(screeningEvent.startDate).subtract(END_TIME, 'minutes').unix());
+    }
+
+    /**
+     * 販売可能判定
+     * @param {IIndividualScreeningEvent} screeningEvent
+     * @returns {boolean}
+     */
+    private isSalse(screeningEvent: IIndividualScreeningEvent): boolean {
+        const PRE_SALE = '1'; // 先行販売
+
+        return (screeningEvent.coaInfo.rsvStartDate <= moment().format('YYYYMMDD')
+            || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE);
     }
 
 }
