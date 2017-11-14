@@ -2899,12 +2899,13 @@ var ScheduleService = /** @class */ (function () {
                         _b.trys.push([1, 3, , 4]);
                         _a = this;
                         return [4 /*yield*/, this.fitchSchedule({
-                                beginDate: __WEBPACK_IMPORTED_MODULE_2_moment__().format('YYYYMMDD'),
-                                endDate: __WEBPACK_IMPORTED_MODULE_2_moment__().add(1, 'month').format('YYYYMMDD')
+                                startFrom: __WEBPACK_IMPORTED_MODULE_2_moment__().toISOString(),
+                                startThrough: __WEBPACK_IMPORTED_MODULE_2_moment__().add(1, 'month').toISOString()
                             })];
                     case 2:
                         _a.data = _b.sent();
                         this.storage.save('schedule', this.data);
+                        console.log(this.data);
                         return [3 /*break*/, 4];
                     case 3:
                         err_1 = _b.sent();
@@ -2926,7 +2927,7 @@ var ScheduleService = /** @class */ (function () {
      */
     ScheduleService.prototype.fitchSchedule = function (args) {
         return __awaiter(this, void 0, void 0, function () {
-            var url, options, response, expired;
+            var url, options, response, expired, schedule, result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -2934,8 +2935,8 @@ var ScheduleService = /** @class */ (function () {
                         options = {
                             search: {
                                 callback: 'JSONP_CALLBACK',
-                                beginDate: args.beginDate,
-                                endDate: args.endDate
+                                startFrom: args.startFrom,
+                                startThrough: args.startThrough
                             }
                         };
                         return [4 /*yield*/, this.jsonp.get(url, options).retry(3).toPromise()];
@@ -2945,8 +2946,34 @@ var ScheduleService = /** @class */ (function () {
                             throw new Error(response.json().error);
                         }
                         expired = 10;
+                        schedule = [];
+                        result = response.json().result;
+                        result.theaters.forEach(function (theater) {
+                            var theaterSchedule = [];
+                            var theaterScreeningEvents = result.screeningEvents.filter(function (screeningEvent) {
+                                return (screeningEvent.superEvent.location.branchCode === theater.location.branchCode);
+                            });
+                            var diff = __WEBPACK_IMPORTED_MODULE_2_moment__(args.startThrough).diff(__WEBPACK_IMPORTED_MODULE_2_moment__(args.startFrom), 'days');
+                            var _loop_1 = function (i) {
+                                var date = __WEBPACK_IMPORTED_MODULE_2_moment__(args.startFrom).add(i, 'days').format('YYYYMMDD');
+                                var dateScreeningEvents = theaterScreeningEvents.filter(function (screeningEvent) {
+                                    return (screeningEvent.coaInfo.dateJouei === date);
+                                });
+                                theaterSchedule.push({
+                                    date: date,
+                                    individualScreeningEvents: dateScreeningEvents
+                                });
+                            };
+                            for (var i = 0; i < diff; i += 1) {
+                                _loop_1(i);
+                            }
+                            schedule.push({
+                                theater: theater,
+                                schedule: theaterSchedule
+                            });
+                        });
                         return [2 /*return*/, {
-                                schedule: response.json().result,
+                                schedule: schedule,
                                 expired: __WEBPACK_IMPORTED_MODULE_2_moment__().add(expired, 'minutes').unix()
                             }];
                 }
@@ -3212,9 +3239,9 @@ var environment = {
     production: false,
     version: '1.0.0',
     region: 'ap-northeast-1',
-    identityPoolId: 'ap-northeast-1:6a67f523-93c3-4766-b96f-6552f21abd8d',
-    userPoolId: 'ap-northeast-1_bQcyLA7Jq',
-    clientId: '5b7cliq3435qf72gvt6sh0otui',
+    identityPoolId: 'ap-northeast-1:b153d3f1-5e67-468e-8c69-ab938cf3d21e',
+    userPoolId: '',
+    clientId: '',
     rekognitionBucket: 'rekognition-pics',
     albumName: 'usercontent',
     bucketRegion: 'us-east-1',
@@ -3222,16 +3249,15 @@ var environment = {
     cognito_idp_endpoint: '',
     cognito_identity_endpoint: '',
     sts_endpoint: '',
-    sasakiAuthDomain: 'sskts-development.auth.ap-northeast-1.amazoncognito.com',
-    sasakiAuthRedirectUri: 'https://sskts-ticket-development.azurewebsites.net/signIn',
-    sasakiAuthLogoutUri: 'https://sskts-ticket-development.azurewebsites.net/signOut',
-    tokenIssuer: 'https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_bQcyLA7Jq',
-    sasakiAPIEndpoint: 'https://sskts-api-development.azurewebsites.net',
+    sasakiAuthDomain: 'sskts-test.auth.ap-northeast-1.amazoncognito.com',
+    sasakiAuthRedirectUri: 'https://sskts-ticket-test.azurewebsites.net/signIn',
+    sasakiAuthLogoutUri: 'https://sskts-ticket-test.azurewebsites.net/signOut',
+    tokenIssuer: '',
+    sasakiAPIEndpoint: 'https://sskts-api-test.azurewebsites.net',
     resourceServerDomain: 'https://sskts-api-test.azurewebsites.net',
     // tslint:disable-next-line:no-http-string
     portalSite: 'http://www.cinemasunshine.co.jp',
-    // tslint:disable-next-line:no-http-string
-    ticketingSite: 'https://sskts-frontend-development.azurewebsites.net',
+    ticketingSite: 'https://sskts-frontend-test.azurewebsites.net',
     analyticsId: 'UA-99018492-5'
 };
 //# sourceMappingURL=environment.js.map

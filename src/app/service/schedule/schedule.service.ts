@@ -55,10 +55,11 @@ export class ScheduleService {
         if (schedule === undefined || schedule === null || schedule.expired < moment().unix()) {
             try {
                 this.data = await this.fitchSchedule({
-                    beginDate: moment().format('YYYYMMDD'),
-                    endDate: moment().add(1, 'month').format('YYYYMMDD')
+                    startFrom: moment().toISOString(),
+                    startThrough: moment().add(1, 'month').toISOString()
                 });
                 this.storage.save('schedule', this.data);
+                console.log(this.data);
             } catch (err) {
                 this.storage.remove('schedule');
                 throw err;
@@ -76,14 +77,14 @@ export class ScheduleService {
      * @returns {Promise<IScheduleData>}
      */
     private async fitchSchedule(
-        args: { beginDate: string; endDate: string; }
+        args: { startFrom: string; startThrough: string; }
     ): Promise<IScheduleData> {
         const url = `${environment.ticketingSite}/purchase/performances/getSchedule`;
         const options = {
             search: {
                 callback: 'JSONP_CALLBACK',
-                beginDate: args.beginDate,
-                endDate: args.endDate
+                startFrom: args.startFrom,
+                startThrough: args.startThrough
             }
         };
         const response = await this.jsonp.get(url, options).retry(3).toPromise();
@@ -92,8 +93,35 @@ export class ScheduleService {
         }
         const expired = 10;
 
+        const schedule: ISchedule[] = [];
+        const result: { theaters: IMovieTheater[], screeningEvents: IIndividualScreeningEvent[] } = response.json().result;
+        result.theaters.forEach((theater) => {
+            const theaterSchedule: {
+                date: string;
+                individualScreeningEvents: IIndividualScreeningEvent[];
+            }[] = [];
+            const theaterScreeningEvents = result.screeningEvents.filter((screeningEvent) => {
+                return (screeningEvent.superEvent.location.branchCode === theater.location.branchCode);
+            });
+            const diff = moment(args.startThrough).diff(moment(args.startFrom), 'days');
+            for (let i = 0; i < diff; i += 1) {
+                const date = moment(args.startFrom).add(i, 'days').format('YYYYMMDD');
+                const dateScreeningEvents = theaterScreeningEvents.filter((screeningEvent)=>{
+                    return (screeningEvent.coaInfo.dateJouei === date);
+                });
+                theaterSchedule.push({
+                    date: date,
+                    individualScreeningEvents: dateScreeningEvents
+                });
+            }
+            schedule.push({
+                theater: theater,
+                schedule: theaterSchedule
+            });
+        });
+
         return {
-            schedule: response.json().result,
+            schedule: schedule,
             expired: moment().add(expired, 'minutes').unix()
         };
     }
