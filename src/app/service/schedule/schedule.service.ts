@@ -138,7 +138,7 @@ export class ScheduleService {
         let count = 0;
 
         return dateList.map((schedule) => {
-            const formatDate = moment(schedule.date).format('YYYY年MM月DD日');
+            const formatDate = moment(schedule.date).format('YYYY/MM/DD');
             const result = {
                 value: schedule.date,
                 displayText: (count === 0) ? `本日 (${formatDate})`

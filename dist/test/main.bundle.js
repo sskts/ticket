@@ -735,7 +735,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".cover {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, 0.75);\n  display: none; }\n  .cover.active {\n    display: block; }\n\n.menu {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  right: -100%;\n  z-index: 20;\n  background-color: #000;\n  width: 100%;\n  overflow: scroll;\n  transition: right 0.1s; }\n  .menu.active {\n    right: 0; }\n  .menu .title {\n    background-color: #CCC;\n    color: #333;\n    padding: 20px 20px; }\n  .menu li {\n    border-bottom: 1px solid #CCC; }\n    .menu li a, .menu li span {\n      display: block;\n      background-color: #111;\n      padding: 20px 20px; }\n    .menu li .icon-inline:before {\n      margin-right: 20px; }\n", ""]);
+exports.push([module.i, ".cover {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, 0.75);\n  display: none; }\n  .cover.active {\n    display: block; }\n\n.menu {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  right: -100%;\n  z-index: 20;\n  background-color: #000;\n  width: 100%;\n  overflow: scroll;\n  transition: right 0.1s; }\n  .menu.active {\n    right: 0; }\n  .menu .title {\n    background-color: #CCC;\n    color: #333;\n    padding: 20px 20px; }\n  .menu li {\n    border-bottom: 1px solid #707070; }\n    .menu li a, .menu li span {\n      display: block;\n      background-color: #111;\n      padding: 20px 20px; }\n    .menu li .icon-inline:before {\n      margin-right: 20px; }\n", ""]);
 
 // exports
 
@@ -1882,7 +1882,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".inner {\n  background-color: #EEE;\n  color: #333; }\n\n.info dl {\n  border-bottom: 1px solid #AAA;\n  display: table;\n  width: 100%; }\n  .info dl dt {\n    width: 60px;\n    text-align: center;\n    display: table-cell;\n    vertical-align: middle; }\n    .info dl dt:before {\n      margin: 0 auto; }\n  .info dl dd {\n    width: calc(100% - 60px);\n    padding: 15px 0;\n    display: table-cell;\n    vertical-align: middle;\n    line-height: 1.4; }\n\nul li {\n  background-color: #FFF;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #AAA;\n  position: relative; }\n  ul li:last-child {\n    border-bottom: none; }\n  ul li .ticket-info {\n    text-align: center;\n    width: calc(100% - 140px); }\n    ul li .ticket-info .index {\n      position: absolute;\n      top: 10px;\n      left: 10px;\n      color: #BCBCBC; }\n  ul li .qr {\n    padding: 20px;\n    background-color: #EEE; }\n    ul li .qr qr-code {\n      display: block;\n      padding: 10px;\n      background-color: #FFF; }\n", ""]);
+exports.push([module.i, ".inner {\n  background-color: #EEE;\n  color: #333; }\n\n.info dl {\n  border-bottom: 1px solid #AAA;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 15px 0; }\n  .info dl dt {\n    width: 40px;\n    text-align: center; }\n    .info dl dt:before {\n      margin: 0 auto; }\n  .info dl dd {\n    width: calc(100% - 40px);\n    line-height: 1.6;\n    padding-right: 10px; }\n\nul li {\n  background-color: #FFF;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #AAA;\n  position: relative; }\n  ul li:last-child {\n    border-bottom: none; }\n  ul li .ticket-info {\n    text-align: center;\n    width: calc(100% - 140px); }\n    ul li .ticket-info .index {\n      position: absolute;\n      top: 10px;\n      left: 10px;\n      color: #BCBCBC; }\n  ul li .qr {\n    padding: 20px;\n    background-color: #EEE; }\n    ul li .qr qr-code {\n      display: block;\n      padding: 10px;\n      background-color: #FFF; }\n", ""]);
 
 // exports
 
@@ -2987,7 +2987,7 @@ var ScheduleService = /** @class */ (function () {
         });
         var count = 0;
         return dateList.map(function (schedule) {
-            var formatDate = __WEBPACK_IMPORTED_MODULE_2_moment__(schedule.date).format('YYYY年MM月DD日');
+            var formatDate = __WEBPACK_IMPORTED_MODULE_2_moment__(schedule.date).format('YYYY/MM/DD');
             var result = {
                 value: schedule.date,
                 displayText: (count === 0) ? "\u672C\u65E5 (" + formatDate + ")"
