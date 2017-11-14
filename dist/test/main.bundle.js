@@ -230,7 +230,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_30__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
                 __WEBPACK_IMPORTED_MODULE_31__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */],
                 __WEBPACK_IMPORTED_MODULE_32__service_reservation_reservation_service__["a" /* ReservationService */],
-                __WEBPACK_IMPORTED_MODULE_33__service_schedule_schedule_service__["b" /* ScheduleService */],
+                __WEBPACK_IMPORTED_MODULE_33__service_schedule_schedule_service__["a" /* ScheduleService */],
                 __WEBPACK_IMPORTED_MODULE_34__service_select_select_service__["a" /* SelectService */],
                 __WEBPACK_IMPORTED_MODULE_35__service_storage_storage_service__["a" /* StorageService */]
             ],
@@ -247,7 +247,7 @@ var AppModule = /** @class */ (function () {
 /***/ "../../../../../src/app/component/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents bg-01\">\n    <div class=\"inner\">\n        <p class=\"read mb-middle\">\n            このアプリはシネマサンシャイン公式のスマートフォンアプリです。<br>\n            このアプリを使うことで、アプリ会員価格でのチケット購入やチケットの保存機能などシネマサンシャインでの映画鑑賞をお得にお楽しみ頂けます。\n        </p>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center large-text\">アプリ会員価格でのチケット購入！</h2>\n            <p class=\"mb-middle text-center\">\n                通常のチケット購入価格よりお得な<br>アプリ会員価格でチケットが購入できます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/app_price.svg\" width=\"230\" height=\"150\"></div>\n        </div>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center large-text\">チケットをスマートに購入</h2>\n            <p class=\"mb-middle text-center\">\n                一度アプリ内でチケット購入を行うと、<br>次回から購入者情報やクレジットカード情報を<br>入力せずにご購入頂けます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/purchase_smartly.svg\" width=\"230\" height=\"150\"></div>\n        </div>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center large-text\">スマフォがそのままチケットに！</h2>\n            <p class=\"mb-middle text-center\">\n                鑑賞当日は、チケットホルダー内のQRコードを<br>見せるだけでスムーズにご入場頂けます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/app_ticket.svg\" width=\"230\" height=\"150\"></div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"contents bg-01\">\n    <div class=\"inner\">\n        <p class=\"read mb-middle small-text\">\n            このアプリはシネマサンシャイン公式のスマートフォンアプリです。<br>\n            このアプリを使うことで、アプリ会員価格でのチケット購入やチケットの保存機能などシネマサンシャインでの映画鑑賞をお得にお楽しみ頂けます。\n        </p>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center large-text\">アプリ会員価格でのチケット購入！</h2>\n            <p class=\"mb-middle text-center small-text\">\n                通常のチケット購入価格よりお得な<br>アプリ会員価格でチケットが購入できます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/app_price.svg\" width=\"230\" height=\"150\"></div>\n        </div>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center large-text\">チケットをスマートに購入</h2>\n            <p class=\"mb-middle text-center small-text\">\n                一度アプリ内でチケット購入を行うと、<br>次回から購入者情報やクレジットカード情報を<br>入力せずにご購入頂けます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/purchase_smartly.svg\" width=\"230\" height=\"150\"></div>\n        </div>\n        <div class=\"mb-middle\">\n            <h2 class=\"mb-small text-center large-text\">スマフォがそのままチケットに！</h2>\n            <p class=\"mb-middle text-center small-text\">\n                鑑賞当日は、チケットホルダー内のQRコードを<br>見せるだけでスムーズにご入場頂けます。\n            </p>\n            <div class=\"text-center\"><img src=\"/assets/images/about/app_ticket.svg\" width=\"230\" height=\"150\"></div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -735,7 +735,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".cover {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, 0.75);\n  display: none; }\n  .cover.active {\n    display: block; }\n\n.menu {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  right: -100%;\n  z-index: 20;\n  background-color: #000;\n  width: 100%;\n  overflow: scroll;\n  transition: right 0.1s; }\n  .menu.active {\n    right: 0; }\n  .menu .title {\n    background-color: #CCC;\n    color: #333;\n    padding: 30px 20px; }\n  .menu li {\n    border-bottom: 1px solid #CCC; }\n    .menu li a, .menu li span {\n      display: block;\n      background-color: #111;\n      padding: 30px 20px; }\n    .menu li .icon-inline:before {\n      margin-right: 20px; }\n", ""]);
+exports.push([module.i, ".cover {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, 0.75);\n  display: none; }\n  .cover.active {\n    display: block; }\n\n.menu {\n  position: fixed;\n  top: 48px;\n  bottom: 0;\n  right: -100%;\n  z-index: 20;\n  background-color: #000;\n  width: 100%;\n  overflow: scroll;\n  transition: right 0.1s; }\n  .menu.active {\n    right: 0; }\n  .menu .title {\n    background-color: #CCC;\n    color: #333;\n    padding: 20px 20px; }\n  .menu li {\n    border-bottom: 1px solid #CCC; }\n    .menu li a, .menu li span {\n      display: block;\n      background-color: #111;\n      padding: 20px 20px; }\n    .menu li .icon-inline:before {\n      margin-right: 20px; }\n", ""]);
 
 // exports
 
@@ -1269,7 +1269,7 @@ var PrivacyComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"performance\" \n[ngClass]=\"(salseFlg) ? (performance.offer.availability | availability).className : ''\" \n(click)=\"(salseFlg) ? performanceSelect() : null;\"> \n    <p class=\"mb-x-small text-center\">\n        <strong class=\"large-text\">{{ performance.startDate | timeFormat: performance.coaInfo.dateJouei }}</strong>\n        <br>\n        <span>～ {{ performance.endDate | timeFormat: performance.coaInfo.dateJouei }}</span>\n    </p>\n    <div class=\"screen text-center\">{{ performance.location.name.ja }}</div>\n    <div *ngIf=\"salseFlg\" class=\"status\" [ngClass]=\"(performance.offer.availability | availability).icon\"></div>\n    <div *ngIf=\"!salseFlg\" class=\"status window small-text\">窓口</div>\n    <div *ngIf=\"performance.coaInfo.kbnService.kubunCode === '001'\" class=\"service icon-first-show-white\"></div>\n    <div *ngIf=\"performance.coaInfo.kbnService.kubunCode === '002'\" class=\"service icon-late-show-white\"></div>\n</div>"
+module.exports = "<div class=\"performance\" \n[ngClass]=\"(salseFlg) ? (performance.offer.availability | availability).className : ''\" \n(click)=\"(salseFlg) ? performanceSelect() : null;\"> \n    <div class=\"mb-xx-small text-center\">\n        <strong class=\"large-text\">{{ performance.startDate | timeFormat: performance.coaInfo.dateJouei }}</strong>\n    </div>\n    <div class=\"mb-x-small text-center\">\n        <span>～ {{ performance.endDate | timeFormat: performance.coaInfo.dateJouei }}</span>\n    </div>\n    <div class=\"screen text-center\">{{ performance.location.name.ja }}</div>\n    <div *ngIf=\"salseFlg\" class=\"status\" [ngClass]=\"(performance.offer.availability | availability).icon\"></div>\n    <div *ngIf=\"!salseFlg\" class=\"status window small-x-text\">窓口</div>\n    <div *ngIf=\"performance.coaInfo.kbnService.kubunCode === '001'\" class=\"service icon-first-show-white\"></div>\n    <div *ngIf=\"performance.coaInfo.kbnService.kubunCode === '002'\" class=\"service icon-late-show-white\"></div>\n</div>"
 
 /***/ }),
 
@@ -1301,7 +1301,6 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_schedule_schedule_service__ = __webpack_require__("../../../../../src/app/service/schedule/schedule.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1314,7 +1313,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 /**
  * FilmOrderPerformanceComponent
  */
-
 
 
 
@@ -1342,7 +1340,7 @@ var FilmOrderPerformanceComponent = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__service_schedule_schedule_service__["IIndividualScreeningEvent"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__service_schedule_schedule_service__["IIndividualScreeningEvent"]) === "function" && _a || Object)
+        __metadata("design:type", typeof (_a = typeof IIndividualScreeningEvent !== "undefined" && IIndividualScreeningEvent) === "function" && _a || Object)
     ], FilmOrderPerformanceComponent.prototype, "performance", void 0);
     FilmOrderPerformanceComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1363,7 +1361,7 @@ var FilmOrderPerformanceComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/purchase/film-order/film-order.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <p class=\"title mb-x-small\">{{ filmInfo.workPerformed.name }}</p>\n        <div class=\"date small-text icon-time-gray text-light-gray\">{{ filmInfo.workPerformed.duration | duration: 'minutes' }}分</div>\n    </div>\n    <div class=\"performances\">\n        <app-film-order-performance *ngFor=\"let film of data.films\" [performance]=\"film\"></app-film-order-performance>\n    </div>\n</div>"
+module.exports = "<div class=\"info\">\n    <p class=\"title mb-xx-small\">{{ filmInfo.workPerformed.name }}</p>\n    <div class=\"date small-x-text icon-time-gray text-light-gray\">{{ filmInfo.workPerformed.duration | duration: 'minutes' }}分</div>\n</div>\n<div class=\"scroll\">\n    <app-film-order-performance *ngFor=\"let film of data.films\" [performance]=\"film\"></app-film-order-performance>\n</div>\n"
 
 /***/ }),
 
@@ -1375,7 +1373,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  display: block; }\n\n.inner {\n  display: block;\n  background-color: #FFF;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n\n.info {\n  padding: 15px 10px;\n  color: #333;\n  background-color: #EEE;\n  width: 140px; }\n  .info .date:before {\n    display: inline-block;\n    vertical-align: middle;\n    margin-right: 10px; }\n\n.performances {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 5px 5px;\n  width: calc(100% - 140px);\n  overflow-x: scroll;\n  -webkit-overflow-scrolling: touch;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n", ""]);
+exports.push([module.i, ":host {\n  display: block; }\n\n.info {\n  padding: 10px;\n  color: #333;\n  background-color: #E3E3E3; }\n  .info .date:before {\n    display: inline-block;\n    vertical-align: middle;\n    margin-right: 10px; }\n\n.scroll {\n  background-color: #FFF;\n  -webkit-overflow-scrolling: touch;\n  overflow-x: scroll;\n  padding: 5px 5px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n", ""]);
 
 // exports
 
@@ -1437,7 +1435,7 @@ var FilmOrderComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/purchase/schedule/schedule.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <div class=\"inner\">\n        <p class=\"read mb-small\">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>\n        <ul class=\"conditions mb-small\">\n            <li class=\" mb-x-small\">\n                <div class=\"control-label mb-x-small small-text text-light-gray\">鑑賞劇場</div>\n                <select class=\"form-control\" name=\"theater\" [(ngModel)]=\"conditions.theater\" (change)=\"changeConditions($event)\">\n                    <option value=\"\">選択してください</option>\n                    <option *ngFor=\"let theater of theaters\" value=\"{{ theater.location.branchCode }}\">{{ theater.name.ja }}</option>\n                </select>\n            </li>\n            <li>\n                <div class=\"control-label mb-x-small small-text text-light-gray\">鑑賞日時</div>\n                <select class=\"form-control\" name=\"date\" [(ngModel)]=\"conditions.date\" (change)=\"changeConditions($event)\">\n                    <option value=\"\">選択してください</option>\n                    <option *ngFor=\"let date of dateList\" value=\"{{ date.value }}\">{{ date.displayText }} {{ date.serviceDay }}</option>\n                </select>\n            </li>\n        </ul>\n\n        <div *ngIf=\"!isLoading && filmOrder.length > 0\">\n            <app-film-order *ngFor=\"let filmOrder of filmOrder\" class=\"mb-x-small\" [data]=\"filmOrder\"></app-film-order>\n        </div>\n\n        <div class=\"no-schedule\" *ngIf=\"!isLoading && filmOrder.length === 0\">\n            <div class=\"mb-x-small\" *ngIf=\"conditions.theater === ''\">鑑賞劇場が選択されていません。</div>\n            <div class=\"mb-x-small\" *ngIf=\"conditions.date === ''\">鑑賞日時が選択されていません。</div>\n            <div class=\"mb-x-small\" *ngIf=\"conditions.theater !== '' && conditions.date !== ''\">上映作品がありません。</div>\n        </div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
+module.exports = "<div class=\"contents bg-02\">\n    <div class=\"inner\">\n        <p class=\"read mb-small small-text\">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>\n        <ul class=\"conditions mb-small\">\n            <li class=\" mb-x-small\">\n                <div class=\"control-label mb-x-small small-x-text text-light-gray\">鑑賞劇場</div>\n                <select class=\"form-control\" name=\"theater\" [(ngModel)]=\"conditions.theater\" (change)=\"changeConditions($event)\">\n                    <option value=\"\">選択してください</option>\n                    <option *ngFor=\"let theater of theaters\" value=\"{{ theater.location.branchCode }}\">{{ theater.name.ja }}</option>\n                </select>\n            </li>\n            <li>\n                <div class=\"control-label mb-x-small small-x-text text-light-gray\">鑑賞日時</div>\n                <select class=\"form-control\" name=\"date\" [(ngModel)]=\"conditions.date\" (change)=\"changeConditions($event)\">\n                    <option value=\"\">選択してください</option>\n                    <option *ngFor=\"let date of dateList\" value=\"{{ date.value }}\">{{ date.displayText }} {{ date.serviceDay }}</option>\n                </select>\n            </li>\n        </ul>\n\n        <div *ngIf=\"!isLoading && filmOrder.length > 0\">\n            <app-film-order *ngFor=\"let filmOrder of filmOrder\" class=\"mb-x-small\" [data]=\"filmOrder\"></app-film-order>\n        </div>\n\n        <div class=\"no-schedule\" *ngIf=\"!isLoading && filmOrder.length === 0\">\n            <div class=\"mb-x-small\" *ngIf=\"conditions.theater === ''\">鑑賞劇場が選択されていません。</div>\n            <div class=\"mb-x-small\" *ngIf=\"conditions.date === ''\">鑑賞日時が選択されていません。</div>\n            <div class=\"mb-x-small\" *ngIf=\"conditions.theater !== '' && conditions.date !== ''\">上映作品がありません。</div>\n        </div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>"
 
 /***/ }),
 
@@ -1449,7 +1447,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "swiper {\n  margin: 0 -15px; }\n\n.swiper-slide {\n  padding: 0 15px; }\n", ""]);
+exports.push([module.i, "app-film-order:last-child {\n  margin-bottom: 0; }\n", ""]);
 
 // exports
 
@@ -1643,7 +1641,7 @@ var ScheduleComponent = /** @class */ (function () {
          * @implements OnInit
          */
         ,
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_schedule_schedule_service__["b" /* ScheduleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_schedule_schedule_service__["b" /* ScheduleService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__service_select_select_service__["a" /* SelectService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_select_select_service__["a" /* SelectService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_schedule_schedule_service__["a" /* ScheduleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_schedule_schedule_service__["a" /* ScheduleService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__service_select_select_service__["a" /* SelectService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_select_select_service__["a" /* SelectService */]) === "function" && _c || Object])
     ], ScheduleComponent);
     return ScheduleComponent;
     var _a, _b, _c;
@@ -1724,7 +1722,7 @@ var NoTicketComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/ticket/ticket-holder/ticket-holder.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contents\">\n    <div class=\"inner\">\n        <p class=\"mb-small text-center\">購入した鑑賞作品の下記チケットのQRコードを<br>入場口スタッフに提示してください。</p>\n        <div *ngIf=\"!isLoading\">\n            <div *ngIf=\"purchaseNumberOrders.length > 0;\">\n                <swiper [config]=\"config\">\n                    <div class=\"swiper-wrapper\">\n                        <div *ngFor=\"let order of purchaseNumberOrders\" class=\"swiper-slide\">\n                            <app-ticket [reservation]=\"order\"></app-ticket>\n                        </div>\n                    </div>\n                </swiper>\n                <div class=\"pagination-wrapper\">\n                    <div class=\"swiper-pagination\"></div>\n                </div>\n            </div>\n            <app-no-ticket *ngIf=\"purchaseNumberOrders.length === 0;\"></app-no-ticket>\n        </div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>\n\n"
+module.exports = "<div class=\"contents\">\n    <div class=\"inner\">\n        <p class=\"mb-small text-center small-text\">購入した鑑賞作品の下記チケットのQRコードを<br>入場口スタッフに提示してください。</p>\n        <div *ngIf=\"!isLoading\">\n            <div *ngIf=\"purchaseNumberOrders.length > 0;\">\n                <swiper [config]=\"config\">\n                    <div class=\"swiper-wrapper\">\n                        <div *ngFor=\"let order of purchaseNumberOrders\" class=\"swiper-slide\">\n                            <app-ticket [reservation]=\"order\"></app-ticket>\n                        </div>\n                    </div>\n                </swiper>\n                <div class=\"pagination-wrapper\">\n                    <div class=\"swiper-pagination\"></div>\n                </div>\n            </div>\n            <app-no-ticket *ngIf=\"purchaseNumberOrders.length === 0;\"></app-no-ticket>\n        </div>\n    </div>\n</div>\n<app-loading *ngIf=\"isLoading\"></app-loading>\n\n"
 
 /***/ }),
 
@@ -1872,7 +1870,7 @@ var TicketHolderComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/ticket/ticket/ticket.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <dl class=\"film\">\n            <dt class=\"icon-film-name-gray\"></dt>\n            <dd>{{ reservation.acceptedOffers[0].itemOffered.reservationFor.workPerformed.name }}</dd>\n        </dl>\n        <dl class=\"date\">\n            <dt class=\"icon-date-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{\n                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}\n            </dd>\n        </dl>\n        <dl class=\"theater\">\n            <dt class=\"icon-location-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.superEvent.location.name.ja }} / {{ reservation.acceptedOffers[0].itemOffered.reservationFor.location.name.ja\n                }}\n            </dd>\n        </dl>\n    </div>\n    <ul>\n        <li *ngFor=\"let offer of reservation.acceptedOffers; let index = index;\">\n            <div class=\"ticket-info\">\n                <div class=\"index\">{{ (index + 1) }}/{{ reservation.acceptedOffers.length }}</div>\n                <div class=\"mb-x-small\">{{ reservation.confirmationNumber }}</div>\n                <div class=\"large-x-text mb-x-small\">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>\n                <div *ngIf=\"offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses > 0\">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>\n                <div *ngIf=\"offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses === 0\">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>\n            </div>\n            <div class=\"qr\">\n                <qr-code [value]=\"offer.itemOffered.reservedTicket.ticketToken\" [size]=\"80\"></qr-code>\n            </div>\n        </li>\n    </ul>\n</div>"
+module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <dl class=\"film\">\n            <dt class=\"icon-film-name-gray\"></dt>\n            <dd>{{ reservation.acceptedOffers[0].itemOffered.reservationFor.workPerformed.name }}</dd>\n        </dl>\n        <dl class=\"date\">\n            <dt class=\"icon-date-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{\n                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}\n            </dd>\n        </dl>\n        <dl class=\"theater\">\n            <dt class=\"icon-location-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.superEvent.location.name.ja }} / {{ reservation.acceptedOffers[0].itemOffered.reservationFor.location.name.ja\n                }}\n            </dd>\n        </dl>\n    </div>\n    <ul>\n        <li *ngFor=\"let offer of reservation.acceptedOffers; let index = index;\">\n            <div class=\"ticket-info\">\n                <div class=\"index small-text\">{{ (index + 1) }}/{{ reservation.acceptedOffers.length }}</div>\n                <div class=\"mb-x-small small-text\">{{ reservation.confirmationNumber }}</div>\n                <div class=\"large-x-text mb-x-small\">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>\n                <div class=\"small-text\">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>\n            </div>\n            <div class=\"qr\">\n                <qr-code [value]=\"offer.itemOffered.reservedTicket.ticketToken\" [size]=\"80\"></qr-code>\n            </div>\n        </li>\n    </ul>\n</div>"
 
 /***/ }),
 
@@ -2537,6 +2535,7 @@ var AwsCognitoService = /** @class */ (function () {
      */
     AwsCognitoService.prototype.isAuthenticate = function () {
         return (this.credentials !== null
+            && this.credentials.identityId !== undefined
             && this.credentials.identityId.length > 0);
     };
     /**
@@ -2810,7 +2809,7 @@ var ReservationService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ScheduleService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ScheduleService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__("../../../../moment/moment.js");

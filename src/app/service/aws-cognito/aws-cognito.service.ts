@@ -39,6 +39,7 @@ export class AwsCognitoService {
      */
     public isAuthenticate(): boolean {
         return (this.credentials !== null
+            && this.credentials.identityId !== undefined
             && this.credentials.identityId.length > 0);
     }
 

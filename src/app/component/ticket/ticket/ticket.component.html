@@ -24,11 +24,10 @@
     <ul>
         <li *ngFor="let offer of reservation.acceptedOffers; let index = index;">
             <div class="ticket-info">
-                <div class="index">{{ (index + 1) }}/{{ reservation.acceptedOffers.length }}</div>
-                <div class="mb-x-small">{{ reservation.confirmationNumber }}</div>
+                <div class="index small-text">{{ (index + 1) }}/{{ reservation.acceptedOffers.length }}</div>
+                <div class="mb-x-small small-text">{{ reservation.confirmationNumber }}</div>
                 <div class="large-x-text mb-x-small">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>
-                <div *ngIf="offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses > 0">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}メガネ込み</div>
-                <div *ngIf="offer.itemOffered.reservedTicket.coaTicketInfo.addGlasses === 0">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>
+                <div class="small-text">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>
             </div>
             <div class="qr">
                 <qr-code [value]="offer.itemOffered.reservedTicket.ticketToken" [size]="80"></qr-code>

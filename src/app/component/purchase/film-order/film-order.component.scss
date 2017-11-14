@@ -1,19 +1,10 @@
 :host {
     display: block;
 }
-.inner {
-    display: block;
-    background-color: #FFF;
-    display: flex;
-}
 .info {
-    padding: 15px 10px;
+    padding: 10px;
     color: #333;
-    background-color: #EEE;
-    width: 140px;
-    .title {
-
-    }
+    background-color: #E3E3E3;
     .date {
         &:before {
             display: inline-block;
@@ -22,11 +13,11 @@
         }
     }
 }
-.performances {
-    display: flex;
-    padding: 5px 5px;
-    width: calc(100% - 140px);
-    overflow-x: scroll;
+.scroll {
+    background-color: #FFF;
     -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    padding: 5px 5px;
+    display: flex;
     align-items: center;
 }

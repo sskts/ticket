@@ -9,7 +9,7 @@ body {
     user-select: none;
     background-color: #000;
     background-attachment: fixed;
-    font-size: 12px;
+    font-size: 14px;
     color: #FFF;
     min-height: 100vh;
     font-family: $font-family;
@@ -26,7 +26,7 @@ a {
     }
 }
 p {
-    line-height: 1.4;
+    line-height: 1.6;
     a {
         color: #0074A9;
         &:focus, &:hover {
@@ -143,8 +143,11 @@ option {
     margin-bottom: 100px;
 }
 
-.small-text {
+.small-x-text {
     font-size: 10px;
+}
+.small-text {
+    font-size: 12px;
 }
 .large-text {
     font-size: 18px;
