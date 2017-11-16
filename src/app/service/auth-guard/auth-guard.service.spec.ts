@@ -7,7 +7,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import * as moment from 'moment';
 import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 import { AuthGuardService } from './auth-guard.service';
-import { retry } from 'rxjs/operator/retry';
 
 describe('AuthGuardService', () => {
 

@@ -1,3 +1,4 @@
+// tslint:disable:no-useless-files missing-jsdoc
 // /**
 //  * WalkThroughComponentテスト
 //  */

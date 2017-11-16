@@ -1,6 +1,7 @@
-// /**
-//  * AuthComponent
-//  */
+// tslint:disable:no-useless-files
+/**
+ * AuthComponent
+ */
 // import { Component, OnInit } from '@angular/core';
 // import { Router } from '@angular/router';
 // import { AwsCognitoService } from '../../service/aws-cognito/aws-cognito.service';

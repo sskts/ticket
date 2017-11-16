@@ -1,11 +1,15 @@
+/**
+ * FrontendAppPage
+ */
 import { browser, by, element } from 'protractor';
 
 export class FrontendAppPage {
-  navigateTo() {
-    return browser.get('/');
-  }
+    public navigateTo() {
+        // tslint:disable-next-line:no-backbone-get-set-outside-model
+        return browser.get('/');
+    }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
-  }
+    public getParagraphText() {
+        return element(by.css('app-root h1')).getText();
+    }
 }

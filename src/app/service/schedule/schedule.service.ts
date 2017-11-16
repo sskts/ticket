@@ -106,7 +106,7 @@ export class ScheduleService {
             const diff = moment(args.startThrough).diff(moment(args.startFrom), 'days');
             for (let i = 0; i < diff; i += 1) {
                 const date = moment(args.startFrom).add(i, 'days').format('YYYYMMDD');
-                const dateScreeningEvents = theaterScreeningEvents.filter((screeningEvent)=>{
+                const dateScreeningEvents = theaterScreeningEvents.filter((screeningEvent) => {
                     return (screeningEvent.coaInfo.dateJouei === date);
                 });
                 theaterSchedule.push({

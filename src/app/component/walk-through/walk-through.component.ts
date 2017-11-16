@@ -46,7 +46,7 @@ export class WalkThroughComponent implements OnInit {
      * @method start
      * @returns {Promise<void>}
      */
-    public async start() {
+    public async start(): Promise<void> {
         try {
             this.isLoading = true;
             await this.awsCognito.authenticateWithTerminal();
