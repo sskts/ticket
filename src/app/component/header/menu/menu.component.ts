@@ -26,9 +26,4 @@ export class MenuComponent implements OnInit {
     public ngOnInit(): void {
         this.portalSite = environment.portalSite;
     }
-
-    public browserOpen(url: string): void {
-        // const domain = new URL(url).host;
-        window.open(url);
-    }
 }
