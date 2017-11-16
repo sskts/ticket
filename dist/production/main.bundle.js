@@ -723,7 +723,7 @@ var pages = [
 /***/ "../../../../../src/app/component/header/menu/menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"cover\" [class.active]=\"isOpen\" (click)=\"close.emit()\"></div>\n\n<div class=\"menu\" [class.active]=\"isOpen\">\n    <!-- <div class=\"title\">{{ name }}</div> -->\n    <ul>\n        <li><span routerLink=\"/about\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-about-white\">このアプリについて</span></li>\n        <!-- <li><span routerLink=\"/profile\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-user-white\">ユーザー情報変更</span></li> -->\n        <li><span routerLink=\"/policy\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-text-white\">利用規約</span></li>\n        <li><span routerLink=\"/law\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-text-white\">特定商取引法に基づく表記</span></li>\n        <li><span routerLink=\"/privacy\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-text-white\">プライバシーポリシー</span></li>\n        <li><a [href]=\"portalSite\" target=\"_blank\" class=\"icon-inline icon-external-link-white\">シネマサンシャインポータルサイト</a></li>\n        <!-- <li><span (click)=\"logout.emit()\" class=\"icon-inline icon-logout-white\">ログアウト</span></li> -->\n    </ul>\n</div>"
+module.exports = "<div class=\"cover\" [class.active]=\"isOpen\" (click)=\"close.emit()\"></div>\n\n<div class=\"menu\" [class.active]=\"isOpen\">\n    <!-- <div class=\"title\">{{ name }}</div> -->\n    <ul>\n        <li><span routerLink=\"/about\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-about-white\">このアプリについて</span></li>\n        <!-- <li><span routerLink=\"/profile\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-user-white\">ユーザー情報変更</span></li> -->\n        <li><span routerLink=\"/policy\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-text-white\">利用規約</span></li>\n        <li><span routerLink=\"/law\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-text-white\">特定商取引法に基づく表記</span></li>\n        <li><span routerLink=\"/privacy\" routerLinkActive=\"active\" (click)=\"close.emit()\" class=\"icon-inline icon-text-white\">プライバシーポリシー</span></li>\n        <li><span (click)=\"browserOpen(portalSite)\" class=\"icon-inline icon-external-link-white\">シネマサンシャインポータルサイト</span></li>\n        <!-- <li><span (click)=\"logout.emit()\" class=\"icon-inline icon-logout-white\">ログアウト</span></li> -->\n    </ul>\n</div>"
 
 /***/ }),
 
@@ -778,6 +778,10 @@ var MenuComponent = /** @class */ (function () {
      */
     MenuComponent.prototype.ngOnInit = function () {
         this.portalSite = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].portalSite;
+    };
+    MenuComponent.prototype.browserOpen = function (url) {
+        // const domain = new URL(url).host;
+        window.open(url);
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),

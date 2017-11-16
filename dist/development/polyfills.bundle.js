@@ -11,6 +11,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_es7_reflect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_core_js_es7_reflect__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_zone_js_dist_zone__ = __webpack_require__("../../../../zone.js/dist/zone.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_zone_js_dist_zone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_zone_js_dist_zone__);
+// tslint:disable:no-import-side-effect
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.
  * You can add your own extra polyfills to this file.
@@ -29,7 +30,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */
-/** IE9, IE10 and IE11 requires all of the following polyfills. **/
+/**
+ * IE9, IE10 and IE11 requires all of the following polyfills.
+ */
 // import 'core-js/es6/symbol';
 // import 'core-js/es6/object';
 // import 'core-js/es6/function';
@@ -44,15 +47,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // import 'core-js/es6/map';
 // import 'core-js/es6/weak-map';
 // import 'core-js/es6/set';
-/** IE10 and IE11 requires the following for NgClass support on SVG elements */
+/**
+ * IE10 and IE11 requires the following for NgClass support on SVG elements
+ */
 // import 'classlist.js';  // Run `npm install --save classlist.js`.
-/** Evergreen browsers require these. **/
+/**
+ * Evergreen browsers require these.
+ */
 
 
 /**
  * Required to support Web Animations `@angular/animation`.
  * Needed for: All but Chrome, Firefox and Opera. http://caniuse.com/#feat=web-animation
- **/
+ */
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
