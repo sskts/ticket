@@ -155,12 +155,15 @@ export class ScheduleService {
             return (schedule.theater.location.branchCode === theaterCode);
         });
 
+        const minDisplayDay = 2;
         const dateList = theaterSchedule.schedule.filter((schedule) => {
             const screeningEvents = schedule.individualScreeningEvents.filter((screeningEvent) => {
                 return (this.isSalse(screeningEvent));
             });
 
-            return (screeningEvents.length > 0);
+            // return (screeningEvents.length > 0);
+            return (moment(schedule.date).unix() < moment().add(minDisplayDay, 'days').unix()
+            || screeningEvents.length > 0);
         });
 
         let count = 0;
@@ -172,7 +175,9 @@ export class ScheduleService {
                 displayText: (count === 0) ? `本日 (${formatDate})`
                     : (count === 1) ? `明日 (${formatDate})`
                         : (count === 2) ? `明後日 (${formatDate})` : formatDate,
-                serviceDay: schedule.individualScreeningEvents[0].coaInfo.nameServiceDay
+                serviceDay: (schedule.individualScreeningEvents.length > 0)
+                    ? schedule.individualScreeningEvents[0].coaInfo.nameServiceDay
+                    : ''
             };
             count += 1;
 

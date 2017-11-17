@@ -1615,7 +1615,6 @@ var ScheduleComponent = /** @class */ (function () {
                             })];
                     case 4:
                         _b.filmOrder = _c.sent();
-                        console.log(this.filmOrder);
                         return [3 /*break*/, 6];
                     case 5:
                         err_2 = _c.sent();
@@ -3006,11 +3005,14 @@ var ScheduleService = /** @class */ (function () {
         var theaterSchedule = this.data.schedule.find(function (schedule) {
             return (schedule.theater.location.branchCode === theaterCode);
         });
+        var minDisplayDay = 2;
         var dateList = theaterSchedule.schedule.filter(function (schedule) {
             var screeningEvents = schedule.individualScreeningEvents.filter(function (screeningEvent) {
                 return (_this.isSalse(screeningEvent));
             });
-            return (screeningEvents.length > 0);
+            // return (screeningEvents.length > 0);
+            return (__WEBPACK_IMPORTED_MODULE_2_moment__(schedule.date).unix() < __WEBPACK_IMPORTED_MODULE_2_moment__().add(minDisplayDay, 'days').unix()
+                || screeningEvents.length > 0);
         });
         var count = 0;
         return dateList.map(function (schedule) {
@@ -3020,7 +3022,9 @@ var ScheduleService = /** @class */ (function () {
                 displayText: (count === 0) ? "\u672C\u65E5 (" + formatDate + ")"
                     : (count === 1) ? "\u660E\u65E5 (" + formatDate + ")"
                         : (count === 2) ? "\u660E\u5F8C\u65E5 (" + formatDate + ")" : formatDate,
-                serviceDay: schedule.individualScreeningEvents[0].coaInfo.nameServiceDay
+                serviceDay: (schedule.individualScreeningEvents.length > 0)
+                    ? schedule.individualScreeningEvents[0].coaInfo.nameServiceDay
+                    : ''
             };
             count += 1;
             return result;

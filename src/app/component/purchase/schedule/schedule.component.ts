@@ -94,7 +94,6 @@ export class ScheduleComponent implements OnInit {
                 theater: selectTheater.location.branchCode,
                 date: selectDate.value
             });
-            console.log(this.filmOrder);
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
             console.log(err);
