@@ -9,6 +9,7 @@
         <li><span routerLink="/law" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-text-white">特定商取引法に基づく表記</span></li>
         <li><span routerLink="/privacy" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-text-white">プライバシーポリシー</span></li>
         <li><a [href]="portalSite" target="_blank" class="icon-inline icon-external-link-white">シネマサンシャインポータルサイト</a></li>
+        <li><span class="icon-inline icon-external-link-white" (click)="externalLink(portalSite)">シネマサンシャインポータルサイト</span></li>
         <!-- <li><span (click)="logout.emit()" class="icon-inline icon-logout-white">ログアウト</span></li> -->
     </ul>
 </div>

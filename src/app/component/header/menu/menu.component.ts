@@ -26,4 +26,12 @@ export class MenuComponent implements OnInit {
     public ngOnInit(): void {
         this.portalSite = environment.portalSite;
     }
+
+    /**
+     * @method externalLink
+     * @param {string} url
+     */
+    public externalLink(url: string): void {
+        window.open(url, '_blank');
+    }
 }
