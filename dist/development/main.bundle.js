@@ -784,7 +784,8 @@ var MenuComponent = /** @class */ (function () {
      * @param {string} url
      */
     MenuComponent.prototype.externalLink = function (url) {
-        localStorage.setItem('call', JSON.stringify({ method: 'externalLink', value: url }));
+        console.log(url);
+        console.log(window);
         // window.open(url, '_blank');
     };
     __decorate([

@@ -32,7 +32,8 @@ export class MenuComponent implements OnInit {
      * @param {string} url
      */
     public externalLink(url: string): void {
-        localStorage.setItem('call', JSON.stringify({ method: 'externalLink', value: url }));
+        console.log(url);
+        console.log(window);
         // window.open(url, '_blank');
     }
 }
