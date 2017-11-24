@@ -6,17 +6,17 @@ import * as AWS from 'aws-sdk';
 import { AwsCognitoService } from './aws-cognito.service';
 
 describe('AwsCognitoService', () => {
-    it('authenticateWithTerminal', async () => {
+    it('authenticateWithDeviceId', async () => {
         spyOn(AWS, 'CognitoIdentityCredentials').and.returnValue({});
         const service = new AwsCognitoService();
-        service.authenticateWithTerminal();
+        service.authenticateWithDeviceId();
         expect(service.credentials).not.toBeNull();
     });
 
     it('isAuthenticate 認証OK', async () => {
         spyOn(AWS, 'CognitoIdentityCredentials').and.returnValue({ identityId: '12345678' });
         const service = new AwsCognitoService();
-        service.authenticateWithTerminal();
+        service.authenticateWithDeviceId();
         expect(service.isAuthenticate()).toBeTruthy();
     });
 
@@ -51,7 +51,7 @@ describe('AwsCognitoService', () => {
             }
         });
         const service = new AwsCognitoService();
-        service.authenticateWithTerminal();
+        service.authenticateWithDeviceId();
         const updateRecords = await service.updateRecords('TEST', {});
         expect(updateRecords).toBeTruthy();
     });
@@ -76,7 +76,7 @@ describe('AwsCognitoService', () => {
             }
         });
         const service = new AwsCognitoService();
-        service.authenticateWithTerminal();
+        service.authenticateWithDeviceId();
         const getRecords = await service.getRecords('TEST');
         expect(getRecords).toBeTruthy();
     });

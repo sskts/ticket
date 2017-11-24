@@ -34,7 +34,7 @@ export class ErrorComponent implements OnInit {
     public async connect() {
         this.isLoading = true;
         try {
-            await this.awsCognito.authenticateWithTerminal();
+            await this.awsCognito.authenticateWithDeviceId();
             if (!this.awsCognito.isAuthenticate()) {
                 throw new Error('isAuthenticate is false');
             }

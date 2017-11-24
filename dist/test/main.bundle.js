@@ -548,7 +548,7 @@ var ErrorComponent = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, this.awsCognito.authenticateWithTerminal()];
+                        return [4 /*yield*/, this.awsCognito.authenticateWithDeviceId()];
                     case 2:
                         _a.sent();
                         if (!this.awsCognito.isAuthenticate()) {
@@ -2016,9 +2016,7 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WalkThroughComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_storage_storage_service__ = __webpack_require__("../../../../../src/app/service/storage/storage.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2069,13 +2067,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
-
 var WalkThroughComponent = /** @class */ (function () {
-    function WalkThroughComponent(router, awsCognito, storage) {
+    function WalkThroughComponent(router, awsCognito) {
         this.router = router;
         this.awsCognito = awsCognito;
-        this.storage = storage;
     }
     /**
      * 初期化
@@ -2106,25 +2101,21 @@ var WalkThroughComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 4, , 5]);
+                        _a.trys.push([0, 3, , 4]);
                         this.isLoading = true;
-                        return [4 /*yield*/, this.awsCognito.authenticateWithTerminal()];
+                        return [4 /*yield*/, this.awsCognito.authenticateWithDeviceId()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.storage.save('info', {
-                                version: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].version
-                            })];
+                        localStorage.setItem('deviceId', this.awsCognito.credentials.identityId);
+                        return [4 /*yield*/, this.router.navigate(['/'])];
                     case 2:
                         _a.sent();
-                        return [4 /*yield*/, this.router.navigate(['/'])];
+                        return [3 /*break*/, 4];
                     case 3:
-                        _a.sent();
-                        return [3 /*break*/, 5];
-                    case 4:
                         error_1 = _a.sent();
                         console.error(error_1);
-                        return [3 /*break*/, 5];
-                    case 5:
+                        return [3 /*break*/, 4];
+                    case 4:
                         this.isLoading = false;
                         return [2 /*return*/];
                 }
@@ -2137,10 +2128,10 @@ var WalkThroughComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/component/walk-through/walk-through.component.html"),
             styles: [__webpack_require__("../../../../../src/app/component/walk-through/walk-through.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__service_storage_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__service_storage_storage_service__["a" /* StorageService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _b || Object])
     ], WalkThroughComponent);
     return WalkThroughComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=walk-through.component.js.map
@@ -2334,7 +2325,6 @@ var TimeFormatPipe = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__storage_storage_service__ = __webpack_require__("../../../../../src/app/service/storage/storage.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2385,12 +2375,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
 var AuthGuardService = /** @class */ (function () {
-    function AuthGuardService(router, awsCognito, storage) {
+    function AuthGuardService(router, awsCognito) {
         this.router = router;
         this.awsCognito = awsCognito;
-        this.storage = storage;
     }
     /**
      * 認証
@@ -2403,19 +2391,16 @@ var AuthGuardService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
+                        _a.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, this.awsCognitoAuthenticateCheck()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.walkThroughCheck()];
-                    case 2:
-                        _a.sent();
                         return [2 /*return*/, true];
-                    case 3:
+                    case 2:
                         err_1 = _a.sent();
                         console.log('canActivate', err_1);
                         return [2 /*return*/, false];
-                    case 4: return [2 /*return*/];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -2427,16 +2412,19 @@ var AuthGuardService = /** @class */ (function () {
      */
     AuthGuardService.prototype.awsCognitoAuthenticateCheck = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var isAuthenticate, err_2;
+            var deviceId, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        isAuthenticate = this.awsCognito.isAuthenticate();
-                        if (!!isAuthenticate) return [3 /*break*/, 4];
+                        deviceId = localStorage.getItem('deviceId');
+                        if (deviceId === null) {
+                            this.router.navigate(['/walkThrough']);
+                            throw new Error('deviceId is null');
+                        }
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, this.awsCognito.authenticateWithTerminal()];
+                        return [4 /*yield*/, this.awsCognito.authenticateWithDeviceId()];
                     case 2:
                         _a.sent();
                         return [3 /*break*/, 4];
@@ -2449,30 +2437,12 @@ var AuthGuardService = /** @class */ (function () {
             });
         });
     };
-    /**
-     * walkThrough確認
-     * @method walkThroughCheck
-     * @returns {Promise<void>}
-     */
-    AuthGuardService.prototype.walkThroughCheck = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var info;
-            return __generator(this, function (_a) {
-                info = this.storage.load('info');
-                if (info === null) {
-                    this.router.navigate(['/walkThrough']);
-                    throw new Error('userCheck Error');
-                }
-                return [2 /*return*/];
-            });
-        });
-    };
     AuthGuardService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__storage_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__storage_storage_service__["a" /* StorageService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _b || Object])
     ], AuthGuardService);
     return AuthGuardService;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=auth-guard.service.js.map
@@ -2548,16 +2518,30 @@ var AwsCognitoService = /** @class */ (function () {
     AwsCognitoService_1 = AwsCognitoService;
     /**
      * 端末IDで認証
-     * @method authenticateWithTerminal
+     * @method authenticateWithDeviceId
      * @returns {Promise<void>}
      */
-    AwsCognitoService.prototype.authenticateWithTerminal = function () {
+    AwsCognitoService.prototype.authenticateWithDeviceId = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var args, deviceId;
             return __generator(this, function (_a) {
+                if (this.isAuthenticate()) {
+                    return [2 /*return*/];
+                }
                 __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].region = AwsCognitoService_1.REGION;
-                __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials = new __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["CognitoIdentityCredentials"]({
-                    IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID
-                });
+                deviceId = localStorage.getItem('deviceId');
+                if (deviceId !== null) {
+                    args = {
+                        IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID,
+                        identityId: deviceId
+                    };
+                }
+                else {
+                    args = {
+                        IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID
+                    };
+                }
+                __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials = new __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["CognitoIdentityCredentials"](args);
                 this.credentials = __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials;
                 return [2 /*return*/];
             });

@@ -21,14 +21,30 @@ export class AwsCognitoService {
 
     /**
      * 端末IDで認証
-     * @method authenticateWithTerminal
+     * @method authenticateWithDeviceId
      * @returns {Promise<void>}
      */
-    public async authenticateWithTerminal(): Promise<void> {
+    public async authenticateWithDeviceId(): Promise<void> {
+        if (this.isAuthenticate()) {
+            return;
+        }
         AWS.config.region = AwsCognitoService.REGION;
-        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-            IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
-        });
+        let args: {
+            IdentityPoolId: string;
+            identityId?: string
+        };
+        const deviceId = localStorage.getItem('deviceId');
+        if (deviceId !== null) {
+            args = {
+                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
+                identityId: deviceId
+            };
+        } else {
+            args = {
+                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
+            };
+        }
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials(args);
         this.credentials = (<AWS.CognitoIdentityCredentials>AWS.config.credentials);
     }
 

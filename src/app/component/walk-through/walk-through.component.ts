@@ -3,9 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
 import { AwsCognitoService } from '../../service/aws-cognito/aws-cognito.service';
-import { StorageService } from '../../service/storage/storage.service';
 
 @Component({
     selector: 'app-walk-through',
@@ -19,8 +17,7 @@ export class WalkThroughComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private awsCognito: AwsCognitoService,
-        private storage: StorageService
+        private awsCognito: AwsCognitoService
     ) { }
 
     /**
@@ -49,10 +46,8 @@ export class WalkThroughComponent implements OnInit {
     public async start(): Promise<void> {
         try {
             this.isLoading = true;
-            await this.awsCognito.authenticateWithTerminal();
-            await this.storage.save('info', {
-                version: environment.version
-            });
+            await this.awsCognito.authenticateWithDeviceId();
+            localStorage.setItem('deviceId', this.awsCognito.credentials.identityId);
             await this.router.navigate(['/']);
         } catch (error) {
             console.error(error);

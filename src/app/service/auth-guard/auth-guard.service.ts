@@ -4,15 +4,13 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
-import { StorageService } from '../storage/storage.service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
     constructor(
         private router: Router,
-        private awsCognito: AwsCognitoService,
-        private storage: StorageService
+        private awsCognito: AwsCognitoService
     ) { }
 
     /**
@@ -23,7 +21,6 @@ export class AuthGuardService implements CanActivate {
     public async canActivate(): Promise<boolean> {
         try {
             await this.awsCognitoAuthenticateCheck();
-            await this.walkThroughCheck();
 
             return true;
         } catch (err) {
@@ -39,28 +36,16 @@ export class AuthGuardService implements CanActivate {
      * @returns {Promise<void>}
      */
     private async awsCognitoAuthenticateCheck(): Promise<void> {
-        const isAuthenticate = this.awsCognito.isAuthenticate();
-        if (!isAuthenticate) {
-            try {
-                await this.awsCognito.authenticateWithTerminal();
-            } catch (err) {
-                this.router.navigate(['/error']);
-                throw err;
-            }
-        }
-    }
-
-    /**
-     * walkThrough確認
-     * @method walkThroughCheck
-     * @returns {Promise<void>}
-     */
-    private async walkThroughCheck(): Promise<void> {
-        const info = this.storage.load('info');
-        if (info === null) {
+        const deviceId = localStorage.getItem('deviceId');
+        if (deviceId === null) {
             this.router.navigate(['/walkThrough']);
-            throw new Error('userCheck Error');
+            throw new Error('deviceId is null');
+        }
+        try {
+            await this.awsCognito.authenticateWithDeviceId();
+        } catch (err) {
+            this.router.navigate(['/error']);
+            throw err;
         }
     }
-
 }

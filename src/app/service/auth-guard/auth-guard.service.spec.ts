@@ -10,22 +10,15 @@ import { AuthGuardService } from './auth-guard.service';
 
 describe('AuthGuardService', () => {
 
-    it('canActivate 認証済', async () => {
+    it('canActivate 認証成功', async () => {
         const routerStub: any = {};
         const awsCognitoServiceStub: any = {
-            authenticateWithTerminal: () => {
+            authenticateWithDeviceId: () => {
                 return Promise.resolve();
-            },
-            isAuthenticate: () => {
-                return true;
             }
         };
-        const storageServiceStub: any = {
-            load: () => {
-                return {};
-            }
-        };
-        const service = new AuthGuardService(routerStub, awsCognitoServiceStub, storageServiceStub);
+        spyOn(localStorage, 'getItem').and.returnValue('12345678');
+        const service = new AuthGuardService(routerStub, awsCognitoServiceStub);
         const canActivate = await service.canActivate();
         expect(canActivate).toBeTruthy();
     });
@@ -35,42 +28,28 @@ describe('AuthGuardService', () => {
             navigate: () => { }
         };
         const awsCognitoServiceStub: any = {
-            authenticateWithTerminal: () => {
+            authenticateWithDeviceId: () => {
                 return Promise.resolve();
-            },
-            isAuthenticate: () => {
-                return true;
             }
         };
-        const storageServiceStub: any = {
-            load: () => {
-                return null;
-            }
-        };
-        const service = new AuthGuardService(routerStub, awsCognitoServiceStub, storageServiceStub);
+        spyOn(localStorage, 'getItem').and.returnValue(null);
+        const service = new AuthGuardService(routerStub, awsCognitoServiceStub);
         const canActivate = await service.canActivate();
         expect(canActivate).toBeFalsy();
     });
 
-    it('canActivate 未認証', async () => {
+    it('canActivate 認証失敗', async () => {
         const routerStub: any = {
             navigate: () => { }
         };
         const awsCognitoServiceStub: any = {
-            authenticateWithTerminal: () => {
-                return Promise.resolve();
-            },
-            isAuthenticate: () => {
-                return false;
+            authenticateWithDeviceId: () => {
+                return Promise.reject('Error');
             }
         };
-        const storageServiceStub: any = {
-            load: () => {
-                return {};
-            }
-        };
-        const service = new AuthGuardService(routerStub, awsCognitoServiceStub, storageServiceStub);
+        spyOn(localStorage, 'getItem').and.returnValue('12345678');
+        const service = new AuthGuardService(routerStub, awsCognitoServiceStub);
         const canActivate = await service.canActivate();
-        expect(canActivate).toBeTruthy();
+        expect(canActivate).toBeFalsy();
     });
 });
