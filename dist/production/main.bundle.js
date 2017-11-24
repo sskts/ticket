@@ -780,13 +780,41 @@ var MenuComponent = /** @class */ (function () {
         this.portalSite = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].portalSite;
     };
     /**
+     * webブラウザで開く
      * @method externalLink
      * @param {string} url
      */
     MenuComponent.prototype.externalLink = function (url) {
-        console.log(url);
-        console.log(window);
-        // window.open(url, '_blank');
+        var userAgent = navigator.userAgent.toLowerCase();
+        var os = (userAgent.indexOf('iphone') > -1
+            || userAgent.indexOf('ipad') > -1
+            || userAgent.indexOf('ipod') > -1) ? 'ios'
+            : (userAgent.indexOf('android') > -1) ? 'android'
+                : 'web';
+        try {
+            switch (os) {
+                case 'ios':
+                    window.webkit.messageHandlers.openExternalRule.postMessage({
+                        EXTERN_URL: url
+                    });
+                    break;
+                case 'android':
+                    window.JSInterface.openExternalRule(url);
+                    break;
+                default:
+                    var win = window.open(url, '_blank');
+                    if (win) {
+                        win.focus();
+                    }
+                    else {
+                        alert('Please allow popups for this website');
+                    }
+            }
+        }
+        catch (err) {
+            console.error(err);
+        }
+        this.close.emit();
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),

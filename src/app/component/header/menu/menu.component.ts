@@ -28,12 +28,38 @@ export class MenuComponent implements OnInit {
     }
 
     /**
+     * webブラウザで開く
      * @method externalLink
      * @param {string} url
      */
     public externalLink(url: string): void {
-        console.log(url);
-        console.log(window);
-        // window.open(url, '_blank');
+        const userAgent = navigator.userAgent.toLowerCase();
+        const os = (userAgent.indexOf('iphone') > -1
+            || userAgent.indexOf('ipad') > -1
+            || userAgent.indexOf('ipod') > -1) ? 'ios'
+            : (userAgent.indexOf('android') > -1) ? 'android'
+                : 'web';
+        try {
+            switch (os) {
+                case 'ios':
+                    (<any>window).webkit.messageHandlers.openExternalRule.postMessage({
+                        EXTERN_URL: url
+                    });
+                    break;
+                case 'android':
+                    (<any>window).JSInterface.openExternalRule(url);
+                    break;
+                default:
+                    const win = window.open(url, '_blank');
+                    if (win) {
+                        win.focus();
+                    } else {
+                        alert('Please allow popups for this website');
+                    }
+            }
+        } catch (err) {
+            console.error(err);
+        }
+        this.close.emit();
     }
 }
