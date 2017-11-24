@@ -749,7 +749,7 @@ module.exports = module.exports.toString();
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuComponent; });
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -786,10 +786,8 @@ var MenuComponent = /** @class */ (function () {
      */
     MenuComponent.prototype.externalLink = function (url) {
         var userAgent = navigator.userAgent.toLowerCase();
-        var os = (userAgent.indexOf('iphone') > -1
-            || userAgent.indexOf('ipad') > -1
-            || userAgent.indexOf('ipod') > -1) ? 'ios'
-            : (userAgent.indexOf('android') > -1) ? 'android'
+        var os = (/ipad|iphone|ipod/.test(userAgent) && !window.MSStream) ? 'ios'
+            : (/android/i.test(userAgent)) ? 'android'
                 : 'web';
         try {
             switch (os) {
@@ -799,7 +797,7 @@ var MenuComponent = /** @class */ (function () {
                     });
                     break;
                 case 'android':
-                    window.JSInterface.openExternalRule(url);
+                    global.JSInterface.openExternalRule(url);
                     break;
                 default:
                     var win = window.open(url, '_blank');
@@ -841,6 +839,7 @@ var MenuComponent = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=menu.component.js.map
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("../../../../webpack/buildin/global.js")))
 
 /***/ }),
 

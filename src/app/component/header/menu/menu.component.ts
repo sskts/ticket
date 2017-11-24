@@ -2,8 +2,8 @@
  * MenuComponent
  */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
 import { environment } from '../../../../environments/environment';
+
 
 @Component({
     selector: 'app-menu',
@@ -34,10 +34,8 @@ export class MenuComponent implements OnInit {
      */
     public externalLink(url: string): void {
         const userAgent = navigator.userAgent.toLowerCase();
-        const os = (userAgent.indexOf('iphone') > -1
-            || userAgent.indexOf('ipad') > -1
-            || userAgent.indexOf('ipod') > -1) ? 'ios'
-            : (userAgent.indexOf('android') > -1) ? 'android'
+        const os = (/ipad|iphone|ipod/.test(userAgent) && !(<any>window).MSStream) ? 'ios'
+            : (/android/i.test(userAgent)) ? 'android'
                 : 'web';
         try {
             switch (os) {
@@ -47,7 +45,7 @@ export class MenuComponent implements OnInit {
                     });
                     break;
                 case 'android':
-                    (<any>window).JSInterface.openExternalRule(url);
+                    (<any>global).JSInterface.openExternalRule(url);
                     break;
                 default:
                     const win = window.open(url, '_blank');
