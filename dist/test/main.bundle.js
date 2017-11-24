@@ -3280,7 +3280,7 @@ var environment = {
     sasakiAPIEndpoint: 'https://sskts-api-test.azurewebsites.net',
     resourceServerDomain: 'https://sskts-api-test.azurewebsites.net',
     // tslint:disable-next-line:no-http-string
-    portalSite: 'http://www.cinemasunshine.co.jp',
+    portalSite: 'http://testssktsportal.azurewebsites.net',
     ticketingSite: 'https://sskts-frontend-test.azurewebsites.net',
     analyticsId: 'UA-99018492-5'
 };

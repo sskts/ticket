@@ -30,7 +30,7 @@ export const environment = {
     resourceServerDomain: 'https://sskts-api-development.azurewebsites.net',
 
     // tslint:disable-next-line:no-http-string
-    portalSite: 'http://www.cinemasunshine.co.jp',
+    portalSite: 'http://devssktsportal.azurewebsites.net',
     ticketingSite: 'https://sskts-frontend-development.azurewebsites.net',
 
     analyticsId: 'UA-99018492-4'
