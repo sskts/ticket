@@ -2525,25 +2525,31 @@ var AwsCognitoService = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var args, deviceId;
             return __generator(this, function (_a) {
-                if (this.isAuthenticate()) {
-                    return [2 /*return*/];
+                switch (_a.label) {
+                    case 0:
+                        if (this.isAuthenticate()) {
+                            return [2 /*return*/];
+                        }
+                        __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].region = AwsCognitoService_1.REGION;
+                        deviceId = localStorage.getItem('deviceId');
+                        if (deviceId !== null) {
+                            args = {
+                                IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID,
+                                identityId: deviceId
+                            };
+                        }
+                        else {
+                            args = {
+                                IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID
+                            };
+                        }
+                        __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials = new __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["CognitoIdentityCredentials"](args);
+                        this.credentials = __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials;
+                        return [4 /*yield*/, this.credentials.getPromise()];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
                 }
-                __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].region = AwsCognitoService_1.REGION;
-                deviceId = localStorage.getItem('deviceId');
-                if (deviceId !== null) {
-                    args = {
-                        IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID,
-                        identityId: deviceId
-                    };
-                }
-                else {
-                    args = {
-                        IdentityPoolId: AwsCognitoService_1.IDENTITY_POOL_ID
-                    };
-                }
-                __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials = new __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["CognitoIdentityCredentials"](args);
-                this.credentials = __WEBPACK_IMPORTED_MODULE_1_aws_sdk__["config"].credentials;
-                return [2 /*return*/];
             });
         });
     };

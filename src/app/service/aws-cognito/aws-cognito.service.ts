@@ -46,6 +46,7 @@ export class AwsCognitoService {
         }
         AWS.config.credentials = new AWS.CognitoIdentityCredentials(args);
         this.credentials = (<AWS.CognitoIdentityCredentials>AWS.config.credentials);
+        await this.credentials.getPromise();
     }
 
     /**
