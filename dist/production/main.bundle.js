@@ -3263,7 +3263,7 @@ var environment = {
     production: true,
     version: '1.0.0',
     region: 'ap-northeast-1',
-    identityPoolId: '',
+    identityPoolId: 'ap-northeast-1:a8dd7a2a-020c-43d4-9e9f-e49159e89382',
     userPoolId: '',
     clientId: '',
     rekognitionBucket: 'rekognition-pics',
