@@ -785,6 +785,15 @@ var MenuComponent = /** @class */ (function () {
      * @param {string} url
      */
     MenuComponent.prototype.externalLink = function (url) {
+        if (window !== window.parent) {
+            var data = JSON.stringify({
+                method: 'externalLink',
+                value: url
+            });
+            window.parent.postMessage(data, '*');
+            this.close.emit();
+            return;
+        }
         var userAgent = navigator.userAgent.toLowerCase();
         var os = (/ipad|iphone|ipod/.test(userAgent) && !window.MSStream) ? 'ios'
             : (/android/i.test(userAgent)) ? 'android'
@@ -2690,6 +2699,7 @@ var AwsCognitoService = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__storage_storage_service__ = __webpack_require__("../../../../../src/app/service/storage/storage.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2741,6 +2751,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var ReservationService = /** @class */ (function () {
     function ReservationService(awsCognito, storage) {
         this.awsCognito = awsCognito;
@@ -2769,6 +2780,7 @@ var ReservationService = /** @class */ (function () {
                     case 2:
                         _a.data = _b.sent();
                         this.storage.save('reservation', this.data);
+                        this.registerNotifications();
                         return [3 /*break*/, 4];
                     case 3:
                         err_1 = _b.sent();
@@ -2816,6 +2828,27 @@ var ReservationService = /** @class */ (function () {
             }
             var endDate = __WEBPACK_IMPORTED_MODULE_1_moment__(reservation.acceptedOffers[0].itemOffered.reservationFor.endDate);
             return (endDate.unix() > __WEBPACK_IMPORTED_MODULE_1_moment__().unix());
+        });
+    };
+    /**
+     * プッシュ通知登録
+     * @method registerNotifications
+     */
+    ReservationService.prototype.registerNotifications = function () {
+        var reservations = this.getReservationByPurchaseNumberOrder();
+        reservations.forEach(function (reservation) {
+            var reservationFor = reservation.acceptedOffers[0].itemOffered.reservationFor;
+            var data = JSON.stringify({
+                method: 'notification',
+                value: {
+                    id: reservation.orderNumber,
+                    title: '上映時間が近づいています',
+                    text: reservationFor.workPerformed.name + "\n                    " + __WEBPACK_IMPORTED_MODULE_1_moment__(reservationFor.startDate).format('YYYY/MM/DD HH:mm') + "\n                    " + reservationFor.superEvent.location.name + " " + reservationFor.location.name,
+                    trigger: { at: __WEBPACK_IMPORTED_MODULE_1_moment__(reservationFor.startDate).subtract(30, 'minutes').toDate() },
+                    icon: __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].ticketingSite + "/images/touch_icon.png"
+                }
+            });
+            window.parent.postMessage(data, '*');
         });
     };
     ReservationService = __decorate([

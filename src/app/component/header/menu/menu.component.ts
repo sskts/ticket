@@ -33,6 +33,16 @@ export class MenuComponent implements OnInit {
      * @param {string} url
      */
     public externalLink(url: string): void {
+        if (window !== window.parent) {
+            const data = JSON.stringify({
+                method: 'externalLink',
+                value: url
+            });
+            window.parent.postMessage(data, '*');
+            this.close.emit();
+
+            return;
+        }
         const userAgent = navigator.userAgent.toLowerCase();
         const os = (/ipad|iphone|ipod/.test(userAgent) && !(<any>window).MSStream) ? 'ios'
             : (/android/i.test(userAgent)) ? 'android'

@@ -6,6 +6,7 @@ import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 import { StorageService } from '../storage/storage.service';
+import { environment } from '../../../environments/environment';
 
 export type IReservation = sasaki.factory.order.IOrder;
 export interface IReservationData {
@@ -20,7 +21,7 @@ export class ReservationService {
     constructor(
         private awsCognito: AwsCognitoService,
         private storage: StorageService
-    ) {}
+    ) { }
 
     /**
      * 予約情報取得
@@ -35,6 +36,7 @@ export class ReservationService {
             try {
                 this.data = await this.fitchReservation();
                 this.storage.save('reservation', this.data);
+                this.registerNotifications();
             } catch (err) {
                 this.storage.remove('reservation');
                 throw err;
@@ -56,7 +58,7 @@ export class ReservationService {
         const expired = 10;
 
         return {
-            reservations: (reservationRecord.orders === undefined ) ? [] : reservationRecord.orders,
+            reservations: (reservationRecord.orders === undefined) ? [] : reservationRecord.orders,
             expired: moment().add(expired, 'milliseconds').unix()
         };
     }
@@ -73,6 +75,30 @@ export class ReservationService {
             const endDate = moment(reservation.acceptedOffers[0].itemOffered.reservationFor.endDate);
 
             return (endDate.unix() > moment().unix());
+        });
+    }
+
+    /**
+     * プッシュ通知登録
+     * @method registerNotifications
+     */
+    public registerNotifications(): void {
+        const reservations = this.getReservationByPurchaseNumberOrder();
+        reservations.forEach((reservation) => {
+            const reservationFor = reservation.acceptedOffers[0].itemOffered.reservationFor;
+            const data = JSON.stringify({
+                method: 'notification',
+                value: {
+                    id: reservation.orderNumber,
+                    title: '上映時間が近づいています',
+                    text: `${reservationFor.workPerformed.name}
+                    ${moment(reservationFor.startDate).format('YYYY/MM/DD HH:mm')}
+                    ${reservationFor.superEvent.location.name} ${reservationFor.location.name}`,
+                    trigger: { at: moment(reservationFor.startDate).subtract(30, 'minutes').toDate() },
+                    icon: `${environment.ticketingSite}/images/touch_icon.png`
+                }
+            });
+            window.parent.postMessage(data, '*');
         });
     }
 
