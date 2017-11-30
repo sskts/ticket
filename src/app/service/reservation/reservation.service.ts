@@ -89,11 +89,11 @@ export class ReservationService {
             const data = JSON.stringify({
                 method: 'notification',
                 value: {
-                    id: reservation.orderNumber,
+                    id: Number(reservation.orderNumber.replace(/\-/g, '')),
                     title: '上映時間が近づいています',
                     text: `${reservationFor.workPerformed.name}
                     ${moment(reservationFor.startDate).format('YYYY/MM/DD HH:mm')}
-                    ${reservationFor.superEvent.location.name} ${reservationFor.location.name}`,
+                    ${reservationFor.superEvent.location.name.ja} ${reservationFor.location.name.ja}`,
                     trigger: { at: moment().add(3, 'minutes').toISOString() },
                     icon: `${environment.ticketingSite}/images/touch_icon.png`
                 }

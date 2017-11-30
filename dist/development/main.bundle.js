@@ -2841,9 +2841,9 @@ var ReservationService = /** @class */ (function () {
             var data = JSON.stringify({
                 method: 'notification',
                 value: {
-                    id: reservation.orderNumber,
+                    id: Number(reservation.orderNumber.replace(/\-/g, '')),
                     title: '上映時間が近づいています',
-                    text: reservationFor.workPerformed.name + "\n                    " + __WEBPACK_IMPORTED_MODULE_1_moment__(reservationFor.startDate).format('YYYY/MM/DD HH:mm') + "\n                    " + reservationFor.superEvent.location.name + " " + reservationFor.location.name,
+                    text: reservationFor.workPerformed.name + "\n                    " + __WEBPACK_IMPORTED_MODULE_1_moment__(reservationFor.startDate).format('YYYY/MM/DD HH:mm') + "\n                    " + reservationFor.superEvent.location.name.ja + " " + reservationFor.location.name.ja,
                     trigger: { at: __WEBPACK_IMPORTED_MODULE_1_moment__().add(3, 'minutes').toISOString() },
                     icon: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].ticketingSite + "/images/touch_icon.png"
                 }
