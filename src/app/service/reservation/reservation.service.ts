@@ -94,7 +94,7 @@ export class ReservationService {
                     text: `${reservationFor.workPerformed.name}
                     ${moment(reservationFor.startDate).format('YYYY/MM/DD HH:mm')}
                     ${reservationFor.superEvent.location.name} ${reservationFor.location.name}`,
-                    trigger: { at: moment(reservationFor.startDate).add(3, 'minutes').toDate() },
+                    trigger: { at: moment(reservationFor.startDate).add(3, 'minutes').toISOString() },
                     icon: `${environment.ticketingSite}/images/touch_icon.png`
                 }
             });
