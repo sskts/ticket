@@ -2697,9 +2697,9 @@ var AwsCognitoService = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__("../../../../moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__storage_storage_service__ = __webpack_require__("../../../../../src/app/service/storage/storage.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aws_cognito_aws_cognito_service__ = __webpack_require__("../../../../../src/app/service/aws-cognito/aws-cognito.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__storage_storage_service__ = __webpack_require__("../../../../../src/app/service/storage/storage.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2844,8 +2844,8 @@ var ReservationService = /** @class */ (function () {
                     id: reservation.orderNumber,
                     title: '上映時間が近づいています',
                     text: reservationFor.workPerformed.name + "\n                    " + __WEBPACK_IMPORTED_MODULE_1_moment__(reservationFor.startDate).format('YYYY/MM/DD HH:mm') + "\n                    " + reservationFor.superEvent.location.name + " " + reservationFor.location.name,
-                    trigger: { at: __WEBPACK_IMPORTED_MODULE_1_moment__(reservationFor.startDate).subtract(30, 'minutes').toDate() },
-                    icon: __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].ticketingSite + "/images/touch_icon.png"
+                    trigger: { at: __WEBPACK_IMPORTED_MODULE_1_moment__(reservationFor.startDate).add(3, 'minutes').toDate() },
+                    icon: __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].ticketingSite + "/images/touch_icon.png"
                 }
             });
             window.parent.postMessage(data, '*');
@@ -2853,7 +2853,7 @@ var ReservationService = /** @class */ (function () {
     };
     ReservationService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__storage_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__storage_storage_service__["a" /* StorageService */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__aws_cognito_aws_cognito_service__["a" /* AwsCognitoService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__storage_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__storage_storage_service__["a" /* StorageService */]) === "function" && _b || Object])
     ], ReservationService);
     return ReservationService;
     var _a, _b;

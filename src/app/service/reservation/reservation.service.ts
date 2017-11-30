@@ -4,9 +4,9 @@
 import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
+import { environment } from '../../../environments/environment';
 import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 import { StorageService } from '../storage/storage.service';
-import { environment } from '../../../environments/environment';
 
 export type IReservation = sasaki.factory.order.IOrder;
 export interface IReservationData {
@@ -94,7 +94,7 @@ export class ReservationService {
                     text: `${reservationFor.workPerformed.name}
                     ${moment(reservationFor.startDate).format('YYYY/MM/DD HH:mm')}
                     ${reservationFor.superEvent.location.name} ${reservationFor.location.name}`,
-                    trigger: { at: moment(reservationFor.startDate).subtract(30, 'minutes').toDate() },
+                    trigger: { at: moment(reservationFor.startDate).add(3, 'minutes').toDate() },
                     icon: `${environment.ticketingSite}/images/touch_icon.png`
                 }
             });
