@@ -4,7 +4,6 @@
 import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
-import { environment } from '../../../environments/environment';
 import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 import { StorageService } from '../storage/storage.service';
 
@@ -91,11 +90,8 @@ export class ReservationService {
                 value: {
                     id: Number(reservation.orderNumber.replace(/\-/g, '')),
                     title: '上映時間が近づいています',
-                    text: `${reservationFor.workPerformed.name}
-                    ${moment(reservationFor.startDate).format('YYYY/MM/DD HH:mm')}
-                    ${reservationFor.superEvent.location.name.ja} ${reservationFor.location.name.ja}`,
-                    trigger: { at: moment().add(3, 'minutes').toISOString() },
-                    icon: `${environment.ticketingSite}/images/touch_icon.png`
+                    text: `${moment(reservationFor.startDate).format('YYYY/MM/DD HH:mm')} ${reservationFor.workPerformed.name}`,
+                    trigger: { at: moment(reservationFor.startDate).subtract(30, 'minutes').toISOString() }
                 }
             });
             window.parent.postMessage(data, '*');
