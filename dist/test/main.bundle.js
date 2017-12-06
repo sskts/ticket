@@ -3297,7 +3297,7 @@ var environment = {
     resourceServerDomain: 'https://sskts-api-test.azurewebsites.net',
     portalSite: 'http://testssktsportal.azurewebsites.net',
     ticketingSite: 'https://sskts-frontend-test.azurewebsites.net',
-    entranceServerUrl: 'https://ssktstest.blob.core.windows.net/entrance',
+    entranceServerUrl: 'https://d24x7394fq3aqi.cloudfront.net',
     analyticsId: 'UA-99018492-5'
 };
 //# sourceMappingURL=environment.js.map

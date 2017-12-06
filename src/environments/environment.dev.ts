@@ -32,7 +32,7 @@ export const environment = {
 
     portalSite: 'http://devssktsportal.azurewebsites.net',
     ticketingSite: 'https://sskts-frontend-development.azurewebsites.net',
-    entranceServerUrl: 'https://ssktsdevelopment.blob.core.windows.net/entrance',
+    entranceServerUrl: 'https://d2n1h4enbzumbc.cloudfront.net',
 
     analyticsId: 'UA-99018492-4'
 };
