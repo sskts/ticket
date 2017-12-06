@@ -4,6 +4,7 @@
 import { Injectable } from '@angular/core';
 import { Jsonp } from '@angular/http';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
+import * as httpStatus from 'http-status';
 import * as moment from 'moment';
 // tslint:disable:no-import-side-effect
 import 'rxjs/add/operator/retry';
@@ -61,6 +62,7 @@ export class ScheduleService {
                 this.storage.save('schedule', this.data);
                 console.log(this.data);
             } catch (err) {
+                console.log(err);
                 this.storage.remove('schedule');
                 throw err;
             }
@@ -88,7 +90,7 @@ export class ScheduleService {
             }
         };
         const response = await this.jsonp.get(url, options).retry(3).toPromise();
-        if (response.json().error !== null) {
+        if (response.status !== httpStatus.OK) {
             throw new Error(response.json().error);
         }
         const expired = 10;

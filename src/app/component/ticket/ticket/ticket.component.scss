@@ -42,9 +42,16 @@ ul {
                 color: #BCBCBC;
             }
         }
-        .qr {
+        .qr, .not-qr {
             padding: 20px;
             background-color: #EEE;
+            .inner {
+                min-height: 100px;
+                width: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
             qr-code {
                 display: block;
                 padding: 10px;

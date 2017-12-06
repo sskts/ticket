@@ -29,7 +29,10 @@
                 <div class="large-x-text mb-x-small">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>
                 <div class="small-text">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>
             </div>
-            <div class="qr">
+            <div *ngIf="moment(offer.itemOffered.reservationFor.startDate).subtract(24, 'hours').unix() > moment().unix()" class="not-qr">
+                <p class="inner small-text text-center">鑑賞日前日から<br>QRコードが<br>表示されます。</p>
+            </div>
+            <div *ngIf="moment(offer.itemOffered.reservationFor.startDate).subtract(24, 'hours').unix() <= moment().unix()" class="qr">
                 <qr-code [value]="offer.itemOffered.reservedTicket.ticketToken" [size]="80"></qr-code>
             </div>
         </li>

@@ -36,7 +36,7 @@ export class FilmOrderPerformanceComponent implements OnInit {
     public performanceSelect() {
         const params = `id=${this.performance.identifier}&identityId=${this.awsCognito.credentials.identityId}`;
         location.href =
-            `${environment.ticketingSite}/purchase/app.html?${params}`;
+            `${environment.entranceServerUrl}/ticket/index.html?${params}`;
     }
 
 }

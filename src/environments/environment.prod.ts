@@ -1,3 +1,4 @@
+// tslint:disable:no-http-string
 /**
  * 環境変数prod
  */
@@ -29,9 +30,9 @@ export const environment = {
 
     resourceServerDomain: 'https://sskts-api-production.azurewebsites.net',
 
-    // tslint:disable-next-line:no-http-string
     portalSite: 'http://www.cinemasunshine.co.jp',
     ticketingSite: 'https://ticket-cinemasunshine.com',
+    entranceServerUrl: 'https://ssktsproduction.blob.core.windows.net/entrance',
 
     analyticsId: ''
 };
