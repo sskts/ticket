@@ -1370,6 +1370,9 @@ var FilmOrderPerformanceComponent = /** @class */ (function () {
      * @method performanceSelect
      */
     FilmOrderPerformanceComponent.prototype.performanceSelect = function () {
+        if (this.performance.offer.availability === 0) {
+            return;
+        }
         var params = "id=" + this.performance.identifier + "&identityId=" + this.awsCognito.credentials.identityId;
         location.href =
             __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].entranceServerUrl + "/ticket/index.html?" + params;
