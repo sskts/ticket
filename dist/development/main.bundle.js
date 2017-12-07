@@ -2964,6 +2964,7 @@ var ScheduleService = /** @class */ (function () {
      */
     ScheduleService.prototype.fitchSchedule = function (args) {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             var url, options, response, expired, schedule, result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -2993,8 +2994,16 @@ var ScheduleService = /** @class */ (function () {
                             var diff = __WEBPACK_IMPORTED_MODULE_3_moment__(args.startThrough).diff(__WEBPACK_IMPORTED_MODULE_3_moment__(args.startFrom), 'days');
                             var _loop_1 = function (i) {
                                 var date = __WEBPACK_IMPORTED_MODULE_3_moment__(args.startFrom).add(i, 'days').format('YYYYMMDD');
-                                var dateScreeningEvents = theaterScreeningEvents.filter(function (screeningEvent) {
+                                var tmpDateScreeningEvents = theaterScreeningEvents.filter(function (screeningEvent) {
                                     return (screeningEvent.coaInfo.dateJouei === date);
+                                });
+                                var dateScreeningEvents = [];
+                                tmpDateScreeningEvents.forEach(function (screeningEvent) {
+                                    var startDate = __WEBPACK_IMPORTED_MODULE_3_moment__(screeningEvent.startDate).format('YYYYMMDD');
+                                    var limitDate = __WEBPACK_IMPORTED_MODULE_3_moment__().add(3, 'days').format('YYYYMMDD');
+                                    if (_this.isSalse(screeningEvent) || startDate < limitDate) {
+                                        dateScreeningEvents.push(screeningEvent);
+                                    }
                                 });
                                 theaterSchedule.push({
                                     date: date,

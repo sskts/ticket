@@ -108,8 +108,16 @@ export class ScheduleService {
             const diff = moment(args.startThrough).diff(moment(args.startFrom), 'days');
             for (let i = 0; i < diff; i += 1) {
                 const date = moment(args.startFrom).add(i, 'days').format('YYYYMMDD');
-                const dateScreeningEvents = theaterScreeningEvents.filter((screeningEvent) => {
+                const tmpDateScreeningEvents = theaterScreeningEvents.filter((screeningEvent) => {
                     return (screeningEvent.coaInfo.dateJouei === date);
+                });
+                const dateScreeningEvents: IIndividualScreeningEvent[] = [];
+                tmpDateScreeningEvents.forEach((screeningEvent) => {
+                    const startDate = moment(screeningEvent.startDate).format('YYYYMMDD');
+                    const limitDate = moment().add(3, 'days').format('YYYYMMDD');
+                    if (this.isSalse(screeningEvent) || startDate < limitDate) {
+                        dateScreeningEvents.push(screeningEvent);
+                    }
                 });
                 theaterSchedule.push({
                     date: date,
@@ -165,7 +173,7 @@ export class ScheduleService {
 
             // return (screeningEvents.length > 0);
             return (moment(schedule.date).unix() < moment().add(minDisplayDay, 'days').unix()
-            || screeningEvents.length > 0);
+                || screeningEvents.length > 0);
         });
 
         let count = 0;
