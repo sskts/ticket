@@ -109,26 +109,26 @@ var AppRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_moment__ = __webpack_require__("../../../../angular2-moment/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angular2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_qrcode__ = __webpack_require__("../../../../angular2-qrcode/lib/angular2-qrcode.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_useful_swiper__ = __webpack_require__("../../../../angular2-useful-swiper/lib/swiper.module.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_useful_swiper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_useful_swiper__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__component_about_about_component__ = __webpack_require__("../../../../../src/app/component/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__component_app_app_component__ = __webpack_require__("../../../../../src/app/component/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__component_base_base_component__ = __webpack_require__("../../../../../src/app/component/base/base.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__component_error_error_component__ = __webpack_require__("../../../../../src/app/component/error/error.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__component_header_header_header_component__ = __webpack_require__("../../../../../src/app/component/header/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__component_header_menu_menu_component__ = __webpack_require__("../../../../../src/app/component/header/menu/menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__component_law_law_component__ = __webpack_require__("../../../../../src/app/component/law/law.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__component_loading_loading_component__ = __webpack_require__("../../../../../src/app/component/loading/loading.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__component_navigation_navigation_component__ = __webpack_require__("../../../../../src/app/component/navigation/navigation.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__component_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/component/not-found/not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__component_policy_policy_component__ = __webpack_require__("../../../../../src/app/component/policy/policy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__component_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/component/privacy/privacy.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__component_purchase_film_order_performance_film_order_performance_component__ = __webpack_require__("../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__component_purchase_film_order_film_order_component__ = __webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__component_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/component/purchase/schedule/schedule.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__component_ticket_no_ticket_no_ticket_component__ = __webpack_require__("../../../../../src/app/component/ticket/no-ticket/no-ticket.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_useful_swiper__ = __webpack_require__("../../../../angular2-useful-swiper/lib/swiper.module.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_useful_swiper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_useful_swiper__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__component_about_about_component__ = __webpack_require__("../../../../../src/app/component/about/about.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__component_app_app_component__ = __webpack_require__("../../../../../src/app/component/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__component_base_base_component__ = __webpack_require__("../../../../../src/app/component/base/base.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__component_error_error_component__ = __webpack_require__("../../../../../src/app/component/error/error.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__component_header_header_header_component__ = __webpack_require__("../../../../../src/app/component/header/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__component_header_menu_menu_component__ = __webpack_require__("../../../../../src/app/component/header/menu/menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__component_law_law_component__ = __webpack_require__("../../../../../src/app/component/law/law.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__component_loading_loading_component__ = __webpack_require__("../../../../../src/app/component/loading/loading.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__component_navigation_navigation_component__ = __webpack_require__("../../../../../src/app/component/navigation/navigation.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__component_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/component/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__component_policy_policy_component__ = __webpack_require__("../../../../../src/app/component/policy/policy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__component_privacy_privacy_component__ = __webpack_require__("../../../../../src/app/component/privacy/privacy.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__component_purchase_film_order_performance_film_order_performance_component__ = __webpack_require__("../../../../../src/app/component/purchase/film-order-performance/film-order-performance.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__component_purchase_film_order_film_order_component__ = __webpack_require__("../../../../../src/app/component/purchase/film-order/film-order.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__component_purchase_schedule_schedule_component__ = __webpack_require__("../../../../../src/app/component/purchase/schedule/schedule.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__component_ticket_no_ticket_no_ticket_component__ = __webpack_require__("../../../../../src/app/component/ticket/no-ticket/no-ticket.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__component_ticket_ticket_detail_ticket_detail_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket-detail/ticket-detail.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__component_ticket_ticket_holder_ticket_holder_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket-holder/ticket-holder.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__component_ticket_ticket_ticket_component__ = __webpack_require__("../../../../../src/app/component/ticket/ticket/ticket.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__component_walk_through_walk_through_component__ = __webpack_require__("../../../../../src/app/component/walk-through/walk-through.component.ts");
@@ -193,38 +193,38 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_9__component_app_app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__component_app_app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_24__component_ticket_ticket_holder_ticket_holder_component__["a" /* TicketHolderComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__component_ticket_ticket_ticket_component__["a" /* TicketComponent */],
                 __WEBPACK_IMPORTED_MODULE_26__component_walk_through_walk_through_component__["a" /* WalkThroughComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__component_navigation_navigation_component__["a" /* NavigationComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__component_header_header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__component_header_menu_menu_component__["a" /* MenuComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__component_purchase_schedule_schedule_component__["a" /* ScheduleComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__component_not_found_not_found_component__["a" /* NotFoundComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__component_base_base_component__["a" /* BaseComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__component_navigation_navigation_component__["a" /* NavigationComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__component_header_header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__component_header_menu_menu_component__["a" /* MenuComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__component_purchase_schedule_schedule_component__["a" /* ScheduleComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__component_not_found_not_found_component__["a" /* NotFoundComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__component_base_base_component__["a" /* BaseComponent */],
                 __WEBPACK_IMPORTED_MODULE_29__pipe_time_format_time_format_pipe__["a" /* TimeFormatPipe */],
-                __WEBPACK_IMPORTED_MODULE_21__component_purchase_film_order_film_order_component__["a" /* FilmOrderComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__component_purchase_film_order_film_order_component__["a" /* FilmOrderComponent */],
                 __WEBPACK_IMPORTED_MODULE_27__pipe_availability_availability_pipe__["a" /* AvailabilityPipe */],
                 __WEBPACK_IMPORTED_MODULE_28__pipe_duration_duration_pipe__["a" /* DurationPipe */],
-                __WEBPACK_IMPORTED_MODULE_23__component_ticket_no_ticket_no_ticket_component__["a" /* NoTicketComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__component_about_about_component__["a" /* AboutComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__component_loading_loading_component__["a" /* LoadingComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__component_policy_policy_component__["a" /* PolicyComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__component_law_law_component__["a" /* LawComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__component_privacy_privacy_component__["a" /* PrivacyComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__component_error_error_component__["a" /* ErrorComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__component_purchase_film_order_performance_film_order_performance_component__["a" /* FilmOrderPerformanceComponent */]
+                __WEBPACK_IMPORTED_MODULE_22__component_ticket_no_ticket_no_ticket_component__["a" /* NoTicketComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__component_about_about_component__["a" /* AboutComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__component_loading_loading_component__["a" /* LoadingComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__component_policy_policy_component__["a" /* PolicyComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__component_law_law_component__["a" /* LawComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__component_privacy_privacy_component__["a" /* PrivacyComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__component_error_error_component__["a" /* ErrorComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__component_purchase_film_order_performance_film_order_performance_component__["a" /* FilmOrderPerformanceComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__component_ticket_ticket_detail_ticket_detail_component__["a" /* TicketDetailComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* JsonpModule */],
                 __WEBPACK_IMPORTED_MODULE_4_angular2_moment__["MomentModule"],
-                __WEBPACK_IMPORTED_MODULE_6_angular2_useful_swiper__["SwiperModule"],
-                __WEBPACK_IMPORTED_MODULE_7__app_routing_module__["a" /* AppRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_5_angular2_useful_swiper__["SwiperModule"],
+                __WEBPACK_IMPORTED_MODULE_6__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* ReactiveFormsModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_5_angular2_qrcode__["a" /* QRCodeModule */]
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_30__service_auth_guard_auth_guard_service__["a" /* AuthGuardService */],
@@ -234,7 +234,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_34__service_select_select_service__["a" /* SelectService */],
                 __WEBPACK_IMPORTED_MODULE_35__service_storage_storage_service__["a" /* StorageService */]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_9__component_app_app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_8__component_app_app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -1757,6 +1757,160 @@ var NoTicketComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/component/ticket/ticket-detail/ticket-detail.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ticket-info\">\n    <div class=\"index small-text\">{{ (index + 1) }}/{{ reservation.acceptedOffers.length }}</div>\n    <div class=\"mb-x-small small-text\">{{ reservation.confirmationNumber }}</div>\n    <div class=\"large-x-text mb-x-small\">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>\n    <div class=\"small-text\">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>\n</div>\n<div *ngIf=\"!showQrCode\" class=\"not-qr\">\n    <p class=\"inner small-text text-center\">鑑賞日前日から\n        <br>QRコードが\n        <br>表示されます。</p>\n</div>\n<div *ngIf=\"showQrCode\" class=\"qr\">\n    <img [src]=\"qrCode\">\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/component/ticket/ticket-detail/ticket-detail.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  background-color: #FFF;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #AAA;\n  position: relative; }\n\n.ticket-info {\n  text-align: center;\n  width: calc(100% - 140px); }\n  .ticket-info .index {\n    position: absolute;\n    top: 10px;\n    left: 10px;\n    color: #BCBCBC; }\n\n.qr, .not-qr {\n  padding: 20px;\n  background-color: #EEE; }\n  .qr .inner, .not-qr .inner {\n    min-height: 100px;\n    width: 100px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n\n.qr img {\n  display: block;\n  padding: 10px;\n  background-color: #FFF; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/component/ticket/ticket-detail/ticket-detail.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TicketDetailComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__ = __webpack_require__("../../../../@motionpicture/sskts-api-javascript-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__("../../../../moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_qrcode__ = __webpack_require__("../../../../qrcode/lib/browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_qrcode___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_qrcode__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * TicketDetailComponent
+ */
+
+
+
+
+var TicketDetailComponent = /** @class */ (function () {
+    function TicketDetailComponent() {
+    }
+    TicketDetailComponent.prototype.ngOnInit = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var value, basicSize, option, _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        this.showQrCode = __WEBPACK_IMPORTED_MODULE_2_moment__(this.offer.itemOffered.reservationFor.startDate).subtract(24, 'hours').unix() <= __WEBPACK_IMPORTED_MODULE_2_moment__().unix();
+                        if (!this.showQrCode) return [3 /*break*/, 2];
+                        value = this.offer.itemOffered.reservedTicket.ticketToken;
+                        basicSize = 21;
+                        option = {
+                            margin: 0,
+                            scale: (80 / basicSize)
+                        };
+                        _a = this;
+                        return [4 /*yield*/, this.createQrCode(value, option)];
+                    case 1:
+                        _a.qrCode = _b.sent();
+                        _b.label = 2;
+                    case 2: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    TicketDetailComponent.prototype.createQrCode = function (value, option) {
+        return new Promise(function (resolve, reject) {
+            __WEBPACK_IMPORTED_MODULE_3_qrcode__["toDataURL"](value, option, function (err, url) {
+                if (err !== null) {
+                    reject(err);
+                    return;
+                }
+                resolve(url);
+            });
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", typeof (_a = ((_b = ((_c = (typeof __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__ !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__).factory) && _c).order) && _b).IOrder) === "function" && _a || Object)
+    ], TicketDetailComponent.prototype, "reservation", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", typeof (_d = ((_e = ((_f = (typeof __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__ !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__).factory) && _f).order) && _e).IOffer) === "function" && _d || Object)
+    ], TicketDetailComponent.prototype, "offer", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Number)
+    ], TicketDetailComponent.prototype, "index", void 0);
+    TicketDetailComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-ticket-detail',
+            template: __webpack_require__("../../../../../src/app/component/ticket/ticket-detail/ticket-detail.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/component/ticket/ticket-detail/ticket-detail.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], TicketDetailComponent);
+    return TicketDetailComponent;
+    var _b, _c, _a, _e, _f, _d;
+}());
+
+//# sourceMappingURL=ticket-detail.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/component/ticket/ticket-holder/ticket-holder.component.html":
 /***/ (function(module, exports) {
 
@@ -1908,7 +2062,7 @@ var TicketHolderComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/component/ticket/ticket/ticket.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <dl class=\"film\">\n            <dt class=\"icon-film-name-gray\"></dt>\n            <dd>{{ reservation.acceptedOffers[0].itemOffered.reservationFor.workPerformed.name }}</dd>\n        </dl>\n        <dl class=\"date\">\n            <dt class=\"icon-date-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{\n                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}\n            </dd>\n        </dl>\n        <dl class=\"theater\">\n            <dt class=\"icon-location-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.superEvent.location.name.ja }} / {{ reservation.acceptedOffers[0].itemOffered.reservationFor.location.name.ja\n                }}\n            </dd>\n        </dl>\n    </div>\n    <ul>\n        <li *ngFor=\"let offer of reservation.acceptedOffers; let index = index;\">\n            <div class=\"ticket-info\">\n                <div class=\"index small-text\">{{ (index + 1) }}/{{ reservation.acceptedOffers.length }}</div>\n                <div class=\"mb-x-small small-text\">{{ reservation.confirmationNumber }}</div>\n                <div class=\"large-x-text mb-x-small\">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>\n                <div class=\"small-text\">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>\n            </div>\n            <div *ngIf=\"moment(offer.itemOffered.reservationFor.startDate).subtract(24, 'hours').unix() > moment().unix()\" class=\"not-qr\">\n                <p class=\"inner small-text text-center\">鑑賞日前日から<br>QRコードが<br>表示されます。</p>\n            </div>\n            <div *ngIf=\"moment(offer.itemOffered.reservationFor.startDate).subtract(24, 'hours').unix() <= moment().unix()\" class=\"qr\">\n                <qr-code [value]=\"offer.itemOffered.reservedTicket.ticketToken\" [size]=\"80\"></qr-code>\n            </div>\n        </li>\n    </ul>\n</div>"
+module.exports = "<div class=\"inner\">\n    <div class=\"info\">\n        <dl class=\"film\">\n            <dt class=\"icon-film-name-gray\"></dt>\n            <dd>{{ reservation.acceptedOffers[0].itemOffered.reservationFor.workPerformed.name }}</dd>\n        </dl>\n        <dl class=\"date\">\n            <dt class=\"icon-date-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{\n                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei\n                }}\n            </dd>\n        </dl>\n        <dl class=\"theater\">\n            <dt class=\"icon-location-gray\"></dt>\n            <dd>\n                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.superEvent.location.name.ja }} / {{ reservation.acceptedOffers[0].itemOffered.reservationFor.location.name.ja\n                }}\n            </dd>\n        </dl>\n    </div>\n    <div class=\"details\">\n        <app-ticket-detail *ngFor=\"let offer of reservation.acceptedOffers; let index = index;\" [reservation]=\"reservation\" [offer]=\"offer\" [index]=\"index\"></app-ticket-detail>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1920,7 +2074,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".inner {\n  background-color: #EEE;\n  color: #333; }\n\n.info dl {\n  border-bottom: 1px solid #AAA;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 15px 0; }\n  .info dl dt {\n    width: 40px;\n    text-align: center; }\n    .info dl dt:before {\n      margin: 0 auto; }\n  .info dl dd {\n    width: calc(100% - 40px);\n    line-height: 1.6;\n    padding-right: 10px; }\n\nul li {\n  background-color: #FFF;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #AAA;\n  position: relative; }\n  ul li:last-child {\n    border-bottom: none; }\n  ul li .ticket-info {\n    text-align: center;\n    width: calc(100% - 140px); }\n    ul li .ticket-info .index {\n      position: absolute;\n      top: 10px;\n      left: 10px;\n      color: #BCBCBC; }\n  ul li .qr, ul li .not-qr {\n    padding: 20px;\n    background-color: #EEE; }\n    ul li .qr .inner, ul li .not-qr .inner {\n      min-height: 100px;\n      width: 100px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center; }\n    ul li .qr qr-code, ul li .not-qr qr-code {\n      display: block;\n      padding: 10px;\n      background-color: #FFF; }\n", ""]);
+exports.push([module.i, ".inner {\n  background-color: #EEE;\n  color: #333; }\n\n.info dl {\n  border-bottom: 1px solid #AAA;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 15px 0; }\n  .info dl dt {\n    width: 40px;\n    text-align: center; }\n    .info dl dt:before {\n      margin: 0 auto; }\n  .info dl dd {\n    width: calc(100% - 40px);\n    line-height: 1.6;\n    padding-right: 10px; }\n\n.details app-ticket-detail:last-child {\n  border-bottom: none; }\n", ""]);
 
 // exports
 
@@ -1938,8 +2092,6 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__ = __webpack_require__("../../../../@motionpicture/sskts-api-javascript-client/lib/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__("../../../../moment/moment.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1954,7 +2106,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 
 
-
 var TicketComponent = /** @class */ (function () {
     function TicketComponent() {
     }
@@ -1964,7 +2115,6 @@ var TicketComponent = /** @class */ (function () {
      * @returns {void}
      */
     TicketComponent.prototype.ngOnInit = function () {
-        this.moment = __WEBPACK_IMPORTED_MODULE_2_moment__;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),

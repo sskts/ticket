@@ -2,6 +2,7 @@
  * ScheduleServiceテスト
  */
 import { inject, TestBed } from '@angular/core/testing';
+import * as httpStatus from 'http-status';
 import * as moment from 'moment';
 import { ScheduleService } from './schedule.service';
 
@@ -14,8 +15,14 @@ describe('ScheduleService', () => {
                         return {
                             toPromise: () => {
                                 return Promise.resolve({
+                                    status: httpStatus.OK,
                                     json: () => {
-                                        return { error: null, result: [] };
+                                        return {
+                                            result: {
+                                                theaters: [],
+                                                screeningEvents: []
+                                            }
+                                        };
                                     }
                                 });
                             }
@@ -45,8 +52,9 @@ describe('ScheduleService', () => {
                         return {
                             toPromise: () => {
                                 return Promise.resolve({
+                                    status: httpStatus.INTERNAL_SERVER_ERROR,
                                     json: () => {
-                                        return { error: 'API経由で取得失敗', result: [] };
+                                        return { error: 'API経由で取得失敗' };
                                     }
                                 });
                             }

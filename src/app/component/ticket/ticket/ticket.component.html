@@ -21,20 +21,7 @@
             </dd>
         </dl>
     </div>
-    <ul>
-        <li *ngFor="let offer of reservation.acceptedOffers; let index = index;">
-            <div class="ticket-info">
-                <div class="index small-text">{{ (index + 1) }}/{{ reservation.acceptedOffers.length }}</div>
-                <div class="mb-x-small small-text">{{ reservation.confirmationNumber }}</div>
-                <div class="large-x-text mb-x-small">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>
-                <div class="small-text">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>
-            </div>
-            <div *ngIf="moment(offer.itemOffered.reservationFor.startDate).subtract(24, 'hours').unix() > moment().unix()" class="not-qr">
-                <p class="inner small-text text-center">鑑賞日前日から<br>QRコードが<br>表示されます。</p>
-            </div>
-            <div *ngIf="moment(offer.itemOffered.reservationFor.startDate).subtract(24, 'hours').unix() <= moment().unix()" class="qr">
-                <qr-code [value]="offer.itemOffered.reservedTicket.ticketToken" [size]="80"></qr-code>
-            </div>
-        </li>
-    </ul>
+    <div class="details">
+        <app-ticket-detail *ngFor="let offer of reservation.acceptedOffers; let index = index;" [reservation]="reservation" [offer]="offer" [index]="index"></app-ticket-detail>
+    </div>
 </div>

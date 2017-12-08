@@ -3,7 +3,6 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
-import * as moment from 'moment';
 
 @Component({
     selector: 'app-ticket',
@@ -17,7 +16,6 @@ import * as moment from 'moment';
  */
 export class TicketComponent implements OnInit {
     @Input() public reservation: sasaki.factory.order.IOrder;
-    public moment: typeof moment;
 
     constructor() { }
 
@@ -27,7 +25,6 @@ export class TicketComponent implements OnInit {
      * @returns {void}
      */
     public ngOnInit(): void {
-        this.moment = moment;
     }
 
 }
