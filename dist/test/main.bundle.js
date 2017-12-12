@@ -219,7 +219,7 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* JsonpModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_4_angular2_moment__["MomentModule"],
                 __WEBPACK_IMPORTED_MODULE_5_angular2_useful_swiper__["SwiperModule"],
                 __WEBPACK_IMPORTED_MODULE_6__app_routing_module__["a" /* AppRoutingModule */],
@@ -3061,8 +3061,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 var ScheduleService = /** @class */ (function () {
-    function ScheduleService(jsonp, storage) {
-        this.jsonp = jsonp;
+    function ScheduleService(http, storage) {
+        this.http = http;
         this.storage = storage;
     }
     /**
@@ -3122,12 +3122,11 @@ var ScheduleService = /** @class */ (function () {
                         url = __WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].ticketingSite + "/purchase/performances/getSchedule";
                         options = {
                             search: {
-                                callback: 'JSONP_CALLBACK',
                                 startFrom: args.startFrom,
                                 startThrough: args.startThrough
                             }
                         };
-                        return [4 /*yield*/, this.jsonp.get(url, options).retry(3).toPromise()];
+                        return [4 /*yield*/, this.http.get(url, options).retry(3).toPromise()];
                     case 1:
                         response = _a.sent();
                         if (response.status !== __WEBPACK_IMPORTED_MODULE_2_http_status__["OK"]) {
@@ -3293,7 +3292,7 @@ var ScheduleService = /** @class */ (function () {
     };
     ScheduleService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Jsonp */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_7__storage_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__storage_storage_service__["a" /* StorageService */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_7__storage_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__storage_storage_service__["a" /* StorageService */]) === "function" && _b || Object])
     ], ScheduleService);
     return ScheduleService;
     var _a, _b;

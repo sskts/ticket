@@ -8,7 +8,7 @@ import { ScheduleService } from './schedule.service';
 
 describe('ScheduleService', () => {
     it('getSchedule API経由で取得', async () => {
-        const jsonpStub: any = {
+        const httpStub: any = {
             get: () => {
                 return {
                     retry: () => {
@@ -38,14 +38,14 @@ describe('ScheduleService', () => {
             save: () => { },
             remove: () => { }
         };
-        const service = new ScheduleService(jsonpStub, storageServiceStub);
+        const service = new ScheduleService(httpStub, storageServiceStub);
         const schedule = await service.getSchedule();
         expect(schedule.expired);
         expect(Array.isArray(schedule.schedule)).toBeTruthy();
     });
 
     it('getSchedule API経由で取得失敗', async () => {
-        const jsonpStub: any = {
+        const httpStub: any = {
             get: () => {
                 return {
                     retry: () => {
@@ -70,7 +70,7 @@ describe('ScheduleService', () => {
             save: () => { },
             remove: () => { }
         };
-        const service = new ScheduleService(jsonpStub, storageServiceStub);
+        const service = new ScheduleService(httpStub, storageServiceStub);
         try {
             const schedule = await service.getSchedule();
         } catch (err) {
@@ -79,7 +79,7 @@ describe('ScheduleService', () => {
     });
 
     it('getSchedule ストレージから取得', async () => {
-        const jsonpStub: any = {};
+        const httpStub: any = {};
         const storageServiceStub: any = {
             load: () => {
                 return {
@@ -90,20 +90,20 @@ describe('ScheduleService', () => {
             save: () => { },
             remove: () => { }
         };
-        const service = new ScheduleService(jsonpStub, storageServiceStub);
+        const service = new ScheduleService(httpStub, storageServiceStub);
         const schedule = await service.getSchedule();
         expect(schedule.expired);
         expect(Array.isArray(schedule.schedule)).toBeTruthy();
     });
 
     it('getSchedule memberから取得', async () => {
-        const jsonpStub: any = {};
+        const httpStub: any = {};
         const storageServiceStub: any = {
             load: () => { },
             save: () => { },
             remove: () => { }
         };
-        const service = new ScheduleService(jsonpStub, storageServiceStub);
+        const service = new ScheduleService(httpStub, storageServiceStub);
         const data: any = {
             schedule: [],
             expired: moment().add(1, 'days').unix()
@@ -115,9 +115,9 @@ describe('ScheduleService', () => {
     });
 
     it('getTheater', async () => {
-        const jsonpStub: any = {};
+        const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(jsonpStub, storageServiceStub);
+        const service = new ScheduleService(httpStub, storageServiceStub);
         const data: any = {
             schedule: [{ theater: {} }],
             expired: moment().add(1, 'days').unix()
@@ -128,9 +128,9 @@ describe('ScheduleService', () => {
     });
 
     it('getTheater 失敗', async () => {
-        const jsonpStub: any = {};
+        const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(jsonpStub, storageServiceStub);
+        const service = new ScheduleService(httpStub, storageServiceStub);
         const data: any = undefined;
         service.data = data;
         try {
@@ -141,9 +141,9 @@ describe('ScheduleService', () => {
     });
 
     it('getDate', async () => {
-        const jsonpStub: any = {};
+        const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(jsonpStub, storageServiceStub);
+        const service = new ScheduleService(httpStub, storageServiceStub);
         const data: any = {
             schedule: [
                 {
@@ -206,9 +206,9 @@ describe('ScheduleService', () => {
     });
 
     it('getDate 失敗', async () => {
-        const jsonpStub: any = {};
+        const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(jsonpStub, storageServiceStub);
+        const service = new ScheduleService(httpStub, storageServiceStub);
         const data: any = undefined;
         service.data = data;
         try {
@@ -219,9 +219,9 @@ describe('ScheduleService', () => {
     });
 
     it('getScreeningEvents', async () => {
-        const jsonpStub: any = {};
+        const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(jsonpStub, storageServiceStub);
+        const service = new ScheduleService(httpStub, storageServiceStub);
         const data: any = {
             schedule: [
                 {
@@ -295,9 +295,9 @@ describe('ScheduleService', () => {
     });
 
     it('getScreeningEvents 失敗', async () => {
-        const jsonpStub: any = {};
+        const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(jsonpStub, storageServiceStub);
+        const service = new ScheduleService(httpStub, storageServiceStub);
         const data: any = undefined;
         service.data = data;
         try {

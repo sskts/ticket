@@ -2,7 +2,7 @@
  * ScheduleService
  */
 import { Injectable } from '@angular/core';
-import { Jsonp } from '@angular/http';
+import { Http } from '@angular/http';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as httpStatus from 'http-status';
 import * as moment from 'moment';
@@ -40,7 +40,7 @@ export class ScheduleService {
     public data: IScheduleData;
 
     constructor(
-        private jsonp: Jsonp,
+        private http: Http,
         private storage: StorageService
     ) { }
 
@@ -84,12 +84,11 @@ export class ScheduleService {
         const url = `${environment.ticketingSite}/purchase/performances/getSchedule`;
         const options = {
             search: {
-                callback: 'JSONP_CALLBACK',
                 startFrom: args.startFrom,
                 startThrough: args.startThrough
             }
         };
-        const response = await this.jsonp.get(url, options).retry(3).toPromise();
+        const response = await this.http.get(url, options).retry(3).toPromise();
         if (response.status !== httpStatus.OK) {
             throw new Error(response.json().error);
         }
