@@ -3,6 +3,9 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku
 * {
     box-sizing: border-box;
 }
+html, body {
+    height: 100%;
+}
 body {
     -webkit-text-size-adjust: 100%;
     -webkit-touch-callout: none;
@@ -11,7 +14,6 @@ body {
     background-attachment: fixed;
     font-size: 14px;
     color: #FFF;
-    min-height: 100vh;
     font-family: $font-family;
 }
 h1, h2, h3 {
@@ -103,7 +105,7 @@ option {
 
 .contents {
     position: relative;
-    min-height: calc(100vh - 48px - 60px);
+    min-height: calc(100% - 48px - 60px);
     >.inner {
         padding: 10px 15px;
         .box {
