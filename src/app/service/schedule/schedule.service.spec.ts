@@ -15,14 +15,9 @@ describe('ScheduleService', () => {
                         return {
                             toPromise: () => {
                                 return Promise.resolve({
-                                    status: httpStatus.OK,
-                                    json: () => {
-                                        return {
-                                            result: {
-                                                theaters: [],
-                                                screeningEvents: []
-                                            }
-                                        };
+                                    result: {
+                                        theaters: [],
+                                        screeningEvents: []
                                     }
                                 });
                             }
@@ -51,12 +46,7 @@ describe('ScheduleService', () => {
                     retry: () => {
                         return {
                             toPromise: () => {
-                                return Promise.resolve({
-                                    status: httpStatus.INTERNAL_SERVER_ERROR,
-                                    json: () => {
-                                        return { error: 'API経由で取得失敗' };
-                                    }
-                                });
+                                return Promise.reject({ error: 'API経由で取得失敗' });
                             }
                         };
                     }

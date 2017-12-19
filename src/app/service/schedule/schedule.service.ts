@@ -1,10 +1,9 @@
 /**
  * ScheduleService
  */
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
-import * as httpStatus from 'http-status';
 import * as moment from 'moment';
 // tslint:disable:no-import-side-effect
 import 'rxjs/add/operator/retry';
@@ -40,7 +39,7 @@ export class ScheduleService {
     public data: IScheduleData;
 
     constructor(
-        private http: Http,
+        private http: HttpClient,
         private storage: StorageService
     ) { }
 
@@ -83,19 +82,23 @@ export class ScheduleService {
     ): Promise<IScheduleData> {
         const url = `${environment.ticketingSite}/purchase/performances/getSchedule`;
         const options = {
-            search: {
-                startFrom: args.startFrom,
-                startThrough: args.startThrough
-            }
+            params: new HttpParams({
+                fromObject: {
+                    startFrom: args.startFrom,
+                    startThrough: args.startThrough
+                }
+            }),
+            reportProgress: true
         };
-        const response = await this.http.get(url, options).retry(3).toPromise();
-        if (response.status !== httpStatus.OK) {
-            throw new Error(response.json().error);
-        }
+        const response = await this.http.get<{
+            result: {
+                theaters: IMovieTheater[],
+                screeningEvents: IIndividualScreeningEvent[]
+            }
+        }>(url, options).retry(3).toPromise();
+        const result = response.result;
         const expired = 10;
-
         const schedule: ISchedule[] = [];
-        const result: { theaters: IMovieTheater[], screeningEvents: IIndividualScreeningEvent[] } = response.json().result;
         result.theaters.forEach((theater) => {
             const theaterSchedule: {
                 date: string;

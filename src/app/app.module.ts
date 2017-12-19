@@ -1,9 +1,9 @@
 /**
  * NgModule
  */
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { MomentModule } from 'angular2-moment';
 import { SwiperModule } from 'angular2-useful-swiper';
@@ -67,7 +67,7 @@ import { StorageService } from './service/storage/storage.service';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     MomentModule,
     SwiperModule,
     AppRoutingModule,
