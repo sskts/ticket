@@ -35,7 +35,6 @@ export class ReservationService {
             try {
                 this.data = await this.fitchReservation();
                 this.storage.save('reservation', this.data);
-                this.registerNotifications();
             } catch (err) {
                 this.storage.remove('reservation');
                 throw err;

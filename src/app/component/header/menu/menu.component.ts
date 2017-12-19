@@ -3,6 +3,7 @@
  */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { CallNativeService, InAppBrowserTarget } from '../../../service/call-native/call-native.service';
 
 @Component({
     selector: 'app-menu',
@@ -15,7 +16,7 @@ export class MenuComponent implements OnInit {
     @Output() public close: EventEmitter<{}> = new EventEmitter();
     public portalSite: string;
 
-    constructor() { }
+    constructor(private callNative: CallNativeService) { }
 
     /**
      * 初期化
@@ -28,45 +29,14 @@ export class MenuComponent implements OnInit {
 
     /**
      * webブラウザで開く
-     * @method externalLink
+     * @method openWebBrowse
      * @param {string} url
      */
-    public externalLink(url: string): void {
-        if (window !== window.parent) {
-            const data = JSON.stringify({
-                method: 'externalLink',
-                value: url
-            });
-            window.parent.postMessage(data, '*');
-            this.close.emit();
-
-            return;
-        }
-        const userAgent = navigator.userAgent.toLowerCase();
-        const os = (/ipad|iphone|ipod/.test(userAgent) && !(<any>window).MSStream) ? 'ios'
-            : (/android/i.test(userAgent)) ? 'android'
-                : 'web';
-        try {
-            switch (os) {
-                case 'ios':
-                    (<any>window).webkit.messageHandlers.openExternalRule.postMessage({
-                        EXTERN_URL: url
-                    });
-                    break;
-                case 'android':
-                    (<any>global).JSInterface.openExternalRule(url);
-                    break;
-                default:
-                    const win = window.open(url, '_blank');
-                    if (win) {
-                        win.focus();
-                    } else {
-                        alert('Please allow popups for this website');
-                    }
-            }
-        } catch (err) {
-            console.error(err);
-        }
+    public openWebBrowse(url: string): void {
+        this.callNative.inAppBrowser({
+            url: url,
+            target: InAppBrowserTarget.System
+        });
         this.close.emit();
     }
 }
