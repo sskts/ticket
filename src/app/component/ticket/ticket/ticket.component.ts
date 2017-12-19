@@ -24,6 +24,7 @@ export class TicketComponent implements OnInit {
      * @method ngOnInit
      * @returns {void}
      */
-    public ngOnInit(): void { }
+    public ngOnInit(): void {
+    }
 
 }

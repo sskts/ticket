@@ -22,34 +22,10 @@
         }
     }
 }
-ul {
-    li {
-        background-color: #FFF;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid #AAA;
-        position: relative;
+.details {
+    app-ticket-detail {
         &:last-child {
             border-bottom: none;
-        }
-        .ticket-info {
-            text-align: center;
-            width: calc(100% - 140px);
-            .index {
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                color: #BCBCBC;
-            }
-        }
-        .qr {
-            padding: 20px;
-            background-color: #EEE;
-            qr-code {
-                display: block;
-                padding: 10px;
-                background-color: #FFF;
-            }
         }
     }
 }

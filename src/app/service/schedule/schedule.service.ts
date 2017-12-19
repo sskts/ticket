@@ -1,8 +1,8 @@
 /**
  * ScheduleService
  */
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Jsonp } from '@angular/http';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 // tslint:disable:no-import-side-effect
@@ -39,7 +39,7 @@ export class ScheduleService {
     public data: IScheduleData;
 
     constructor(
-        private jsonp: Jsonp,
+        private http: HttpClient,
         private storage: StorageService
     ) { }
 
@@ -61,6 +61,7 @@ export class ScheduleService {
                 this.storage.save('schedule', this.data);
                 console.log(this.data);
             } catch (err) {
+                console.log(err);
                 this.storage.remove('schedule');
                 throw err;
             }
@@ -81,20 +82,23 @@ export class ScheduleService {
     ): Promise<IScheduleData> {
         const url = `${environment.ticketingSite}/purchase/performances/getSchedule`;
         const options = {
-            search: {
-                callback: 'JSONP_CALLBACK',
-                startFrom: args.startFrom,
-                startThrough: args.startThrough
-            }
+            params: new HttpParams({
+                fromObject: {
+                    startFrom: args.startFrom,
+                    startThrough: args.startThrough
+                }
+            }),
+            reportProgress: true
         };
-        const response = await this.jsonp.get(url, options).retry(3).toPromise();
-        if (response.json().error !== null) {
-            throw new Error(response.json().error);
-        }
+        const response = await this.http.get<{
+            result: {
+                theaters: IMovieTheater[],
+                screeningEvents: IIndividualScreeningEvent[]
+            }
+        }>(url, options).retry(3).toPromise();
+        const result = response.result;
         const expired = 10;
-
         const schedule: ISchedule[] = [];
-        const result: { theaters: IMovieTheater[], screeningEvents: IIndividualScreeningEvent[] } = response.json().result;
         result.theaters.forEach((theater) => {
             const theaterSchedule: {
                 date: string;
@@ -106,8 +110,16 @@ export class ScheduleService {
             const diff = moment(args.startThrough).diff(moment(args.startFrom), 'days');
             for (let i = 0; i < diff; i += 1) {
                 const date = moment(args.startFrom).add(i, 'days').format('YYYYMMDD');
-                const dateScreeningEvents = theaterScreeningEvents.filter((screeningEvent) => {
+                const tmpDateScreeningEvents = theaterScreeningEvents.filter((screeningEvent) => {
                     return (screeningEvent.coaInfo.dateJouei === date);
+                });
+                const dateScreeningEvents: IIndividualScreeningEvent[] = [];
+                tmpDateScreeningEvents.forEach((screeningEvent) => {
+                    const startDate = moment(screeningEvent.startDate).format('YYYYMMDD');
+                    const limitDate = moment().add(3, 'days').format('YYYYMMDD');
+                    if (this.isSalse(screeningEvent) || startDate < limitDate) {
+                        dateScreeningEvents.push(screeningEvent);
+                    }
                 });
                 theaterSchedule.push({
                     date: date,
@@ -163,7 +175,7 @@ export class ScheduleService {
 
             // return (screeningEvents.length > 0);
             return (moment(schedule.date).unix() < moment().add(minDisplayDay, 'days').unix()
-            || screeningEvents.length > 0);
+                || screeningEvents.length > 0);
         });
 
         let count = 0;

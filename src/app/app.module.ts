@@ -1,12 +1,11 @@
 /**
  * NgModule
  */
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { JsonpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { MomentModule } from 'angular2-moment';
-import { QRCodeModule } from 'angular2-qrcode';
 import { SwiperModule } from 'angular2-useful-swiper';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './component/about/about.component';
@@ -25,6 +24,7 @@ import { FilmOrderPerformanceComponent } from './component/purchase/film-order-p
 import { FilmOrderComponent } from './component/purchase/film-order/film-order.component';
 import { ScheduleComponent } from './component/purchase/schedule/schedule.component';
 import { NoTicketComponent } from './component/ticket/no-ticket/no-ticket.component';
+import { TicketDetailComponent } from './component/ticket/ticket-detail/ticket-detail.component';
 import { TicketHolderComponent } from './component/ticket/ticket-holder/ticket-holder.component';
 import { TicketComponent } from './component/ticket/ticket/ticket.component';
 import { WalkThroughComponent } from './component/walk-through/walk-through.component';
@@ -62,17 +62,17 @@ import { StorageService } from './service/storage/storage.service';
     LawComponent,
     PrivacyComponent,
     ErrorComponent,
-    FilmOrderPerformanceComponent
+    FilmOrderPerformanceComponent,
+    TicketDetailComponent
   ],
   imports: [
     BrowserModule,
-    JsonpModule,
+    HttpClientModule,
     MomentModule,
     SwiperModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
-    QRCodeModule
+    FormsModule
   ],
   providers: [
     AuthGuardService,

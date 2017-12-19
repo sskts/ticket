@@ -3,9 +3,9 @@
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MomentModule } from 'angular2-moment';
-import { QRCodeModule } from 'angular2-qrcode';
 import * as moment from 'moment';
 import { TimeFormatPipe } from '../../../pipe/time-format/time-format.pipe';
+import { TicketDetailComponent } from '../ticket-detail/ticket-detail.component';
 import { TicketComponent } from './ticket.component';
 
 describe('TicketComponent', () => {
@@ -16,11 +16,11 @@ describe('TicketComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 TicketComponent,
+                TicketDetailComponent,
                 TimeFormatPipe
             ],
             imports: [
-                MomentModule,
-                QRCodeModule
+                MomentModule
             ]
         })
             .compileComponents();

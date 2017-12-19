@@ -4,13 +4,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MomentModule } from 'angular2-moment';
-import { QRCodeModule } from 'angular2-qrcode';
 import { SwiperModule } from 'angular2-useful-swiper';
 import { TimeFormatPipe } from '../../../pipe/time-format/time-format.pipe';
 import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.service';
 import { ReservationService } from '../../../service/reservation/reservation.service';
 import { LoadingComponent } from '../../loading/loading.component';
 import { NoTicketComponent } from '../no-ticket/no-ticket.component';
+import { TicketDetailComponent } from '../ticket-detail/ticket-detail.component';
 import { TicketComponent } from '../ticket/ticket.component';
 import { TicketHolderComponent } from './ticket-holder.component';
 
@@ -29,6 +29,7 @@ describe('TicketHolderComponent', () => {
             declarations: [
                 TicketHolderComponent,
                 TicketComponent,
+                TicketDetailComponent,
                 NoTicketComponent,
                 LoadingComponent,
                 TimeFormatPipe
@@ -36,8 +37,7 @@ describe('TicketHolderComponent', () => {
             imports: [
                 RouterTestingModule.withRoutes([]),
                 SwiperModule,
-                MomentModule,
-                QRCodeModule
+                MomentModule
             ],
             providers: [
                 { provide: ReservationService, useValue: reservationServiceStub }

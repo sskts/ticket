@@ -1,3 +1,4 @@
+// tslint:disable:no-http-string
 /**
  * 環境変数dev
  */
@@ -29,9 +30,9 @@ export const environment = {
 
     resourceServerDomain: 'https://sskts-api-development.azurewebsites.net',
 
-    // tslint:disable-next-line:no-http-string
     portalSite: 'http://devssktsportal.azurewebsites.net',
     ticketingSite: 'https://sskts-frontend-development.azurewebsites.net',
+    entranceServerUrl: 'https://d2n1h4enbzumbc.cloudfront.net',
 
     analyticsId: 'UA-99018492-4'
 };

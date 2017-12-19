@@ -28,7 +28,9 @@ describe('ErrorComponent', () => {
 
     it('connect', async () => {
         const awsCognitoServiceStub = {
-            authenticateWithDeviceId: () => { },
+            authenticateWithDeviceId: () => {
+                return Promise.resolve({});
+            },
             isAuthenticate: () => true
         };
         await TestBed.configureTestingModule({
@@ -51,7 +53,9 @@ describe('ErrorComponent', () => {
 
     it('connect 端末IDで認証エラー', async () => {
         const awsCognitoServiceStub = {
-            authenticateWithDeviceId: () => { throw new Error('端末IDで認証エラー'); },
+            authenticateWithDeviceId: () => {
+                return Promise.reject('端末IDで認証エラー');
+            },
             isAuthenticate: () => true
         };
         await TestBed.configureTestingModule({
@@ -74,7 +78,9 @@ describe('ErrorComponent', () => {
 
     it('connect 認証確認エラー', async () => {
         const awsCognitoServiceStub = {
-            authenticateWithDeviceId: () => { },
+            authenticateWithDeviceId: () => {
+                return Promise.resolve({});
+            },
             isAuthenticate: () => false
         };
         await TestBed.configureTestingModule({
