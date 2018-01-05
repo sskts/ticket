@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SwiperModule } from 'angular2-useful-swiper';
 import * as moment from 'moment';
-import { Observable } from 'rxjs/Observable';
 import { AvailabilityPipe } from '../../../pipe/availability/availability.pipe';
 import { DurationPipe } from '../../../pipe/duration/duration.pipe';
 import { TimeFormatPipe } from '../../../pipe/time-format/time-format.pipe';

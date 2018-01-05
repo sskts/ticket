@@ -5,7 +5,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
-// tslint:disable:no-import-side-effect
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/toPromise';
 import { environment } from '../../../environments/environment';

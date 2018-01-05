@@ -63,6 +63,10 @@
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
+    "no-import-side-effect": [
+      true,
+      "rxjs"
+    ],
     "no-inferrable-types": [
       true,
       "ignore-params"
@@ -74,6 +78,14 @@
     "no-shadowed-variable": true,
     "no-string-literal": true,
     "no-string-throw": true,
+    "no-submodule-imports": [
+      true,
+      "rxjs",
+      "@angular/platform-browser",
+      "@angular/core/testing",
+      "@angular/router/testing",
+      "@angular/common/http"
+    ],
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
