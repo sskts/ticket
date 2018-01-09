@@ -2985,13 +2985,7 @@ var CallNativeService = /** @class */ (function () {
     CallNativeService.prototype.postMessage = function (data) {
         try {
             var json = JSON.stringify(data);
-            var wizViewMessenger = window.wizViewMessenger;
-            if (wizViewMessenger === undefined) {
-                wizViewMessenger.postMessage(json, TARGET_VIEW);
-            }
-            else {
-                window.parent.postMessage(json, '*');
-            }
+            window.wizViewMessenger.postMessage(json, TARGET_VIEW);
         }
         catch (err) {
             console.error(err);

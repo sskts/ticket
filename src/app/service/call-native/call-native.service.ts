@@ -15,12 +15,7 @@ export class CallNativeService {
     private postMessage(data: any) {
         try {
             const json: string = JSON.stringify(data);
-            const wizViewMessenger = (<any>window).wizViewMessenger;
-            if (wizViewMessenger === undefined) {
-                wizViewMessenger.postMessage(json, TARGET_VIEW);
-            } else {
-                window.parent.postMessage(json, '*');
-            }
+            (<any>window).wizViewMessenger.postMessage(json, TARGET_VIEW);
         } catch (err) {
             console.error(err);
         }
