@@ -109,8 +109,16 @@ option {
     >.inner {
         padding: 10px 15px;
         .box {
-            border: 1px solid #FFF;
-            padding: 10px;
+            padding: 20px 15px;
+            background-color: #FFF;
+            color: #333;
+            h3 {
+                font-weight: bold;
+            }
+            p {
+                padding-left: 10px;
+                line-height: 2.0; 
+            }
         }
     }
 }
