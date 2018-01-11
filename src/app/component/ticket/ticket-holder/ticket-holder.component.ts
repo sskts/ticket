@@ -40,7 +40,7 @@ export class TicketHolderComponent implements OnInit {
         };
         try {
             await this.reservation.getReservation();
-            this.purchaseNumberOrders = this.reservation.getReservationByPurchaseNumberOrder();
+            this.purchaseNumberOrders = this.reservation.getReservationByAppreciationDayOrder();
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
             console.log(err);

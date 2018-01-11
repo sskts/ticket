@@ -62,7 +62,7 @@ export class ReservationService {
     }
 
     /**
-     * パフォーマンスごとの予約情報取得
+     * パフォーマンスごとの予約情報取得（購入番号順）
      * @method getReservationByPurchaseNumber
      */
     public getReservationByPurchaseNumberOrder(): IReservation[] {
@@ -74,6 +74,35 @@ export class ReservationService {
 
             return (endDate.unix() > moment().unix());
         });
+    }
+
+    /**
+     * パフォーマンスごとの予約情報取得（鑑賞日順）
+     * @method getReservationByAppreciationDayOrder
+     */
+    public getReservationByAppreciationDayOrder(): IReservation[] {
+        const order = this.data.reservations.filter((reservation) => {
+            if (reservation.acceptedOffers.length === 0) {
+                return false;
+            }
+            const endDate = moment(reservation.acceptedOffers[0].itemOffered.reservationFor.endDate);
+
+            return (endDate.unix() > moment().unix());
+        });
+
+        order.sort((a, b) => {
+            const startDateA = moment(a.acceptedOffers[0].itemOffered.reservationFor.startDate).unix();
+            const startDateB = moment(b.acceptedOffers[0].itemOffered.reservationFor.startDate).unix();
+            if (startDateA < startDateB) {
+                return -1;
+            } else if (startDateA > startDateB) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        return order;
     }
 
     /**
