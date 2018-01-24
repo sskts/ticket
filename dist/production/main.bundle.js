@@ -3651,8 +3651,8 @@ var environment = {
     resourceServerDomain: 'https://sskts-api-production.azurewebsites.net',
     portalSite: 'http://www.cinemasunshine.co.jp',
     ticketingSite: 'https://ticket-cinemasunshine.com',
-    entranceServerUrl: 'https://d3dxwi2jf3agfz.cloudfront.net',
-    analyticsId: ''
+    entranceServerUrl: 'https://entrance.ticket-cinemasunshine.com',
+    analyticsId: 'UA-99018492-6'
 };
 
 

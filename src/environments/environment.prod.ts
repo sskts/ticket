@@ -32,7 +32,7 @@ export const environment = {
 
     portalSite: 'http://www.cinemasunshine.co.jp',
     ticketingSite: 'https://ticket-cinemasunshine.com',
-    entranceServerUrl: 'https://d3dxwi2jf3agfz.cloudfront.net',
+    entranceServerUrl: 'https://entrance.ticket-cinemasunshine.com',
 
-    analyticsId: ''
+    analyticsId: 'UA-99018492-6'
 };
