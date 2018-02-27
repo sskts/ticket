@@ -1,6 +1,6 @@
 {
   "name": "ticket",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "scripts": {
     "start": "ng serve --port 3333 --env=source",
@@ -13,7 +13,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "check": "ng lint && nsp check",
-    "preversion": "",
+    "preversion": "npm run build",
     "version": "git add -A",
     "postversion": "git push origin --tags"
   },
