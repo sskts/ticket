@@ -83,9 +83,10 @@ export class ScheduleService {
         const theaters = await this.sasaki.organization.searchMovieTheaters();
         const screeningEvents = await this.sasaki.event.searchIndividualScreeningEvent({
             startFrom: args.startFrom,
-            startThrough: args.startThrough
+            startThrough: args.startThrough,
+            eventStatuses: [sasaki.factory.eventStatusType.EventScheduled]
         });
-        
+
         const expired = 10;
         const schedule: ISchedule[] = [];
         theaters.forEach((theater) => {
@@ -94,8 +95,7 @@ export class ScheduleService {
                 individualScreeningEvents: IIndividualScreeningEvent[];
             }[] = [];
             const theaterScreeningEvents = screeningEvents.filter((screeningEvent) => {
-                return (screeningEvent.superEvent.location.branchCode === theater.location.branchCode 
-                && screeningEvent.eventStatus === sasaki.factory.eventStatusType.EventScheduled);
+                return (screeningEvent.superEvent.location.branchCode === theater.location.branchCode);
             });
             const diff = moment(args.startThrough).diff(moment(args.startFrom), 'days');
             for (let i = 0; i < diff; i += 1) {

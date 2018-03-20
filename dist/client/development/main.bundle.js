@@ -3656,7 +3656,8 @@ var ScheduleService = /** @class */ (function () {
                         theaters = _a.sent();
                         return [4 /*yield*/, this.sasaki.event.searchIndividualScreeningEvent({
                                 startFrom: args.startFrom,
-                                startThrough: args.startThrough
+                                startThrough: args.startThrough,
+                                eventStatuses: [sasaki.factory.eventStatusType.EventScheduled]
                             })];
                     case 3:
                         screeningEvents = _a.sent();
@@ -3665,8 +3666,7 @@ var ScheduleService = /** @class */ (function () {
                         theaters.forEach(function (theater) {
                             var theaterSchedule = [];
                             var theaterScreeningEvents = screeningEvents.filter(function (screeningEvent) {
-                                return (screeningEvent.superEvent.location.branchCode === theater.location.branchCode
-                                    && screeningEvent.eventStatus === sasaki.factory.eventStatusType.EventScheduled);
+                                return (screeningEvent.superEvent.location.branchCode === theater.location.branchCode);
                             });
                             var diff = moment(args.startThrough).diff(moment(args.startFrom), 'days');
                             var _loop_1 = function (i) {
