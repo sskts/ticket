@@ -443,17 +443,17 @@ exports.ɵg_111 = router_1.ɵg;
 exports.ɵh_112 = router_1.ɵh;
 exports.ROUTER_INITIALIZER_113 = router_1.ROUTER_INITIALIZER;
 exports.ɵi_114 = router_1.ɵi;
-exports.RouterModule_128 = router_1.RouterModule;
+exports.RouterModule_129 = router_1.RouterModule;
 var forms_1 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 exports.FormBuilder_116 = forms_1.FormBuilder;
 exports.ReactiveFormsModule_117 = forms_1.ReactiveFormsModule;
 exports.ɵi_118 = forms_1.ɵi;
 exports.FormsModule_119 = forms_1.FormsModule;
-exports.ɵba_129 = forms_1.ɵba;
+exports.ɵba_130 = forms_1.ɵba;
 var moment_module_1 = __webpack_require__("./node_modules/angular2-moment/moment.module.js");
-exports.MomentModule_126 = moment_module_1.MomentModule;
+exports.MomentModule_127 = moment_module_1.MomentModule;
 var swiper_module_1 = __webpack_require__("./node_modules/angular2-useful-swiper/lib/swiper.module.js");
-exports.SwiperModule_127 = swiper_module_1.SwiperModule;
+exports.SwiperModule_128 = swiper_module_1.SwiperModule;
 var i0 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i1 = __webpack_require__("./src/client/src/app/app.module.ts");
 var i2 = __webpack_require__("./src/client/src/app/components/app/app.component.ts");
@@ -477,23 +477,24 @@ var i19 = __webpack_require__("./src/client/src/app/services/aws-cognito/aws-cog
 var i20 = __webpack_require__("./src/client/src/app/services/auth-guard/auth-guard.service.ts");
 var i21 = __webpack_require__("./src/client/src/app/services/storage/storage.service.ts");
 var i22 = __webpack_require__("./src/client/src/app/services/reservation/reservation.service.ts");
-var i23 = __webpack_require__("./src/client/src/app/services/schedule/schedule.service.ts");
-var i24 = __webpack_require__("./src/client/src/app/services/select/select.service.ts");
-var i25 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
-var i26 = __webpack_require__("./node_modules/angular2-moment/moment.module.js");
-var i27 = __webpack_require__("./node_modules/angular2-useful-swiper/lib/swiper.module.js");
-var i28 = __webpack_require__("./src/client/src/app/components/base/base.component.ts");
-var i29 = __webpack_require__("./src/client/src/app/components/ticket/ticket.component.ts");
-var i30 = __webpack_require__("./src/client/src/app/components/purchase/purchase.component.ts");
-var i31 = __webpack_require__("./src/client/src/app/components/about/about.component.ts");
-var i32 = __webpack_require__("./src/client/src/app/components/policy/policy.component.ts");
-var i33 = __webpack_require__("./src/client/src/app/components/law/law.component.ts");
-var i34 = __webpack_require__("./src/client/src/app/components/privacy/privacy.component.ts");
-var i35 = __webpack_require__("./src/client/src/app/components/walk-through/walk-through.component.ts");
-var i36 = __webpack_require__("./src/client/src/app/components/error/error.component.ts");
-var i37 = __webpack_require__("./src/client/src/app/components/not-found/not-found.component.ts");
-var i38 = __webpack_require__("./src/client/src/app/app-routing.module.ts");
-var AppModuleNgFactory = i0.ɵcmf(i1.AppModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.BaseComponentNgFactory, i4.TicketComponentNgFactory, i5.PurchaseComponentNgFactory, i6.AboutComponentNgFactory, i7.PolicyComponentNgFactory, i8.LawComponentNgFactory, i9.PrivacyComponentNgFactory, i10.WalkThroughComponentNgFactory, i11.ErrorComponentNgFactory, i12.NotFoundComponentNgFactory, i13.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵq, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i14.NgLocalization, i14.NgLocaleLocalization, [i0.LOCALE_ID, [2, i14.ɵa]]), i0.ɵmpd(5120, i0.APP_ID, i0.ɵi, []), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵn, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵo, []), i0.ɵmpd(4608, i15.DomSanitizer, i15.ɵe, [i14.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i15.DomSanitizer]), i0.ɵmpd(4608, i15.HAMMER_GESTURE_CONFIG, i15.HammerGestureConfig, []), i0.ɵmpd(5120, i15.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p1_0, p2_0, p2_1) { return [new i15.ɵDomEventsPlugin(p0_0, p0_1), new i15.ɵKeyEventsPlugin(p1_0), new i15.ɵHammerGesturesPlugin(p2_0, p2_1)]; }, [i14.DOCUMENT, i0.NgZone, i14.DOCUMENT, i14.DOCUMENT, i15.HAMMER_GESTURE_CONFIG]), i0.ɵmpd(4608, i15.EventManager, i15.EventManager, [i15.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i15.ɵDomSharedStylesHost, i15.ɵDomSharedStylesHost, [i14.DOCUMENT]), i0.ɵmpd(4608, i15.ɵDomRendererFactory2, i15.ɵDomRendererFactory2, [i15.EventManager, i15.ɵDomSharedStylesHost]), i0.ɵmpd(6144, i0.RendererFactory2, null, [i15.ɵDomRendererFactory2]), i0.ɵmpd(6144, i15.ɵSharedStylesHost, null, [i15.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i0.Testability, i0.Testability, [i0.NgZone]), i0.ɵmpd(4608, i15.Meta, i15.Meta, [i14.DOCUMENT]), i0.ɵmpd(4608, i15.Title, i15.Title, [i14.DOCUMENT]), i0.ɵmpd(4608, i16.HttpXsrfTokenExtractor, i16.ɵh, [i14.DOCUMENT, i0.PLATFORM_ID, i16.ɵf]), i0.ɵmpd(4608, i16.ɵi, i16.ɵi, [i16.HttpXsrfTokenExtractor, i16.ɵg]), i0.ɵmpd(5120, i16.HTTP_INTERCEPTORS, function (p0_0) { return [p0_0]; }, [i16.ɵi]), i0.ɵmpd(4608, i16.ɵe, i16.ɵe, []), i0.ɵmpd(6144, i16.XhrFactory, null, [i16.ɵe]), i0.ɵmpd(4608, i16.HttpXhrBackend, i16.HttpXhrBackend, [i16.XhrFactory]), i0.ɵmpd(6144, i16.HttpBackend, null, [i16.HttpXhrBackend]), i0.ɵmpd(4608, i16.HttpHandler, i16.ɵc, [i16.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i16.HttpClient, i16.HttpClient, [i16.HttpHandler]), i0.ɵmpd(5120, i17.ActivatedRoute, i17.ɵf, [i17.Router]), i0.ɵmpd(4608, i17.NoPreloading, i17.NoPreloading, []), i0.ɵmpd(6144, i17.PreloadingStrategy, null, [i17.NoPreloading]), i0.ɵmpd(135680, i17.RouterPreloader, i17.RouterPreloader, [i17.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i17.PreloadingStrategy]), i0.ɵmpd(4608, i17.PreloadAllModules, i17.PreloadAllModules, []), i0.ɵmpd(5120, i17.ROUTER_INITIALIZER, i17.ɵi, [i17.ɵg]), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0) { return [p0_0]; }, [i17.ROUTER_INITIALIZER]), i0.ɵmpd(4608, i18.FormBuilder, i18.FormBuilder, []), i0.ɵmpd(4608, i18.ɵi, i18.ɵi, []), i0.ɵmpd(4608, i19.AwsCognitoService, i19.AwsCognitoService, []), i0.ɵmpd(4608, i20.AuthGuardService, i20.AuthGuardService, [i17.Router, i19.AwsCognitoService]), i0.ɵmpd(4608, i21.StorageService, i21.StorageService, []), i0.ɵmpd(4608, i22.ReservationService, i22.ReservationService, [i19.AwsCognitoService, i21.StorageService]), i0.ɵmpd(4608, i23.ScheduleService, i23.ScheduleService, [i16.HttpClient, i21.StorageService]), i0.ɵmpd(4608, i24.SelectService, i24.SelectService, [i21.StorageService]), i0.ɵmpd(4608, i25.CallNativeService, i25.CallNativeService, []), i0.ɵmpd(512, i14.CommonModule, i14.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i15.ɵa, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i17.ɵb()]; }, []), i0.ɵmpd(512, i17.ɵg, i17.ɵg, [i0.Injector]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0) { return [i15.ɵh(p0_0), i17.ɵh(p1_0)]; }, [[2, i0.NgProbeToken], i17.ɵg]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(512, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(512, i15.BrowserModule, i15.BrowserModule, [[3, i15.BrowserModule]]), i0.ɵmpd(512, i16.HttpClientXsrfModule, i16.HttpClientXsrfModule, []), i0.ɵmpd(512, i16.HttpClientModule, i16.HttpClientModule, []), i0.ɵmpd(512, i26.MomentModule, i26.MomentModule, []), i0.ɵmpd(512, i27.SwiperModule, i27.SwiperModule, []), i0.ɵmpd(1024, i17.ɵa, i17.ɵd, [[3, i17.Router]]), i0.ɵmpd(512, i17.UrlSerializer, i17.DefaultUrlSerializer, []), i0.ɵmpd(512, i17.ChildrenOutletContexts, i17.ChildrenOutletContexts, []), i0.ɵmpd(256, i17.ROUTER_CONFIGURATION, { useHash: true, enableTracing: true }, []), i0.ɵmpd(1024, i14.LocationStrategy, i17.ɵc, [i14.PlatformLocation, [2, i14.APP_BASE_HREF], i17.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i14.Location, i14.Location, [i14.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i0.SystemJsNgModuleLoader, [i0.Compiler, [2, i0.SystemJsNgModuleLoaderConfig]]), i0.ɵmpd(1024, i17.ROUTES, function () { return [[{ path: "", redirectTo: "/ticket", pathMatch: "full" }, { path: "", component: i28.BaseComponent, canActivate: [i20.AuthGuardService], children: [{ path: "ticket", component: i29.TicketComponent }, { path: "purchase", component: i30.PurchaseComponent }, { path: "about", component: i31.AboutComponent }, { path: "policy", component: i32.PolicyComponent }, { path: "law", component: i33.LawComponent }, { path: "privacy", component: i34.PrivacyComponent }] }, { path: "walkThrough", component: i35.WalkThroughComponent }, { path: "error/:redirect", component: i36.ErrorComponent }, { path: "error", component: i36.ErrorComponent }, { path: "**", component: i37.NotFoundComponent }]]; }, []), i0.ɵmpd(1024, i17.Router, i17.ɵe, [i0.ApplicationRef, i17.UrlSerializer, i17.ChildrenOutletContexts, i14.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i17.ROUTES, i17.ROUTER_CONFIGURATION, [2, i17.UrlHandlingStrategy], [2, i17.RouteReuseStrategy]]), i0.ɵmpd(512, i17.RouterModule, i17.RouterModule, [[2, i17.ɵa], [2, i17.Router]]), i0.ɵmpd(512, i38.AppRoutingModule, i38.AppRoutingModule, []), i0.ɵmpd(512, i18.ɵba, i18.ɵba, []), i0.ɵmpd(512, i18.ReactiveFormsModule, i18.ReactiveFormsModule, []), i0.ɵmpd(512, i18.FormsModule, i18.FormsModule, []), i0.ɵmpd(512, i1.AppModule, i1.AppModule, []), i0.ɵmpd(256, i16.ɵf, "XSRF-TOKEN", []), i0.ɵmpd(256, i16.ɵg, "X-XSRF-TOKEN", [])]); });
+var i23 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i24 = __webpack_require__("./src/client/src/app/services/schedule/schedule.service.ts");
+var i25 = __webpack_require__("./src/client/src/app/services/select/select.service.ts");
+var i26 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
+var i27 = __webpack_require__("./node_modules/angular2-moment/moment.module.js");
+var i28 = __webpack_require__("./node_modules/angular2-useful-swiper/lib/swiper.module.js");
+var i29 = __webpack_require__("./src/client/src/app/components/base/base.component.ts");
+var i30 = __webpack_require__("./src/client/src/app/components/ticket/ticket.component.ts");
+var i31 = __webpack_require__("./src/client/src/app/components/purchase/purchase.component.ts");
+var i32 = __webpack_require__("./src/client/src/app/components/about/about.component.ts");
+var i33 = __webpack_require__("./src/client/src/app/components/policy/policy.component.ts");
+var i34 = __webpack_require__("./src/client/src/app/components/law/law.component.ts");
+var i35 = __webpack_require__("./src/client/src/app/components/privacy/privacy.component.ts");
+var i36 = __webpack_require__("./src/client/src/app/components/walk-through/walk-through.component.ts");
+var i37 = __webpack_require__("./src/client/src/app/components/error/error.component.ts");
+var i38 = __webpack_require__("./src/client/src/app/components/not-found/not-found.component.ts");
+var i39 = __webpack_require__("./src/client/src/app/app-routing.module.ts");
+var AppModuleNgFactory = i0.ɵcmf(i1.AppModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.BaseComponentNgFactory, i4.TicketComponentNgFactory, i5.PurchaseComponentNgFactory, i6.AboutComponentNgFactory, i7.PolicyComponentNgFactory, i8.LawComponentNgFactory, i9.PrivacyComponentNgFactory, i10.WalkThroughComponentNgFactory, i11.ErrorComponentNgFactory, i12.NotFoundComponentNgFactory, i13.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵq, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i14.NgLocalization, i14.NgLocaleLocalization, [i0.LOCALE_ID, [2, i14.ɵa]]), i0.ɵmpd(5120, i0.APP_ID, i0.ɵi, []), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵn, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵo, []), i0.ɵmpd(4608, i15.DomSanitizer, i15.ɵe, [i14.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i15.DomSanitizer]), i0.ɵmpd(4608, i15.HAMMER_GESTURE_CONFIG, i15.HammerGestureConfig, []), i0.ɵmpd(5120, i15.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p1_0, p2_0, p2_1) { return [new i15.ɵDomEventsPlugin(p0_0, p0_1), new i15.ɵKeyEventsPlugin(p1_0), new i15.ɵHammerGesturesPlugin(p2_0, p2_1)]; }, [i14.DOCUMENT, i0.NgZone, i14.DOCUMENT, i14.DOCUMENT, i15.HAMMER_GESTURE_CONFIG]), i0.ɵmpd(4608, i15.EventManager, i15.EventManager, [i15.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i15.ɵDomSharedStylesHost, i15.ɵDomSharedStylesHost, [i14.DOCUMENT]), i0.ɵmpd(4608, i15.ɵDomRendererFactory2, i15.ɵDomRendererFactory2, [i15.EventManager, i15.ɵDomSharedStylesHost]), i0.ɵmpd(6144, i0.RendererFactory2, null, [i15.ɵDomRendererFactory2]), i0.ɵmpd(6144, i15.ɵSharedStylesHost, null, [i15.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i0.Testability, i0.Testability, [i0.NgZone]), i0.ɵmpd(4608, i15.Meta, i15.Meta, [i14.DOCUMENT]), i0.ɵmpd(4608, i15.Title, i15.Title, [i14.DOCUMENT]), i0.ɵmpd(4608, i16.HttpXsrfTokenExtractor, i16.ɵh, [i14.DOCUMENT, i0.PLATFORM_ID, i16.ɵf]), i0.ɵmpd(4608, i16.ɵi, i16.ɵi, [i16.HttpXsrfTokenExtractor, i16.ɵg]), i0.ɵmpd(5120, i16.HTTP_INTERCEPTORS, function (p0_0) { return [p0_0]; }, [i16.ɵi]), i0.ɵmpd(4608, i16.ɵe, i16.ɵe, []), i0.ɵmpd(6144, i16.XhrFactory, null, [i16.ɵe]), i0.ɵmpd(4608, i16.HttpXhrBackend, i16.HttpXhrBackend, [i16.XhrFactory]), i0.ɵmpd(6144, i16.HttpBackend, null, [i16.HttpXhrBackend]), i0.ɵmpd(4608, i16.HttpHandler, i16.ɵc, [i16.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i16.HttpClient, i16.HttpClient, [i16.HttpHandler]), i0.ɵmpd(5120, i17.ActivatedRoute, i17.ɵf, [i17.Router]), i0.ɵmpd(4608, i17.NoPreloading, i17.NoPreloading, []), i0.ɵmpd(6144, i17.PreloadingStrategy, null, [i17.NoPreloading]), i0.ɵmpd(135680, i17.RouterPreloader, i17.RouterPreloader, [i17.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i17.PreloadingStrategy]), i0.ɵmpd(4608, i17.PreloadAllModules, i17.PreloadAllModules, []), i0.ɵmpd(5120, i17.ROUTER_INITIALIZER, i17.ɵi, [i17.ɵg]), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0) { return [p0_0]; }, [i17.ROUTER_INITIALIZER]), i0.ɵmpd(4608, i18.FormBuilder, i18.FormBuilder, []), i0.ɵmpd(4608, i18.ɵi, i18.ɵi, []), i0.ɵmpd(4608, i19.AwsCognitoService, i19.AwsCognitoService, []), i0.ɵmpd(4608, i20.AuthGuardService, i20.AuthGuardService, [i17.Router, i19.AwsCognitoService]), i0.ɵmpd(4608, i21.StorageService, i21.StorageService, []), i0.ɵmpd(4608, i22.ReservationService, i22.ReservationService, [i19.AwsCognitoService, i21.StorageService]), i0.ɵmpd(4608, i23.SasakiService, i23.SasakiService, [i16.HttpClient]), i0.ɵmpd(4608, i24.ScheduleService, i24.ScheduleService, [i21.StorageService, i23.SasakiService]), i0.ɵmpd(4608, i25.SelectService, i25.SelectService, [i21.StorageService]), i0.ɵmpd(4608, i26.CallNativeService, i26.CallNativeService, []), i0.ɵmpd(512, i14.CommonModule, i14.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i15.ɵa, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i17.ɵb()]; }, []), i0.ɵmpd(512, i17.ɵg, i17.ɵg, [i0.Injector]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0) { return [i15.ɵh(p0_0), i17.ɵh(p1_0)]; }, [[2, i0.NgProbeToken], i17.ɵg]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(512, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(512, i15.BrowserModule, i15.BrowserModule, [[3, i15.BrowserModule]]), i0.ɵmpd(512, i16.HttpClientXsrfModule, i16.HttpClientXsrfModule, []), i0.ɵmpd(512, i16.HttpClientModule, i16.HttpClientModule, []), i0.ɵmpd(512, i27.MomentModule, i27.MomentModule, []), i0.ɵmpd(512, i28.SwiperModule, i28.SwiperModule, []), i0.ɵmpd(1024, i17.ɵa, i17.ɵd, [[3, i17.Router]]), i0.ɵmpd(512, i17.UrlSerializer, i17.DefaultUrlSerializer, []), i0.ɵmpd(512, i17.ChildrenOutletContexts, i17.ChildrenOutletContexts, []), i0.ɵmpd(256, i17.ROUTER_CONFIGURATION, { useHash: true, enableTracing: true }, []), i0.ɵmpd(1024, i14.LocationStrategy, i17.ɵc, [i14.PlatformLocation, [2, i14.APP_BASE_HREF], i17.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i14.Location, i14.Location, [i14.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i0.SystemJsNgModuleLoader, [i0.Compiler, [2, i0.SystemJsNgModuleLoaderConfig]]), i0.ɵmpd(1024, i17.ROUTES, function () { return [[{ path: "", redirectTo: "/ticket", pathMatch: "full" }, { path: "", component: i29.BaseComponent, canActivate: [i20.AuthGuardService], children: [{ path: "ticket", component: i30.TicketComponent }, { path: "purchase", component: i31.PurchaseComponent }, { path: "about", component: i32.AboutComponent }, { path: "policy", component: i33.PolicyComponent }, { path: "law", component: i34.LawComponent }, { path: "privacy", component: i35.PrivacyComponent }] }, { path: "walkThrough", component: i36.WalkThroughComponent }, { path: "error/:redirect", component: i37.ErrorComponent }, { path: "error", component: i37.ErrorComponent }, { path: "**", component: i38.NotFoundComponent }]]; }, []), i0.ɵmpd(1024, i17.Router, i17.ɵe, [i0.ApplicationRef, i17.UrlSerializer, i17.ChildrenOutletContexts, i14.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i17.ROUTES, i17.ROUTER_CONFIGURATION, [2, i17.UrlHandlingStrategy], [2, i17.RouteReuseStrategy]]), i0.ɵmpd(512, i17.RouterModule, i17.RouterModule, [[2, i17.ɵa], [2, i17.Router]]), i0.ɵmpd(512, i39.AppRoutingModule, i39.AppRoutingModule, []), i0.ɵmpd(512, i18.ɵba, i18.ɵba, []), i0.ɵmpd(512, i18.ReactiveFormsModule, i18.ReactiveFormsModule, []), i0.ɵmpd(512, i18.FormsModule, i18.FormsModule, []), i0.ɵmpd(512, i1.AppModule, i1.AppModule, []), i0.ɵmpd(256, i16.ɵf, "XSRF-TOKEN", []), i0.ɵmpd(256, i16.ɵg, "X-XSRF-TOKEN", [])]); });
 exports.AppModuleNgFactory = AppModuleNgFactory;
 
 
@@ -3354,6 +3355,194 @@ exports.ReservationService = ReservationService;
 
 /***/ }),
 
+/***/ "./src/client/src/app/services/sasaki/sasaki.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var sasaki = __webpack_require__("./node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
+__webpack_require__("./node_modules/rxjs/_esm5/add/operator/toPromise.js");
+var environment_1 = __webpack_require__("./src/client/src/environments/environment.ts");
+var SasakiService = /** @class */ (function () {
+    function SasakiService(http) {
+        this.http = http;
+    }
+    /**
+     * getServices
+     */
+    SasakiService.prototype.getServices = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var option, err_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.createOption()];
+                    case 1:
+                        option = _a.sent();
+                        this.event = new sasaki.service.Event(option);
+                        this.order = new sasaki.service.Order(option);
+                        this.organization = new sasaki.service.Organization(option);
+                        this.person = new sasaki.service.Person(option);
+                        this.place = new sasaki.service.Place(option);
+                        this.transaction = {
+                            placeOrder: new sasaki.service.transaction.PlaceOrder(option)
+                        };
+                        return [3 /*break*/, 3];
+                    case 2:
+                        err_1 = _a.sent();
+                        console.log(err_1);
+                        throw new Error('getServices is failed');
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * サインイン
+     */
+    SasakiService.prototype.signIn = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        url = '/api/authorize/signIn';
+                        return [4 /*yield*/, this.http.get(url, {}).toPromise()];
+                    case 1:
+                        result = _a.sent();
+                        console.log(result.url);
+                        location.href = result.url;
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * サインアウト
+     */
+    SasakiService.prototype.signOut = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        url = '/api/authorize/signOut';
+                        return [4 /*yield*/, this.http.get(url, {}).toPromise()];
+                    case 1:
+                        result = _a.sent();
+                        console.log(result.url);
+                        location.href = result.url;
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * @method createOption
+     */
+    SasakiService.prototype.createOption = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!(this.auth === undefined
+                            || this.auth.credentials === undefined)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this.authorize()];
+                    case 1:
+                        _a.sent();
+                        _a.label = 2;
+                    case 2: return [2 /*return*/, {
+                            endpoint: environment_1.environment.SSKTS_API_ENDPOINT,
+                            auth: this.auth
+                        }];
+                }
+            });
+        });
+    };
+    /**
+     * @method authorize
+     */
+    SasakiService.prototype.authorize = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, options, credentials, option;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        url = '/api/authorize/getCredentials';
+                        options = {
+                            params: new http_1.HttpParams().set('member', MemberType.NotMember)
+                        };
+                        return [4 /*yield*/, this.http.get(url, options).toPromise()];
+                    case 1:
+                        credentials = _a.sent();
+                        option = {
+                            domain: '',
+                            clientId: '',
+                            redirectUri: '',
+                            logoutUri: '',
+                            responseType: '',
+                            scope: '',
+                            state: '',
+                            nonce: null,
+                            tokenIssuer: ''
+                        };
+                        this.auth = sasaki.createAuthInstance(option);
+                        this.auth.setCredentials(credentials);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return SasakiService;
+}());
+exports.SasakiService = SasakiService;
+var MemberType;
+(function (MemberType) {
+    MemberType["NotMember"] = "0";
+    MemberType["Member"] = "1";
+})(MemberType = exports.MemberType || (exports.MemberType = {}));
+
+
+/***/ }),
+
 /***/ "./src/client/src/app/services/schedule/schedule.service.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3395,19 +3584,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * ScheduleService
- */
-var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var sasaki = __webpack_require__("./node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
 var moment = __webpack_require__("./node_modules/moment/moment.js");
 __webpack_require__("./node_modules/rxjs/_esm5/add/operator/retry.js");
 __webpack_require__("./node_modules/rxjs/_esm5/add/operator/toPromise.js");
-var environment_1 = __webpack_require__("./src/client/src/environments/environment.ts");
 var storage_service_1 = __webpack_require__("./src/client/src/app/services/storage/storage.service.ts");
+var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
 var ScheduleService = /** @class */ (function () {
-    function ScheduleService(http, storage) {
-        this.http = http;
+    function ScheduleService(storage, sasaki) {
         this.storage = storage;
+        this.sasaki = sasaki;
     }
     /**
      * スケジュール取得
@@ -3429,8 +3615,8 @@ var ScheduleService = /** @class */ (function () {
                         _b.trys.push([1, 3, , 4]);
                         _a = this;
                         return [4 /*yield*/, this.fitchSchedule({
-                                startFrom: moment().toISOString(),
-                                startThrough: moment().add(1, 'month').toISOString()
+                                startFrom: moment().toDate(),
+                                startThrough: moment().add(5, 'week').toDate()
                             })];
                     case 2:
                         _a.data = _b.sent();
@@ -3459,30 +3645,28 @@ var ScheduleService = /** @class */ (function () {
     ScheduleService.prototype.fitchSchedule = function (args) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
-            var url, options, response, result, expired, schedule;
+            var theaters, screeningEvents, expired, schedule;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        url = environment_1.environment.TICKETING_SITE + "/purchase/performances/getSchedule";
-                        options = {
-                            params: new http_1.HttpParams({
-                                fromObject: {
-                                    startFrom: args.startFrom,
-                                    startThrough: args.startThrough
-                                }
-                            }),
-                            reportProgress: true
-                        };
-                        return [4 /*yield*/, this.http.get(url, options).retry(3).toPromise()];
+                    case 0: return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
-                        response = _a.sent();
-                        result = response.result;
+                        _a.sent();
+                        return [4 /*yield*/, this.sasaki.organization.searchMovieTheaters()];
+                    case 2:
+                        theaters = _a.sent();
+                        return [4 /*yield*/, this.sasaki.event.searchIndividualScreeningEvent({
+                                startFrom: args.startFrom,
+                                startThrough: args.startThrough
+                            })];
+                    case 3:
+                        screeningEvents = _a.sent();
                         expired = 10;
                         schedule = [];
-                        result.theaters.forEach(function (theater) {
+                        theaters.forEach(function (theater) {
                             var theaterSchedule = [];
-                            var theaterScreeningEvents = result.screeningEvents.filter(function (screeningEvent) {
-                                return (screeningEvent.superEvent.location.branchCode === theater.location.branchCode);
+                            var theaterScreeningEvents = screeningEvents.filter(function (screeningEvent) {
+                                return (screeningEvent.superEvent.location.branchCode === theater.location.branchCode
+                                    && screeningEvent.eventStatus === sasaki.factory.eventStatusType.EventScheduled);
                             });
                             var diff = moment(args.startThrough).diff(moment(args.startFrom), 'days');
                             var _loop_1 = function (i) {
@@ -3762,7 +3946,6 @@ exports.environment = {
     TOKEN_ISSUER: '',
     RESOURCE_SERVER_DOMAIN: 'https://sskts-api-development.azurewebsites.net',
     PORTAL_SITE: 'http://devssktsportal.azurewebsites.net',
-    TICKETING_SITE: 'https://sskts-frontend-development.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d2n1h4enbzumbc.cloudfront.net',
     ANALYTICS_ID: 'UA-99018492-4'
 };

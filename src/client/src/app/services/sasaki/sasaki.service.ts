@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import 'rxjs/add/operator/toPromise';
@@ -20,7 +20,7 @@ export class SasakiService {
 
     constructor(
         private http: HttpClient
-    ) {}
+    ) { }
 
     /**
      * getServices
@@ -81,7 +81,10 @@ export class SasakiService {
      */
     public async authorize() {
         const url = '/api/authorize/getCredentials';
-        const credentials = await this.http.get<any>(url, {}).toPromise();
+        const options = {
+            params: new HttpParams().set('member', MemberType.NotMember)
+        };
+        const credentials = await this.http.get<any>(url, options).toPromise();
         const option = {
             domain: '',
             clientId: '',
@@ -97,4 +100,9 @@ export class SasakiService {
         this.auth.setCredentials(credentials);
     }
 
+}
+
+export enum MemberType {
+    NotMember = '0',
+    Member = '1'
 }

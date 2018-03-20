@@ -25,7 +25,6 @@ export const environment = {
     RESOURCE_SERVER_DOMAIN: 'https://sskts-api-development.azurewebsites.net',
 
     PORTAL_SITE: 'http://devssktsportal.azurewebsites.net',
-    TICKETING_SITE: 'https://sskts-frontend-development.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d2n1h4enbzumbc.cloudfront.net',
 
     ANALYTICS_ID: 'UA-99018492-4'

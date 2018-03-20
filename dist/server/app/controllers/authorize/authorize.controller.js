@@ -110,6 +110,6 @@ function signOutRedirect(req, res) {
 exports.signOutRedirect = signOutRedirect;
 var MemberType;
 (function (MemberType) {
-    MemberType[MemberType["NotMember"] = 0] = "NotMember";
-    MemberType[MemberType["Member"] = 1] = "Member";
+    MemberType["NotMember"] = "0";
+    MemberType["Member"] = "1";
 })(MemberType = exports.MemberType || (exports.MemberType = {}));

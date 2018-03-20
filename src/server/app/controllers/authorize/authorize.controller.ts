@@ -93,6 +93,6 @@ export async function signOutRedirect(req: Request, res: Response) {
 }
 
 export enum MemberType {
-    NotMember = 0,
-    Member = 1
+    NotMember = '0',
+    Member = '1'
 }

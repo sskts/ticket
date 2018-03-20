@@ -25,7 +25,6 @@ export const environment = {
     RESOURCE_SERVER_DOMAIN: 'https://sskts-api-production.azurewebsites.net',
 
     PORTAL_SITE: 'http://productionssktsportal.azurewebsites.net',
-    TICKETING_SITE: 'https://sskts-frontend-production.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://entrance.ticket-cinemasunshine.com',
 
     ANALYTICS_ID: 'UA-99018492-6'

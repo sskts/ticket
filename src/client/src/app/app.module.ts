@@ -38,6 +38,7 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 import { PurchasePerformanceComponent } from './components/parts/purchase-performance/purchase-performance.component';
 import { TicketDetailComponent } from './components/parts/ticket-detail/ticket-detail.component';
 import { TicketComponent } from './components/ticket/ticket.component';
+import { SasakiService } from './services/sasaki/sasaki.service';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -80,7 +81,8 @@ import { TicketComponent } from './components/ticket/ticket.component';
     ScheduleService,
     SelectService,
     StorageService,
-    CallNativeService
+    CallNativeService,
+    SasakiService
   ],
   bootstrap: [AppComponent]
 })

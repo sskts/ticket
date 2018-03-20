@@ -1,14 +1,13 @@
 /**
  * ScheduleService
  */
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/toPromise';
-import { environment } from '../../../environments/environment';
 import { StorageService } from '../storage/storage.service';
+import { SasakiService } from '../sasaki/sasaki.service';
 
 export type IMovieTheater = sasaki.factory.organization.movieTheater.IOrganizationWithoutGMOInfo;
 export type IIndividualScreeningEvent = sasaki.factory.event.individualScreeningEvent.IEventWithOffer;
@@ -38,8 +37,8 @@ export class ScheduleService {
     public data: IScheduleData;
 
     constructor(
-        private http: HttpClient,
-        private storage: StorageService
+        private storage: StorageService,
+        private sasaki: SasakiService
     ) { }
 
     /**
@@ -54,8 +53,8 @@ export class ScheduleService {
         if (schedule === undefined || schedule === null || schedule.expired < moment().unix()) {
             try {
                 this.data = await this.fitchSchedule({
-                    startFrom: moment().toISOString(),
-                    startThrough: moment().add(1, 'month').toISOString()
+                    startFrom: moment().toDate(),
+                    startThrough: moment().add(5, 'week').toDate()
                 });
                 this.storage.save('schedule', this.data);
                 console.log(this.data);
@@ -77,34 +76,26 @@ export class ScheduleService {
      * @returns {Promise<IScheduleData>}
      */
     private async fitchSchedule(
-        args: { startFrom: string; startThrough: string; }
+        args: { startFrom: Date; startThrough: Date; }
     ): Promise<IScheduleData> {
-        const url = `${environment.TICKETING_SITE}/purchase/performances/getSchedule`;
-        const options = {
-            params: new HttpParams({
-                fromObject: {
-                    startFrom: args.startFrom,
-                    startThrough: args.startThrough
-                }
-            }),
-            reportProgress: true
-        };
-        const response = await this.http.get<{
-            result: {
-                theaters: IMovieTheater[],
-                screeningEvents: IIndividualScreeningEvent[]
-            }
-        }>(url, options).retry(3).toPromise();
-        const result = response.result;
+        await this.sasaki.getServices();
+
+        const theaters = await this.sasaki.organization.searchMovieTheaters();
+        const screeningEvents = await this.sasaki.event.searchIndividualScreeningEvent({
+            startFrom: args.startFrom,
+            startThrough: args.startThrough
+        });
+        
         const expired = 10;
         const schedule: ISchedule[] = [];
-        result.theaters.forEach((theater) => {
+        theaters.forEach((theater) => {
             const theaterSchedule: {
                 date: string;
                 individualScreeningEvents: IIndividualScreeningEvent[];
             }[] = [];
-            const theaterScreeningEvents = result.screeningEvents.filter((screeningEvent) => {
-                return (screeningEvent.superEvent.location.branchCode === theater.location.branchCode);
+            const theaterScreeningEvents = screeningEvents.filter((screeningEvent) => {
+                return (screeningEvent.superEvent.location.branchCode === theater.location.branchCode 
+                && screeningEvent.eventStatus === sasaki.factory.eventStatusType.EventScheduled);
             });
             const diff = moment(args.startThrough).diff(moment(args.startFrom), 'days');
             for (let i = 0; i < diff; i += 1) {
