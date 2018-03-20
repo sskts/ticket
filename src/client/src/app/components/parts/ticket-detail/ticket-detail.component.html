@@ -1,0 +1,44 @@
+<div class="inner">
+    <div class="info">
+        <dl class="film">
+            <dt class="icon-film-name-gray"></dt>
+            <dd>{{ reservation.acceptedOffers[0].itemOffered.reservationFor.workPerformed.name }}</dd>
+        </dl>
+        <dl class="date">
+            <dt class="icon-date-gray"></dt>
+            <dd>
+                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{
+                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei
+                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei
+                }}
+            </dd>
+        </dl>
+        <dl class="theater">
+            <dt class="icon-location-gray"></dt>
+            <dd>
+                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.superEvent.location.name.ja }} / {{ reservation.acceptedOffers[0].itemOffered.reservationFor.location.name.ja
+                }}
+            </dd>
+        </dl>
+    </div>
+    <div class="details">
+        <div *ngFor="let offer of reservation.acceptedOffers; let index = index;" class="detail">
+            <div class="ticket-info">
+                <div class="index small-text">{{ (index + 1) }}/{{ reservation.acceptedOffers.length }}</div>
+                <div class="mb-x-small small-text">{{ reservation.confirmationNumber }}</div>
+                <div class="large-x-text mb-x-small">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>
+                <div class="small-text">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>
+            </div>
+            <div *ngIf="!showQrCode" class="not-qr">
+                <p class="inner small-text text-center">
+                    鑑賞日前日から
+                    <br>QRコードが
+                    <br>表示されます。
+                </p>
+            </div>
+            <div *ngIf="showQrCode" class="qr">
+                <img [src]="qrCode">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+.film-order {
+    display: block;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+.info {
+    padding: 10px;
+    color: #333;
+    background-color: #E3E3E3;
+    .date {
+        &:before {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+    }
+}
+.scroll {
+    background-color: #FFF;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    padding: 5px 5px;
+    display: flex;
+    align-items: center;
+}

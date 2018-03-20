@@ -1,16 +1,15 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "frontend-app"
+    "name": "frontend"
   },
   "apps": [
     {
-      "root": "src",
-      "outDir": "dist",
+      "root": "src/client/src",
+      "outDir": "dist/client",
       "assets": [
         "assets",
-        "favicon.ico",
-        "web.config"
+        "favicon.ico"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -21,14 +20,14 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "../node_modules/swiper/dist/css/swiper.css"
+        "../../../node_modules/swiper/dist/css/swiper.css"
       ],
       "scripts": [
-        "../node_modules/swiper/dist/js/swiper.js"
+        "../../../node_modules/swiper/dist/js/swiper.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
+        "local": "environments/environment.ts",
         "dev": "environments/environment.dev.ts",
         "test": "environments/environment.test.ts",
         "prod": "environments/environment.prod.ts"
@@ -42,24 +41,28 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json"
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "src/tsconfig.spec.json"
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "e2e/tsconfig.e2e.json"
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
     }
   ],
   "test": {
     "karma": {
-      "config": "./karma.conf.js"
+      "config": "src/client/karma.conf.js"
     }
   },
   "defaults": {
     "styleExt": "scss",
     "component": {},
     "serve": {
+      "port": 3333,
       "ssl": true,
       "sslCert": "ssl/server.crt",
       "sslKey": "ssl/server.key"      

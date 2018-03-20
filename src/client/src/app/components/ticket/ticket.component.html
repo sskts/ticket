@@ -1,0 +1,24 @@
+<div class="contents">
+    <div class="inner">
+        <p class="mb-small text-center small-text">
+            購入した鑑賞作品の下記チケットのQRコードを
+            <br>入場口スタッフに提示してください。
+        </p>
+        <div *ngIf="!isLoading">
+            <div *ngIf="purchaseNumberOrders.length > 0;">
+                <swiper [config]="config">
+                    <div class="swiper-wrapper">
+                        <div *ngFor="let order of purchaseNumberOrders" class="swiper-slide">
+                            <app-ticket-detail [reservation]="order"></app-ticket-detail>
+                        </div>
+                    </div>
+                </swiper>
+                <div class="pagination-wrapper">
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <app-ticket-not-found *ngIf="purchaseNumberOrders.length === 0;"></app-ticket-not-found>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="isLoading"></app-loading>
