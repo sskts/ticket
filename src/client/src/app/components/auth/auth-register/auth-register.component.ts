@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SasakiService } from '../../../services/sasaki/sasaki.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-register',
@@ -12,22 +11,11 @@ export class AuthRegisterComponent implements OnInit {
     public isLoading: boolean;
 
     constructor(
-        private sasaki: SasakiService,
-        private router: Router
+        private sasaki: SasakiService
     ) { }
 
     public ngOnInit(): void {
         this.isLoading = false;
-    }
-
-    public async signIn() {
-        this.isLoading = true;
-        try {
-            await this.sasaki.signIn();
-        } catch (error) {
-            console.error(error);
-            this.isLoading = false;
-        }
     }
 
     public async register() {
@@ -38,10 +26,6 @@ export class AuthRegisterComponent implements OnInit {
             console.error(error);
             this.isLoading = false;
         }
-    }
-
-    public async start() {
-        this.router.navigate(['/auth/walkThrough']);
     }
 
 }

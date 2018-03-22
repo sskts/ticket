@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SasakiService } from '../../../services/sasaki/sasaki.service';
 import { Router } from '@angular/router';
+import { MemberType, SasakiService } from '../../../services/sasaki/sasaki.service';
 
 @Component({
     selector: 'app-auth-select',
@@ -41,7 +41,13 @@ export class AuthSelectComponent implements OnInit {
     }
 
     public async start() {
-        this.router.navigate(['/auth/walkThrough']);
+        this.sasaki.saveMemberType(MemberType.NotMember);
+        const deviceId = localStorage.getItem('deviceId');
+        if (deviceId === null) {
+            this.router.navigate(['/walkThrough']);
+        } else {
+            this.router.navigate(['/']);
+        }
     }
 
 }

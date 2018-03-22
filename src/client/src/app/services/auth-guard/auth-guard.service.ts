@@ -4,15 +4,13 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { SasakiService } from '../sasaki/sasaki.service';
-import { StorageService } from '../storage/storage.service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
     constructor(
         private router: Router,
-        private sasaki: SasakiService,
-        private storage: StorageService
+        private sasaki: SasakiService
     ) { }
 
     /**
@@ -25,14 +23,16 @@ export class AuthGuardService implements CanActivate {
             await this.sasaki.authorize();
 
             if (!this.sasaki.isMember()) {
-                const deviceId = this.storage.load('deviceId');
-                console.log(deviceId);
+                const deviceId = localStorage.getItem('deviceId');
+                if (deviceId === null) {
+                    throw new Error('deviceId is null');
+                }
             }
 
             return true;
         } catch (err) {
             console.log('canActivate', err);
-            this.router.navigate(['/auth']);
+            this.router.navigate(['/auth/select']);
 
             return false;
         }

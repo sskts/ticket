@@ -83,10 +83,15 @@ export class HeaderComponent implements OnInit {
 const pages = [
     { url: '/ticket', title: 'チケットホルダー', prev: false },
     { url: '/purchase', title: 'チケット購入', prev: false },
-    { url: '/setting', title: '設定変更', prev: false },
+    { url: '/member/point', title: '会員ポイント', prev: false },
     { url: '/about', title: 'このアプリについて', prev: true },
-    { url: '/profile', title: 'ユーザー情報変更', prev: true },
     { url: '/policy', title: '利用規約', prev: true },
     { url: '/law', title: '特定商取引法に基づく表記', prev: true },
-    { url: '/privacy', title: 'プライバシーポリシー', prev: true }
+    { url: '/privacy', title: 'プライバシーポリシー', prev: true },
+    { url: '/law', title: '特定商取引法に基づく表記', prev: true },
+    { url: '/auth/signOut', title: 'ログアウト', prev: true },
+    { url: '/member/benefits', title: '会員特典', prev: true },
+    { url: '/member/edit', title: '会員情報変更', prev: true },
+    { url: '/member/withdraw', title: '退会', prev: true }
+
 ];

@@ -29,7 +29,6 @@ export async function getCredentials(req: Request, res: Response) {
         };
 
         log('getCredentials MemberType', req.query.member);
-        
         res.json(credentials);
     } catch (err) {
         errorProsess(res, err);
@@ -80,10 +79,10 @@ export async function signInRedirect(req: Request, res: Response, next: NextFunc
 
 export async function signOut(req: Request, res: Response) {
     log('signOut');
-    const authModel = new AuthModel((<Express.Session>req.session).auth);
+    const authModel = new Auth2Model((<Express.Session>req.session).auth);
     const auth = authModel.create();
     const logoutUrl = auth.generateLogoutUrl();
-    console.log('logoutUrl:', logoutUrl);
+    log('logoutUrl:', logoutUrl);
     res.json({
         url: logoutUrl
     });
@@ -92,7 +91,7 @@ export async function signOut(req: Request, res: Response) {
 export async function signOutRedirect(req: Request, res: Response) {
     log('signOutRedirect');
     delete (<Express.Session>req.session).auth;
-    res.redirect('/#/auth/login');
+    res.redirect('/');
 }
 
 export enum MemberType {

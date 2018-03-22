@@ -292,9 +292,16 @@ webpackEmptyAsyncContext.id = "./src/client/src/$$_lazy_route_resource lazy recu
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var about_component_1 = __webpack_require__("./src/client/src/app/components/about/about.component.ts");
+var auth_register_component_1 = __webpack_require__("./src/client/src/app/components/auth/auth-register/auth-register.component.ts");
+var auth_select_component_1 = __webpack_require__("./src/client/src/app/components/auth/auth-select/auth-select.component.ts");
+var auth_sign_out_component_1 = __webpack_require__("./src/client/src/app/components/auth/auth-sign-out/auth-sign-out.component.ts");
 var base_component_1 = __webpack_require__("./src/client/src/app/components/base/base.component.ts");
 var error_component_1 = __webpack_require__("./src/client/src/app/components/error/error.component.ts");
 var law_component_1 = __webpack_require__("./src/client/src/app/components/law/law.component.ts");
+var member_benefits_component_1 = __webpack_require__("./src/client/src/app/components/member/member-benefits/member-benefits.component.ts");
+var member_edit_component_1 = __webpack_require__("./src/client/src/app/components/member/member-edit/member-edit.component.ts");
+var member_point_component_1 = __webpack_require__("./src/client/src/app/components/member/member-point/member-point.component.ts");
+var member_withdraw_component_1 = __webpack_require__("./src/client/src/app/components/member/member-withdraw/member-withdraw.component.ts");
 var not_found_component_1 = __webpack_require__("./src/client/src/app/components/not-found/not-found.component.ts");
 var policy_component_1 = __webpack_require__("./src/client/src/app/components/policy/policy.component.ts");
 var privacy_component_1 = __webpack_require__("./src/client/src/app/components/privacy/privacy.component.ts");
@@ -302,10 +309,24 @@ var purchase_component_1 = __webpack_require__("./src/client/src/app/components/
 var ticket_component_1 = __webpack_require__("./src/client/src/app/components/ticket/ticket.component.ts");
 var walk_through_component_1 = __webpack_require__("./src/client/src/app/components/walk-through/walk-through.component.ts");
 var auth_guard_service_1 = __webpack_require__("./src/client/src/app/services/auth-guard/auth-guard.service.ts");
-var auth_component_1 = __webpack_require__("./src/client/src/app/components/auth/auth.component.ts");
+var member_guard_service_1 = __webpack_require__("./src/client/src/app/services/member-guard/member-guard.service.ts");
 var appRoutes = [
     { path: '', redirectTo: '/ticket', pathMatch: 'full' },
-    { path: 'auth', component: auth_component_1.AuthComponent },
+    { path: 'auth', component: auth_select_component_1.AuthSelectComponent },
+    {
+        path: 'auth',
+        children: [
+            { path: 'select', component: auth_select_component_1.AuthSelectComponent }
+        ]
+    },
+    {
+        path: 'auth',
+        component: base_component_1.BaseComponent,
+        children: [
+            { path: 'signOut', component: auth_sign_out_component_1.AuthSignOutComponent },
+            { path: 'register', component: auth_register_component_1.AuthRegisterComponent }
+        ]
+    },
     {
         path: '',
         component: base_component_1.BaseComponent,
@@ -317,6 +338,17 @@ var appRoutes = [
             { path: 'policy', component: policy_component_1.PolicyComponent },
             { path: 'law', component: law_component_1.LawComponent },
             { path: 'privacy', component: privacy_component_1.PrivacyComponent }
+        ]
+    },
+    {
+        path: 'member',
+        component: base_component_1.BaseComponent,
+        canActivate: [member_guard_service_1.MemberGuardService],
+        children: [
+            { path: 'point', component: member_point_component_1.MemberPointComponent },
+            { path: 'benefits', component: member_benefits_component_1.MemberBenefitsComponent },
+            { path: 'edit', component: member_edit_component_1.MemberEditComponent },
+            { path: 'withdraw', component: member_withdraw_component_1.MemberWithdrawComponent }
         ]
     },
     { path: 'walkThrough', component: walk_through_component_1.WalkThroughComponent },
@@ -350,155 +382,168 @@ exports.AppRoutingModule = AppRoutingModule;
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
 var common_1 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-exports.NgLocalization_25 = common_1.NgLocalization;
-exports.NgLocaleLocalization_26 = common_1.NgLocaleLocalization;
-exports.ɵa_28 = common_1.ɵa;
-exports.CommonModule_29 = common_1.CommonModule;
-exports.DOCUMENT_51 = common_1.DOCUMENT;
-exports.Location_85 = common_1.Location;
-exports.LocationStrategy_86 = common_1.LocationStrategy;
-exports.PlatformLocation_110 = common_1.PlatformLocation;
-exports.APP_BASE_HREF_111 = common_1.APP_BASE_HREF;
+exports.NgLocalization_37 = common_1.NgLocalization;
+exports.NgLocaleLocalization_38 = common_1.NgLocaleLocalization;
+exports.ɵa_40 = common_1.ɵa;
+exports.CommonModule_41 = common_1.CommonModule;
+exports.DOCUMENT_63 = common_1.DOCUMENT;
+exports.Location_97 = common_1.Location;
+exports.LocationStrategy_98 = common_1.LocationStrategy;
+exports.PlatformLocation_123 = common_1.PlatformLocation;
+exports.APP_BASE_HREF_124 = common_1.APP_BASE_HREF;
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-exports.LOCALE_ID_27 = core_1.LOCALE_ID;
-exports.ApplicationRef_30 = core_1.ApplicationRef;
-exports.NgZone_31 = core_1.NgZone;
-exports.ɵConsole_32 = core_1.ɵConsole;
-exports.Injector_33 = core_1.Injector;
-exports.ErrorHandler_34 = core_1.ErrorHandler;
-exports.ComponentFactoryResolver_35 = core_1.ComponentFactoryResolver;
-exports.ApplicationInitStatus_36 = core_1.ApplicationInitStatus;
-exports.ApplicationModule_37 = core_1.ApplicationModule;
-exports.APP_INITIALIZER_38 = core_1.APP_INITIALIZER;
-exports.Compiler_39 = core_1.Compiler;
-exports.APP_ID_40 = core_1.APP_ID;
-exports.ɵi_41 = core_1.ɵi;
-exports.IterableDiffers_42 = core_1.IterableDiffers;
-exports.ɵn_43 = core_1.ɵn;
-exports.KeyValueDiffers_44 = core_1.KeyValueDiffers;
-exports.ɵo_45 = core_1.ɵo;
-exports.ɵq_46 = core_1.ɵq;
-exports.Sanitizer_47 = core_1.Sanitizer;
-exports.RendererFactory2_62 = core_1.RendererFactory2;
-exports.Testability_64 = core_1.Testability;
-exports.NgProbeToken_66 = core_1.NgProbeToken;
-exports.PLATFORM_ID_75 = core_1.PLATFORM_ID;
-exports.NgModuleFactoryLoader_93 = core_1.NgModuleFactoryLoader;
-exports.SystemJsNgModuleLoader_100 = core_1.SystemJsNgModuleLoader;
-exports.SystemJsNgModuleLoaderConfig_101 = core_1.SystemJsNgModuleLoaderConfig;
-exports.APP_BOOTSTRAP_LISTENER_117 = core_1.APP_BOOTSTRAP_LISTENER;
+exports.LOCALE_ID_39 = core_1.LOCALE_ID;
+exports.ApplicationRef_42 = core_1.ApplicationRef;
+exports.NgZone_43 = core_1.NgZone;
+exports.ɵConsole_44 = core_1.ɵConsole;
+exports.Injector_45 = core_1.Injector;
+exports.ErrorHandler_46 = core_1.ErrorHandler;
+exports.ComponentFactoryResolver_47 = core_1.ComponentFactoryResolver;
+exports.ApplicationInitStatus_48 = core_1.ApplicationInitStatus;
+exports.ApplicationModule_49 = core_1.ApplicationModule;
+exports.APP_INITIALIZER_50 = core_1.APP_INITIALIZER;
+exports.Compiler_51 = core_1.Compiler;
+exports.APP_ID_52 = core_1.APP_ID;
+exports.ɵi_53 = core_1.ɵi;
+exports.IterableDiffers_54 = core_1.IterableDiffers;
+exports.ɵn_55 = core_1.ɵn;
+exports.KeyValueDiffers_56 = core_1.KeyValueDiffers;
+exports.ɵo_57 = core_1.ɵo;
+exports.ɵq_58 = core_1.ɵq;
+exports.Sanitizer_59 = core_1.Sanitizer;
+exports.RendererFactory2_74 = core_1.RendererFactory2;
+exports.Testability_76 = core_1.Testability;
+exports.NgProbeToken_78 = core_1.NgProbeToken;
+exports.PLATFORM_ID_87 = core_1.PLATFORM_ID;
+exports.NgModuleFactoryLoader_105 = core_1.NgModuleFactoryLoader;
+exports.SystemJsNgModuleLoader_112 = core_1.SystemJsNgModuleLoader;
+exports.SystemJsNgModuleLoaderConfig_113 = core_1.SystemJsNgModuleLoaderConfig;
+exports.APP_BOOTSTRAP_LISTENER_130 = core_1.APP_BOOTSTRAP_LISTENER;
 var platform_browser_1 = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
-exports.DomSanitizer_48 = platform_browser_1.DomSanitizer;
-exports.BrowserModule_49 = platform_browser_1.BrowserModule;
-exports.ɵe_50 = platform_browser_1.ɵe;
-exports.ɵa_52 = platform_browser_1.ɵa;
-exports.EVENT_MANAGER_PLUGINS_53 = platform_browser_1.EVENT_MANAGER_PLUGINS;
-exports.ɵDomEventsPlugin_54 = platform_browser_1.ɵDomEventsPlugin;
-exports.ɵKeyEventsPlugin_55 = platform_browser_1.ɵKeyEventsPlugin;
-exports.ɵHammerGesturesPlugin_56 = platform_browser_1.ɵHammerGesturesPlugin;
-exports.HAMMER_GESTURE_CONFIG_57 = platform_browser_1.HAMMER_GESTURE_CONFIG;
-exports.HammerGestureConfig_58 = platform_browser_1.HammerGestureConfig;
-exports.ɵDomRendererFactory2_59 = platform_browser_1.ɵDomRendererFactory2;
-exports.EventManager_60 = platform_browser_1.EventManager;
-exports.ɵDomSharedStylesHost_61 = platform_browser_1.ɵDomSharedStylesHost;
-exports.ɵSharedStylesHost_63 = platform_browser_1.ɵSharedStylesHost;
-exports.ɵh_65 = platform_browser_1.ɵh;
-exports.Meta_67 = platform_browser_1.Meta;
-exports.Title_68 = platform_browser_1.Title;
+exports.DomSanitizer_60 = platform_browser_1.DomSanitizer;
+exports.BrowserModule_61 = platform_browser_1.BrowserModule;
+exports.ɵe_62 = platform_browser_1.ɵe;
+exports.ɵa_64 = platform_browser_1.ɵa;
+exports.EVENT_MANAGER_PLUGINS_65 = platform_browser_1.EVENT_MANAGER_PLUGINS;
+exports.ɵDomEventsPlugin_66 = platform_browser_1.ɵDomEventsPlugin;
+exports.ɵKeyEventsPlugin_67 = platform_browser_1.ɵKeyEventsPlugin;
+exports.ɵHammerGesturesPlugin_68 = platform_browser_1.ɵHammerGesturesPlugin;
+exports.HAMMER_GESTURE_CONFIG_69 = platform_browser_1.HAMMER_GESTURE_CONFIG;
+exports.HammerGestureConfig_70 = platform_browser_1.HammerGestureConfig;
+exports.ɵDomRendererFactory2_71 = platform_browser_1.ɵDomRendererFactory2;
+exports.EventManager_72 = platform_browser_1.EventManager;
+exports.ɵDomSharedStylesHost_73 = platform_browser_1.ɵDomSharedStylesHost;
+exports.ɵSharedStylesHost_75 = platform_browser_1.ɵSharedStylesHost;
+exports.ɵh_77 = platform_browser_1.ɵh;
+exports.Meta_79 = platform_browser_1.Meta;
+exports.Title_80 = platform_browser_1.Title;
 var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-exports.ɵi_69 = http_1.ɵi;
-exports.HttpXsrfTokenExtractor_70 = http_1.HttpXsrfTokenExtractor;
-exports.ɵg_71 = http_1.ɵg;
-exports.HttpClientXsrfModule_72 = http_1.HttpClientXsrfModule;
-exports.HTTP_INTERCEPTORS_73 = http_1.HTTP_INTERCEPTORS;
-exports.ɵh_74 = http_1.ɵh;
-exports.ɵf_76 = http_1.ɵf;
-exports.HttpClientModule_77 = http_1.HttpClientModule;
-exports.HttpClient_78 = http_1.HttpClient;
-exports.HttpHandler_79 = http_1.HttpHandler;
-exports.ɵc_80 = http_1.ɵc;
-exports.HttpBackend_81 = http_1.HttpBackend;
-exports.HttpXhrBackend_82 = http_1.HttpXhrBackend;
-exports.XhrFactory_83 = http_1.XhrFactory;
-exports.ɵe_84 = http_1.ɵe;
+exports.ɵi_81 = http_1.ɵi;
+exports.HttpXsrfTokenExtractor_82 = http_1.HttpXsrfTokenExtractor;
+exports.ɵg_83 = http_1.ɵg;
+exports.HttpClientXsrfModule_84 = http_1.HttpClientXsrfModule;
+exports.HTTP_INTERCEPTORS_85 = http_1.HTTP_INTERCEPTORS;
+exports.ɵh_86 = http_1.ɵh;
+exports.ɵf_88 = http_1.ɵf;
+exports.HttpClientModule_89 = http_1.HttpClientModule;
+exports.HttpClient_90 = http_1.HttpClient;
+exports.HttpHandler_91 = http_1.HttpHandler;
+exports.ɵc_92 = http_1.ɵc;
+exports.HttpBackend_93 = http_1.HttpBackend;
+exports.HttpXhrBackend_94 = http_1.HttpXhrBackend;
+exports.XhrFactory_95 = http_1.XhrFactory;
+exports.ɵe_96 = http_1.ɵe;
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-exports.UrlSerializer_88 = router_1.UrlSerializer;
-exports.DefaultUrlSerializer_89 = router_1.DefaultUrlSerializer;
-exports.Router_90 = router_1.Router;
-exports.ɵe_91 = router_1.ɵe;
-exports.ChildrenOutletContexts_92 = router_1.ChildrenOutletContexts;
-exports.ROUTES_94 = router_1.ROUTES;
-exports.ROUTER_CONFIGURATION_95 = router_1.ROUTER_CONFIGURATION;
-exports.UrlHandlingStrategy_96 = router_1.UrlHandlingStrategy;
-exports.RouteReuseStrategy_97 = router_1.RouteReuseStrategy;
-exports.ActivatedRoute_98 = router_1.ActivatedRoute;
-exports.ɵf_99 = router_1.ɵf;
-exports.RouterPreloader_102 = router_1.RouterPreloader;
-exports.PreloadingStrategy_103 = router_1.PreloadingStrategy;
-exports.NoPreloading_104 = router_1.NoPreloading;
-exports.PreloadAllModules_105 = router_1.PreloadAllModules;
-exports.ɵa_107 = router_1.ɵa;
-exports.ɵd_108 = router_1.ɵd;
-exports.ɵc_109 = router_1.ɵc;
-exports.ɵb_112 = router_1.ɵb;
-exports.ɵg_113 = router_1.ɵg;
-exports.ɵh_114 = router_1.ɵh;
-exports.ROUTER_INITIALIZER_115 = router_1.ROUTER_INITIALIZER;
-exports.ɵi_116 = router_1.ɵi;
-exports.RouterModule_131 = router_1.RouterModule;
+exports.UrlSerializer_100 = router_1.UrlSerializer;
+exports.DefaultUrlSerializer_101 = router_1.DefaultUrlSerializer;
+exports.Router_102 = router_1.Router;
+exports.ɵe_103 = router_1.ɵe;
+exports.ChildrenOutletContexts_104 = router_1.ChildrenOutletContexts;
+exports.ROUTES_106 = router_1.ROUTES;
+exports.ROUTER_CONFIGURATION_107 = router_1.ROUTER_CONFIGURATION;
+exports.UrlHandlingStrategy_108 = router_1.UrlHandlingStrategy;
+exports.RouteReuseStrategy_109 = router_1.RouteReuseStrategy;
+exports.ActivatedRoute_110 = router_1.ActivatedRoute;
+exports.ɵf_111 = router_1.ɵf;
+exports.RouterPreloader_114 = router_1.RouterPreloader;
+exports.PreloadingStrategy_115 = router_1.PreloadingStrategy;
+exports.NoPreloading_116 = router_1.NoPreloading;
+exports.PreloadAllModules_117 = router_1.PreloadAllModules;
+exports.ɵa_120 = router_1.ɵa;
+exports.ɵd_121 = router_1.ɵd;
+exports.ɵc_122 = router_1.ɵc;
+exports.ɵb_125 = router_1.ɵb;
+exports.ɵg_126 = router_1.ɵg;
+exports.ɵh_127 = router_1.ɵh;
+exports.ROUTER_INITIALIZER_128 = router_1.ROUTER_INITIALIZER;
+exports.ɵi_129 = router_1.ɵi;
+exports.RouterModule_144 = router_1.RouterModule;
 var forms_1 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
-exports.FormBuilder_118 = forms_1.FormBuilder;
-exports.ReactiveFormsModule_119 = forms_1.ReactiveFormsModule;
-exports.ɵi_120 = forms_1.ɵi;
-exports.FormsModule_121 = forms_1.FormsModule;
-exports.ɵba_132 = forms_1.ɵba;
+exports.FormBuilder_131 = forms_1.FormBuilder;
+exports.ReactiveFormsModule_132 = forms_1.ReactiveFormsModule;
+exports.ɵi_133 = forms_1.ɵi;
+exports.FormsModule_134 = forms_1.FormsModule;
+exports.ɵba_145 = forms_1.ɵba;
 var moment_module_1 = __webpack_require__("./node_modules/angular2-moment/moment.module.js");
-exports.MomentModule_129 = moment_module_1.MomentModule;
+exports.MomentModule_142 = moment_module_1.MomentModule;
 var swiper_module_1 = __webpack_require__("./node_modules/angular2-useful-swiper/lib/swiper.module.js");
-exports.SwiperModule_130 = swiper_module_1.SwiperModule;
+exports.SwiperModule_143 = swiper_module_1.SwiperModule;
 var i0 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i1 = __webpack_require__("./src/client/src/app/app.module.ts");
 var i2 = __webpack_require__("./src/client/src/app/components/app/app.component.ts");
-var i3 = __webpack_require__("./src/client/src/app/components/auth/auth.component.ngfactory.js");
+var i3 = __webpack_require__("./src/client/src/app/components/auth/auth-select/auth-select.component.ngfactory.js");
 var i4 = __webpack_require__("./src/client/src/app/components/base/base.component.ngfactory.js");
-var i5 = __webpack_require__("./src/client/src/app/components/ticket/ticket.component.ngfactory.js");
-var i6 = __webpack_require__("./src/client/src/app/components/purchase/purchase.component.ngfactory.js");
-var i7 = __webpack_require__("./src/client/src/app/components/about/about.component.ngfactory.js");
-var i8 = __webpack_require__("./src/client/src/app/components/policy/policy.component.ngfactory.js");
-var i9 = __webpack_require__("./src/client/src/app/components/law/law.component.ngfactory.js");
-var i10 = __webpack_require__("./src/client/src/app/components/privacy/privacy.component.ngfactory.js");
-var i11 = __webpack_require__("./src/client/src/app/components/walk-through/walk-through.component.ngfactory.js");
-var i12 = __webpack_require__("./src/client/src/app/components/error/error.component.ngfactory.js");
-var i13 = __webpack_require__("./src/client/src/app/components/not-found/not-found.component.ngfactory.js");
-var i14 = __webpack_require__("./src/client/src/app/components/app/app.component.ngfactory.js");
-var i15 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-var i16 = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
-var i17 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-var i18 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-var i19 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
-var i20 = __webpack_require__("./src/client/src/app/services/storage/storage.service.ts");
-var i21 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
-var i22 = __webpack_require__("./src/client/src/app/services/auth-guard/auth-guard.service.ts");
-var i23 = __webpack_require__("./src/client/src/app/services/aws-cognito/aws-cognito.service.ts");
-var i24 = __webpack_require__("./src/client/src/app/services/reservation/reservation.service.ts");
-var i25 = __webpack_require__("./src/client/src/app/services/schedule/schedule.service.ts");
-var i26 = __webpack_require__("./src/client/src/app/services/select/select.service.ts");
-var i27 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
-var i28 = __webpack_require__("./node_modules/angular2-moment/moment.module.js");
-var i29 = __webpack_require__("./node_modules/angular2-useful-swiper/lib/swiper.module.js");
-var i30 = __webpack_require__("./src/client/src/app/components/auth/auth.component.ts");
-var i31 = __webpack_require__("./src/client/src/app/components/base/base.component.ts");
-var i32 = __webpack_require__("./src/client/src/app/components/ticket/ticket.component.ts");
-var i33 = __webpack_require__("./src/client/src/app/components/purchase/purchase.component.ts");
-var i34 = __webpack_require__("./src/client/src/app/components/about/about.component.ts");
-var i35 = __webpack_require__("./src/client/src/app/components/policy/policy.component.ts");
-var i36 = __webpack_require__("./src/client/src/app/components/law/law.component.ts");
-var i37 = __webpack_require__("./src/client/src/app/components/privacy/privacy.component.ts");
-var i38 = __webpack_require__("./src/client/src/app/components/walk-through/walk-through.component.ts");
-var i39 = __webpack_require__("./src/client/src/app/components/error/error.component.ts");
-var i40 = __webpack_require__("./src/client/src/app/components/not-found/not-found.component.ts");
-var i41 = __webpack_require__("./src/client/src/app/app-routing.module.ts");
-var AppModuleNgFactory = i0.ɵcmf(i1.AppModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.AuthComponentNgFactory, i4.BaseComponentNgFactory, i5.TicketComponentNgFactory, i6.PurchaseComponentNgFactory, i7.AboutComponentNgFactory, i8.PolicyComponentNgFactory, i9.LawComponentNgFactory, i10.PrivacyComponentNgFactory, i11.WalkThroughComponentNgFactory, i12.ErrorComponentNgFactory, i13.NotFoundComponentNgFactory, i14.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵq, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i15.NgLocalization, i15.NgLocaleLocalization, [i0.LOCALE_ID, [2, i15.ɵa]]), i0.ɵmpd(5120, i0.APP_ID, i0.ɵi, []), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵn, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵo, []), i0.ɵmpd(4608, i16.DomSanitizer, i16.ɵe, [i15.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i16.DomSanitizer]), i0.ɵmpd(4608, i16.HAMMER_GESTURE_CONFIG, i16.HammerGestureConfig, []), i0.ɵmpd(5120, i16.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p1_0, p2_0, p2_1) { return [new i16.ɵDomEventsPlugin(p0_0, p0_1), new i16.ɵKeyEventsPlugin(p1_0), new i16.ɵHammerGesturesPlugin(p2_0, p2_1)]; }, [i15.DOCUMENT, i0.NgZone, i15.DOCUMENT, i15.DOCUMENT, i16.HAMMER_GESTURE_CONFIG]), i0.ɵmpd(4608, i16.EventManager, i16.EventManager, [i16.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i16.ɵDomSharedStylesHost, i16.ɵDomSharedStylesHost, [i15.DOCUMENT]), i0.ɵmpd(4608, i16.ɵDomRendererFactory2, i16.ɵDomRendererFactory2, [i16.EventManager, i16.ɵDomSharedStylesHost]), i0.ɵmpd(6144, i0.RendererFactory2, null, [i16.ɵDomRendererFactory2]), i0.ɵmpd(6144, i16.ɵSharedStylesHost, null, [i16.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i0.Testability, i0.Testability, [i0.NgZone]), i0.ɵmpd(4608, i16.Meta, i16.Meta, [i15.DOCUMENT]), i0.ɵmpd(4608, i16.Title, i16.Title, [i15.DOCUMENT]), i0.ɵmpd(4608, i17.HttpXsrfTokenExtractor, i17.ɵh, [i15.DOCUMENT, i0.PLATFORM_ID, i17.ɵf]), i0.ɵmpd(4608, i17.ɵi, i17.ɵi, [i17.HttpXsrfTokenExtractor, i17.ɵg]), i0.ɵmpd(5120, i17.HTTP_INTERCEPTORS, function (p0_0) { return [p0_0]; }, [i17.ɵi]), i0.ɵmpd(4608, i17.ɵe, i17.ɵe, []), i0.ɵmpd(6144, i17.XhrFactory, null, [i17.ɵe]), i0.ɵmpd(4608, i17.HttpXhrBackend, i17.HttpXhrBackend, [i17.XhrFactory]), i0.ɵmpd(6144, i17.HttpBackend, null, [i17.HttpXhrBackend]), i0.ɵmpd(4608, i17.HttpHandler, i17.ɵc, [i17.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i17.HttpClient, i17.HttpClient, [i17.HttpHandler]), i0.ɵmpd(5120, i18.ActivatedRoute, i18.ɵf, [i18.Router]), i0.ɵmpd(4608, i18.NoPreloading, i18.NoPreloading, []), i0.ɵmpd(6144, i18.PreloadingStrategy, null, [i18.NoPreloading]), i0.ɵmpd(135680, i18.RouterPreloader, i18.RouterPreloader, [i18.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i18.PreloadingStrategy]), i0.ɵmpd(4608, i18.PreloadAllModules, i18.PreloadAllModules, []), i0.ɵmpd(5120, i18.ROUTER_INITIALIZER, i18.ɵi, [i18.ɵg]), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0) { return [p0_0]; }, [i18.ROUTER_INITIALIZER]), i0.ɵmpd(4608, i19.FormBuilder, i19.FormBuilder, []), i0.ɵmpd(4608, i19.ɵi, i19.ɵi, []), i0.ɵmpd(4608, i20.StorageService, i20.StorageService, []), i0.ɵmpd(4608, i21.SasakiService, i21.SasakiService, [i17.HttpClient, i20.StorageService]), i0.ɵmpd(4608, i22.AuthGuardService, i22.AuthGuardService, [i18.Router, i21.SasakiService, i20.StorageService]), i0.ɵmpd(4608, i23.AwsCognitoService, i23.AwsCognitoService, []), i0.ɵmpd(4608, i24.ReservationService, i24.ReservationService, [i23.AwsCognitoService, i20.StorageService]), i0.ɵmpd(4608, i25.ScheduleService, i25.ScheduleService, [i20.StorageService, i21.SasakiService]), i0.ɵmpd(4608, i26.SelectService, i26.SelectService, [i20.StorageService]), i0.ɵmpd(4608, i27.CallNativeService, i27.CallNativeService, []), i0.ɵmpd(512, i15.CommonModule, i15.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i16.ɵa, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i18.ɵb()]; }, []), i0.ɵmpd(512, i18.ɵg, i18.ɵg, [i0.Injector]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0) { return [i16.ɵh(p0_0), i18.ɵh(p1_0)]; }, [[2, i0.NgProbeToken], i18.ɵg]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(512, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(512, i16.BrowserModule, i16.BrowserModule, [[3, i16.BrowserModule]]), i0.ɵmpd(512, i17.HttpClientXsrfModule, i17.HttpClientXsrfModule, []), i0.ɵmpd(512, i17.HttpClientModule, i17.HttpClientModule, []), i0.ɵmpd(512, i28.MomentModule, i28.MomentModule, []), i0.ɵmpd(512, i29.SwiperModule, i29.SwiperModule, []), i0.ɵmpd(1024, i18.ɵa, i18.ɵd, [[3, i18.Router]]), i0.ɵmpd(512, i18.UrlSerializer, i18.DefaultUrlSerializer, []), i0.ɵmpd(512, i18.ChildrenOutletContexts, i18.ChildrenOutletContexts, []), i0.ɵmpd(256, i18.ROUTER_CONFIGURATION, { useHash: true, enableTracing: true }, []), i0.ɵmpd(1024, i15.LocationStrategy, i18.ɵc, [i15.PlatformLocation, [2, i15.APP_BASE_HREF], i18.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i15.Location, i15.Location, [i15.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i0.SystemJsNgModuleLoader, [i0.Compiler, [2, i0.SystemJsNgModuleLoaderConfig]]), i0.ɵmpd(1024, i18.ROUTES, function () { return [[{ path: "", redirectTo: "/ticket", pathMatch: "full" }, { path: "auth", component: i30.AuthComponent }, { path: "", component: i31.BaseComponent, canActivate: [i22.AuthGuardService], children: [{ path: "ticket", component: i32.TicketComponent }, { path: "purchase", component: i33.PurchaseComponent }, { path: "about", component: i34.AboutComponent }, { path: "policy", component: i35.PolicyComponent }, { path: "law", component: i36.LawComponent }, { path: "privacy", component: i37.PrivacyComponent }] }, { path: "walkThrough", component: i38.WalkThroughComponent }, { path: "error/:redirect", component: i39.ErrorComponent }, { path: "error", component: i39.ErrorComponent }, { path: "**", component: i40.NotFoundComponent }]]; }, []), i0.ɵmpd(1024, i18.Router, i18.ɵe, [i0.ApplicationRef, i18.UrlSerializer, i18.ChildrenOutletContexts, i15.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i18.ROUTES, i18.ROUTER_CONFIGURATION, [2, i18.UrlHandlingStrategy], [2, i18.RouteReuseStrategy]]), i0.ɵmpd(512, i18.RouterModule, i18.RouterModule, [[2, i18.ɵa], [2, i18.Router]]), i0.ɵmpd(512, i41.AppRoutingModule, i41.AppRoutingModule, []), i0.ɵmpd(512, i19.ɵba, i19.ɵba, []), i0.ɵmpd(512, i19.ReactiveFormsModule, i19.ReactiveFormsModule, []), i0.ɵmpd(512, i19.FormsModule, i19.FormsModule, []), i0.ɵmpd(512, i1.AppModule, i1.AppModule, []), i0.ɵmpd(256, i17.ɵf, "XSRF-TOKEN", []), i0.ɵmpd(256, i17.ɵg, "X-XSRF-TOKEN", [])]); });
+var i5 = __webpack_require__("./src/client/src/app/components/auth/auth-sign-out/auth-sign-out.component.ngfactory.js");
+var i6 = __webpack_require__("./src/client/src/app/components/auth/auth-register/auth-register.component.ngfactory.js");
+var i7 = __webpack_require__("./src/client/src/app/components/ticket/ticket.component.ngfactory.js");
+var i8 = __webpack_require__("./src/client/src/app/components/purchase/purchase.component.ngfactory.js");
+var i9 = __webpack_require__("./src/client/src/app/components/about/about.component.ngfactory.js");
+var i10 = __webpack_require__("./src/client/src/app/components/policy/policy.component.ngfactory.js");
+var i11 = __webpack_require__("./src/client/src/app/components/law/law.component.ngfactory.js");
+var i12 = __webpack_require__("./src/client/src/app/components/privacy/privacy.component.ngfactory.js");
+var i13 = __webpack_require__("./src/client/src/app/components/member/member-point/member-point.component.ngfactory.js");
+var i14 = __webpack_require__("./src/client/src/app/components/member/member-benefits/member-benefits.component.ngfactory.js");
+var i15 = __webpack_require__("./src/client/src/app/components/member/member-edit/member-edit.component.ngfactory.js");
+var i16 = __webpack_require__("./src/client/src/app/components/member/member-withdraw/member-withdraw.component.ngfactory.js");
+var i17 = __webpack_require__("./src/client/src/app/components/walk-through/walk-through.component.ngfactory.js");
+var i18 = __webpack_require__("./src/client/src/app/components/error/error.component.ngfactory.js");
+var i19 = __webpack_require__("./src/client/src/app/components/not-found/not-found.component.ngfactory.js");
+var i20 = __webpack_require__("./src/client/src/app/components/app/app.component.ngfactory.js");
+var i21 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+var i22 = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
+var i23 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var i24 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var i25 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+var i26 = __webpack_require__("./src/client/src/app/services/storage/storage.service.ts");
+var i27 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i28 = __webpack_require__("./src/client/src/app/services/auth-guard/auth-guard.service.ts");
+var i29 = __webpack_require__("./src/client/src/app/services/aws-cognito/aws-cognito.service.ts");
+var i30 = __webpack_require__("./src/client/src/app/services/reservation/reservation.service.ts");
+var i31 = __webpack_require__("./src/client/src/app/services/schedule/schedule.service.ts");
+var i32 = __webpack_require__("./src/client/src/app/services/select/select.service.ts");
+var i33 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
+var i34 = __webpack_require__("./src/client/src/app/services/member-guard/member-guard.service.ts");
+var i35 = __webpack_require__("./node_modules/angular2-moment/moment.module.js");
+var i36 = __webpack_require__("./node_modules/angular2-useful-swiper/lib/swiper.module.js");
+var i37 = __webpack_require__("./src/client/src/app/components/auth/auth-select/auth-select.component.ts");
+var i38 = __webpack_require__("./src/client/src/app/components/base/base.component.ts");
+var i39 = __webpack_require__("./src/client/src/app/components/auth/auth-sign-out/auth-sign-out.component.ts");
+var i40 = __webpack_require__("./src/client/src/app/components/auth/auth-register/auth-register.component.ts");
+var i41 = __webpack_require__("./src/client/src/app/components/ticket/ticket.component.ts");
+var i42 = __webpack_require__("./src/client/src/app/components/purchase/purchase.component.ts");
+var i43 = __webpack_require__("./src/client/src/app/components/about/about.component.ts");
+var i44 = __webpack_require__("./src/client/src/app/components/policy/policy.component.ts");
+var i45 = __webpack_require__("./src/client/src/app/components/law/law.component.ts");
+var i46 = __webpack_require__("./src/client/src/app/components/privacy/privacy.component.ts");
+var i47 = __webpack_require__("./src/client/src/app/components/member/member-point/member-point.component.ts");
+var i48 = __webpack_require__("./src/client/src/app/components/member/member-benefits/member-benefits.component.ts");
+var i49 = __webpack_require__("./src/client/src/app/components/member/member-edit/member-edit.component.ts");
+var i50 = __webpack_require__("./src/client/src/app/components/member/member-withdraw/member-withdraw.component.ts");
+var i51 = __webpack_require__("./src/client/src/app/components/walk-through/walk-through.component.ts");
+var i52 = __webpack_require__("./src/client/src/app/components/error/error.component.ts");
+var i53 = __webpack_require__("./src/client/src/app/components/not-found/not-found.component.ts");
+var i54 = __webpack_require__("./src/client/src/app/app-routing.module.ts");
+var AppModuleNgFactory = i0.ɵcmf(i1.AppModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.AuthSelectComponentNgFactory, i4.BaseComponentNgFactory, i5.AuthSignOutComponentNgFactory, i6.AuthRegisterComponentNgFactory, i7.TicketComponentNgFactory, i8.PurchaseComponentNgFactory, i9.AboutComponentNgFactory, i10.PolicyComponentNgFactory, i11.LawComponentNgFactory, i12.PrivacyComponentNgFactory, i13.MemberPointComponentNgFactory, i14.MemberBenefitsComponentNgFactory, i15.MemberEditComponentNgFactory, i16.MemberWithdrawComponentNgFactory, i17.WalkThroughComponentNgFactory, i18.ErrorComponentNgFactory, i19.NotFoundComponentNgFactory, i20.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵq, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i21.NgLocalization, i21.NgLocaleLocalization, [i0.LOCALE_ID, [2, i21.ɵa]]), i0.ɵmpd(5120, i0.APP_ID, i0.ɵi, []), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵn, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵo, []), i0.ɵmpd(4608, i22.DomSanitizer, i22.ɵe, [i21.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i22.DomSanitizer]), i0.ɵmpd(4608, i22.HAMMER_GESTURE_CONFIG, i22.HammerGestureConfig, []), i0.ɵmpd(5120, i22.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p1_0, p2_0, p2_1) { return [new i22.ɵDomEventsPlugin(p0_0, p0_1), new i22.ɵKeyEventsPlugin(p1_0), new i22.ɵHammerGesturesPlugin(p2_0, p2_1)]; }, [i21.DOCUMENT, i0.NgZone, i21.DOCUMENT, i21.DOCUMENT, i22.HAMMER_GESTURE_CONFIG]), i0.ɵmpd(4608, i22.EventManager, i22.EventManager, [i22.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i22.ɵDomSharedStylesHost, i22.ɵDomSharedStylesHost, [i21.DOCUMENT]), i0.ɵmpd(4608, i22.ɵDomRendererFactory2, i22.ɵDomRendererFactory2, [i22.EventManager, i22.ɵDomSharedStylesHost]), i0.ɵmpd(6144, i0.RendererFactory2, null, [i22.ɵDomRendererFactory2]), i0.ɵmpd(6144, i22.ɵSharedStylesHost, null, [i22.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i0.Testability, i0.Testability, [i0.NgZone]), i0.ɵmpd(4608, i22.Meta, i22.Meta, [i21.DOCUMENT]), i0.ɵmpd(4608, i22.Title, i22.Title, [i21.DOCUMENT]), i0.ɵmpd(4608, i23.HttpXsrfTokenExtractor, i23.ɵh, [i21.DOCUMENT, i0.PLATFORM_ID, i23.ɵf]), i0.ɵmpd(4608, i23.ɵi, i23.ɵi, [i23.HttpXsrfTokenExtractor, i23.ɵg]), i0.ɵmpd(5120, i23.HTTP_INTERCEPTORS, function (p0_0) { return [p0_0]; }, [i23.ɵi]), i0.ɵmpd(4608, i23.ɵe, i23.ɵe, []), i0.ɵmpd(6144, i23.XhrFactory, null, [i23.ɵe]), i0.ɵmpd(4608, i23.HttpXhrBackend, i23.HttpXhrBackend, [i23.XhrFactory]), i0.ɵmpd(6144, i23.HttpBackend, null, [i23.HttpXhrBackend]), i0.ɵmpd(4608, i23.HttpHandler, i23.ɵc, [i23.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i23.HttpClient, i23.HttpClient, [i23.HttpHandler]), i0.ɵmpd(5120, i24.ActivatedRoute, i24.ɵf, [i24.Router]), i0.ɵmpd(4608, i24.NoPreloading, i24.NoPreloading, []), i0.ɵmpd(6144, i24.PreloadingStrategy, null, [i24.NoPreloading]), i0.ɵmpd(135680, i24.RouterPreloader, i24.RouterPreloader, [i24.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i24.PreloadingStrategy]), i0.ɵmpd(4608, i24.PreloadAllModules, i24.PreloadAllModules, []), i0.ɵmpd(5120, i24.ROUTER_INITIALIZER, i24.ɵi, [i24.ɵg]), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0) { return [p0_0]; }, [i24.ROUTER_INITIALIZER]), i0.ɵmpd(4608, i25.FormBuilder, i25.FormBuilder, []), i0.ɵmpd(4608, i25.ɵi, i25.ɵi, []), i0.ɵmpd(4608, i26.StorageService, i26.StorageService, []), i0.ɵmpd(4608, i27.SasakiService, i27.SasakiService, [i23.HttpClient, i26.StorageService]), i0.ɵmpd(4608, i28.AuthGuardService, i28.AuthGuardService, [i24.Router, i27.SasakiService]), i0.ɵmpd(4608, i29.AwsCognitoService, i29.AwsCognitoService, []), i0.ɵmpd(4608, i30.ReservationService, i30.ReservationService, [i29.AwsCognitoService, i26.StorageService]), i0.ɵmpd(4608, i31.ScheduleService, i31.ScheduleService, [i26.StorageService, i27.SasakiService]), i0.ɵmpd(4608, i32.SelectService, i32.SelectService, [i26.StorageService]), i0.ɵmpd(4608, i33.CallNativeService, i33.CallNativeService, []), i0.ɵmpd(4608, i34.MemberGuardService, i34.MemberGuardService, [i24.Router, i27.SasakiService]), i0.ɵmpd(512, i21.CommonModule, i21.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i22.ɵa, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i24.ɵb()]; }, []), i0.ɵmpd(512, i24.ɵg, i24.ɵg, [i0.Injector]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0) { return [i22.ɵh(p0_0), i24.ɵh(p1_0)]; }, [[2, i0.NgProbeToken], i24.ɵg]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(512, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(512, i22.BrowserModule, i22.BrowserModule, [[3, i22.BrowserModule]]), i0.ɵmpd(512, i23.HttpClientXsrfModule, i23.HttpClientXsrfModule, []), i0.ɵmpd(512, i23.HttpClientModule, i23.HttpClientModule, []), i0.ɵmpd(512, i35.MomentModule, i35.MomentModule, []), i0.ɵmpd(512, i36.SwiperModule, i36.SwiperModule, []), i0.ɵmpd(1024, i24.ɵa, i24.ɵd, [[3, i24.Router]]), i0.ɵmpd(512, i24.UrlSerializer, i24.DefaultUrlSerializer, []), i0.ɵmpd(512, i24.ChildrenOutletContexts, i24.ChildrenOutletContexts, []), i0.ɵmpd(256, i24.ROUTER_CONFIGURATION, { useHash: true, enableTracing: true }, []), i0.ɵmpd(1024, i21.LocationStrategy, i24.ɵc, [i21.PlatformLocation, [2, i21.APP_BASE_HREF], i24.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i21.Location, i21.Location, [i21.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i0.SystemJsNgModuleLoader, [i0.Compiler, [2, i0.SystemJsNgModuleLoaderConfig]]), i0.ɵmpd(1024, i24.ROUTES, function () { return [[{ path: "", redirectTo: "/ticket", pathMatch: "full" }, { path: "auth", component: i37.AuthSelectComponent }, { path: "auth", children: [{ path: "select", component: i37.AuthSelectComponent }] }, { path: "auth", component: i38.BaseComponent, children: [{ path: "signOut", component: i39.AuthSignOutComponent }, { path: "register", component: i40.AuthRegisterComponent }] }, { path: "", component: i38.BaseComponent, canActivate: [i28.AuthGuardService], children: [{ path: "ticket", component: i41.TicketComponent }, { path: "purchase", component: i42.PurchaseComponent }, { path: "about", component: i43.AboutComponent }, { path: "policy", component: i44.PolicyComponent }, { path: "law", component: i45.LawComponent }, { path: "privacy", component: i46.PrivacyComponent }] }, { path: "member", component: i38.BaseComponent, canActivate: [i34.MemberGuardService], children: [{ path: "point", component: i47.MemberPointComponent }, { path: "benefits", component: i48.MemberBenefitsComponent }, { path: "edit", component: i49.MemberEditComponent }, { path: "withdraw", component: i50.MemberWithdrawComponent }] }, { path: "walkThrough", component: i51.WalkThroughComponent }, { path: "error/:redirect", component: i52.ErrorComponent }, { path: "error", component: i52.ErrorComponent }, { path: "**", component: i53.NotFoundComponent }]]; }, []), i0.ɵmpd(1024, i24.Router, i24.ɵe, [i0.ApplicationRef, i24.UrlSerializer, i24.ChildrenOutletContexts, i21.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i24.ROUTES, i24.ROUTER_CONFIGURATION, [2, i24.UrlHandlingStrategy], [2, i24.RouteReuseStrategy]]), i0.ɵmpd(512, i24.RouterModule, i24.RouterModule, [[2, i24.ɵa], [2, i24.Router]]), i0.ɵmpd(512, i54.AppRoutingModule, i54.AppRoutingModule, []), i0.ɵmpd(512, i25.ɵba, i25.ɵba, []), i0.ɵmpd(512, i25.ReactiveFormsModule, i25.ReactiveFormsModule, []), i0.ɵmpd(512, i25.FormsModule, i25.FormsModule, []), i0.ɵmpd(512, i1.AppModule, i1.AppModule, []), i0.ɵmpd(256, i23.ɵf, "XSRF-TOKEN", []), i0.ɵmpd(256, i23.ɵg, "X-XSRF-TOKEN", [])]); });
 exports.AppModuleNgFactory = AppModuleNgFactory;
 
 
@@ -667,7 +712,7 @@ exports.AppComponent = AppComponent;
 
 /***/ }),
 
-/***/ "./src/client/src/app/components/auth/auth.component.ngfactory.js":
+/***/ "./src/client/src/app/components/auth/auth-register/auth-register.component.ngfactory.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -679,47 +724,29 @@ exports.AppComponent = AppComponent;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
-var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-exports.Router_2 = router_1.Router;
-exports.UrlSerializer_4 = router_1.UrlSerializer;
-exports.ChildrenOutletContexts_5 = router_1.ChildrenOutletContexts;
-var common_1 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-exports.Location_6 = common_1.Location;
-exports.LocationStrategy_7 = common_1.LocationStrategy;
-var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-exports.Injector_8 = core_1.Injector;
-exports.NgModuleFactoryLoader_9 = core_1.NgModuleFactoryLoader;
-exports.Compiler_10 = core_1.Compiler;
-var i0 = __webpack_require__("./src/client/src/app/components/auth/auth.component.scss.shim.ngstyle.js");
+var i0 = __webpack_require__("./src/client/src/app/components/auth/auth-register/auth-register.component.scss.shim.ngstyle.js");
 var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i2 = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ngfactory.js");
 var i3 = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ts");
-var i4 = __webpack_require__("./src/client/src/app/components/auth/auth.component.ts");
+var i4 = __webpack_require__("./src/client/src/app/components/auth/auth-register/auth-register.component.ts");
 var i5 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
-var i6 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-var styles_AuthComponent = [i0.styles];
-var RenderType_AuthComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_AuthComponent, data: {} });
-exports.RenderType_AuthComponent = RenderType_AuthComponent;
-function View_AuthComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 42, "div", [["class", "contents position-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 39, "div", [["class", "inner center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(4, 0, null, null, 3, "div", [["class", "logo text-center mb-large"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(6, 0, null, null, 0, "img", [["src", "/assets/images/common/logo_text.svg"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(9, 0, null, null, 1, "p", [["class", "read text-center mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            \u30A2\u30D7\u30EA\u306E\u59CB\u3081\u65B9\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n        "])), (_l()(), i1.ɵted(-1, null, ["\n\n        "])), (_l()(), i1.ɵeld(12, 0, null, null, 28, "dl", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(14, 0, null, null, 1, "dt", [["class", "text-center mb-small"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                \u65B0\u898F\u4F1A\u54E1\uFF08\u5E74\u4F1A\u8CBB500\u5186\uFF09\u767B\u9332\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(17, 0, null, null, 4, "dd", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(19, 0, null, null, 1, "button", [["class", "btn btn-primary btn-block"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+var styles_AuthRegisterComponent = [i0.styles];
+var RenderType_AuthRegisterComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_AuthRegisterComponent, data: {} });
+exports.RenderType_AuthRegisterComponent = RenderType_AuthRegisterComponent;
+function View_AuthRegisterComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 24, "div", [["class", "contents position-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 21, "div", [["class", "inner center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(4, 0, null, null, 3, "div", [["class", "logo text-center mb-large"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(6, 0, null, null, 0, "img", [["src", "/assets/images/common/logo_text.svg"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(9, 0, null, null, 1, "p", [["class", "read text-center mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            \u30A2\u30D7\u30EA\u306E\u59CB\u3081\u65B9\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n        "])), (_l()(), i1.ɵted(-1, null, ["\n\n        "])), (_l()(), i1.ɵeld(12, 0, null, null, 10, "dl", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(14, 0, null, null, 1, "dt", [["class", "text-center mb-small"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                \u65B0\u898F\u4F1A\u54E1\uFF08\u5E74\u4F1A\u8CBB500\u5186\uFF09\u767B\u9332\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(17, 0, null, null, 4, "dd", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(19, 0, null, null, 1, "button", [["class", "btn btn-primary btn-block"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.register() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u767B\u9332"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(23, 0, null, null, 1, "dt", [["class", "text-center mb-small"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                \u7121\u6599\u3067\u4E00\u90E8\u6A5F\u80FD\u3092\u4F7F\u7528\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(26, 0, null, null, 4, "dd", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(28, 0, null, null, 1, "button", [["class", "btn btn-primary btn-block"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
-        var pd_0 = (_co.start() !== false);
-        ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u306F\u3058\u3081\u308B"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(32, 0, null, null, 1, "dt", [["class", "text-center mb-small"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                \u3059\u3067\u306B\u4F1A\u54E1\u767B\u9332\u6E08\u307F\u306E\u65B9\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(35, 0, null, null, 4, "dd", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(37, 0, null, null, 1, "button", [["class", "btn btn-primary btn-block"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
-        var pd_0 = (_co.signIn() !== false);
-        ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30ED\u30B0\u30A4\u30F3"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(44, 0, null, null, 1, "app-loading", [], null, null, null, i2.View_LoadingComponent_0, i2.RenderType_LoadingComponent)), i1.ɵdid(45, 114688, null, 0, i3.LoadingComponent, [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isLoading; _ck(_v, 45, 0, currVal_0); }, null); }
-exports.View_AuthComponent_0 = View_AuthComponent_0;
-function View_AuthComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-auth", [], null, null, null, View_AuthComponent_0, RenderType_AuthComponent)), i1.ɵdid(1, 114688, null, 0, i4.AuthComponent, [i5.SasakiService, i6.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
-exports.View_AuthComponent_Host_0 = View_AuthComponent_Host_0;
-var AuthComponentNgFactory = i1.ɵccf("app-auth", i4.AuthComponent, View_AuthComponent_Host_0, {}, {}, []);
-exports.AuthComponentNgFactory = AuthComponentNgFactory;
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u767B\u9332"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(26, 0, null, null, 1, "app-loading", [], null, null, null, i2.View_LoadingComponent_0, i2.RenderType_LoadingComponent)), i1.ɵdid(27, 114688, null, 0, i3.LoadingComponent, [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isLoading; _ck(_v, 27, 0, currVal_0); }, null); }
+exports.View_AuthRegisterComponent_0 = View_AuthRegisterComponent_0;
+function View_AuthRegisterComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-auth-register", [], null, null, null, View_AuthRegisterComponent_0, RenderType_AuthRegisterComponent)), i1.ɵdid(1, 114688, null, 0, i4.AuthRegisterComponent, [i5.SasakiService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+exports.View_AuthRegisterComponent_Host_0 = View_AuthRegisterComponent_Host_0;
+var AuthRegisterComponentNgFactory = i1.ɵccf("app-auth-register", i4.AuthRegisterComponent, View_AuthRegisterComponent_Host_0, {}, {}, []);
+exports.AuthRegisterComponentNgFactory = AuthRegisterComponentNgFactory;
 
 
 /***/ }),
 
-/***/ "./src/client/src/app/components/auth/auth.component.scss.shim.ngstyle.js":
+/***/ "./src/client/src/app/components/auth/auth-register/auth-register.component.scss.shim.ngstyle.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -737,7 +764,7 @@ exports.styles = styles;
 
 /***/ }),
 
-/***/ "./src/client/src/app/components/auth/auth.component.ts":
+/***/ "./src/client/src/app/components/auth/auth-register/auth-register.component.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -778,21 +805,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * AuthComponent
- */
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
-var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-var AuthComponent = /** @class */ (function () {
-    function AuthComponent(sasaki, router) {
+var AuthRegisterComponent = /** @class */ (function () {
+    function AuthRegisterComponent(sasaki) {
         this.sasaki = sasaki;
-        this.router = router;
     }
-    AuthComponent.prototype.ngOnInit = function () {
+    AuthRegisterComponent.prototype.ngOnInit = function () {
         this.isLoading = false;
     };
-    AuthComponent.prototype.signIn = function () {
+    AuthRegisterComponent.prototype.register = function () {
         return __awaiter(this, void 0, void 0, function () {
             var error_1;
             return __generator(this, function (_a) {
@@ -816,7 +838,160 @@ var AuthComponent = /** @class */ (function () {
             });
         });
     };
-    AuthComponent.prototype.register = function () {
+    return AuthRegisterComponent;
+}());
+exports.AuthRegisterComponent = AuthRegisterComponent;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/auth/auth-select/auth-select.component.ngfactory.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+exports.Router_2 = router_1.Router;
+exports.UrlSerializer_4 = router_1.UrlSerializer;
+exports.ChildrenOutletContexts_5 = router_1.ChildrenOutletContexts;
+var common_1 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+exports.Location_6 = common_1.Location;
+exports.LocationStrategy_7 = common_1.LocationStrategy;
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+exports.Injector_8 = core_1.Injector;
+exports.NgModuleFactoryLoader_9 = core_1.NgModuleFactoryLoader;
+exports.Compiler_10 = core_1.Compiler;
+var i0 = __webpack_require__("./src/client/src/app/components/auth/auth-select/auth-select.component.scss.shim.ngstyle.js");
+var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var i2 = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ngfactory.js");
+var i3 = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ts");
+var i4 = __webpack_require__("./src/client/src/app/components/auth/auth-select/auth-select.component.ts");
+var i5 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i6 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var styles_AuthSelectComponent = [i0.styles];
+var RenderType_AuthSelectComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_AuthSelectComponent, data: {} });
+exports.RenderType_AuthSelectComponent = RenderType_AuthSelectComponent;
+function View_AuthSelectComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 42, "div", [["class", "contents position-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 39, "div", [["class", "inner center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(4, 0, null, null, 3, "div", [["class", "logo text-center mb-large"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(6, 0, null, null, 0, "img", [["src", "/assets/images/common/logo_text.svg"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(9, 0, null, null, 1, "p", [["class", "read text-center mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            \u30A2\u30D7\u30EA\u306E\u59CB\u3081\u65B9\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n        "])), (_l()(), i1.ɵted(-1, null, ["\n\n        "])), (_l()(), i1.ɵeld(12, 0, null, null, 28, "dl", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(14, 0, null, null, 1, "dt", [["class", "text-center mb-small"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                \u65B0\u898F\u4F1A\u54E1\uFF08\u5E74\u4F1A\u8CBB500\u5186\uFF09\u767B\u9332\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(17, 0, null, null, 4, "dd", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(19, 0, null, null, 1, "button", [["class", "btn btn-primary btn-block"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.register() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u767B\u9332"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(23, 0, null, null, 1, "dt", [["class", "text-center mb-small"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                \u7121\u6599\u3067\u4E00\u90E8\u6A5F\u80FD\u3092\u4F7F\u7528\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(26, 0, null, null, 4, "dd", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(28, 0, null, null, 1, "button", [["class", "btn btn-primary btn-block"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.start() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u306F\u3058\u3081\u308B"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(32, 0, null, null, 1, "dt", [["class", "text-center mb-small"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                \u3059\u3067\u306B\u4F1A\u54E1\u767B\u9332\u6E08\u307F\u306E\u65B9\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(35, 0, null, null, 4, "dd", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(37, 0, null, null, 1, "button", [["class", "btn btn-primary btn-block"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.signIn() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30ED\u30B0\u30A4\u30F3"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(44, 0, null, null, 1, "app-loading", [], null, null, null, i2.View_LoadingComponent_0, i2.RenderType_LoadingComponent)), i1.ɵdid(45, 114688, null, 0, i3.LoadingComponent, [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isLoading; _ck(_v, 45, 0, currVal_0); }, null); }
+exports.View_AuthSelectComponent_0 = View_AuthSelectComponent_0;
+function View_AuthSelectComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-auth-select", [], null, null, null, View_AuthSelectComponent_0, RenderType_AuthSelectComponent)), i1.ɵdid(1, 114688, null, 0, i4.AuthSelectComponent, [i5.SasakiService, i6.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+exports.View_AuthSelectComponent_Host_0 = View_AuthSelectComponent_Host_0;
+var AuthSelectComponentNgFactory = i1.ɵccf("app-auth-select", i4.AuthSelectComponent, View_AuthSelectComponent_Host_0, {}, {}, []);
+exports.AuthSelectComponentNgFactory = AuthSelectComponentNgFactory;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/auth/auth-select/auth-select.component.scss.shim.ngstyle.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var styles = [".contents[_ngcontent-%COMP%] {\n  min-height: auto; }\n\n.inner[_ngcontent-%COMP%] {\n  padding: 0;\n  width: 300px; }\n\n.logo[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 200px; }"];
+exports.styles = styles;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/auth/auth-select/auth-select.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var AuthSelectComponent = /** @class */ (function () {
+    function AuthSelectComponent(sasaki, router) {
+        this.sasaki = sasaki;
+        this.router = router;
+    }
+    AuthSelectComponent.prototype.ngOnInit = function () {
+        this.isLoading = false;
+    };
+    AuthSelectComponent.prototype.signIn = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.isLoading = true;
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.sasaki.signIn()];
+                    case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_1 = _a.sent();
+                        console.error(error_1);
+                        this.isLoading = false;
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AuthSelectComponent.prototype.register = function () {
         return __awaiter(this, void 0, void 0, function () {
             var error_2;
             return __generator(this, function (_a) {
@@ -840,17 +1015,157 @@ var AuthComponent = /** @class */ (function () {
             });
         });
     };
-    AuthComponent.prototype.start = function () {
+    AuthSelectComponent.prototype.start = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var deviceId;
             return __generator(this, function (_a) {
-                this.router.navigate(['/auth/walkThrough']);
+                this.sasaki.saveMemberType(sasaki_service_1.MemberType.NotMember);
+                deviceId = localStorage.getItem('deviceId');
+                if (deviceId === null) {
+                    this.router.navigate(['/walkThrough']);
+                }
+                else {
+                    this.router.navigate(['/']);
+                }
                 return [2 /*return*/];
             });
         });
     };
-    return AuthComponent;
+    return AuthSelectComponent;
 }());
-exports.AuthComponent = AuthComponent;
+exports.AuthSelectComponent = AuthSelectComponent;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/auth/auth-sign-out/auth-sign-out.component.ngfactory.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var i0 = __webpack_require__("./src/client/src/app/components/auth/auth-sign-out/auth-sign-out.component.scss.shim.ngstyle.js");
+var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var i2 = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ngfactory.js");
+var i3 = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ts");
+var i4 = __webpack_require__("./src/client/src/app/components/auth/auth-sign-out/auth-sign-out.component.ts");
+var i5 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var styles_AuthSignOutComponent = [i0.styles];
+var RenderType_AuthSignOutComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_AuthSignOutComponent, data: {} });
+exports.RenderType_AuthSignOutComponent = RenderType_AuthSignOutComponent;
+function View_AuthSignOutComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 15, "div", [["class", "contents position-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 12, "div", [["class", "inner center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(4, 0, null, null, 3, "p", [["class", "read text-center mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            \u30ED\u30B0\u30A4\u30F3\u3057\u307E\u3059\u3002\n            "])), (_l()(), i1.ɵeld(6, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u518D\u3073\u30ED\u30B0\u30A4\u30F3\u3059\u308B\u969B\u306B\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9\u3068\u30D1\u30B9\u30EF\u30FC\u30C9\u3092\u3054\u5165\u529B\u3044\u305F\u3060\u304D\u307E\u3059\u3002\n        "])), (_l()(), i1.ɵted(-1, null, ["\n\n        "])), (_l()(), i1.ɵeld(9, 0, null, null, 4, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(11, 0, null, null, 1, "button", [["class", "btn btn-primary btn-block"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.signOut() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30ED\u30B0\u30A2\u30A6\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(17, 0, null, null, 1, "app-loading", [], null, null, null, i2.View_LoadingComponent_0, i2.RenderType_LoadingComponent)), i1.ɵdid(18, 114688, null, 0, i3.LoadingComponent, [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isLoading; _ck(_v, 18, 0, currVal_0); }, null); }
+exports.View_AuthSignOutComponent_0 = View_AuthSignOutComponent_0;
+function View_AuthSignOutComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-auth-sign-out", [], null, null, null, View_AuthSignOutComponent_0, RenderType_AuthSignOutComponent)), i1.ɵdid(1, 114688, null, 0, i4.AuthSignOutComponent, [i5.SasakiService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+exports.View_AuthSignOutComponent_Host_0 = View_AuthSignOutComponent_Host_0;
+var AuthSignOutComponentNgFactory = i1.ɵccf("app-auth-sign-out", i4.AuthSignOutComponent, View_AuthSignOutComponent_Host_0, {}, {}, []);
+exports.AuthSignOutComponentNgFactory = AuthSignOutComponentNgFactory;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/auth/auth-sign-out/auth-sign-out.component.scss.shim.ngstyle.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var styles = [".contents[_ngcontent-%COMP%] {\n  min-height: auto; }"];
+exports.styles = styles;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/auth/auth-sign-out/auth-sign-out.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var AuthSignOutComponent = /** @class */ (function () {
+    function AuthSignOutComponent(sasaki) {
+        this.sasaki = sasaki;
+    }
+    AuthSignOutComponent.prototype.ngOnInit = function () {
+        this.isLoading = false;
+    };
+    AuthSignOutComponent.prototype.signOut = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        this.isLoading = true;
+                        _b.label = 1;
+                    case 1:
+                        _b.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.sasaki.signOut()];
+                    case 2:
+                        _b.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        _a = _b.sent();
+                        this.isLoading = false;
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return AuthSignOutComponent;
+}());
+exports.AuthSignOutComponent = AuthSignOutComponent;
 
 
 /***/ }),
@@ -1221,6 +1536,266 @@ exports.LawComponent = LawComponent;
 
 /***/ }),
 
+/***/ "./src/client/src/app/components/member/member-benefits/member-benefits.component.ngfactory.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var i0 = __webpack_require__("./src/client/src/app/components/member/member-benefits/member-benefits.component.scss.shim.ngstyle.js");
+var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var i2 = __webpack_require__("./src/client/src/app/components/member/member-benefits/member-benefits.component.ts");
+var styles_MemberBenefitsComponent = [i0.styles];
+var RenderType_MemberBenefitsComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_MemberBenefitsComponent, data: {} });
+exports.RenderType_MemberBenefitsComponent = RenderType_MemberBenefitsComponent;
+function View_MemberBenefitsComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  member-benefits works!\n"])), (_l()(), i1.ɵted(-1, null, ["\n"]))], null, null); }
+exports.View_MemberBenefitsComponent_0 = View_MemberBenefitsComponent_0;
+function View_MemberBenefitsComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-member-benefits", [], null, null, null, View_MemberBenefitsComponent_0, RenderType_MemberBenefitsComponent)), i1.ɵdid(1, 114688, null, 0, i2.MemberBenefitsComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+exports.View_MemberBenefitsComponent_Host_0 = View_MemberBenefitsComponent_Host_0;
+var MemberBenefitsComponentNgFactory = i1.ɵccf("app-member-benefits", i2.MemberBenefitsComponent, View_MemberBenefitsComponent_Host_0, {}, {}, []);
+exports.MemberBenefitsComponentNgFactory = MemberBenefitsComponentNgFactory;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/member/member-benefits/member-benefits.component.scss.shim.ngstyle.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var styles = [""];
+exports.styles = styles;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/member/member-benefits/member-benefits.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var MemberBenefitsComponent = /** @class */ (function () {
+    function MemberBenefitsComponent() {
+    }
+    MemberBenefitsComponent.prototype.ngOnInit = function () {
+    };
+    return MemberBenefitsComponent;
+}());
+exports.MemberBenefitsComponent = MemberBenefitsComponent;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/member/member-edit/member-edit.component.ngfactory.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var i0 = __webpack_require__("./src/client/src/app/components/member/member-edit/member-edit.component.scss.shim.ngstyle.js");
+var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var i2 = __webpack_require__("./src/client/src/app/components/member/member-edit/member-edit.component.ts");
+var styles_MemberEditComponent = [i0.styles];
+var RenderType_MemberEditComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_MemberEditComponent, data: {} });
+exports.RenderType_MemberEditComponent = RenderType_MemberEditComponent;
+function View_MemberEditComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  member-edit works!\n"])), (_l()(), i1.ɵted(-1, null, ["\n"]))], null, null); }
+exports.View_MemberEditComponent_0 = View_MemberEditComponent_0;
+function View_MemberEditComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-member-edit", [], null, null, null, View_MemberEditComponent_0, RenderType_MemberEditComponent)), i1.ɵdid(1, 114688, null, 0, i2.MemberEditComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+exports.View_MemberEditComponent_Host_0 = View_MemberEditComponent_Host_0;
+var MemberEditComponentNgFactory = i1.ɵccf("app-member-edit", i2.MemberEditComponent, View_MemberEditComponent_Host_0, {}, {}, []);
+exports.MemberEditComponentNgFactory = MemberEditComponentNgFactory;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/member/member-edit/member-edit.component.scss.shim.ngstyle.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var styles = [""];
+exports.styles = styles;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/member/member-edit/member-edit.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var MemberEditComponent = /** @class */ (function () {
+    function MemberEditComponent() {
+    }
+    MemberEditComponent.prototype.ngOnInit = function () {
+    };
+    return MemberEditComponent;
+}());
+exports.MemberEditComponent = MemberEditComponent;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/member/member-point/member-point.component.ngfactory.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var i0 = __webpack_require__("./src/client/src/app/components/member/member-point/member-point.component.scss.shim.ngstyle.js");
+var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var i2 = __webpack_require__("./src/client/src/app/components/member/member-point/member-point.component.ts");
+var styles_MemberPointComponent = [i0.styles];
+var RenderType_MemberPointComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_MemberPointComponent, data: {} });
+exports.RenderType_MemberPointComponent = RenderType_MemberPointComponent;
+function View_MemberPointComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  member-point works!\n"])), (_l()(), i1.ɵted(-1, null, ["\n"]))], null, null); }
+exports.View_MemberPointComponent_0 = View_MemberPointComponent_0;
+function View_MemberPointComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-member-point", [], null, null, null, View_MemberPointComponent_0, RenderType_MemberPointComponent)), i1.ɵdid(1, 114688, null, 0, i2.MemberPointComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+exports.View_MemberPointComponent_Host_0 = View_MemberPointComponent_Host_0;
+var MemberPointComponentNgFactory = i1.ɵccf("app-member-point", i2.MemberPointComponent, View_MemberPointComponent_Host_0, {}, {}, []);
+exports.MemberPointComponentNgFactory = MemberPointComponentNgFactory;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/member/member-point/member-point.component.scss.shim.ngstyle.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var styles = [""];
+exports.styles = styles;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/member/member-point/member-point.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var MemberPointComponent = /** @class */ (function () {
+    function MemberPointComponent() {
+    }
+    MemberPointComponent.prototype.ngOnInit = function () {
+    };
+    return MemberPointComponent;
+}());
+exports.MemberPointComponent = MemberPointComponent;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/member/member-withdraw/member-withdraw.component.ngfactory.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var i0 = __webpack_require__("./src/client/src/app/components/member/member-withdraw/member-withdraw.component.scss.shim.ngstyle.js");
+var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var i2 = __webpack_require__("./src/client/src/app/components/member/member-withdraw/member-withdraw.component.ts");
+var styles_MemberWithdrawComponent = [i0.styles];
+var RenderType_MemberWithdrawComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_MemberWithdrawComponent, data: {} });
+exports.RenderType_MemberWithdrawComponent = RenderType_MemberWithdrawComponent;
+function View_MemberWithdrawComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  member-withdraw works!\n"])), (_l()(), i1.ɵted(-1, null, ["\n"]))], null, null); }
+exports.View_MemberWithdrawComponent_0 = View_MemberWithdrawComponent_0;
+function View_MemberWithdrawComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-member-withdraw", [], null, null, null, View_MemberWithdrawComponent_0, RenderType_MemberWithdrawComponent)), i1.ɵdid(1, 114688, null, 0, i2.MemberWithdrawComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+exports.View_MemberWithdrawComponent_Host_0 = View_MemberWithdrawComponent_Host_0;
+var MemberWithdrawComponentNgFactory = i1.ɵccf("app-member-withdraw", i2.MemberWithdrawComponent, View_MemberWithdrawComponent_Host_0, {}, {}, []);
+exports.MemberWithdrawComponentNgFactory = MemberWithdrawComponentNgFactory;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/member/member-withdraw/member-withdraw.component.scss.shim.ngstyle.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var styles = [""];
+exports.styles = styles;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/member/member-withdraw/member-withdraw.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var MemberWithdrawComponent = /** @class */ (function () {
+    function MemberWithdrawComponent() {
+    }
+    MemberWithdrawComponent.prototype.ngOnInit = function () {
+    };
+    return MemberWithdrawComponent;
+}());
+exports.MemberWithdrawComponent = MemberWithdrawComponent;
+
+
+/***/ }),
+
 /***/ "./src/client/src/app/components/not-found/not-found.component.ngfactory.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1362,34 +1937,34 @@ var i6 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.servic
 var styles_HeaderMenuComponent = [i0.styles];
 var RenderType_HeaderMenuComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_HeaderMenuComponent, data: {} });
 exports.RenderType_HeaderMenuComponent = RenderType_HeaderMenuComponent;
-function View_HeaderMenuComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "auth/register"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+function View_HeaderMenuComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "/auth/register"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
         ad = (pd_0 && ad);
     } if (("click" === en)) {
         var pd_1 = (_co.close.emit() !== false);
         ad = (pd_1 && ad);
-    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u7279\u5178 / \u4F1A\u54E1\u767B\u9332"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "auth/register"; _ck(_v, 3, 0, currVal_0); }, null); }
-function View_HeaderMenuComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "member/benefits"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u7279\u5178 / \u4F1A\u54E1\u767B\u9332"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "/auth/register"; _ck(_v, 3, 0, currVal_0); }, null); }
+function View_HeaderMenuComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "/member/benefits"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
         ad = (pd_0 && ad);
     } if (("click" === en)) {
         var pd_1 = (_co.close.emit() !== false);
         ad = (pd_1 && ad);
-    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u7279\u5178"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "member/benefits"; _ck(_v, 3, 0, currVal_0); }, null); }
-function View_HeaderMenuComponent_3(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "member/edit"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u7279\u5178"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "/member/benefits"; _ck(_v, 3, 0, currVal_0); }, null); }
+function View_HeaderMenuComponent_3(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "/member/edit"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
         ad = (pd_0 && ad);
     } if (("click" === en)) {
         var pd_1 = (_co.close.emit() !== false);
         ad = (pd_1 && ad);
-    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u60C5\u5831\u5909\u66F4"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "member/edit"; _ck(_v, 3, 0, currVal_0); }, null); }
-function View_HeaderMenuComponent_4(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "auth/signOut"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u60C5\u5831\u5909\u66F4"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "/member/edit"; _ck(_v, 3, 0, currVal_0); }, null); }
+function View_HeaderMenuComponent_4(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "/auth/signOut"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
         ad = (pd_0 && ad);
     } if (("click" === en)) {
         var pd_1 = (_co.close.emit() !== false);
         ad = (pd_1 && ad);
-    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u30ED\u30B0\u30A2\u30A6\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "auth/signOut"; _ck(_v, 3, 0, currVal_0); }, null); }
+    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u30ED\u30B0\u30A2\u30A6\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "/auth/signOut"; _ck(_v, 3, 0, currVal_0); }, null); }
 function View_HeaderMenuComponent_5(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 8, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 5, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "/member/withdraw"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
         ad = (pd_0 && ad);
@@ -1645,12 +2220,16 @@ exports.HeaderComponent = HeaderComponent;
 var pages = [
     { url: '/ticket', title: 'チケットホルダー', prev: false },
     { url: '/purchase', title: 'チケット購入', prev: false },
-    { url: '/setting', title: '設定変更', prev: false },
+    { url: '/member/point', title: '会員ポイント', prev: false },
     { url: '/about', title: 'このアプリについて', prev: true },
-    { url: '/profile', title: 'ユーザー情報変更', prev: true },
     { url: '/policy', title: '利用規約', prev: true },
     { url: '/law', title: '特定商取引法に基づく表記', prev: true },
-    { url: '/privacy', title: 'プライバシーポリシー', prev: true }
+    { url: '/privacy', title: 'プライバシーポリシー', prev: true },
+    { url: '/law', title: '特定商取引法に基づく表記', prev: true },
+    { url: '/auth/signOut', title: 'ログアウト', prev: true },
+    { url: '/member/benefits', title: '会員特典', prev: true },
+    { url: '/member/edit', title: '会員情報変更', prev: true },
+    { url: '/member/withdraw', title: '退会', prev: true }
 ];
 
 
@@ -3081,12 +3660,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
-var storage_service_1 = __webpack_require__("./src/client/src/app/services/storage/storage.service.ts");
 var AuthGuardService = /** @class */ (function () {
-    function AuthGuardService(router, sasaki, storage) {
+    function AuthGuardService(router, sasaki) {
         this.router = router;
         this.sasaki = sasaki;
-        this.storage = storage;
     }
     /**
      * 認証
@@ -3104,14 +3681,16 @@ var AuthGuardService = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         if (!this.sasaki.isMember()) {
-                            deviceId = this.storage.load('deviceId');
-                            console.log(deviceId);
+                            deviceId = localStorage.getItem('deviceId');
+                            if (deviceId === null) {
+                                throw new Error('deviceId is null');
+                            }
                         }
                         return [2 /*return*/, true];
                     case 2:
                         err_1 = _a.sent();
                         console.log('canActivate', err_1);
-                        this.router.navigate(['/auth']);
+                        this.router.navigate(['/auth/select']);
                         return [2 /*return*/, false];
                     case 3: return [2 /*return*/];
                 }
@@ -3437,6 +4016,80 @@ var InAppBrowserTarget;
 
 /***/ }),
 
+/***/ "./src/client/src/app/services/member-guard/member-guard.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var MemberGuardService = /** @class */ (function () {
+    function MemberGuardService(router, sasaki) {
+        this.router = router;
+        this.sasaki = sasaki;
+    }
+    /**
+     * 認証
+     * @method canActivate
+     * @returns {Promise<boolean>}
+     */
+    MemberGuardService.prototype.canActivate = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                if (this.sasaki.isMember()) {
+                    return [2 /*return*/, true];
+                }
+                else {
+                    this.router.navigate(['/auth/select']);
+                    return [2 /*return*/, false];
+                }
+                return [2 /*return*/];
+            });
+        });
+    };
+    return MemberGuardService;
+}());
+exports.MemberGuardService = MemberGuardService;
+
+
+/***/ }),
+
 /***/ "./src/client/src/app/services/reservation/reservation.service.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3664,7 +4317,7 @@ var SasakiService = /** @class */ (function () {
     function SasakiService(http, storage) {
         this.http = http;
         this.storage = storage;
-        this.setMemberType();
+        this.loadMemberType();
     }
     /**
      * getServices
@@ -3706,10 +4359,7 @@ var SasakiService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.storage.save('member', {
-                            memberType: MemberType.Member
-                        }, storage_service_1.SaveType.Local);
-                        this.setMemberType();
+                        this.saveMemberType(MemberType.Member);
                         url = '/api/authorize/signIn';
                         return [4 /*yield*/, this.http.get(url, {}).toPromise()];
                     case 1:
@@ -3772,7 +4422,7 @@ var SasakiService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.setMemberType();
+                        this.loadMemberType();
                         url = '/api/authorize/getCredentials';
                         options = {
                             params: new http_1.HttpParams().set('member', this.member)
@@ -3799,13 +4449,23 @@ var SasakiService = /** @class */ (function () {
         });
     };
     /**
-     * 会員タイプ設定
+     * 会員タイプ保存
      */
-    SasakiService.prototype.setMemberType = function () {
+    SasakiService.prototype.saveMemberType = function (memberType) {
+        this.storage.save('member', {
+            memberType: memberType
+        }, storage_service_1.SaveType.Local);
+        this.member = memberType;
+    };
+    /**
+     * 会員タイプ読み込み
+     */
+    SasakiService.prototype.loadMemberType = function () {
         var member = this.storage.load('member', storage_service_1.SaveType.Local);
         this.member = (member === null)
             ? MemberType.NotMember
-            : MemberType.Member;
+            : member.memberType;
+        console.log(this.member);
     };
     /**
      * 会員判定

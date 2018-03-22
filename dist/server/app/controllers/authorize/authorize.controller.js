@@ -91,10 +91,10 @@ exports.signInRedirect = signInRedirect;
 function signOut(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('signOut');
-        const authModel = new auth_model_1.AuthModel(req.session.auth);
+        const authModel = new auth2_model_1.Auth2Model(req.session.auth);
         const auth = authModel.create();
         const logoutUrl = auth.generateLogoutUrl();
-        console.log('logoutUrl:', logoutUrl);
+        log('logoutUrl:', logoutUrl);
         res.json({
             url: logoutUrl
         });
@@ -105,7 +105,7 @@ function signOutRedirect(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('signOutRedirect');
         delete req.session.auth;
-        res.redirect('/#/auth/login');
+        res.redirect('/');
     });
 }
 exports.signOutRedirect = signOutRedirect;

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import 'rxjs/add/operator/toPromise';
 import { environment } from '../../../environments/environment';
-import { StorageService, SaveType } from '../storage/storage.service';
+import { SaveType, StorageService } from '../storage/storage.service';
 
 @Injectable()
 export class SasakiService {
@@ -25,7 +25,7 @@ export class SasakiService {
         private http: HttpClient,
         private storage: StorageService
     ) {
-        this.setMemberType();
+        this.loadMemberType();
     }
 
     /**
@@ -52,10 +52,7 @@ export class SasakiService {
      * サインイン
      */
     public async signIn() {
-        this.storage.save('member', {
-            memberType: MemberType.Member
-        }, SaveType.Local);
-        this.setMemberType();
+        this.saveMemberType(MemberType.Member);
         const url = '/api/authorize/signIn';
         const result = await this.http.get<any>(url, {}).toPromise();
         console.log(result.url);
@@ -90,7 +87,7 @@ export class SasakiService {
      * @method authorize
      */
     public async authorize() {
-        this.setMemberType();
+        this.loadMemberType();
         const url = '/api/authorize/getCredentials';
         const options = {
             params: new HttpParams().set('member', this.member)
@@ -112,13 +109,24 @@ export class SasakiService {
     }
 
     /**
-     * 会員タイプ設定
+     * 会員タイプ保存
      */
-    private setMemberType() {
+    public saveMemberType(memberType: MemberType) {
+        this.storage.save('member', {
+            memberType: memberType
+        }, SaveType.Local);
+        this.member = memberType;
+    }
+
+    /**
+     * 会員タイプ読み込み
+     */
+    private loadMemberType() {
         const member = this.storage.load('member', SaveType.Local);
         this.member = (member === null)
             ? MemberType.NotMember
-            : MemberType.Member;
+            : member.memberType;
+        console.log(this.member);
     }
 
     /**

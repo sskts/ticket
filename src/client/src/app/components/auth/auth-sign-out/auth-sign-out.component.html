@@ -1,3 +1,13 @@
-<p>
-  auth-sign-out works!
-</p>
+<div class="contents position-center">
+    <div class="inner center">
+        <p class="read text-center mb-middle">
+            ログインします。
+            <br>再びログインする際にメールアドレスとパスワードをご入力いただきます。
+        </p>
+
+        <div>
+            <button class="btn btn-primary btn-block" (click)="signOut()">ログアウト</button>
+        </div>
+    </div>
+</div>
+<app-loading [show]="isLoading"></app-loading>
