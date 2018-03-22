@@ -7,4 +7,8 @@
         <div class="mb-xx-small icon-purchase-white"></div>
         <div>チケット購入</div>
     </li>
+    <li *ngIf="sasaki.isMember()" routerLink="/purchase" routerLinkActive="active">
+        <div class="mb-xx-small icon-purchase-white"></div>
+        <div>会員ポイント</div>
+    </li>
 </ul>

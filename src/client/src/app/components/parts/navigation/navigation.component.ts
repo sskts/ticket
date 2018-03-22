@@ -2,6 +2,7 @@
  * NavigationComponent
  */
 import { Component, OnInit } from '@angular/core';
+import { SasakiService } from '../../../services/sasaki/sasaki.service';
 
 @Component({
     selector: 'app-navigation',
@@ -15,7 +16,9 @@ import { Component, OnInit } from '@angular/core';
  */
 export class NavigationComponent implements OnInit {
 
-    constructor() { }
+    constructor(
+        public sasaki: SasakiService
+    ) { }
 
     /**
      * 初期化

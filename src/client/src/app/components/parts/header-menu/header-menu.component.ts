@@ -4,6 +4,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { CallNativeService, InAppBrowserTarget } from '../../../services/call-native/call-native.service';
+import { SasakiService } from '../../../services/sasaki/sasaki.service';
 
 @Component({
     selector: 'app-header-menu',
@@ -16,7 +17,10 @@ export class HeaderMenuComponent implements OnInit {
     @Output() public close: EventEmitter<{}> = new EventEmitter();
     public portalSite: string;
 
-    constructor(private callNative: CallNativeService) { }
+    constructor(
+        private callNative: CallNativeService,
+        public sasaki: SasakiService
+    ) { }
 
     /**
      * 初期化

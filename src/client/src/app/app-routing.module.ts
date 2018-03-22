@@ -15,11 +15,25 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { WalkThroughComponent } from './components/walk-through/walk-through.component';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
-import { AuthComponent } from './components/auth/auth.component';
+import { AuthSelectComponent } from './components/auth/auth-select/auth-select.component';
+import { AuthRegisterComponent } from './components/auth/auth-register/auth-register.component';
+import { AuthSignOutComponent } from './components/auth/auth-sign-out/auth-sign-out.component';
+import { MemberBenefitsComponent } from './components/member/member-benefits/member-benefits.component';
+import { MemberEditComponent } from './components/member/member-edit/member-edit.component';
+import { MemberWithdrawComponent } from './components/member/member-withdraw/member-withdraw.component';
+import { MemberGuardService } from './services/member-guard/member-guard.service';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/ticket', pathMatch: 'full' },
-    { path: 'auth', component: AuthComponent },
+    { path: 'auth', component: AuthSelectComponent },
+    {
+        path: 'auth',
+        children: [
+            { path: 'select', component: AuthSelectComponent },
+            { path: 'register', component: AuthRegisterComponent },
+            { path: 'signOut', component: AuthSignOutComponent }
+        ]
+    },
     {
         path: '',
         component: BaseComponent,
@@ -34,17 +48,13 @@ const appRoutes: Routes = [
         ]
     },
     {
-        
         path: 'member',
         component: BaseComponent,
-        canActivate: [AuthGuardService],
+        canActivate: [MemberGuardService],
         children: [
-            { path: 'ticket', component: TicketComponent },
-            { path: 'purchase', component: PurchaseComponent },
-            { path: 'about', component: AboutComponent },
-            { path: 'policy', component: PolicyComponent },
-            { path: 'law', component: LawComponent },
-            { path: 'privacy', component: PrivacyComponent }
+            { path: 'benefits', component: MemberBenefitsComponent },
+            { path: 'edit', component: MemberEditComponent },
+            { path: 'withdraw', component: MemberWithdrawComponent }
         ]
     },
     { path: 'walkThrough', component: WalkThroughComponent },

@@ -319,19 +319,6 @@ var appRoutes = [
             { path: 'privacy', component: privacy_component_1.PrivacyComponent }
         ]
     },
-    {
-        path: 'member',
-        component: base_component_1.BaseComponent,
-        canActivate: [auth_guard_service_1.AuthGuardService],
-        children: [
-            { path: 'ticket', component: ticket_component_1.TicketComponent },
-            { path: 'purchase', component: purchase_component_1.PurchaseComponent },
-            { path: 'about', component: about_component_1.AboutComponent },
-            { path: 'policy', component: policy_component_1.PolicyComponent },
-            { path: 'law', component: law_component_1.LawComponent },
-            { path: 'privacy', component: privacy_component_1.PrivacyComponent }
-        ]
-    },
     { path: 'walkThrough', component: walk_through_component_1.WalkThroughComponent },
     { path: 'error/:redirect', component: error_component_1.ErrorComponent },
     { path: 'error', component: error_component_1.ErrorComponent },
@@ -511,7 +498,7 @@ var i38 = __webpack_require__("./src/client/src/app/components/walk-through/walk
 var i39 = __webpack_require__("./src/client/src/app/components/error/error.component.ts");
 var i40 = __webpack_require__("./src/client/src/app/components/not-found/not-found.component.ts");
 var i41 = __webpack_require__("./src/client/src/app/app-routing.module.ts");
-var AppModuleNgFactory = i0.ɵcmf(i1.AppModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.AuthComponentNgFactory, i4.BaseComponentNgFactory, i5.TicketComponentNgFactory, i6.PurchaseComponentNgFactory, i7.AboutComponentNgFactory, i8.PolicyComponentNgFactory, i9.LawComponentNgFactory, i10.PrivacyComponentNgFactory, i11.WalkThroughComponentNgFactory, i12.ErrorComponentNgFactory, i13.NotFoundComponentNgFactory, i14.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵq, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i15.NgLocalization, i15.NgLocaleLocalization, [i0.LOCALE_ID, [2, i15.ɵa]]), i0.ɵmpd(5120, i0.APP_ID, i0.ɵi, []), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵn, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵo, []), i0.ɵmpd(4608, i16.DomSanitizer, i16.ɵe, [i15.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i16.DomSanitizer]), i0.ɵmpd(4608, i16.HAMMER_GESTURE_CONFIG, i16.HammerGestureConfig, []), i0.ɵmpd(5120, i16.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p1_0, p2_0, p2_1) { return [new i16.ɵDomEventsPlugin(p0_0, p0_1), new i16.ɵKeyEventsPlugin(p1_0), new i16.ɵHammerGesturesPlugin(p2_0, p2_1)]; }, [i15.DOCUMENT, i0.NgZone, i15.DOCUMENT, i15.DOCUMENT, i16.HAMMER_GESTURE_CONFIG]), i0.ɵmpd(4608, i16.EventManager, i16.EventManager, [i16.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i16.ɵDomSharedStylesHost, i16.ɵDomSharedStylesHost, [i15.DOCUMENT]), i0.ɵmpd(4608, i16.ɵDomRendererFactory2, i16.ɵDomRendererFactory2, [i16.EventManager, i16.ɵDomSharedStylesHost]), i0.ɵmpd(6144, i0.RendererFactory2, null, [i16.ɵDomRendererFactory2]), i0.ɵmpd(6144, i16.ɵSharedStylesHost, null, [i16.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i0.Testability, i0.Testability, [i0.NgZone]), i0.ɵmpd(4608, i16.Meta, i16.Meta, [i15.DOCUMENT]), i0.ɵmpd(4608, i16.Title, i16.Title, [i15.DOCUMENT]), i0.ɵmpd(4608, i17.HttpXsrfTokenExtractor, i17.ɵh, [i15.DOCUMENT, i0.PLATFORM_ID, i17.ɵf]), i0.ɵmpd(4608, i17.ɵi, i17.ɵi, [i17.HttpXsrfTokenExtractor, i17.ɵg]), i0.ɵmpd(5120, i17.HTTP_INTERCEPTORS, function (p0_0) { return [p0_0]; }, [i17.ɵi]), i0.ɵmpd(4608, i17.ɵe, i17.ɵe, []), i0.ɵmpd(6144, i17.XhrFactory, null, [i17.ɵe]), i0.ɵmpd(4608, i17.HttpXhrBackend, i17.HttpXhrBackend, [i17.XhrFactory]), i0.ɵmpd(6144, i17.HttpBackend, null, [i17.HttpXhrBackend]), i0.ɵmpd(4608, i17.HttpHandler, i17.ɵc, [i17.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i17.HttpClient, i17.HttpClient, [i17.HttpHandler]), i0.ɵmpd(5120, i18.ActivatedRoute, i18.ɵf, [i18.Router]), i0.ɵmpd(4608, i18.NoPreloading, i18.NoPreloading, []), i0.ɵmpd(6144, i18.PreloadingStrategy, null, [i18.NoPreloading]), i0.ɵmpd(135680, i18.RouterPreloader, i18.RouterPreloader, [i18.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i18.PreloadingStrategy]), i0.ɵmpd(4608, i18.PreloadAllModules, i18.PreloadAllModules, []), i0.ɵmpd(5120, i18.ROUTER_INITIALIZER, i18.ɵi, [i18.ɵg]), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0) { return [p0_0]; }, [i18.ROUTER_INITIALIZER]), i0.ɵmpd(4608, i19.FormBuilder, i19.FormBuilder, []), i0.ɵmpd(4608, i19.ɵi, i19.ɵi, []), i0.ɵmpd(4608, i20.StorageService, i20.StorageService, []), i0.ɵmpd(4608, i21.SasakiService, i21.SasakiService, [i17.HttpClient, i20.StorageService]), i0.ɵmpd(4608, i22.AuthGuardService, i22.AuthGuardService, [i18.Router, i21.SasakiService]), i0.ɵmpd(4608, i23.AwsCognitoService, i23.AwsCognitoService, []), i0.ɵmpd(4608, i24.ReservationService, i24.ReservationService, [i23.AwsCognitoService, i20.StorageService]), i0.ɵmpd(4608, i25.ScheduleService, i25.ScheduleService, [i20.StorageService, i21.SasakiService]), i0.ɵmpd(4608, i26.SelectService, i26.SelectService, [i20.StorageService]), i0.ɵmpd(4608, i27.CallNativeService, i27.CallNativeService, []), i0.ɵmpd(512, i15.CommonModule, i15.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i16.ɵa, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i18.ɵb()]; }, []), i0.ɵmpd(512, i18.ɵg, i18.ɵg, [i0.Injector]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0) { return [i16.ɵh(p0_0), i18.ɵh(p1_0)]; }, [[2, i0.NgProbeToken], i18.ɵg]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(512, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(512, i16.BrowserModule, i16.BrowserModule, [[3, i16.BrowserModule]]), i0.ɵmpd(512, i17.HttpClientXsrfModule, i17.HttpClientXsrfModule, []), i0.ɵmpd(512, i17.HttpClientModule, i17.HttpClientModule, []), i0.ɵmpd(512, i28.MomentModule, i28.MomentModule, []), i0.ɵmpd(512, i29.SwiperModule, i29.SwiperModule, []), i0.ɵmpd(1024, i18.ɵa, i18.ɵd, [[3, i18.Router]]), i0.ɵmpd(512, i18.UrlSerializer, i18.DefaultUrlSerializer, []), i0.ɵmpd(512, i18.ChildrenOutletContexts, i18.ChildrenOutletContexts, []), i0.ɵmpd(256, i18.ROUTER_CONFIGURATION, { useHash: true, enableTracing: true }, []), i0.ɵmpd(1024, i15.LocationStrategy, i18.ɵc, [i15.PlatformLocation, [2, i15.APP_BASE_HREF], i18.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i15.Location, i15.Location, [i15.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i0.SystemJsNgModuleLoader, [i0.Compiler, [2, i0.SystemJsNgModuleLoaderConfig]]), i0.ɵmpd(1024, i18.ROUTES, function () { return [[{ path: "", redirectTo: "/ticket", pathMatch: "full" }, { path: "auth", component: i30.AuthComponent }, { path: "", component: i31.BaseComponent, canActivate: [i22.AuthGuardService], children: [{ path: "ticket", component: i32.TicketComponent }, { path: "purchase", component: i33.PurchaseComponent }, { path: "about", component: i34.AboutComponent }, { path: "policy", component: i35.PolicyComponent }, { path: "law", component: i36.LawComponent }, { path: "privacy", component: i37.PrivacyComponent }] }, { path: "member", component: i31.BaseComponent, canActivate: [i22.AuthGuardService], children: [{ path: "ticket", component: i32.TicketComponent }, { path: "purchase", component: i33.PurchaseComponent }, { path: "about", component: i34.AboutComponent }, { path: "policy", component: i35.PolicyComponent }, { path: "law", component: i36.LawComponent }, { path: "privacy", component: i37.PrivacyComponent }] }, { path: "walkThrough", component: i38.WalkThroughComponent }, { path: "error/:redirect", component: i39.ErrorComponent }, { path: "error", component: i39.ErrorComponent }, { path: "**", component: i40.NotFoundComponent }]]; }, []), i0.ɵmpd(1024, i18.Router, i18.ɵe, [i0.ApplicationRef, i18.UrlSerializer, i18.ChildrenOutletContexts, i15.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i18.ROUTES, i18.ROUTER_CONFIGURATION, [2, i18.UrlHandlingStrategy], [2, i18.RouteReuseStrategy]]), i0.ɵmpd(512, i18.RouterModule, i18.RouterModule, [[2, i18.ɵa], [2, i18.Router]]), i0.ɵmpd(512, i41.AppRoutingModule, i41.AppRoutingModule, []), i0.ɵmpd(512, i19.ɵba, i19.ɵba, []), i0.ɵmpd(512, i19.ReactiveFormsModule, i19.ReactiveFormsModule, []), i0.ɵmpd(512, i19.FormsModule, i19.FormsModule, []), i0.ɵmpd(512, i1.AppModule, i1.AppModule, []), i0.ɵmpd(256, i17.ɵf, "XSRF-TOKEN", []), i0.ɵmpd(256, i17.ɵg, "X-XSRF-TOKEN", [])]); });
+var AppModuleNgFactory = i0.ɵcmf(i1.AppModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.AuthComponentNgFactory, i4.BaseComponentNgFactory, i5.TicketComponentNgFactory, i6.PurchaseComponentNgFactory, i7.AboutComponentNgFactory, i8.PolicyComponentNgFactory, i9.LawComponentNgFactory, i10.PrivacyComponentNgFactory, i11.WalkThroughComponentNgFactory, i12.ErrorComponentNgFactory, i13.NotFoundComponentNgFactory, i14.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵq, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i15.NgLocalization, i15.NgLocaleLocalization, [i0.LOCALE_ID, [2, i15.ɵa]]), i0.ɵmpd(5120, i0.APP_ID, i0.ɵi, []), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵn, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵo, []), i0.ɵmpd(4608, i16.DomSanitizer, i16.ɵe, [i15.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i16.DomSanitizer]), i0.ɵmpd(4608, i16.HAMMER_GESTURE_CONFIG, i16.HammerGestureConfig, []), i0.ɵmpd(5120, i16.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p1_0, p2_0, p2_1) { return [new i16.ɵDomEventsPlugin(p0_0, p0_1), new i16.ɵKeyEventsPlugin(p1_0), new i16.ɵHammerGesturesPlugin(p2_0, p2_1)]; }, [i15.DOCUMENT, i0.NgZone, i15.DOCUMENT, i15.DOCUMENT, i16.HAMMER_GESTURE_CONFIG]), i0.ɵmpd(4608, i16.EventManager, i16.EventManager, [i16.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i16.ɵDomSharedStylesHost, i16.ɵDomSharedStylesHost, [i15.DOCUMENT]), i0.ɵmpd(4608, i16.ɵDomRendererFactory2, i16.ɵDomRendererFactory2, [i16.EventManager, i16.ɵDomSharedStylesHost]), i0.ɵmpd(6144, i0.RendererFactory2, null, [i16.ɵDomRendererFactory2]), i0.ɵmpd(6144, i16.ɵSharedStylesHost, null, [i16.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i0.Testability, i0.Testability, [i0.NgZone]), i0.ɵmpd(4608, i16.Meta, i16.Meta, [i15.DOCUMENT]), i0.ɵmpd(4608, i16.Title, i16.Title, [i15.DOCUMENT]), i0.ɵmpd(4608, i17.HttpXsrfTokenExtractor, i17.ɵh, [i15.DOCUMENT, i0.PLATFORM_ID, i17.ɵf]), i0.ɵmpd(4608, i17.ɵi, i17.ɵi, [i17.HttpXsrfTokenExtractor, i17.ɵg]), i0.ɵmpd(5120, i17.HTTP_INTERCEPTORS, function (p0_0) { return [p0_0]; }, [i17.ɵi]), i0.ɵmpd(4608, i17.ɵe, i17.ɵe, []), i0.ɵmpd(6144, i17.XhrFactory, null, [i17.ɵe]), i0.ɵmpd(4608, i17.HttpXhrBackend, i17.HttpXhrBackend, [i17.XhrFactory]), i0.ɵmpd(6144, i17.HttpBackend, null, [i17.HttpXhrBackend]), i0.ɵmpd(4608, i17.HttpHandler, i17.ɵc, [i17.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i17.HttpClient, i17.HttpClient, [i17.HttpHandler]), i0.ɵmpd(5120, i18.ActivatedRoute, i18.ɵf, [i18.Router]), i0.ɵmpd(4608, i18.NoPreloading, i18.NoPreloading, []), i0.ɵmpd(6144, i18.PreloadingStrategy, null, [i18.NoPreloading]), i0.ɵmpd(135680, i18.RouterPreloader, i18.RouterPreloader, [i18.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i18.PreloadingStrategy]), i0.ɵmpd(4608, i18.PreloadAllModules, i18.PreloadAllModules, []), i0.ɵmpd(5120, i18.ROUTER_INITIALIZER, i18.ɵi, [i18.ɵg]), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0) { return [p0_0]; }, [i18.ROUTER_INITIALIZER]), i0.ɵmpd(4608, i19.FormBuilder, i19.FormBuilder, []), i0.ɵmpd(4608, i19.ɵi, i19.ɵi, []), i0.ɵmpd(4608, i20.StorageService, i20.StorageService, []), i0.ɵmpd(4608, i21.SasakiService, i21.SasakiService, [i17.HttpClient, i20.StorageService]), i0.ɵmpd(4608, i22.AuthGuardService, i22.AuthGuardService, [i18.Router, i21.SasakiService, i20.StorageService]), i0.ɵmpd(4608, i23.AwsCognitoService, i23.AwsCognitoService, []), i0.ɵmpd(4608, i24.ReservationService, i24.ReservationService, [i23.AwsCognitoService, i20.StorageService]), i0.ɵmpd(4608, i25.ScheduleService, i25.ScheduleService, [i20.StorageService, i21.SasakiService]), i0.ɵmpd(4608, i26.SelectService, i26.SelectService, [i20.StorageService]), i0.ɵmpd(4608, i27.CallNativeService, i27.CallNativeService, []), i0.ɵmpd(512, i15.CommonModule, i15.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i16.ɵa, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i18.ɵb()]; }, []), i0.ɵmpd(512, i18.ɵg, i18.ɵg, [i0.Injector]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0) { return [i16.ɵh(p0_0), i18.ɵh(p1_0)]; }, [[2, i0.NgProbeToken], i18.ɵg]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(512, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(512, i16.BrowserModule, i16.BrowserModule, [[3, i16.BrowserModule]]), i0.ɵmpd(512, i17.HttpClientXsrfModule, i17.HttpClientXsrfModule, []), i0.ɵmpd(512, i17.HttpClientModule, i17.HttpClientModule, []), i0.ɵmpd(512, i28.MomentModule, i28.MomentModule, []), i0.ɵmpd(512, i29.SwiperModule, i29.SwiperModule, []), i0.ɵmpd(1024, i18.ɵa, i18.ɵd, [[3, i18.Router]]), i0.ɵmpd(512, i18.UrlSerializer, i18.DefaultUrlSerializer, []), i0.ɵmpd(512, i18.ChildrenOutletContexts, i18.ChildrenOutletContexts, []), i0.ɵmpd(256, i18.ROUTER_CONFIGURATION, { useHash: true, enableTracing: true }, []), i0.ɵmpd(1024, i15.LocationStrategy, i18.ɵc, [i15.PlatformLocation, [2, i15.APP_BASE_HREF], i18.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i15.Location, i15.Location, [i15.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i0.SystemJsNgModuleLoader, [i0.Compiler, [2, i0.SystemJsNgModuleLoaderConfig]]), i0.ɵmpd(1024, i18.ROUTES, function () { return [[{ path: "", redirectTo: "/ticket", pathMatch: "full" }, { path: "auth", component: i30.AuthComponent }, { path: "", component: i31.BaseComponent, canActivate: [i22.AuthGuardService], children: [{ path: "ticket", component: i32.TicketComponent }, { path: "purchase", component: i33.PurchaseComponent }, { path: "about", component: i34.AboutComponent }, { path: "policy", component: i35.PolicyComponent }, { path: "law", component: i36.LawComponent }, { path: "privacy", component: i37.PrivacyComponent }] }, { path: "walkThrough", component: i38.WalkThroughComponent }, { path: "error/:redirect", component: i39.ErrorComponent }, { path: "error", component: i39.ErrorComponent }, { path: "**", component: i40.NotFoundComponent }]]; }, []), i0.ɵmpd(1024, i18.Router, i18.ɵe, [i0.ApplicationRef, i18.UrlSerializer, i18.ChildrenOutletContexts, i15.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i18.ROUTES, i18.ROUTER_CONFIGURATION, [2, i18.UrlHandlingStrategy], [2, i18.RouteReuseStrategy]]), i0.ɵmpd(512, i18.RouterModule, i18.RouterModule, [[2, i18.ɵa], [2, i18.Router]]), i0.ɵmpd(512, i41.AppRoutingModule, i41.AppRoutingModule, []), i0.ɵmpd(512, i19.ɵba, i19.ɵba, []), i0.ɵmpd(512, i19.ReactiveFormsModule, i19.ReactiveFormsModule, []), i0.ɵmpd(512, i19.FormsModule, i19.FormsModule, []), i0.ɵmpd(512, i1.AppModule, i1.AppModule, []), i0.ɵmpd(256, i17.ɵf, "XSRF-TOKEN", []), i0.ɵmpd(256, i17.ɵg, "X-XSRF-TOKEN", [])]); });
 exports.AppModuleNgFactory = AppModuleNgFactory;
 
 
@@ -887,15 +874,16 @@ var i3 = __webpack_require__("./src/client/src/app/components/parts/header/heade
 var i4 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var i5 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.ngfactory.js");
 var i6 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.ts");
-var i7 = __webpack_require__("./src/client/src/app/components/base/base.component.ts");
+var i7 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i8 = __webpack_require__("./src/client/src/app/components/base/base.component.ts");
 var styles_BaseComponent = [i0.styles];
 var RenderType_BaseComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_BaseComponent, data: {} });
 exports.RenderType_BaseComponent = RenderType_BaseComponent;
-function View_BaseComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header", [], null, null, null, i2.View_HeaderComponent_0, i2.RenderType_HeaderComponent)), i1.ɵdid(1, 114688, null, 0, i3.HeaderComponent, [i4.Router], null, null), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(3, 16777216, null, null, 1, "router-outlet", [], null, null, null, null, null)), i1.ɵdid(4, 212992, null, 0, i4.RouterOutlet, [i4.ChildrenOutletContexts, i1.ViewContainerRef, i1.ComponentFactoryResolver, [8, null], i1.ChangeDetectorRef], null, null), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(6, 0, null, null, 1, "app-navigation", [], null, null, null, i5.View_NavigationComponent_0, i5.RenderType_NavigationComponent)), i1.ɵdid(7, 114688, null, 0, i6.NavigationComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); _ck(_v, 4, 0); _ck(_v, 7, 0); }, null); }
+function View_BaseComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header", [], null, null, null, i2.View_HeaderComponent_0, i2.RenderType_HeaderComponent)), i1.ɵdid(1, 114688, null, 0, i3.HeaderComponent, [i4.Router], null, null), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(3, 16777216, null, null, 1, "router-outlet", [], null, null, null, null, null)), i1.ɵdid(4, 212992, null, 0, i4.RouterOutlet, [i4.ChildrenOutletContexts, i1.ViewContainerRef, i1.ComponentFactoryResolver, [8, null], i1.ChangeDetectorRef], null, null), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(6, 0, null, null, 1, "app-navigation", [], null, null, null, i5.View_NavigationComponent_0, i5.RenderType_NavigationComponent)), i1.ɵdid(7, 114688, null, 0, i6.NavigationComponent, [i7.SasakiService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); _ck(_v, 4, 0); _ck(_v, 7, 0); }, null); }
 exports.View_BaseComponent_0 = View_BaseComponent_0;
-function View_BaseComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-base", [], null, null, null, View_BaseComponent_0, RenderType_BaseComponent)), i1.ɵdid(1, 114688, null, 0, i7.BaseComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_BaseComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-base", [], null, null, null, View_BaseComponent_0, RenderType_BaseComponent)), i1.ɵdid(1, 114688, null, 0, i8.BaseComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_BaseComponent_Host_0 = View_BaseComponent_Host_0;
-var BaseComponentNgFactory = i1.ɵccf("app-base", i7.BaseComponent, View_BaseComponent_Host_0, {}, {}, []);
+var BaseComponentNgFactory = i1.ɵccf("app-base", i8.BaseComponent, View_BaseComponent_Host_0, {}, {}, []);
 exports.BaseComponentNgFactory = BaseComponentNgFactory;
 
 
@@ -924,11 +912,47 @@ exports.styles = styles;
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * BaseComponent
  */
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+__webpack_require__("./node_modules/rxjs/_esm5/add/operator/toPromise.js");
 var BaseComponent = /** @class */ (function () {
     function BaseComponent() {
     }
@@ -937,7 +961,13 @@ var BaseComponent = /** @class */ (function () {
      * @method ngOnInit
      * @returns {Promise<void>}
      */
-    BaseComponent.prototype.ngOnInit = function () { };
+    BaseComponent.prototype.ngOnInit = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/];
+            });
+        });
+    };
     return BaseComponent;
 }());
 exports.BaseComponent = BaseComponent;
@@ -1325,15 +1355,52 @@ exports.Output_3 = core_1.Output;
 var i0 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.scss.shim.ngstyle.js");
 var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i2 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-var i3 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.ts");
-var i4 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
+var i3 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+var i4 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.ts");
+var i5 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
+var i6 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
 var styles_HeaderMenuComponent = [i0.styles];
 var RenderType_HeaderMenuComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_HeaderMenuComponent, data: {} });
 exports.RenderType_HeaderMenuComponent = RenderType_HeaderMenuComponent;
+function View_HeaderMenuComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "auth/register"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
+        ad = (pd_0 && ad);
+    } if (("click" === en)) {
+        var pd_1 = (_co.close.emit() !== false);
+        ad = (pd_1 && ad);
+    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u7279\u5178 / \u4F1A\u54E1\u767B\u9332"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "auth/register"; _ck(_v, 3, 0, currVal_0); }, null); }
+function View_HeaderMenuComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "member/benefits"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
+        ad = (pd_0 && ad);
+    } if (("click" === en)) {
+        var pd_1 = (_co.close.emit() !== false);
+        ad = (pd_1 && ad);
+    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u7279\u5178"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "member/benefits"; _ck(_v, 3, 0, currVal_0); }, null); }
+function View_HeaderMenuComponent_3(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "member/edit"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
+        ad = (pd_0 && ad);
+    } if (("click" === en)) {
+        var pd_1 = (_co.close.emit() !== false);
+        ad = (pd_1 && ad);
+    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u60C5\u5831\u5909\u66F4"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "member/edit"; _ck(_v, 3, 0, currVal_0); }, null); }
+function View_HeaderMenuComponent_4(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "auth/signOut"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
+        ad = (pd_0 && ad);
+    } if (("click" === en)) {
+        var pd_1 = (_co.close.emit() !== false);
+        ad = (pd_1 && ad);
+    } return ad; }, null, null)), i1.ɵdid(3, 16384, null, 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["\u30ED\u30B0\u30A2\u30A6\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "auth/signOut"; _ck(_v, 3, 0, currVal_0); }, null); }
+function View_HeaderMenuComponent_5(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 8, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(2, 0, null, null, 5, "span", [["class", "icon-inline icon-text-white"], ["routerLink", "/member/withdraw"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
+        ad = (pd_0 && ad);
+    } if (("click" === en)) {
+        var pd_1 = (_co.close.emit() !== false);
+        ad = (pd_1 && ad);
+    } return ad; }, null, null)), i1.ɵdid(3, 16384, [[11, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(4, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 11, { links: 1 }), i1.ɵqud(603979776, 12, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\u9000\u4F1A"])), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var currVal_0 = "/member/withdraw"; _ck(_v, 3, 0, currVal_0); var currVal_1 = "active"; _ck(_v, 4, 0, currVal_1); }, null); }
 function View_HeaderMenuComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 0, "div", [["class", "cover"]], [[2, "active", null]], [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.close.emit() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\n\n"])), (_l()(), i1.ɵeld(2, 0, null, null, 63, "div", [["class", "menu"]], [[2, "active", null]], null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(5, 0, null, null, 59, "ul", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(7, 0, null, null, 8, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(9, 0, null, null, 5, "span", [["class", "icon-inline icon-about-white"], ["routerLink", "/ticket"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\n\n"])), (_l()(), i1.ɵeld(2, 0, null, null, 77, "div", [["class", "menu"]], [[2, "active", null]], null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(5, 0, null, null, 73, "ul", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(7, 0, null, null, 8, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(9, 0, null, null, 5, "span", [["class", "icon-inline icon-about-white"], ["routerLink", "/ticket"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 10).onClick() !== false);
         ad = (pd_0 && ad);
     } if (("click" === en)) {
@@ -1366,11 +1433,11 @@ function View_HeaderMenuComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(
     } return ad; }, null, null)), i1.ɵdid(51, 16384, [[9, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(52, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 9, { links: 1 }), i1.ɵqud(603979776, 10, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\u30D7\u30E9\u30A4\u30D0\u30B7\u30FC\u30DD\u30EA\u30B7\u30FC"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(58, 0, null, null, 4, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(60, 0, null, null, 1, "span", [["class", "icon-inline icon-external-link-white"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.openWebBrowse(_co.portalSite) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30B7\u30CD\u30DE\u30B5\u30F3\u30B7\u30E3\u30A4\u30F3\u30DD\u30FC\u30BF\u30EB\u30B5\u30A4\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var currVal_2 = "/ticket"; _ck(_v, 10, 0, currVal_2); var currVal_3 = "active"; _ck(_v, 11, 0, currVal_3); var currVal_4 = "/about"; _ck(_v, 20, 0, currVal_4); var currVal_5 = "active"; _ck(_v, 21, 0, currVal_5); var currVal_6 = "/policy"; _ck(_v, 31, 0, currVal_6); var currVal_7 = "active"; _ck(_v, 32, 0, currVal_7); var currVal_8 = "/law"; _ck(_v, 41, 0, currVal_8); var currVal_9 = "active"; _ck(_v, 42, 0, currVal_9); var currVal_10 = "/privacy"; _ck(_v, 51, 0, currVal_10); var currVal_11 = "active"; _ck(_v, 52, 0, currVal_11); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isOpen; _ck(_v, 0, 0, currVal_0); var currVal_1 = _co.isOpen; _ck(_v, 2, 0, currVal_1); }); }
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30B7\u30CD\u30DE\u30B5\u30F3\u30B7\u30E3\u30A4\u30F3\u30DD\u30FC\u30BF\u30EB\u30B5\u30A4\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_1)), i1.ɵdid(65, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_2)), i1.ɵdid(68, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_3)), i1.ɵdid(71, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_4)), i1.ɵdid(74, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_5)), i1.ɵdid(77, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_2 = "/ticket"; _ck(_v, 10, 0, currVal_2); var currVal_3 = "active"; _ck(_v, 11, 0, currVal_3); var currVal_4 = "/about"; _ck(_v, 20, 0, currVal_4); var currVal_5 = "active"; _ck(_v, 21, 0, currVal_5); var currVal_6 = "/policy"; _ck(_v, 31, 0, currVal_6); var currVal_7 = "active"; _ck(_v, 32, 0, currVal_7); var currVal_8 = "/law"; _ck(_v, 41, 0, currVal_8); var currVal_9 = "active"; _ck(_v, 42, 0, currVal_9); var currVal_10 = "/privacy"; _ck(_v, 51, 0, currVal_10); var currVal_11 = "active"; _ck(_v, 52, 0, currVal_11); var currVal_12 = !_co.sasaki.isMember(); _ck(_v, 65, 0, currVal_12); var currVal_13 = _co.sasaki.isMember(); _ck(_v, 68, 0, currVal_13); var currVal_14 = _co.sasaki.isMember(); _ck(_v, 71, 0, currVal_14); var currVal_15 = _co.sasaki.isMember(); _ck(_v, 74, 0, currVal_15); var currVal_16 = _co.sasaki.isMember(); _ck(_v, 77, 0, currVal_16); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isOpen; _ck(_v, 0, 0, currVal_0); var currVal_1 = _co.isOpen; _ck(_v, 2, 0, currVal_1); }); }
 exports.View_HeaderMenuComponent_0 = View_HeaderMenuComponent_0;
-function View_HeaderMenuComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header-menu", [], null, null, null, View_HeaderMenuComponent_0, RenderType_HeaderMenuComponent)), i1.ɵdid(1, 114688, null, 0, i3.HeaderMenuComponent, [i4.CallNativeService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_HeaderMenuComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header-menu", [], null, null, null, View_HeaderMenuComponent_0, RenderType_HeaderMenuComponent)), i1.ɵdid(1, 114688, null, 0, i4.HeaderMenuComponent, [i5.CallNativeService, i6.SasakiService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_HeaderMenuComponent_Host_0 = View_HeaderMenuComponent_Host_0;
-var HeaderMenuComponentNgFactory = i1.ɵccf("app-header-menu", i3.HeaderMenuComponent, View_HeaderMenuComponent_Host_0, { isOpen: "isOpen" }, { logout: "logout", close: "close" }, []);
+var HeaderMenuComponentNgFactory = i1.ɵccf("app-header-menu", i4.HeaderMenuComponent, View_HeaderMenuComponent_Host_0, { isOpen: "isOpen" }, { logout: "logout", close: "close" }, []);
 exports.HeaderMenuComponentNgFactory = HeaderMenuComponentNgFactory;
 
 
@@ -1406,9 +1473,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var environment_1 = __webpack_require__("./src/client/src/environments/environment.ts");
 var call_native_service_1 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
+var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
 var HeaderMenuComponent = /** @class */ (function () {
-    function HeaderMenuComponent(callNative) {
+    function HeaderMenuComponent(callNative, sasaki) {
         this.callNative = callNative;
+        this.sasaki = sasaki;
         this.logout = new core_1.EventEmitter();
         this.close = new core_1.EventEmitter();
     }
@@ -1467,8 +1536,9 @@ var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i2 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.ngfactory.js");
 var i3 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.ts");
 var i4 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
-var i5 = __webpack_require__("./src/client/src/app/components/parts/header/header.component.ts");
-var i6 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var i5 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i6 = __webpack_require__("./src/client/src/app/components/parts/header/header.component.ts");
+var i7 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var styles_HeaderComponent = [i0.styles];
 var RenderType_HeaderComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_HeaderComponent, data: {} });
 exports.RenderType_HeaderComponent = RenderType_HeaderComponent;
@@ -1478,11 +1548,11 @@ function View_HeaderComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0
     } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(10, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(12, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(14, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n\n"])), (_l()(), i1.ɵeld(18, 0, null, null, 1, "app-header-menu", [], null, [[null, "close"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("close" === en)) {
         var pd_0 = (_co.menuClose() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, i2.View_HeaderMenuComponent_0, i2.RenderType_HeaderMenuComponent)), i1.ɵdid(19, 114688, null, 0, i3.HeaderMenuComponent, [i4.CallNativeService], { isOpen: [0, "isOpen"] }, { close: "close" }), (_l()(), i1.ɵted(-1, null, ["\n\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_2 = _co.isMenuOpen; _ck(_v, 19, 0, currVal_2); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.page.title; _ck(_v, 6, 0, currVal_0); var currVal_1 = _co.isMenuOpen; _ck(_v, 8, 0, currVal_1); }); }
+    } return ad; }, i2.View_HeaderMenuComponent_0, i2.RenderType_HeaderMenuComponent)), i1.ɵdid(19, 114688, null, 0, i3.HeaderMenuComponent, [i4.CallNativeService, i5.SasakiService], { isOpen: [0, "isOpen"] }, { close: "close" }), (_l()(), i1.ɵted(-1, null, ["\n\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_2 = _co.isMenuOpen; _ck(_v, 19, 0, currVal_2); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.page.title; _ck(_v, 6, 0, currVal_0); var currVal_1 = _co.isMenuOpen; _ck(_v, 8, 0, currVal_1); }); }
 exports.View_HeaderComponent_0 = View_HeaderComponent_0;
-function View_HeaderComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header", [], null, null, null, View_HeaderComponent_0, RenderType_HeaderComponent)), i1.ɵdid(1, 114688, null, 0, i5.HeaderComponent, [i6.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_HeaderComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header", [], null, null, null, View_HeaderComponent_0, RenderType_HeaderComponent)), i1.ɵdid(1, 114688, null, 0, i6.HeaderComponent, [i7.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_HeaderComponent_Host_0 = View_HeaderComponent_Host_0;
-var HeaderComponentNgFactory = i1.ɵccf("app-header", i5.HeaderComponent, View_HeaderComponent_Host_0, {}, {}, []);
+var HeaderComponentNgFactory = i1.ɵccf("app-header", i6.HeaderComponent, View_HeaderComponent_Host_0, {}, {}, []);
 exports.HeaderComponentNgFactory = HeaderComponentNgFactory;
 
 
@@ -1673,21 +1743,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var i0 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.scss.shim.ngstyle.js");
 var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i2 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-var i3 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.ts");
+var i3 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+var i4 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.ts");
+var i5 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
 var styles_NavigationComponent = [i0.styles];
 var RenderType_NavigationComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_NavigationComponent, data: {} });
 exports.RenderType_NavigationComponent = RenderType_NavigationComponent;
-function View_NavigationComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 25, "ul", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 10, "li", [["routerLink", "/ticket"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+function View_NavigationComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 10, "li", [["routerLink", "/purchase"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 1).onClick() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), i1.ɵdid(1, 16384, [[5, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(2, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 5, { links: 1 }), i1.ɵqud(603979776, 6, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(6, 0, null, null, 0, "div", [["class", "mb-xx-small icon-purchase-white"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u30DD\u30A4\u30F3\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n    "]))], function (_ck, _v) { var currVal_0 = "/purchase"; _ck(_v, 1, 0, currVal_0); var currVal_1 = "active"; _ck(_v, 2, 0, currVal_1); }, null); }
+function View_NavigationComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 28, "ul", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 10, "li", [["routerLink", "/ticket"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
         ad = (pd_0 && ad);
     } return ad; }, null, null)), i1.ɵdid(3, 16384, [[1, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(4, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 1, { links: 1 }), i1.ɵqud(603979776, 2, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(8, 0, null, null, 0, "div", [["class", "mb-xx-small icon-ticket-holder-white"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(10, 0, null, null, 1, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u8CFC\u5165\u6E08\u307F\u30C1\u30B1\u30C3\u30C8\u30DB\u30EB\u30C0\u30FC"])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(14, 0, null, null, 10, "li", [["routerLink", "/purchase"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 15).onClick() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(15, 16384, [[3, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(16, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 3, { links: 1 }), i1.ɵqud(603979776, 4, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(20, 0, null, null, 0, "div", [["class", "mb-xx-small icon-purchase-white"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(22, 0, null, null, 1, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30C1\u30B1\u30C3\u30C8\u8CFC\u5165"])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var currVal_0 = "/ticket"; _ck(_v, 3, 0, currVal_0); var currVal_1 = "active"; _ck(_v, 4, 0, currVal_1); var currVal_2 = "/purchase"; _ck(_v, 15, 0, currVal_2); var currVal_3 = "active"; _ck(_v, 16, 0, currVal_3); }, null); }
+    } return ad; }, null, null)), i1.ɵdid(15, 16384, [[3, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(16, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 3, { links: 1 }), i1.ɵqud(603979776, 4, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(20, 0, null, null, 0, "div", [["class", "mb-xx-small icon-purchase-white"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(22, 0, null, null, 1, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30C1\u30B1\u30C3\u30C8\u8CFC\u5165"])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_NavigationComponent_1)), i1.ɵdid(27, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_0 = "/ticket"; _ck(_v, 3, 0, currVal_0); var currVal_1 = "active"; _ck(_v, 4, 0, currVal_1); var currVal_2 = "/purchase"; _ck(_v, 15, 0, currVal_2); var currVal_3 = "active"; _ck(_v, 16, 0, currVal_3); var currVal_4 = _co.sasaki.isMember(); _ck(_v, 27, 0, currVal_4); }, null); }
 exports.View_NavigationComponent_0 = View_NavigationComponent_0;
-function View_NavigationComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-navigation", [], null, null, null, View_NavigationComponent_0, RenderType_NavigationComponent)), i1.ɵdid(1, 114688, null, 0, i3.NavigationComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_NavigationComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-navigation", [], null, null, null, View_NavigationComponent_0, RenderType_NavigationComponent)), i1.ɵdid(1, 114688, null, 0, i4.NavigationComponent, [i5.SasakiService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_NavigationComponent_Host_0 = View_NavigationComponent_Host_0;
-var NavigationComponentNgFactory = i1.ɵccf("app-navigation", i3.NavigationComponent, View_NavigationComponent_Host_0, {}, {}, []);
+var NavigationComponentNgFactory = i1.ɵccf("app-navigation", i4.NavigationComponent, View_NavigationComponent_Host_0, {}, {}, []);
 exports.NavigationComponentNgFactory = NavigationComponentNgFactory;
 
 
@@ -1721,8 +1797,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * NavigationComponent
  */
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
 var NavigationComponent = /** @class */ (function () {
-    function NavigationComponent() {
+    function NavigationComponent(sasaki) {
+        this.sasaki = sasaki;
     }
     /**
      * 初期化
@@ -2503,6 +2581,7 @@ var i10 = __webpack_require__("./src/client/src/app/components/parts/loading/loa
 var i11 = __webpack_require__("./src/client/src/app/components/ticket/ticket.component.ts");
 var i12 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var i13 = __webpack_require__("./src/client/src/app/services/reservation/reservation.service.ts");
+var i14 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
 var styles_TicketComponent = [i0.styles];
 var RenderType_TicketComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_TicketComponent, data: {} });
 exports.RenderType_TicketComponent = RenderType_TicketComponent;
@@ -2512,7 +2591,7 @@ function View_TicketComponent_4(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0
 function View_TicketComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 7, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_TicketComponent_2)), i1.ɵdid(3, 16384, null, 0, i6.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_TicketComponent_4)), i1.ɵdid(6, 16384, null, 0, i6.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var _co = _v.component; var currVal_0 = (_co.purchaseNumberOrders.length > 0); _ck(_v, 3, 0, currVal_0); var currVal_1 = (_co.purchaseNumberOrders.length === 0); _ck(_v, 6, 0, currVal_1); }, null); }
 function View_TicketComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 12, "div", [["class", "contents"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 9, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(4, 0, null, null, 3, "p", [["class", "mb-small text-center small-text"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            \u8CFC\u5165\u3057\u305F\u9451\u8CDE\u4F5C\u54C1\u306E\u4E0B\u8A18\u30C1\u30B1\u30C3\u30C8\u306EQR\u30B3\u30FC\u30C9\u3092\n            "])), (_l()(), i1.ɵeld(6, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u5165\u5834\u53E3\u30B9\u30BF\u30C3\u30D5\u306B\u63D0\u793A\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_TicketComponent_1)), i1.ɵdid(10, 16384, null, 0, i6.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(14, 0, null, null, 1, "app-loading", [], null, null, null, i9.View_LoadingComponent_0, i9.RenderType_LoadingComponent)), i1.ɵdid(15, 114688, null, 0, i10.LoadingComponent, [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = !_co.isLoading; _ck(_v, 10, 0, currVal_0); var currVal_1 = _co.isLoading; _ck(_v, 15, 0, currVal_1); }, null); }
 exports.View_TicketComponent_0 = View_TicketComponent_0;
-function View_TicketComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-ticket", [], null, null, null, View_TicketComponent_0, RenderType_TicketComponent)), i1.ɵdid(1, 114688, null, 0, i11.TicketComponent, [i12.Router, i13.ReservationService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_TicketComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-ticket", [], null, null, null, View_TicketComponent_0, RenderType_TicketComponent)), i1.ɵdid(1, 114688, null, 0, i11.TicketComponent, [i12.Router, i13.ReservationService, i14.SasakiService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_TicketComponent_Host_0 = View_TicketComponent_Host_0;
 var TicketComponentNgFactory = i1.ɵccf("app-ticket", i11.TicketComponent, View_TicketComponent_Host_0, {}, {}, []);
 exports.TicketComponentNgFactory = TicketComponentNgFactory;
@@ -2585,10 +2664,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var reservation_service_1 = __webpack_require__("./src/client/src/app/services/reservation/reservation.service.ts");
+var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
 var TicketComponent = /** @class */ (function () {
-    function TicketComponent(router, reservation) {
+    function TicketComponent(router, reservation, sasaki) {
         this.router = router;
         this.reservation = reservation;
+        this.sasaki = sasaki;
     }
     /**
      * 初期化
@@ -2608,6 +2689,7 @@ var TicketComponent = /** @class */ (function () {
                             paginationClickable: true,
                             autoHeight: true
                         };
+                        if (!!this.sasaki.isMember()) return [3 /*break*/, 4];
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
@@ -2999,11 +3081,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
-__webpack_require__("./node_modules/rxjs/_esm5/add/operator/toPromise.js");
+var storage_service_1 = __webpack_require__("./src/client/src/app/services/storage/storage.service.ts");
 var AuthGuardService = /** @class */ (function () {
-    function AuthGuardService(router, sasaki) {
+    function AuthGuardService(router, sasaki, storage) {
         this.router = router;
         this.sasaki = sasaki;
+        this.storage = storage;
     }
     /**
      * 認証
@@ -3012,7 +3095,7 @@ var AuthGuardService = /** @class */ (function () {
      */
     AuthGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var err_1;
+            var deviceId, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -3020,15 +3103,9 @@ var AuthGuardService = /** @class */ (function () {
                         return [4 /*yield*/, this.sasaki.authorize()];
                     case 1:
                         _a.sent();
-                        if (this.sasaki.member === sasaki_service_1.MemberType.Member) {
-                            // const event = await this.router.events.toPromise();
-                            // console.log('-----------------EVENT', event);
-                            // if (event instanceof NavigationEnd) {
-                            //     if (!/event.urlAfterRedirects/.test('member')) {
-                            //         this.router.navigate([`/member/${event.urlAfterRedirects}`]);
-                            //         return false;
-                            //     }
-                            // }
+                        if (!this.sasaki.isMember()) {
+                            deviceId = this.storage.load('deviceId');
+                            console.log(deviceId);
                         }
                         return [2 /*return*/, true];
                     case 2:
@@ -3721,11 +3798,20 @@ var SasakiService = /** @class */ (function () {
             });
         });
     };
+    /**
+     * 会員タイプ設定
+     */
     SasakiService.prototype.setMemberType = function () {
         var member = this.storage.load('member', storage_service_1.SaveType.Local);
         this.member = (member === null)
             ? MemberType.NotMember
             : MemberType.Member;
+    };
+    /**
+     * 会員判定
+     */
+    SasakiService.prototype.isMember = function () {
+        return (this.member === MemberType.Member);
     };
     return SasakiService;
 }());

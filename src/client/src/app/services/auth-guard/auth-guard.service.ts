@@ -2,16 +2,17 @@
  * AuthGuardService
  */
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, NavigationEnd } from '@angular/router';
-import { SasakiService, MemberType } from '../sasaki/sasaki.service';
-import 'rxjs/add/operator/toPromise';
+import { CanActivate, Router } from '@angular/router';
+import { SasakiService } from '../sasaki/sasaki.service';
+import { StorageService } from '../storage/storage.service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
     constructor(
         private router: Router,
-        private sasaki: SasakiService
+        private sasaki: SasakiService,
+        private storage: StorageService
     ) { }
 
     /**
@@ -22,15 +23,10 @@ export class AuthGuardService implements CanActivate {
     public async canActivate(): Promise<boolean> {
         try {
             await this.sasaki.authorize();
-            if (this.sasaki.member === MemberType.Member) {
-                // const event = await this.router.events.toPromise();
-                // console.log('-----------------EVENT', event);
-                // if (event instanceof NavigationEnd) {
-                //     if (!/event.urlAfterRedirects/.test('member')) {
-                //         this.router.navigate([`/member/${event.urlAfterRedirects}`]);
-                //         return false;
-                //     }
-                // }
+
+            if (!this.sasaki.isMember()) {
+                const deviceId = this.storage.load('deviceId');
+                console.log(deviceId);
             }
 
             return true;

@@ -2,6 +2,7 @@
  * BaseComponent
  */
 import { Component, OnInit } from '@angular/core';
+import 'rxjs/add/operator/toPromise';
 
 @Component({
     selector: 'app-base',
@@ -17,6 +18,7 @@ export class BaseComponent implements OnInit {
      * @method ngOnInit
      * @returns {Promise<void>}
      */
-    public ngOnInit(): void { }
+    public async ngOnInit(): Promise<void> {
+    }
 
 }

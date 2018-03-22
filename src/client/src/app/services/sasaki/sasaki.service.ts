@@ -111,11 +111,21 @@ export class SasakiService {
         this.auth.setCredentials(credentials);
     }
 
+    /**
+     * 会員タイプ設定
+     */
     private setMemberType() {
         const member = this.storage.load('member', SaveType.Local);
         this.member = (member === null)
             ? MemberType.NotMember
             : MemberType.Member;
+    }
+
+    /**
+     * 会員判定
+     */
+    public isMember() {
+        return (this.member === MemberType.Member);
     }
 
 }

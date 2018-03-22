@@ -4,6 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IReservation, ReservationService } from '../../services/reservation/reservation.service';
+import { SasakiService } from '../../services/sasaki/sasaki.service';
 
 @Component({
     selector: 'app-ticket',
@@ -22,7 +23,8 @@ export class TicketComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private reservation: ReservationService
+        private reservation: ReservationService,
+        private sasaki: SasakiService
     ) { }
 
     /**
@@ -38,13 +40,16 @@ export class TicketComponent implements OnInit {
             paginationClickable: true,
             autoHeight: true
         };
-        try {
-            await this.reservation.getReservation();
-            this.purchaseNumberOrders = this.reservation.getReservationByAppreciationDayOrder();
-        } catch (err) {
-            this.router.navigate(['/error', { redirect: '/purchase' }]);
-            console.log(err);
+        if (!this.sasaki.isMember()) {
+            try {
+                await this.reservation.getReservation();
+                this.purchaseNumberOrders = this.reservation.getReservationByAppreciationDayOrder();
+            } catch (err) {
+                this.router.navigate(['/error', { redirect: '/purchase' }]);
+                console.log(err);
+            }
         }
+
         this.isLoading = false;
     }
 

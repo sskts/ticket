@@ -1,0 +1,32 @@
+<div class="contents position-center">
+    <div class="inner center">
+        <div class="logo text-center mb-large">
+            <img src="/assets/images/common/logo_text.svg">
+        </div>
+        <p class="read text-center mb-middle">
+            アプリの始め方を選択してください。
+        </p>
+
+        <dl>
+            <dt class="text-center mb-small">
+                新規会員（年会費500円）登録
+            </dt>
+            <dd class="mb-middle">
+                <button class="btn btn-primary btn-block" (click)="register()">登録</button>
+            </dd>
+            <dt class="text-center mb-small">
+                無料で一部機能を使用
+            </dt>
+            <dd class="mb-middle">
+                <button class="btn btn-primary btn-block" (click)="start()">はじめる</button>
+            </dd>
+            <dt class="text-center mb-small">
+                すでに会員登録済みの方
+            </dt>
+            <dd>
+                <button class="btn btn-primary btn-block" (click)="signIn()">ログイン</button>
+            </dd>
+        </dl>
+    </div>
+</div>
+<app-loading [show]="isLoading"></app-loading>

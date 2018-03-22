@@ -26,6 +26,7 @@ import { AvailabilityPipe } from './pipes/availability/availability.pipe';
 import { DurationPipe } from './pipes/duration/duration.pipe';
 import { TimeFormatPipe } from './pipes/time-format/time-format.pipe';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
+import { MemberGuardService } from './services/member-guard/member-guard.service';
 import { AwsCognitoService } from './services/aws-cognito/aws-cognito.service';
 import { CallNativeService } from './services/call-native/call-native.service';
 import { ReservationService } from './services/reservation/reservation.service';
@@ -39,7 +40,12 @@ import { PurchasePerformanceComponent } from './components/parts/purchase-perfor
 import { TicketDetailComponent } from './components/parts/ticket-detail/ticket-detail.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { SasakiService } from './services/sasaki/sasaki.service';
-import { AuthComponent } from './components/auth/auth.component';
+import { AuthSelectComponent } from './components/auth/auth-select/auth-select.component';
+import { AuthSignOutComponent } from './components/auth/auth-sign-out/auth-sign-out.component';
+import { AuthRegisterComponent } from './components/auth/auth-register/auth-register.component';
+import { MemberBenefitsComponent } from './components/member/member-benefits/member-benefits.component';
+import { MemberEditComponent } from './components/member/member-edit/member-edit.component';
+import { MemberWithdrawComponent } from './components/member/member-withdraw/member-withdraw.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -65,7 +71,12 @@ import { AuthComponent } from './components/auth/auth.component';
     PurchasePerformanceComponent,
     HeaderMenuComponent,
     TicketComponent,
-    AuthComponent
+    AuthSelectComponent,
+    AuthSignOutComponent,
+    AuthRegisterComponent,
+    MemberBenefitsComponent,
+    MemberEditComponent,
+    MemberWithdrawComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +95,8 @@ import { AuthComponent } from './components/auth/auth.component';
     SelectService,
     StorageService,
     CallNativeService,
-    SasakiService
+    SasakiService,
+    MemberGuardService
   ],
   bootstrap: [AppComponent]
 })

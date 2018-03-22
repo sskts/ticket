@@ -1,16 +1,14 @@
-/**
- * AuthComponent
- */
 import { Component, OnInit } from '@angular/core';
-import { SasakiService } from '../../services/sasaki/sasaki.service';
+import { SasakiService } from '../../../services/sasaki/sasaki.service';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-auth',
-    templateUrl: './auth.component.html',
-    styleUrls: ['./auth.component.scss']
+  selector: 'app-auth-register',
+  templateUrl: './auth-register.component.html',
+  styleUrls: ['./auth-register.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthRegisterComponent implements OnInit {
+
     public isLoading: boolean;
 
     constructor(
@@ -45,4 +43,5 @@ export class AuthComponent implements OnInit {
     public async start() {
         this.router.navigate(['/auth/walkThrough']);
     }
+
 }
