@@ -9,6 +9,12 @@
     z-index: 11;
     visibility: visible;
     animation: fadein 0.4s both;
+    display: none;
+    &.active {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 .loading {
@@ -25,7 +31,7 @@
     margin-top: -10px;
     margin-left: -20px;
     animation: fadein 0.4s both;
-    display: flex;
+    display: none;
     div {
         height: 20px;
         width: 2px;
@@ -46,5 +52,18 @@
     }
     .bar5 {
         animation-delay: 0.9s;
+    }
+    &.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+
+@keyframes loading {
+    30% {
+        transform: scaleY(2);
     }
 }

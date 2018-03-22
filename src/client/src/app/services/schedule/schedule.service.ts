@@ -223,11 +223,11 @@ export class ScheduleService {
                 return;
             }
             const film = results.find((event) => {
-                return (event.id === screeningEvent.workPerformed.identifier);
+                return (event.id === (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum));
             });
             if (film === undefined) {
                 results.push({
-                    id: screeningEvent.workPerformed.identifier,
+                    id: (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum),
                     films: [screeningEvent]
                 });
             } else {

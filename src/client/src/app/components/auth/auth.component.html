@@ -13,4 +13,4 @@
         <button class="btn btn-info btn-block" routerLink="/auth/signIn">会員登録済みの方</button>
     </div>
 </div>
-<app-loading *ngIf="isLoading"></app-loading>
+<app-loading [show]="isLoading"></app-loading>
