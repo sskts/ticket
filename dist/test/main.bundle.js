@@ -3755,11 +3755,11 @@ var ScheduleService = /** @class */ (function () {
                         return;
                     }
                     var film = results.find(function (event) {
-                        return (event.id === screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum);
+                        return (event.id === (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum));
                     });
                     if (film === undefined) {
                         results.push({
-                            id: screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum,
+                            id: (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum),
                             films: [screeningEvent]
                         });
                     }
