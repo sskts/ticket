@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import 'rxjs/add/operator/toPromise';
 import { environment } from '../../../environments/environment';
+import { StorageService, SaveType } from '../storage/storage.service';
 
 @Injectable()
 export class SasakiService {
@@ -18,9 +19,14 @@ export class SasakiService {
         placeOrder: sasaki.service.transaction.PlaceOrder
     };
 
+    public member: MemberType;
+
     constructor(
-        private http: HttpClient
-    ) { }
+        private http: HttpClient,
+        private storage: StorageService
+    ) {
+        this.setMemberType();
+    }
 
     /**
      * getServices
@@ -46,6 +52,10 @@ export class SasakiService {
      * サインイン
      */
     public async signIn() {
+        this.storage.save('member', {
+            memberType: MemberType.Member
+        }, SaveType.Local);
+        this.setMemberType();
         const url = '/api/authorize/signIn';
         const result = await this.http.get<any>(url, {}).toPromise();
         console.log(result.url);
@@ -80,9 +90,10 @@ export class SasakiService {
      * @method authorize
      */
     public async authorize() {
+        this.setMemberType();
         const url = '/api/authorize/getCredentials';
         const options = {
-            params: new HttpParams().set('member', MemberType.NotMember)
+            params: new HttpParams().set('member', this.member)
         };
         const credentials = await this.http.get<any>(url, options).toPromise();
         const option = {
@@ -98,6 +109,13 @@ export class SasakiService {
         };
         this.auth = sasaki.createAuthInstance(option);
         this.auth.setCredentials(credentials);
+    }
+
+    private setMemberType() {
+        const member = this.storage.load('member', SaveType.Local);
+        this.member = (member === null)
+            ? MemberType.NotMember
+            : MemberType.Member;
     }
 
 }

@@ -38,6 +38,7 @@ function getCredentials(req, res) {
             const credentials = {
                 accessToken: accessToken
             };
+            log('getCredentials MemberType', req.query.member);
             res.json(credentials);
         }
         catch (err) {

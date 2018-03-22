@@ -15,11 +15,27 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { WalkThroughComponent } from './components/walk-through/walk-through.component';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
+import { AuthComponent } from './components/auth/auth.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/ticket', pathMatch: 'full' },
+    { path: 'auth', component: AuthComponent },
     {
         path: '',
+        component: BaseComponent,
+        canActivate: [AuthGuardService],
+        children: [
+            { path: 'ticket', component: TicketComponent },
+            { path: 'purchase', component: PurchaseComponent },
+            { path: 'about', component: AboutComponent },
+            { path: 'policy', component: PolicyComponent },
+            { path: 'law', component: LawComponent },
+            { path: 'privacy', component: PrivacyComponent }
+        ]
+    },
+    {
+        
+        path: 'member',
         component: BaseComponent,
         canActivate: [AuthGuardService],
         children: [

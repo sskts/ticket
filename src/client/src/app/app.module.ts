@@ -39,6 +39,7 @@ import { PurchasePerformanceComponent } from './components/parts/purchase-perfor
 import { TicketDetailComponent } from './components/parts/ticket-detail/ticket-detail.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { SasakiService } from './services/sasaki/sasaki.service';
+import { AuthComponent } from './components/auth/auth.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -63,7 +64,8 @@ import { SasakiService } from './services/sasaki/sasaki.service';
     PurchaseComponent,
     PurchasePerformanceComponent,
     HeaderMenuComponent,
-    TicketComponent
+    TicketComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

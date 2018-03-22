@@ -27,6 +27,9 @@ export async function getCredentials(req: Request, res: Response) {
         const credentials = {
             accessToken: accessToken
         };
+
+        log('getCredentials MemberType', req.query.member);
+        
         res.json(credentials);
     } catch (err) {
         errorProsess(res, err);
