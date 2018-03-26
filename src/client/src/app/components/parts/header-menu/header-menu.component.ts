@@ -4,7 +4,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { CallNativeService, InAppBrowserTarget } from '../../../services/call-native/call-native.service';
-import { SasakiService } from '../../../services/sasaki/sasaki.service';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
     selector: 'app-header-menu',
@@ -19,7 +19,7 @@ export class HeaderMenuComponent implements OnInit {
 
     constructor(
         private callNative: CallNativeService,
-        public sasaki: SasakiService
+        public user: UserService
     ) { }
 
     /**

@@ -477,17 +477,17 @@ exports.ɵg_126 = router_1.ɵg;
 exports.ɵh_127 = router_1.ɵh;
 exports.ROUTER_INITIALIZER_128 = router_1.ROUTER_INITIALIZER;
 exports.ɵi_129 = router_1.ɵi;
-exports.RouterModule_144 = router_1.RouterModule;
+exports.RouterModule_145 = router_1.RouterModule;
 var forms_1 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 exports.FormBuilder_131 = forms_1.FormBuilder;
 exports.ReactiveFormsModule_132 = forms_1.ReactiveFormsModule;
 exports.ɵi_133 = forms_1.ɵi;
 exports.FormsModule_134 = forms_1.FormsModule;
-exports.ɵba_145 = forms_1.ɵba;
+exports.ɵba_146 = forms_1.ɵba;
 var moment_module_1 = __webpack_require__("./node_modules/angular2-moment/moment.module.js");
-exports.MomentModule_142 = moment_module_1.MomentModule;
+exports.MomentModule_143 = moment_module_1.MomentModule;
 var swiper_module_1 = __webpack_require__("./node_modules/angular2-useful-swiper/lib/swiper.module.js");
-exports.SwiperModule_143 = swiper_module_1.SwiperModule;
+exports.SwiperModule_144 = swiper_module_1.SwiperModule;
 var i0 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i1 = __webpack_require__("./src/client/src/app/app.module.ts");
 var i2 = __webpack_require__("./src/client/src/app/components/app/app.component.ts");
@@ -515,35 +515,36 @@ var i23 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 var i24 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var i25 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 var i26 = __webpack_require__("./src/client/src/app/services/storage/storage.service.ts");
-var i27 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
-var i28 = __webpack_require__("./src/client/src/app/services/auth-guard/auth-guard.service.ts");
-var i29 = __webpack_require__("./src/client/src/app/services/aws-cognito/aws-cognito.service.ts");
-var i30 = __webpack_require__("./src/client/src/app/services/reservation/reservation.service.ts");
-var i31 = __webpack_require__("./src/client/src/app/services/schedule/schedule.service.ts");
-var i32 = __webpack_require__("./src/client/src/app/services/select/select.service.ts");
-var i33 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
-var i34 = __webpack_require__("./src/client/src/app/services/member-guard/member-guard.service.ts");
-var i35 = __webpack_require__("./node_modules/angular2-moment/moment.module.js");
-var i36 = __webpack_require__("./node_modules/angular2-useful-swiper/lib/swiper.module.js");
-var i37 = __webpack_require__("./src/client/src/app/components/auth/auth-select/auth-select.component.ts");
-var i38 = __webpack_require__("./src/client/src/app/components/base/base.component.ts");
-var i39 = __webpack_require__("./src/client/src/app/components/auth/auth-sign-out/auth-sign-out.component.ts");
-var i40 = __webpack_require__("./src/client/src/app/components/auth/auth-register/auth-register.component.ts");
-var i41 = __webpack_require__("./src/client/src/app/components/ticket/ticket.component.ts");
-var i42 = __webpack_require__("./src/client/src/app/components/purchase/purchase.component.ts");
-var i43 = __webpack_require__("./src/client/src/app/components/about/about.component.ts");
-var i44 = __webpack_require__("./src/client/src/app/components/policy/policy.component.ts");
-var i45 = __webpack_require__("./src/client/src/app/components/law/law.component.ts");
-var i46 = __webpack_require__("./src/client/src/app/components/privacy/privacy.component.ts");
-var i47 = __webpack_require__("./src/client/src/app/components/member/member-point/member-point.component.ts");
-var i48 = __webpack_require__("./src/client/src/app/components/member/member-benefits/member-benefits.component.ts");
-var i49 = __webpack_require__("./src/client/src/app/components/member/member-edit/member-edit.component.ts");
-var i50 = __webpack_require__("./src/client/src/app/components/member/member-withdraw/member-withdraw.component.ts");
-var i51 = __webpack_require__("./src/client/src/app/components/walk-through/walk-through.component.ts");
-var i52 = __webpack_require__("./src/client/src/app/components/error/error.component.ts");
-var i53 = __webpack_require__("./src/client/src/app/components/not-found/not-found.component.ts");
-var i54 = __webpack_require__("./src/client/src/app/app-routing.module.ts");
-var AppModuleNgFactory = i0.ɵcmf(i1.AppModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.AuthSelectComponentNgFactory, i4.BaseComponentNgFactory, i5.AuthSignOutComponentNgFactory, i6.AuthRegisterComponentNgFactory, i7.TicketComponentNgFactory, i8.PurchaseComponentNgFactory, i9.AboutComponentNgFactory, i10.PolicyComponentNgFactory, i11.LawComponentNgFactory, i12.PrivacyComponentNgFactory, i13.MemberPointComponentNgFactory, i14.MemberBenefitsComponentNgFactory, i15.MemberEditComponentNgFactory, i16.MemberWithdrawComponentNgFactory, i17.WalkThroughComponentNgFactory, i18.ErrorComponentNgFactory, i19.NotFoundComponentNgFactory, i20.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵq, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i21.NgLocalization, i21.NgLocaleLocalization, [i0.LOCALE_ID, [2, i21.ɵa]]), i0.ɵmpd(5120, i0.APP_ID, i0.ɵi, []), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵn, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵo, []), i0.ɵmpd(4608, i22.DomSanitizer, i22.ɵe, [i21.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i22.DomSanitizer]), i0.ɵmpd(4608, i22.HAMMER_GESTURE_CONFIG, i22.HammerGestureConfig, []), i0.ɵmpd(5120, i22.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p1_0, p2_0, p2_1) { return [new i22.ɵDomEventsPlugin(p0_0, p0_1), new i22.ɵKeyEventsPlugin(p1_0), new i22.ɵHammerGesturesPlugin(p2_0, p2_1)]; }, [i21.DOCUMENT, i0.NgZone, i21.DOCUMENT, i21.DOCUMENT, i22.HAMMER_GESTURE_CONFIG]), i0.ɵmpd(4608, i22.EventManager, i22.EventManager, [i22.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i22.ɵDomSharedStylesHost, i22.ɵDomSharedStylesHost, [i21.DOCUMENT]), i0.ɵmpd(4608, i22.ɵDomRendererFactory2, i22.ɵDomRendererFactory2, [i22.EventManager, i22.ɵDomSharedStylesHost]), i0.ɵmpd(6144, i0.RendererFactory2, null, [i22.ɵDomRendererFactory2]), i0.ɵmpd(6144, i22.ɵSharedStylesHost, null, [i22.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i0.Testability, i0.Testability, [i0.NgZone]), i0.ɵmpd(4608, i22.Meta, i22.Meta, [i21.DOCUMENT]), i0.ɵmpd(4608, i22.Title, i22.Title, [i21.DOCUMENT]), i0.ɵmpd(4608, i23.HttpXsrfTokenExtractor, i23.ɵh, [i21.DOCUMENT, i0.PLATFORM_ID, i23.ɵf]), i0.ɵmpd(4608, i23.ɵi, i23.ɵi, [i23.HttpXsrfTokenExtractor, i23.ɵg]), i0.ɵmpd(5120, i23.HTTP_INTERCEPTORS, function (p0_0) { return [p0_0]; }, [i23.ɵi]), i0.ɵmpd(4608, i23.ɵe, i23.ɵe, []), i0.ɵmpd(6144, i23.XhrFactory, null, [i23.ɵe]), i0.ɵmpd(4608, i23.HttpXhrBackend, i23.HttpXhrBackend, [i23.XhrFactory]), i0.ɵmpd(6144, i23.HttpBackend, null, [i23.HttpXhrBackend]), i0.ɵmpd(4608, i23.HttpHandler, i23.ɵc, [i23.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i23.HttpClient, i23.HttpClient, [i23.HttpHandler]), i0.ɵmpd(5120, i24.ActivatedRoute, i24.ɵf, [i24.Router]), i0.ɵmpd(4608, i24.NoPreloading, i24.NoPreloading, []), i0.ɵmpd(6144, i24.PreloadingStrategy, null, [i24.NoPreloading]), i0.ɵmpd(135680, i24.RouterPreloader, i24.RouterPreloader, [i24.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i24.PreloadingStrategy]), i0.ɵmpd(4608, i24.PreloadAllModules, i24.PreloadAllModules, []), i0.ɵmpd(5120, i24.ROUTER_INITIALIZER, i24.ɵi, [i24.ɵg]), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0) { return [p0_0]; }, [i24.ROUTER_INITIALIZER]), i0.ɵmpd(4608, i25.FormBuilder, i25.FormBuilder, []), i0.ɵmpd(4608, i25.ɵi, i25.ɵi, []), i0.ɵmpd(4608, i26.StorageService, i26.StorageService, []), i0.ɵmpd(4608, i27.SasakiService, i27.SasakiService, [i23.HttpClient, i26.StorageService]), i0.ɵmpd(4608, i28.AuthGuardService, i28.AuthGuardService, [i24.Router, i27.SasakiService]), i0.ɵmpd(4608, i29.AwsCognitoService, i29.AwsCognitoService, []), i0.ɵmpd(4608, i30.ReservationService, i30.ReservationService, [i29.AwsCognitoService, i26.StorageService]), i0.ɵmpd(4608, i31.ScheduleService, i31.ScheduleService, [i26.StorageService, i27.SasakiService]), i0.ɵmpd(4608, i32.SelectService, i32.SelectService, [i26.StorageService]), i0.ɵmpd(4608, i33.CallNativeService, i33.CallNativeService, []), i0.ɵmpd(4608, i34.MemberGuardService, i34.MemberGuardService, [i24.Router, i27.SasakiService]), i0.ɵmpd(512, i21.CommonModule, i21.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i22.ɵa, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i24.ɵb()]; }, []), i0.ɵmpd(512, i24.ɵg, i24.ɵg, [i0.Injector]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0) { return [i22.ɵh(p0_0), i24.ɵh(p1_0)]; }, [[2, i0.NgProbeToken], i24.ɵg]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(512, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(512, i22.BrowserModule, i22.BrowserModule, [[3, i22.BrowserModule]]), i0.ɵmpd(512, i23.HttpClientXsrfModule, i23.HttpClientXsrfModule, []), i0.ɵmpd(512, i23.HttpClientModule, i23.HttpClientModule, []), i0.ɵmpd(512, i35.MomentModule, i35.MomentModule, []), i0.ɵmpd(512, i36.SwiperModule, i36.SwiperModule, []), i0.ɵmpd(1024, i24.ɵa, i24.ɵd, [[3, i24.Router]]), i0.ɵmpd(512, i24.UrlSerializer, i24.DefaultUrlSerializer, []), i0.ɵmpd(512, i24.ChildrenOutletContexts, i24.ChildrenOutletContexts, []), i0.ɵmpd(256, i24.ROUTER_CONFIGURATION, { useHash: true, enableTracing: true }, []), i0.ɵmpd(1024, i21.LocationStrategy, i24.ɵc, [i21.PlatformLocation, [2, i21.APP_BASE_HREF], i24.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i21.Location, i21.Location, [i21.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i0.SystemJsNgModuleLoader, [i0.Compiler, [2, i0.SystemJsNgModuleLoaderConfig]]), i0.ɵmpd(1024, i24.ROUTES, function () { return [[{ path: "", redirectTo: "/ticket", pathMatch: "full" }, { path: "auth", component: i37.AuthSelectComponent }, { path: "auth", children: [{ path: "select", component: i37.AuthSelectComponent }] }, { path: "auth", component: i38.BaseComponent, children: [{ path: "signOut", component: i39.AuthSignOutComponent }, { path: "register", component: i40.AuthRegisterComponent }] }, { path: "", component: i38.BaseComponent, canActivate: [i28.AuthGuardService], children: [{ path: "ticket", component: i41.TicketComponent }, { path: "purchase", component: i42.PurchaseComponent }, { path: "about", component: i43.AboutComponent }, { path: "policy", component: i44.PolicyComponent }, { path: "law", component: i45.LawComponent }, { path: "privacy", component: i46.PrivacyComponent }] }, { path: "member", component: i38.BaseComponent, canActivate: [i34.MemberGuardService], children: [{ path: "point", component: i47.MemberPointComponent }, { path: "benefits", component: i48.MemberBenefitsComponent }, { path: "edit", component: i49.MemberEditComponent }, { path: "withdraw", component: i50.MemberWithdrawComponent }] }, { path: "walkThrough", component: i51.WalkThroughComponent }, { path: "error/:redirect", component: i52.ErrorComponent }, { path: "error", component: i52.ErrorComponent }, { path: "**", component: i53.NotFoundComponent }]]; }, []), i0.ɵmpd(1024, i24.Router, i24.ɵe, [i0.ApplicationRef, i24.UrlSerializer, i24.ChildrenOutletContexts, i21.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i24.ROUTES, i24.ROUTER_CONFIGURATION, [2, i24.UrlHandlingStrategy], [2, i24.RouteReuseStrategy]]), i0.ɵmpd(512, i24.RouterModule, i24.RouterModule, [[2, i24.ɵa], [2, i24.Router]]), i0.ɵmpd(512, i54.AppRoutingModule, i54.AppRoutingModule, []), i0.ɵmpd(512, i25.ɵba, i25.ɵba, []), i0.ɵmpd(512, i25.ReactiveFormsModule, i25.ReactiveFormsModule, []), i0.ɵmpd(512, i25.FormsModule, i25.FormsModule, []), i0.ɵmpd(512, i1.AppModule, i1.AppModule, []), i0.ɵmpd(256, i23.ɵf, "XSRF-TOKEN", []), i0.ɵmpd(256, i23.ɵg, "X-XSRF-TOKEN", [])]); });
+var i27 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
+var i28 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i29 = __webpack_require__("./src/client/src/app/services/auth-guard/auth-guard.service.ts");
+var i30 = __webpack_require__("./src/client/src/app/services/aws-cognito/aws-cognito.service.ts");
+var i31 = __webpack_require__("./src/client/src/app/services/reservation/reservation.service.ts");
+var i32 = __webpack_require__("./src/client/src/app/services/schedule/schedule.service.ts");
+var i33 = __webpack_require__("./src/client/src/app/services/select/select.service.ts");
+var i34 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
+var i35 = __webpack_require__("./src/client/src/app/services/member-guard/member-guard.service.ts");
+var i36 = __webpack_require__("./node_modules/angular2-moment/moment.module.js");
+var i37 = __webpack_require__("./node_modules/angular2-useful-swiper/lib/swiper.module.js");
+var i38 = __webpack_require__("./src/client/src/app/components/auth/auth-select/auth-select.component.ts");
+var i39 = __webpack_require__("./src/client/src/app/components/base/base.component.ts");
+var i40 = __webpack_require__("./src/client/src/app/components/auth/auth-sign-out/auth-sign-out.component.ts");
+var i41 = __webpack_require__("./src/client/src/app/components/auth/auth-register/auth-register.component.ts");
+var i42 = __webpack_require__("./src/client/src/app/components/ticket/ticket.component.ts");
+var i43 = __webpack_require__("./src/client/src/app/components/purchase/purchase.component.ts");
+var i44 = __webpack_require__("./src/client/src/app/components/about/about.component.ts");
+var i45 = __webpack_require__("./src/client/src/app/components/policy/policy.component.ts");
+var i46 = __webpack_require__("./src/client/src/app/components/law/law.component.ts");
+var i47 = __webpack_require__("./src/client/src/app/components/privacy/privacy.component.ts");
+var i48 = __webpack_require__("./src/client/src/app/components/member/member-point/member-point.component.ts");
+var i49 = __webpack_require__("./src/client/src/app/components/member/member-benefits/member-benefits.component.ts");
+var i50 = __webpack_require__("./src/client/src/app/components/member/member-edit/member-edit.component.ts");
+var i51 = __webpack_require__("./src/client/src/app/components/member/member-withdraw/member-withdraw.component.ts");
+var i52 = __webpack_require__("./src/client/src/app/components/walk-through/walk-through.component.ts");
+var i53 = __webpack_require__("./src/client/src/app/components/error/error.component.ts");
+var i54 = __webpack_require__("./src/client/src/app/components/not-found/not-found.component.ts");
+var i55 = __webpack_require__("./src/client/src/app/app-routing.module.ts");
+var AppModuleNgFactory = i0.ɵcmf(i1.AppModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.AuthSelectComponentNgFactory, i4.BaseComponentNgFactory, i5.AuthSignOutComponentNgFactory, i6.AuthRegisterComponentNgFactory, i7.TicketComponentNgFactory, i8.PurchaseComponentNgFactory, i9.AboutComponentNgFactory, i10.PolicyComponentNgFactory, i11.LawComponentNgFactory, i12.PrivacyComponentNgFactory, i13.MemberPointComponentNgFactory, i14.MemberBenefitsComponentNgFactory, i15.MemberEditComponentNgFactory, i16.MemberWithdrawComponentNgFactory, i17.WalkThroughComponentNgFactory, i18.ErrorComponentNgFactory, i19.NotFoundComponentNgFactory, i20.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵq, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i21.NgLocalization, i21.NgLocaleLocalization, [i0.LOCALE_ID, [2, i21.ɵa]]), i0.ɵmpd(5120, i0.APP_ID, i0.ɵi, []), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵn, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵo, []), i0.ɵmpd(4608, i22.DomSanitizer, i22.ɵe, [i21.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i22.DomSanitizer]), i0.ɵmpd(4608, i22.HAMMER_GESTURE_CONFIG, i22.HammerGestureConfig, []), i0.ɵmpd(5120, i22.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p1_0, p2_0, p2_1) { return [new i22.ɵDomEventsPlugin(p0_0, p0_1), new i22.ɵKeyEventsPlugin(p1_0), new i22.ɵHammerGesturesPlugin(p2_0, p2_1)]; }, [i21.DOCUMENT, i0.NgZone, i21.DOCUMENT, i21.DOCUMENT, i22.HAMMER_GESTURE_CONFIG]), i0.ɵmpd(4608, i22.EventManager, i22.EventManager, [i22.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i22.ɵDomSharedStylesHost, i22.ɵDomSharedStylesHost, [i21.DOCUMENT]), i0.ɵmpd(4608, i22.ɵDomRendererFactory2, i22.ɵDomRendererFactory2, [i22.EventManager, i22.ɵDomSharedStylesHost]), i0.ɵmpd(6144, i0.RendererFactory2, null, [i22.ɵDomRendererFactory2]), i0.ɵmpd(6144, i22.ɵSharedStylesHost, null, [i22.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i0.Testability, i0.Testability, [i0.NgZone]), i0.ɵmpd(4608, i22.Meta, i22.Meta, [i21.DOCUMENT]), i0.ɵmpd(4608, i22.Title, i22.Title, [i21.DOCUMENT]), i0.ɵmpd(4608, i23.HttpXsrfTokenExtractor, i23.ɵh, [i21.DOCUMENT, i0.PLATFORM_ID, i23.ɵf]), i0.ɵmpd(4608, i23.ɵi, i23.ɵi, [i23.HttpXsrfTokenExtractor, i23.ɵg]), i0.ɵmpd(5120, i23.HTTP_INTERCEPTORS, function (p0_0) { return [p0_0]; }, [i23.ɵi]), i0.ɵmpd(4608, i23.ɵe, i23.ɵe, []), i0.ɵmpd(6144, i23.XhrFactory, null, [i23.ɵe]), i0.ɵmpd(4608, i23.HttpXhrBackend, i23.HttpXhrBackend, [i23.XhrFactory]), i0.ɵmpd(6144, i23.HttpBackend, null, [i23.HttpXhrBackend]), i0.ɵmpd(4608, i23.HttpHandler, i23.ɵc, [i23.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i23.HttpClient, i23.HttpClient, [i23.HttpHandler]), i0.ɵmpd(5120, i24.ActivatedRoute, i24.ɵf, [i24.Router]), i0.ɵmpd(4608, i24.NoPreloading, i24.NoPreloading, []), i0.ɵmpd(6144, i24.PreloadingStrategy, null, [i24.NoPreloading]), i0.ɵmpd(135680, i24.RouterPreloader, i24.RouterPreloader, [i24.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i24.PreloadingStrategy]), i0.ɵmpd(4608, i24.PreloadAllModules, i24.PreloadAllModules, []), i0.ɵmpd(5120, i24.ROUTER_INITIALIZER, i24.ɵi, [i24.ɵg]), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0) { return [p0_0]; }, [i24.ROUTER_INITIALIZER]), i0.ɵmpd(4608, i25.FormBuilder, i25.FormBuilder, []), i0.ɵmpd(4608, i25.ɵi, i25.ɵi, []), i0.ɵmpd(4608, i26.StorageService, i26.StorageService, []), i0.ɵmpd(4608, i27.UserService, i27.UserService, [i26.StorageService]), i0.ɵmpd(4608, i28.SasakiService, i28.SasakiService, [i23.HttpClient, i27.UserService]), i0.ɵmpd(4608, i29.AuthGuardService, i29.AuthGuardService, [i24.Router, i28.SasakiService, i27.UserService]), i0.ɵmpd(4608, i30.AwsCognitoService, i30.AwsCognitoService, []), i0.ɵmpd(4608, i31.ReservationService, i31.ReservationService, [i30.AwsCognitoService, i26.StorageService]), i0.ɵmpd(4608, i32.ScheduleService, i32.ScheduleService, [i26.StorageService, i28.SasakiService]), i0.ɵmpd(4608, i33.SelectService, i33.SelectService, [i26.StorageService]), i0.ɵmpd(4608, i34.CallNativeService, i34.CallNativeService, []), i0.ɵmpd(4608, i35.MemberGuardService, i35.MemberGuardService, [i24.Router, i27.UserService]), i0.ɵmpd(512, i21.CommonModule, i21.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i22.ɵa, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i24.ɵb()]; }, []), i0.ɵmpd(512, i24.ɵg, i24.ɵg, [i0.Injector]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0) { return [i22.ɵh(p0_0), i24.ɵh(p1_0)]; }, [[2, i0.NgProbeToken], i24.ɵg]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(512, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(512, i22.BrowserModule, i22.BrowserModule, [[3, i22.BrowserModule]]), i0.ɵmpd(512, i23.HttpClientXsrfModule, i23.HttpClientXsrfModule, []), i0.ɵmpd(512, i23.HttpClientModule, i23.HttpClientModule, []), i0.ɵmpd(512, i36.MomentModule, i36.MomentModule, []), i0.ɵmpd(512, i37.SwiperModule, i37.SwiperModule, []), i0.ɵmpd(1024, i24.ɵa, i24.ɵd, [[3, i24.Router]]), i0.ɵmpd(512, i24.UrlSerializer, i24.DefaultUrlSerializer, []), i0.ɵmpd(512, i24.ChildrenOutletContexts, i24.ChildrenOutletContexts, []), i0.ɵmpd(256, i24.ROUTER_CONFIGURATION, { useHash: true, enableTracing: true }, []), i0.ɵmpd(1024, i21.LocationStrategy, i24.ɵc, [i21.PlatformLocation, [2, i21.APP_BASE_HREF], i24.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i21.Location, i21.Location, [i21.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i0.SystemJsNgModuleLoader, [i0.Compiler, [2, i0.SystemJsNgModuleLoaderConfig]]), i0.ɵmpd(1024, i24.ROUTES, function () { return [[{ path: "", redirectTo: "/ticket", pathMatch: "full" }, { path: "auth", component: i38.AuthSelectComponent }, { path: "auth", children: [{ path: "select", component: i38.AuthSelectComponent }] }, { path: "auth", component: i39.BaseComponent, children: [{ path: "signOut", component: i40.AuthSignOutComponent }, { path: "register", component: i41.AuthRegisterComponent }] }, { path: "", component: i39.BaseComponent, canActivate: [i29.AuthGuardService], children: [{ path: "ticket", component: i42.TicketComponent }, { path: "purchase", component: i43.PurchaseComponent }, { path: "about", component: i44.AboutComponent }, { path: "policy", component: i45.PolicyComponent }, { path: "law", component: i46.LawComponent }, { path: "privacy", component: i47.PrivacyComponent }] }, { path: "member", component: i39.BaseComponent, canActivate: [i35.MemberGuardService], children: [{ path: "point", component: i48.MemberPointComponent }, { path: "benefits", component: i49.MemberBenefitsComponent }, { path: "edit", component: i50.MemberEditComponent }, { path: "withdraw", component: i51.MemberWithdrawComponent }] }, { path: "walkThrough", component: i52.WalkThroughComponent }, { path: "error/:redirect", component: i53.ErrorComponent }, { path: "error", component: i53.ErrorComponent }, { path: "**", component: i54.NotFoundComponent }]]; }, []), i0.ɵmpd(1024, i24.Router, i24.ɵe, [i0.ApplicationRef, i24.UrlSerializer, i24.ChildrenOutletContexts, i21.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i24.ROUTES, i24.ROUTER_CONFIGURATION, [2, i24.UrlHandlingStrategy], [2, i24.RouteReuseStrategy]]), i0.ɵmpd(512, i24.RouterModule, i24.RouterModule, [[2, i24.ɵa], [2, i24.Router]]), i0.ɵmpd(512, i55.AppRoutingModule, i55.AppRoutingModule, []), i0.ɵmpd(512, i25.ɵba, i25.ɵba, []), i0.ɵmpd(512, i25.ReactiveFormsModule, i25.ReactiveFormsModule, []), i0.ɵmpd(512, i25.FormsModule, i25.FormsModule, []), i0.ɵmpd(512, i1.AppModule, i1.AppModule, []), i0.ɵmpd(256, i23.ɵf, "XSRF-TOKEN", []), i0.ɵmpd(256, i23.ɵg, "X-XSRF-TOKEN", [])]); });
 exports.AppModuleNgFactory = AppModuleNgFactory;
 
 
@@ -730,6 +731,7 @@ var i2 = __webpack_require__("./src/client/src/app/components/parts/loading/load
 var i3 = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ts");
 var i4 = __webpack_require__("./src/client/src/app/components/auth/auth-register/auth-register.component.ts");
 var i5 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i6 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var styles_AuthRegisterComponent = [i0.styles];
 var RenderType_AuthRegisterComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_AuthRegisterComponent, data: {} });
 exports.RenderType_AuthRegisterComponent = RenderType_AuthRegisterComponent;
@@ -738,7 +740,7 @@ function View_AuthRegisterComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵel
         ad = (pd_0 && ad);
     } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u767B\u9332"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(26, 0, null, null, 1, "app-loading", [], null, null, null, i2.View_LoadingComponent_0, i2.RenderType_LoadingComponent)), i1.ɵdid(27, 114688, null, 0, i3.LoadingComponent, [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isLoading; _ck(_v, 27, 0, currVal_0); }, null); }
 exports.View_AuthRegisterComponent_0 = View_AuthRegisterComponent_0;
-function View_AuthRegisterComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-auth-register", [], null, null, null, View_AuthRegisterComponent_0, RenderType_AuthRegisterComponent)), i1.ɵdid(1, 114688, null, 0, i4.AuthRegisterComponent, [i5.SasakiService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_AuthRegisterComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-auth-register", [], null, null, null, View_AuthRegisterComponent_0, RenderType_AuthRegisterComponent)), i1.ɵdid(1, 114688, null, 0, i4.AuthRegisterComponent, [i5.SasakiService, i6.UserService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_AuthRegisterComponent_Host_0 = View_AuthRegisterComponent_Host_0;
 var AuthRegisterComponentNgFactory = i1.ɵccf("app-auth-register", i4.AuthRegisterComponent, View_AuthRegisterComponent_Host_0, {}, {}, []);
 exports.AuthRegisterComponentNgFactory = AuthRegisterComponentNgFactory;
@@ -807,9 +809,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var user_service_1 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var AuthRegisterComponent = /** @class */ (function () {
-    function AuthRegisterComponent(sasaki) {
+    function AuthRegisterComponent(sasaki, user) {
         this.sasaki = sasaki;
+        this.user = user;
     }
     AuthRegisterComponent.prototype.ngOnInit = function () {
         this.isLoading = false;
@@ -824,6 +828,8 @@ var AuthRegisterComponent = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
+                        this.user.data.memberType = user_service_1.MemberType.Member;
+                        this.user.save();
                         return [4 /*yield*/, this.sasaki.signIn()];
                     case 2:
                         _a.sent();
@@ -875,6 +881,8 @@ var i3 = __webpack_require__("./src/client/src/app/components/parts/loading/load
 var i4 = __webpack_require__("./src/client/src/app/components/auth/auth-select/auth-select.component.ts");
 var i5 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
 var i6 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var i7 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
+var i8 = __webpack_require__("./src/client/src/app/services/aws-cognito/aws-cognito.service.ts");
 var styles_AuthSelectComponent = [i0.styles];
 var RenderType_AuthSelectComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_AuthSelectComponent, data: {} });
 exports.RenderType_AuthSelectComponent = RenderType_AuthSelectComponent;
@@ -889,7 +897,7 @@ function View_AuthSelectComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(
         ad = (pd_0 && ad);
     } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30ED\u30B0\u30A4\u30F3"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(44, 0, null, null, 1, "app-loading", [], null, null, null, i2.View_LoadingComponent_0, i2.RenderType_LoadingComponent)), i1.ɵdid(45, 114688, null, 0, i3.LoadingComponent, [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isLoading; _ck(_v, 45, 0, currVal_0); }, null); }
 exports.View_AuthSelectComponent_0 = View_AuthSelectComponent_0;
-function View_AuthSelectComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-auth-select", [], null, null, null, View_AuthSelectComponent_0, RenderType_AuthSelectComponent)), i1.ɵdid(1, 114688, null, 0, i4.AuthSelectComponent, [i5.SasakiService, i6.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_AuthSelectComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-auth-select", [], null, null, null, View_AuthSelectComponent_0, RenderType_AuthSelectComponent)), i1.ɵdid(1, 114688, null, 0, i4.AuthSelectComponent, [i5.SasakiService, i6.Router, i7.UserService, i8.AwsCognitoService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_AuthSelectComponent_Host_0 = View_AuthSelectComponent_Host_0;
 var AuthSelectComponentNgFactory = i1.ɵccf("app-auth-select", i4.AuthSelectComponent, View_AuthSelectComponent_Host_0, {}, {}, []);
 exports.AuthSelectComponentNgFactory = AuthSelectComponentNgFactory;
@@ -958,11 +966,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var aws_cognito_service_1 = __webpack_require__("./src/client/src/app/services/aws-cognito/aws-cognito.service.ts");
 var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var user_service_1 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var AuthSelectComponent = /** @class */ (function () {
-    function AuthSelectComponent(sasaki, router) {
+    function AuthSelectComponent(sasaki, router, user, awsCognito) {
         this.sasaki = sasaki;
         this.router = router;
+        this.user = user;
+        this.awsCognito = awsCognito;
     }
     AuthSelectComponent.prototype.ngOnInit = function () {
         this.isLoading = false;
@@ -980,6 +992,8 @@ var AuthSelectComponent = /** @class */ (function () {
                         return [4 /*yield*/, this.sasaki.signIn()];
                     case 2:
                         _a.sent();
+                        this.user.data.memberType = user_service_1.MemberType.Member;
+                        this.user.save();
                         return [3 /*break*/, 4];
                     case 3:
                         error_1 = _a.sent();
@@ -1004,6 +1018,8 @@ var AuthSelectComponent = /** @class */ (function () {
                         return [4 /*yield*/, this.sasaki.signIn()];
                     case 2:
                         _a.sent();
+                        this.user.data.memberType = user_service_1.MemberType.Member;
+                        this.user.save();
                         return [3 /*break*/, 4];
                     case 3:
                         error_2 = _a.sent();
@@ -1017,17 +1033,37 @@ var AuthSelectComponent = /** @class */ (function () {
     };
     AuthSelectComponent.prototype.start = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var deviceId;
+            var deviceId, err_1;
             return __generator(this, function (_a) {
-                this.sasaki.saveMemberType(sasaki_service_1.MemberType.NotMember);
-                deviceId = localStorage.getItem('deviceId');
-                if (deviceId === null) {
-                    this.router.navigate(['/walkThrough']);
+                switch (_a.label) {
+                    case 0:
+                        this.isLoading = true;
+                        deviceId = localStorage.getItem('deviceId');
+                        this.user.data.memberType = user_service_1.MemberType.NotMember;
+                        this.user.save();
+                        if (deviceId === null) {
+                            this.router.navigate(['/walkThrough']);
+                            return [2 /*return*/];
+                        }
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.awsCognito.authenticateWithDeviceId()];
+                    case 2:
+                        _a.sent();
+                        if (this.awsCognito.credentials === undefined) {
+                            throw new Error('credentials is undefined');
+                        }
+                        localStorage.setItem('deviceId', this.awsCognito.credentials.identityId);
+                        this.router.navigate(['/']);
+                        return [3 /*break*/, 4];
+                    case 3:
+                        err_1 = _a.sent();
+                        console.error(err_1);
+                        this.isLoading = false;
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
-                else {
-                    this.router.navigate(['/']);
-                }
-                return [2 /*return*/];
             });
         });
     };
@@ -1189,12 +1225,12 @@ var i3 = __webpack_require__("./src/client/src/app/components/parts/header/heade
 var i4 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var i5 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.ngfactory.js");
 var i6 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.ts");
-var i7 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i7 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var i8 = __webpack_require__("./src/client/src/app/components/base/base.component.ts");
 var styles_BaseComponent = [i0.styles];
 var RenderType_BaseComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_BaseComponent, data: {} });
 exports.RenderType_BaseComponent = RenderType_BaseComponent;
-function View_BaseComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header", [], null, null, null, i2.View_HeaderComponent_0, i2.RenderType_HeaderComponent)), i1.ɵdid(1, 114688, null, 0, i3.HeaderComponent, [i4.Router], null, null), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(3, 16777216, null, null, 1, "router-outlet", [], null, null, null, null, null)), i1.ɵdid(4, 212992, null, 0, i4.RouterOutlet, [i4.ChildrenOutletContexts, i1.ViewContainerRef, i1.ComponentFactoryResolver, [8, null], i1.ChangeDetectorRef], null, null), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(6, 0, null, null, 1, "app-navigation", [], null, null, null, i5.View_NavigationComponent_0, i5.RenderType_NavigationComponent)), i1.ɵdid(7, 114688, null, 0, i6.NavigationComponent, [i7.SasakiService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); _ck(_v, 4, 0); _ck(_v, 7, 0); }, null); }
+function View_BaseComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 10, "div", [["class", "wrapper member"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "app-header", [], null, null, null, i2.View_HeaderComponent_0, i2.RenderType_HeaderComponent)), i1.ɵdid(3, 114688, null, 0, i3.HeaderComponent, [i4.Router], null, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(5, 16777216, null, null, 1, "router-outlet", [], null, null, null, null, null)), i1.ɵdid(6, 212992, null, 0, i4.RouterOutlet, [i4.ChildrenOutletContexts, i1.ViewContainerRef, i1.ComponentFactoryResolver, [8, null], i1.ChangeDetectorRef], null, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "app-navigation", [], null, null, null, i5.View_NavigationComponent_0, i5.RenderType_NavigationComponent)), i1.ɵdid(9, 114688, null, 0, i6.NavigationComponent, [i7.UserService], null, null), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { _ck(_v, 3, 0); _ck(_v, 6, 0); _ck(_v, 9, 0); }, null); }
 exports.View_BaseComponent_0 = View_BaseComponent_0;
 function View_BaseComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-base", [], null, null, null, View_BaseComponent_0, RenderType_BaseComponent)), i1.ɵdid(1, 114688, null, 0, i8.BaseComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_BaseComponent_Host_0 = View_BaseComponent_Host_0;
@@ -1554,7 +1590,7 @@ var i2 = __webpack_require__("./src/client/src/app/components/member/member-bene
 var styles_MemberBenefitsComponent = [i0.styles];
 var RenderType_MemberBenefitsComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_MemberBenefitsComponent, data: {} });
 exports.RenderType_MemberBenefitsComponent = RenderType_MemberBenefitsComponent;
-function View_MemberBenefitsComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  member-benefits works!\n"])), (_l()(), i1.ɵted(-1, null, ["\n"]))], null, null); }
+function View_MemberBenefitsComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 52, "div", [["class", "contents bg-01"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 49, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(4, 0, null, null, 1, "h2", [["class", "text-center mb-small"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u306B\u306A\u308B\u3068\u30AA\u30C8\u30AF\u306A\u7279\u5178\u304C\u3044\u3063\u3071\u3044"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(7, 0, null, null, 1, "p", [["class", "read mb-middle small-text"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            \u30B7\u30CD\u30DE\u30B5\u30F3\u30B7\u30E3\u30A4\u30F3\u306E\u4F1A\u54E1\uFF08\u5E74\u4F1A\u8CBB500\u5186\uFF09\u306B\u306A\u308B\u3068\u30AA\u30C8\u30AF\u306A\u7279\u5178\u304C\u53D7\u3051\u3089\u308C\u307E\u3059\u3002\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(10, 0, null, null, 40, "ol", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(12, 0, null, null, 11, "li", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(14, 0, null, null, 3, "p", [["class", "mb-small small-text text-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                    \u3010\u7279\u51781\u3011\n                    "])), (_l()(), i1.ɵeld(16, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, [" \u898B\u308C\u3070\u898B\u308B\u307B\u3069\u30DD\u30A4\u30F3\u30C8\u304C\u304A\u5F97\u306B\u8CAF\u307E\u308B\uFF01\n                "])), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(19, 0, null, null, 3, "div", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                    "])), (_l()(), i1.ɵeld(21, 0, null, null, 0, "img", [["height", "150"], ["src", "/assets/images/about/purchase_smartly.svg"], ["width", "230"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(25, 0, null, null, 11, "li", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(27, 0, null, null, 3, "p", [["class", "mb-small small-text text-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                    \u3010\u7279\u51782\u3011\n                    "])), (_l()(), i1.ɵeld(29, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, [" \u4F1A\u54E1\u5272\u5F15\u3067\u304A\u5F97\u306B\u9451\u8CDE\uFF01\n                "])), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(32, 0, null, null, 3, "div", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                    "])), (_l()(), i1.ɵeld(34, 0, null, null, 0, "img", [["height", "150"], ["src", "/assets/images/about/purchase_smartly.svg"], ["width", "230"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(38, 0, null, null, 11, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(40, 0, null, null, 3, "p", [["class", "mb-small small-text text-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                    \u3010\u7279\u51783\u3011\n                    "])), (_l()(), i1.ɵeld(42, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, [" \u4F1A\u54E1\u69D8\u3060\u3051\u306E\u5148\u884C\u4E88\u7D04\uFF01\n                "])), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(45, 0, null, null, 3, "div", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                    "])), (_l()(), i1.ɵeld(47, 0, null, null, 0, "img", [["height", "150"], ["src", "/assets/images/about/purchase_smartly.svg"], ["width", "230"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"]))], null, null); }
 exports.View_MemberBenefitsComponent_0 = View_MemberBenefitsComponent_0;
 function View_MemberBenefitsComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-member-benefits", [], null, null, null, View_MemberBenefitsComponent_0, RenderType_MemberBenefitsComponent)), i1.ɵdid(1, 114688, null, 0, i2.MemberBenefitsComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_MemberBenefitsComponent_Host_0 = View_MemberBenefitsComponent_Host_0;
@@ -1745,15 +1781,20 @@ exports.MemberPointComponent = MemberPointComponent;
 Object.defineProperty(exports, "__esModule", { value: true });
 var i0 = __webpack_require__("./src/client/src/app/components/member/member-withdraw/member-withdraw.component.scss.shim.ngstyle.js");
 var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-var i2 = __webpack_require__("./src/client/src/app/components/member/member-withdraw/member-withdraw.component.ts");
+var i2 = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ngfactory.js");
+var i3 = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ts");
+var i4 = __webpack_require__("./src/client/src/app/components/member/member-withdraw/member-withdraw.component.ts");
 var styles_MemberWithdrawComponent = [i0.styles];
 var RenderType_MemberWithdrawComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_MemberWithdrawComponent, data: {} });
 exports.RenderType_MemberWithdrawComponent = RenderType_MemberWithdrawComponent;
-function View_MemberWithdrawComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  member-withdraw works!\n"])), (_l()(), i1.ɵted(-1, null, ["\n"]))], null, null); }
+function View_MemberWithdrawComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 17, "div", [["class", "contents position-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 14, "div", [["class", "inner center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(4, 0, null, null, 5, "p", [["class", "read text-center mb-middle"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            \u9000\u4F1A\u3092\u884C\u3044\u307E\u3059\u3002\n            "])), (_l()(), i1.ɵeld(6, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, [" \u4E0B\u8A18\u6CE8\u610F\u6587\u8A00\u3092\u3054\u78BA\u8A8D\u306E\u3046\u3048\n            "])), (_l()(), i1.ɵeld(8, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, [" \u554F\u984C\u306A\u3051\u308C\u3070\u9000\u4F1A\u30DC\u30BF\u30F3\u3092\u62BC\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n        "])), (_l()(), i1.ɵted(-1, null, ["\n\n        "])), (_l()(), i1.ɵeld(11, 0, null, null, 4, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(13, 0, null, null, 1, "button", [["class", "btn btn-primary btn-block"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.withdraw() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u9000\u4F1A"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(19, 0, null, null, 1, "app-loading", [], null, null, null, i2.View_LoadingComponent_0, i2.RenderType_LoadingComponent)), i1.ɵdid(20, 114688, null, 0, i3.LoadingComponent, [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isLoading; _ck(_v, 20, 0, currVal_0); }, null); }
 exports.View_MemberWithdrawComponent_0 = View_MemberWithdrawComponent_0;
-function View_MemberWithdrawComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-member-withdraw", [], null, null, null, View_MemberWithdrawComponent_0, RenderType_MemberWithdrawComponent)), i1.ɵdid(1, 114688, null, 0, i2.MemberWithdrawComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_MemberWithdrawComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-member-withdraw", [], null, null, null, View_MemberWithdrawComponent_0, RenderType_MemberWithdrawComponent)), i1.ɵdid(1, 114688, null, 0, i4.MemberWithdrawComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_MemberWithdrawComponent_Host_0 = View_MemberWithdrawComponent_Host_0;
-var MemberWithdrawComponentNgFactory = i1.ɵccf("app-member-withdraw", i2.MemberWithdrawComponent, View_MemberWithdrawComponent_Host_0, {}, {}, []);
+var MemberWithdrawComponentNgFactory = i1.ɵccf("app-member-withdraw", i4.MemberWithdrawComponent, View_MemberWithdrawComponent_Host_0, {}, {}, []);
 exports.MemberWithdrawComponentNgFactory = MemberWithdrawComponentNgFactory;
 
 
@@ -1771,7 +1812,7 @@ exports.MemberWithdrawComponentNgFactory = MemberWithdrawComponentNgFactory;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
-var styles = [""];
+var styles = [".contents[_ngcontent-%COMP%] {\n  min-height: auto; }"];
 exports.styles = styles;
 
 
@@ -1788,6 +1829,11 @@ var MemberWithdrawComponent = /** @class */ (function () {
     function MemberWithdrawComponent() {
     }
     MemberWithdrawComponent.prototype.ngOnInit = function () {
+        this.isLoading = false;
+    };
+    MemberWithdrawComponent.prototype.withdraw = function () {
+        this.isLoading = true;
+        this.isLoading = false;
     };
     return MemberWithdrawComponent;
 }());
@@ -1933,7 +1979,7 @@ var i2 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var i3 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
 var i4 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.ts");
 var i5 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
-var i6 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i6 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var styles_HeaderMenuComponent = [i0.styles];
 var RenderType_HeaderMenuComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_HeaderMenuComponent, data: {} });
 exports.RenderType_HeaderMenuComponent = RenderType_HeaderMenuComponent;
@@ -2008,9 +2054,9 @@ function View_HeaderMenuComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(
     } return ad; }, null, null)), i1.ɵdid(51, 16384, [[9, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(52, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 9, { links: 1 }), i1.ɵqud(603979776, 10, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\u30D7\u30E9\u30A4\u30D0\u30B7\u30FC\u30DD\u30EA\u30B7\u30FC"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(58, 0, null, null, 4, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(60, 0, null, null, 1, "span", [["class", "icon-inline icon-external-link-white"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.openWebBrowse(_co.portalSite) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30B7\u30CD\u30DE\u30B5\u30F3\u30B7\u30E3\u30A4\u30F3\u30DD\u30FC\u30BF\u30EB\u30B5\u30A4\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_1)), i1.ɵdid(65, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_2)), i1.ɵdid(68, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_3)), i1.ɵdid(71, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_4)), i1.ɵdid(74, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_5)), i1.ɵdid(77, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_2 = "/ticket"; _ck(_v, 10, 0, currVal_2); var currVal_3 = "active"; _ck(_v, 11, 0, currVal_3); var currVal_4 = "/about"; _ck(_v, 20, 0, currVal_4); var currVal_5 = "active"; _ck(_v, 21, 0, currVal_5); var currVal_6 = "/policy"; _ck(_v, 31, 0, currVal_6); var currVal_7 = "active"; _ck(_v, 32, 0, currVal_7); var currVal_8 = "/law"; _ck(_v, 41, 0, currVal_8); var currVal_9 = "active"; _ck(_v, 42, 0, currVal_9); var currVal_10 = "/privacy"; _ck(_v, 51, 0, currVal_10); var currVal_11 = "active"; _ck(_v, 52, 0, currVal_11); var currVal_12 = !_co.sasaki.isMember(); _ck(_v, 65, 0, currVal_12); var currVal_13 = _co.sasaki.isMember(); _ck(_v, 68, 0, currVal_13); var currVal_14 = _co.sasaki.isMember(); _ck(_v, 71, 0, currVal_14); var currVal_15 = _co.sasaki.isMember(); _ck(_v, 74, 0, currVal_15); var currVal_16 = _co.sasaki.isMember(); _ck(_v, 77, 0, currVal_16); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isOpen; _ck(_v, 0, 0, currVal_0); var currVal_1 = _co.isOpen; _ck(_v, 2, 0, currVal_1); }); }
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30B7\u30CD\u30DE\u30B5\u30F3\u30B7\u30E3\u30A4\u30F3\u30DD\u30FC\u30BF\u30EB\u30B5\u30A4\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_1)), i1.ɵdid(65, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_2)), i1.ɵdid(68, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_3)), i1.ɵdid(71, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_4)), i1.ɵdid(74, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderMenuComponent_5)), i1.ɵdid(77, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_2 = "/ticket"; _ck(_v, 10, 0, currVal_2); var currVal_3 = "active"; _ck(_v, 11, 0, currVal_3); var currVal_4 = "/about"; _ck(_v, 20, 0, currVal_4); var currVal_5 = "active"; _ck(_v, 21, 0, currVal_5); var currVal_6 = "/policy"; _ck(_v, 31, 0, currVal_6); var currVal_7 = "active"; _ck(_v, 32, 0, currVal_7); var currVal_8 = "/law"; _ck(_v, 41, 0, currVal_8); var currVal_9 = "active"; _ck(_v, 42, 0, currVal_9); var currVal_10 = "/privacy"; _ck(_v, 51, 0, currVal_10); var currVal_11 = "active"; _ck(_v, 52, 0, currVal_11); var currVal_12 = !_co.user.isMember(); _ck(_v, 65, 0, currVal_12); var currVal_13 = _co.user.isMember(); _ck(_v, 68, 0, currVal_13); var currVal_14 = _co.user.isMember(); _ck(_v, 71, 0, currVal_14); var currVal_15 = _co.user.isMember(); _ck(_v, 74, 0, currVal_15); var currVal_16 = _co.user.isMember(); _ck(_v, 77, 0, currVal_16); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isOpen; _ck(_v, 0, 0, currVal_0); var currVal_1 = _co.isOpen; _ck(_v, 2, 0, currVal_1); }); }
 exports.View_HeaderMenuComponent_0 = View_HeaderMenuComponent_0;
-function View_HeaderMenuComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header-menu", [], null, null, null, View_HeaderMenuComponent_0, RenderType_HeaderMenuComponent)), i1.ɵdid(1, 114688, null, 0, i4.HeaderMenuComponent, [i5.CallNativeService, i6.SasakiService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_HeaderMenuComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header-menu", [], null, null, null, View_HeaderMenuComponent_0, RenderType_HeaderMenuComponent)), i1.ɵdid(1, 114688, null, 0, i4.HeaderMenuComponent, [i5.CallNativeService, i6.UserService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_HeaderMenuComponent_Host_0 = View_HeaderMenuComponent_Host_0;
 var HeaderMenuComponentNgFactory = i1.ɵccf("app-header-menu", i4.HeaderMenuComponent, View_HeaderMenuComponent_Host_0, { isOpen: "isOpen" }, { logout: "logout", close: "close" }, []);
 exports.HeaderMenuComponentNgFactory = HeaderMenuComponentNgFactory;
@@ -2048,11 +2094,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var environment_1 = __webpack_require__("./src/client/src/environments/environment.ts");
 var call_native_service_1 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
-var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var user_service_1 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var HeaderMenuComponent = /** @class */ (function () {
-    function HeaderMenuComponent(callNative, sasaki) {
+    function HeaderMenuComponent(callNative, user) {
         this.callNative = callNative;
-        this.sasaki = sasaki;
+        this.user = user;
         this.logout = new core_1.EventEmitter();
         this.close = new core_1.EventEmitter();
     }
@@ -2111,7 +2157,7 @@ var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i2 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.ngfactory.js");
 var i3 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.ts");
 var i4 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
-var i5 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i5 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var i6 = __webpack_require__("./src/client/src/app/components/parts/header/header.component.ts");
 var i7 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var styles_HeaderComponent = [i0.styles];
@@ -2120,10 +2166,10 @@ exports.RenderType_HeaderComponent = RenderType_HeaderComponent;
 function View_HeaderComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 16, "header", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "div", [["class", "logo"]], null, null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 0, "img", [["src", "/assets/images/common/logo_text_02.svg"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(5, 0, null, null, 1, "h1", [], null, null, null, null, null)), (_l()(), i1.ɵted(6, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(8, 0, null, null, 7, "div", [["class", "button"]], [[2, "active", null]], [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = ((_co.isMenuOpen ? _co.menuClose() : _co.menuOpen()) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(10, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(12, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(14, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n\n"])), (_l()(), i1.ɵeld(18, 0, null, null, 1, "app-header-menu", [], null, [[null, "close"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("close" === en)) {
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(10, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(12, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(14, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(18, 0, null, null, 7, "div", [["class", "member-header"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(20, 0, null, null, 0, "div", [["class", "name"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(22, 0, null, null, 0, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(24, 0, null, null, 0, "div", [["class", "point"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n\n"])), (_l()(), i1.ɵeld(27, 0, null, null, 1, "app-header-menu", [], null, [[null, "close"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("close" === en)) {
         var pd_0 = (_co.menuClose() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, i2.View_HeaderMenuComponent_0, i2.RenderType_HeaderMenuComponent)), i1.ɵdid(19, 114688, null, 0, i3.HeaderMenuComponent, [i4.CallNativeService, i5.SasakiService], { isOpen: [0, "isOpen"] }, { close: "close" }), (_l()(), i1.ɵted(-1, null, ["\n\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_2 = _co.isMenuOpen; _ck(_v, 19, 0, currVal_2); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.page.title; _ck(_v, 6, 0, currVal_0); var currVal_1 = _co.isMenuOpen; _ck(_v, 8, 0, currVal_1); }); }
+    } return ad; }, i2.View_HeaderMenuComponent_0, i2.RenderType_HeaderMenuComponent)), i1.ɵdid(28, 114688, null, 0, i3.HeaderMenuComponent, [i4.CallNativeService, i5.UserService], { isOpen: [0, "isOpen"] }, { close: "close" }), (_l()(), i1.ɵted(-1, null, ["\n\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_2 = _co.isMenuOpen; _ck(_v, 28, 0, currVal_2); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.page.title; _ck(_v, 6, 0, currVal_0); var currVal_1 = _co.isMenuOpen; _ck(_v, 8, 0, currVal_1); }); }
 exports.View_HeaderComponent_0 = View_HeaderComponent_0;
 function View_HeaderComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header", [], null, null, null, View_HeaderComponent_0, RenderType_HeaderComponent)), i1.ɵdid(1, 114688, null, 0, i6.HeaderComponent, [i7.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_HeaderComponent_Host_0 = View_HeaderComponent_Host_0;
@@ -2226,6 +2272,7 @@ var pages = [
     { url: '/law', title: '特定商取引法に基づく表記', prev: true },
     { url: '/privacy', title: 'プライバシーポリシー', prev: true },
     { url: '/law', title: '特定商取引法に基づく表記', prev: true },
+    { url: '/auth/register', title: '会員登録', prev: true },
     { url: '/auth/signOut', title: 'ログアウト', prev: true },
     { url: '/member/benefits', title: '会員特典', prev: true },
     { url: '/member/edit', title: '会員情報変更', prev: true },
@@ -2324,23 +2371,23 @@ var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i2 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var i3 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
 var i4 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.ts");
-var i5 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i5 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var styles_NavigationComponent = [i0.styles];
 var RenderType_NavigationComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_NavigationComponent, data: {} });
 exports.RenderType_NavigationComponent = RenderType_NavigationComponent;
-function View_NavigationComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 10, "li", [["routerLink", "/purchase"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+function View_NavigationComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 10, "li", [["routerLink", "/member/point"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 1).onClick() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(1, 16384, [[5, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(2, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 5, { links: 1 }), i1.ɵqud(603979776, 6, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(6, 0, null, null, 0, "div", [["class", "mb-xx-small icon-purchase-white"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u30DD\u30A4\u30F3\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n    "]))], function (_ck, _v) { var currVal_0 = "/purchase"; _ck(_v, 1, 0, currVal_0); var currVal_1 = "active"; _ck(_v, 2, 0, currVal_1); }, null); }
-function View_NavigationComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 28, "ul", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 10, "li", [["routerLink", "/ticket"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+    } return ad; }, null, null)), i1.ɵdid(1, 16384, [[5, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(2, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 5, { links: 1 }), i1.ɵqud(603979776, 6, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(6, 0, null, null, 0, "div", [["class", "mb-xx-small icon-purchase-white"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u4F1A\u54E1\u30DD\u30A4\u30F3\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n    "]))], function (_ck, _v) { var currVal_0 = "/member/point"; _ck(_v, 1, 0, currVal_0); var currVal_1 = "active"; _ck(_v, 2, 0, currVal_1); }, null); }
+function View_NavigationComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 30, "ul", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 12, "li", [["routerLink", "/ticket"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 3).onClick() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(3, 16384, [[1, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(4, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 1, { links: 1 }), i1.ɵqud(603979776, 2, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(8, 0, null, null, 0, "div", [["class", "mb-xx-small icon-ticket-holder-white"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(10, 0, null, null, 1, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u8CFC\u5165\u6E08\u307F\u30C1\u30B1\u30C3\u30C8\u30DB\u30EB\u30C0\u30FC"])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(14, 0, null, null, 10, "li", [["routerLink", "/purchase"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
-        var pd_0 = (i1.ɵnov(_v, 15).onClick() !== false);
+    } return ad; }, null, null)), i1.ɵdid(3, 16384, [[1, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(4, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 1, { links: 1 }), i1.ɵqud(603979776, 2, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(8, 0, null, null, 0, "div", [["class", "mb-xx-small icon-ticket-holder-white"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(10, 0, null, null, 3, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u8CFC\u5165\u6E08\u307F"])), (_l()(), i1.ɵeld(12, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30C1\u30B1\u30C3\u30C8\u30DB\u30EB\u30C0\u30FC"])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(16, 0, null, null, 10, "li", [["routerLink", "/purchase"], ["routerLinkActive", "active"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 17).onClick() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(15, 16384, [[3, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(16, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 3, { links: 1 }), i1.ɵqud(603979776, 4, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(20, 0, null, null, 0, "div", [["class", "mb-xx-small icon-purchase-white"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(22, 0, null, null, 1, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30C1\u30B1\u30C3\u30C8\u8CFC\u5165"])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_NavigationComponent_1)), i1.ɵdid(27, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_0 = "/ticket"; _ck(_v, 3, 0, currVal_0); var currVal_1 = "active"; _ck(_v, 4, 0, currVal_1); var currVal_2 = "/purchase"; _ck(_v, 15, 0, currVal_2); var currVal_3 = "active"; _ck(_v, 16, 0, currVal_3); var currVal_4 = _co.sasaki.isMember(); _ck(_v, 27, 0, currVal_4); }, null); }
+    } return ad; }, null, null)), i1.ɵdid(17, 16384, [[3, 4]], 0, i2.RouterLink, [i2.Router, i2.ActivatedRoute, [8, null], i1.Renderer2, i1.ElementRef], { routerLink: [0, "routerLink"] }, null), i1.ɵdid(18, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 3, { links: 1 }), i1.ɵqud(603979776, 4, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(22, 0, null, null, 0, "div", [["class", "mb-xx-small icon-purchase-white"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(24, 0, null, null, 1, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30C1\u30B1\u30C3\u30C8\u8CFC\u5165"])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_NavigationComponent_1)), i1.ɵdid(29, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_0 = "/ticket"; _ck(_v, 3, 0, currVal_0); var currVal_1 = "active"; _ck(_v, 4, 0, currVal_1); var currVal_2 = "/purchase"; _ck(_v, 17, 0, currVal_2); var currVal_3 = "active"; _ck(_v, 18, 0, currVal_3); var currVal_4 = _co.user.isMember(); _ck(_v, 29, 0, currVal_4); }, null); }
 exports.View_NavigationComponent_0 = View_NavigationComponent_0;
-function View_NavigationComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-navigation", [], null, null, null, View_NavigationComponent_0, RenderType_NavigationComponent)), i1.ɵdid(1, 114688, null, 0, i4.NavigationComponent, [i5.SasakiService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_NavigationComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-navigation", [], null, null, null, View_NavigationComponent_0, RenderType_NavigationComponent)), i1.ɵdid(1, 114688, null, 0, i4.NavigationComponent, [i5.UserService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_NavigationComponent_Host_0 = View_NavigationComponent_Host_0;
 var NavigationComponentNgFactory = i1.ɵccf("app-navigation", i4.NavigationComponent, View_NavigationComponent_Host_0, {}, {}, []);
 exports.NavigationComponentNgFactory = NavigationComponentNgFactory;
@@ -2360,7 +2407,7 @@ exports.NavigationComponentNgFactory = NavigationComponentNgFactory;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
-var styles = ["[_nghost-%COMP%] {\n  height: 60px;\n  display: block; }\n\nul[_ngcontent-%COMP%] {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 10;\n  display: table;\n  table-layout: fixed;\n  width: 100%;\n  height: 60px;\n  background-color: #2B2B2B; }\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n    display: table-cell;\n    border-bottom: 5px solid #4C4C4C;\n    font-size: 10px;\n    text-align: center;\n    vertical-align: middle;\n    opacity: 0.7; }\n\nul[_ngcontent-%COMP%]   li.active[_ngcontent-%COMP%] {\n      background-color: #383838;\n      border-bottom-color: #00A0E9;\n      opacity: 1; }\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .icon-ticket-holder-white[_ngcontent-%COMP%]:before, ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .icon-purchase-white[_ngcontent-%COMP%]:before {\n      margin: auto;\n      width: 25px;\n      height: 25px;\n      background-size: 25px; }"];
+var styles = ["[_nghost-%COMP%] {\n  height: 60px;\n  display: block; }\n\nul[_ngcontent-%COMP%] {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 10;\n  display: table;\n  table-layout: fixed;\n  width: 100%;\n  height: 60px;\n  background-color: #2B2B2B; }\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n    display: table-cell;\n    border-bottom: 5px solid #4C4C4C;\n    font-size: 10px;\n    text-align: center;\n    vertical-align: middle;\n    opacity: 0.7; }\n\nul[_ngcontent-%COMP%]   li.active[_ngcontent-%COMP%] {\n      background-color: #383838;\n      border-bottom-color: #00A0E9;\n      opacity: 1; }\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .icon-ticket-holder-white[_ngcontent-%COMP%]:before, ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .icon-purchase-white[_ngcontent-%COMP%]:before {\n      margin: auto;\n      width: 20px;\n      height: 20px;\n      background-size: 20px; }"];
 exports.styles = styles;
 
 
@@ -2376,10 +2423,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * NavigationComponent
  */
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var user_service_1 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var NavigationComponent = /** @class */ (function () {
-    function NavigationComponent(sasaki) {
-        this.sasaki = sasaki;
+    function NavigationComponent(user) {
+        this.user = user;
     }
     /**
      * 初期化
@@ -3160,7 +3207,7 @@ var i10 = __webpack_require__("./src/client/src/app/components/parts/loading/loa
 var i11 = __webpack_require__("./src/client/src/app/components/ticket/ticket.component.ts");
 var i12 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var i13 = __webpack_require__("./src/client/src/app/services/reservation/reservation.service.ts");
-var i14 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var i14 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var styles_TicketComponent = [i0.styles];
 var RenderType_TicketComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_TicketComponent, data: {} });
 exports.RenderType_TicketComponent = RenderType_TicketComponent;
@@ -3170,7 +3217,7 @@ function View_TicketComponent_4(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0
 function View_TicketComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 7, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_TicketComponent_2)), i1.ɵdid(3, 16384, null, 0, i6.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_TicketComponent_4)), i1.ɵdid(6, 16384, null, 0, i6.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n        "]))], function (_ck, _v) { var _co = _v.component; var currVal_0 = (_co.purchaseNumberOrders.length > 0); _ck(_v, 3, 0, currVal_0); var currVal_1 = (_co.purchaseNumberOrders.length === 0); _ck(_v, 6, 0, currVal_1); }, null); }
 function View_TicketComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 12, "div", [["class", "contents"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 9, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(4, 0, null, null, 3, "p", [["class", "mb-small text-center small-text"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            \u8CFC\u5165\u3057\u305F\u9451\u8CDE\u4F5C\u54C1\u306E\u4E0B\u8A18\u30C1\u30B1\u30C3\u30C8\u306EQR\u30B3\u30FC\u30C9\u3092\n            "])), (_l()(), i1.ɵeld(6, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u5165\u5834\u53E3\u30B9\u30BF\u30C3\u30D5\u306B\u63D0\u793A\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_TicketComponent_1)), i1.ɵdid(10, 16384, null, 0, i6.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(14, 0, null, null, 1, "app-loading", [], null, null, null, i9.View_LoadingComponent_0, i9.RenderType_LoadingComponent)), i1.ɵdid(15, 114688, null, 0, i10.LoadingComponent, [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = !_co.isLoading; _ck(_v, 10, 0, currVal_0); var currVal_1 = _co.isLoading; _ck(_v, 15, 0, currVal_1); }, null); }
 exports.View_TicketComponent_0 = View_TicketComponent_0;
-function View_TicketComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-ticket", [], null, null, null, View_TicketComponent_0, RenderType_TicketComponent)), i1.ɵdid(1, 114688, null, 0, i11.TicketComponent, [i12.Router, i13.ReservationService, i14.SasakiService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_TicketComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-ticket", [], null, null, null, View_TicketComponent_0, RenderType_TicketComponent)), i1.ɵdid(1, 114688, null, 0, i11.TicketComponent, [i12.Router, i13.ReservationService, i14.UserService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_TicketComponent_Host_0 = View_TicketComponent_Host_0;
 var TicketComponentNgFactory = i1.ɵccf("app-ticket", i11.TicketComponent, View_TicketComponent_Host_0, {}, {}, []);
 exports.TicketComponentNgFactory = TicketComponentNgFactory;
@@ -3243,12 +3290,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var reservation_service_1 = __webpack_require__("./src/client/src/app/services/reservation/reservation.service.ts");
-var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var user_service_1 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var TicketComponent = /** @class */ (function () {
-    function TicketComponent(router, reservation, sasaki) {
+    function TicketComponent(router, reservation, user) {
         this.router = router;
         this.reservation = reservation;
-        this.sasaki = sasaki;
+        this.user = user;
     }
     /**
      * 初期化
@@ -3268,7 +3315,7 @@ var TicketComponent = /** @class */ (function () {
                             paginationClickable: true,
                             autoHeight: true
                         };
-                        if (!!this.sasaki.isMember()) return [3 /*break*/, 4];
+                        if (!!this.user.isMember()) return [3 /*break*/, 4];
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
@@ -3440,7 +3487,7 @@ var WalkThroughComponent = /** @class */ (function () {
      */
     WalkThroughComponent.prototype.start = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var error_1;
+            var err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -3458,8 +3505,8 @@ var WalkThroughComponent = /** @class */ (function () {
                         _a.sent();
                         return [3 /*break*/, 4];
                     case 3:
-                        error_1 = _a.sent();
-                        console.error(error_1);
+                        err_1 = _a.sent();
+                        console.error(err_1);
                         return [3 /*break*/, 4];
                     case 4:
                         this.isLoading = false;
@@ -3660,10 +3707,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var user_service_1 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var AuthGuardService = /** @class */ (function () {
-    function AuthGuardService(router, sasaki) {
+    function AuthGuardService(router, sasaki, user) {
         this.router = router;
         this.sasaki = sasaki;
+        this.user = user;
     }
     /**
      * 認証
@@ -3680,7 +3729,7 @@ var AuthGuardService = /** @class */ (function () {
                         return [4 /*yield*/, this.sasaki.authorize()];
                     case 1:
                         _a.sent();
-                        if (!this.sasaki.isMember()) {
+                        if (!this.user.isMember()) {
                             deviceId = localStorage.getItem('deviceId');
                             if (deviceId === null) {
                                 throw new Error('deviceId is null');
@@ -4058,11 +4107,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var user_service_1 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var MemberGuardService = /** @class */ (function () {
-    function MemberGuardService(router, sasaki) {
+    function MemberGuardService(router, user) {
         this.router = router;
-        this.sasaki = sasaki;
+        this.user = user;
     }
     /**
      * 認証
@@ -4072,7 +4121,7 @@ var MemberGuardService = /** @class */ (function () {
     MemberGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                if (this.sasaki.isMember()) {
+                if (this.user.isMember()) {
                     return [2 /*return*/, true];
                 }
                 else {
@@ -4312,12 +4361,11 @@ var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 var sasaki = __webpack_require__("./node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
 __webpack_require__("./node_modules/rxjs/_esm5/add/operator/toPromise.js");
 var environment_1 = __webpack_require__("./src/client/src/environments/environment.ts");
-var storage_service_1 = __webpack_require__("./src/client/src/app/services/storage/storage.service.ts");
+var user_service_1 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var SasakiService = /** @class */ (function () {
-    function SasakiService(http, storage) {
+    function SasakiService(http, user) {
         this.http = http;
-        this.storage = storage;
-        this.loadMemberType();
+        this.user = user;
     }
     /**
      * getServices
@@ -4359,7 +4407,6 @@ var SasakiService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.saveMemberType(MemberType.Member);
                         url = '/api/authorize/signIn';
                         return [4 /*yield*/, this.http.get(url, {}).toPromise()];
                     case 1:
@@ -4418,14 +4465,14 @@ var SasakiService = /** @class */ (function () {
      */
     SasakiService.prototype.authorize = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var url, options, credentials, option;
+            var member, url, options, credentials, option;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.loadMemberType();
+                        member = this.user.data.memberType;
                         url = '/api/authorize/getCredentials';
                         options = {
-                            params: new http_1.HttpParams().set('member', this.member)
+                            params: new http_1.HttpParams().set('member', member)
                         };
                         return [4 /*yield*/, this.http.get(url, options).toPromise()];
                     case 1:
@@ -4448,39 +4495,9 @@ var SasakiService = /** @class */ (function () {
             });
         });
     };
-    /**
-     * 会員タイプ保存
-     */
-    SasakiService.prototype.saveMemberType = function (memberType) {
-        this.storage.save('member', {
-            memberType: memberType
-        }, storage_service_1.SaveType.Local);
-        this.member = memberType;
-    };
-    /**
-     * 会員タイプ読み込み
-     */
-    SasakiService.prototype.loadMemberType = function () {
-        var member = this.storage.load('member', storage_service_1.SaveType.Local);
-        this.member = (member === null)
-            ? MemberType.NotMember
-            : member.memberType;
-        console.log(this.member);
-    };
-    /**
-     * 会員判定
-     */
-    SasakiService.prototype.isMember = function () {
-        return (this.member === MemberType.Member);
-    };
     return SasakiService;
 }());
 exports.SasakiService = SasakiService;
-var MemberType;
-(function (MemberType) {
-    MemberType["NotMember"] = "0";
-    MemberType["Member"] = "1";
-})(MemberType = exports.MemberType || (exports.MemberType = {}));
 
 
 /***/ }),
@@ -4526,12 +4543,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var sasaki = __webpack_require__("./node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
+var sskts_api_javascript_client_1 = __webpack_require__("./node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
 var moment = __webpack_require__("./node_modules/moment/moment.js");
 __webpack_require__("./node_modules/rxjs/_esm5/add/operator/retry.js");
 __webpack_require__("./node_modules/rxjs/_esm5/add/operator/toPromise.js");
-var storage_service_1 = __webpack_require__("./src/client/src/app/services/storage/storage.service.ts");
 var sasaki_service_1 = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+var storage_service_1 = __webpack_require__("./src/client/src/app/services/storage/storage.service.ts");
 var ScheduleService = /** @class */ (function () {
     function ScheduleService(storage, sasaki) {
         this.storage = storage;
@@ -4599,7 +4616,7 @@ var ScheduleService = /** @class */ (function () {
                         return [4 /*yield*/, this.sasaki.event.searchIndividualScreeningEvent({
                                 startFrom: args.startFrom,
                                 startThrough: args.startThrough,
-                                eventStatuses: [sasaki.factory.eventStatusType.EventScheduled]
+                                eventStatuses: [sskts_api_javascript_client_1.factory.eventStatusType.EventScheduled]
                             })];
                     case 3:
                         screeningEvents = _a.sent();
@@ -4858,6 +4875,69 @@ var StorageService = /** @class */ (function () {
     return StorageService;
 }());
 exports.StorageService = StorageService;
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/services/user/user.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var storage_service_1 = __webpack_require__("./src/client/src/app/services/storage/storage.service.ts");
+var STORAGE_KEY = 'user';
+var UserService = /** @class */ (function () {
+    function UserService(storage) {
+        this.storage = storage;
+        this.load();
+        this.save();
+    }
+    /**
+     * 読み込み
+     * @method load
+     */
+    UserService.prototype.load = function () {
+        var data = this.storage.load(STORAGE_KEY, storage_service_1.SaveType.Local);
+        if (data === null) {
+            this.data = {
+                memberType: MemberType.NotMember
+            };
+            return;
+        }
+        this.data = data;
+    };
+    /**
+     * 保存
+     * @method save
+     */
+    UserService.prototype.save = function () {
+        this.storage.save(STORAGE_KEY, this.data, storage_service_1.SaveType.Local);
+    };
+    /**
+     * リセット
+     * @method reset
+     */
+    UserService.prototype.reset = function () {
+        this.data = {
+            memberType: MemberType.NotMember
+        };
+        this.save();
+    };
+    /**
+     * 会員判定
+     */
+    UserService.prototype.isMember = function () {
+        return (this.data.memberType === MemberType.Member);
+    };
+    return UserService;
+}());
+exports.UserService = UserService;
+var MemberType;
+(function (MemberType) {
+    MemberType["NotMember"] = "0";
+    MemberType["Member"] = "1";
+})(MemberType = exports.MemberType || (exports.MemberType = {}));
 
 
 /***/ }),

@@ -4,7 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IReservation, ReservationService } from '../../services/reservation/reservation.service';
-import { SasakiService } from '../../services/sasaki/sasaki.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
     selector: 'app-ticket',
@@ -24,7 +24,7 @@ export class TicketComponent implements OnInit {
     constructor(
         private router: Router,
         private reservation: ReservationService,
-        private sasaki: SasakiService
+        private user: UserService
     ) { }
 
     /**
@@ -40,7 +40,7 @@ export class TicketComponent implements OnInit {
             paginationClickable: true,
             autoHeight: true
         };
-        if (!this.sasaki.isMember()) {
+        if (!this.user.isMember()) {
             try {
                 await this.reservation.getReservation();
                 this.purchaseNumberOrders = this.reservation.getReservationByAppreciationDayOrder();

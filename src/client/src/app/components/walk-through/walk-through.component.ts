@@ -52,8 +52,8 @@ export class WalkThroughComponent implements OnInit {
             }
             localStorage.setItem('deviceId', this.awsCognito.credentials.identityId);
             await this.router.navigate(['/']);
-        } catch (error) {
-            console.error(error);
+        } catch (err) {
+            console.error(err);
         }
         this.isLoading = false;
     }

@@ -2,15 +2,15 @@
  * ScheduleService
  */
 import { Injectable } from '@angular/core';
-import * as sasaki from '@motionpicture/sskts-api-javascript-client';
+import { factory } from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/toPromise';
-import { StorageService } from '../storage/storage.service';
 import { SasakiService } from '../sasaki/sasaki.service';
+import { StorageService } from '../storage/storage.service';
 
-export type IMovieTheater = sasaki.factory.organization.movieTheater.IOrganizationWithoutGMOInfo;
-export type IIndividualScreeningEvent = sasaki.factory.event.individualScreeningEvent.IEventWithOffer;
+export type IMovieTheater = factory.organization.movieTheater.IOrganizationWithoutGMOInfo;
+export type IIndividualScreeningEvent = factory.event.individualScreeningEvent.IEventWithOffer;
 export interface IFilmOrder {
     id: string;
     films: IIndividualScreeningEvent[];
@@ -84,7 +84,7 @@ export class ScheduleService {
         const screeningEvents = await this.sasaki.event.searchIndividualScreeningEvent({
             startFrom: args.startFrom,
             startThrough: args.startThrough,
-            eventStatuses: [sasaki.factory.eventStatusType.EventScheduled]
+            eventStatuses: [factory.eventStatusType.EventScheduled]
         });
 
         const expired = 10;

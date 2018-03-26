@@ -89,6 +89,7 @@ const pages = [
     { url: '/law', title: '特定商取引法に基づく表記', prev: true },
     { url: '/privacy', title: 'プライバシーポリシー', prev: true },
     { url: '/law', title: '特定商取引法に基づく表記', prev: true },
+    { url: '/auth/register', title: '会員登録', prev: true },
     { url: '/auth/signOut', title: 'ログアウト', prev: true },
     { url: '/member/benefits', title: '会員特典', prev: true },
     { url: '/member/edit', title: '会員情報変更', prev: true },

@@ -47,6 +47,7 @@ import { SasakiService } from './services/sasaki/sasaki.service';
 import { ScheduleService } from './services/schedule/schedule.service';
 import { SelectService } from './services/select/select.service';
 import { StorageService } from './services/storage/storage.service';
+import { UserService } from './services/user/user.service';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -98,7 +99,8 @@ import { StorageService } from './services/storage/storage.service';
     StorageService,
     CallNativeService,
     SasakiService,
-    MemberGuardService
+    MemberGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

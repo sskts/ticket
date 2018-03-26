@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import 'rxjs/add/operator/toPromise';
 import { environment } from '../../../environments/environment';
-import { SaveType, StorageService } from '../storage/storage.service';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class SasakiService {
@@ -19,13 +19,10 @@ export class SasakiService {
         placeOrder: sasaki.service.transaction.PlaceOrder
     };
 
-    public member: MemberType;
-
     constructor(
         private http: HttpClient,
-        private storage: StorageService
+        private user: UserService
     ) {
-        this.loadMemberType();
     }
 
     /**
@@ -52,7 +49,6 @@ export class SasakiService {
      * サインイン
      */
     public async signIn() {
-        this.saveMemberType(MemberType.Member);
         const url = '/api/authorize/signIn';
         const result = await this.http.get<any>(url, {}).toPromise();
         console.log(result.url);
@@ -87,10 +83,10 @@ export class SasakiService {
      * @method authorize
      */
     public async authorize() {
-        this.loadMemberType();
+        const member = this.user.data.memberType;
         const url = '/api/authorize/getCredentials';
         const options = {
-            params: new HttpParams().set('member', this.member)
+            params: new HttpParams().set('member', member)
         };
         const credentials = await this.http.get<any>(url, options).toPromise();
         const option = {
@@ -107,38 +103,4 @@ export class SasakiService {
         this.auth = sasaki.createAuthInstance(option);
         this.auth.setCredentials(credentials);
     }
-
-    /**
-     * 会員タイプ保存
-     */
-    public saveMemberType(memberType: MemberType) {
-        this.storage.save('member', {
-            memberType: memberType
-        }, SaveType.Local);
-        this.member = memberType;
-    }
-
-    /**
-     * 会員タイプ読み込み
-     */
-    private loadMemberType() {
-        const member = this.storage.load('member', SaveType.Local);
-        this.member = (member === null)
-            ? MemberType.NotMember
-            : member.memberType;
-        console.log(this.member);
-    }
-
-    /**
-     * 会員判定
-     */
-    public isMember() {
-        return (this.member === MemberType.Member);
-    }
-
-}
-
-export enum MemberType {
-    NotMember = '0',
-    Member = '1'
 }

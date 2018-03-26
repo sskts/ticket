@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { SasakiService } from '../sasaki/sasaki.service';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class MemberGuardService implements CanActivate {
 
     constructor(
         private router: Router,
-        private sasaki: SasakiService
+        private user: UserService
     ) { }
 
     /**
@@ -16,7 +16,7 @@ export class MemberGuardService implements CanActivate {
      * @returns {Promise<boolean>}
      */
     public async canActivate(): Promise<boolean> {
-        if (this.sasaki.isMember()) {
+        if (this.user.isMember()) {
             return true;
         } else {
             this.router.navigate(['/auth/select']);

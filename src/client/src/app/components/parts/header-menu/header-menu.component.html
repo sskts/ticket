@@ -22,19 +22,19 @@
         <li>
             <span class="icon-inline icon-external-link-white" (click)="openWebBrowse(portalSite)">シネマサンシャインポータルサイト</span>
         </li>
-        <li *ngIf="!sasaki.isMember()">
+        <li *ngIf="!user.isMember()">
             <span routerLink="/auth/register" (click)="close.emit()" class="icon-inline icon-text-white">会員特典 / 会員登録</span>
         </li>
-        <li *ngIf="sasaki.isMember()">
+        <li *ngIf="user.isMember()">
             <span routerLink="/member/benefits" (click)="close.emit()" class="icon-inline icon-text-white">会員特典</span>
         </li>
-        <li *ngIf="sasaki.isMember()">
+        <li *ngIf="user.isMember()">
             <span routerLink="/member/edit" (click)="close.emit()" class="icon-inline icon-text-white">会員情報変更</span>
         </li>
-        <li *ngIf="sasaki.isMember()">
+        <li *ngIf="user.isMember()">
             <span routerLink="/auth/signOut" (click)="close.emit()" class="icon-inline icon-text-white">ログアウト</span>
         </li>
-        <li *ngIf="sasaki.isMember()">
+        <li *ngIf="user.isMember()">
             <span routerLink="/member/withdraw" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-text-white">退会</span>
         </li>
     </ul>

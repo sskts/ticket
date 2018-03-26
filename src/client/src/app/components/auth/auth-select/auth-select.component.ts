@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MemberType, SasakiService } from '../../../services/sasaki/sasaki.service';
+import { AwsCognitoService } from '../../../services/aws-cognito/aws-cognito.service';
+import { SasakiService } from '../../../services/sasaki/sasaki.service';
+import { MemberType, UserService } from '../../../services/user/user.service';
 
 @Component({
     selector: 'app-auth-select',
@@ -13,7 +15,9 @@ export class AuthSelectComponent implements OnInit {
 
     constructor(
         private sasaki: SasakiService,
-        private router: Router
+        private router: Router,
+        private user: UserService,
+        private awsCognito: AwsCognitoService
     ) { }
 
     public ngOnInit(): void {
@@ -24,6 +28,8 @@ export class AuthSelectComponent implements OnInit {
         this.isLoading = true;
         try {
             await this.sasaki.signIn();
+            this.user.data.memberType = MemberType.Member;
+            this.user.save();
         } catch (error) {
             console.error(error);
             this.isLoading = false;
@@ -34,6 +40,8 @@ export class AuthSelectComponent implements OnInit {
         this.isLoading = true;
         try {
             await this.sasaki.signIn();
+            this.user.data.memberType = MemberType.Member;
+            this.user.save();
         } catch (error) {
             console.error(error);
             this.isLoading = false;
@@ -41,12 +49,24 @@ export class AuthSelectComponent implements OnInit {
     }
 
     public async start() {
-        this.sasaki.saveMemberType(MemberType.NotMember);
+        this.isLoading = true;
         const deviceId = localStorage.getItem('deviceId');
+        this.user.data.memberType = MemberType.NotMember;
+        this.user.save();
         if (deviceId === null) {
             this.router.navigate(['/walkThrough']);
-        } else {
+            return;
+        }
+        try {
+            await this.awsCognito.authenticateWithDeviceId();
+            if (this.awsCognito.credentials === undefined) {
+                throw new Error('credentials is undefined');
+            }
+            localStorage.setItem('deviceId', this.awsCognito.credentials.identityId);
             this.router.navigate(['/']);
+        } catch (err) {
+            console.error(err);
+            this.isLoading = false;
         }
     }
 

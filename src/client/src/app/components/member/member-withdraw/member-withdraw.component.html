@@ -1,3 +1,14 @@
-<p>
-  member-withdraw works!
-</p>
+<div class="contents position-center">
+    <div class="inner center">
+        <p class="read text-center mb-middle">
+            退会を行います。
+            <br> 下記注意文言をご確認のうえ
+            <br> 問題なければ退会ボタンを押してください。
+        </p>
+
+        <div>
+            <button class="btn btn-primary btn-block" (click)="withdraw()">退会</button>
+        </div>
+    </div>
+</div>
+<app-loading [show]="isLoading"></app-loading>

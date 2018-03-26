@@ -103,9 +103,14 @@ option {
     color: #333;
 }
 
+.wrapper {
+    position: relative;
+    min-height: 100vh;
+}
+
 .contents {
     position: relative;
-    min-height: calc(100% - 48px - 60px);
+    min-height: calc(100vh - 48px - 60px);
     >.inner {
         padding: 10px 15px;
         .box {
@@ -121,6 +126,10 @@ option {
             }
         }
     }
+}
+
+.member .contents {
+    // min-height: calc(100vh - 88px - 60px);
 }
 
 .position-center {
