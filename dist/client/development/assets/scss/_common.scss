@@ -108,6 +108,14 @@ option {
     min-height: 100vh;
 }
 
+header {
+    height: 48px;
+    display: block;
+}
+.member header {
+    height: 96px;
+}
+
 .contents {
     position: relative;
     min-height: calc(100vh - 48px - 60px);
@@ -129,7 +137,7 @@ option {
 }
 
 .member .contents {
-    // min-height: calc(100vh - 88px - 60px);
+    min-height: calc(100vh - 96px - 60px);
 }
 
 .position-center {

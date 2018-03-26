@@ -3,6 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
     selector: 'app-header',
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit {
     public isMenuOpen: boolean;
 
     constructor(
+        public user: UserService,
         private router: Router
     ) { }
 

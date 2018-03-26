@@ -1222,17 +1222,17 @@ var i0 = __webpack_require__("./src/client/src/app/components/base/base.componen
 var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i2 = __webpack_require__("./src/client/src/app/components/parts/header/header.component.ngfactory.js");
 var i3 = __webpack_require__("./src/client/src/app/components/parts/header/header.component.ts");
-var i4 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-var i5 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.ngfactory.js");
-var i6 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.ts");
-var i7 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
+var i4 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
+var i5 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var i6 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.ngfactory.js");
+var i7 = __webpack_require__("./src/client/src/app/components/parts/navigation/navigation.component.ts");
 var i8 = __webpack_require__("./src/client/src/app/components/base/base.component.ts");
 var styles_BaseComponent = [i0.styles];
 var RenderType_BaseComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_BaseComponent, data: {} });
 exports.RenderType_BaseComponent = RenderType_BaseComponent;
-function View_BaseComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 10, "div", [["class", "wrapper member"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "app-header", [], null, null, null, i2.View_HeaderComponent_0, i2.RenderType_HeaderComponent)), i1.ɵdid(3, 114688, null, 0, i3.HeaderComponent, [i4.Router], null, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(5, 16777216, null, null, 1, "router-outlet", [], null, null, null, null, null)), i1.ɵdid(6, 212992, null, 0, i4.RouterOutlet, [i4.ChildrenOutletContexts, i1.ViewContainerRef, i1.ComponentFactoryResolver, [8, null], i1.ChangeDetectorRef], null, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "app-navigation", [], null, null, null, i5.View_NavigationComponent_0, i5.RenderType_NavigationComponent)), i1.ɵdid(9, 114688, null, 0, i6.NavigationComponent, [i7.UserService], null, null), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { _ck(_v, 3, 0); _ck(_v, 6, 0); _ck(_v, 9, 0); }, null); }
+function View_BaseComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 10, "div", [["class", "wrapper"]], [[2, "member", null]], null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "app-header", [], null, null, null, i2.View_HeaderComponent_0, i2.RenderType_HeaderComponent)), i1.ɵdid(3, 114688, null, 0, i3.HeaderComponent, [i4.UserService, i5.Router], null, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(5, 16777216, null, null, 1, "router-outlet", [], null, null, null, null, null)), i1.ɵdid(6, 212992, null, 0, i5.RouterOutlet, [i5.ChildrenOutletContexts, i1.ViewContainerRef, i1.ComponentFactoryResolver, [8, null], i1.ChangeDetectorRef], null, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "app-navigation", [], null, null, null, i6.View_NavigationComponent_0, i6.RenderType_NavigationComponent)), i1.ɵdid(9, 114688, null, 0, i7.NavigationComponent, [i4.UserService], null, null), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { _ck(_v, 3, 0); _ck(_v, 6, 0); _ck(_v, 9, 0); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.isMember(); _ck(_v, 0, 0, currVal_0); }); }
 exports.View_BaseComponent_0 = View_BaseComponent_0;
-function View_BaseComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-base", [], null, null, null, View_BaseComponent_0, RenderType_BaseComponent)), i1.ɵdid(1, 114688, null, 0, i8.BaseComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_BaseComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-base", [], null, null, null, View_BaseComponent_0, RenderType_BaseComponent)), i1.ɵdid(1, 114688, null, 0, i8.BaseComponent, [i4.UserService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_BaseComponent_Host_0 = View_BaseComponent_Host_0;
 var BaseComponentNgFactory = i1.ɵccf("app-base", i8.BaseComponent, View_BaseComponent_Host_0, {}, {}, []);
 exports.BaseComponentNgFactory = BaseComponentNgFactory;
@@ -1304,8 +1304,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 __webpack_require__("./node_modules/rxjs/_esm5/add/operator/toPromise.js");
+var user_service_1 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var BaseComponent = /** @class */ (function () {
-    function BaseComponent() {
+    function BaseComponent(user) {
+        this.user = user;
     }
     /**
      * 初期化
@@ -2142,38 +2144,40 @@ exports.HeaderMenuComponent = HeaderMenuComponent;
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-exports.Router_1 = router_1.Router;
-exports.UrlSerializer_3 = router_1.UrlSerializer;
-exports.ChildrenOutletContexts_4 = router_1.ChildrenOutletContexts;
+exports.Router_2 = router_1.Router;
+exports.UrlSerializer_4 = router_1.UrlSerializer;
+exports.ChildrenOutletContexts_5 = router_1.ChildrenOutletContexts;
 var common_1 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-exports.Location_5 = common_1.Location;
-exports.LocationStrategy_6 = common_1.LocationStrategy;
+exports.Location_6 = common_1.Location;
+exports.LocationStrategy_7 = common_1.LocationStrategy;
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-exports.Injector_7 = core_1.Injector;
-exports.NgModuleFactoryLoader_8 = core_1.NgModuleFactoryLoader;
-exports.Compiler_9 = core_1.Compiler;
+exports.Injector_8 = core_1.Injector;
+exports.NgModuleFactoryLoader_9 = core_1.NgModuleFactoryLoader;
+exports.Compiler_10 = core_1.Compiler;
 var i0 = __webpack_require__("./src/client/src/app/components/parts/header/header.component.scss.shim.ngstyle.js");
 var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-var i2 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.ngfactory.js");
-var i3 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.ts");
-var i4 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
-var i5 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
-var i6 = __webpack_require__("./src/client/src/app/components/parts/header/header.component.ts");
-var i7 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var i2 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+var i3 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.ngfactory.js");
+var i4 = __webpack_require__("./src/client/src/app/components/parts/header-menu/header-menu.component.ts");
+var i5 = __webpack_require__("./src/client/src/app/services/call-native/call-native.service.ts");
+var i6 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
+var i7 = __webpack_require__("./src/client/src/app/components/parts/header/header.component.ts");
+var i8 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var styles_HeaderComponent = [i0.styles];
 var RenderType_HeaderComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_HeaderComponent, data: {} });
 exports.RenderType_HeaderComponent = RenderType_HeaderComponent;
-function View_HeaderComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 16, "header", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "div", [["class", "logo"]], null, null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 0, "img", [["src", "/assets/images/common/logo_text_02.svg"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(5, 0, null, null, 1, "h1", [], null, null, null, null, null)), (_l()(), i1.ɵted(6, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(8, 0, null, null, 7, "div", [["class", "button"]], [[2, "active", null]], [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+function View_HeaderComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 23, "div", [["class", "member-header"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "div", [["class", "name small-text"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30C6\u30B9\u30C8 \u30C6\u30B9\u30C8\u69D8"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(5, 0, null, null, 1, "p", [["class", "info small-text"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u3042\u30682\u30DD\u30A4\u30F3\u30C8\u3067\u300C\u7121\u6599\u9451\u8CDE\u300DGET\uFF01"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(8, 0, null, null, 14, "div", [["class", "point text-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(10, 0, null, null, 1, "span", [["class", "small-x-text"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u73FE\u5728"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(13, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(15, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["16"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(18, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(20, 0, null, null, 1, "span", [["class", "small-x-text"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u30DD\u30A4\u30F3\u30C8"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "]))], null, null); }
+function View_HeaderComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 24, "header", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(2, 0, null, null, 18, "div", [["class", "header"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(4, 0, null, null, 3, "div", [["class", "logo"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(6, 0, null, null, 0, "img", [["src", "/assets/images/common/logo_text_02.svg"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(9, 0, null, null, 1, "h1", [], null, null, null, null, null)), (_l()(), i1.ɵted(10, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(12, 0, null, null, 7, "div", [["class", "button"]], [[2, "active", null]], [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = ((_co.isMenuOpen ? _co.menuClose() : _co.menuOpen()) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(10, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(12, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(14, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵeld(18, 0, null, null, 7, "div", [["class", "member-header"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(20, 0, null, null, 0, "div", [["class", "name"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(22, 0, null, null, 0, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(24, 0, null, null, 0, "div", [["class", "point"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n\n"])), (_l()(), i1.ɵeld(27, 0, null, null, 1, "app-header-menu", [], null, [[null, "close"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("close" === en)) {
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(14, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(16, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(18, 0, null, null, 0, "div", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_HeaderComponent_1)), i1.ɵdid(23, 16384, null, 0, i2.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n\n"])), (_l()(), i1.ɵeld(26, 0, null, null, 1, "app-header-menu", [], null, [[null, "close"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("close" === en)) {
         var pd_0 = (_co.menuClose() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, i2.View_HeaderMenuComponent_0, i2.RenderType_HeaderMenuComponent)), i1.ɵdid(28, 114688, null, 0, i3.HeaderMenuComponent, [i4.CallNativeService, i5.UserService], { isOpen: [0, "isOpen"] }, { close: "close" }), (_l()(), i1.ɵted(-1, null, ["\n\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_2 = _co.isMenuOpen; _ck(_v, 28, 0, currVal_2); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.page.title; _ck(_v, 6, 0, currVal_0); var currVal_1 = _co.isMenuOpen; _ck(_v, 8, 0, currVal_1); }); }
+    } return ad; }, i3.View_HeaderMenuComponent_0, i3.RenderType_HeaderMenuComponent)), i1.ɵdid(27, 114688, null, 0, i4.HeaderMenuComponent, [i5.CallNativeService, i6.UserService], { isOpen: [0, "isOpen"] }, { close: "close" })], function (_ck, _v) { var _co = _v.component; var currVal_2 = _co.user.isMember(); _ck(_v, 23, 0, currVal_2); var currVal_3 = _co.isMenuOpen; _ck(_v, 27, 0, currVal_3); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.page.title; _ck(_v, 10, 0, currVal_0); var currVal_1 = _co.isMenuOpen; _ck(_v, 12, 0, currVal_1); }); }
 exports.View_HeaderComponent_0 = View_HeaderComponent_0;
-function View_HeaderComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header", [], null, null, null, View_HeaderComponent_0, RenderType_HeaderComponent)), i1.ɵdid(1, 114688, null, 0, i6.HeaderComponent, [i7.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_HeaderComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-header", [], null, null, null, View_HeaderComponent_0, RenderType_HeaderComponent)), i1.ɵdid(1, 114688, null, 0, i7.HeaderComponent, [i6.UserService, i8.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_HeaderComponent_Host_0 = View_HeaderComponent_Host_0;
-var HeaderComponentNgFactory = i1.ɵccf("app-header", i6.HeaderComponent, View_HeaderComponent_Host_0, {}, {}, []);
+var HeaderComponentNgFactory = i1.ɵccf("app-header", i7.HeaderComponent, View_HeaderComponent_Host_0, {}, {}, []);
 exports.HeaderComponentNgFactory = HeaderComponentNgFactory;
 
 
@@ -2191,7 +2195,7 @@ exports.HeaderComponentNgFactory = HeaderComponentNgFactory;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
-var styles = ["[_nghost-%COMP%] {\n  height: 48px;\n  display: block; }\n\nheader[_ngcontent-%COMP%] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 10;\n  width: 100%;\n  height: 48px;\n  background-color: #000; }\n\nheader[_ngcontent-%COMP%]   .logo[_ngcontent-%COMP%] {\n    position: absolute;\n    top: 50%;\n    left: 15px;\n    width: 40px;\n    margin-top: -9px; }\n\nheader[_ngcontent-%COMP%]   .logo[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n      display: block; }\n\nheader[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n    text-align: center;\n    line-height: 48px;\n    font-weight: normal;\n    padding: 0 60px; }\n\nheader[_ngcontent-%COMP%]   .button[_ngcontent-%COMP%] {\n    display: block;\n    position: absolute;\n    top: 50%;\n    right: 15px;\n    margin-top: -8px;\n    width: 20px;\n    height: 16px; }\n\nheader[_ngcontent-%COMP%]   .button[_ngcontent-%COMP%]   div[_ngcontent-%COMP%] {\n      position: absolute;\n      top: 50%;\n      left: 0;\n      margin-top: -0.5px;\n      width: 100%;\n      height: 1px;\n      background-color: #FFF; }\n\nheader[_ngcontent-%COMP%]   .button[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]:first-child {\n        top: 0;\n        margin-top: 0; }\n\nheader[_ngcontent-%COMP%]   .button[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]:last-child {\n        top: initial;\n        bottom: 0;\n        margin-top: 0; }\n\nheader[_ngcontent-%COMP%]   .button.active[_ngcontent-%COMP%]   div[_ngcontent-%COMP%] {\n      opacity: 0; }\n\nheader[_ngcontent-%COMP%]   .button.active[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]:first-child {\n        opacity: 1;\n        top: 50%;\n        margin-top: -1px;\n        -webkit-transform: rotate(45deg);\n                transform: rotate(45deg); }\n\nheader[_ngcontent-%COMP%]   .button.active[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]:last-child {\n        opacity: 1;\n        top: 50%;\n        bottom: initial;\n        margin-top: -1px;\n        -webkit-transform: rotate(-45deg);\n                transform: rotate(-45deg); }"];
+var styles = [".header[_ngcontent-%COMP%] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 10;\n  width: 100%;\n  height: 48px;\n  background-color: #000; }\n  .header[_ngcontent-%COMP%]   .logo[_ngcontent-%COMP%] {\n    position: absolute;\n    top: 50%;\n    left: 15px;\n    width: 40px;\n    margin-top: -9px; }\n  .header[_ngcontent-%COMP%]   .logo[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n      display: block; }\n  .header[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n    text-align: center;\n    line-height: 48px;\n    font-weight: normal;\n    padding: 0 60px; }\n  .header[_ngcontent-%COMP%]   .button[_ngcontent-%COMP%] {\n    display: block;\n    position: absolute;\n    top: 50%;\n    right: 15px;\n    margin-top: -8px;\n    width: 20px;\n    height: 16px; }\n  .header[_ngcontent-%COMP%]   .button[_ngcontent-%COMP%]   div[_ngcontent-%COMP%] {\n      position: absolute;\n      top: 50%;\n      left: 0;\n      margin-top: -0.5px;\n      width: 100%;\n      height: 1px;\n      background-color: #FFF; }\n  .header[_ngcontent-%COMP%]   .button[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]:first-child {\n        top: 0;\n        margin-top: 0; }\n  .header[_ngcontent-%COMP%]   .button[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]:last-child {\n        top: initial;\n        bottom: 0;\n        margin-top: 0; }\n  .header[_ngcontent-%COMP%]   .button.active[_ngcontent-%COMP%]   div[_ngcontent-%COMP%] {\n      opacity: 0; }\n  .header[_ngcontent-%COMP%]   .button.active[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]:first-child {\n        opacity: 1;\n        top: 50%;\n        margin-top: -1px;\n        -webkit-transform: rotate(45deg);\n                transform: rotate(45deg); }\n  .header[_ngcontent-%COMP%]   .button.active[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]:last-child {\n        opacity: 1;\n        top: 50%;\n        bottom: initial;\n        margin-top: -1px;\n        -webkit-transform: rotate(-45deg);\n                transform: rotate(-45deg); }\n  .member-header[_ngcontent-%COMP%] {\n  position: fixed;\n  top: 48px;\n  left: 0;\n  z-index: 10;\n  width: 100%;\n  height: 48px;\n  background-color: #333;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0 48px 0 15px; }\n  .member-header[_ngcontent-%COMP%]   .name[_ngcontent-%COMP%] {\n    margin-right: 10px;\n    width: 100px; }\n  .member-header[_ngcontent-%COMP%]   .info[_ngcontent-%COMP%] {\n    width: calc(100% - (100px + 10px)); }\n  .member-header[_ngcontent-%COMP%]   .point[_ngcontent-%COMP%] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 48px;\n    height: 48px;\n    padding-top: 3px; }"];
 exports.styles = styles;
 
 
@@ -2208,8 +2212,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var user_service_1 = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var HeaderComponent = /** @class */ (function () {
-    function HeaderComponent(router) {
+    function HeaderComponent(user, router) {
+        this.user = user;
         this.router = router;
     }
     /**

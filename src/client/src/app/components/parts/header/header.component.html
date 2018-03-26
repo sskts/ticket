@@ -1,17 +1,26 @@
 <header>
-    <div class="logo"><img src="/assets/images/common/logo_text_02.svg"></div>
-    <h1>{{ page.title }}</h1>
-    <div class="button" [class.active]="isMenuOpen" (click)="(isMenuOpen) ? menuClose() : menuOpen()">
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="header">
+        <div class="logo">
+            <img src="/assets/images/common/logo_text_02.svg">
+        </div>
+        <h1>{{ page.title }}</h1>
+        <div class="button" [class.active]="isMenuOpen" (click)="(isMenuOpen) ? menuClose() : menuOpen()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div *ngIf="user.isMember()" class="member-header">
+        <div class="name small-text">テスト テスト様</div>
+        <p class="info small-text">あと2ポイントで「無料鑑賞」GET！</p>
+        <div class="point text-center">
+            <span class="small-x-text">現在</span>
+            <br>
+            <span>16</span>
+            <br>
+            <span class="small-x-text">ポイント</span>
+        </div>
     </div>
 </header>
-<div class="member-header">
-    <div class="name"></div>
-    <div class="info"></div>
-    <div class="point"></div>
-</div>
 
 <app-header-menu [isOpen]="isMenuOpen" (close)="menuClose()"></app-header-menu>
-

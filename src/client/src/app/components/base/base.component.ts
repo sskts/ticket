@@ -3,6 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
     selector: 'app-base',
@@ -11,7 +12,9 @@ import 'rxjs/add/operator/toPromise';
 })
 export class BaseComponent implements OnInit {
 
-    constructor() { }
+    constructor(
+        public user: UserService
+    ) { }
 
     /**
      * 初期化
