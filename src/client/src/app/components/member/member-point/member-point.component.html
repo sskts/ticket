@@ -1,3 +1,77 @@
-<p>
-  member-point works!
-</p>
+<div class="contents">
+    <div class="inner">
+        <p class="mb-small text-center small-text">
+            貯まったポイントの確認ができます。
+        </p>
+        <div *ngIf="!isLoading">
+            <div class="text-center mb-small">
+                <div class="point small-text">
+                    現在
+                    <strong class="large-text">16</strong> ポイント
+                </div>
+            </div>
+            <div class="mb-middle">
+                <swiper [config]="config" class="mb-small">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <ul>
+                                <li class="stamp active">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                                <li class="stamp">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                                <li class="stamp">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                                <li class="stamp">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                                <li class="stamp">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                                <li class="stamp">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="swiper-slide">
+                            <ul>
+                                <li class="stamp active">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                                <li class="stamp">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                                <li class="stamp">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                                <li class="stamp">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                                <li class="stamp">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                                <li class="stamp">
+                                    <div class="stamp-text small-x-text">cinema sunshine</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </swiper>
+                <div class="pagination-wrapper">
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="mb-small">
+                <button class="button button-primary button-block">ポイント使用方法</button>
+            </div>
+            <div class="text-center">
+                <div class="mb-x-small"><a>ポイント使用履歴</a></div>
+                <div><a>ポイント特典一覧</a></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<app-loading [show]="isLoading"></app-loading>
