@@ -6,19 +6,23 @@ import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 import { environment } from '../../../../environments/environment';
 import { AwsCognitoService } from '../../../services/aws-cognito/aws-cognito.service';
+import { UserService } from '../../../services/user/user.service';
 
 type IIndividualScreeningEvent = sasaki.factory.event.individualScreeningEvent.IEventWithOffer;
 
 @Component({
-  selector: 'app-purchase-performance',
-  templateUrl: './purchase-performance.component.html',
-  styleUrls: ['./purchase-performance.component.scss']
+    selector: 'app-purchase-performance',
+    templateUrl: './purchase-performance.component.html',
+    styleUrls: ['./purchase-performance.component.scss']
 })
 export class PurchasePerformanceComponent implements OnInit {
     @Input() public performance: IIndividualScreeningEvent;
     public salseFlg: boolean;
 
-    constructor(private awsCognito: AwsCognitoService) { }
+    constructor(
+        private awsCognito: AwsCognitoService,
+        private user: UserService
+    ) { }
 
     /**
      * 初期化
@@ -37,10 +41,15 @@ export class PurchasePerformanceComponent implements OnInit {
         if (this.performance.offer.availability === 0) {
             return;
         }
-        if (this.awsCognito.credentials === undefined) {
-            return;
+        let params = `id=${this.performance.identifier}`;
+        if (!this.user.isMember()) {
+            if (this.awsCognito.credentials === undefined) {
+                return;
+            }
+            params += `&identityId=${this.awsCognito.credentials.identityId}`;
         }
-        const params = `id=${this.performance.identifier}&identityId=${this.awsCognito.credentials.identityId}`;
+        params += `&native=${true}`;
+        params += `&member=${this.user.isMember()}`;
         location.href =
             `${environment.ENTRANCE_SERVER_URL}/ticket/index.html?${params}`;
     }

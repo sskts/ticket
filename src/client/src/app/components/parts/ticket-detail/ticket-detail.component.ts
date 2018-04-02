@@ -21,6 +21,9 @@ export class TicketDetailComponent implements OnInit {
     constructor() { }
 
     public async ngOnInit() {
+        if (this.reservation.acceptedOffers.length > 0) {
+            return;
+        }
         this.showQrCode = moment(this.offer.itemOffered.reservationFor.startDate).subtract(24, 'hours').unix() <= moment().unix();
         if (this.showQrCode) {
             const value = this.offer.itemOffered.reservedTicket.ticketToken;
