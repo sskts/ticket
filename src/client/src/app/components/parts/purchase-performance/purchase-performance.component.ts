@@ -48,8 +48,8 @@ export class PurchasePerformanceComponent implements OnInit {
             }
             params += `&identityId=${this.awsCognito.credentials.identityId}`;
         }
-        params += `&native=${true}`;
-        params += `&member=${this.user.isMember()}`;
+        params += `&native=1`;
+        params += `&member=${this.user.data.memberType}`;
         location.href =
             `${environment.ENTRANCE_SERVER_URL}/ticket/index.html?${params}`;
     }
