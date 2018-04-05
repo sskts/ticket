@@ -1,11 +1,6 @@
 {
-  "extends": [
-    "tslint:latest",
-    "tslint-microsoft-contrib/recommended_ruleset"
-  ],
   "rulesDirectory": [
-    "node_modules/codelyzer",
-    "node_modules/tslint-microsoft-contrib"
+    "node_modules/codelyzer"
   ],
   "rules": {
     "arrow-return-shorthand": true,
@@ -16,12 +11,15 @@
       "check-space"
     ],
     "curly": true,
+    "deprecation": {
+      "severity": "warn"
+    },
     "eofline": true,
-    "export-name": false,
     "forin": true,
     "import-blacklist": [
       true,
-      "rxjs"
+      "rxjs",
+      "rxjs/Rx"
     ],
     "import-spacing": true,
     "indent": [
@@ -46,7 +44,6 @@
         ]
       }
     ],
-    "no-any": false,
     "no-arg": true,
     "no-bitwise": true,
     "no-console": [
@@ -63,29 +60,15 @@
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
-    "no-import-side-effect": [
-      true,
-      "rxjs"
-    ],
     "no-inferrable-types": [
       true,
       "ignore-params"
     ],
     "no-misused-new": true,
     "no-non-null-assertion": true,
-    "no-parameter-properties": false,
-    "no-relative-imports": false,
     "no-shadowed-variable": true,
     "no-string-literal": true,
     "no-string-throw": true,
-    "no-submodule-imports": [
-      true,
-      "rxjs",
-      "@angular/platform-browser",
-      "@angular/core/testing",
-      "@angular/router/testing",
-      "@angular/common/http"
-    ],
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
@@ -100,6 +83,7 @@
       "check-else",
       "check-whitespace"
     ],
+    "ordered-imports": true,
     "prefer-const": true,
     "quotemark": [
       true,
@@ -114,15 +98,19 @@
       true,
       "allow-null-check"
     ],
-    "typedef": [
+    "typedef-whitespace": [
       true,
-      "parameter",
-      "property-declaration",
-      "member-variable-declaration"
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
     ],
     "typeof-compare": true,
     "unified-signatures": true,
-    "variable-name": true,
+    "variable-name": false,
     "whitespace": [
       true,
       "check-branch",
@@ -143,6 +131,7 @@
       "app",
       "kebab-case"
     ],
+    "no-output-on-prefix": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
@@ -151,9 +140,6 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true,
-    "no-access-missing-member": true,
-    "templates-use-public": true,
-    "invoke-injectable": true
+    "directive-class-suffix": true
   }
 }
