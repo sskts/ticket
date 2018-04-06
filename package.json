@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start-client": "ng serve --environment=local",
-    "build-client": "npm run build-client-development",
+    "build-client": "npm run build-client-development && npm run build-client-test && npm run build-client-production",
     "build-client-local": "ng build --environment=local --output-path=./dist/client/development --aot",
     "build-client-development": "ng build --environment=dev --output-path=./dist/client/development --aot",
     "build-client-test": "ng build --environment=test --output-path=./dist/client/test --aot",
