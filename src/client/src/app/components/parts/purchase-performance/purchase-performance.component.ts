@@ -6,6 +6,7 @@ import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 import { environment } from '../../../../environments/environment';
 import { AwsCognitoService } from '../../../services/aws-cognito/aws-cognito.service';
+import { SasakiService } from '../../../services/sasaki/sasaki.service';
 import { UserService } from '../../../services/user/user.service';
 
 type IIndividualScreeningEvent = sasaki.factory.event.individualScreeningEvent.IEventWithOffer;
@@ -21,7 +22,8 @@ export class PurchasePerformanceComponent implements OnInit {
 
     constructor(
         private awsCognito: AwsCognitoService,
-        private user: UserService
+        private user: UserService,
+        private sasaki: SasakiService
     ) { }
 
     /**
@@ -37,7 +39,7 @@ export class PurchasePerformanceComponent implements OnInit {
      * パフォーマンス選択
      * @method performanceSelect
      */
-    public performanceSelect() {
+    public async performanceSelect() {
         if (this.performance.offer.availability === 0) {
             return;
         }
@@ -47,6 +49,9 @@ export class PurchasePerformanceComponent implements OnInit {
                 return;
             }
             params += `&identityId=${this.awsCognito.credentials.identityId}`;
+        } else {
+            const accessToken = await this.sasaki.auth.getAccessToken();
+            params += `&accessToken=${accessToken}`;
         }
         params += `&native=1`;
         params += `&member=${this.user.data.memberType}`;
