@@ -2628,16 +2628,17 @@ var PurchasePerformanceComponent = /** @class */ (function () {
                             return [2 /*return*/];
                         }
                         params = "id=" + this.performance.identifier;
-                        if (!!this.user.isMember()) return [3 /*break*/, 1];
+                        if (!this.user.isMember()) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this.sasaki.auth.getAccessToken()];
+                    case 1:
+                        accessToken = _a.sent();
+                        params += "&accessToken=" + accessToken;
+                        return [3 /*break*/, 3];
+                    case 2:
                         if (this.awsCognito.credentials === undefined) {
                             return [2 /*return*/];
                         }
                         params += "&identityId=" + this.awsCognito.credentials.identityId;
-                        return [3 /*break*/, 3];
-                    case 1: return [4 /*yield*/, this.sasaki.auth.getAccessToken()];
-                    case 2:
-                        accessToken = _a.sent();
-                        params += "&accessToken=" + accessToken;
                         _a.label = 3;
                     case 3:
                         params += "&native=1";

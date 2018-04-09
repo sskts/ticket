@@ -44,14 +44,14 @@ export class PurchasePerformanceComponent implements OnInit {
             return;
         }
         let params = `id=${this.performance.identifier}`;
-        if (!this.user.isMember()) {
+        if (this.user.isMember()) {
+            const accessToken = await this.sasaki.auth.getAccessToken();
+            params += `&accessToken=${accessToken}`;
+        } else {
             if (this.awsCognito.credentials === undefined) {
                 return;
             }
             params += `&identityId=${this.awsCognito.credentials.identityId}`;
-        } else {
-            const accessToken = await this.sasaki.auth.getAccessToken();
-            params += `&accessToken=${accessToken}`;
         }
         params += `&native=1`;
         params += `&member=${this.user.data.memberType}`;

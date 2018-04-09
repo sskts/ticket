@@ -55,13 +55,21 @@ export class Auth2Model {
             session = {};
         }
         this.state = (session.state !== undefined) ? session.state : uuid.v1();
-        const resourceServerUrl  = <string>process.env.RESOURCE_SERVER_URL;
-        this.scopes = (session.scopes !== undefined) ? session.scopes : [
+        const resourceServerUrl = <string>process.env.RESOURCE_SERVER_URL;
+        this.scopes = [
+            'phone',
+            'openid',
+            'email',
+            'aws.cognito.signin.user.admin',
+            'profile',
             `${resourceServerUrl}/transactions`,
             `${resourceServerUrl}/events.read-only`,
             `${resourceServerUrl}/organizations.read-only`,
             `${resourceServerUrl}/orders.read-only`,
-            `${resourceServerUrl}/places.read-only`
+            `${resourceServerUrl}/places.read-only`,
+            `${resourceServerUrl}/people.contacts`,
+            `${resourceServerUrl}/people.creditCards`,
+            `${resourceServerUrl}/people.ownershipInfos.read-only`
         ];
         this.credentials = session.credentials;
         this.codeVerifier = session.codeVerifier;
@@ -71,7 +79,7 @@ export class Auth2Model {
      * 認証クラス作成
      * @memberof Auth2Model
      * @method create
-     * @returns {sasaki.auth.ClientCredentials}
+     * @returns {sasaki.auth.OAuth2}
      */
     public create(): sasaki.auth.OAuth2 {
         const auth = new sasaki.auth.OAuth2({
@@ -81,7 +89,7 @@ export class Auth2Model {
             redirectUri: (<string>process.env.AUTH_REDIRECT_URI),
             logoutUri: (<string>process.env.AUTH_LOGUOT_URI),
             state: this.state,
-            scopes: this.scopes
+            scopes: <any>this.scopes.join(' ')
         });
         if (this.credentials !== undefined) {
             auth.setCredentials(this.credentials);
