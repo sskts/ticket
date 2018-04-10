@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
     public page: {
         url: string;
         title: string;
-        prev: boolean;
     };
     public isMenuOpen: boolean;
 
@@ -70,7 +69,7 @@ export class HeaderComponent implements OnInit {
             return (value.url === url);
         });
         if (page === undefined) {
-            this.page = { url: '', title: 'NOT FOUND', prev: false };
+            this.page = { url: '', title: 'NOT FOUND'};
 
             return;
         }
@@ -83,18 +82,19 @@ export class HeaderComponent implements OnInit {
  * @const pages
  */
 const pages = [
-    { url: '/ticket', title: 'チケットホルダー', prev: false },
-    { url: '/purchase', title: 'チケット購入', prev: false },
-    { url: '/member/point', title: '会員ポイント', prev: false },
-    { url: '/about', title: 'このアプリについて', prev: true },
-    { url: '/policy', title: '利用規約', prev: true },
-    { url: '/law', title: '特定商取引法に基づく表記', prev: true },
-    { url: '/privacy', title: 'プライバシーポリシー', prev: true },
-    { url: '/law', title: '特定商取引法に基づく表記', prev: true },
-    { url: '/auth/register', title: '会員登録', prev: true },
-    { url: '/auth/signOut', title: 'ログアウト', prev: true },
-    { url: '/member/benefits', title: '会員特典', prev: true },
-    { url: '/member/edit', title: '会員情報変更', prev: true },
-    { url: '/member/withdraw', title: '退会', prev: true }
+    { url: '/ticket', title: 'チケットホルダー'},
+    { url: '/purchase', title: 'チケット購入'},
+    { url: '/member/point', title: '会員ポイント'},
+    { url: '/member/point/history', title: 'ポイント使用履歴'},
+    { url: '/about', title: 'このアプリについて'},
+    { url: '/policy', title: '利用規約'},
+    { url: '/law', title: '特定商取引法に基づく表記'},
+    { url: '/privacy', title: 'プライバシーポリシー'},
+    { url: '/law', title: '特定商取引法に基づく表記'},
+    { url: '/auth/register', title: '会員登録'},
+    { url: '/auth/signOut', title: 'ログアウト'},
+    { url: '/member/benefits', title: '会員特典'},
+    { url: '/member/edit', title: '会員情報変更'},
+    { url: '/member/withdraw', title: '退会'}
 
 ];

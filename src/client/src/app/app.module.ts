@@ -48,6 +48,7 @@ import { ScheduleService } from './services/schedule/schedule.service';
 import { SelectService } from './services/select/select.service';
 import { StorageService } from './services/storage/storage.service';
 import { UserService } from './services/user/user.service';
+import { MemberPointHistoryComponent } from './components/member/member-point-history/member-point-history.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -79,7 +80,8 @@ import { UserService } from './services/user/user.service';
     MemberBenefitsComponent,
     MemberEditComponent,
     MemberWithdrawComponent,
-    MemberPointComponent
+    MemberPointComponent,
+    MemberPointHistoryComponent
   ],
   imports: [
     BrowserModule,

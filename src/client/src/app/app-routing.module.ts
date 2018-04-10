@@ -13,6 +13,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { LawComponent } from './components/law/law.component';
 import { MemberBenefitsComponent } from './components/member/member-benefits/member-benefits.component';
 import { MemberEditComponent } from './components/member/member-edit/member-edit.component';
+import { MemberPointHistoryComponent } from './components/member/member-point-history/member-point-history.component';
 import { MemberPointComponent } from './components/member/member-point/member-point.component';
 import { MemberWithdrawComponent } from './components/member/member-withdraw/member-withdraw.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -60,6 +61,7 @@ const appRoutes: Routes = [
         canActivate: [MemberGuardService],
         children: [
             { path: 'point', component: MemberPointComponent },
+            { path: 'point/history', component: MemberPointHistoryComponent },
             { path: 'benefits', component: MemberBenefitsComponent },
             { path: 'edit', component: MemberEditComponent },
             { path: 'withdraw', component: MemberWithdrawComponent }

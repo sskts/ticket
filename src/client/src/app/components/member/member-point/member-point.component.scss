@@ -10,26 +10,27 @@ swiper {
         padding: 0 15px;
     }
     ul {
-        padding: 10px 0;
+        padding: 10px;
         background-color: #FFF;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
         li {
-            margin: 10px;
-        }
-        .stamp {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background-color: #CCC;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            &.active {
-                background-color: #333;
+            .stamp {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                background-color: #CCC;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                margin: 0 auto;
+                &.active {
+                    background-color: #333;
+                }
             }
         }
+        
     }
 }
 

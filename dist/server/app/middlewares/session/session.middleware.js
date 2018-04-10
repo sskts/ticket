@@ -15,7 +15,7 @@ const redisClient = redis.createClient(Number(process.env.REDIS_PORT), process.e
 });
 const sessionStore = new (connectRedis(session))({ client: redisClient });
 exports.default = session({
-    secret: 'FrontendSecret',
+    secret: 'TicketSecret',
     resave: false,
     rolling: true,
     proxy: true,
@@ -24,6 +24,8 @@ exports.default = session({
     cookie: {
         secure: true,
         httpOnly: true,
-        maxAge: 1800000 // 30 * 60 * 1000
+        maxAge: (process.env.NODE_ENV === 'development')
+            ? 1800000 // 30 * 60 * 1000
+            : 2592000000 // 30 * 24 * 60 * 60 * 1000
     }
 });
