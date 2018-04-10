@@ -16,6 +16,11 @@ const auth_model_1 = require("../../models/auth/auth.model");
 const auth2_model_1 = require("../../models/auth2/auth2.model");
 const base_controller_1 = require("../base/base.controller");
 const log = debug('SSKTS:authorize');
+/**
+ * 資格情報取得
+ * @param {Request} req
+ * @param {Response} res
+ */
 function getCredentials(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('getCredentials');
@@ -47,12 +52,18 @@ function getCredentials(req, res) {
     });
 }
 exports.getCredentials = getCredentials;
+/**
+ * サインイン処理
+ * @param {Request} req
+ * @param {Response} res
+ */
 function signIn(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('signIn');
+        delete req.session.auth;
         const authModel = new auth2_model_1.Auth2Model(req.session.auth);
         const auth = authModel.create();
-        authModel.codeVerifier = '12345';
+        authModel.codeVerifier = createCodeVerifier(4);
         authModel.save(req.session);
         const authUrl = auth.generateAuthUrl({
             scopes: authModel.scopes,
@@ -66,6 +77,12 @@ function signIn(req, res) {
     });
 }
 exports.signIn = signIn;
+/**
+ * サインインリダイレクト処理
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 function signInRedirect(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         log('signInRedirect');
@@ -88,6 +105,11 @@ function signInRedirect(req, res, next) {
     });
 }
 exports.signInRedirect = signInRedirect;
+/**
+ * サインアウト処理
+ * @param {Request} req
+ * @param {Response} res
+ */
 function signOut(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('signOut');
@@ -101,6 +123,11 @@ function signOut(req, res) {
     });
 }
 exports.signOut = signOut;
+/**
+ * サインアウトリダイレクト処理
+ * @param {Request} req
+ * @param {Response} res
+ */
 function signOutRedirect(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('signOutRedirect');
@@ -109,6 +136,19 @@ function signOutRedirect(req, res) {
     });
 }
 exports.signOutRedirect = signOutRedirect;
+/**
+ * 検証コード生成
+ * @param {number} length
+ */
+function createCodeVerifier(length) {
+    const CODE_TABLE = '0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        const index = Math.floor(CODE_TABLE.length * Math.random());
+        result += CODE_TABLE.charAt(index);
+    }
+    return result;
+}
 var MemberType;
 (function (MemberType) {
     MemberType["NotMember"] = "0";
