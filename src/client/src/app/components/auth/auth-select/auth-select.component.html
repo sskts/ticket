@@ -1,32 +1,34 @@
-<div class="contents position-center">
-    <div class="inner center">
-        <div class="logo text-center mb-large">
-            <img src="/assets/images/common/logo_text.svg">
-        </div>
-        <p class="read text-center mb-middle">
-            アプリの始め方を選択してください。
-        </p>
+<div class="contents bg-03">
+    <div class="position-center">
+        <div class="inner center">
+            <div class="logo text-center mb-large">
+                <img src="/assets/images/common/logo_text.svg">
+            </div>
+            <p class="read text-center mb-middle">
+                アプリの始め方を選択してください。
+            </p>
 
-        <dl>
-            <dt class="text-center mb-small">
-                新規会員（年会費500円）登録
-            </dt>
-            <dd class="mb-middle">
-                <button class="button button-primary button-block" (click)="register()">登録</button>
-            </dd>
-            <dt class="text-center mb-small">
-                無料で一部機能を使用
-            </dt>
-            <dd class="mb-middle">
-                <button class="button button-primary button-block" (click)="start()">はじめる</button>
-            </dd>
-            <dt class="text-center mb-small">
-                すでに会員登録済みの方
-            </dt>
-            <dd>
-                <button class="button button-primary button-block" (click)="signIn()">ログイン</button>
-            </dd>
-        </dl>
+            <dl>
+                <dt class="text-center mb-small">
+                    新規会員（年会費500円）登録
+                </dt>
+                <dd class="mb-middle">
+                    <button class="button button-primary button-block center" (click)="register()">登録</button>
+                </dd>
+                <dt class="text-center mb-small">
+                    無料で一部機能を使用
+                </dt>
+                <dd class="mb-middle">
+                    <button class="button button-primary button-block center" (click)="start()">はじめる</button>
+                </dd>
+                <dt class="text-center mb-small">
+                    すでに会員登録済みの方
+                </dt>
+                <dd>
+                    <button class="button button-primary button-block center" (click)="signIn()">ログイン</button>
+                </dd>
+            </dl>
+        </div>
     </div>
 </div>
 <app-loading [show]="isLoading"></app-loading>
