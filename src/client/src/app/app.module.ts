@@ -20,6 +20,8 @@ import { ErrorComponent } from './components/error/error.component';
 import { LawComponent } from './components/law/law.component';
 import { MemberBenefitsComponent } from './components/member/member-benefits/member-benefits.component';
 import { MemberEditComponent } from './components/member/member-edit/member-edit.component';
+import { MemberMypageComponent } from './components/member/member-mypage/member-mypage.component';
+import { MemberPointHistoryComponent } from './components/member/member-point-history/member-point-history.component';
 import { MemberPointComponent } from './components/member/member-point/member-point.component';
 import { MemberWithdrawComponent } from './components/member/member-withdraw/member-withdraw.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -48,7 +50,6 @@ import { ScheduleService } from './services/schedule/schedule.service';
 import { SelectService } from './services/select/select.service';
 import { StorageService } from './services/storage/storage.service';
 import { UserService } from './services/user/user.service';
-import { MemberPointHistoryComponent } from './components/member/member-point-history/member-point-history.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -81,7 +82,8 @@ import { MemberPointHistoryComponent } from './components/member/member-point-hi
     MemberEditComponent,
     MemberWithdrawComponent,
     MemberPointComponent,
-    MemberPointHistoryComponent
+    MemberPointHistoryComponent,
+    MemberMypageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,12 @@
 <ul>
+    <li *ngIf="user.isMember()" routerLink="/member/mypage" routerLinkActive="active">
+        <div class="mb-xx-small icon-purchase-white"></div>
+        <div>マイページ</div>
+    </li>
     <li routerLink="/ticket" routerLinkActive="active">
         <div class="mb-xx-small icon-ticket-holder-white"></div>
-        <div>購入済み<br>チケットホルダー</div>
+        <div>購入済み
+            <br>チケットホルダー</div>
     </li>
     <li routerLink="/purchase" routerLinkActive="active">
         <div class="mb-xx-small icon-purchase-white"></div>

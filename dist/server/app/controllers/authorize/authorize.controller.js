@@ -89,7 +89,7 @@ function signInRedirect(req, res, next) {
         try {
             const authModel = new auth2_model_1.Auth2Model(req.session.auth);
             if (req.query.state !== authModel.state) {
-                throw (new Error('state not matched'));
+                throw (new Error(`state not matched ${req.query.state} !== ${authModel.state}`));
             }
             const auth = authModel.create();
             const credentials = yield auth.getToken(req.query.code, authModel.codeVerifier);

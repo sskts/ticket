@@ -75,7 +75,7 @@ export async function signInRedirect(req: Request, res: Response, next: NextFunc
     try {
         const authModel = new Auth2Model((<Express.Session>req.session).auth);
         if (req.query.state !== authModel.state) {
-            throw (new Error('state not matched'));
+            throw (new Error(`state not matched ${req.query.state} !== ${authModel.state}`));
         }
         const auth = authModel.create();
         const credentials = await auth.getToken(
