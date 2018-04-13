@@ -4,38 +4,59 @@
     <!-- <div class="title">{{ name }}</div> -->
     <ul>
         <li>
-            <span routerLink="/ticket" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-about-white">HOME画面</span>
+            <span routerLink="/ticket" routerLinkActive="active" (click)="close.emit()">
+                <app-icon iconName="icon-about-white" width="15" height="15"></app-icon>HOME画面
+            </span>
         </li>
         <li>
-            <span routerLink="/about" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-about-white">このアプリについて</span>
+            <span routerLink="/about" routerLinkActive="active" (click)="close.emit()">
+                <app-icon iconName="icon-about-white" width="15" height="15"></app-icon>このアプリについて
+            </span>
         </li>
         <!-- <li><span routerLink="/profile" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-user-white">ユーザー情報変更</span></li> -->
         <li>
-            <span routerLink="/policy" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-text-white">利用規約</span>
+            <span routerLink="/policy" routerLinkActive="active" (click)="close.emit()">
+                <app-icon iconName="icon-text-white" width="15" height="15"></app-icon>利用規約
+            </span>
         </li>
         <li>
-            <span routerLink="/law" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-text-white">特定商取引法に基づく表記</span>
+            <span routerLink="/law" routerLinkActive="active" (click)="close.emit()">
+                <app-icon iconName="icon-text-white" width="15" height="15"></app-icon>特定商取引法に基づく表記
+            </span>
         </li>
         <li>
-            <span routerLink="/privacy" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-text-white">プライバシーポリシー</span>
+            <span routerLink="/privacy" routerLinkActive="active" (click)="close.emit()">
+                <app-icon iconName="icon-text-white" width="15" height="15"></app-icon>プライバシーポリシー
+            </span>
         </li>
         <li>
-            <span class="icon-inline icon-external-link-white" (click)="openWebBrowse(portalSite)">シネマサンシャインポータルサイト</span>
+            <span (click)="openWebBrowse(portalSite)">
+                <app-icon iconName="icon-external-link-white" width="15" height="15"></app-icon>シネマサンシャインポータルサイト
+            </span>
         </li>
         <li *ngIf="!user.isMember()">
-            <span routerLink="/auth/register" (click)="close.emit()" class="icon-inline icon-text-white">会員特典 / 会員登録</span>
+            <span routerLink="/auth/register" (click)="close.emit()">
+                <app-icon iconName="icon-text-white" width="15" height="15"></app-icon>会員特典 / 会員登録
+            </span>
         </li>
         <li *ngIf="user.isMember()">
-            <span routerLink="/member/benefits" (click)="close.emit()" class="icon-inline icon-text-white">会員特典</span>
+            <span routerLink="/member/benefits" (click)="close.emit()">
+                <app-icon iconName="icon-text-white" width="15" height="15"></app-icon>会員特典
+            </span>
         </li>
         <li *ngIf="user.isMember()">
-            <span routerLink="/member/edit" (click)="close.emit()" class="icon-inline icon-text-white">会員情報変更</span>
+            <span routerLink="/member/edit" (click)="close.emit()">
+                <app-icon iconName="icon-text-white" width="15" height="15"></app-icon>会員情報変更
+            </span>
         </li>
         <li *ngIf="user.isMember()">
-            <span routerLink="/auth/signOut" (click)="close.emit()" class="icon-inline icon-text-white">ログアウト</span>
+            <span routerLink="/auth/signOut" (click)="close.emit()">
+                <app-icon iconName="icon-text-white" width="15" height="15"></app-icon>ログアウト
+            </span>
         </li>
         <li *ngIf="user.isMember()">
-            <span routerLink="/member/withdraw" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-text-white">退会</span>
+            <span routerLink="/member/withdraw" routerLinkActive="active" (click)="close.emit()">
+                <app-icon iconName="icon-text-white" width="15" height="15"></app-icon>退会</span>
         </li>
     </ul>
 </div>

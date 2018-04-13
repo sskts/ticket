@@ -9,7 +9,7 @@
     "build-client-local": "ng build --environment=local --output-path=./dist/client/development --aot",
     "build-client-development": "ng build --environment=dev --output-path=./dist/client/development --aot",
     "build-client-test": "ng build --environment=test --output-path=./dist/client/test --aot",
-    "build-client-production": "ng build --environment=prod --output-path=./dist/client/production --aot",
+    "build-client-production": "ng build --prod --environment=prod --output-path=./dist/client/production --aot",
     "test-client": "ng test --code-coverage",
     "lint-client": "tslint --config tslint.json src/client/**/**.ts --exclude **/**.spec.ts --project src/client/tsconfig.json",
     "e2e": "ng e2e",

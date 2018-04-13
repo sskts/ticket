@@ -3,8 +3,8 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IDate, IFilmOrder, IMovieTheater, ScheduleService } from '../../services/schedule/schedule.service';
-import { SelectService } from '../../services/select/select.service';
+import { IDate, IFilmOrder, IIndividualScreeningEvent, IMovieTheater, PurchaseService } from '../../services/purchase/purchase.service';
+import { IPurchaseConditions, PurchaseSort, SelectService } from '../../services/select/select.service';
 
 @Component({
     selector: 'app-purchase',
@@ -21,17 +21,21 @@ export class PurchaseComponent implements OnInit {
     public theaters: IMovieTheater[];
     public dateList: IDate[];
     public filmOrder: IFilmOrder[];
-    public conditions: { theater: string; date: string };
+    public timeOrder: IIndividualScreeningEvent[];
+    public conditions: IPurchaseConditions;
     public error: string;
+    public purchaseSort: typeof PurchaseSort;
 
     constructor(
         private router: Router,
-        private schedule: ScheduleService,
+        private purchase: PurchaseService,
         private select: SelectService
     ) {
+        this.purchaseSort = PurchaseSort;
         this.theaters = [];
         this.dateList = [];
         this.filmOrder = [];
+        this.timeOrder = [];
     }
 
     /**
@@ -43,8 +47,8 @@ export class PurchaseComponent implements OnInit {
         this.isLoading = true;
         try {
             this.conditions = this.select.getSelect().purchase;
-            await this.schedule.getSchedule();
-            this.theaters = this.schedule.getTheater();
+            await this.purchase.getSchedule();
+            this.theaters = this.purchase.getTheater();
             await this.changeConditions();
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
@@ -65,8 +69,8 @@ export class PurchaseComponent implements OnInit {
         this.select.save();
         this.filmOrder = [];
         try {
-            await this.schedule.getSchedule();
-            this.theaters = this.schedule.getTheater();
+            await this.purchase.getSchedule();
+            this.theaters = this.purchase.getTheater();
             const selectTheater = this.theaters.find((theater) => {
                 return (theater.location.branchCode === this.conditions.theater);
             });
@@ -78,7 +82,7 @@ export class PurchaseComponent implements OnInit {
 
                 return;
             }
-            this.dateList = await this.schedule.getDate(selectTheater.location.branchCode);
+            this.dateList = await this.purchase.getDate(selectTheater.location.branchCode);
             const selectDate = this.dateList.find((date) => {
                 return (date.value === this.conditions.date);
             });
@@ -90,10 +94,13 @@ export class PurchaseComponent implements OnInit {
                 return;
             }
 
-            this.filmOrder = await this.schedule.getScreeningEvents({
-                theater: selectTheater.location.branchCode,
-                date: selectDate.value
+            const getScreeningEventsResult = this.purchase.getScreeningEvents({
+                theater: this.conditions.theater,
+                date: this.conditions.date,
+                sort: this.conditions.sort
             });
+            this.timeOrder = getScreeningEventsResult.time;
+            this.filmOrder = getScreeningEventsResult.film;
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
             console.log(err);
@@ -101,5 +108,10 @@ export class PurchaseComponent implements OnInit {
         this.isLoading = false;
     }
 
-}
+    public async changeSort(sort: PurchaseSort) {
+        this.select.data.purchase.sort = sort;
+        this.select.save();
+        await this.changeConditions();
+    }
 
+}

@@ -29,7 +29,8 @@ import { HeaderMenuComponent } from './components/parts/header-menu/header-menu.
 import { HeaderComponent } from './components/parts/header/header.component';
 import { LoadingComponent } from './components/parts/loading/loading.component';
 import { NavigationComponent } from './components/parts/navigation/navigation.component';
-import { PurchasePerformanceComponent } from './components/parts/purchase-performance/purchase-performance.component';
+import { PurchasePerformanceFilmComponent } from './components/parts/purchase-performance-film/purchase-performance-film.component';
+import { PurchasePerformanceTimeComponent } from './components/parts/purchase-performance-time/purchase-performance-time.component';
 import { TicketDetailComponent } from './components/parts/ticket-detail/ticket-detail.component';
 import { TicketNotFoundComponent } from './components/parts/ticket-not-found/ticket-not-found.component';
 import { PolicyComponent } from './components/policy/policy.component';
@@ -44,12 +45,13 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { AwsCognitoService } from './services/aws-cognito/aws-cognito.service';
 import { CallNativeService } from './services/call-native/call-native.service';
 import { MemberGuardService } from './services/member-guard/member-guard.service';
+import { PurchaseService } from './services/purchase/purchase.service';
 import { ReservationService } from './services/reservation/reservation.service';
 import { SasakiService } from './services/sasaki/sasaki.service';
-import { ScheduleService } from './services/schedule/schedule.service';
 import { SelectService } from './services/select/select.service';
 import { StorageService } from './services/storage/storage.service';
 import { UserService } from './services/user/user.service';
+import { IconComponent } from './components/parts/icon/icon.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -72,7 +74,6 @@ import { UserService } from './services/user/user.service';
     TicketDetailComponent,
     TicketNotFoundComponent,
     PurchaseComponent,
-    PurchasePerformanceComponent,
     HeaderMenuComponent,
     TicketComponent,
     AuthSelectComponent,
@@ -83,7 +84,10 @@ import { UserService } from './services/user/user.service';
     MemberWithdrawComponent,
     MemberPointComponent,
     MemberPointHistoryComponent,
-    MemberMypageComponent
+    MemberMypageComponent,
+    PurchasePerformanceTimeComponent,
+    PurchasePerformanceFilmComponent,
+    IconComponent
   ],
   imports: [
     BrowserModule,
@@ -98,13 +102,13 @@ import { UserService } from './services/user/user.service';
     AuthGuardService,
     AwsCognitoService,
     ReservationService,
-    ScheduleService,
     SelectService,
     StorageService,
     CallNativeService,
     SasakiService,
     MemberGuardService,
-    UserService
+    UserService,
+    PurchaseService
   ],
   bootstrap: [AppComponent]
 })

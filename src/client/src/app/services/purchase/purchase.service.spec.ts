@@ -1,12 +1,12 @@
 /**
- * ScheduleServiceテスト
+ * PurchaseServiceテスト
  */
 import { inject, TestBed } from '@angular/core/testing';
 import * as httpStatus from 'http-status';
 import * as moment from 'moment';
-import { ScheduleService } from './schedule.service';
+import { PurchaseService } from './purchase.service';
 
-describe('ScheduleService', () => {
+describe('PurchaseService', () => {
     it('getSchedule API経由で取得', async () => {
         const httpStub: any = {
             get: () => {
@@ -33,7 +33,7 @@ describe('ScheduleService', () => {
             save: () => { },
             remove: () => { }
         };
-        const service = new ScheduleService(httpStub, storageServiceStub);
+        const service = new PurchaseService(httpStub, storageServiceStub);
         const schedule = await service.getSchedule();
         expect(schedule.expired);
         expect(Array.isArray(schedule.schedule)).toBeTruthy();
@@ -60,7 +60,7 @@ describe('ScheduleService', () => {
             save: () => { },
             remove: () => { }
         };
-        const service = new ScheduleService(httpStub, storageServiceStub);
+        const service = new PurchaseService(httpStub, storageServiceStub);
         try {
             const schedule = await service.getSchedule();
         } catch (err) {
@@ -80,7 +80,7 @@ describe('ScheduleService', () => {
             save: () => { },
             remove: () => { }
         };
-        const service = new ScheduleService(httpStub, storageServiceStub);
+        const service = new PurchaseService(httpStub, storageServiceStub);
         const schedule = await service.getSchedule();
         expect(schedule.expired);
         expect(Array.isArray(schedule.schedule)).toBeTruthy();
@@ -93,7 +93,7 @@ describe('ScheduleService', () => {
             save: () => { },
             remove: () => { }
         };
-        const service = new ScheduleService(httpStub, storageServiceStub);
+        const service = new PurchaseService(httpStub, storageServiceStub);
         const data: any = {
             schedule: [],
             expired: moment().add(1, 'days').unix()
@@ -107,7 +107,7 @@ describe('ScheduleService', () => {
     it('getTheater', async () => {
         const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(httpStub, storageServiceStub);
+        const service = new PurchaseService(httpStub, storageServiceStub);
         const data: any = {
             schedule: [{ theater: {} }],
             expired: moment().add(1, 'days').unix()
@@ -120,7 +120,7 @@ describe('ScheduleService', () => {
     it('getTheater 失敗', async () => {
         const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(httpStub, storageServiceStub);
+        const service = new PurchaseService(httpStub, storageServiceStub);
         const data: any = undefined;
         service.data = data;
         try {
@@ -133,7 +133,7 @@ describe('ScheduleService', () => {
     it('getDate', async () => {
         const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(httpStub, storageServiceStub);
+        const service = new PurchaseService(httpStub, storageServiceStub);
         const data: any = {
             schedule: [
                 {
@@ -198,7 +198,7 @@ describe('ScheduleService', () => {
     it('getDate 失敗', async () => {
         const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(httpStub, storageServiceStub);
+        const service = new PurchaseService(httpStub, storageServiceStub);
         const data: any = undefined;
         service.data = data;
         try {
@@ -211,7 +211,7 @@ describe('ScheduleService', () => {
     it('getScreeningEvents', async () => {
         const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(httpStub, storageServiceStub);
+        const service = new PurchaseService(httpStub, storageServiceStub);
         const data: any = {
             schedule: [
                 {
@@ -287,7 +287,7 @@ describe('ScheduleService', () => {
     it('getScreeningEvents 失敗', async () => {
         const httpStub: any = {};
         const storageServiceStub: any = {};
-        const service = new ScheduleService(httpStub, storageServiceStub);
+        const service = new PurchaseService(httpStub, storageServiceStub);
         const data: any = undefined;
         service.data = data;
         try {

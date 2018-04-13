@@ -1,0 +1,98 @@
+:host {
+    display: inline-block;
+}
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+@mixin icon($width: 15px, $height: 15px) {
+    width: $width;
+    height: $height;
+    background-size: $width $height;
+    background-repeat: no-repeat;
+}
+
+.icon-ticket-holder-white {
+    @include icon();
+    background-image: url(/assets/images/icon/ticket_holder_white.svg);
+}
+
+.icon-purchase-white {
+    @include icon();
+    background-image: url(/assets/images/icon/purchase_white.svg);
+}
+
+.icon-film-name-gray {
+    @include icon();
+    background-image: url(/assets/images/icon/film_name_gray.svg);
+}
+
+.icon-date-gray {
+    @include icon();
+    background-image: url(/assets/images/icon/date_gray.svg);
+}
+
+.icon-location-gray {
+    @include icon();
+    background-image: url(/assets/images/icon/location_gray.svg);
+}
+
+.icon-time-gray {
+    @include icon();
+    background-image: url(/assets/images/icon/time_gray.svg);
+}
+
+.icon-prev-white {
+    @include icon();
+    background-image: url(/assets/images/icon/prev_white.svg);
+}
+
+.icon-about-white {
+    @include icon();
+    background-image: url(/assets/images/icon/about_white.svg);
+}
+
+.icon-external-link-white {
+    @include icon();
+    background-image: url(/assets/images/icon/external_link_white.svg);
+}
+
+.icon-logout-white {
+    @include icon();
+    background-image: url(/assets/images/icon/logout_white.svg);
+}
+
+.icon-text-white {
+    @include icon();
+    background-image: url(/assets/images/icon/text_white.svg);
+}
+
+.icon-user-white {
+    @include icon();
+    background-image: url(/assets/images/icon/user_white.svg);
+}
+
+.icon-late-show-white {
+    @include icon();
+    background-image: url(/assets/images/icon/late_show_white.svg);
+}
+
+.icon-first-show-white {
+    @include icon();
+    background-image: url(/assets/images/icon/first_show_white.svg);
+}
+
+.icon-vacancy-large-white {
+    @include icon();
+    background-image: url(/assets/images/icon/vacancy_large_white.svg);
+}
+
+.icon-vacancy-little-white {
+    @include icon();
+    background-image: url(/assets/images/icon/vacancy_little_white.svg);
+}
+
+.icon-vacancy-full-white {
+    @include icon();
+    background-image: url(/assets/images/icon/vacancy_full_white.svg);
+}

@@ -24,3 +24,13 @@
     display: flex;
     align-items: center;
 }
+
+.sort {
+    .button {
+        margin-right: 10px;
+        &.active {
+            background-color: #FFF;
+            color: #333;
+        }
+    }
+}

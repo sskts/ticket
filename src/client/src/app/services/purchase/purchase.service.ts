@@ -1,16 +1,21 @@
 /**
- * ScheduleService
+ * PurchaseService
  */
 import { Injectable } from '@angular/core';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/toPromise';
+import { environment } from '../../../environments/environment';
+import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 import { SasakiService } from '../sasaki/sasaki.service';
+import { PurchaseSort } from '../select/select.service';
 import { StorageService } from '../storage/storage.service';
+import { UserService } from '../user/user.service';
 
 export type IMovieTheater = factory.organization.movieTheater.IOrganizationWithoutGMOInfo;
 export type IIndividualScreeningEvent = factory.event.individualScreeningEvent.IEventWithOffer;
+export type ITimeOrder = IIndividualScreeningEvent[];
 export interface IFilmOrder {
     id: string;
     films: IIndividualScreeningEvent[];
@@ -33,12 +38,14 @@ export interface IDate {
 }
 
 @Injectable()
-export class ScheduleService {
+export class PurchaseService {
     public data: IScheduleData;
 
     constructor(
         private storage: StorageService,
-        private sasaki: SasakiService
+        private sasaki: SasakiService,
+        private user: UserService,
+        private awsCognito: AwsCognitoService
     ) { }
 
     /**
@@ -194,13 +201,16 @@ export class ScheduleService {
     /**
      * 作品別上映スケジュール取得
      * @function getScreeningEvents
-     * @returns {Promise<IFilmOrder[]>}
+     * @returns {IFilmOrder[]}
      */
-    public async getScreeningEvents(args: { theater: string, date: string }): Promise<IFilmOrder[]> {
+    public getScreeningEvents(args: IGetScreeningEventsArgs): IGetScreeningEventsResult {
         if (this.data === undefined) {
             throw new Error('getScreeningEvents: schedule is undefined');
         }
-        const results: IFilmOrder[] = [];
+        const result: IGetScreeningEventsResult = {
+            film: [],
+            time: []
+        };
         const theaterSchedule = this.data.schedule.find((schedule) => {
             return (schedule.theater.location.branchCode === args.theater);
         });
@@ -214,19 +224,18 @@ export class ScheduleService {
             throw new Error('dateSchedule is undefined');
         }
         const screeningEvents = dateSchedule.individualScreeningEvents.filter((screeningEvent) => {
-            return (this.isSalse(screeningEvent));
+            // 販売可能判定 & 販売可能時間判定
+            return (this.isSalse(screeningEvent) && this.isSalseTime(screeningEvent));
         });
-
+        // 時間順
+        result.time = screeningEvents;
+        // 作品順
         screeningEvents.forEach((screeningEvent) => {
-            // 販売可能時間判定
-            if (!this.isSalseTime(screeningEvent)) {
-                return;
-            }
-            const film = results.find((event) => {
+            const film = result.film.find((event) => {
                 return (event.id === (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum));
             });
             if (film === undefined) {
-                results.push({
+                result.film.push({
                     id: (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum),
                     films: [screeningEvent]
                 });
@@ -235,7 +244,30 @@ export class ScheduleService {
             }
         });
 
-        return results;
+        return result;
+    }
+
+    /**
+     * 購入サイトへリダイレクト
+     */
+    public async performanceRedirect(performance: IIndividualScreeningEvent) {
+        if (performance.offer.availability === 0) {
+            throw new Error('performance.offer.availability is 0');
+        }
+        let params = `id=${performance.identifier}`;
+        if (this.user.isMember()) {
+            const accessToken = await this.sasaki.auth.getAccessToken();
+            params += `&accessToken=${accessToken}`;
+        } else {
+            if (this.awsCognito.credentials === undefined) {
+                throw new Error('awsCognito.credentials is undefined');
+            }
+            params += `&identityId=${this.awsCognito.credentials.identityId}`;
+        }
+        params += `&native=1`;
+        params += `&member=${this.user.data.memberType}`;
+        location.href =
+            `${environment.ENTRANCE_SERVER_URL}/ticket/index.html?${params}`;
     }
 
     /**
@@ -261,4 +293,15 @@ export class ScheduleService {
             || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE);
     }
 
+}
+
+interface IGetScreeningEventsArgs {
+    theater: string;
+    date: string;
+    sort: PurchaseSort;
+}
+
+interface IGetScreeningEventsResult {
+    film: IFilmOrder[];
+    time: ITimeOrder;
 }

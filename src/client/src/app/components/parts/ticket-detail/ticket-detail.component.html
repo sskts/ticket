@@ -1,11 +1,11 @@
 <div *ngIf="reservation.acceptedOffers.length > 0" class="inner">
     <div class="info">
         <dl class="film">
-            <dt class="icon-film-name-gray"></dt>
+            <dt><app-icon iconName="icon-film-name-gray" width="15" height="15"></app-icon></dt>
             <dd>{{ reservation.acceptedOffers[0].itemOffered.reservationFor.workPerformed.name }}</dd>
         </dl>
         <dl class="date">
-            <dt class="icon-date-gray"></dt>
+            <dt><app-icon iconName="icon-date-gray" width="15" height="15"></app-icon></dt>
             <dd>
                 {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{
                 reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei
@@ -14,7 +14,7 @@
             </dd>
         </dl>
         <dl class="theater">
-            <dt class="icon-location-gray"></dt>
+            <dt><app-icon iconName="icon-location-gray" width="15" height="15"></app-icon></dt>
             <dd>
                 {{ reservation.acceptedOffers[0].itemOffered.reservationFor.superEvent.location.name.ja }} / {{ reservation.acceptedOffers[0].itemOffered.reservationFor.location.name.ja
                 }}

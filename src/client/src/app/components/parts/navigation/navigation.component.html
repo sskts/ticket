@@ -1,19 +1,27 @@
 <ul>
     <li *ngIf="user.isMember()" routerLink="/member/mypage" routerLinkActive="active">
-        <div class="mb-xx-small icon-purchase-white"></div>
+        <div class="mb-xx-small">
+            <app-icon iconName="icon-purchase-white" width="15" height="15"></app-icon>
+        </div>
         <div>マイページ</div>
     </li>
     <li routerLink="/ticket" routerLinkActive="active">
-        <div class="mb-xx-small icon-ticket-holder-white"></div>
+        <div class="mb-xx-small icon-ticket-holder-white">
+            <app-icon iconName="icon-ticket-holder-white" width="15" height="15"></app-icon>
+        </div>
         <div>購入済み
             <br>チケットホルダー</div>
     </li>
     <li routerLink="/purchase" routerLinkActive="active">
-        <div class="mb-xx-small icon-purchase-white"></div>
+        <div class="mb-xx-small icon-purchase-white">
+            <app-icon iconName="icon-purchase-white" width="15" height="15"></app-icon>
+        </div>
         <div>チケット購入</div>
     </li>
     <li *ngIf="user.isMember()" routerLink="/member/point" routerLinkActive="active">
-        <div class="mb-xx-small icon-purchase-white"></div>
+        <div class="mb-xx-small icon-purchase-white">
+            <app-icon iconName="icon-purchase-white" width="15" height="15"></app-icon>
+        </div>
         <div>会員ポイント</div>
     </li>
 </ul>

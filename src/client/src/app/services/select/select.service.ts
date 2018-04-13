@@ -5,12 +5,7 @@ import { Injectable } from '@angular/core';
 import { StorageService } from '../storage/storage.service';
 
 export interface ISelect {
-    purchase: IPurchaseSelect;
-}
-
-export interface IPurchaseSelect {
-    theater: string;
-    date: string;
+    purchase: IPurchaseConditions;
 }
 
 @Injectable()
@@ -27,7 +22,8 @@ export class SelectService {
             this.data = {
                 purchase: {
                     theater: '',
-                    date: ''
+                    date: '',
+                    sort: PurchaseSort.Film
                 }
             };
         }
@@ -43,4 +39,15 @@ export class SelectService {
         this.storage.save('select', this.data);
     }
 
+}
+
+export interface IPurchaseConditions {
+    theater: string;
+    date: string;
+    sort: PurchaseSort;
+}
+
+export enum PurchaseSort {
+    Film = 'film',
+    Time = 'time'
 }
