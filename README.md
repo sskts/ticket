@@ -8,6 +8,7 @@
 ```shell
 set NODE_ENV=**********環境名**********
 set NPM_TOKEN=**********npm motionpicture トークン**********
+<<<<<<< HEAD
 set SSKTS_API_ENDPOINT=**********mp apiのエンドポイント**********
 set REDIS_HOST=**********REDISホスト**********
 set REDIS_PORT=**********REDISポート**********
@@ -23,6 +24,11 @@ set CLIENT_SECRET=**********クライアント鍵**********
 set AUTHORIZE_SERVER_DOMAIN=**********認証サーバードメイン**********
 set RESOURCE_SERVER_URL=**********リソースサーバーURL**********
 set ENTRANCE_SERVER_URL=**********エントランスサーバーURL**********
+=======
+set REDIS_HOST=**********REDISホスト**********
+set REDIS_PORT=**********REDISポート**********
+set REDIS_KEY=**********REDISキー**********
+>>>>>>> develop
 ```
 
 only on Aure WebApps
@@ -45,6 +51,7 @@ set SSKTS_BASIC_AUTH_NAME=**********認証ユーザー名**********
 set SSKTS_BASIC_AUTH_PASS=**********認証パスワード**********
 ```
 
+<<<<<<< HEAD
 メンテナンスページを表示させたい場合
 
 ```shell
@@ -76,6 +83,8 @@ set USER_POOL_ID=**********COGNITO USER POOL ID**********
 set CLIENT_ID=**********COGNITO CLIENT ID**********
 ```
 
+=======
+>>>>>>> develop
 # Build
 
 ビルドは以下で実行できます。
