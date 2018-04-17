@@ -1,6 +1,6 @@
 import * as sasaki from '@motionpicture/sskts-api-nodejs-client';
-import * as uuid from 'uuid';
-
+import debug = require('debug');
+const log = debug('SSKTS:authorize');
 /**
  * 認証セッション
  * @interface IAuth2Session
@@ -30,6 +30,14 @@ export interface IAuth2Session {
  */
 export class Auth2Model {
     /**
+     * 状態（固定値）
+     */
+    private static STATE = 'STATE';
+    /**
+     * 検証コード（固定値）
+     */
+    private static CODE_VERIFIER = 'CODE_VERIFIER';
+    /**
      * 状態
      */
     public state: string;
@@ -51,10 +59,10 @@ export class Auth2Model {
      * @param {any} session
      */
     constructor(session?: any) {
+        log('constructor', session);
         if (session === undefined) {
             session = {};
         }
-        this.state = (session.state !== undefined) ? session.state : uuid.v1();
         const resourceServerUrl = <string>process.env.RESOURCE_SERVER_URL;
         this.scopes = [
             'phone',
@@ -72,7 +80,8 @@ export class Auth2Model {
             `${resourceServerUrl}/people.ownershipInfos.read-only`
         ];
         this.credentials = session.credentials;
-        this.codeVerifier = session.codeVerifier;
+        this.state = Auth2Model.STATE;
+        this.codeVerifier = Auth2Model.CODE_VERIFIER;
     }
 
     /**
@@ -83,7 +92,7 @@ export class Auth2Model {
      */
     public create(): sasaki.auth.OAuth2 {
         const auth = new sasaki.auth.OAuth2({
-            domain: (<string>process.env.AUTHORIZE_SERVER_DOMAIN),
+            domain: (<string>process.env.OAUTH2_SERVER_DOMAIN),
             clientId: (<string>process.env.CLIENT_ID_OAUTH2),
             clientSecret: (<string>process.env.CLIENT_SECRET_OAUTH2),
             redirectUri: (<string>process.env.AUTH_REDIRECT_URI),
@@ -104,7 +113,7 @@ export class Auth2Model {
      * @method save
      * @returns {Object}
      */
-    public save(session: any): void {
+    public save(session: Express.Session): void {
         const authSession: IAuth2Session = {
             state: this.state,
             scopes: this.scopes,

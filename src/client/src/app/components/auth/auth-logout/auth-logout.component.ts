@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { SasakiService } from '../../../services/sasaki/sasaki.service';
 
 @Component({
-    selector: 'app-auth-sign-out',
-    templateUrl: './auth-sign-out.component.html',
-    styleUrls: ['./auth-sign-out.component.scss']
+    selector: 'app-auth-logout',
+    templateUrl: './auth-logout.component.html',
+    styleUrls: ['./auth-logout.component.scss']
 })
-export class AuthSignOutComponent implements OnInit {
+export class AuthLogoutComponent implements OnInit {
     public isLoading: boolean;
 
     constructor(

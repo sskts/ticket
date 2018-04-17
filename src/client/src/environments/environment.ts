@@ -16,13 +16,8 @@ export const environment = {
     REKOGNITION_BUCKET: 'rekognition-pics',
     ALBUM_NAME: 'usercontent',
     BUCKET_REGION: 'us-east-1',
-
     DDB_TABLE_NAME: 'LoginTrail',
-
-    SASAKI_AUTH_DOMAIN: 'sskts-development.auth.ap-northeast-1.amazoncognito.com',
     TOKEN_ISSUER: '',
-
-    RESOURCE_SERVER_DOMAIN: 'https://sskts-api-development.azurewebsites.net',
 
     PORTAL_SITE: 'http://devssktsportal.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d2n1h4enbzumbc.cloudfront.net',

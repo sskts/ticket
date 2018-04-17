@@ -50,7 +50,7 @@
             </span>
         </li>
         <li *ngIf="user.isMember()">
-            <span routerLink="/auth/signOut" (click)="close.emit()">
+            <span routerLink="/auth/logout" (click)="close.emit()">
                 <app-icon iconName="icon-text-white" width="15" height="15"></app-icon>ログアウト
             </span>
         </li>

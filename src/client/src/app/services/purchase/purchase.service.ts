@@ -254,20 +254,37 @@ export class PurchaseService {
         if (performance.offer.availability === 0) {
             throw new Error('performance.offer.availability is 0');
         }
-        let params = `id=${performance.identifier}`;
-        if (this.user.isMember()) {
-            const accessToken = await this.sasaki.auth.getAccessToken();
-            params += `&accessToken=${accessToken}`;
-        } else {
+        let params;
+        if (!this.user.isMember()) {
             if (this.awsCognito.credentials === undefined) {
                 throw new Error('awsCognito.credentials is undefined');
             }
-            params += `&identityId=${this.awsCognito.credentials.identityId}`;
+            params = {
+                id: performance.identifier,
+                identityId: this.awsCognito.credentials.identityId,
+                native: '1',
+                member: this.user.data.memberType
+            };
+        } else {
+            const accessToken = await this.sasaki.auth.getAccessToken();
+            params = {
+                id: performance.identifier,
+                accessToken: accessToken,
+                native: '1',
+                member: this.user.data.memberType
+            };
         }
-        params += `&native=1`;
-        params += `&member=${this.user.data.memberType}`;
-        location.href =
-            `${environment.ENTRANCE_SERVER_URL}/ticket/index.html?${params}`;
+        let query = '';
+        for (let i = 0; i < Object.keys(params).length; i++) {
+            const key = Object.keys(params)[i];
+            const value = (<any>params)[key];
+            if (i > 0) {
+                query += '&';
+            }
+            query += `${key}=${value}`;
+        }
+        const url = `${environment.ENTRANCE_SERVER_URL}/ticket/index.html?${query}`;
+        location.href = url;
     }
 
     /**

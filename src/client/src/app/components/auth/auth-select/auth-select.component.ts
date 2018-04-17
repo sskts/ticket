@@ -36,12 +36,10 @@ export class AuthSelectComponent implements OnInit {
         }
     }
 
-    public async register() {
+    public async signUp() {
         this.isLoading = true;
         try {
-            await this.sasaki.signIn();
-            this.user.data.memberType = MemberType.Member;
-            this.user.save();
+            await this.sasaki.signUp();
         } catch (error) {
             console.error(error);
             this.isLoading = false;

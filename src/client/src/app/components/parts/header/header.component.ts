@@ -93,7 +93,7 @@ const pages = [
     { url: '/privacy', title: 'プライバシーポリシー' },
     { url: '/law', title: '特定商取引法に基づく表記' },
     { url: '/auth/register', title: '会員登録' },
-    { url: '/auth/signOut', title: 'ログアウト' },
+    { url: '/auth/logout', title: 'ログアウト' },
     { url: '/member/benefits', title: '会員特典' },
     { url: '/member/edit', title: '会員情報変更' },
     { url: '/member/withdraw', title: '退会' }

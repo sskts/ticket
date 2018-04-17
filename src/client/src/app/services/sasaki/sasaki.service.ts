@@ -56,6 +56,17 @@ export class SasakiService {
     }
 
     /**
+     * サインアップ
+     */
+    public async signUp() {
+        const url = '/api/authorize/signIn';
+        const result = await this.http.get<any>(url, {}).toPromise();
+        console.log(result.url);
+        const signupUrl = (<string>result.url).replace(/\/authorize/, '/signup');
+        location.href = signupUrl;
+    }
+
+    /**
      * サインアウト
      */
     public async signOut() {

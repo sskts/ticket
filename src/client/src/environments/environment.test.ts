@@ -18,11 +18,7 @@ export const environment = {
     BUCKET_REGION: 'us-east-1',
 
     DDB_TABLE_NAME: 'LoginTrail',
-
-    SASAKI_AUTH_DOMAIN: 'sskts-test.auth.ap-northeast-1.amazoncognito.com',
     TOKEN_ISSUER: '',
-
-    RESOURCE_SERVER_DOMAIN: 'https://sskts-api-test.azurewebsites.net',
 
     PORTAL_SITE: 'http://testssktsportal.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d24x7394fq3aqi.cloudfront.net',

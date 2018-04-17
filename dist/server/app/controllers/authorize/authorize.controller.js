@@ -60,17 +60,18 @@ exports.getCredentials = getCredentials;
 function signIn(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('signIn');
+        if (req.session === undefined) {
+            throw new Error('session is undefined');
+        }
         delete req.session.auth;
         const authModel = new auth2_model_1.Auth2Model(req.session.auth);
         const auth = authModel.create();
-        authModel.codeVerifier = createCodeVerifier(4);
-        authModel.save(req.session);
         const authUrl = auth.generateAuthUrl({
             scopes: authModel.scopes,
             state: authModel.state,
             codeVerifier: authModel.codeVerifier
         });
-        // console.log('authUrl:', authUrl);
+        delete req.session.auth;
         res.json({
             url: authUrl
         });
@@ -87,6 +88,9 @@ function signInRedirect(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         log('signInRedirect');
         try {
+            if (req.session === undefined) {
+                throw new Error('session is undefined');
+            }
             const authModel = new auth2_model_1.Auth2Model(req.session.auth);
             if (req.query.state !== authModel.state) {
                 throw (new Error(`state not matched ${req.query.state} !== ${authModel.state}`));
@@ -97,7 +101,7 @@ function signInRedirect(req, res, next) {
             authModel.credentials = credentials;
             authModel.save(req.session);
             auth.setCredentials(credentials);
-            res.redirect('/');
+            res.redirect('/#/auth/signin');
         }
         catch (err) {
             next(err);
@@ -132,23 +136,10 @@ function signOutRedirect(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('signOutRedirect');
         delete req.session.auth;
-        res.redirect('/');
+        res.redirect('/#/auth/signout');
     });
 }
 exports.signOutRedirect = signOutRedirect;
-/**
- * 検証コード生成
- * @param {number} length
- */
-function createCodeVerifier(length) {
-    const CODE_TABLE = '0123456789';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        const index = Math.floor(CODE_TABLE.length * Math.random());
-        result += CODE_TABLE.charAt(index);
-    }
-    return result;
-}
 var MemberType;
 (function (MemberType) {
     MemberType["NotMember"] = "0";

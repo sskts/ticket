@@ -12,9 +12,11 @@ import { SwiperModule } from 'angular2-useful-swiper';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { AppComponent } from './components/app/app.component';
+import { AuthLogoutComponent } from './components/auth/auth-logout/auth-logout.component';
 import { AuthRegisterComponent } from './components/auth/auth-register/auth-register.component';
 import { AuthSelectComponent } from './components/auth/auth-select/auth-select.component';
-import { AuthSignOutComponent } from './components/auth/auth-sign-out/auth-sign-out.component';
+import { AuthSigninComponent } from './components/auth/auth-signin/auth-signin.component';
+import { AuthSignoutComponent } from './components/auth/auth-signout/auth-signout.component';
 import { BaseComponent } from './components/base/base.component';
 import { ErrorComponent } from './components/error/error.component';
 import { LawComponent } from './components/law/law.component';
@@ -27,6 +29,7 @@ import { MemberWithdrawComponent } from './components/member/member-withdraw/mem
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HeaderMenuComponent } from './components/parts/header-menu/header-menu.component';
 import { HeaderComponent } from './components/parts/header/header.component';
+import { IconComponent } from './components/parts/icon/icon.component';
 import { LoadingComponent } from './components/parts/loading/loading.component';
 import { NavigationComponent } from './components/parts/navigation/navigation.component';
 import { PurchasePerformanceFilmComponent } from './components/parts/purchase-performance-film/purchase-performance-film.component';
@@ -51,7 +54,6 @@ import { SasakiService } from './services/sasaki/sasaki.service';
 import { SelectService } from './services/select/select.service';
 import { StorageService } from './services/storage/storage.service';
 import { UserService } from './services/user/user.service';
-import { IconComponent } from './components/parts/icon/icon.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -77,7 +79,7 @@ import { IconComponent } from './components/parts/icon/icon.component';
     HeaderMenuComponent,
     TicketComponent,
     AuthSelectComponent,
-    AuthSignOutComponent,
+    AuthLogoutComponent,
     AuthRegisterComponent,
     MemberBenefitsComponent,
     MemberEditComponent,
@@ -87,7 +89,9 @@ import { IconComponent } from './components/parts/icon/icon.component';
     MemberMypageComponent,
     PurchasePerformanceTimeComponent,
     PurchasePerformanceFilmComponent,
-    IconComponent
+    IconComponent,
+    AuthSigninComponent,
+    AuthSignoutComponent
   ],
   imports: [
     BrowserModule,

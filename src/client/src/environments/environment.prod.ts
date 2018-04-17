@@ -18,11 +18,7 @@ export const environment = {
     BUCKET_REGION: 'us-east-1',
 
     DDB_TABLE_NAME: 'LoginTrail',
-
-    SASAKI_AUTH_DOMAIN: 'sskts-production.auth.ap-northeast-1.amazoncognito.com',
     TOKEN_ISSUER: '',
-
-    RESOURCE_SERVER_DOMAIN: 'https://sskts-api-production.azurewebsites.net',
 
     PORTAL_SITE: 'http://productionssktsportal.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://entrance.ticket-cinemasunshine.com',

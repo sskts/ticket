@@ -47,18 +47,18 @@ export async function getCredentials(req: Request, res: Response) {
  */
 export async function signIn(req: Request, res: Response) {
     log('signIn');
-    delete (<Express.Session>req.session).auth;
-    const authModel = new Auth2Model((<Express.Session>req.session).auth);
+    if (req.session === undefined) {
+        throw new Error('session is undefined');
+    }
+    delete req.session.auth;
+    const authModel = new Auth2Model(req.session.auth);
     const auth = authModel.create();
-    authModel.codeVerifier = createCodeVerifier(4);
-    authModel.save(req.session);
-
     const authUrl = auth.generateAuthUrl({
         scopes: authModel.scopes,
         state: authModel.state,
         codeVerifier: authModel.codeVerifier
     });
-    // console.log('authUrl:', authUrl);
+    delete req.session.auth;
     res.json({
         url: authUrl
     });
@@ -73,7 +73,10 @@ export async function signIn(req: Request, res: Response) {
 export async function signInRedirect(req: Request, res: Response, next: NextFunction) {
     log('signInRedirect');
     try {
-        const authModel = new Auth2Model((<Express.Session>req.session).auth);
+        if (req.session === undefined) {
+            throw new Error('session is undefined');
+        }
+        const authModel = new Auth2Model(req.session.auth);
         if (req.query.state !== authModel.state) {
             throw (new Error(`state not matched ${req.query.state} !== ${authModel.state}`));
         }
@@ -88,7 +91,7 @@ export async function signInRedirect(req: Request, res: Response, next: NextFunc
         authModel.save(req.session);
 
         auth.setCredentials(credentials);
-        res.redirect('/');
+        res.redirect('/#/auth/signin');
     } catch (err) {
         next(err);
     }
@@ -118,21 +121,7 @@ export async function signOut(req: Request, res: Response) {
 export async function signOutRedirect(req: Request, res: Response) {
     log('signOutRedirect');
     delete (<Express.Session>req.session).auth;
-    res.redirect('/');
-}
-
-/**
- * 検証コード生成
- * @param {number} length
- */
-function createCodeVerifier(length: number) {
-    const CODE_TABLE = '0123456789';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        const index = Math.floor(CODE_TABLE.length * Math.random());
-        result += CODE_TABLE.charAt(index);
-    }
-    return result;
+    res.redirect('/#/auth/signout');
 }
 
 export enum MemberType {

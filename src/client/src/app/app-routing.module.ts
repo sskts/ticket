@@ -5,9 +5,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './components/about/about.component';
+import { AuthLogoutComponent } from './components/auth/auth-logout/auth-logout.component';
 import { AuthRegisterComponent } from './components/auth/auth-register/auth-register.component';
 import { AuthSelectComponent } from './components/auth/auth-select/auth-select.component';
-import { AuthSignOutComponent } from './components/auth/auth-sign-out/auth-sign-out.component';
+import { AuthSigninComponent } from './components/auth/auth-signin/auth-signin.component';
+import { AuthSignoutComponent } from './components/auth/auth-signout/auth-signout.component';
 import { BaseComponent } from './components/base/base.component';
 import { ErrorComponent } from './components/error/error.component';
 import { LawComponent } from './components/law/law.component';
@@ -28,18 +30,19 @@ import { MemberGuardService } from './services/member-guard/member-guard.service
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/member/mypage', pathMatch: 'full' },
-    { path: 'auth', component: AuthSelectComponent },
     {
         path: 'auth',
         children: [
-            { path: 'select', component: AuthSelectComponent }
+            { path: 'select', component: AuthSelectComponent },
+            { path: 'signin', component: AuthSigninComponent },
+            { path: 'signout', component: AuthSignoutComponent }
         ]
     },
     {
         path: 'auth',
         component: BaseComponent,
         children: [
-            { path: 'signOut', component: AuthSignOutComponent },
+            { path: 'logout', component: AuthLogoutComponent },
             { path: 'register', component: AuthRegisterComponent }
         ]
     },
