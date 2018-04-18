@@ -25,6 +25,10 @@ function getCredentials(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('getCredentials');
         try {
+            if (req.session === undefined) {
+                throw new Error('session is undefined');
+            }
+            log('req.session.auth', req.session.auth);
             let authModel;
             if (req.query.member === MemberType.NotMember) {
                 authModel = new auth_model_1.AuthModel(req.session.auth);

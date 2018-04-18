@@ -21,8 +21,10 @@ import { BaseComponent } from './components/base/base.component';
 import { ErrorComponent } from './components/error/error.component';
 import { LawComponent } from './components/law/law.component';
 import { MemberBenefitsComponent } from './components/member/member-benefits/member-benefits.component';
+import { MemberEditCreditComponent } from './components/member/member-edit-credit/member-edit-credit.component';
 import { MemberEditComponent } from './components/member/member-edit/member-edit.component';
 import { MemberMypageComponent } from './components/member/member-mypage/member-mypage.component';
+import { MemberPaymentComponent } from './components/member/member-payment/member-payment.component';
 import { MemberPointHistoryComponent } from './components/member/member-point-history/member-point-history.component';
 import { MemberPointComponent } from './components/member/member-point/member-point.component';
 import { MemberWithdrawComponent } from './components/member/member-withdraw/member-withdraw.component';
@@ -31,6 +33,7 @@ import { HeaderMenuComponent } from './components/parts/header-menu/header-menu.
 import { HeaderComponent } from './components/parts/header/header.component';
 import { IconComponent } from './components/parts/icon/icon.component';
 import { LoadingComponent } from './components/parts/loading/loading.component';
+import { ModalComponent } from './components/parts/modal/modal.component';
 import { NavigationComponent } from './components/parts/navigation/navigation.component';
 import { PurchasePerformanceFilmComponent } from './components/parts/purchase-performance-film/purchase-performance-film.component';
 import { PurchasePerformanceTimeComponent } from './components/parts/purchase-performance-time/purchase-performance-time.component';
@@ -91,7 +94,10 @@ import { UserService } from './services/user/user.service';
     PurchasePerformanceFilmComponent,
     IconComponent,
     AuthSigninComponent,
-    AuthSignoutComponent
+    AuthSignoutComponent,
+    MemberEditCreditComponent,
+    MemberPaymentComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

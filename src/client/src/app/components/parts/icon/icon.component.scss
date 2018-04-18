@@ -96,3 +96,8 @@
     @include icon();
     background-image: url(/assets/images/icon/vacancy_full_white.svg);
 }
+
+.icon-close-white {
+    @include icon();
+    background-image: url(/assets/images/icon/close_white.svg);
+}

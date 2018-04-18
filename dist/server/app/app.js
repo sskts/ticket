@@ -22,7 +22,7 @@ app.use(benchmarks_middleware_1.default); // ベンチマーク的な
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.set('views', `${__dirname}/views`); // view設定
+app.set('views', `${__dirname}/../../../views`); // view設定
 app.set('view engine', 'ejs');
 app.use(express.static(`${__dirname}/../public`)); // server
 app.use(express.static(`${__dirname}/../../client/${process.env.NODE_ENV}`)); // client

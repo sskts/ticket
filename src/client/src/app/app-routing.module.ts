@@ -14,8 +14,10 @@ import { BaseComponent } from './components/base/base.component';
 import { ErrorComponent } from './components/error/error.component';
 import { LawComponent } from './components/law/law.component';
 import { MemberBenefitsComponent } from './components/member/member-benefits/member-benefits.component';
+import { MemberEditCreditComponent } from './components/member/member-edit-credit/member-edit-credit.component';
 import { MemberEditComponent } from './components/member/member-edit/member-edit.component';
 import { MemberMypageComponent } from './components/member/member-mypage/member-mypage.component';
+import { MemberPaymentComponent } from './components/member/member-payment/member-payment.component';
 import { MemberPointHistoryComponent } from './components/member/member-point-history/member-point-history.component';
 import { MemberPointComponent } from './components/member/member-point/member-point.component';
 import { MemberWithdrawComponent } from './components/member/member-withdraw/member-withdraw.component';
@@ -62,6 +64,13 @@ const appRoutes: Routes = [
     },
     {
         path: 'member',
+        canActivate: [MemberGuardService],
+        children: [
+            { path: 'payment', component: MemberPaymentComponent }
+        ]
+    },
+    {
+        path: 'member',
         component: BaseComponent,
         canActivate: [MemberGuardService],
         children: [
@@ -69,6 +78,7 @@ const appRoutes: Routes = [
             { path: 'point/history', component: MemberPointHistoryComponent },
             { path: 'benefits', component: MemberBenefitsComponent },
             { path: 'edit', component: MemberEditComponent },
+            { path: 'edit/credit', component: MemberEditCreditComponent },
             { path: 'withdraw', component: MemberWithdrawComponent }
         ]
     },

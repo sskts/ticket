@@ -16,11 +16,15 @@ const log = debug('SSKTS:authorize');
 export async function getCredentials(req: Request, res: Response) {
     log('getCredentials');
     try {
+        if (req.session === undefined) {
+            throw new Error('session is undefined');
+        }
+        log('req.session.auth', req.session.auth);
         let authModel;
         if (req.query.member === MemberType.NotMember) {
-            authModel = new AuthModel((<Express.Session>req.session).auth);
+            authModel = new AuthModel(req.session.auth);
         } else if (req.query.member === MemberType.Member) {
-            authModel = new Auth2Model((<Express.Session>req.session).auth);
+            authModel = new Auth2Model(req.session.auth);
         } else {
             throw new Error('member does not macth MemberType');
         }

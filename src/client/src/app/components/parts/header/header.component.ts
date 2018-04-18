@@ -96,6 +96,7 @@ const pages = [
     { url: '/auth/logout', title: 'ログアウト' },
     { url: '/member/benefits', title: '会員特典' },
     { url: '/member/edit', title: '会員情報変更' },
+    { url: '/member/edit/credit', title: '会員情報変更' },
     { url: '/member/withdraw', title: '退会' }
 
 ];
