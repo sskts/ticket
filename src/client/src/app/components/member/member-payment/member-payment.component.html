@@ -1,7 +1,7 @@
 <div class="contents bg-01">
     <div class="inner">
         <p class="read mb-middle">
-            年会費をお支払いください
+            クレジットカード登録してください
         </p>
         <div class="payment">
             <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
@@ -65,12 +65,8 @@
                         </div>
                     </dd>
                 </dl>
-                <div class="text-center mb-middle">
-                    <input type="checkbox" formControlName="saveCreditCard" id="saveCreditCard">
-                    <label for="saveCreditCard">クレジットカード情報を保存する</label>
-                </div>
 
-                <button type="submit" class="button button-primary button-block">支払う</button>
+                <button type="submit" class="button button-primary button-block">クレジットカード登録</button>
             </form>
         </div>
     </div>

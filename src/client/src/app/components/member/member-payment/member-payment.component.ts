@@ -104,19 +104,33 @@ export class MemberPaymentComponent implements OnInit {
 
         try {
             const gmoTokenObject = await this.getGmoObject();
-            // クレジットカード処理
 
-            if (this.paymentForm.controls.saveCreditCard.value) {
-                // 会員 クレジットカード情報保存
-                await this.sasaki.getServices();
-                const addCreditCardArgs = {
-                    personId: 'me',
-                    creditCard: {
-                        token: gmoTokenObject.token
-                    }
-                };
-                await this.sasaki.person.addCreditCard(addCreditCardArgs);
+            // 会員 クレジットカード情報保存
+            await this.sasaki.getServices();
+            let findCreditCardsResult;
+            try {
+                findCreditCardsResult = await this.sasaki.person.findCreditCards({
+                    personId: 'me'
+                });
+            } catch (err) {
+                console.log(err);
             }
+
+            if (findCreditCardsResult !== undefined
+                && findCreditCardsResult.length > 0) {
+                // 登録済みなら削除
+                await this.sasaki.person.deleteCreditCard({
+                    personId: 'me',
+                    cardSeq: findCreditCardsResult[0].cardSeq
+                });
+            }
+            // 登録
+            await this.sasaki.person.addCreditCard({
+                personId: 'me',
+                creditCard: {
+                    token: gmoTokenObject.token
+                }
+            });
             this.router.navigate(['/']);
         } catch (err) {
             console.error(err);
@@ -131,9 +145,25 @@ export class MemberPaymentComponent implements OnInit {
     }
 
     private async getGmoObject() {
-        return {
-            token: ''
+        const sendParam = {
+            cardno: this.paymentForm.controls.cardNumber.value,
+            expire: this.paymentForm.controls.cardExpirationYear.value + this.paymentForm.controls.cardExpirationMonth.value,
+            securitycode: this.paymentForm.controls.securityCode.value,
+            holdername: this.paymentForm.controls.holderName.value
         };
+        console.log(sendParam);
+        return new Promise<IGmoTokenObject>((resolve, reject) => {
+            (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
+                if (response.resultCode === '000') {
+                    resolve(response.tokenObject);
+                } else {
+                    reject(new Error(response.resultCode));
+                }
+            };
+            const Multipayment = (<any>window).Multipayment;
+            Multipayment.init();
+            Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
+        });
     }
 
 }

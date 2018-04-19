@@ -2,9 +2,9 @@
  * TicketDetailComponent
  */
 import { Component, Input, OnInit } from '@angular/core';
-import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 import * as qrcode from 'qrcode';
+import { IReservation } from '../../../services/reservation/reservation.service';
 
 @Component({
     selector: 'app-ticket-detail',
@@ -12,27 +12,30 @@ import * as qrcode from 'qrcode';
     styleUrls: ['./ticket-detail.component.scss']
 })
 export class TicketDetailComponent implements OnInit {
-    @Input() public reservation: sasaki.factory.order.IOrder;
-    @Input() public offer: sasaki.factory.order.IOffer;
-    @Input() public index: number;
-    public showQrCode: boolean;
-    public qrCode: string;
+    @Input() public reservation: IReservation;
+    public showQrCodeList: boolean[];
+    public qrCodeList: string[];
 
     constructor() { }
 
     public async ngOnInit() {
-        if (this.reservation.acceptedOffers.length > 0) {
-            return;
-        }
-        this.showQrCode = moment(this.offer.itemOffered.reservationFor.startDate).subtract(24, 'hours').unix() <= moment().unix();
-        if (this.showQrCode) {
-            const value = this.offer.itemOffered.reservedTicket.ticketToken;
-            const basicSize = 21;
-            const option: qrcode.QRCodeToDataURLOptions = {
-                margin: 0,
-                scale: (80 / basicSize)
-            };
-            this.qrCode = await qrcode.toDataURL(value, option);
+        this.showQrCodeList = [];
+        this.qrCodeList = [];
+
+        for (let i = 0; i < this.reservation.reservedTickets.length; i++) {
+            // QR生成
+            const showQrCode = moment(this.reservation.reservationsFor[i].startDate).subtract(24, 'hours').unix() <= moment().unix();
+            this.showQrCodeList.push(showQrCode);
+            if (showQrCode) {
+                const ticketToken = this.reservation.reservedTickets[i].ticketToken;
+                const basicSize = 21;
+                const option: qrcode.QRCodeToDataURLOptions = {
+                    margin: 0,
+                    scale: (80 / basicSize)
+                };
+                const qrCode = await qrcode.toDataURL(ticketToken, option);
+                this.qrCodeList.push(qrCode);
+            }
         }
     }
 

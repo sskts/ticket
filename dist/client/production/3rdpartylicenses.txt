@@ -154,6 +154,10 @@ MIT License
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE
 
+@motionpicture/sskts-factory@3.0.0
+ISC
+ISC
+
 @angular/platform-browser-dynamic@5.2.9
 MIT
 MIT
@@ -183,10 +187,6 @@ MIT License
     SOFTWARE
 
 @motionpicture/sskts-api-abstract-client@3.0.0
-ISC
-ISC
-
-@motionpicture/sskts-factory@3.0.0
 ISC
 ISC
 

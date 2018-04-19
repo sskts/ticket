@@ -19,7 +19,7 @@ import { UserService } from '../../services/user/user.service';
 export class TicketComponent implements OnInit {
     public config: SwiperOptions;
     public isLoading: boolean;
-    public purchaseNumberOrders: IReservation[];
+    public reservations: IReservation[];
 
     constructor(
         private router: Router,
@@ -34,20 +34,18 @@ export class TicketComponent implements OnInit {
      */
     public async ngOnInit(): Promise<void> {
         this.isLoading = true;
-        this.purchaseNumberOrders = [];
+        this.reservations = [];
         this.config = {
             pagination: '.swiper-pagination',
             paginationClickable: true,
             autoHeight: true
         };
-        if (!this.user.isMember()) {
-            try {
-                await this.reservation.getReservation();
-                this.purchaseNumberOrders = this.reservation.getReservationByAppreciationDayOrder();
-            } catch (err) {
-                this.router.navigate(['/error', { redirect: '/purchase' }]);
-                console.log(err);
-            }
+        this.reservation.isMember = this.user.isMember();
+        try {
+            this.reservations = await this.reservation.getReservationByAppreciationDayOrder();
+        } catch (err) {
+            this.router.navigate(['/error', { redirect: '/purchase' }]);
+            console.log(err);
         }
 
         this.isLoading = false;

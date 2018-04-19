@@ -13,8 +13,7 @@ exports.default = (app) => {
     app.get('/signOut', authorize.signOutRedirect);
     app.get('*', (_req, res, _next) => {
         // res.sendFile(`${__dirname}/dist/client${process.env.NODE_ENV}/index.html`);
-        res.locals.env = process.env.NODE_ENV;
-        res.locals.env = process.env.GMO_ENDPOINT;
+        res.locals.GMO_ENDPOINT = process.env.GMO_ENDPOINT;
         res.render('index');
     });
 };

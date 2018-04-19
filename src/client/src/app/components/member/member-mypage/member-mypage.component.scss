@@ -65,11 +65,10 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border: 0.5px solid #000;
+    grid-gap: 1px;
     li {
         height: 100px;
         background-color: #555;
-        border: 0.5px solid #000;
         position: relative;
         .caption {
             position: absolute;

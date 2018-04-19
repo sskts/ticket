@@ -19,7 +19,6 @@ export async function getCredentials(req: Request, res: Response) {
         if (req.session === undefined) {
             throw new Error('session is undefined');
         }
-        log('req.session.auth', req.session.auth);
         let authModel;
         if (req.query.member === MemberType.NotMember) {
             authModel = new AuthModel(req.session.auth);

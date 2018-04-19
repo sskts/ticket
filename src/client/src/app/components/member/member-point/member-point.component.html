@@ -4,13 +4,12 @@
             貯まったポイントの確認ができます。
         </p>
         <div *ngIf="!isLoading">
-            <div class="text-center mb-small">
-                <div class="point small-text">
-                    現在
-                    <strong class="large-text">16</strong> ポイント
-                </div>
+            <div class="mb-middle text-center">
+                現在
+                <span class="large-xx-text">16</span>
+                ポイント
             </div>
-            <div class="mb-middle">
+            <!-- <div class="mb-middle">
                 <swiper [config]="config" class="mb-small">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -86,17 +85,13 @@
                 <div class="pagination-wrapper">
                     <div class="swiper-pagination"></div>
                 </div>
-            </div>
+            </div> -->
             <div class="mb-small">
                 <button type="button" class="button button-primary button-block center">ポイント使用方法</button>
             </div>
-            <div class="text-center">
-                <p class="mb-x-small">
-                    <a routerLink="/member/point/history">ポイント使用履歴</a>
-                </p>
-                <p>
-                    <a routerLink="/member/benefits">ポイント特典一覧</a>
-                </p>
+            <div class="button-column-02 center">
+                <button type="button" class="button button-info" routerLink="/member/point/history">ポイント使用履歴</button>
+                <button type="button" class="button button-info" routerLink="/member/benefits">ポイント特典一覧</button>
             </div>
         </div>
 

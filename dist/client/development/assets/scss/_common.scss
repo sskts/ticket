@@ -307,6 +307,14 @@ header {
 .small-button {
     padding: 10px;
 }
+
+.button-column-02 {
+    max-width: 375px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0 20px;
+}
+
 .contents {
     .pagination-wrapper {
         position: fixed;
