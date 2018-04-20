@@ -16,13 +16,13 @@ export class MemberGuardService implements CanActivate {
      * @returns {Promise<boolean>}
      */
     public async canActivate(): Promise<boolean> {
-        if (this.user.isMember()) {
-            return true;
-        } else {
+        if (!this.user.isMember()) {
             this.router.navigate(['/auth/select']);
 
             return false;
         }
+
+        return true;
     }
 
 }

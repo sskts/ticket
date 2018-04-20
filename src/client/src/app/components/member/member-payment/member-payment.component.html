@@ -14,8 +14,8 @@
                                 maxlength="16">
                         </div>
                         <div class="small-text mb-x-small" *ngIf="paymentForm.controls['cardNumber'].invalid && paymentForm.controls['cardNumber'].touched">
-                            <div *ngIf="paymentForm.controls['cardNumber'].errors.required" class="validation-text">カード番号が未入力です</div>
-                            <div *ngIf="paymentForm.controls['cardNumber'].errors.pattern" class="validation-text">カード番号は数字で入力してください</div>
+                            <div *ngIf="paymentForm.controls['cardNumber'].errors.required" class="validation-text mb-x-small">カード番号が未入力です</div>
+                            <div *ngIf="paymentForm.controls['cardNumber'].errors.pattern" class="validation-text mb-x-small">カード番号は数字で入力してください</div>
                         </div>
                         <p class="small-text">※半角数字、ハイフン「-」なしで入力してください</p>
                     </dd>
@@ -46,7 +46,7 @@
                                 maxlength="4">
                         </div>
                         <div class="small-text mb-x-small" *ngIf="paymentForm.controls['securityCode'].invalid && paymentForm.controls['securityCode'].touched">
-                            <div *ngIf="paymentForm.controls['securityCode'].errors.required" class="validation-text">セキュリティーコードが未入力です</div>
+                            <div *ngIf="paymentForm.controls['securityCode'].errors.required" class="validation-text mb-x-small">セキュリティーコードが未入力です</div>
                         </div>
                         <p>
                             <a (click)="securityCodeModal = true">セキュリティーコードについて</a>
@@ -61,44 +61,45 @@
                                 formControlName="holderName" autocomplete="off" placeholder="(例)TARO CINEMA">
                         </div>
                         <div class="small-text mb-x-small" *ngIf="paymentForm.controls['holderName'].invalid && paymentForm.controls['holderName'].touched">
-                            <div *ngIf="paymentForm.controls['holderName'].errors.required" class="validation-text">カード名義人が未入力です</div>
+                            <div *ngIf="paymentForm.controls['holderName'].errors.required" class="validation-text mb-x-small">カード名義人が未入力です</div>
                         </div>
                     </dd>
                 </dl>
 
-                <button type="submit" class="button button-primary button-block">クレジットカード登録</button>
+                <button type="submit" class="button button-primary button-block mb-middle">クレジットカード登録</button>
+                <div class="text-center">
+                    <a (click)="signOut()">アプリの始め方へ</a>
+                </div>
             </form>
         </div>
     </div>
 </div>
 
-<app-modal class="security-code-modal" [open]="securityCodeModal" [layout]="false" (close)="securityCodeModal = false">
-    <div inner class="inner">
-        <div class="mb-x-small text-center">セキュリティーコードについて</div>
-        <p class="mb-middle small-text">※カード会社により表示箇所および名称が異なります。</p>
-        <dl class="mb-middle">
-            <dt class="mb-x-small">
-                <strong>VISA / MASTER / DINERS / JCBの場合</strong>
-            </dt>
-            <dd class="mb-x-small">
-                <p>【カード裏面】セキュリティーコード(末尾3桁)</p>
-            </dd>
-            <dd>
-                <img src="/assets/images/common/credit_back.svg" alt="">
-            </dd>
-        </dl>
-        <dl>
-            <dt class="mb-x-small">
-                <strong>AMEXの場合</strong>
-            </dt>
-            <dd class="mb-x-small">
-                <p>【カード表面】セキュリティーコード(4桁)</p>
-            </dd>
-            <dd>
-                <img src="/assets/images/common/credit_front.svg" alt="">
-            </dd>
-        </dl>
-    </div>
+<app-modal class="security-code-modal" [open]="securityCodeModal" [layout]="true" (close)="securityCodeModal = false">
+    <div class="mb-x-small text-center">セキュリティーコードについて</div>
+    <p class="mb-middle small-text">※カード会社により表示箇所および名称が異なります。</p>
+    <dl class="mb-middle">
+        <dt class="mb-x-small">
+            <strong>VISA / MASTER / DINERS / JCBの場合</strong>
+        </dt>
+        <dd class="mb-x-small">
+            <p>【カード裏面】セキュリティーコード(末尾3桁)</p>
+        </dd>
+        <dd>
+            <img src="/assets/images/common/credit_back.svg" alt="">
+        </dd>
+    </dl>
+    <dl>
+        <dt class="mb-x-small">
+            <strong>AMEXの場合</strong>
+        </dt>
+        <dd class="mb-x-small">
+            <p>【カード表面】セキュリティーコード(4桁)</p>
+        </dd>
+        <dd>
+            <img src="/assets/images/common/credit_front.svg" alt="">
+        </dd>
+    </dl>
 </app-modal>
 
 <app-modal [open]="creditCardAlertModal" [layout]="true" (close)="creditCardAlertModal = false">
@@ -106,3 +107,5 @@
         <strong>エラーが発生しました</strong>
     </div>
 </app-modal>
+
+<app-loading [show]="isLoading"></app-loading>

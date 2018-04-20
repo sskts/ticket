@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import 'rxjs/add/operator/toPromise';
 import { environment } from '../../../environments/environment';
-import { UserService } from '../user/user.service';
+import { StorageService } from '../storage/storage.service';
 
 @Injectable()
 export class SasakiService {
@@ -21,9 +21,8 @@ export class SasakiService {
 
     constructor(
         private http: HttpClient,
-        private user: UserService
-    ) {
-    }
+        private storage: StorageService
+    ) {}
 
     /**
      * getServices
@@ -94,7 +93,8 @@ export class SasakiService {
      * @method authorize
      */
     public async authorize() {
-        const member = this.user.data.memberType;
+        const user = this.storage.load('user');
+        const member = user.memberType;
         const url = '/api/authorize/getCredentials';
         const options = {
             params: new HttpParams().set('member', member)

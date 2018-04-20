@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { SasakiService } from '../sasaki/sasaki.service';
 import { SaveType, StorageService } from '../storage/storage.service';
+import { environment } from '../../../environments/environment';
 
 const STORAGE_KEY = 'user';
 
@@ -9,7 +12,8 @@ export class UserService {
     public data: IData;
 
     constructor(
-        private storage: StorageService
+        private storage: StorageService,
+        private sasaki: SasakiService
     ) {
         this.load();
         this.save();
@@ -51,19 +55,147 @@ export class UserService {
     }
 
     /**
+     * 初期化
+     */
+    public async initMember() {
+        this.data.memberType = MemberType.Member;
+        await this.sasaki.getServices();
+        const contact = await this.sasaki.person.getContacts({
+            personId: 'me'
+        });
+        if (contact === undefined) {
+            throw new Error('contact is undefined');
+        }
+        this.data.contact = contact;
+
+        try {
+            const creditCards = await this.sasaki.person.findCreditCards({
+                personId: 'me'
+            });
+            this.data.creditCards = creditCards;
+        } catch (err) {
+            console.log(err);
+            this.data.creditCards = [];
+        }
+
+        this.save();
+    }
+
+    /**
      * 会員判定
      */
     public isMember() {
         return (this.data.memberType === MemberType.Member);
     }
 
+    /**
+     * GMOトークン取得
+     */
+    public async getGmoObject(args: {
+        cardno: string;
+        expire: string;
+        securitycode: string;
+        holdername: string;
+    }) {
+        const sendParam = args;
+        console.log(sendParam);
+        await this.sasaki.getServices();
+        // 池袋
+        const branchCode = (environment.production) ? '001' : '101';
+        const movieTheater = await this.sasaki.organization.findMovieTheaterByBranchCode({
+            branchCode: branchCode
+        });
+        return new Promise<IGmoTokenObject>((resolve, reject) => {
+            (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
+                if (response.resultCode === '000') {
+                    resolve(response.tokenObject);
+                } else {
+                    reject(new Error(response.resultCode));
+                }
+            };
+            const Multipayment = (<any>window).Multipayment;
+            // shopId
+            Multipayment.init(movieTheater.gmoInfo.shopId);
+            Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
+        });
+    }
+
+    /**
+     * クレジットカード登録
+     */
+    public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
+        await this.sasaki.getServices();
+        if (this.data.creditCards !== undefined
+            && this.data.creditCards.length > 0) {
+            // 登録済みなら削除
+            await this.sasaki.person.deleteCreditCard({
+                personId: 'me',
+                cardSeq: this.data.creditCards[0].cardSeq
+            });
+        }
+        // 登録
+        await this.sasaki.person.addCreditCard({
+            personId: 'me',
+            creditCard: {
+                token: gmoTokenObject.token
+            }
+        });
+
+        const creditCards = await this.sasaki.person.findCreditCards({
+            personId: 'me'
+        });
+        this.data.creditCards = creditCards;
+
+        this.save();
+    }
+
+    /**
+     * 基本情報変更
+     */
+    public async updateProfile(args: {
+        familyName: string;
+        givenName: string;
+        email: string;
+        telephone: string;
+        postalCode: string;
+    }) {
+        await this.sasaki.getServices();
+        await this.sasaki.person.updateContacts({
+            personId: 'me',
+            contacts: {
+                familyName: args.familyName,
+                givenName: args.givenName,
+                email: args.email,
+                telephone: args.telephone
+            }
+        });
+        const contact = await this.sasaki.person.getContacts({
+            personId: 'me'
+        });
+        if (contact === undefined) {
+            throw new Error('contact is undefined');
+        }
+        this.data.contact = contact;
+
+        this.save();
+    }
+
 }
 
 export interface IData {
     memberType: MemberType;
+    contact?: factory.person.IContact;
+    creditCards?: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
 }
 
 export enum MemberType {
     NotMember = '0',
     Member = '1'
+}
+
+export interface IGmoTokenObject {
+    token: string;
+    toBeExpiredAt: string;
+    maskedCardNo: string;
+    isSecurityCodeSet: boolean;
 }

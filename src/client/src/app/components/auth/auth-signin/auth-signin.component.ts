@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MemberType, UserService } from '../../../services/user/user.service';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
     selector: 'app-auth-signin',
@@ -14,9 +14,8 @@ export class AuthSigninComponent implements OnInit {
         private user: UserService
     ) { }
 
-    public ngOnInit() {
-        this.user.data.memberType = MemberType.Member;
-        this.user.save();
+    public async ngOnInit() {
+        await this.user.initMember();
         this.router.navigate(['/']);
     }
 

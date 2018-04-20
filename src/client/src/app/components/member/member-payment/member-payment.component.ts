@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { SasakiService } from '../../../services/sasaki/sasaki.service';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
     selector: 'app-member-payment',
@@ -25,6 +26,7 @@ export class MemberPaymentComponent implements OnInit {
         private router: Router,
         private elementRef: ElementRef,
         private formBuilder: FormBuilder,
+        private user: UserService,
         private sasaki: SasakiService
     ) { }
 
@@ -44,7 +46,7 @@ export class MemberPaymentComponent implements OnInit {
      * @method createForm
      */
     private createForm() {
-        const customerContact = {
+        const creditrCard = {
             cardNumber: { value: '', validators: [Validators.required, Validators.pattern(/^[0-9]+$/)] },
             cardExpirationMonth: { value: '01', validators: [Validators.required] },
             cardExpirationYear: { value: moment().format('YYYY'), validators: [Validators.required] },
@@ -61,12 +63,11 @@ export class MemberPaymentComponent implements OnInit {
         }
 
         return this.formBuilder.group({
-            cardNumber: [customerContact.cardNumber.value, customerContact.cardNumber.validators],
-            cardExpirationMonth: [customerContact.cardExpirationMonth.value, customerContact.cardExpirationMonth.validators],
-            cardExpirationYear: [customerContact.cardExpirationYear.value, customerContact.cardExpirationYear.validators],
-            securityCode: [customerContact.securityCode.value, customerContact.securityCode.validators],
-            holderName: [customerContact.holderName.value, customerContact.holderName.validators],
-            saveCreditCard: [false]
+            cardNumber: [creditrCard.cardNumber.value, creditrCard.cardNumber.validators],
+            cardExpirationMonth: [creditrCard.cardExpirationMonth.value, creditrCard.cardExpirationMonth.validators],
+            cardExpirationYear: [creditrCard.cardExpirationYear.value, creditrCard.cardExpirationYear.validators],
+            securityCode: [creditrCard.securityCode.value, creditrCard.securityCode.validators],
+            holderName: [creditrCard.holderName.value, creditrCard.holderName.validators]
         });
     }
 
@@ -103,34 +104,16 @@ export class MemberPaymentComponent implements OnInit {
         this.isLoading = true;
 
         try {
-            const gmoTokenObject = await this.getGmoObject();
+            // GMOトークン取得
+            const gmoTokenObject = await this.user.getGmoObject({
+                cardno: this.paymentForm.controls.cardNumber.value,
+                expire: this.paymentForm.controls.cardExpirationYear.value + this.paymentForm.controls.cardExpirationMonth.value,
+                securitycode: this.paymentForm.controls.securityCode.value,
+                holdername: this.paymentForm.controls.holderName.value
+            });
 
             // 会員 クレジットカード情報保存
-            await this.sasaki.getServices();
-            let findCreditCardsResult;
-            try {
-                findCreditCardsResult = await this.sasaki.person.findCreditCards({
-                    personId: 'me'
-                });
-            } catch (err) {
-                console.log(err);
-            }
-
-            if (findCreditCardsResult !== undefined
-                && findCreditCardsResult.length > 0) {
-                // 登録済みなら削除
-                await this.sasaki.person.deleteCreditCard({
-                    personId: 'me',
-                    cardSeq: findCreditCardsResult[0].cardSeq
-                });
-            }
-            // 登録
-            await this.sasaki.person.addCreditCard({
-                personId: 'me',
-                creditCard: {
-                    token: gmoTokenObject.token
-                }
-            });
+            await this.user.registerCreditCard(gmoTokenObject);
             this.router.navigate(['/']);
         } catch (err) {
             console.error(err);
@@ -144,33 +127,12 @@ export class MemberPaymentComponent implements OnInit {
         }
     }
 
-    private async getGmoObject() {
-        const sendParam = {
-            cardno: this.paymentForm.controls.cardNumber.value,
-            expire: this.paymentForm.controls.cardExpirationYear.value + this.paymentForm.controls.cardExpirationMonth.value,
-            securitycode: this.paymentForm.controls.securityCode.value,
-            holdername: this.paymentForm.controls.holderName.value
-        };
-        console.log(sendParam);
-        return new Promise<IGmoTokenObject>((resolve, reject) => {
-            (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
-                if (response.resultCode === '000') {
-                    resolve(response.tokenObject);
-                } else {
-                    reject(new Error(response.resultCode));
-                }
-            };
-            const Multipayment = (<any>window).Multipayment;
-            Multipayment.init();
-            Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
-        });
+    /**
+     * サインアウト
+     */
+    public async signOut() {
+        await this.sasaki.getServices();
+        await this.sasaki.signOut();
     }
 
-}
-
-export interface IGmoTokenObject {
-    token: string;
-    toBeExpiredAt: string;
-    maskedCardNo: string;
-    isSecurityCodeSet: boolean;
 }

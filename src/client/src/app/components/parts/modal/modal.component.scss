@@ -34,6 +34,12 @@ $mobile: 767px;
             border-radius: 0;
         }
     }
+
+    .modal-body {
+        color: #333;
+        background-color: #FFF;
+        padding: 20px;
+    }
     
     .close-button {
         position: absolute;

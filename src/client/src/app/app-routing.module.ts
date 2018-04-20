@@ -15,6 +15,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { LawComponent } from './components/law/law.component';
 import { MemberBenefitsComponent } from './components/member/member-benefits/member-benefits.component';
 import { MemberEditCreditComponent } from './components/member/member-edit-credit/member-edit-credit.component';
+import { MemberEditProfileComponent } from './components/member/member-edit-profile/member-edit-profile.component';
 import { MemberEditComponent } from './components/member/member-edit/member-edit.component';
 import { MemberMypageComponent } from './components/member/member-mypage/member-mypage.component';
 import { MemberPaymentComponent } from './components/member/member-payment/member-payment.component';
@@ -25,13 +26,16 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PolicyComponent } from './components/policy/policy.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
+import { RootComponent } from './components/root/root.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { WalkThroughComponent } from './components/walk-through/walk-through.component';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
+import { CreditGuardService } from './services/credit-guard/credit-guard.service';
 import { MemberGuardService } from './services/member-guard/member-guard.service';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/member/mypage', pathMatch: 'full' },
+    { path: '', redirectTo: '/root', pathMatch: 'full' },
+    { path: 'root', canActivate: [AuthGuardService], component: RootComponent },
     {
         path: 'auth',
         children: [
@@ -53,7 +57,6 @@ const appRoutes: Routes = [
         component: BaseComponent,
         canActivate: [AuthGuardService],
         children: [
-            { path: 'member/mypage', component: MemberMypageComponent },
             { path: 'ticket', component: TicketComponent },
             { path: 'purchase', component: PurchaseComponent },
             { path: 'about', component: AboutComponent },
@@ -72,13 +75,15 @@ const appRoutes: Routes = [
     {
         path: 'member',
         component: BaseComponent,
-        canActivate: [MemberGuardService],
+        canActivate: [MemberGuardService, CreditGuardService],
         children: [
+            { path: 'mypage', component: MemberMypageComponent },
             { path: 'point', component: MemberPointComponent },
             { path: 'point/history', component: MemberPointHistoryComponent },
             { path: 'benefits', component: MemberBenefitsComponent },
             { path: 'edit', component: MemberEditComponent },
             { path: 'edit/credit', component: MemberEditCreditComponent },
+            { path: 'edit/profile', component: MemberEditProfileComponent },
             { path: 'withdraw', component: MemberWithdrawComponent }
         ]
     },

@@ -22,6 +22,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { LawComponent } from './components/law/law.component';
 import { MemberBenefitsComponent } from './components/member/member-benefits/member-benefits.component';
 import { MemberEditCreditComponent } from './components/member/member-edit-credit/member-edit-credit.component';
+import { MemberEditProfileComponent } from './components/member/member-edit-profile/member-edit-profile.component';
 import { MemberEditComponent } from './components/member/member-edit/member-edit.component';
 import { MemberMypageComponent } from './components/member/member-mypage/member-mypage.component';
 import { MemberPaymentComponent } from './components/member/member-payment/member-payment.component';
@@ -42,6 +43,7 @@ import { TicketNotFoundComponent } from './components/parts/ticket-not-found/tic
 import { PolicyComponent } from './components/policy/policy.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
+import { RootComponent } from './components/root/root.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { WalkThroughComponent } from './components/walk-through/walk-through.component';
 import { AvailabilityPipe } from './pipes/availability/availability.pipe';
@@ -50,6 +52,7 @@ import { TimeFormatPipe } from './pipes/time-format/time-format.pipe';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { AwsCognitoService } from './services/aws-cognito/aws-cognito.service';
 import { CallNativeService } from './services/call-native/call-native.service';
+import { CreditGuardService } from './services/credit-guard/credit-guard.service';
 import { MemberGuardService } from './services/member-guard/member-guard.service';
 import { PurchaseService } from './services/purchase/purchase.service';
 import { ReservationService } from './services/reservation/reservation.service';
@@ -97,7 +100,9 @@ import { UserService } from './services/user/user.service';
     AuthSignoutComponent,
     MemberEditCreditComponent,
     MemberPaymentComponent,
-    ModalComponent
+    ModalComponent,
+    MemberEditProfileComponent,
+    RootComponent
   ],
   imports: [
     BrowserModule,
@@ -115,10 +120,11 @@ import { UserService } from './services/user/user.service';
     SelectService,
     StorageService,
     CallNativeService,
+    UserService,
     SasakiService,
     MemberGuardService,
-    UserService,
-    PurchaseService
+    PurchaseService,
+    CreditGuardService
   ],
   bootstrap: [AppComponent]
 })
