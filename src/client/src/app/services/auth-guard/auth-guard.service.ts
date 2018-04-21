@@ -27,6 +27,10 @@ export class AuthGuardService implements CanActivate {
             await this.sasaki.authorize();
 
             if (!this.user.isMember()) {
+                const deviceId = localStorage.getItem('deviceId');
+                if (deviceId === null) {
+                    throw new Error('deviceId is null');
+                }
                 this.awsCognito.authenticateWithDeviceId();
             }
 

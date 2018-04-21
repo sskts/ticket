@@ -1159,7 +1159,6 @@ var AuthSelectComponent = /** @class */ (function () {
                         if (this.awsCognito.credentials === undefined) {
                             throw new Error('credentials is undefined');
                         }
-                        localStorage.setItem('deviceId', this.awsCognito.credentials.identityId);
                         this.router.navigate(['/']);
                         return [3 /*break*/, 4];
                     case 3:
@@ -5397,7 +5396,6 @@ var WalkThroughComponent = /** @class */ (function () {
                         if (this.awsCognito.credentials === undefined) {
                             throw new Error('credentials is undefined');
                         }
-                        localStorage.setItem('deviceId', this.awsCognito.credentials.identityId);
                         return [4 /*yield*/, this.router.navigate(['/'])];
                     case 2:
                         _a.sent();
@@ -5628,7 +5626,7 @@ var AuthGuardService = /** @class */ (function () {
      */
     AuthGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var err_1;
+            var deviceId, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -5637,6 +5635,10 @@ var AuthGuardService = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         if (!this.user.isMember()) {
+                            deviceId = localStorage.getItem('deviceId');
+                            if (deviceId === null) {
+                                throw new Error('deviceId is null');
+                            }
                             this.awsCognito.authenticateWithDeviceId();
                         }
                         return [2 /*return*/, true];
@@ -5737,6 +5739,7 @@ var AwsCognitoService = /** @class */ (function () {
                         }
                         __WEBPACK_IMPORTED_MODULE_0_aws_sdk__["config"].credentials = new __WEBPACK_IMPORTED_MODULE_0_aws_sdk__["CognitoIdentityCredentials"](args);
                         this.credentials = __WEBPACK_IMPORTED_MODULE_0_aws_sdk__["config"].credentials;
+                        localStorage.setItem('deviceId', this.credentials.identityId);
                         return [4 /*yield*/, this.credentials.getPromise()];
                     case 1:
                         _a.sent();
@@ -6597,17 +6600,20 @@ var ReservationService = /** @class */ (function () {
                     case 1:
                         reservationRecord = _a.sent();
                         expired = 10;
-                        orders = reservationRecord.orders.map(function (order) {
-                            return {
-                                confirmationNumber: String(order.confirmationNumber),
-                                reservationsFor: order.acceptedOffers.map(function (offer) {
-                                    return offer.itemOffered.reservationFor;
-                                }),
-                                reservedTickets: order.acceptedOffers.map(function (offer) {
-                                    return offer.itemOffered.reservedTicket;
-                                })
-                            };
-                        });
+                        orders = [];
+                        if (Array.isArray(reservationRecord.orders)) {
+                            orders = reservationRecord.orders.map(function (order) {
+                                return {
+                                    confirmationNumber: String(order.confirmationNumber),
+                                    reservationsFor: order.acceptedOffers.map(function (offer) {
+                                        return offer.itemOffered.reservationFor;
+                                    }),
+                                    reservedTickets: order.acceptedOffers.map(function (offer) {
+                                        return offer.itemOffered.reservedTicket;
+                                    })
+                                };
+                            });
+                        }
                         return [2 /*return*/, {
                                 reservations: orders,
                                 expired: __WEBPACK_IMPORTED_MODULE_0_moment__().add(expired, 'milliseconds').unix()

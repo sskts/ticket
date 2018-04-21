@@ -60,7 +60,6 @@ export class AuthSelectComponent implements OnInit {
             if (this.awsCognito.credentials === undefined) {
                 throw new Error('credentials is undefined');
             }
-            localStorage.setItem('deviceId', this.awsCognito.credentials.identityId);
             this.router.navigate(['/']);
         } catch (err) {
             console.error(err);

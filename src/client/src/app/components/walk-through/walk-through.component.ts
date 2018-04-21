@@ -50,7 +50,6 @@ export class WalkThroughComponent implements OnInit {
             if (this.awsCognito.credentials === undefined) {
                 throw new Error('credentials is undefined');
             }
-            localStorage.setItem('deviceId', this.awsCognito.credentials.identityId);
             await this.router.navigate(['/']);
         } catch (err) {
             console.error(err);

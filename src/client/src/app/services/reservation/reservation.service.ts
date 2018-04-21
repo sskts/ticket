@@ -75,17 +75,20 @@ export class ReservationService {
         });
         const expired = 10;
 
-        const orders = reservationRecord.orders.map((order) => {
-            return {
-                confirmationNumber: String(order.confirmationNumber),
-                reservationsFor: order.acceptedOffers.map((offer) => {
-                    return offer.itemOffered.reservationFor;
-                }),
-                reservedTickets: order.acceptedOffers.map((offer) => {
-                    return offer.itemOffered.reservedTicket;
-                })
-            };
-        });
+        let orders: IReservation[] = [];
+        if (Array.isArray(reservationRecord.orders)) {
+            orders = reservationRecord.orders.map((order) => {
+                return {
+                    confirmationNumber: String(order.confirmationNumber),
+                    reservationsFor: order.acceptedOffers.map((offer) => {
+                        return offer.itemOffered.reservationFor;
+                    }),
+                    reservedTickets: order.acceptedOffers.map((offer) => {
+                        return offer.itemOffered.reservedTicket;
+                    })
+                };
+            });
+        }
 
         return {
             reservations: orders,
