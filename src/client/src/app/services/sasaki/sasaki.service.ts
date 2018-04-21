@@ -55,6 +55,23 @@ export class SasakiService {
     }
 
     /**
+     * サインインリダイレクト後処理
+     */
+    public async signInRedirected(args: {
+        authorizeCode: string;
+        state: string;
+    }) {
+        const url = '/api/authorize/signInRedirected';
+        const httpParams = new HttpParams({
+            fromObject: args
+        });
+        const options = {
+            params: httpParams
+        };
+        await this.http.get<any>(url, options).toPromise();
+    }
+
+    /**
      * サインアップ
      */
     public async signUp() {

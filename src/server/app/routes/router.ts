@@ -15,6 +15,7 @@ export default (app: express.Application) => {
     app.get('/api/authorize/signOut', authorize.signOut);
     app.get('/signIn', authorize.signInRedirect);
     app.get('/signOut', authorize.signOutRedirect);
+    app.get('/api/authorize/signInRedirected', authorize.signInRedirected);
 
     app.get('*', (_req, res, _next) => {
         // res.sendFile(`${__dirname}/dist/client${process.env.NODE_ENV}/index.html`);
