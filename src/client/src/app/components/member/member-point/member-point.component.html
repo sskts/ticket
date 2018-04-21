@@ -87,7 +87,7 @@
                 </div>
             </div> -->
             <div class="mb-small">
-                <button type="button" class="button button-primary button-block center">ポイント使用方法</button>
+                <button type="button" class="button button-primary button-block center" (click)="pointUseModal = true">ポイント使用方法</button>
             </div>
             <div class="button-column-02 center">
                 <button type="button" class="button button-info" routerLink="/member/point/history">ポイント使用履歴</button>
@@ -98,3 +98,11 @@
     </div>
 </div>
 <app-loading [show]="isLoading"></app-loading>
+
+<app-modal class="point-use-modal" [open]="pointUseModal" [layout]="true" (close)="pointUseModal = false">
+    <div class="mb-x-small text-center"><strong>ポイント使用方法</strong></div>
+    <p class="small-text">
+        チケット購入ページで券種選択を選択する際に、会員ポイントを使用することができます。
+        <br> そちらでポイントを使用してください。
+    </p>
+</app-modal>

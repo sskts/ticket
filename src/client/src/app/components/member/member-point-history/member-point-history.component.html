@@ -1,3 +1,34 @@
-<p>
-  member-point-history works!
-</p>
+<div class="contents bg-02">
+    <div class="inner">
+        <p class="mb-small text-center small-text">
+            貯まったポイントの確認ができます。
+        </p>
+        <div class="mb-middle text-center">
+            現在
+            <span class="large-xx-text">16</span>
+            ポイント
+        </div>
+        <ul>
+            <li>
+                <div class="info">
+                    <div class="mb-x-small">鑑賞</div>
+                    <div class="small-text">2018年1月1日</div>
+                </div>
+                <div class="point text-right">
+                    <strong class="large-x-text">+1</strong>
+                </div>
+            </li>
+            <li>
+                <div class="info">
+                    <div class="mb-x-small">無料鑑賞クーポン交換</div>
+                    <div class="small-text">2018年1月1日</div>
+                </div>
+                <div class="point text-right">
+                    <strong class="large-x-text">-6</strong>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<app-loading [show]="isLoading"></app-loading>

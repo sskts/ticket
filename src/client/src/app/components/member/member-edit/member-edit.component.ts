@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
     selector: 'app-member-edit',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberEditComponent implements OnInit {
 
-    constructor() { }
+    constructor(
+        public user: UserService
+    ) { }
 
     public ngOnInit() {
     }

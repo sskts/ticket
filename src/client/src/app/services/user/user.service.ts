@@ -89,6 +89,40 @@ export class UserService {
     }
 
     /**
+     * 名前取得
+     */
+    public getName() {
+        if (this.data.contact === undefined) {
+            return '';
+        }
+        return `${this.data.contact.familyName} ${this.data.contact.givenName}`;
+    }
+
+    /**
+     * 電話番号取得（ハイフンなし）
+     */
+    public gettelephone() {
+        if (this.data.contact === undefined) {
+            return '';
+        }
+        return this.data.contact.telephone.replace(/\-/g, '');
+    }
+
+    /**
+     * クレジットカード情報取得（表示）
+     */
+    public getCreditCard(index: number) {
+        if (this.data.creditCards === undefined
+            || this.data.creditCards.length === 0) {
+            return undefined;
+        }
+        return {
+            cardNo: this.data.creditCards[index].cardNo,
+            expire: `${this.data.creditCards[index].expire.slice(0, 2)}年 ${this.data.creditCards[index].expire.slice(2, 4)}月`
+        };
+    }
+
+    /**
      * GMOトークン取得
      */
     public async getGmoObject(args: {
