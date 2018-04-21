@@ -13,7 +13,7 @@ class Auth2Model {
      * @param {any} session
      */
     constructor(session) {
-        log('constructor', session);
+        log('Auth2Model constructor', session);
         if (session === undefined) {
             session = {};
         }

@@ -87,22 +87,9 @@ exports.signIn = signIn;
  * @param {Response} res
  * @param {NextFunction} next
  */
-function signInRedirect(req, res) {
+function signInRedirect(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
-        log('signInRedirect', req.query);
-        res.redirect(`/#/auth/signin?authorizeCode=${req.query.code}&state=${req.query.state}`);
-    });
-}
-exports.signInRedirect = signInRedirect;
-/**
- * サインインリダイレクト後処理
- * @param {Request} req
- * @param {Response} res
- * @param {NextFunction} next
- */
-function signInRedirected(req, res, _next) {
-    return __awaiter(this, void 0, void 0, function* () {
-        log('signInRedirected', req.query);
+        log('signInRedirect');
         try {
             if (req.session === undefined) {
                 throw new Error('session is undefined');
@@ -112,19 +99,19 @@ function signInRedirected(req, res, _next) {
                 throw (new Error(`state not matched ${req.query.state} !== ${authModel.state}`));
             }
             const auth = authModel.create();
-            const credentials = yield auth.getToken(req.query.authorizeCode, authModel.codeVerifier);
+            const credentials = yield auth.getToken(req.query.code, authModel.codeVerifier);
             // log('credentials published', credentials);
             authModel.credentials = credentials;
             authModel.save(req.session);
             auth.setCredentials(credentials);
-            res.json();
+            res.redirect('/#/auth/signin');
         }
         catch (err) {
-            base_controller_1.errorProsess(res, err);
+            next(err);
         }
     });
 }
-exports.signInRedirected = signInRedirected;
+exports.signInRedirect = signInRedirect;
 /**
  * サインアウト処理
  * @param {Request} req

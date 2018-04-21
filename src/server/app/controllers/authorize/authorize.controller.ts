@@ -73,19 +73,8 @@ export async function signIn(req: Request, res: Response) {
  * @param {Response} res
  * @param {NextFunction} next
  */
-export async function signInRedirect(req: Request, res: Response) {
-    log('signInRedirect', req.query);
-    res.redirect(`/#/auth/signin?authorizeCode=${req.query.code}&state=${req.query.state}`);
-}
-
-/**
- * サインインリダイレクト後処理
- * @param {Request} req
- * @param {Response} res
- * @param {NextFunction} next
- */
-export async function signInRedirected(req: Request, res: Response, _next: NextFunction) {
-    log('signInRedirected', req.query);
+export async function signInRedirect(req: Request, res: Response, next: NextFunction) {
+    log('signInRedirect');
     try {
         if (req.session === undefined) {
             throw new Error('session is undefined');
@@ -96,7 +85,7 @@ export async function signInRedirected(req: Request, res: Response, _next: NextF
         }
         const auth = authModel.create();
         const credentials = await auth.getToken(
-            req.query.authorizeCode,
+            req.query.code,
             <string>authModel.codeVerifier
         );
         // log('credentials published', credentials);
@@ -105,9 +94,9 @@ export async function signInRedirected(req: Request, res: Response, _next: NextF
         authModel.save(req.session);
 
         auth.setCredentials(credentials);
-        res.json();
+        res.redirect('/#/auth/signin');
     } catch (err) {
-        errorProsess(res, err);
+        next(err);
     }
 }
 
