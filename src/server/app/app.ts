@@ -17,6 +17,7 @@ const app = express();
 app.use(ipFilter); // IP制限
 app.use(basicAuth); // ベーシック認証
 app.use(helmet()); // セキュリティー対策
+app.set('trust proxy', 1);
 app.use(session); // セッション
 app.use(whiteList); // 許可設定
 app.use(benchmarks); // ベンチマーク的な

@@ -16,6 +16,7 @@ const app = express();
 app.use(ip_filter_middleware_1.default); // IP制限
 app.use(basic_auth_middleware_1.default); // ベーシック認証
 app.use(helmet()); // セキュリティー対策
+app.set('trust proxy', 1);
 app.use(session_middleware_1.default); // セッション
 app.use(white_list_middleware_1.default); // 許可設定
 app.use(benchmarks_middleware_1.default); // ベンチマーク的な
