@@ -1726,7 +1726,7 @@ var FilmOrderPerformanceComponent = /** @class */ (function () {
         if (this.awsCognito.credentials === null) {
             return;
         }
-        var params = "id=" + this.performance.identifier + "&identityId=" + this.awsCognito.credentials.identityId;
+        var params = "id=" + this.performance.identifier + "&identityId=" + this.awsCognito.credentials.identityId + "&native=1&member=0";
         location.href =
             __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].entranceServerUrl + "/ticket/index.html?" + params;
     };

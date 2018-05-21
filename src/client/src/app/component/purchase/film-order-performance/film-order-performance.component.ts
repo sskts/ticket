@@ -40,7 +40,7 @@ export class FilmOrderPerformanceComponent implements OnInit {
         if (this.awsCognito.credentials === null) {
             return;
         }
-        const params = `id=${this.performance.identifier}&identityId=${this.awsCognito.credentials.identityId}`;
+        const params = `id=${this.performance.identifier}&identityId=${this.awsCognito.credentials.identityId}&native=1&member=0`;
         location.href =
             `${environment.entranceServerUrl}/ticket/index.html?${params}`;
     }
