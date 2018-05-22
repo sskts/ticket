@@ -22,7 +22,7 @@ export class SasakiService {
     constructor(
         private http: HttpClient,
         private storage: StorageService
-    ) {}
+    ) { }
 
     /**
      * getServices
@@ -79,10 +79,8 @@ export class SasakiService {
      * @method createOption
      */
     public async createOption() {
-        if (this.auth === undefined
-            || this.auth.credentials === undefined) {
-            await this.authorize();
-        }
+        await this.authorize();
+
         return {
             endpoint: environment.SSKTS_API_ENDPOINT,
             auth: this.auth

@@ -3,9 +3,9 @@
  */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { AboutComponent } from './components/about/about.component';
 import { AuthLogoutComponent } from './components/auth/auth-logout/auth-logout.component';
+import { AuthRegisterTermsComponent } from './components/auth/auth-register-terms/auth-register-terms.component';
 import { AuthRegisterComponent } from './components/auth/auth-register/auth-register.component';
 import { AuthSelectComponent } from './components/auth/auth-select/auth-select.component';
 import { AuthSigninComponent } from './components/auth/auth-signin/auth-signin.component';
@@ -41,15 +41,21 @@ const appRoutes: Routes = [
         children: [
             { path: 'select', component: AuthSelectComponent },
             { path: 'signin', component: AuthSigninComponent },
-            { path: 'signout', component: AuthSignoutComponent }
+            { path: 'signout', component: AuthSignoutComponent },
+            {
+                path: 'register',
+                children: [
+                    { path: '', component: AuthRegisterComponent },
+                    { path: 'terms', component: AuthRegisterTermsComponent }
+                ]
+            }
         ]
     },
     {
         path: 'auth',
         component: BaseComponent,
         children: [
-            { path: 'logout', component: AuthLogoutComponent },
-            { path: 'register', component: AuthRegisterComponent }
+            { path: 'logout', component: AuthLogoutComponent }
         ]
     },
     {
@@ -78,13 +84,23 @@ const appRoutes: Routes = [
         canActivate: [MemberGuardService, CreditGuardService],
         children: [
             { path: 'mypage', component: MemberMypageComponent },
-            { path: 'point', component: MemberPointComponent },
-            { path: 'point/history', component: MemberPointHistoryComponent },
             { path: 'benefits', component: MemberBenefitsComponent },
-            { path: 'edit', component: MemberEditComponent },
-            { path: 'edit/credit', component: MemberEditCreditComponent },
-            { path: 'edit/profile', component: MemberEditProfileComponent },
-            { path: 'withdraw', component: MemberWithdrawComponent }
+            { path: 'withdraw', component: MemberWithdrawComponent },
+            {
+                path: 'point',
+                children: [
+                    { path: '', component: MemberPointComponent },
+                    { path: 'history', component: MemberPointHistoryComponent }
+                ]
+            },
+            {
+                path: 'edit',
+                children: [
+                    { path: '', component: MemberEditComponent },
+                    { path: 'credit', component: MemberEditCreditComponent },
+                    { path: 'profile', component: MemberEditProfileComponent }
+                ]
+            }
         ]
     },
     { path: 'walkThrough', component: WalkThroughComponent },

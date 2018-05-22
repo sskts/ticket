@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-auth-register',
-  templateUrl: './auth-register.component.html',
-  styleUrls: ['./auth-register.component.scss']
+    selector: 'app-auth-register',
+    templateUrl: './auth-register.component.html',
+    styleUrls: ['./auth-register.component.scss']
 })
 export class AuthRegisterComponent implements OnInit {
 
-    public isLoading: boolean;
-
     constructor() { }
 
-    public ngOnInit(): void {
-        this.isLoading = false;
+    public ngOnInit() {
     }
 
 }

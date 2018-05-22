@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { AppComponent } from './components/app/app.component';
 import { AuthLogoutComponent } from './components/auth/auth-logout/auth-logout.component';
+import { AuthRegisterTermsComponent } from './components/auth/auth-register-terms/auth-register-terms.component';
 import { AuthRegisterComponent } from './components/auth/auth-register/auth-register.component';
 import { AuthSelectComponent } from './components/auth/auth-select/auth-select.component';
 import { AuthSigninComponent } from './components/auth/auth-signin/auth-signin.component';
@@ -34,8 +35,10 @@ import { HeaderMenuComponent } from './components/parts/header-menu/header-menu.
 import { HeaderComponent } from './components/parts/header/header.component';
 import { IconComponent } from './components/parts/icon/icon.component';
 import { LoadingComponent } from './components/parts/loading/loading.component';
+import { MembershipBenefitsComponent } from './components/parts/membership-benefits/membership-benefits.component';
 import { ModalComponent } from './components/parts/modal/modal.component';
 import { NavigationComponent } from './components/parts/navigation/navigation.component';
+import { PointSliderComponent } from './components/parts/point-slider/point-slider.component';
 import { PurchasePerformanceFilmComponent } from './components/parts/purchase-performance-film/purchase-performance-film.component';
 import { PurchasePerformanceTimeComponent } from './components/parts/purchase-performance-time/purchase-performance-time.component';
 import { TicketDetailComponent } from './components/parts/ticket-detail/ticket-detail.component';
@@ -86,7 +89,6 @@ import { UserService } from './services/user/user.service';
     TicketComponent,
     AuthSelectComponent,
     AuthLogoutComponent,
-    AuthRegisterComponent,
     MemberBenefitsComponent,
     MemberEditComponent,
     MemberWithdrawComponent,
@@ -102,7 +104,11 @@ import { UserService } from './services/user/user.service';
     MemberPaymentComponent,
     ModalComponent,
     MemberEditProfileComponent,
-    RootComponent
+    RootComponent,
+    AuthRegisterTermsComponent,
+    AuthRegisterComponent,
+    MembershipBenefitsComponent,
+    PointSliderComponent
   ],
   imports: [
     BrowserModule,

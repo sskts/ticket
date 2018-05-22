@@ -16,6 +16,11 @@ const auth_model_1 = require("../../models/auth/auth.model");
 const auth2_model_1 = require("../../models/auth2/auth2.model");
 const base_controller_1 = require("../base/base.controller");
 const log = debug('SSKTS:authorize');
+var MemberType;
+(function (MemberType) {
+    MemberType["NotMember"] = "0";
+    MemberType["Member"] = "1";
+})(MemberType = exports.MemberType || (exports.MemberType = {}));
 /**
  * 資格情報取得
  * @param {Request} req
@@ -143,8 +148,3 @@ function signOutRedirect(req, res) {
     });
 }
 exports.signOutRedirect = signOutRedirect;
-var MemberType;
-(function (MemberType) {
-    MemberType["NotMember"] = "0";
-    MemberType["Member"] = "1";
-})(MemberType = exports.MemberType || (exports.MemberType = {}));

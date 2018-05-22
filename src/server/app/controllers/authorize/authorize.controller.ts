@@ -8,6 +8,11 @@ import { Auth2Model } from '../../models/auth2/auth2.model';
 import { errorProsess } from '../base/base.controller';
 const log = debug('SSKTS:authorize');
 
+export enum MemberType {
+    NotMember = '0',
+    Member = '1'
+}
+
 /**
  * 資格情報取得
  * @param {Request} req
@@ -125,9 +130,4 @@ export async function signOutRedirect(req: Request, res: Response) {
     log('signOutRedirect');
     delete (<Express.Session>req.session).auth;
     res.redirect('/#/auth/signout');
-}
-
-export enum MemberType {
-    NotMember = '0',
-    Member = '1'
 }

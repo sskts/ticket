@@ -3,58 +3,6 @@
  */
 import { Injectable } from '@angular/core';
 
-@Injectable()
-export class CallNativeService {
-
-    constructor() { }
-
-    /**
-     * @method postMessage
-     * @param data {any}
-     */
-    private postMessage(data: any) {
-        try {
-            const json: string = JSON.stringify(data);
-            (<any>window).wizViewMessenger.postMessage(json, TARGET_VIEW);
-        } catch (err) {
-            console.error(err);
-        }
-    }
-
-    /**
-     * inAppBrowser呼び出し
-     * @method postMessage
-     * @param args {IinAppBrowserArgs}
-     */
-    public inAppBrowser(args: IinAppBrowserArgs) {
-        try {
-            const data = {
-                method: 'inAppBrowser',
-                option: args
-            };
-            this.postMessage(data);
-        } catch (err) {
-            console.error(err);
-        }
-    }
-
-    /**
-     * localNotification呼び出し
-     * @method localNotification
-     * @param args {IlocalNotificationArgs}
-     */
-    public localNotification(args: IlocalNotificationArgs) {
-        try {
-            const data = {
-                method: 'localNotification',
-                option: args
-            };
-            this.postMessage(data);
-        } catch (err) {
-            console.error(err);
-        }
-    }
-}
 
 /**
  * 呼び出し先
@@ -130,4 +78,57 @@ export interface IlocalNotificationArgs {
      * 前面表示（デフォルトは前面表示しない）
      */
     foreground?: boolean;
+}
+
+@Injectable()
+export class CallNativeService {
+
+    constructor() { }
+
+    /**
+     * @method postMessage
+     * @param data {any}
+     */
+    private postMessage(data: any) {
+        try {
+            const json: string = JSON.stringify(data);
+            (<any>window).wizViewMessenger.postMessage(json, TARGET_VIEW);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    /**
+     * inAppBrowser呼び出し
+     * @method postMessage
+     * @param args {IinAppBrowserArgs}
+     */
+    public inAppBrowser(args: IinAppBrowserArgs) {
+        try {
+            const data = {
+                method: 'inAppBrowser',
+                option: args
+            };
+            this.postMessage(data);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    /**
+     * localNotification呼び出し
+     * @method localNotification
+     * @param args {IlocalNotificationArgs}
+     */
+    public localNotification(args: IlocalNotificationArgs) {
+        try {
+            const data = {
+                method: 'localNotification',
+                option: args
+            };
+            this.postMessage(data);
+        } catch (err) {
+            console.error(err);
+        }
+    }
 }

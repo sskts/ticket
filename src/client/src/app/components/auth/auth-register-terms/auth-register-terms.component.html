@@ -1,0 +1,24 @@
+<div class="contents bg-01">
+    <div class="inner">
+        <h2 class="text-center mb-small">利用規約</h2>
+        <p class="read mb-middle small-text">
+            シネマサンシャインの会員（年会費500円）になるとお得な特典が受けられます。
+            <br> 以下の利用規約に同意した上で「次へ」ボタンを押してください。
+        </p>
+        <div class="text-center mb-small">
+            <img src="/assets/images/about/purchase_smartly.svg" width="230" height="150">
+        </div>
+        <form [formGroup]="termsForm" (ngSubmit)="onSubmit()">
+            <div class="text-center mb-small">
+                <input type="checkbox" formControlName="terms" id="terms">
+                <label for="terms" class="agree-label">利用規約に同意する</label>
+                <div *ngIf="termsForm.controls['terms'].invalid && (termsForm.controls['terms'].dirty || termsForm.controls['terms'].touched)"
+                    class="validation-text">利用規約に同意してください</div>
+            </div>
+            <button type="submit" class="button button-primary button-block center mb-small">次へ</button>
+            <div class="text-center">
+                <a routerLink="/auth/register">戻る</a>
+            </div>
+        </form>
+    </div>
+</div>

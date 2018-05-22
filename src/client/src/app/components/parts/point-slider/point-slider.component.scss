@@ -1,0 +1,116 @@
+.slider-cover {
+    width: 100%;
+    max-width: 300px;
+    height: 2px;
+    background-color: #555;
+    position: relative;
+    .ruler {
+        position: absolute;
+        top: 50%;
+        margin-top: -3px;
+        height: 6px;
+        width: 1px;
+        background-color: #555;
+        &:nth-child(1) {
+            left: 0;
+        }
+        &:nth-child(2) {
+            left: calc(100% / 6  * 1);
+        }
+        &:nth-child(3) {
+            left: calc(100% / 6  * 2);
+        }
+        &:nth-child(4) {
+            left: calc(100% / 6  * 3);
+        }
+        &:nth-child(5) {
+            left: calc(100% / 6  * 4);
+        }
+        &:nth-child(6) {
+            left: calc(100% / 6  * 5);
+        }
+        &:nth-child(7) {
+            right: 0;
+        }
+    }
+    .slider {
+        display: none;
+        position: absolute;
+        top: 50%;
+        margin-top: -3px;
+        height: 6px;
+        width: calc(100% / 6);
+        &:nth-child(1) {
+            left: 0;
+            background-color: #dceaf8;
+        }
+        &:nth-child(2) {
+            left: calc(100% / 6  * 1);
+            background-color: #95bfea;
+        }
+        &:nth-child(3) {
+            left: calc(100% / 6  * 2);
+            background-color: #4e95dc;
+        }
+        &:nth-child(4) {
+            left: calc(100% / 6  * 3);
+            background-color: #236ab1;
+        }
+        &:nth-child(5) {
+            left: calc(100% / 6  * 4);
+            background-color: #18528c;
+        }
+        &:nth-child(6) {
+            left: calc(100% / 6  * 5);
+            background-color: #15406a;
+        }
+    }
+}
+
+.point-1 {
+    .slider {
+        &:nth-child(1) {
+            display: block;
+        }
+    }
+}
+
+.point-2 {
+    .slider {
+        &:nth-child(1), &:nth-child(2) {
+            display: block;
+        }
+    }
+}
+
+.point-3 {
+    .slider {
+        &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+            display: block;
+        }
+    }
+}
+
+.point-4 {
+    .slider {
+        &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+            display: block;
+        }
+    }
+}
+
+.point-5 {
+    .slider {
+        &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+            display: block;
+        }
+    }
+}
+
+.point-6 {
+    .slider {
+        &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5), &:nth-child(6) {
+            display: block;
+        }
+    }
+}

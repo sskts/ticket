@@ -1,8 +1,27 @@
 import { Injectable } from '@angular/core';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { environment } from '../../../environments/environment';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { SaveType, StorageService } from '../storage/storage.service';
-import { environment } from '../../../environments/environment';
+
+
+export interface IData {
+    memberType: MemberType;
+    contact?: factory.person.IContact;
+    creditCards?: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
+}
+
+export enum MemberType {
+    NotMember = '0',
+    Member = '1'
+}
+
+export interface IGmoTokenObject {
+    token: string;
+    toBeExpiredAt: string;
+    maskedCardNo: string;
+    isSecurityCodeSet: boolean;
+}
 
 const STORAGE_KEY = 'user';
 
@@ -214,22 +233,4 @@ export class UserService {
         this.save();
     }
 
-}
-
-export interface IData {
-    memberType: MemberType;
-    contact?: factory.person.IContact;
-    creditCards?: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
-}
-
-export enum MemberType {
-    NotMember = '0',
-    Member = '1'
-}
-
-export interface IGmoTokenObject {
-    token: string;
-    toBeExpiredAt: string;
-    maskedCardNo: string;
-    isSecurityCodeSet: boolean;
 }

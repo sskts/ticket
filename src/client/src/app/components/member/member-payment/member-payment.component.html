@@ -1,8 +1,14 @@
 <div class="contents bg-01">
     <div class="inner">
-        <p class="read mb-middle">
+        <p class="read mb-small">
             クレジットカード登録してください
         </p>
+        <div class="image mb-small">
+            <img alt="" src="/assets/images/common/credit_card.png">
+        </div>
+        <div class="mb-small text-center annual-fee">
+            ご利用金額（年会費）<span class="large-text">￥500</span>
+        </div>
         <div class="payment">
             <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
                 <dl class="mb-middle">

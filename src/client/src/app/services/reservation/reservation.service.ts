@@ -14,7 +14,8 @@ export interface IReservation {
     confirmationNumber: string;
     reservationsFor: IEvent[];
     reservedTickets: ITicket[];
-};
+}
+
 export interface IReservationData {
     reservations: IReservation[];
     expired: number;

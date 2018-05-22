@@ -26,11 +26,17 @@
 }
 
 .sort {
-    .button {
-        margin-right: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #2B2B2B;
+    li {
+        padding: 15px 0;
+        border-bottom: 2px solid #4C4C4C;
+        opacity: 0.7;
         &.active {
-            background-color: #FFF;
-            color: #333;
+            background-color: #383838;
+            border-bottom-color: #00A0E9;
+            opacity: 2;
         }
     }
 }

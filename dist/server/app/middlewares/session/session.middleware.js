@@ -23,8 +23,6 @@ exports.default = session({
     cookie: {
         secure: true,
         httpOnly: true,
-        maxAge: (process.env.NODE_ENV === 'development')
-            ? 1800000 // 30 * 60 * 1000
-            : 2592000000 // 30 * 24 * 60 * 60 * 1000
+        maxAge: 2592000000 // 30 * 24 * 60 * 60 * 1000
     }
 });

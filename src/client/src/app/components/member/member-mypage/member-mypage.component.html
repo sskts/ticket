@@ -1,9 +1,7 @@
 <div class="contents bg-03">
     <div class="inner">
         <div class="text-center mb-middle">
-            <div class="mb-middle">
-                シネマ タロウ様
-            </div>
+            <div class="mb-middle">{{ user.getName() }}様</div>
             <div class="mb-middle">
                 現在
                 <span class="large-xx-text">16</span>
@@ -12,30 +10,13 @@
             <div class="mb-middle">
                 あと2ポイントで無料鑑賞
             </div>
-            <div class="slider-cover center">
-                <div>
-                    <div class="ruler"></div>
-                    <div class="ruler"></div>
-                    <div class="ruler"></div>
-                    <div class="ruler"></div>
-                    <div class="ruler"></div>
-                    <div class="ruler"></div>
-                </div>
-
-                <div>
-                    <div class="slider"></div>
-                    <div class="slider"></div>
-                    <div class="slider"></div>
-                    <div class="slider"></div>
-                    <div class="slider"></div>
-                </div>
-            </div>
+            <app-point-slider [point]="4"></app-point-slider>
         </div>
         <ul class="menu">
-            <li routerLink="/purchase">
+            <li (click)="toPurchaseTime()">
                 <div class="text-center caption">今スグ観る</div>
             </li>
-            <li routerLink="/purchase">
+            <li (click)="toPurchaseFilm()">
                 <div class="text-center caption">チケット購入</div>
             </li>
             <li routerLink="/member/edit">

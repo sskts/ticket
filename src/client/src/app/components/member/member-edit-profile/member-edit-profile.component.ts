@@ -49,7 +49,7 @@ export class MemberEditProfileComponent implements OnInit {
                 validators: [
                     Validators.required,
                     Validators.maxLength(NAME_MAX_LENGTH),
-                    Validators.pattern(/^[ぁ-ゞー]+$/)
+                    Validators.pattern(/^[ァ-ヶー]+$/)
                 ]
             },
             givenName: {
@@ -57,7 +57,7 @@ export class MemberEditProfileComponent implements OnInit {
                 validators: [
                     Validators.required,
                     Validators.maxLength(NAME_MAX_LENGTH),
-                    Validators.pattern(/^[ぁ-ゞー]+$/)
+                    Validators.pattern(/^[ァ-ヶー]+$/)
                 ]
             },
             telephone: {

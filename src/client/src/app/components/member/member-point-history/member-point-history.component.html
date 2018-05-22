@@ -8,27 +8,31 @@
             <span class="large-xx-text">16</span>
             ポイント
         </div>
-        <ul>
+        <ul class="mb-middle">
             <li>
                 <div class="info">
+                    <div class="circle"></div>
                     <div class="mb-x-small">鑑賞</div>
                     <div class="small-text">2018年1月1日</div>
                 </div>
                 <div class="point text-right">
-                    <strong class="large-x-text">+1</strong>
+                    <span class="large-x-text">+1</span>
                 </div>
             </li>
             <li>
                 <div class="info">
+                    <div class="circle circle-blue"></div>
                     <div class="mb-x-small">無料鑑賞クーポン交換</div>
                     <div class="small-text">2018年1月1日</div>
                 </div>
                 <div class="point text-right">
-                    <strong class="large-x-text">-6</strong>
+                    <span class="large-x-text">-99</span>
                 </div>
             </li>
         </ul>
-
+        <div class="text-center">
+            <a routerLink="/member/point">会員ポイントへ戻る</a>
+        </div>
     </div>
 </div>
 <app-loading [show]="isLoading"></app-loading>

@@ -9,19 +9,17 @@
                     <option *ngFor="let theater of theaters" value="{{ theater.location.branchCode }}">{{ theater.name.ja }}</option>
                 </select>
             </li>
-            <li class="mb-x-small">
+            <li class="mb-small">
                 <div class="control-label mb-x-small small-x-text text-light-gray">鑑賞日時</div>
                 <select class="form-control" name="date" [(ngModel)]="conditions.date" (change)="changeConditions()">
                     <option value="">選択してください</option>
                     <option *ngFor="let date of dateList" value="{{ date.value }}">{{ date.displayText }} {{ date.serviceDay }}</option>
                 </select>
             </li>
-            <li class="sort">
-                <button [class.active]="conditions.sort === purchaseSort.Film" type="button" class="button button-info small-button small-text"
-                    (click)="changeSort(purchaseSort.Film)">作品順</button>
-                <button [class.active]="conditions.sort === purchaseSort.Time" type="button" class="button button-info small-button small-text"
-                    (click)="changeSort(purchaseSort.Time)">時間順</button>
-            </li>
+            <ul class="sort">
+                <li [class.active]="conditions.sort === purchaseSort.Film" class="small-text text-center" (click)="changeSort(purchaseSort.Film)">作品順</li>
+                <li [class.active]="conditions.sort === purchaseSort.Time" class="small-text text-center" (click)="changeSort(purchaseSort.Time)">上映時間順</li>
+            </ul>
         </ul>
 
         <div *ngIf="!isLoading && filmOrder.length > 0 && conditions.sort === purchaseSort.Film">

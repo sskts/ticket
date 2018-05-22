@@ -36,16 +36,6 @@ export class AuthSelectComponent implements OnInit {
         }
     }
 
-    public async signUp() {
-        this.isLoading = true;
-        try {
-            await this.sasaki.signUp();
-        } catch (error) {
-            console.error(error);
-            this.isLoading = false;
-        }
-    }
-
     public async start() {
         this.isLoading = true;
         const deviceId = localStorage.getItem('deviceId');

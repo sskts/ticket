@@ -20,7 +20,7 @@
                         <div *ngIf="profileForm.controls['familyName'].invalid && profileForm.controls['familyName'].touched">
                             <div *ngIf="profileForm.controls['familyName'].errors.required" class="validation-text mb-x-small">せいが未入力です</div>
                             <div *ngIf="profileForm.controls['familyName'].errors.maxlength" class="validation-text mb-x-small">せいは{{ profileForm.controls['familyName'].errors.maxlength.requiredLength }}文字以下で入力してください</div>
-                            <div *ngIf="profileForm.controls['familyName'].errors.pattern" class="validation-text mb-x-small">せいは全角ひらがなで入力してください</div>
+                            <div *ngIf="profileForm.controls['familyName'].errors.pattern" class="validation-text mb-x-small">せいは全角カタカナで入力してください</div>
                         </div>
                     </dd>
                     <dd>
@@ -32,7 +32,7 @@
                         <div *ngIf="profileForm.controls['givenName'].invalid && profileForm.controls['givenName'].touched">
                             <div *ngIf="profileForm.controls['givenName'].errors.required" class="validation-text mb-x-small">めいが未入力です</div>
                             <div *ngIf="profileForm.controls['givenName'].errors.maxlength" class="validation-text mb-x-small">めいは{{ profileForm.controls['givenName'].errors.maxlength.requiredLength }}文字以下で入力してください</div>
-                            <div *ngIf="profileForm.controls['givenName'].errors.pattern" class="validation-text mb-x-small">めいは全角ひらがなで入力してください</div>
+                            <div *ngIf="profileForm.controls['givenName'].errors.pattern" class="validation-text mb-x-small">めいは全角カタカナで入力してください</div>
                         </div>
                     </dd>
                 </dl>
@@ -91,7 +91,10 @@
                             formControlName="postalCode" autocomplete="zip" placeholder="電話番号を入力してください">
                     </dd>
                 </dl> -->
-                <button type="submit" class="button button-primary button-block">基本情報変更</button>
+                <button type="submit" class="button button-primary button-block mb-middle">基本情報変更</button>
+                <div class="text-center">
+                    <a routerLink="/member/edit">戻る</a>
+                </div>
             </form>
         </div>
     </div>

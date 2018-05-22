@@ -52,25 +52,6 @@ set SSKTS_BASIC_AUTH_PASS=**********認証パスワード**********
 npm run build
 ```
 
-- scss
-```shell
-npm run css
-```
-
-# Tests
-
-単体テストは以下で実行できます。
-
-```shell
-npm test
-```
-
-<!-- UIテストは以下で実行できます。
-
-```shell
-npm ui-test
-``` -->
-
 # JsDoc
 
 ```shell
