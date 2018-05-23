@@ -1,0 +1,15 @@
+<swiper [config]="config" class="mb-small">
+    <div class="swiper-wrapper">
+        <div *ngFor="let stampGroup of stamps" class="swiper-slide">
+            <ul>
+                <li *ngFor="let stamp of stampGroup">
+                    <div *ngIf="stamp.status" class="stamp small-x-text text-center">CINEMA<br>SUNSHINE</div>
+                    <div *ngIf="!stamp.status" class="label text-center">{{ stamp.label }}</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</swiper>
+<div class="pagination-wrapper">
+    <div class="swiper-pagination"></div>
+</div>

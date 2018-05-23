@@ -7,7 +7,7 @@ html, body {
     height: 100%;
 }
 body {
-    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
     -webkit-touch-callout: none;
     user-select: none;
     background-color: #000;
@@ -86,8 +86,7 @@ textarea {
 }
 
 select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
+    appearance: none;
     overflow: hidden;
     border: 1px solid #999;
     padding: 0 54px 0 10px;
@@ -280,7 +279,7 @@ header {
 
 .button {
     border-radius: 0;
-    padding: 20px 0; 
+    padding: 15px 0; 
 }
 
 .button-block {

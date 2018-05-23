@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberPointComponent implements OnInit {
     public isLoading: boolean;
-    public config: SwiperOptions;
     public pointUseModal: boolean;
 
     constructor() { }
@@ -15,11 +14,6 @@ export class MemberPointComponent implements OnInit {
     public ngOnInit() {
         this.isLoading = false;
         this.pointUseModal = false;
-        this.config = {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-            autoHeight: true
-        };
     }
 
 }
