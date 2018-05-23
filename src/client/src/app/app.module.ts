@@ -19,6 +19,7 @@ import { AuthSelectComponent } from './components/auth/auth-select/auth-select.c
 import { AuthSigninComponent } from './components/auth/auth-signin/auth-signin.component';
 import { AuthSignoutComponent } from './components/auth/auth-signout/auth-signout.component';
 import { BaseComponent } from './components/base/base.component';
+import { BenefitsComponent } from './components/benefits/benefits.component';
 import { ErrorComponent } from './components/error/error.component';
 import { LawComponent } from './components/law/law.component';
 import { MemberBenefitsComponent } from './components/member/member-benefits/member-benefits.component';
@@ -110,7 +111,8 @@ import { UserService } from './services/user/user.service';
     AuthRegisterComponent,
     MembershipBenefitsComponent,
     PointSliderComponent,
-    PointStampsComponent
+    PointStampsComponent,
+    BenefitsComponent
   ],
   imports: [
     BrowserModule,

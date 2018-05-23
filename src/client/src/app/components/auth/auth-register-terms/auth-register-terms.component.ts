@@ -48,4 +48,11 @@ export class AuthRegisterTermsComponent implements OnInit {
         }
     }
 
+    /**
+     * 戻る
+     */
+    public prev() {
+        window.history.back();
+    }
+
 }

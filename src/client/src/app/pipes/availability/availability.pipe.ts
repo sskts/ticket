@@ -24,17 +24,17 @@ export class AvailabilityPipe implements PipeTransform {
         const availability = [
             {
                 symbolText: '×',
-                icon: 'icon-vacancy-full-white',
+                icon: 'vacancy-full-white',
                 className: 'vacancy-full'
             },
             {
                 symbolText: '△',
-                icon: 'icon-vacancy-little-white',
+                icon: 'vacancy-little-white',
                 className: 'vacancy-little'
             },
             {
                 symbolText: '○',
-                icon: 'icon-vacancy-large-white',
+                icon: 'vacancy-large-white',
                 className: 'vacancy-large'
             }
         ];

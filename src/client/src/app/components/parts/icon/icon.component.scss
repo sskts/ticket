@@ -12,92 +12,122 @@
     background-repeat: no-repeat;
 }
 
-.icon-ticket-holder-white {
+.ticket-holder-white {
     @include icon();
     background-image: url(/assets/images/icon/ticket_holder_white.svg);
 }
 
-.icon-purchase-white {
+.purchase-white {
     @include icon();
     background-image: url(/assets/images/icon/purchase_white.svg);
 }
 
-.icon-film-name-gray {
+.film-name-gray {
     @include icon();
     background-image: url(/assets/images/icon/film_name_gray.svg);
 }
 
-.icon-date-gray {
+.date-gray {
     @include icon();
     background-image: url(/assets/images/icon/date_gray.svg);
 }
 
-.icon-location-gray {
+.location-gray {
     @include icon();
     background-image: url(/assets/images/icon/location_gray.svg);
 }
 
-.icon-time-gray {
+.time-gray {
     @include icon();
     background-image: url(/assets/images/icon/time_gray.svg);
 }
 
-.icon-prev-white {
+.prev-white {
     @include icon();
     background-image: url(/assets/images/icon/prev_white.svg);
 }
 
-.icon-about-white {
+.about-white {
     @include icon();
     background-image: url(/assets/images/icon/about_white.svg);
 }
 
-.icon-external-link-white {
+.external-link-white {
     @include icon();
     background-image: url(/assets/images/icon/external_link_white.svg);
 }
 
-.icon-logout-white {
+.logout-white {
     @include icon();
     background-image: url(/assets/images/icon/logout_white.svg);
 }
 
-.icon-text-white {
+.text-white {
     @include icon();
     background-image: url(/assets/images/icon/text_white.svg);
 }
 
-.icon-user-white {
+.user-white {
     @include icon();
     background-image: url(/assets/images/icon/user_white.svg);
 }
 
-.icon-late-show-white {
+.late-show-white {
     @include icon();
     background-image: url(/assets/images/icon/late_show_white.svg);
 }
 
-.icon-first-show-white {
+.first-show-white {
     @include icon();
     background-image: url(/assets/images/icon/first_show_white.svg);
 }
 
-.icon-vacancy-large-white {
+.vacancy-large-white {
     @include icon();
     background-image: url(/assets/images/icon/vacancy_large_white.svg);
 }
 
-.icon-vacancy-little-white {
+.vacancy-little-white {
     @include icon();
     background-image: url(/assets/images/icon/vacancy_little_white.svg);
 }
 
-.icon-vacancy-full-white {
+.vacancy-full-white {
     @include icon();
     background-image: url(/assets/images/icon/vacancy_full_white.svg);
 }
 
-.icon-close-white {
+.close-white {
     @include icon();
     background-image: url(/assets/images/icon/close_white.svg);
+}
+
+.credit-expire-white {
+    @include icon();
+    background-image: url(/assets/images/icon/credit_expire_white.svg);
+}
+
+.credit-no-white {
+    @include icon();
+    background-image: url(/assets/images/icon/credit_no_white.svg);
+}
+
+.home-white {
+    @include icon();
+    background-image: url(/assets/images/icon/home_white.svg);
+}
+
+.email-white {
+    @include icon();
+    background-image: url(/assets/images/icon/email_white.svg);
+}
+
+.point-white {
+    @include icon();
+    background-image: url(/assets/images/icon/point_white.svg);
+}
+
+.telephone-white {
+    @include icon();
+    background-image: url(/assets/images/icon/telephone_white.svg);
 }

@@ -74,11 +74,11 @@ button {
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    appearance: none;
 }
 
 input[type="number"] {
-    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 input[type=text],
@@ -484,7 +484,7 @@ p {
     }
 }
 
-.text-icon-dark-blue {
+.text-dark-blue {
     background-color: #036db7;
     display: inline-block;
     vertical-align: middle;
@@ -493,7 +493,7 @@ p {
     font-weight: normal;
 }
 
-.text-icon-red {
+.text-red {
     background-color: #C30D23;
     display: inline-block;
     vertical-align: middle;

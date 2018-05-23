@@ -120,7 +120,7 @@ export class UserService {
     /**
      * 電話番号取得（ハイフンなし）
      */
-    public gettelephone() {
+    public getTelephone() {
         if (this.data.contact === undefined) {
             return '';
         }
