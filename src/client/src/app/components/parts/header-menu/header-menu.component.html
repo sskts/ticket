@@ -2,7 +2,7 @@
 
 <div class="menu" [class.active]="isOpen">
     <!-- <div class="title">{{ name }}</div> -->
-    <ul>
+    <ul *ngIf="!user.isMember()">
         <li>
             <span routerLink="/" routerLinkActive="active" (click)="close.emit()">
                 <app-icon iconName="about-white" width="15" height="15"></app-icon>HOME画面
@@ -14,12 +14,49 @@
                 <app-icon iconName="about-white" width="15" height="15"></app-icon>このアプリについて
             </span>
         </li>
-        <li *ngIf="user.isMember()">
+        <li>
+            <span routerLink="/policy" routerLinkActive="active" (click)="close.emit()">
+                <app-icon iconName="text-white" width="15" height="15"></app-icon>利用規約
+            </span>
+        </li>
+        <li>
+            <span routerLink="/law" routerLinkActive="active" (click)="close.emit()">
+                <app-icon iconName="text-white" width="15" height="15"></app-icon>特定商取引法に基づく表記
+            </span>
+        </li>
+        <li>
+            <span routerLink="/privacy" routerLinkActive="active" (click)="close.emit()">
+                <app-icon iconName="text-white" width="15" height="15"></app-icon>プライバシーポリシー
+            </span>
+        </li>
+        <li>
+            <span (click)="openWebBrowse(portalSite)">
+                <app-icon iconName="external-link-white" width="15" height="15"></app-icon>シネマサンシャインポータルサイト
+            </span>
+        </li>
+        <li>
+            <span routerLink="/benefits" (click)="close.emit()">
+                <app-icon iconName="text-white" width="15" height="15"></app-icon>会員特典 / 会員登録
+            </span>
+        </li>
+    </ul>
+    <ul *ngIf="user.isMember()">
+        <li>
+            <span routerLink="/" routerLinkActive="active" (click)="close.emit()">
+                <app-icon iconName="about-white" width="15" height="15"></app-icon>HOME画面
+            </span>
+        </li>
+        <li>
+            <span routerLink="/about" routerLinkActive="active" (click)="close.emit()">
+                <app-icon iconName="about-white" width="15" height="15"></app-icon>このアプリについて
+            </span>
+        </li>
+        <li>
             <span routerLink="/member/benefits" (click)="close.emit()">
                 <app-icon iconName="text-white" width="15" height="15"></app-icon>会員特典
             </span>
         </li>
-        <li *ngIf="user.isMember()">
+        <li>
             <span routerLink="/member/edit" (click)="close.emit()">
                 <app-icon iconName="text-white" width="15" height="15"></app-icon>会員情報変更
             </span>
@@ -44,17 +81,12 @@
                 <app-icon iconName="external-link-white" width="15" height="15"></app-icon>シネマサンシャインポータルサイト
             </span>
         </li>
-        <li *ngIf="!user.isMember()">
-            <span routerLink="/benefits" (click)="close.emit()">
-                <app-icon iconName="text-white" width="15" height="15"></app-icon>会員特典 / 会員登録
-            </span>
-        </li>
-        <li *ngIf="user.isMember()">
+        <li>
             <span routerLink="/auth/logout" (click)="close.emit()">
                 <app-icon iconName="text-white" width="15" height="15"></app-icon>ログアウト
             </span>
         </li>
-        <li *ngIf="user.isMember()">
+        <li>
             <span routerLink="/member/withdraw" routerLinkActive="active" (click)="close.emit()">
                 <app-icon iconName="text-white" width="15" height="15"></app-icon>退会</span>
         </li>

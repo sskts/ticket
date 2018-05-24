@@ -167,23 +167,42 @@ header {
     display: block;
 }
 
+// .contents {
+//     position: relative;
+//     min-height: calc(100vh - 48px - 60px);
+//     >.inner {
+//         padding: 10px 15px 20px;
+//         .box {
+//             padding: 20px 15px;
+//             background-color: #FFF;
+//             color: #333;
+//             h3 {
+//                 font-weight: bold;
+//             }
+//             p {
+//                 padding-left: 10px;
+//                 line-height: 2.0; 
+//             }
+//         }
+//     }
+// }
+
 .contents {
-    position: relative;
-    min-height: calc(100vh - 48px - 60px);
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
     >.inner {
         padding: 10px 15px 20px;
-        .box {
-            padding: 20px 15px;
-            background-color: #FFF;
-            color: #333;
-            h3 {
-                font-weight: bold;
-            }
-            p {
-                padding-left: 10px;
-                line-height: 2.0; 
-            }
-        }
+    }
+    p {
+        padding-left: 10px;
+        line-height: 2.0; 
     }
 }
 
