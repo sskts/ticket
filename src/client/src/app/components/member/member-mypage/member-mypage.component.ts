@@ -18,7 +18,15 @@ export class MemberMypageComponent implements OnInit {
         private router: Router
     ) { }
 
-    public ngOnInit() {
+    public async ngOnInit() {
+        this.isLoading = true;
+        try {
+            await this.user.updateAccount();
+        } catch (err) {
+            this.router.navigate(['/error', { redirect: '/member/mypage' }]);
+            console.log('MemberMypageComponent.ngOnInit', err);
+        }
+        this.isLoading = false;
     }
 
     /**

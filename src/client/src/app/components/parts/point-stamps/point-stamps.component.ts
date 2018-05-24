@@ -25,7 +25,8 @@ export class PointStampsComponent implements OnInit {
         const stampGroupLimit = 6;
         // グループリスト作成
         this.stamps = [];
-        for (let i = 0; i < Math.ceil(this.point / stampGroupLimit); i++) {
+        const loop = (this.point === 0) ? 1 : Math.ceil(this.point / stampGroupLimit);
+        for (let i = 0; i < loop; i++) {
             // グループ作成
             const stampGroup = [];
             for (let j = 0; j < stampGroupLimit; j++) {

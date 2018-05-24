@@ -52,6 +52,7 @@ import { RootComponent } from './components/root/root.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { WalkThroughComponent } from './components/walk-through/walk-through.component';
 import { AvailabilityPipe } from './pipes/availability/availability.pipe';
+import { DateFormatPipe } from './pipes/date-format/date-format.pipe';
 import { DurationPipe } from './pipes/duration/duration.pipe';
 import { TimeFormatPipe } from './pipes/time-format/time-format.pipe';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
@@ -112,7 +113,8 @@ import { UserService } from './services/user/user.service';
     MembershipBenefitsComponent,
     PointSliderComponent,
     PointStampsComponent,
-    BenefitsComponent
+    BenefitsComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,

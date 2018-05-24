@@ -55,4 +55,7 @@ swiper {
 .pagination-wrapper {
     position: static;
     padding-top: 20px;
+    .swiper-pagination {
+        background-color: transparent;
+    }
 }

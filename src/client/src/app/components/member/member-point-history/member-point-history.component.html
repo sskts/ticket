@@ -5,28 +5,30 @@
         </p>
         <div class="mb-middle text-center">
             現在
-            <span class="large-xx-text">16</span>
+            <span class="large-xx-text">{{ user.data.account?.availableBalance }}</span>
             ポイント
         </div>
         <ul class="mb-middle">
-            <li>
-                <div class="info">
-                    <div class="circle"></div>
-                    <div class="mb-x-small">鑑賞</div>
-                    <div class="small-text">2018年1月1日</div>
+            <li *ngFor="let action of accountMoneyTransferActions">
+                <div *ngIf="action.purpose.typeOf === transactionType.Deposit" class="history">
+                    <div class="info">
+                        <div class="circle"></div>
+                        <div class="mb-x-small">{{ action.description }}</div>
+                        <div class="small-text">{{ action.endDate | dateFormat: 'YYYY年MM月DD日' }}</div>
+                    </div>
+                    <div class="point text-right">
+                        <span class="large-x-text">+{{ action.amount }}</span>
+                    </div>
                 </div>
-                <div class="point text-right">
-                    <span class="large-x-text">+1</span>
-                </div>
-            </li>
-            <li>
-                <div class="info">
-                    <div class="circle circle-blue"></div>
-                    <div class="mb-x-small">無料鑑賞クーポン交換</div>
-                    <div class="small-text">2018年1月1日</div>
-                </div>
-                <div class="point text-right">
-                    <span class="large-x-text">-99</span>
+                <div *ngIf="action.purpose.typeOf === transactionType.Transfer" class="history">
+                    <div class="info">
+                        <div class="circle circle-blue"></div>
+                        <div class="mb-x-small">{{ action.description }}</div>
+                        <div class="small-text">{{ action.endDate | dateFormat: 'YYYY年MM月DD日' }}</div>
+                    </div>
+                    <div class="point text-right">
+                        <span class="large-x-text">-{{ action.amount }}</span>
+                    </div>
                 </div>
             </li>
         </ul>

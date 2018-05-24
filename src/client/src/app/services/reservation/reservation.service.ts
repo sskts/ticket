@@ -104,8 +104,9 @@ export class ReservationService {
      */
     private async fitchReservation(): Promise<IReservationData> {
         await this.sasaki.getServices();
-        const reservationOwnerships = await this.sasaki.person.searchReservationOwnerships({
-            personId: 'me'
+        const reservationOwnerships = await this.sasaki.person.searchOwnershipInfos({
+            goodType: factory.reservationType.EventReservation,
+            ownedBy: 'me'
         });
         console.log(reservationOwnerships);
         const orders: IReservation[] = [];

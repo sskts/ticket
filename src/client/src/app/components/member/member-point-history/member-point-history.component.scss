@@ -1,13 +1,15 @@
 ul {
     li {
-        position: relative;
-        padding: 20px 20px 20px 50px;
-        display: grid;
-        grid-template-columns: 1fr 60px;
-        align-items:center;
-        border-bottom: 1px solid #FFF;
         &:first-child {
             border-top: 1px solid #FFF;
+        }
+        .history {
+            position: relative;
+            padding: 20px 20px 20px 50px;
+            display: grid;
+            grid-template-columns: 1fr 60px;
+            align-items:center;
+            border-bottom: 1px solid #FFF;
         }
         .circle {
             position: absolute;

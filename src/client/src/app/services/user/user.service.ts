@@ -9,6 +9,7 @@ export interface IData {
     memberType: MemberType;
     contact?: factory.person.IContact;
     creditCards?: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
+    account?: factory.pecorino.account.IAccount;
 }
 
 export enum MemberType {
@@ -79,6 +80,7 @@ export class UserService {
     public async initMember() {
         this.data.memberType = MemberType.Member;
         await this.sasaki.getServices();
+        // 連絡先取得
         const contact = await this.sasaki.person.getContacts({
             personId: 'me'
         });
@@ -88,6 +90,7 @@ export class UserService {
         this.data.contact = contact;
 
         try {
+            // クレジットカード検索
             const creditCards = await this.sasaki.person.findCreditCards({
                 personId: 'me'
             });
@@ -97,6 +100,48 @@ export class UserService {
             this.data.creditCards = [];
         }
 
+        // 口座検索
+        let accounts = await this.sasaki.person.findAccounts({
+            personId: 'me'
+        });
+        accounts = accounts.filter((account) => {
+            return account.status === factory.pecorino.accountStatusType.Opened;
+        });
+        if (accounts.length === 0) {
+            // 口座開設
+            this.data.account = await this.sasaki.person.openAccount({
+                personId: 'me',
+                name: `${this.data.contact.familyName} ${this.data.contact.givenName}`
+            });
+        } else {
+            this.data.account = accounts[0];
+        }
+        console.log('口座番号', this.data.account.accountNumber);
+
+        this.save();
+    }
+
+    /**
+     * 口座情報更新
+     */
+    public async updateAccount() {
+        await this.sasaki.getServices();
+        // 口座検索
+        let accounts = await this.sasaki.person.findAccounts({
+            personId: 'me'
+        });
+        accounts = accounts.filter((account) => {
+            return account.status === factory.pecorino.accountStatusType.Opened;
+        });
+        if (accounts.length === 0) {
+            // 口座開設
+            this.data.account = await this.sasaki.person.openAccount({
+                personId: 'me',
+                name: this.getName()
+            });
+        } else {
+            this.data.account = accounts[0];
+        }
         this.save();
     }
 

@@ -6,12 +6,12 @@
         <div *ngIf="!isLoading">
             <div class="mb-middle text-center">
                 現在
-                <span class="large-xx-text">16</span>
+                <span class="large-xx-text">{{ user.data.account?.availableBalance }}</span>
                 ポイント
             </div>
 
             <div class="mb-small">
-                <app-point-stamps [point]="16"></app-point-stamps>
+                <app-point-stamps [point]="user.data.account?.availableBalance"></app-point-stamps>
             </div>
             
             <div class="mb-small">
