@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 1.2.0 - 2018-05-24
+### Changed
+- チケッティングサイト次期バージョンへ向けての互換性対応
+
 ## 1.1.0 - 2018-04-16
 ### Changed
 - node.jsからの起動へ変更
