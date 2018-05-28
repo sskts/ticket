@@ -167,26 +167,6 @@ header {
     display: block;
 }
 
-// .contents {
-//     position: relative;
-//     min-height: calc(100vh - 48px - 60px);
-//     >.inner {
-//         padding: 10px 15px 20px;
-//         .box {
-//             padding: 20px 15px;
-//             background-color: #FFF;
-//             color: #333;
-//             h3 {
-//                 font-weight: bold;
-//             }
-//             p {
-//                 padding-left: 10px;
-//                 line-height: 2.0; 
-//             }
-//         }
-//     }
-// }
-
 .contents {
     box-sizing: border-box;
     position: absolute;
@@ -199,10 +179,18 @@ header {
     height: 100%;
     >.inner {
         padding: 10px 15px 20px;
-    }
-    p {
-        padding-left: 10px;
-        line-height: 2.0; 
+        .box {
+            padding: 20px 15px;
+            background-color: #FFF;
+            color: #333;
+            h3 {
+                font-weight: bold;
+            }
+            p {
+                padding-left: 10px;
+                line-height: 2.0; 
+            }
+        }
     }
 }
 

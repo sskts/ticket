@@ -75,7 +75,7 @@ export class UserService {
     }
 
     /**
-     * 初期化
+     * 会員初期化
      */
     public async initMember() {
         this.data.memberType = MemberType.Member;

@@ -44,7 +44,7 @@ export class TicketComponent implements OnInit {
         try {
             this.reservations = await this.reservation.getReservationByAppreciationDayOrder();
         } catch (err) {
-            this.router.navigate(['/error', { redirect: '/purchase' }]);
+            this.router.navigate(['/error', { redirect: '/ticket' }]);
             console.log(err);
         }
 

@@ -117,11 +117,11 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@motionpicture/sskts-api-javascript-client@3.1.0-alpha.3
+@motionpicture/sskts-api-javascript-client@3.1.0-alpha.5
 ISC
 ISC
 
-@motionpicture/sskts-factory@3.1.0-alpha.16
+@motionpicture/sskts-factory@4.0.0-alpha.0
 ISC
 ISC
 
@@ -236,7 +236,7 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@motionpicture/sskts-api-abstract-client@3.1.0-alpha.2
+@motionpicture/sskts-api-abstract-client@3.1.0-alpha.4
 ISC
 ISC
 

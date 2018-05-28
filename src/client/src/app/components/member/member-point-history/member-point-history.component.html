@@ -13,21 +13,31 @@
                 <div *ngIf="action.purpose.typeOf === transactionType.Deposit" class="history">
                     <div class="info">
                         <div class="circle"></div>
-                        <div class="mb-x-small">{{ action.description }}</div>
+                        <p class="mb-x-small" [innerHtml]="action.description.replace(',', '<br>')"></p>
                         <div class="small-text">{{ action.endDate | dateFormat: 'YYYY年MM月DD日' }}</div>
                     </div>
                     <div class="point text-right">
                         <span class="large-x-text">+{{ action.amount }}</span>
                     </div>
                 </div>
-                <div *ngIf="action.purpose.typeOf === transactionType.Transfer" class="history">
+                <div *ngIf="action.purpose.typeOf === transactionType.Transfer && action.fromLocation.accountNumber === user.data.account?.accountNumber" class="history">
                     <div class="info">
                         <div class="circle circle-blue"></div>
-                        <div class="mb-x-small">{{ action.description }}</div>
+                        <p class="mb-x-small" [innerHtml]="action.description.replace(',', '<br>')"></p>
                         <div class="small-text">{{ action.endDate | dateFormat: 'YYYY年MM月DD日' }}</div>
                     </div>
                     <div class="point text-right">
                         <span class="large-x-text">-{{ action.amount }}</span>
+                    </div>
+                </div>
+                <div *ngIf="action.purpose.typeOf === transactionType.Transfer && action.fromLocation.accountNumber !== user.data.account?.accountNumber" class="history">
+                    <div class="info">
+                        <div class="circle circle-blue"></div>
+                        <p class="mb-x-small" [innerHtml]="action.description.replace(',', '<br>')"></p>
+                        <div class="small-text">{{ action.endDate | dateFormat: 'YYYY年MM月DD日' }}</div>
+                    </div>
+                    <div class="point text-right">
+                        <span class="large-x-text">+{{ action.amount }}</span>
                     </div>
                 </div>
             </li>

@@ -42,6 +42,7 @@ export async function getCredentials(req: Request, res: Response) {
         };
 
         log('getCredentials MemberType', req.query.member);
+
         res.json(credentials);
     } catch (err) {
         errorProsess(res, err);
