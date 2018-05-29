@@ -4,16 +4,16 @@
             <div class="mb-middle">{{ user.getName() }}様</div>
             <div class="mb-middle">
                 現在
-                <span class="large-xx-text">{{ user.data.account?.availableBalance }}</span>
+                <span class="large-xx-text">{{ user.data.accounts[0].availableBalance }}</span>
                 ポイント
             </div>
-            <div *ngIf="user.data.account?.availableBalance < 6" class="mb-middle">
-                あと{{ (6 - user.data.account?.availableBalance) }}ポイントで無料鑑賞
+            <div *ngIf="user.data.accounts[0].availableBalance < 6" class="mb-middle">
+                あと{{ (6 - user.data.accounts[0].availableBalance) }}ポイントで無料鑑賞
             </div>
-            <div *ngIf="user.data.account?.availableBalance >= 6" class="mb-middle">
+            <div *ngIf="user.data.accounts[0].availableBalance >= 6" class="mb-middle">
                 無料鑑賞券を使用できます
             </div>
-            <app-point-slider [point]="user.data.account?.availableBalance"></app-point-slider>
+            <app-point-slider [point]="user.data.accounts[0].availableBalance"></app-point-slider>
         </div>
         <ul class="menu">
             <li (click)="toPurchaseTime()">
