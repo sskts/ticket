@@ -7224,6 +7224,9 @@ var ProgramMembershipGuardService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        if (this.user.data.programMembershipOwnershipInfos === undefined) {
+                            this.user.data.programMembershipOwnershipInfos = [];
+                        }
                         if (this.user.data.programMembershipOwnershipInfos.length > 0) {
                             return [2 /*return*/, true];
                         }
@@ -7237,7 +7240,6 @@ var ProgramMembershipGuardService = /** @class */ (function () {
                     case 2:
                         programMembershipOwnershipInfos = _a.sent();
                         if (programMembershipOwnershipInfos.length === 0) {
-                            this.user.data.programMembershipOwnershipInfos = [];
                             this.router.navigate(['/auth/register/payment']);
                             return [2 /*return*/, false];
                         }

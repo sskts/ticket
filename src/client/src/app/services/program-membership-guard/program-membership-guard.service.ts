@@ -18,6 +18,9 @@ export class ProgramMembershipGuardService implements CanActivate {
    * @returns {Promise<boolean>}
    */
     public async canActivate(): Promise<boolean> {
+        if (this.user.data.programMembershipOwnershipInfos === undefined) {
+            this.user.data.programMembershipOwnershipInfos = [];
+        }
         if (this.user.data.programMembershipOwnershipInfos.length > 0) {
             return true;
         }
@@ -27,7 +30,6 @@ export class ProgramMembershipGuardService implements CanActivate {
             goodType: 'ProgramMembership'
         });
         if (programMembershipOwnershipInfos.length === 0) {
-            this.user.data.programMembershipOwnershipInfos = [];
             this.router.navigate(['/auth/register/payment']);
 
             return false;
