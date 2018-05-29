@@ -1,6 +1,6 @@
 <div class="contents bg-03">
     <div class="inner">
-        <div class="text-center mb-middle">
+        <div *ngIf="!isLoading" class="text-center mb-middle">
             <div class="mb-middle">{{ user.getName() }}様</div>
             <div class="mb-middle">
                 現在
@@ -31,4 +31,5 @@
         </ul>
     </div>
 </div>
+
 <app-loading [show]="isLoading"></app-loading>

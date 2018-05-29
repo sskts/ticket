@@ -26,12 +26,12 @@ export class MemberPointHistoryComponent implements OnInit {
         try {
             this.sasaki.getServices();
             await this.user.updateAccount();
-            if (this.user.data.account === undefined) {
-                throw new Error('account is undefined');
+            if (this.user.data.accounts.length === 0) {
+                throw new Error('account is not found');
             }
             this.accountMoneyTransferActions = await this.sasaki.person.searchAccountMoneyTransferActions({
                 personId: 'me',
-                accountNumber: this.user.data.account.accountNumber
+                accountNumber: this.user.data.accounts[0].accountNumber
             });
             console.log(this.accountMoneyTransferActions);
         } catch (err) {

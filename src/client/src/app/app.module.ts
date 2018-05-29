@@ -2,7 +2,7 @@
  * NgModule
  */
 
-// tslint:disable-next-line:no-submodule-imports
+// tslint:disable:no-submodule-imports max-line-length
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { AppComponent } from './components/app/app.component';
 import { AuthLogoutComponent } from './components/auth/auth-logout/auth-logout.component';
+import { AuthRegisterPaymentComponent } from './components/auth/auth-register-payment/auth-register-payment.component';
+import { AuthRegisterProgramMembershipComponent } from './components/auth/auth-register-program-membership/auth-register-program-membership.component';
 import { AuthRegisterTermsComponent } from './components/auth/auth-register-terms/auth-register-terms.component';
 import { AuthRegisterComponent } from './components/auth/auth-register/auth-register.component';
 import { AuthSelectComponent } from './components/auth/auth-select/auth-select.component';
@@ -27,7 +29,6 @@ import { MemberEditCreditComponent } from './components/member/member-edit-credi
 import { MemberEditProfileComponent } from './components/member/member-edit-profile/member-edit-profile.component';
 import { MemberEditComponent } from './components/member/member-edit/member-edit.component';
 import { MemberMypageComponent } from './components/member/member-mypage/member-mypage.component';
-import { MemberPaymentComponent } from './components/member/member-payment/member-payment.component';
 import { MemberPointHistoryComponent } from './components/member/member-point-history/member-point-history.component';
 import { MemberPointComponent } from './components/member/member-point/member-point.component';
 import { MemberWithdrawComponent } from './components/member/member-withdraw/member-withdraw.component';
@@ -60,6 +61,7 @@ import { AwsCognitoService } from './services/aws-cognito/aws-cognito.service';
 import { CallNativeService } from './services/call-native/call-native.service';
 import { CreditGuardService } from './services/credit-guard/credit-guard.service';
 import { MemberGuardService } from './services/member-guard/member-guard.service';
+import { ProgramMembershipGuardService } from './services/program-membership-guard/program-membership-guard.service';
 import { PurchaseService } from './services/purchase/purchase.service';
 import { ReservationService } from './services/reservation/reservation.service';
 import { SasakiService } from './services/sasaki/sasaki.service';
@@ -104,7 +106,6 @@ import { UserService } from './services/user/user.service';
     AuthSigninComponent,
     AuthSignoutComponent,
     MemberEditCreditComponent,
-    MemberPaymentComponent,
     ModalComponent,
     MemberEditProfileComponent,
     RootComponent,
@@ -114,7 +115,9 @@ import { UserService } from './services/user/user.service';
     PointSliderComponent,
     PointStampsComponent,
     BenefitsComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    AuthRegisterPaymentComponent,
+    AuthRegisterProgramMembershipComponent
   ],
   imports: [
     BrowserModule,
@@ -136,7 +139,8 @@ import { UserService } from './services/user/user.service';
     SasakiService,
     MemberGuardService,
     PurchaseService,
-    CreditGuardService
+    CreditGuardService,
+    ProgramMembershipGuardService
   ],
   bootstrap: [AppComponent]
 })

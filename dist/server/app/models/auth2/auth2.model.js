@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const sasaki = require("@motionpicture/sskts-api-nodejs-client");
 const debug = require("debug");
-const log = debug('SSKTS:authorize');
+const log = debug('SSKTS:Auth2Model');
 /**
  * 認証モデル
  * @class Auth2Model
@@ -13,7 +13,7 @@ class Auth2Model {
      * @param {any} session
      */
     constructor(session) {
-        log('Auth2Model constructor', session);
+        log('constructor');
         if (session === undefined) {
             session = {};
         }

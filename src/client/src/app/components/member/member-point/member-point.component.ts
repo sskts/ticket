@@ -17,6 +17,7 @@ export class MemberPointComponent implements OnInit {
     ) { }
 
     public async ngOnInit() {
+        this.pointUseModal = false;
         this.isLoading = true;
         try {
             await this.user.updateAccount();
@@ -25,7 +26,6 @@ export class MemberPointComponent implements OnInit {
             console.log('MemberPointComponent.ngOnInit', err);
         }
         this.isLoading = false;
-        this.pointUseModal = false;
     }
 
 }

@@ -76,18 +76,28 @@ export class ReservationService {
         });
         const expired = 10;
 
-        let orders: IReservation[] = [];
+        const orders: IReservation[] = [];
         if (Array.isArray(reservationRecord.orders)) {
-            orders = reservationRecord.orders.map((order) => {
-                return {
+            reservationRecord.orders.forEach((order) => {
+                const reservationsFor: IEvent[] = [];
+                order.acceptedOffers.forEach((offer) => {
+                    if (offer.itemOffered.typeOf !== factory.reservationType.EventReservation) {
+                        return;
+                    }
+                    reservationsFor.push(offer.itemOffered.reservationFor);
+                });
+                const reservedTickets: ITicket[] = [];
+                order.acceptedOffers.forEach((offer) => {
+                    if (offer.itemOffered.typeOf !== factory.reservationType.EventReservation) {
+                        return;
+                    }
+                    reservedTickets.push(offer.itemOffered.reservedTicket);
+                });
+                orders.push({
                     confirmationNumber: String(order.confirmationNumber),
-                    reservationsFor: order.acceptedOffers.map((offer) => {
-                        return offer.itemOffered.reservationFor;
-                    }),
-                    reservedTickets: order.acceptedOffers.map((offer) => {
-                        return offer.itemOffered.reservedTicket;
-                    })
-                };
+                    reservationsFor: reservationsFor,
+                    reservedTickets: reservedTickets
+                });
             });
         }
 

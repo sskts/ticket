@@ -8,8 +8,9 @@ import { SaveType, StorageService } from '../storage/storage.service';
 export interface IData {
     memberType: MemberType;
     contact?: factory.person.IContact;
-    creditCards?: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
-    account?: factory.pecorino.account.IAccount;
+    creditCards: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
+    accounts: factory.pecorino.account.IAccount[];
+    programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<'ProgramMembership'>[];
 }
 
 export enum MemberType {
@@ -47,7 +48,10 @@ export class UserService {
         const data: IData | null = this.storage.load(STORAGE_KEY, SaveType.Local);
         if (data === null) {
             this.data = {
-                memberType: MemberType.NotMember
+                memberType: MemberType.NotMember,
+                creditCards: [],
+                accounts: [],
+                programMembershipOwnershipInfos: []
             };
 
             return;
@@ -69,7 +73,10 @@ export class UserService {
      */
     public reset() {
         this.data = {
-            memberType: MemberType.NotMember
+            memberType: MemberType.NotMember,
+            creditCards: [],
+            accounts: [],
+            programMembershipOwnershipInfos: []
         };
         this.save();
     }
@@ -109,14 +116,21 @@ export class UserService {
         });
         if (accounts.length === 0) {
             // 口座開設
-            this.data.account = await this.sasaki.person.openAccount({
+            const account = await this.sasaki.person.openAccount({
                 personId: 'me',
                 name: `${this.data.contact.familyName} ${this.data.contact.givenName}`
             });
+            this.data.accounts.push(account);
         } else {
-            this.data.account = accounts[0];
+            this.data.accounts = accounts;
         }
-        console.log('口座番号', this.data.account.accountNumber);
+
+        const programMembershipOwnershipInfos = await this.sasaki.person.searchOwnershipInfos({
+            ownedBy: 'me',
+            goodType: 'ProgramMembership'
+        });
+
+        this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos;
 
         this.save();
     }
@@ -135,12 +149,13 @@ export class UserService {
         });
         if (accounts.length === 0) {
             // 口座開設
-            this.data.account = await this.sasaki.person.openAccount({
+            const account = await this.sasaki.person.openAccount({
                 personId: 'me',
                 name: this.getName()
             });
+            this.data.accounts.push(account);
         } else {
-            this.data.account = accounts[0];
+            this.data.accounts = accounts;
         }
         this.save();
     }
@@ -176,8 +191,7 @@ export class UserService {
      * クレジットカード情報取得（表示）
      */
     public getCreditCard(index: number) {
-        if (this.data.creditCards === undefined
-            || this.data.creditCards.length === 0) {
+        if (this.data.creditCards.length === 0) {
             return undefined;
         }
         return {
@@ -223,8 +237,7 @@ export class UserService {
      */
     public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
         await this.sasaki.getServices();
-        if (this.data.creditCards !== undefined
-            && this.data.creditCards.length > 0) {
+        if (this.data.creditCards.length > 0) {
             // 登録済みなら削除
             await this.sasaki.person.deleteCreditCard({
                 personId: 'me',

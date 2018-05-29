@@ -18,6 +18,7 @@ export class SasakiService {
     public transaction: {
         placeOrder: sasaki.service.transaction.PlaceOrder
     };
+    public programMembership: sasaki.service.ProgramMembership;
 
     constructor(
         private http: HttpClient,
@@ -38,6 +39,7 @@ export class SasakiService {
             this.transaction = {
                 placeOrder: new sasaki.service.transaction.PlaceOrder(option)
             };
+            this.programMembership = new sasaki.service.ProgramMembership(option);
         } catch (err) {
             console.log(err);
             throw new Error('getServices is failed');

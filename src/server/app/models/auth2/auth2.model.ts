@@ -1,6 +1,6 @@
 import * as sasaki from '@motionpicture/sskts-api-nodejs-client';
 import debug = require('debug');
-const log = debug('SSKTS:authorize');
+const log = debug('SSKTS:Auth2Model');
 /**
  * 認証セッション
  * @interface IAuth2Session
@@ -59,7 +59,7 @@ export class Auth2Model {
      * @param {any} session
      */
     constructor(session?: any) {
-        log('Auth2Model constructor', session);
+        log('constructor');
         if (session === undefined) {
             session = {};
         }
