@@ -2,7 +2,6 @@
  * HeaderMenuComponent
  */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { environment } from '../../../../environments/environment';
 import { CallNativeService, InAppBrowserTarget } from '../../../services/call-native/call-native.service';
 import { UserService } from '../../../services/user/user.service';
 
@@ -13,9 +12,7 @@ import { UserService } from '../../../services/user/user.service';
 })
 export class HeaderMenuComponent implements OnInit {
     @Input() public isOpen: boolean;
-    @Output() public logout: EventEmitter<{}> = new EventEmitter();
     @Output() public close: EventEmitter<{}> = new EventEmitter();
-    public portalSite: string;
 
     constructor(
         private callNative: CallNativeService,
@@ -28,7 +25,6 @@ export class HeaderMenuComponent implements OnInit {
      * @returns {Promise<void>}
      */
     public ngOnInit(): void {
-        this.portalSite = environment.PORTAL_SITE;
     }
 
     /**

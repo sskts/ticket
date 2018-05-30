@@ -33,6 +33,8 @@ import { MemberPointHistoryComponent } from './components/member/member-point-hi
 import { MemberPointComponent } from './components/member/member-point/member-point.component';
 import { MemberWithdrawComponent } from './components/member/member-withdraw/member-withdraw.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HeaderMenuMemberComponent } from './components/parts/header-menu-member/header-menu-member.component';
+import { HeaderMenuNotMemberComponent } from './components/parts/header-menu-not-member/header-menu-not-member.component';
 import { HeaderMenuComponent } from './components/parts/header-menu/header-menu.component';
 import { HeaderComponent } from './components/parts/header/header.component';
 import { IconComponent } from './components/parts/icon/icon.component';
@@ -117,7 +119,9 @@ import { UserService } from './services/user/user.service';
     BenefitsComponent,
     DateFormatPipe,
     AuthRegisterPaymentComponent,
-    AuthRegisterProgramMembershipComponent
+    AuthRegisterProgramMembershipComponent,
+    HeaderMenuMemberComponent,
+    HeaderMenuNotMemberComponent
   ],
   imports: [
     BrowserModule,
