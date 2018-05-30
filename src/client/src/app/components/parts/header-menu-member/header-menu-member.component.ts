@@ -16,6 +16,10 @@ export class HeaderMenuMemberComponent implements OnInit {
 
     constructor() { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
     }
 

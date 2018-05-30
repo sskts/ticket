@@ -12,6 +12,10 @@ export class PointSliderComponent implements OnInit {
 
     constructor() { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
         this.viewPoint = (this.point > 5) ? 6 : this.point;
     }

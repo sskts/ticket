@@ -23,9 +23,13 @@ export class MemberEditProfileComponent implements OnInit {
         private user: UserService
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public async ngOnInit() {
+        window.scrollTo(0, 0);
         try {
-            window.scrollTo(0, 0);
             this.profileForm = this.createForm();
             this.isLoading = false;
             this.disable = false;
@@ -108,6 +112,10 @@ export class MemberEditProfileComponent implements OnInit {
         });
     }
 
+    /**
+     * フォーム確定
+     * @method onSubmit
+     */
     public async onSubmit() {
         if (this.disable) {
             return;

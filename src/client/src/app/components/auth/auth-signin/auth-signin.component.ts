@@ -14,6 +14,10 @@ export class AuthSigninComponent implements OnInit {
         private user: UserService
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public async ngOnInit() {
         try {
             await this.user.initMember();

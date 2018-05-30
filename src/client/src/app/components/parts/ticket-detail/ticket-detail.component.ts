@@ -18,6 +18,10 @@ export class TicketDetailComponent implements OnInit {
 
     constructor() { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public async ngOnInit() {
         this.showQrCodeList = [];
         this.qrCodeList = [];

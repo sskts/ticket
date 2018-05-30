@@ -15,8 +15,15 @@ export class PurchasePerformanceTimeComponent implements OnInit {
         private purchase: PurchaseService
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
-        this.salseFlg = moment(this.performance.startDate).unix() > moment().add(30, 'minutes').unix();
+        const addMinutes = 30;
+        const startDate = moment(this.performance.startDate).unix();
+        const addDate = moment().add(addMinutes, 'minutes').unix();
+        this.salseFlg = (startDate > addDate);
     }
 
     /**

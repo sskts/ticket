@@ -19,9 +19,8 @@ export class BaseComponent implements OnInit {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
-    public async ngOnInit(): Promise<void> {
+    public async ngOnInit() {
     }
 
 }

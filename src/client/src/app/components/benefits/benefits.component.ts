@@ -9,7 +9,12 @@ export class BenefitsComponent implements OnInit {
 
     constructor() { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
+        window.scrollTo(0, 0);
     }
 
 }

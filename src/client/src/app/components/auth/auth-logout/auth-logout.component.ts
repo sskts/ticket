@@ -13,10 +13,19 @@ export class AuthLogoutComponent implements OnInit {
         private sasaki: SasakiService
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
+        window.scrollTo(0, 0);
         this.isLoading = false;
     }
 
+    /**
+     * サインアウト
+     * @method signOut
+     */
     public async signOut() {
         this.isLoading = true;
         try {

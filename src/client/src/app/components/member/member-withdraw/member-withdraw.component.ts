@@ -9,10 +9,19 @@ export class MemberWithdrawComponent implements OnInit {
     public isLoading: boolean;
     constructor() { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
+        window.scrollTo(0, 0);
         this.isLoading = false;
     }
 
+    /**
+     * 退会
+     * @method withdraw
+     */
     public withdraw() {
         this.isLoading = true;
         this.isLoading = false;

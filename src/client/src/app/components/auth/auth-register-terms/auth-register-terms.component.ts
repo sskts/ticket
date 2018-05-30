@@ -18,7 +18,12 @@ export class AuthRegisterTermsComponent implements OnInit {
         private formBuilder: FormBuilder
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
+        window.scrollTo(0, 0);
         this.termsForm = this.formBuilder.group({
             terms: [false, [Validators.requiredTrue]]
         });
@@ -27,7 +32,7 @@ export class AuthRegisterTermsComponent implements OnInit {
     }
 
     /**
-     * 次へ
+     * フォーム確定
      * @method onSubmit
      */
     public async onSubmit() {

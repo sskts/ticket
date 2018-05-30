@@ -14,6 +14,10 @@ export class AuthSignoutComponent implements OnInit {
         private user: UserService
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
         this.user.data.memberType = MemberType.Member;
         this.user.save();

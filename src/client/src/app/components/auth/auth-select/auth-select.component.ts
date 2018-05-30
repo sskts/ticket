@@ -20,10 +20,18 @@ export class AuthSelectComponent implements OnInit {
         private awsCognito: AwsCognitoService
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit(): void {
         this.isLoading = false;
     }
 
+    /**
+     * サインイン
+     * @method signIn
+     */
     public async signIn() {
         this.isLoading = true;
         try {
@@ -36,6 +44,10 @@ export class AuthSelectComponent implements OnInit {
         }
     }
 
+    /**
+     * スタート
+     * @method start
+     */
     public async start() {
         this.isLoading = true;
         const deviceId = localStorage.getItem('deviceId');

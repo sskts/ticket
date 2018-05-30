@@ -33,6 +33,10 @@ export class AuthRegisterPaymentComponent implements OnInit {
         private sasaki: SasakiService
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public async ngOnInit() {
         window.scrollTo(0, 0);
         this.isLoading = true;
@@ -207,6 +211,7 @@ export class AuthRegisterPaymentComponent implements OnInit {
 
     /**
      * サインアウト
+     * @method signOut
      */
     public async signOut() {
         await this.sasaki.getServices();

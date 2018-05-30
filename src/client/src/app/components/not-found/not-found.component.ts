@@ -20,8 +20,9 @@ export class NotFoundComponent implements OnInit {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
-    public async ngOnInit(): Promise<void> { }
+    public async ngOnInit() {
+        window.scrollTo(0, 0);
+    }
 
 }

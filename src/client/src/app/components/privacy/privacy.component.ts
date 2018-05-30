@@ -15,8 +15,9 @@ export class PrivacyComponent implements OnInit {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {void}
      */
-    public ngOnInit(): void { }
+    public ngOnInit() {
+        window.scrollTo(0, 0);
+    }
 
 }

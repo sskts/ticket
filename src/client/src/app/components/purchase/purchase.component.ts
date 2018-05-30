@@ -41,9 +41,9 @@ export class PurchaseComponent implements OnInit {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
-    public async ngOnInit(): Promise<void> {
+    public async ngOnInit() {
+        window.scrollTo(0, 0);
         this.isLoading = true;
         try {
             this.conditions = this.select.getSelect().purchase;
@@ -61,9 +61,8 @@ export class PurchaseComponent implements OnInit {
     /**
      * 条件変更
      * @method changeConditions
-     * @returns {Promise<void>}
      */
-    public async changeConditions(): Promise<void> {
+    public async changeConditions() {
         this.isLoading = true;
         this.select.data.purchase = this.conditions;
         this.select.save();
@@ -108,6 +107,10 @@ export class PurchaseComponent implements OnInit {
         this.isLoading = false;
     }
 
+    /**
+     * ソート変更
+     * @method changeSort
+     */
     public async changeSort(sort: PurchaseSort) {
         this.select.data.purchase.sort = sort;
         this.select.save();

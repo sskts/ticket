@@ -12,6 +12,12 @@ export class AboutComponent implements OnInit {
 
     constructor() { }
 
-    public ngOnInit(): void { }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
+    public ngOnInit() {
+        window.scrollTo(0, 0);
+    }
 
 }

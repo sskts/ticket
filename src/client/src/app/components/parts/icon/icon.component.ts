@@ -14,6 +14,10 @@ export class IconComponent implements OnInit {
 
     constructor(private sanitizer: DomSanitizer) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
         this.styles = this.sanitizer.bypassSecurityTrustStyle('');
         if (this.width !== undefined && this.height !== undefined) {

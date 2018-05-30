@@ -585,7 +585,13 @@ var styles = [""];
 var AboutComponent = /** @class */ (function () {
     function AboutComponent() {
     }
-    AboutComponent.prototype.ngOnInit = function () { };
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
+    AboutComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
+    };
     return AboutComponent;
 }());
 
@@ -655,7 +661,13 @@ var AppComponent = /** @class */ (function () {
             }
         });
     }
-    AppComponent.prototype.ngOnInit = function () { };
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
+    AppComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
+    };
     return AppComponent;
 }());
 
@@ -768,9 +780,18 @@ var AuthLogoutComponent = /** @class */ (function () {
     function AuthLogoutComponent(sasaki) {
         this.sasaki = sasaki;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     AuthLogoutComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
         this.isLoading = false;
     };
+    /**
+     * サインアウト
+     * @method signOut
+     */
     AuthLogoutComponent.prototype.signOut = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _a;
@@ -1009,6 +1030,10 @@ var AuthRegisterPaymentComponent = /** @class */ (function () {
         this.user = user;
         this.sasaki = sasaki;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     AuthRegisterPaymentComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _a, err_1;
@@ -1221,6 +1246,7 @@ var AuthRegisterPaymentComponent = /** @class */ (function () {
     };
     /**
      * サインアウト
+     * @method signOut
      */
     AuthRegisterPaymentComponent.prototype.signOut = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -1368,7 +1394,12 @@ var AuthRegisterTermsComponent = /** @class */ (function () {
         this.sasaki = sasaki;
         this.formBuilder = formBuilder;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     AuthRegisterTermsComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
         this.termsForm = this.formBuilder.group({
             terms: [false, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["t" /* Validators */].requiredTrue]]
         });
@@ -1376,7 +1407,7 @@ var AuthRegisterTermsComponent = /** @class */ (function () {
         this.disable = false;
     };
     /**
-     * 次へ
+     * フォーム確定
      * @method onSubmit
      */
     AuthRegisterTermsComponent.prototype.onSubmit = function () {
@@ -1495,7 +1526,12 @@ var styles = [".contents[_ngcontent-%COMP%] {\n  min-height: 100vh; }\n  .conten
 var AuthRegisterComponent = /** @class */ (function () {
     function AuthRegisterComponent() {
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     AuthRegisterComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
     };
     return AuthRegisterComponent;
 }());
@@ -1630,9 +1666,17 @@ var AuthSelectComponent = /** @class */ (function () {
         this.user = user;
         this.awsCognito = awsCognito;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     AuthSelectComponent.prototype.ngOnInit = function () {
         this.isLoading = false;
     };
+    /**
+     * サインイン
+     * @method signIn
+     */
     AuthSelectComponent.prototype.signIn = function () {
         return __awaiter(this, void 0, void 0, function () {
             var error_1;
@@ -1659,6 +1703,10 @@ var AuthSelectComponent = /** @class */ (function () {
             });
         });
     };
+    /**
+     * スタート
+     * @method start
+     */
     AuthSelectComponent.prototype.start = function () {
         return __awaiter(this, void 0, void 0, function () {
             var deviceId, err_1;
@@ -1804,6 +1852,10 @@ var AuthSigninComponent = /** @class */ (function () {
         this.router = router;
         this.user = user;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     AuthSigninComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             var err_1;
@@ -1901,6 +1953,10 @@ var AuthSignoutComponent = /** @class */ (function () {
         this.router = router;
         this.user = user;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     AuthSignoutComponent.prototype.ngOnInit = function () {
         this.user.data.memberType = __WEBPACK_IMPORTED_MODULE_2__services_user_user_service__["a" /* MemberType */].Member;
         this.user.save();
@@ -2030,7 +2086,6 @@ var BaseComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
     BaseComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -2116,7 +2171,12 @@ var styles = [""];
 var BenefitsComponent = /** @class */ (function () {
     function BenefitsComponent() {
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     BenefitsComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
     };
     return BenefitsComponent;
 }());
@@ -2238,9 +2298,10 @@ var ErrorComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
-    ErrorComponent.prototype.ngOnInit = function () { };
+    ErrorComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
+    };
     /**
      * 接続
      * @method connect
@@ -2353,9 +2414,10 @@ var LawComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
-    LawComponent.prototype.ngOnInit = function () { };
+    LawComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
+    };
     return LawComponent;
 }());
 
@@ -2425,7 +2487,12 @@ var styles = [""];
 var MemberBenefitsComponent = /** @class */ (function () {
     function MemberBenefitsComponent() {
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     MemberBenefitsComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
     };
     return MemberBenefitsComponent;
 }());
@@ -2634,6 +2701,10 @@ var MemberEditCreditComponent = /** @class */ (function () {
         this.formBuilder = formBuilder;
         this.user = user;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     MemberEditCreditComponent.prototype.ngOnInit = function () {
         window.scrollTo(0, 0);
         this.isLoading = false;
@@ -2928,11 +2999,15 @@ var MemberEditProfileComponent = /** @class */ (function () {
         this.router = router;
         this.user = user;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     MemberEditProfileComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
+                window.scrollTo(0, 0);
                 try {
-                    window.scrollTo(0, 0);
                     this.profileForm = this.createForm();
                     this.isLoading = false;
                     this.disable = false;
@@ -3013,6 +3088,10 @@ var MemberEditProfileComponent = /** @class */ (function () {
             postalCode: [profile.postalCode.value, profile.postalCode.validators]
         });
     };
+    /**
+     * フォーム確定
+     * @method onSubmit
+     */
     MemberEditProfileComponent.prototype.onSubmit = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
@@ -3152,7 +3231,12 @@ var MemberEditComponent = /** @class */ (function () {
     function MemberEditComponent(user) {
         this.user = user;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     MemberEditComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
     };
     return MemberEditComponent;
 }());
@@ -3204,10 +3288,10 @@ function View_MemberMypageComponent_2(_l) { return __WEBPACK_IMPORTED_MODULE_1__
 function View_MemberMypageComponent_3(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 1, "div", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                \u7121\u6599\u9451\u8CDE\u5238\u3092\u4F7F\u7528\u3067\u304D\u307E\u3059\n            "]))], null, null); }
 function View_MemberMypageComponent_1(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 19, "div", [["class", "text-center mb-middle"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](2, 0, null, null, 1, "div", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](3, null, ["", "\u69D8"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](5, 0, null, null, 4, "div", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                \u73FE\u5728\n                "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](7, 0, null, null, 1, "span", [["class", "large-xx-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](8, null, ["", ""])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                \u30DD\u30A4\u30F3\u30C8\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵand"](16777216, null, null, 1, null, View_MemberMypageComponent_2)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](12, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["NgIf"], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewContainerRef"], __WEBPACK_IMPORTED_MODULE_1__angular_core__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵand"](16777216, null, null, 1, null, View_MemberMypageComponent_3)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](15, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["NgIf"], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewContainerRef"], __WEBPACK_IMPORTED_MODULE_1__angular_core__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](17, 0, null, null, 1, "app-point-slider", [], null, null, null, __WEBPACK_IMPORTED_MODULE_3__parts_point_slider_point_slider_component_ngfactory__["b" /* View_PointSliderComponent_0 */], __WEBPACK_IMPORTED_MODULE_3__parts_point_slider_point_slider_component_ngfactory__["a" /* RenderType_PointSliderComponent */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](18, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_4__parts_point_slider_point_slider_component__["a" /* PointSliderComponent */], [], { point: [0, "point"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "]))], function (_ck, _v) { var _co = _v.component; var currVal_2 = (_co.user.data.accounts[0].availableBalance < 6); _ck(_v, 12, 0, currVal_2); var currVal_3 = (_co.user.data.accounts[0].availableBalance >= 6); _ck(_v, 15, 0, currVal_3); var currVal_4 = _co.user.data.accounts[0].availableBalance; _ck(_v, 18, 0, currVal_4); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.getName(); _ck(_v, 3, 0, currVal_0); var currVal_1 = _co.user.data.accounts[0].availableBalance; _ck(_v, 8, 0, currVal_1); }); }
 function View_MemberMypageComponent_0(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 36, "div", [["class", "contents bg-03"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](2, 0, null, null, 33, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵand"](16777216, null, null, 1, null, View_MemberMypageComponent_1)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](5, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["NgIf"], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewContainerRef"], __WEBPACK_IMPORTED_MODULE_1__angular_core__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](7, 0, null, null, 27, "ul", [["class", "menu"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](9, 0, null, null, 4, "li", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
-        var pd_0 = (_co.toPurchaseTime() !== false);
+        var pd_0 = (_co.redirectToPurchaseTime() !== false);
         ad = (pd_0 && ad);
     } return ad; }, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](11, 0, null, null, 1, "div", [["class", "text-center caption"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\u4ECA\u30B9\u30B0\u89B3\u308B"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](15, 0, null, null, 4, "li", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
-        var pd_0 = (_co.toPurchaseFilm() !== false);
+        var pd_0 = (_co.redirectToPurchaseFilm() !== false);
         ad = (pd_0 && ad);
     } return ad; }, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](17, 0, null, null, 1, "div", [["class", "text-center caption"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\u30C1\u30B1\u30C3\u30C8\u8CFC\u5165"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](21, 0, null, null, 5, "li", [["routerLink", "/member/edit"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
         var pd_0 = (__WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵnov"](_v, 22).onClick() !== false);
@@ -3297,12 +3381,17 @@ var MemberMypageComponent = /** @class */ (function () {
         this.select = select;
         this.router = router;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     MemberMypageComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             var err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        window.scrollTo(0, 0);
                         this.isLoading = true;
                         _a.label = 1;
                     case 1:
@@ -3325,8 +3414,9 @@ var MemberMypageComponent = /** @class */ (function () {
     };
     /**
      * チケット購入へ移動（上映時間順）
+     * @method redirectToPurchaseTime
      */
-    MemberMypageComponent.prototype.toPurchaseTime = function () {
+    MemberMypageComponent.prototype.redirectToPurchaseTime = function () {
         this.select.getSelect();
         this.select.data.purchase.date = __WEBPACK_IMPORTED_MODULE_2_moment__().format('YYYYMMDD');
         this.select.data.purchase.sort = __WEBPACK_IMPORTED_MODULE_3__services_select_select_service__["a" /* PurchaseSort */].Time;
@@ -3334,8 +3424,9 @@ var MemberMypageComponent = /** @class */ (function () {
     };
     /**
      * チケット購入へ移動（作品順）
+     * @method redirectToPurchaseFilm
      */
-    MemberMypageComponent.prototype.toPurchaseFilm = function () {
+    MemberMypageComponent.prototype.redirectToPurchaseFilm = function () {
         this.select.getSelect();
         this.select.data.purchase.sort = __WEBPACK_IMPORTED_MODULE_3__services_select_select_service__["a" /* PurchaseSort */].Film;
         this.router.navigate(['/purchase']);
@@ -3473,12 +3564,17 @@ var MemberPointHistoryComponent = /** @class */ (function () {
         this.router = router;
         this.sasaki = sasaki;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     MemberPointHistoryComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _a, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
+                        window.scrollTo(0, 0);
                         this.transactionType = __WEBPACK_IMPORTED_MODULE_2__motionpicture_sskts_api_javascript_client__["factory"].pecorino.transactionType;
                         this.isLoading = true;
                         _b.label = 1;
@@ -3649,12 +3745,17 @@ var MemberPointComponent = /** @class */ (function () {
         this.user = user;
         this.router = router;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     MemberPointComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             var err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        window.scrollTo(0, 0);
                         this.pointUseModal = false;
                         this.isLoading = true;
                         _a.label = 1;
@@ -3748,9 +3849,18 @@ var styles = [".contents[_ngcontent-%COMP%] {\n  min-height: auto; }"];
 var MemberWithdrawComponent = /** @class */ (function () {
     function MemberWithdrawComponent() {
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     MemberWithdrawComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
         this.isLoading = false;
     };
+    /**
+     * 退会
+     * @method withdraw
+     */
     MemberWithdrawComponent.prototype.withdraw = function () {
         this.isLoading = true;
         this.isLoading = false;
@@ -3866,12 +3976,14 @@ var NotFoundComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
     NotFoundComponent.prototype.ngOnInit = function () {
-        return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-            return [2 /*return*/];
-        }); });
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                window.scrollTo(0, 0);
+                return [2 /*return*/];
+            });
+        });
     };
     return NotFoundComponent;
 }());
@@ -4011,6 +4123,10 @@ var HeaderMenuMemberComponent = /** @class */ (function () {
         this.openWebBrowse = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.environment = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */];
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     HeaderMenuMemberComponent.prototype.ngOnInit = function () {
     };
     return HeaderMenuMemberComponent;
@@ -4133,6 +4249,10 @@ var HeaderMenuNotMemberComponent = /** @class */ (function () {
         this.openWebBrowse = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.environment = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */];
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     HeaderMenuNotMemberComponent.prototype.ngOnInit = function () {
     };
     return HeaderMenuNotMemberComponent;
@@ -4244,14 +4364,12 @@ var HeaderMenuComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
     HeaderMenuComponent.prototype.ngOnInit = function () {
     };
     /**
      * webブラウザで開く
      * @method openWebBrowse
-     * @param {string} url
      */
     HeaderMenuComponent.prototype.openWebBrowse = function (url) {
         this.callNative.inAppBrowser({
@@ -4376,7 +4494,6 @@ var HeaderComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
     HeaderComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -4405,7 +4522,6 @@ var HeaderComponent = /** @class */ (function () {
     /**
      * ページ変更
      * @method changePage
-     * @param {string} url
      */
     HeaderComponent.prototype.changePage = function (url) {
         var page = pages.find(function (value) {
@@ -4487,6 +4603,10 @@ var IconComponent = /** @class */ (function () {
     function IconComponent(sanitizer) {
         this.sanitizer = sanitizer;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     IconComponent.prototype.ngOnInit = function () {
         this.styles = this.sanitizer.bypassSecurityTrustStyle('');
         if (this.width !== undefined && this.height !== undefined) {
@@ -4562,7 +4682,6 @@ var LoadingComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
     LoadingComponent.prototype.ngOnInit = function () { };
     return LoadingComponent;
@@ -4630,6 +4749,10 @@ var styles = [""];
 var MembershipBenefitsComponent = /** @class */ (function () {
     function MembershipBenefitsComponent() {
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     MembershipBenefitsComponent.prototype.ngOnInit = function () {
     };
     return MembershipBenefitsComponent;
@@ -4714,6 +4837,10 @@ var ModalComponent = /** @class */ (function () {
     function ModalComponent() {
         this.close = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     ModalComponent.prototype.ngOnInit = function () {
     };
     return ModalComponent;
@@ -4816,7 +4943,6 @@ var NavigationComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
     NavigationComponent.prototype.ngOnInit = function () { };
     return NavigationComponent;
@@ -4884,6 +5010,10 @@ var styles = [".slider-cover[_ngcontent-%COMP%] {\n  width: 100%;\n  max-width: 
 var PointSliderComponent = /** @class */ (function () {
     function PointSliderComponent() {
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     PointSliderComponent.prototype.ngOnInit = function () {
         this.viewPoint = (this.point > 5) ? 6 : this.point;
     };
@@ -4963,6 +5093,10 @@ var styles = ["swiper[_ngcontent-%COMP%] {\n  margin: 0 -15px; }\n  swiper[_ngco
 var PointStampsComponent = /** @class */ (function () {
     function PointStampsComponent() {
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     PointStampsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.config = {
@@ -5126,7 +5260,6 @@ var PurchasePerformanceFilmComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {void}
      */
     PurchasePerformanceFilmComponent.prototype.ngOnInit = function () {
         this.salseFlg = __WEBPACK_IMPORTED_MODULE_1_moment__(this.performance.startDate).unix() > __WEBPACK_IMPORTED_MODULE_1_moment__().add(30, 'minutes').unix();
@@ -5272,8 +5405,15 @@ var PurchasePerformanceTimeComponent = /** @class */ (function () {
     function PurchasePerformanceTimeComponent(purchase) {
         this.purchase = purchase;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     PurchasePerformanceTimeComponent.prototype.ngOnInit = function () {
-        this.salseFlg = __WEBPACK_IMPORTED_MODULE_1_moment__(this.performance.startDate).unix() > __WEBPACK_IMPORTED_MODULE_1_moment__().add(30, 'minutes').unix();
+        var addMinutes = 30;
+        var startDate = __WEBPACK_IMPORTED_MODULE_1_moment__(this.performance.startDate).unix();
+        var addDate = __WEBPACK_IMPORTED_MODULE_1_moment__().add(addMinutes, 'minutes').unix();
+        this.salseFlg = (startDate > addDate);
     };
     /**
      * パフォーマンス選択
@@ -5416,6 +5556,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var TicketDetailComponent = /** @class */ (function () {
     function TicketDetailComponent() {
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     TicketDetailComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             var i, showQrCode, ticketToken, basicSize, option, qrCode;
@@ -5531,6 +5675,10 @@ var styles = [".button-primary[_ngcontent-%COMP%] {\n  max-width: none; }\n\napp
 var TicketNotFoundComponent = /** @class */ (function () {
     function TicketNotFoundComponent() {
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     TicketNotFoundComponent.prototype.ngOnInit = function () {
     };
     return TicketNotFoundComponent;
@@ -5604,9 +5752,10 @@ var PolicyComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {void}
      */
-    PolicyComponent.prototype.ngOnInit = function () { };
+    PolicyComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
+    };
     return PolicyComponent;
 }());
 
@@ -5678,9 +5827,10 @@ var PrivacyComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {void}
      */
-    PrivacyComponent.prototype.ngOnInit = function () { };
+    PrivacyComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
+    };
     return PrivacyComponent;
 }());
 
@@ -5872,7 +6022,6 @@ var PurchaseComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
     PurchaseComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -5880,6 +6029,7 @@ var PurchaseComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        window.scrollTo(0, 0);
                         this.isLoading = true;
                         _a.label = 1;
                     case 1:
@@ -5908,7 +6058,6 @@ var PurchaseComponent = /** @class */ (function () {
     /**
      * 条件変更
      * @method changeConditions
-     * @returns {Promise<void>}
      */
     PurchaseComponent.prototype.changeConditions = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -5971,6 +6120,10 @@ var PurchaseComponent = /** @class */ (function () {
             });
         });
     };
+    /**
+     * ソート変更
+     * @method changeSort
+     */
     PurchaseComponent.prototype.changeSort = function (sort) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -6065,6 +6218,10 @@ var RootComponent = /** @class */ (function () {
         this.user = user;
         this.router = router;
     }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     RootComponent.prototype.ngOnInit = function () {
         this.isLoading = true;
         if (this.user.isMember()) {
@@ -6218,7 +6375,6 @@ var TicketComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
     TicketComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -6226,6 +6382,7 @@ var TicketComponent = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
+                        window.scrollTo(0, 0);
                         this.isLoading = true;
                         this.reservations = [];
                         this.config = {
@@ -6384,10 +6541,10 @@ var WalkThroughComponent = /** @class */ (function () {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
     WalkThroughComponent.prototype.ngOnInit = function () {
         var _this = this;
+        window.scrollTo(0, 0);
         this.isLoading = false;
         this.step = 0;
         this.config = {
@@ -6402,7 +6559,6 @@ var WalkThroughComponent = /** @class */ (function () {
     /**
      * スタート
      * @method start
-     * @returns {Promise<void>}
      */
     WalkThroughComponent.prototype.start = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -7242,7 +7398,6 @@ var CreditGuardService = /** @class */ (function () {
     /**
      * 認証
      * @method canActivate
-     * @returns {Promise<boolean>}
      */
     CreditGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -7315,7 +7470,6 @@ var MemberGuardService = /** @class */ (function () {
     /**
      * 認証
      * @method canActivate
-     * @returns {Promise<boolean>}
      */
     MemberGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -7390,7 +7544,6 @@ var ProgramMembershipGuardService = /** @class */ (function () {
     /**
    * 認証
    * @method canActivate
-   * @returns {Promise<boolean>}
    */
     ProgramMembershipGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {

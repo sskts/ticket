@@ -23,9 +23,10 @@ export class ErrorComponent implements OnInit {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
-    public ngOnInit(): void { }
+    public ngOnInit() {
+        window.scrollTo(0, 0);
+    }
 
     /**
      * 接続

@@ -13,9 +13,8 @@ export class MemberGuardService implements CanActivate {
     /**
      * 認証
      * @method canActivate
-     * @returns {Promise<boolean>}
      */
-    public async canActivate(): Promise<boolean> {
+    public async canActivate() {
         if (!this.user.isMember()) {
             this.router.navigate(['/auth/select']);
 

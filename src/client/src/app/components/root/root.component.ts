@@ -14,6 +14,10 @@ export class RootComponent implements OnInit {
         private router: Router
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
         this.isLoading = true;
         if (this.user.isMember()) {

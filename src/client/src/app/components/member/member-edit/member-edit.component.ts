@@ -12,7 +12,12 @@ export class MemberEditComponent implements OnInit {
         public user: UserService
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
+        window.scrollTo(0, 0);
     }
 
 }

@@ -23,9 +23,9 @@ export class WalkThroughComponent implements OnInit {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
-    public ngOnInit(): void {
+    public ngOnInit() {
+        window.scrollTo(0, 0);
         this.isLoading = false;
         this.step = 0;
         this.config = {
@@ -41,9 +41,8 @@ export class WalkThroughComponent implements OnInit {
     /**
      * スタート
      * @method start
-     * @returns {Promise<void>}
      */
-    public async start(): Promise<void> {
+    public async start() {
         try {
             this.isLoading = true;
             await this.awsCognito.authenticateWithDeviceId();

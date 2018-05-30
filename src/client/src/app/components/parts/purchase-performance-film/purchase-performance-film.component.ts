@@ -21,9 +21,8 @@ export class PurchasePerformanceFilmComponent implements OnInit {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {void}
      */
-    public ngOnInit(): void {
+    public ngOnInit() {
         this.salseFlg = moment(this.performance.startDate).unix() > moment().add(30, 'minutes').unix();
     }
 

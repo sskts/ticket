@@ -22,17 +22,15 @@ export class HeaderMenuComponent implements OnInit {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
-    public ngOnInit(): void {
+    public ngOnInit() {
     }
 
     /**
      * webブラウザで開く
      * @method openWebBrowse
-     * @param {string} url
      */
-    public openWebBrowse(url: string): void {
+    public openWebBrowse(url: string) {
         this.callNative.inAppBrowser({
             url: url,
             target: InAppBrowserTarget.System

@@ -20,7 +20,12 @@ export class MemberPointHistoryComponent implements OnInit {
         private sasaki: SasakiService
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public async ngOnInit() {
+        window.scrollTo(0, 0);
         this.transactionType = factory.pecorino.transactionType;
         this.isLoading = true;
         try {

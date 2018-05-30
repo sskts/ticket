@@ -15,9 +15,8 @@ export class ProgramMembershipGuardService implements CanActivate {
     /**
    * 認証
    * @method canActivate
-   * @returns {Promise<boolean>}
    */
-    public async canActivate(): Promise<boolean> {
+    public async canActivate() {
         if (this.user.data.programMembershipOwnershipInfos === undefined) {
             this.user.data.programMembershipOwnershipInfos = [];
         }

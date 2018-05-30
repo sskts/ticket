@@ -16,7 +16,12 @@ export class MemberPointComponent implements OnInit {
         private router: Router
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public async ngOnInit() {
+        window.scrollTo(0, 0);
         this.pointUseModal = false;
         this.isLoading = true;
         try {

@@ -28,6 +28,10 @@ export class MemberEditCreditComponent implements OnInit {
         private user: UserService
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
         window.scrollTo(0, 0);
         this.isLoading = false;

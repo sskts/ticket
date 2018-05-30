@@ -56,9 +56,8 @@ export class HeaderComponent implements OnInit {
     /**
      * 初期化
      * @method ngOnInit
-     * @returns {Promise<void>}
      */
-    public ngOnInit(): void {
+    public ngOnInit() {
         this.isMenuOpen = false;
         this.changePage(this.router.url);
         this.router.events.subscribe((event) => {
@@ -72,7 +71,7 @@ export class HeaderComponent implements OnInit {
      * メニューを開く
      * @method menuOpen
      */
-    public menuOpen(): void {
+    public menuOpen() {
         this.isMenuOpen = true;
     }
 
@@ -80,14 +79,13 @@ export class HeaderComponent implements OnInit {
      * メニューを閉じる
      * @method menuClose
      */
-    public menuClose(): void {
+    public menuClose() {
         this.isMenuOpen = false;
     }
 
     /**
      * ページ変更
      * @method changePage
-     * @param {string} url
      */
     private changePage(url: string): void {
         const page = pages.find((value) => {

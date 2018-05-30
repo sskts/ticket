@@ -18,7 +18,12 @@ export class MemberMypageComponent implements OnInit {
         private router: Router
     ) { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public async ngOnInit() {
+        window.scrollTo(0, 0);
         this.isLoading = true;
         try {
             await this.user.updateAccount();
@@ -31,8 +36,9 @@ export class MemberMypageComponent implements OnInit {
 
     /**
      * チケット購入へ移動（上映時間順）
+     * @method redirectToPurchaseTime
      */
-    public toPurchaseTime() {
+    public redirectToPurchaseTime() {
         this.select.getSelect();
         this.select.data.purchase.date = moment().format('YYYYMMDD');
         this.select.data.purchase.sort = PurchaseSort.Time;
@@ -41,8 +47,9 @@ export class MemberMypageComponent implements OnInit {
 
     /**
      * チケット購入へ移動（作品順）
+     * @method redirectToPurchaseFilm
      */
-    public toPurchaseFilm() {
+    public redirectToPurchaseFilm() {
         this.select.getSelect();
         this.select.data.purchase.sort = PurchaseSort.Film;
         this.router.navigate(['/purchase']);

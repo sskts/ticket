@@ -14,6 +14,10 @@ export class PointStampsComponent implements OnInit {
     }[][];
     constructor() { }
 
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
     public ngOnInit() {
         this.config = {
             pagination: '.swiper-pagination',
