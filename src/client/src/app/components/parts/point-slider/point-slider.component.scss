@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 300px;
     height: 1px;
-    background-color: #FFF;
+    background-color: #A0A0A0;
     position: relative;
     .ruler {
         position: absolute;
@@ -10,7 +10,7 @@
         margin-top: -3px;
         height: 6px;
         width: 1px;
-        background-color: #FFF;
+        background-color: #A0A0A0;
         &:nth-child(1) {
             left: 0;
         }
@@ -42,27 +42,33 @@
         width: calc(100% / 6);
         &:nth-child(1) {
             left: 0;
-            background-color: #dceaf8;
+            background-color: #14d5cf;
+            background: linear-gradient(to right, #14d5cf 0%,#1cbbcb 100%);
         }
         &:nth-child(2) {
             left: calc(100% / 6  * 1);
-            background-color: #95bfea;
+            background-color: #1cbbcb;
+            background: linear-gradient(to right, #1cbbcb 0%,#259ec7 100%);
         }
         &:nth-child(3) {
             left: calc(100% / 6  * 2);
-            background-color: #4e95dc;
+            background-color: #259ec7;
+            background: linear-gradient(to right, #259ec7 0%,#2d82c2 100%);
         }
         &:nth-child(4) {
             left: calc(100% / 6  * 3);
-            background-color: #236ab1;
+            background-color: #2d82c2;
+            background: linear-gradient(to right, #2d82c2 0%,#3665be 100%);
         }
         &:nth-child(5) {
             left: calc(100% / 6  * 4);
-            background-color: #18528c;
+            background-color: #3665be;
+            background: linear-gradient(to right, #3665be 0%,#3e49b9 100%);
         }
         &:nth-child(6) {
             left: calc(100% / 6  * 5);
-            background-color: #15406a;
+            background-color: #3e49b9;
+            background: linear-gradient(to right, #3e49b9 0%,#472cb5 100%);
         }
     }
 }
