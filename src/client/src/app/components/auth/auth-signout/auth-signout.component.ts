@@ -19,8 +19,8 @@ export class AuthSignoutComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        this.user.data.memberType = MemberType.Member;
-        this.user.save();
+        this.user.data.memberType = MemberType.NotMember;
+        this.user.reset();
         this.router.navigate(['/auth/select']);
     }
 

@@ -176,13 +176,14 @@ export class AuthRegisterPaymentComponent implements OnInit {
             }
 
             // 会員プログラム登録
-            await this.sasaki.person.registerProgramMembership({
+            const registerProgramMembership = await this.sasaki.person.registerProgramMembership({
                 personId: 'me',
                 programMembershipId: programMembership.id,
                 offerIdentifier: offer.identifier,
                 sellerType: seller.typeOf,
                 sellerId: seller.id
             });
+            console.log('registerProgramMembership', registerProgramMembership);
             const time = 5000;
             const limit = 20;
             let count = 0;

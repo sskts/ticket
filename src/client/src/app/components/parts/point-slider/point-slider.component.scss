@@ -1,8 +1,8 @@
 .slider-cover {
     width: 100%;
     max-width: 300px;
-    height: 2px;
-    background-color: #555;
+    height: 1px;
+    background-color: #FFF;
     position: relative;
     .ruler {
         position: absolute;
@@ -10,7 +10,7 @@
         margin-top: -3px;
         height: 6px;
         width: 1px;
-        background-color: #555;
+        background-color: #FFF;
         &:nth-child(1) {
             left: 0;
         }

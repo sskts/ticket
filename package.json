@@ -19,7 +19,8 @@
     "build-server": "tsc --project src/server --outDir dist/server --locale ja-jp",
     "lint-server": "tslint --config tslint.json src/server/**/**.ts --exclude **/**.spec.ts --project src/server/tsconfig.json",
     "lint": "npm run lint-client && npm run lint-server",
-    "build": "npm run lint && npm run build-server && npm run build-client",
+    "test": "npm run lint",
+    "build": "npm run build-server && npm run build-client",
     "preversion": "npm run build",
     "version": "git add -A",
     "postversion": "git push origin --tags"
