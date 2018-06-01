@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { AppComponent } from './components/app/app.component';
 import { AuthLogoutComponent } from './components/auth/auth-logout/auth-logout.component';
-import { AuthRegisterPaymentComponent } from './components/auth/auth-register-payment/auth-register-payment.component';
+import { AuthRegisterCreditComponent } from './components/auth/auth-register-credit/auth-register-credit.component';
 import { AuthRegisterProgramMembershipComponent } from './components/auth/auth-register-program-membership/auth-register-program-membership.component';
 import { AuthRegisterTermsComponent } from './components/auth/auth-register-terms/auth-register-terms.component';
 import { AuthRegisterComponent } from './components/auth/auth-register/auth-register.component';
@@ -63,6 +63,7 @@ import { AwsCognitoService } from './services/aws-cognito/aws-cognito.service';
 import { CallNativeService } from './services/call-native/call-native.service';
 import { CreditGuardService } from './services/credit-guard/credit-guard.service';
 import { MemberGuardService } from './services/member-guard/member-guard.service';
+import { MemberService } from './services/member/member.service';
 import { ProgramMembershipGuardService } from './services/program-membership-guard/program-membership-guard.service';
 import { PurchaseService } from './services/purchase/purchase.service';
 import { ReservationService } from './services/reservation/reservation.service';
@@ -118,7 +119,7 @@ import { UserService } from './services/user/user.service';
     PointStampsComponent,
     BenefitsComponent,
     DateFormatPipe,
-    AuthRegisterPaymentComponent,
+    AuthRegisterCreditComponent,
     AuthRegisterProgramMembershipComponent,
     HeaderMenuMemberComponent,
     HeaderMenuNotMemberComponent
@@ -144,7 +145,8 @@ import { UserService } from './services/user/user.service';
     MemberGuardService,
     PurchaseService,
     CreditGuardService,
-    ProgramMembershipGuardService
+    ProgramMembershipGuardService,
+    MemberService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,38 +1,33 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
-import { MemberService } from '../../../services/member/member.service';
 import { SasakiService } from '../../../services/sasaki/sasaki.service';
 import { UserService } from '../../../services/user/user.service';
 
 @Component({
-    selector: 'app-auth-register-payment',
-    templateUrl: './auth-register-payment.component.html',
-    styleUrls: ['./auth-register-payment.component.scss']
+    selector: 'app-auth-register-credit',
+    templateUrl: './auth-register-credit.component.html',
+    styleUrls: ['./auth-register-credit.component.scss']
 })
-export class AuthRegisterPaymentComponent implements OnInit {
+export class AuthRegisterCreditComponent implements OnInit {
 
     public cardExpiration: {
         year: string[];
         month: string[];
     };
-    public paymentForm: FormGroup;
+    public creditForm: FormGroup;
     public isLoading: boolean;
     public securityCodeModal: boolean;
     public creditCardAlertModal: boolean;
-    public registerProgramMembershipAlertModal: boolean;
     public disable: boolean;
-    public programMemberships: factory.programMembership.IProgramMembership[];
 
     constructor(
         private router: Router,
         private elementRef: ElementRef,
         private formBuilder: FormBuilder,
         private user: UserService,
-        private sasaki: SasakiService,
-        private member: MemberService
+        private sasaki: SasakiService
     ) { }
 
     /**
@@ -46,21 +41,9 @@ export class AuthRegisterPaymentComponent implements OnInit {
             year: [],
             month: []
         };
-        this.paymentForm = this.createForm();
+        this.creditForm = this.createForm();
         this.disable = false;
         this.creditCardAlertModal = false;
-        this.registerProgramMembershipAlertModal = false;
-        try {
-            // 会員プログラム取得
-            this.programMemberships = await this.member.getProgramMemberships();
-
-            if (this.programMemberships.length === 0) {
-                throw new Error('programMemberships is not found');
-            }
-        } catch (err) {
-            console.log(err);
-            this.router.navigate(['/error', { redirect: '/auth/register/payment' }]);
-        }
         this.isLoading = false;
     }
 
@@ -102,13 +85,13 @@ export class AuthRegisterPaymentComponent implements OnInit {
         if (this.disable) {
             return;
         }
-        if (this.paymentForm.invalid) {
+        if (this.creditForm.invalid) {
             // フォームのステータス変更
-            this.paymentForm.controls.cardNumber.markAsTouched();
-            this.paymentForm.controls.cardExpirationMonth.markAsTouched();
-            this.paymentForm.controls.cardExpirationYear.markAsTouched();
-            this.paymentForm.controls.securityCode.markAsTouched();
-            this.paymentForm.controls.holderName.markAsTouched();
+            this.creditForm.controls.cardNumber.markAsTouched();
+            this.creditForm.controls.cardExpirationMonth.markAsTouched();
+            this.creditForm.controls.cardExpirationYear.markAsTouched();
+            this.creditForm.controls.securityCode.markAsTouched();
+            this.creditForm.controls.holderName.markAsTouched();
             setTimeout(() => {
                 const element: HTMLElement = this.elementRef.nativeElement;
                 const validation = <HTMLElement>element.querySelector('.validation');
@@ -130,51 +113,23 @@ export class AuthRegisterPaymentComponent implements OnInit {
             await this.sasaki.getServices();
             // GMOトークン取得
             const gmoTokenObject = await this.user.getGmoObject({
-                cardno: this.paymentForm.controls.cardNumber.value,
-                expire: this.paymentForm.controls.cardExpirationYear.value + this.paymentForm.controls.cardExpirationMonth.value,
-                securitycode: this.paymentForm.controls.securityCode.value,
-                holdername: this.paymentForm.controls.holderName.value
+                cardno: this.creditForm.controls.cardNumber.value,
+                expire: this.creditForm.controls.cardExpirationYear.value + this.creditForm.controls.cardExpirationMonth.value,
+                securitycode: this.creditForm.controls.securityCode.value,
+                holdername: this.creditForm.controls.holderName.value
             });
 
             // 会員 クレジットカード情報保存
             await this.user.registerCreditCard(gmoTokenObject);
+            this.router.navigate(['/auth/register/membership']);
         } catch (err) {
             console.error(err);
             // クレジットカード処理失敗
             this.isLoading = false;
             this.creditCardAlertModal = true;
-            this.paymentForm.controls.cardNumber.setValue('');
-            this.paymentForm.controls.securityCode.setValue('');
-            this.paymentForm.controls.holderName.setValue('');
-            this.disable = false;
-
-            return;
-        }
-
-        try {
-            // 販売劇場検索 TODO
-            const theaterCode = '101';
-            const programMembership = this.programMemberships[0];
-            // 会員登録
-            await this.member.register({
-                theaterCode: theaterCode,
-                programMembership: programMembership
-            });
-
-            // 会員登録確認
-            const isRegister = await this.member.isRegister();
-            if (!isRegister) {
-                this.router.navigate(['/error', { redirect: '/auth/select' }]);
-
-                return;
-            }
-
-            this.router.navigate(['/']);
-        } catch (err) {
-            console.error(err);
-            // 会員プログラム登録失敗
-            this.isLoading = false;
-            this.registerProgramMembershipAlertModal = true;
+            this.creditForm.controls.cardNumber.setValue('');
+            this.creditForm.controls.securityCode.setValue('');
+            this.creditForm.controls.holderName.setValue('');
             this.disable = false;
         }
     }

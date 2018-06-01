@@ -29,7 +29,7 @@ export class ProgramMembershipGuardService implements CanActivate {
             goodType: 'ProgramMembership'
         });
         if (programMembershipOwnershipInfos.length === 0) {
-            this.router.navigate(['/auth/register/payment']);
+            this.router.navigate(['/auth/register/credit']);
 
             return false;
         }

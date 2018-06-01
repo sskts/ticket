@@ -45,6 +45,7 @@
                         {{ staticProfile.email }}
                     </dd>
                 </dl>
+
                 <dl class="mb-middle">
                     <dt>
                         <strong>電話番号</strong>
@@ -63,6 +64,15 @@
                             <div *ngIf="profileForm.controls['telephone'].errors.telephone" class="validation-text mb-x-small">電話番号が正しくありません</div>
                         </div>
                         <p class="small-text">※半角数字、ハイフン「-」なしで入力してください</p>
+                    </dd>
+                </dl>
+
+                <dl class="mb-middle">
+                    <dt class="mb-small">
+                        <strong>よく行く劇場</strong>
+                    </dt>
+                    <dd>
+                        {{ user.getTheaterName(0) }}
                     </dd>
                 </dl>
                 <!-- <dl class="mb-middle">

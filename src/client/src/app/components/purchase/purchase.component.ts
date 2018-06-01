@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IDate, IFilmOrder, IIndividualScreeningEvent, IMovieTheater, PurchaseService } from '../../services/purchase/purchase.service';
 import { IPurchaseConditions, PurchaseSort, SelectService } from '../../services/select/select.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
     selector: 'app-purchase',
@@ -29,7 +30,8 @@ export class PurchaseComponent implements OnInit {
     constructor(
         private router: Router,
         private purchase: PurchaseService,
-        private select: SelectService
+        private select: SelectService,
+        private user: UserService
     ) {
         this.purchaseSort = PurchaseSort;
         this.theaters = [];
@@ -47,6 +49,10 @@ export class PurchaseComponent implements OnInit {
         this.isLoading = true;
         try {
             this.conditions = this.select.getSelect().purchase;
+            if (this.user.isMember()) {
+                // 会員
+                this.conditions.theater = this.user.getTheaterCode(0);
+            }
             await this.purchase.getSchedule();
             this.theaters = this.purchase.getTheater();
             await this.changeConditions();

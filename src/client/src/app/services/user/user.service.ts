@@ -83,6 +83,7 @@ export class UserService {
 
     /**
      * 会員初期化
+     * @method initMember
      */
     public async initMember() {
         this.data.memberType = MemberType.Member;
@@ -137,6 +138,7 @@ export class UserService {
 
     /**
      * 口座情報更新
+     * @method updateAccount
      */
     public async updateAccount() {
         await this.sasaki.getServices();
@@ -162,6 +164,7 @@ export class UserService {
 
     /**
      * 会員判定
+     * @method isMember
      */
     public isMember() {
         return (this.data.memberType === MemberType.Member);
@@ -169,6 +172,7 @@ export class UserService {
 
     /**
      * 名前取得
+     * @method getName
      */
     public getName() {
         if (this.data.contact === undefined) {
@@ -179,6 +183,7 @@ export class UserService {
 
     /**
      * 電話番号取得（ハイフンなし）
+     * @method getTelephone
      */
     public getTelephone() {
         if (this.data.contact === undefined) {
@@ -188,7 +193,40 @@ export class UserService {
     }
 
     /**
-     * クレジットカード情報取得（表示）
+     * よく行く劇場名取得
+     * @method getTheaterName
+     */
+    public getTheaterName(index: number) {
+        const programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
+        if (this.data.programMembershipOwnershipInfos.length === 0
+            || programMembershipOwnershipInfo === undefined
+            || programMembershipOwnershipInfo.acquiredFrom === undefined
+            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== factory.organizationType.MovieTheater) {
+            return '';
+        }
+
+        return programMembershipOwnershipInfo.acquiredFrom.name.ja;
+    }
+
+    /**
+     * よく行く劇場コード取得
+     * @method getTheaterCode
+     */
+    public getTheaterCode(index: number) {
+        const programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
+        if (this.data.programMembershipOwnershipInfos.length === 0
+            || programMembershipOwnershipInfo === undefined
+            || programMembershipOwnershipInfo.acquiredFrom === undefined
+            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== factory.organizationType.MovieTheater) {
+            return '';
+        }
+
+        return programMembershipOwnershipInfo.acquiredFrom.location.branchCode;
+    }
+
+    /**
+     * クレジットカード情報取得（表示用）
+     * @method getCreditCard
      */
     public getCreditCard(index: number) {
         if (this.data.creditCards.length === 0) {
@@ -202,6 +240,7 @@ export class UserService {
 
     /**
      * GMOトークン取得
+     * @method getGmoObject
      */
     public async getGmoObject(args: {
         cardno: string;
@@ -234,6 +273,7 @@ export class UserService {
 
     /**
      * クレジットカード登録
+     * @method registerCreditCard
      */
     public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
         await this.sasaki.getServices();
@@ -262,6 +302,7 @@ export class UserService {
 
     /**
      * 基本情報変更
+     * @method updateProfile
      */
     public async updateProfile(args: {
         familyName: string;

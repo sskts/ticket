@@ -6,23 +6,19 @@
         <div class="image mb-small">
             <img alt="" src="/assets/images/common/credit_card.png">
         </div>
-        <div class="mb-small text-center annual-fee">
-            ご利用金額（年会費）
-            <span class="large-text">￥500</span>
-        </div>
-        <div class="payment">
-            <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+        <div class="credit">
+            <form [formGroup]="creditForm" (ngSubmit)="onSubmit()">
                 <dl class="mb-middle">
                     <dt>カード番号</dt>
                     <dd>
                         <div class="mb-x-small">
-                            <input [class.validation]="paymentForm.controls['cardNumber'].invalid && paymentForm.controls['cardNumber'].touched" type="text"
+                            <input [class.validation]="creditForm.controls['cardNumber'].invalid && creditForm.controls['cardNumber'].touched" type="text"
                                 pattern="\d*" formControlName="cardNumber" id="cardNumber" autocomplete="off" placeholder="(例)1234567890"
                                 maxlength="16">
                         </div>
-                        <div class="small-text mb-x-small" *ngIf="paymentForm.controls['cardNumber'].invalid && paymentForm.controls['cardNumber'].touched">
-                            <div *ngIf="paymentForm.controls['cardNumber'].errors.required" class="validation-text mb-x-small">カード番号が未入力です</div>
-                            <div *ngIf="paymentForm.controls['cardNumber'].errors.pattern" class="validation-text mb-x-small">カード番号は数字で入力してください</div>
+                        <div class="small-text mb-x-small" *ngIf="creditForm.controls['cardNumber'].invalid && creditForm.controls['cardNumber'].touched">
+                            <div *ngIf="creditForm.controls['cardNumber'].errors.required" class="validation-text mb-x-small">カード番号が未入力です</div>
+                            <div *ngIf="creditForm.controls['cardNumber'].errors.pattern" class="validation-text mb-x-small">カード番号は数字で入力してください</div>
                         </div>
                         <p class="small-text">※半角数字、ハイフン「-」なしで入力してください</p>
                     </dd>
@@ -48,12 +44,12 @@
                     <dt>セキュリティーコード</dt>
                     <dd>
                         <div class="mb-x-small">
-                            <input [class.validation]="paymentForm.controls['securityCode'].invalid && paymentForm.controls['securityCode'].touched"
+                            <input [class.validation]="creditForm.controls['securityCode'].invalid && creditForm.controls['securityCode'].touched"
                                 type="text" pattern="\d*" formControlName="securityCode" autocomplete="off" placeholder="(例)123"
                                 maxlength="4">
                         </div>
-                        <div class="small-text mb-x-small" *ngIf="paymentForm.controls['securityCode'].invalid && paymentForm.controls['securityCode'].touched">
-                            <div *ngIf="paymentForm.controls['securityCode'].errors.required" class="validation-text mb-x-small">セキュリティーコードが未入力です</div>
+                        <div class="small-text mb-x-small" *ngIf="creditForm.controls['securityCode'].invalid && creditForm.controls['securityCode'].touched">
+                            <div *ngIf="creditForm.controls['securityCode'].errors.required" class="validation-text mb-x-small">セキュリティーコードが未入力です</div>
                         </div>
                         <p>
                             <a (click)="securityCodeModal = true">セキュリティーコードについて</a>
@@ -64,11 +60,11 @@
                     <dt>カード名義人</dt>
                     <dd>
                         <div class="mb-x-small">
-                            <input [class.validation]="paymentForm.controls['holderName'].invalid && paymentForm.controls['holderName'].touched" type="text"
+                            <input [class.validation]="creditForm.controls['holderName'].invalid && creditForm.controls['holderName'].touched" type="text"
                                 formControlName="holderName" autocomplete="off" placeholder="(例)TARO CINEMA">
                         </div>
-                        <div class="small-text mb-x-small" *ngIf="paymentForm.controls['holderName'].invalid && paymentForm.controls['holderName'].touched">
-                            <div *ngIf="paymentForm.controls['holderName'].errors.required" class="validation-text mb-x-small">カード名義人が未入力です</div>
+                        <div class="small-text mb-x-small" *ngIf="creditForm.controls['holderName'].invalid && creditForm.controls['holderName'].touched">
+                            <div *ngIf="creditForm.controls['holderName'].errors.required" class="validation-text mb-x-small">カード名義人が未入力です</div>
                         </div>
                     </dd>
                 </dl>
@@ -114,13 +110,6 @@
         <strong>エラーが発生しました</strong>
     </div>
     <p>入力内容をご確認ください。</p>
-</app-modal>
-
-<app-modal [open]="registerProgramMembershipAlertModal" [layout]="true" (close)="registerProgramMembershipAlertModal = false">
-    <div class="modal-ttl large-text text-center mb-small">
-        <strong>エラーが発生しました</strong>
-    </div>
-    <p>再度ご登録してください。</p>
 </app-modal>
 
 <app-loading [show]="isLoading"></app-loading>

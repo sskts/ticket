@@ -7,11 +7,17 @@
             <h2 class="text-center">基本情報</h2>
             <ul class="mb-small">
                 <li>
-                    <app-icon iconName="user-white" width="15" height="15"></app-icon>{{ user.getName() }}</li>
+                    <app-icon iconName="user-white" width="15" height="15"></app-icon>{{ user.getName() }}
+                </li>
                 <li>
-                    <app-icon iconName="email-white" width="15" height="15"></app-icon>{{ user.data.contact?.email }}</li>
+                    <app-icon iconName="email-white" width="15" height="15"></app-icon>{{ user.data.contact?.email }}
+                </li>
                 <li>
-                    <app-icon iconName="telephone-white" width="15" height="15"></app-icon>{{ user.getTelephone() }}</li>
+                    <app-icon iconName="telephone-white" width="15" height="15"></app-icon>{{ user.getTelephone() }}
+                </li>
+                <li>
+                    <app-icon iconName="about-white" width="15" height="15"></app-icon>{{ user.getTheaterName(0) }}
+                </li>
             </ul>
             <button type="button" class="button button-primary button-block center" routerLink="/member/edit/profile">基本情報変更</button>
         </div>
@@ -19,9 +25,11 @@
             <h2 class="text-center">カード情報</h2>
             <ul class="mb-small">
                 <li>
-                    <app-icon iconName="credit-no-white" width="15" height="15"></app-icon>{{ user.getCreditCard(0)?.cardNo }}</li>
+                    <app-icon iconName="credit-no-white" width="15" height="15"></app-icon>{{ user.getCreditCard(0)?.cardNo }}
+                </li>
                 <li>
-                    <app-icon iconName="credit-expire-white" width="15" height="15"></app-icon>{{ user.getCreditCard(0)?.expire }}</li>
+                    <app-icon iconName="credit-expire-white" width="15" height="15"></app-icon>{{ user.getCreditCard(0)?.expire }}
+                </li>
             </ul>
             <button type="button" class="button button-primary button-block center mb-middle" routerLink="/member/edit/credit">クレジットカード変更</button>
         </div>

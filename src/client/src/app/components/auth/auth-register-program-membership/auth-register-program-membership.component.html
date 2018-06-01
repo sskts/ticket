@@ -1,3 +1,41 @@
-<p>
-  auth-register-program-membership works!
-</p>
+<div class="contents bg-01">
+    <div class="inner">
+        <p class="read mb-small">
+            よく行く劇場を選択して登録してください。
+        </p>
+        <div class="mb-small text-center annual-fee">
+            ご利用金額（年会費）
+            <span class="large-text">￥500</span>
+        </div>
+        <div *ngIf="!isLoading" class="options">
+            <form [formGroup]="optionsForm" (ngSubmit)="onSubmit()">
+                <dl class="mb-middle">
+                    <dt class="mb-x-small">よく行く劇場</dt>
+                    <dd>
+                        <select formControlName="theater" class="mb-x-small" id="theater">
+                            <option value="">選択してください</option>
+                            <option *ngFor="let theater of theaters" [value]="theater.location.branchCode">{{ theater.location.name.ja }}</option>
+                        </select>
+                        <div class="small-text mb-x-small" *ngIf="optionsForm.controls['theater'].invalid && optionsForm.controls['theater'].touched">
+                            <div *ngIf="optionsForm.controls['theater'].errors.required" class="validation-text mb-x-small">よく行く劇場が未入力です</div>
+                        </div>
+                    </dd>
+                </dl>
+
+                <button type="submit" class="button button-primary button-block mb-middle">登録</button>
+                <div class="text-center">
+                    <a routerLink="/auth/register/credit">戻る</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-modal [open]="alertModal" [layout]="true" (close)="alertModal = false">
+    <div class="modal-ttl large-text text-center mb-small">
+        <strong>エラーが発生しました</strong>
+    </div>
+    <p>再度ご登録してください。</p>
+</app-modal>
+
+<app-loading [show]="isLoading"></app-loading>

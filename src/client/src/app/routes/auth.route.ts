@@ -1,5 +1,8 @@
 import { AuthLogoutComponent } from '../components/auth/auth-logout/auth-logout.component';
-import { AuthRegisterPaymentComponent } from '../components/auth/auth-register-payment/auth-register-payment.component';
+import { AuthRegisterCreditComponent } from '../components/auth/auth-register-credit/auth-register-credit.component';
+import {
+    AuthRegisterProgramMembershipComponent
+} from '../components/auth/auth-register-program-membership/auth-register-program-membership.component';
 import { AuthRegisterTermsComponent } from '../components/auth/auth-register-terms/auth-register-terms.component';
 import { AuthRegisterComponent } from '../components/auth/auth-register/auth-register.component';
 import { AuthSelectComponent } from '../components/auth/auth-select/auth-select.component';
@@ -22,7 +25,8 @@ export const route = {
             children: [
                 { path: '', component: AuthRegisterComponent },
                 { path: 'terms', component: AuthRegisterTermsComponent },
-                { path: 'payment', canActivate: [MemberGuardService], component: AuthRegisterPaymentComponent }
+                { path: 'credit', canActivate: [MemberGuardService], component: AuthRegisterCreditComponent },
+                { path: 'membership', canActivate: [MemberGuardService], component: AuthRegisterProgramMembershipComponent }
             ]
         }
     ]
