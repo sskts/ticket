@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
+import { MemberService } from '../../../services/member/member.service';
 import { SasakiService } from '../../../services/sasaki/sasaki.service';
 import { UserService } from '../../../services/user/user.service';
 
@@ -30,7 +31,8 @@ export class AuthRegisterPaymentComponent implements OnInit {
         private elementRef: ElementRef,
         private formBuilder: FormBuilder,
         private user: UserService,
-        private sasaki: SasakiService
+        private sasaki: SasakiService,
+        private member: MemberService
     ) { }
 
     /**
@@ -49,14 +51,12 @@ export class AuthRegisterPaymentComponent implements OnInit {
         this.creditCardAlertModal = false;
         this.registerProgramMembershipAlertModal = false;
         try {
-            await this.sasaki.getServices();
-            // 会員プログラム検索
-            this.programMemberships = await this.sasaki.programMembership.search({});
+            // 会員プログラム取得
+            this.programMemberships = await this.member.getProgramMemberships();
 
             if (this.programMemberships.length === 0) {
                 throw new Error('programMemberships is not found');
             }
-            console.log('会員プログラム', this.programMemberships);
         } catch (err) {
             console.log(err);
             this.router.navigate(['/error', { redirect: '/auth/register/payment' }]);
@@ -154,53 +154,22 @@ export class AuthRegisterPaymentComponent implements OnInit {
         try {
             // 販売劇場検索 TODO
             const theaterCode = '101';
-            const seller = await this.sasaki.organization.findMovieTheaterByBranchCode({
-                branchCode: theaterCode
-            });
-            if (seller === null) {
-                throw new Error('販売劇場が見つかりませんでした。');
-            }
-
             const programMembership = this.programMemberships[0];
-
-            if (programMembership.id === undefined
-                || programMembership.offers === undefined
-            ) {
-                throw new Error('programMemberships is Injustice');
-            }
-
-            const offer = programMembership.offers[0];
-
-            if (offer.identifier === undefined) {
-                throw new Error('programMemberships is Injustice');
-            }
-
-            // 会員プログラム登録
-            const registerProgramMembership = await this.sasaki.person.registerProgramMembership({
-                personId: 'me',
-                programMembershipId: programMembership.id,
-                offerIdentifier: offer.identifier,
-                sellerType: seller.typeOf,
-                sellerId: seller.id
+            // 会員登録
+            await this.member.register({
+                theaterCode: theaterCode,
+                programMembership: programMembership
             });
-            console.log('registerProgramMembership', registerProgramMembership);
-            const time = 5000;
-            const limit = 20;
-            let count = 0;
-            const timer = setInterval(async () => {
-                const programMembershipOwnershipInfos = await this.sasaki.person.searchOwnershipInfos({
-                    ownedBy: 'me',
-                    goodType: 'ProgramMembership'
-                });
-                if (programMembershipOwnershipInfos.length > 0) {
-                    clearInterval(timer);
-                    this.router.navigate(['/']);
-                } else if (count > limit) {
-                    clearInterval(timer);
-                    this.router.navigate(['/auth/select']);
-                }
-                count++;
-            }, time);
+
+            // 会員登録確認
+            const isRegister = await this.member.isRegister();
+            if (!isRegister) {
+                this.router.navigate(['/error', { redirect: '/auth/select' }]);
+
+                return;
+            }
+
+            this.router.navigate(['/']);
         } catch (err) {
             console.error(err);
             // 会員プログラム登録失敗

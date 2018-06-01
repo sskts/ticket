@@ -24,7 +24,7 @@ export class AuthSelectComponent implements OnInit {
      * 初期化
      * @method ngOnInit
      */
-    public ngOnInit(): void {
+    public ngOnInit() {
         this.isLoading = false;
     }
 
