@@ -97,10 +97,16 @@ export class MemberService {
 
     /**
      * 退会
-     * @method withdrawal
+     * @method unRegister
      */
-    public withdrawal() {
-
+    public async unRegister(args: {
+        ownershipInfoIdentifier: string;
+    }) {
+        await this.sasaki.getServices();
+        await this.sasaki.person.unRegisterProgramMembership({
+            personId: 'me',
+            ownershipInfoIdentifier: args.ownershipInfoIdentifier
+        });
     }
 
 }

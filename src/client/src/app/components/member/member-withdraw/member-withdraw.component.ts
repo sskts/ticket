@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberService } from '../../../services/member/member.service';
+import { SasakiService } from '../../../services/sasaki/sasaki.service';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
     selector: 'app-member-withdraw',
@@ -7,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberWithdrawComponent implements OnInit {
     public isLoading: boolean;
-    constructor() { }
+    public confirmModal: boolean;
+    constructor(
+        private sasaki: SasakiService,
+        private user: UserService,
+        private member: MemberService
+    ) { }
 
     /**
      * 初期化
@@ -16,15 +24,32 @@ export class MemberWithdrawComponent implements OnInit {
     public ngOnInit() {
         window.scrollTo(0, 0);
         this.isLoading = false;
+        this.confirmModal = false;
     }
 
     /**
      * 退会
      * @method withdraw
      */
-    public withdraw() {
+    public async withdraw() {
         this.isLoading = true;
-        this.isLoading = false;
+        try {
+            // 会員プログラム削除
+            const ownershipInfoIdentifier = this.user.data.programMembershipOwnershipInfos[0].identifier;
+            await this.member.unRegister({
+                ownershipInfoIdentifier: ownershipInfoIdentifier
+            });
+            try {
+                // クレジットカード削除
+                await this.user.deleteCreditCard();
+            } catch (err) {
+                console.error(err);
+            }
+            await this.sasaki.signOut();
+        } catch (err) {
+            console.error(err);
+            this.isLoading = false;
+        }
     }
 
 }

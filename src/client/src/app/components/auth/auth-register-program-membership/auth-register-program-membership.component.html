@@ -3,10 +3,7 @@
         <p class="read mb-small">
             よく行く劇場を選択して登録してください。
         </p>
-        <div class="mb-small text-center annual-fee">
-            ご利用金額（年会費）
-            <span class="large-text">￥500</span>
-        </div>
+        
         <div *ngIf="!isLoading" class="options">
             <form [formGroup]="optionsForm" (ngSubmit)="onSubmit()">
                 <dl class="mb-middle">

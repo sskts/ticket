@@ -277,13 +277,7 @@ export class UserService {
      */
     public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
         await this.sasaki.getServices();
-        if (this.data.creditCards.length > 0) {
-            // 登録済みなら削除
-            await this.sasaki.person.deleteCreditCard({
-                personId: 'me',
-                cardSeq: this.data.creditCards[0].cardSeq
-            });
-        }
+        await this.deleteCreditCard();
         // 登録
         await this.sasaki.person.addCreditCard({
             personId: 'me',
@@ -298,6 +292,20 @@ export class UserService {
         this.data.creditCards = creditCards;
 
         this.save();
+    }
+
+    /**
+     * クレジットカード削除
+     */
+    public async deleteCreditCard() {
+        await this.sasaki.getServices();
+        if (this.data.creditCards.length === 0) {
+            return;
+        }
+        await this.sasaki.person.deleteCreditCard({
+            personId: 'me',
+            cardSeq: this.data.creditCards[0].cardSeq
+        });
     }
 
     /**

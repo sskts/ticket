@@ -7,8 +7,19 @@
         </p>
 
         <div>
-            <button type="button" class="button button-primary button-block center" (click)="withdraw()">退会</button>
+            <button type="button" class="button button-primary button-block center" (click)="confirmModal = true">退会</button>
         </div>
     </div>
 </div>
+
+<app-modal class="confirm-modal" [open]="confirmModal" [layout]="true" (close)="confirmModal = false">
+    <div class="mb-x-small text-center">
+        <strong>本当に退会しますか？</strong>
+    </div>
+    <p class="small-text mb-small">
+        退会注意文言！
+    </p>
+    <button type="button" class="button button-danger button-block center" (click)="withdraw()">退会する</button>
+</app-modal>
+
 <app-loading [show]="isLoading"></app-loading>

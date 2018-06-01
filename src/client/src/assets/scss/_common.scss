@@ -304,9 +304,11 @@ header {
 .button-primary {
     background-color: #0074A9;
     color: #FFF;
-    &:hover {
-        background-color: #0074A9;
-    }
+}
+
+.button-danger {
+    background-color: rgb(169, 0, 0);
+    color: #FFF;
 }
 
 .button-info {

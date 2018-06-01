@@ -3,6 +3,10 @@
         <p class="read mb-small">
             クレジットカード登録してください
         </p>
+        <div class="mb-small text-center annual-fee">
+            ご利用金額（年会費）
+            <span class="large-text">￥500</span>
+        </div>
         <div class="image mb-small">
             <img alt="" src="/assets/images/common/credit_card.png">
         </div>
@@ -44,9 +48,8 @@
                     <dt>セキュリティーコード</dt>
                     <dd>
                         <div class="mb-x-small">
-                            <input [class.validation]="creditForm.controls['securityCode'].invalid && creditForm.controls['securityCode'].touched"
-                                type="text" pattern="\d*" formControlName="securityCode" autocomplete="off" placeholder="(例)123"
-                                maxlength="4">
+                            <input [class.validation]="creditForm.controls['securityCode'].invalid && creditForm.controls['securityCode'].touched" type="text"
+                                pattern="\d*" formControlName="securityCode" autocomplete="off" placeholder="(例)123" maxlength="4">
                         </div>
                         <div class="small-text mb-x-small" *ngIf="creditForm.controls['securityCode'].invalid && creditForm.controls['securityCode'].touched">
                             <div *ngIf="creditForm.controls['securityCode'].errors.required" class="validation-text mb-x-small">セキュリティーコードが未入力です</div>
