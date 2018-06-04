@@ -1,6 +1,6 @@
 import * as sasaki from '@motionpicture/sskts-api-nodejs-client';
 import debug = require('debug');
-const log = debug('SSKTS:Auth2Model');
+const log = debug('sskts-ticket:Auth2Model');
 /**
  * 認証セッション
  * @interface IAuth2Session

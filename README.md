@@ -26,7 +26,7 @@
 | `SSKTS_ALLOWED_IPS`                 | false    |                  | IP制限IPリスト(カンマ区切り)              |
 | `SSKTS_BASIC_AUTH_NAME`             | false    |                  | ベーシック認証ID                         |
 | `SSKTS_BASIC_AUTH_PASS`             | false    |                  | ベーシック認証PASS                       |
-| `DEBUG`                             | false    | sskts-frontend:* | デバッグ                                |
+| `DEBUG`                             | false    | sskts-ticket:*   | デバッグ                                |
 
 ## Azure Environment variables
 

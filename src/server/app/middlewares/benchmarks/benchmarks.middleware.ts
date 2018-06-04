@@ -4,7 +4,7 @@
 
 import * as debug from 'debug';
 import * as express from 'express';
-const log = debug('SSKTS:benchmark');
+const log = debug('sskts-ticket:benchmark');
 
 export default (req: express.Request, _: express.Response, next: express.NextFunction) => {
     if (process.env.NODE_ENV === 'development') {

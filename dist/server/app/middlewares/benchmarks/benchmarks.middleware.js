@@ -4,7 +4,7 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const debug = require("debug");
-const log = debug('SSKTS:benchmark');
+const log = debug('sskts-ticket:benchmark');
 exports.default = (req, _, next) => {
     if (process.env.NODE_ENV === 'development') {
         const startMemory = process.memoryUsage();

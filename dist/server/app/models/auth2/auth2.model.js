@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const sasaki = require("@motionpicture/sskts-api-nodejs-client");
 const debug = require("debug");
-const log = debug('SSKTS:Auth2Model');
+const log = debug('sskts-ticket:Auth2Model');
 /**
  * 認証モデル
  * @class Auth2Model

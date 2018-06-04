@@ -4,7 +4,7 @@
 import * as debug from 'debug';
 import { NextFunction, Request, Response } from 'express';
 
-const log = debug('SSKTS:middlewares:whiteList');
+const log = debug('sskts-ticket:middlewares:whiteList');
 
 /**
  * アクセス許可ミドルウェア

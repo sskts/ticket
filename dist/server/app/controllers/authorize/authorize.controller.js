@@ -15,7 +15,7 @@ const debug = require("debug");
 const auth_model_1 = require("../../models/auth/auth.model");
 const auth2_model_1 = require("../../models/auth2/auth2.model");
 const base_controller_1 = require("../base/base.controller");
-const log = debug('SSKTS:authorize');
+const log = debug('sskts-ticket:authorize');
 var MemberType;
 (function (MemberType) {
     MemberType["NotMember"] = "0";
