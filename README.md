@@ -3,46 +3,37 @@
 
 # Usage
 
-* set environment variables - For example,
+## Environment variables
 
-```shell
-set NODE_ENV=**********環境名**********
-set NPM_TOKEN=**********npm motionpicture トークン**********
-set SSKTS_API_ENDPOINT=**********mp apiのエンドポイント**********
-set REDIS_HOST=**********REDISホスト**********
-set REDIS_PORT=**********REDISポート**********
-set REDIS_KEY=**********REDISキー**********
-set GMO_ENDPOINT=**********gmo apiのエンドポイント**********
-set CLIENT_ID=**********クライアントID**********
-set CLIENT_SECRET=**********クライアント鍵**********
-set AUTHORIZE_SERVER_DOMAIN=**********認証サーバードメイン**********
-set RESOURCE_SERVER_URL=**********リソースサーバーURL**********
-set CLIENT_ID_OAUTH2=**********会員クライアントID**********
-set CLIENT_SECRET_OAUTH2=**********会員クライアント鍵**********
-set OAUTH2_SERVER_DOMAIN=**********会員認証サーバードメイン**********
-set AUTH_REDIRECT_URI=**********会員サインインリダイレクトURL**********
-set AUTH_LOGUOT_URI=h**********会員サインアウトリダイレクトURL**********
-```
+| Name                                | Required | Value            | Purpose                                 |
+|-------------------------------------|----------|------------------|-----------------------------------------|
+| `NODE_ENV`                          | true     |                  | 環境名                                  |
+| `NPM_TOKEN`                         | true     |                  | npm トークン                            |
+| `REDIS_HOST`                        | true     |                  | REDISホスト                             |
+| `REDIS_PORT`                        | true     |                  | REDISポート                             |
+| `REDIS_KEY`                         | true     |                  | REDISキー                               |
+| `SSKTS_API_ENDPOINT`                | true     |                  | SSKTS API エンドポイント                 |
+| `GMO_ENDPOINT`                      | true     |                  | GMO API エンドポイント                   |
+| `CLIENT_ID`                         | true     |                  | クライアントID                           |
+| `CLIENT_SECRET`                     | true     |                  | クライアントSECRET                       |
+| `CLIENT_ID_OAUTH2`                  | true     |                  | OAUTH2クライアントID                     |
+| `CLIENT_SECRET_OAUTH2`              | true     |                  | OAUTH2クライアントSECRET                 |
+| `AUTHORIZE_SERVER_DOMAIN`           | true     |                  | 認可サーバードメイン                      |
+| `OAUTH2_SERVER_DOMAIN`              | true     |                  | OAUTH2認可サーバードメイン                |
+| `RESOURCE_SERVER_URL`               | true     |                  | リソースサーバーURL                      |
+| `AUTH_REDIRECT_URI`                 | true     |                  | サインインリダイレクトURL                 |
+| `AUTH_LOGUOT_URI`                   | true     |                  | サインアウトリダイレクトURL               |
+| `SSKTS_ALLOWED_IPS`                 | false    |                  | IP制限IPリスト(カンマ区切り)              |
+| `SSKTS_BASIC_AUTH_NAME`             | false    |                  | ベーシック認証ID                         |
+| `SSKTS_BASIC_AUTH_PASS`             | false    |                  | ベーシック認証PASS                       |
+| `DEBUG`                             | false    | sskts-frontend:* | デバッグ                                |
 
-only on Aure WebApps
+## Azure Environment variables
 
-```shell
-set WEBSITE_NODE_DEFAULT_VERSION=**********node.jsバージョン**********
-set WEBSITE_TIME_ZONE=Tokyo Standard Time
-```
-
-IP制限をかけたい場合
-
-```shell
-set SSKTS_ALLOWED_IPS=**********カンマつなぎのIPリスト**********
-```
-
-ベーシック認証をかけたい場合
-
-```shell
-set SSKTS_BASIC_AUTH_NAME=**********認証ユーザー名**********
-set SSKTS_BASIC_AUTH_PASS=**********認証パスワード**********
-```
+| Name                                | Required | Value            | Purpose                                 |
+|-------------------------------------|----------|------------------|-----------------------------------------|
+| `WEBSITE_NODE_DEFAULT_VERSION`      | true     |                  | node.jsバージョン                        |
+| `WEBSITE_TIME_ZONE`                 | true     |                  | タイムゾーン設定(Tokyo Standard Time)     |
 
 # Build
 
