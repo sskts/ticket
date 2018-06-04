@@ -3595,7 +3595,6 @@ var MemberMypageComponent = /** @class */ (function () {
      * @method redirectToPurchaseTime
      */
     MemberMypageComponent.prototype.redirectToPurchaseTime = function () {
-        this.select.getSelect();
         this.select.data.purchase.date = __WEBPACK_IMPORTED_MODULE_2_moment__().format('YYYYMMDD');
         this.select.data.purchase.sort = __WEBPACK_IMPORTED_MODULE_3__services_select_select_service__["a" /* PurchaseSort */].Time;
         this.router.navigate(['/purchase']);
@@ -3605,7 +3604,6 @@ var MemberMypageComponent = /** @class */ (function () {
      * @method redirectToPurchaseFilm
      */
     MemberMypageComponent.prototype.redirectToPurchaseFilm = function () {
-        this.select.getSelect();
         this.select.data.purchase.sort = __WEBPACK_IMPORTED_MODULE_3__services_select_select_service__["a" /* PurchaseSort */].Film;
         this.router.navigate(['/purchase']);
     };
@@ -6317,7 +6315,7 @@ var PurchaseComponent = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 4, , 5]);
-                        this.conditions = this.select.getSelect().purchase;
+                        this.conditions = this.select.data.purchase;
                         if (this.user.isMember()) {
                             // 会員
                             this.conditions.theater = this.user.getTheaterCode(0);
@@ -8871,7 +8869,7 @@ var SasakiService = /** @class */ (function () {
      */
     SasakiService.prototype.authorize = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var user, member, url, options, credentials, option;
+            var user, member, url, options, result, option;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -8883,7 +8881,7 @@ var SasakiService = /** @class */ (function () {
                         };
                         return [4 /*yield*/, this.http.get(url, options).toPromise()];
                     case 1:
-                        credentials = _a.sent();
+                        result = _a.sent();
                         option = {
                             domain: '',
                             clientId: '',
@@ -8896,7 +8894,8 @@ var SasakiService = /** @class */ (function () {
                             tokenIssuer: ''
                         };
                         this.auth = __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__["createAuthInstance"](option);
-                        this.auth.setCredentials(credentials);
+                        this.auth.setCredentials(result.credentials);
+                        this.userName = result.userName;
                         return [2 /*return*/];
                 }
             });
@@ -8922,14 +8921,19 @@ var PurchaseSort;
     PurchaseSort["Film"] = "film";
     PurchaseSort["Time"] = "time";
 })(PurchaseSort || (PurchaseSort = {}));
+var STORAGE_KEY = 'select';
 var SelectService = /** @class */ (function () {
     function SelectService(storage) {
         this.storage = storage;
+        this.load();
+        this.save();
     }
-    SelectService.prototype.getSelect = function () {
-        if (this.data === undefined) {
-            this.data = this.storage.load('select');
-        }
+    /**
+     * 読み込み
+     * @method load
+     */
+    SelectService.prototype.load = function () {
+        var data = this.storage.load(STORAGE_KEY, __WEBPACK_IMPORTED_MODULE_0__storage_storage_service__["a" /* SaveType */].Local);
         if (this.data === undefined || this.data === null) {
             this.data = {
                 purchase: {
@@ -8938,14 +8942,16 @@ var SelectService = /** @class */ (function () {
                     sort: PurchaseSort.Film
                 }
             };
+            return;
         }
-        return this.data;
+        this.data = data;
     };
+    /**
+     * 保存
+     * @method save
+     */
     SelectService.prototype.save = function () {
-        if (this.data === undefined) {
-            this.getSelect();
-        }
-        this.storage.save('select', this.data);
+        this.storage.save(STORAGE_KEY, this.data, __WEBPACK_IMPORTED_MODULE_0__storage_storage_service__["a" /* SaveType */].Local);
     };
     return SelectService;
 }());
@@ -9118,6 +9124,9 @@ var UserService = /** @class */ (function () {
                         return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
                         _a.sent();
+                        if (this.sasaki.userName === undefined) {
+                            throw new Error('userName is undefined');
+                        }
                         return [4 /*yield*/, this.sasaki.person.getContacts({
                                 personId: 'me'
                             })];
@@ -9153,7 +9162,7 @@ var UserService = /** @class */ (function () {
                         if (!(accounts.length === 0)) return [3 /*break*/, 9];
                         return [4 /*yield*/, this.sasaki.person.openAccount({
                                 personId: 'me',
-                                name: this.data.contact.familyName + " " + this.data.contact.givenName
+                                name: this.sasaki.userName
                             })];
                     case 8:
                         account = _a.sent();

@@ -48,7 +48,7 @@ export class PurchaseComponent implements OnInit {
         window.scrollTo(0, 0);
         this.isLoading = true;
         try {
-            this.conditions = this.select.getSelect().purchase;
+            this.conditions = this.select.data.purchase;
             if (this.user.isMember()) {
                 // 会員
                 this.conditions.theater = this.user.getTheaterCode(0);

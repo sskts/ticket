@@ -52,7 +52,13 @@ function getCredentials(req, res) {
                 accessToken: accessToken
             };
             log('getCredentials MemberType', req.query.member);
-            res.json(credentials);
+            const userName = (req.query.member === MemberType.Member)
+                ? options.auth.verifyIdToken({}).getUsername()
+                : undefined;
+            res.json({
+                credentials: credentials,
+                userName: userName
+            });
         }
         catch (err) {
             base_controller_1.errorProsess(res, err);

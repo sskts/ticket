@@ -42,8 +42,13 @@ export async function getCredentials(req: Request, res: Response) {
         };
 
         log('getCredentials MemberType', req.query.member);
-
-        res.json(credentials);
+        const userName = (req.query.member === MemberType.Member)
+            ? options.auth.verifyIdToken(<any>{}).getUsername()
+            : undefined;
+        res.json({
+            credentials: credentials,
+            userName: userName
+        });
     } catch (err) {
         errorProsess(res, err);
     }

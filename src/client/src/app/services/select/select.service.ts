@@ -2,7 +2,7 @@
  * SelectService
  */
 import { Injectable } from '@angular/core';
-import { StorageService } from '../storage/storage.service';
+import { SaveType, StorageService } from '../storage/storage.service';
 
 export interface IPurchaseConditions {
     theater: string;
@@ -10,7 +10,7 @@ export interface IPurchaseConditions {
     sort: PurchaseSort;
 }
 
-export interface ISelect {
+export interface IData {
     purchase: IPurchaseConditions;
 }
 
@@ -19,16 +19,25 @@ export enum PurchaseSort {
     Time = 'time'
 }
 
+const STORAGE_KEY = 'select';
+
 @Injectable()
 export class SelectService {
-    public data: ISelect;
+    public data: IData;
 
-    constructor(private storage: StorageService) { }
+    constructor(
+        private storage: StorageService
+    ) {
+        this.load();
+        this.save();
+    }
 
-    public getSelect(): ISelect {
-        if (this.data === undefined) {
-            this.data = this.storage.load('select');
-        }
+    /**
+     * 読み込み
+     * @method load
+     */
+    public load() {
+        const data = this.storage.load(STORAGE_KEY, SaveType.Local);
         if (this.data === undefined || this.data === null) {
             this.data = {
                 purchase: {
@@ -37,17 +46,18 @@ export class SelectService {
                     sort: PurchaseSort.Film
                 }
             };
-        }
 
-        return this.data;
+            return;
+        }
+        this.data = data;
     }
 
+    /**
+     * 保存
+     * @method save
+     */
     public save(): void {
-        if (this.data === undefined) {
-            this.getSelect();
-        }
-
-        this.storage.save('select', this.data);
+        this.storage.save(STORAGE_KEY, this.data, SaveType.Local);
     }
 
 }

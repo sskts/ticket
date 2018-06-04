@@ -39,7 +39,6 @@ export class MemberMypageComponent implements OnInit {
      * @method redirectToPurchaseTime
      */
     public redirectToPurchaseTime() {
-        this.select.getSelect();
         this.select.data.purchase.date = moment().format('YYYYMMDD');
         this.select.data.purchase.sort = PurchaseSort.Time;
         this.router.navigate(['/purchase']);
@@ -50,7 +49,6 @@ export class MemberMypageComponent implements OnInit {
      * @method redirectToPurchaseFilm
      */
     public redirectToPurchaseFilm() {
-        this.select.getSelect();
         this.select.data.purchase.sort = PurchaseSort.Film;
         this.router.navigate(['/purchase']);
     }

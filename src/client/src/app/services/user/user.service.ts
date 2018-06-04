@@ -6,6 +6,7 @@ import { SaveType, StorageService } from '../storage/storage.service';
 
 
 export interface IData {
+    userName?: string;
     memberType: MemberType;
     contact?: factory.person.IContact;
     creditCards: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
@@ -88,6 +89,9 @@ export class UserService {
     public async initMember() {
         this.data.memberType = MemberType.Member;
         await this.sasaki.getServices();
+        if (this.sasaki.userName === undefined) {
+            throw new Error('userName is undefined');
+        }
         // 連絡先取得
         const contact = await this.sasaki.person.getContacts({
             personId: 'me'
@@ -119,7 +123,7 @@ export class UserService {
             // 口座開設
             const account = await this.sasaki.person.openAccount({
                 personId: 'me',
-                name: `${this.data.contact.familyName} ${this.data.contact.givenName}`
+                name: this.sasaki.userName
             });
             this.data.accounts.push(account);
         } else {

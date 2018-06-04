@@ -9,7 +9,7 @@ import { StorageService } from '../storage/storage.service';
 export class SasakiService {
 
     public auth: sasaki.IImplicitGrantClient;
-
+    public userName?: string;
     public event: sasaki.service.Event;
     public order: sasaki.service.Order;
     public organization: sasaki.service.Organization;
@@ -99,7 +99,12 @@ export class SasakiService {
         const options = {
             params: new HttpParams().set('member', member)
         };
-        const credentials = await this.http.get<any>(url, options).toPromise();
+        const result = await this.http.get<{
+            credentials: {
+                accessToken: string;
+            };
+            userName?: string;
+        }>(url, options).toPromise();
         const option = {
             domain: '',
             clientId: '',
@@ -112,6 +117,7 @@ export class SasakiService {
             tokenIssuer: ''
         };
         this.auth = sasaki.createAuthInstance(option);
-        this.auth.setCredentials(credentials);
+        this.auth.setCredentials(result.credentials);
+        this.userName = result.userName;
     }
 }
