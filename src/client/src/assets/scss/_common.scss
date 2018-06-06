@@ -52,7 +52,7 @@ select,
 option,
 button,
 label {
-    font-weight: 500;
+    font-weight: normal;
     border: none;
     background: none;
     padding: 0;
@@ -359,6 +359,12 @@ header {
     .swiper-pagination-bullet-active {
         background-color: #00A0E9;
         border: 1px solid #00A0E9;
+    }
+}
+
+.prev-link {
+    app-icon {
+        margin-right: 5px;
     }
 }
 

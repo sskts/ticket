@@ -47,6 +47,11 @@
     background-image: url(/assets/images/icon/prev_white.svg);
 }
 
+.prev-circle-white {
+    @include icon();
+    background-image: url(/assets/images/icon/prev_circle_white.svg);
+}
+
 .about-white {
     @include icon();
     background-image: url(/assets/images/icon/about_white.svg);
