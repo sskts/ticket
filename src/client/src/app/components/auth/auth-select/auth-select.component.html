@@ -8,26 +8,21 @@
                 アプリの始め方を選択してください。
             </p>
 
-            <dl>
-                <dt class="text-center mb-small">
-                    新規会員（年会費500円）登録
-                </dt>
-                <dd class="mb-middle">
-                    <button type="button" class="button button-primary button-block center" routerLink="/auth/register">登録</button>
-                </dd>
-                <dt class="text-center mb-small">
-                    無料で一部機能を使用
-                </dt>
-                <dd class="mb-middle">
-                    <button type="button" class="button button-primary button-block center" (click)="start()">はじめる</button>
-                </dd>
-                <dt class="text-center mb-small">
-                    すでに会員登録済みの方
-                </dt>
-                <dd>
-                    <button type="button" class="button button-primary button-block center" (click)="signIn()">ログイン</button>
-                </dd>
-            </dl>
+            <div class="mb-middle">
+                <button type="button" class="button button-primary button-block center" routerLink="/auth/register">登録</button>
+            </div>
+
+            <p class="text-center mb-small">
+                有料会員登録済みの方
+            </p>
+
+            <p class="mb-x-large text-center">
+                <a (click)="signIn()">ログイン</a>
+            </p>
+
+            <p class="text-center">
+                <a (click)="start()">一部機能を無料で使う</a>
+            </p>
         </div>
     </div>
 </div>

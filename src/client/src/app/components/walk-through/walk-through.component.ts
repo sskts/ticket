@@ -3,7 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AwsCognitoService } from '../../services/aws-cognito/aws-cognito.service';
+import { SaveType, StorageService } from '../../services/storage/storage.service';
 
 @Component({
     selector: 'app-walk-through',
@@ -13,11 +13,10 @@ import { AwsCognitoService } from '../../services/aws-cognito/aws-cognito.servic
 export class WalkThroughComponent implements OnInit {
     public config: SwiperOptions;
     public step: number;
-    public isLoading: boolean;
 
     constructor(
-        private router: Router,
-        private awsCognito: AwsCognitoService
+        private storage: StorageService,
+        private router: Router
     ) { }
 
     /**
@@ -26,7 +25,6 @@ export class WalkThroughComponent implements OnInit {
      */
     public ngOnInit() {
         window.scrollTo(0, 0);
-        this.isLoading = false;
         this.step = 0;
         this.config = {
             pagination: '.swiper-pagination',
@@ -39,21 +37,14 @@ export class WalkThroughComponent implements OnInit {
     }
 
     /**
-     * スタート
+     * はじめる
      * @method start
      */
-    public async start() {
-        try {
-            this.isLoading = true;
-            await this.awsCognito.authenticateWithDeviceId();
-            if (this.awsCognito.credentials === undefined) {
-                throw new Error('credentials is undefined');
-            }
-            await this.router.navigate(['/']);
-        } catch (err) {
-            console.error(err);
-        }
-        this.isLoading = false;
+    public start() {
+        const device = {
+            tutorial: true
+        };
+        this.storage.save('device', device, SaveType.Local);
+        this.router.navigate(['/auth/select']);
     }
-
 }

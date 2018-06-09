@@ -22,7 +22,7 @@ export class StorageService {
         console.log('StorageService');
      }
 
-    public load(key: string, saveType?: SaveType): any {
+    public load(key: string, saveType?: SaveType): any | null {
         const storage = (saveType === SaveType.Session) ? sessionStorage : localStorage;
         const value = storage.getItem(key);
 

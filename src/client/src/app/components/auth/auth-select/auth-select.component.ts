@@ -50,13 +50,8 @@ export class AuthSelectComponent implements OnInit {
      */
     public async start() {
         this.isLoading = true;
-        const deviceId = localStorage.getItem('deviceId');
         this.user.data.memberType = MemberType.NotMember;
         this.user.save();
-        if (deviceId === null) {
-            this.router.navigate(['/walkThrough']);
-            return;
-        }
         try {
             await this.awsCognito.authenticateWithDeviceId();
             if (this.awsCognito.credentials === undefined) {
