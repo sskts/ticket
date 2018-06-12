@@ -18,6 +18,9 @@
                 <li>
                     <app-icon iconName="about-white" width="15" height="15"></app-icon>{{ user.getTheaterName(0) }}
                 </li>
+                <li>
+                    <app-icon iconName="about-white" width="15" height="15"></app-icon>{{ user.getAccount(0)?.accountNumber }}
+                </li>
             </ul>
             <button type="button" class="button button-primary button-block center" routerLink="/member/edit/profile">基本情報変更</button>
         </div>

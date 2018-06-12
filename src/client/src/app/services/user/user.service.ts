@@ -229,6 +229,17 @@ export class UserService {
     }
 
     /**
+     * 口座情報取得
+     * @method getAccount
+     */
+    public getAccount(index: number) {
+        if (this.data.accounts.length === 0) {
+            return undefined;
+        }
+        return this.data.accounts[index];
+    }
+
+    /**
      * クレジットカード情報取得（表示用）
      * @method getCreditCard
      */

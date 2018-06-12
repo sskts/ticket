@@ -75,6 +75,14 @@
                         {{ user.getTheaterName(0) }}
                     </dd>
                 </dl>
+                <dl class="mb-middle">
+                    <dt class="mb-small">
+                        <strong>口座番号</strong>
+                    </dt>
+                    <dd>
+                        {{ user.getAccount(0)?.accountNumber }}
+                    </dd>
+                </dl>
                 <!-- <dl class="mb-middle">
                             <dt>生年月日
                                 <span class="text-red small-text">必須</span>
@@ -101,7 +109,7 @@
                             formControlName="postalCode" autocomplete="zip" placeholder="電話番号を入力してください">
                     </dd>
                 </dl> -->
-                <button type="submit" class="button button-primary button-block mb-middle">基本情報変更</button>
+                <button type="submit" class="button button-primary center button-block mb-middle">基本情報変更</button>
                 <div class="text-center">
                     <a routerLink="/member/edit">戻る</a>
                 </div>
