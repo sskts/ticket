@@ -136,3 +136,23 @@
     @include icon();
     background-image: url(/assets/images/icon/telephone_white.svg);
 }
+
+.account-white {
+    @include icon();
+    background-image: url(/assets/images/icon/account_white.svg);
+}
+
+.login-white {
+    @include icon();
+    background-image: url(/assets/images/icon/login_white.svg);
+}
+
+.my-theater-white {
+    @include icon();
+    background-image: url(/assets/images/icon/my_theater_white.svg);
+}
+
+.benefits-white {
+    @include icon();
+    background-image: url(/assets/images/icon/benefits_white.svg);
+}
