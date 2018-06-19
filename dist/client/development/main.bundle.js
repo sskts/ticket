@@ -9364,6 +9364,7 @@ var UserService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         this.data.memberType = MemberType.Member;
+                        this.save();
                         return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
                         _a.sent();

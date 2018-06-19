@@ -88,6 +88,7 @@ export class UserService {
      */
     public async initMember() {
         this.data.memberType = MemberType.Member;
+        this.save();
         await this.sasaki.getServices();
         if (this.sasaki.userName === undefined) {
             throw new Error('userName is undefined');
