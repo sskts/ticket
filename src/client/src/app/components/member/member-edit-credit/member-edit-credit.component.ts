@@ -116,7 +116,7 @@ export class MemberEditCreditComponent implements OnInit {
 
             // 会員 クレジットカード情報保存
             await this.user.registerCreditCard(gmoTokenObject);
-            this.router.navigate(['/']);
+            this.router.navigate(['/member/edit']);
         } catch (err) {
             console.error(err);
             // クレジットカード処理失敗

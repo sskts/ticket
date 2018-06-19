@@ -151,10 +151,10 @@ export class MemberEditProfileComponent implements OnInit {
                 telephone: this.profileForm.controls.telephone.value,
                 postalCode: this.profileForm.controls.postalCode.value,
             });
+            this.router.navigate(['/member/edit']);
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/member/edit/profile' }]);
         }
-        this.router.navigate(['/member/edit']);
     }
 
 }
