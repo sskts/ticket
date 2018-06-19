@@ -293,7 +293,6 @@ export class UserService {
      */
     public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
         await this.sasaki.getServices();
-        await this.deleteCreditCard();
         // 登録
         await this.sasaki.person.addCreditCard({
             personId: 'me',
@@ -301,11 +300,15 @@ export class UserService {
                 token: gmoTokenObject.token
             }
         });
-
-        const creditCards = await this.sasaki.person.findCreditCards({
+        this.data.creditCards = await this.sasaki.person.findCreditCards({
             personId: 'me'
         });
-        this.data.creditCards = creditCards;
+        if (this.data.creditCards.length > 1) {
+            await this.deleteCreditCard();
+            this.data.creditCards = await this.sasaki.person.findCreditCards({
+                personId: 'me'
+            });
+        }
 
         this.save();
     }

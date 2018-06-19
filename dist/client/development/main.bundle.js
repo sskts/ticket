@@ -9590,15 +9590,12 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.registerCreditCard = function (gmoTokenObject) {
         return __awaiter(this, void 0, void 0, function () {
-            var creditCards;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var _a, _b;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
-                        _a.sent();
-                        return [4 /*yield*/, this.deleteCreditCard()];
-                    case 2:
-                        _a.sent();
+                        _c.sent();
                         // 登録
                         return [4 /*yield*/, this.sasaki.person.addCreditCard({
                                 personId: 'me',
@@ -9606,15 +9603,27 @@ var UserService = /** @class */ (function () {
                                     token: gmoTokenObject.token
                                 }
                             })];
-                    case 3:
+                    case 2:
                         // 登録
-                        _a.sent();
+                        _c.sent();
+                        _a = this.data;
                         return [4 /*yield*/, this.sasaki.person.findCreditCards({
                                 personId: 'me'
                             })];
+                    case 3:
+                        _a.creditCards = _c.sent();
+                        if (!(this.data.creditCards.length > 1)) return [3 /*break*/, 6];
+                        return [4 /*yield*/, this.deleteCreditCard()];
                     case 4:
-                        creditCards = _a.sent();
-                        this.data.creditCards = creditCards;
+                        _c.sent();
+                        _b = this.data;
+                        return [4 /*yield*/, this.sasaki.person.findCreditCards({
+                                personId: 'me'
+                            })];
+                    case 5:
+                        _b.creditCards = _c.sent();
+                        _c.label = 6;
+                    case 6:
                         this.save();
                         return [2 /*return*/];
                 }
