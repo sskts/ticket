@@ -4,11 +4,17 @@
     min-height: auto;
 }
 .inner {
-    padding: 0;
+    padding: 150px 0 0;
     width: 300px;
 }
 .logo {
     img {
-        width: 200px;
+        width: 220px;
     }
+}
+.buttons {
+    position: absolute;
+    left: 0;
+    bottom: 80px;
+    width: 100%;
 }
