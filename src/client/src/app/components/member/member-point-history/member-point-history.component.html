@@ -10,7 +10,17 @@
         </div>
         <ul class="mb-middle">
             <li *ngFor="let action of accountMoneyTransferActions">
-                <div *ngIf="action.purpose.typeOf === transactionType.Deposit" class="history">
+                <div *ngIf="action.purpose.typeOf === transactionType.Deposit && action.amount < 0" class="history">
+                    <div class="info">
+                        <div class="circle circle-blue"></div>
+                        <p class="mb-x-small" [innerHtml]="action.description.replace(',', '<br>')"></p>
+                        <div class="small-text">{{ action.endDate | dateFormat: 'YYYY年MM月DD日' }}</div>
+                    </div>
+                    <div class="point text-right">
+                        <span class="large-x-text">{{ action.amount }}</span>
+                    </div>
+                </div>
+                <div *ngIf="action.purpose.typeOf === transactionType.Deposit && action.amount > 0" class="history">
                     <div class="info">
                         <div class="circle"></div>
                         <p class="mb-x-small" [innerHtml]="action.description.replace(',', '<br>')"></p>
@@ -27,7 +37,7 @@
                         <div class="small-text">{{ action.endDate | dateFormat: 'YYYY年MM月DD日' }}</div>
                     </div>
                     <div class="point text-right">
-                        <span class="large-x-text">{{ action.amount }}</span>
+                        <span class="large-x-text">-{{ action.amount }}</span>
                     </div>
                 </div>
                 <div *ngIf="action.purpose.typeOf === transactionType.Transfer && action.fromLocation.accountNumber !== user.data.accounts[0].accountNumber" class="history">
