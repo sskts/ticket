@@ -19,12 +19,12 @@ export const route = {
     canActivate: [MemberGuardService, ProgramMembershipGuardService],
     children: [
         { path: 'mypage', component: MemberMypageComponent },
-        { path: 'benefits', component: MemberBenefitsComponent },
         { path: 'withdraw', component: MemberWithdrawComponent },
         {
             path: 'point',
             children: [
                 { path: '', component: MemberPointComponent },
+                { path: 'benefits', component: MemberBenefitsComponent },
                 { path: 'history', component: MemberPointHistoryComponent }
             ]
         },
