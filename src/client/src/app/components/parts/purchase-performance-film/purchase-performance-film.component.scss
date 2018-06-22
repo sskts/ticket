@@ -1,36 +1,39 @@
-:host {
-    padding-right: 5px;
+:host:last-child .performance {
+    border-bottom: none;
 }
 .performance {
-    background-color: #B2B2B2;
-    padding: 10px;
     position: relative;
-    width: 120px;
-    &.vacancy-large {
-        background-color: #0563C1;
+    display: grid;
+    grid-template-columns: auto 1fr 100px;
+    grid-column-gap: 15px;
+    align-items: center;
+    padding: 10px 0;
+    margin: 0 10px;
+    color: #333;
+    border-bottom: 1px dotted #B2B2B2;
+}
+.date {
+    align-self: center;
+}
+
+.button {
+    background-color: #B2B2B2;
+    color: #FFF;
+    app-icon {
+        margin-right: 10px;
     }
-    &.vacancy-little {
-        background-color: #F2C300;
-    }   
-    &.vacancy-full {
-        background-color: #B2B2B2;
-    }
-    .screen {
-        padding-right: 27px;
-    }
-    .status {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        &.window {
-            border: 1px solid #6D6D6D;
-            padding: 2px;
-            color: #6D6D6D;
-        }
-    }
-    .service {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-    }
+}
+
+.vacancy-large .button {
+    background-color: #0563C1;
+}
+
+.vacancy-little .button {
+    background-color: #F2C300;
+}
+
+.service {
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }

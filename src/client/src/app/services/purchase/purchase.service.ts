@@ -33,7 +33,14 @@ export interface ISchedule {
 }
 export interface IDate {
     value: string;
-    displayText: string;
+    display: {
+        year: string;
+        month: string;
+        week: string;
+        day: string;
+        text: string;
+    };
+    preSale: boolean;
     serviceDay: string;
 }
 
@@ -180,14 +187,24 @@ export class PurchaseService {
         });
 
         let count = 0;
+        const PRE_SALE = '1'; // 先行販売
+        moment.locale('ja');
 
         return dateList.map((schedule) => {
             const formatDate = moment(schedule.date).format('YYYY/MM/DD');
             const result = {
                 value: schedule.date,
-                displayText: (count === 0) ? `本日 (${formatDate})`
-                    : (count === 1) ? `明日 (${formatDate})`
-                        : (count === 2) ? `明後日 (${formatDate})` : formatDate,
+                display: {
+                    month: moment(schedule.date).format('MM'),
+                    week: moment(schedule.date).format('ddd'),
+                    day: moment(schedule.date).format('DD'),
+                    year: moment(schedule.date).format('YYYY'),
+                    text: (count === 0) ? `本日 (${formatDate})`
+                        : (count === 1) ? `明日 (${formatDate})`
+                            : (count === 2) ? `明後日 (${formatDate})` : formatDate
+                },
+                preSale: (schedule.individualScreeningEvents.length > 0
+                    && schedule.individualScreeningEvents[0].coaInfo.flgEarlyBooking === PRE_SALE),
                 serviceDay: (schedule.individualScreeningEvents.length > 0)
                     ? schedule.individualScreeningEvents[0].coaInfo.nameServiceDay
                     : ''

@@ -123,4 +123,13 @@ export class PurchaseComponent implements OnInit {
         await this.changeConditions();
     }
 
+    /**
+     * 日付選択
+     * @method selectDate
+     */
+    public async selectDate(date: IDate) {
+        this.conditions.date = date.value;
+        await this.changeConditions();
+    }
+
 }

@@ -1,25 +1,36 @@
-<div class="contents bg-02">
-    <div class="inner">
+<div class="contents">
+    <div class="inner bg-02">
         <p class="read mb-small small-text">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>
-        <ul class="conditions mb-small">
-            <li class="mb-x-small">
+        <ul class="conditions">
+            <li class="mb-small">
                 <div class="control-label mb-x-small small-x-text text-light-gray">鑑賞劇場</div>
                 <select class="form-control" name="theater" [(ngModel)]="conditions.theater" (change)="changeConditions()">
                     <option value="">選択してください</option>
                     <option *ngFor="let theater of theaters" value="{{ theater.location.branchCode }}">{{ theater.name.ja }}</option>
                 </select>
             </li>
-            <li class="mb-small">
+            <li>
                 <div class="control-label mb-x-small small-x-text text-light-gray">鑑賞日時</div>
-                <select class="form-control" name="date" [(ngModel)]="conditions.date" (change)="changeConditions()">
-                    <option value="">選択してください</option>
-                    <option *ngFor="let date of dateList" value="{{ date.value }}">{{ date.displayText }} {{ date.serviceDay }}</option>
-                </select>
+                <div class="dateList">
+                    <ul class="scroll">
+                        <li *ngFor="let date of dateList" class="text-center" [class.active]="conditions.date === date.value" (click)="selectDate(date)">
+                            <div class="inner">
+                                <div class="month mb-xx-small">{{ date.display.month }}</div>
+                                <div class="day mb-xx-small"><strong>{{ date.display.day }}</strong> <span class="small-x-text">({{ date.display.week }})</span></div>
+                                <div class="service-day small-text">{{ date.serviceDay }}</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <input type="hidden" name="date" [(ngModel)]="conditions.date">
             </li>
-            <ul class="sort">
-                <li [class.active]="conditions.sort === purchaseSort.Film" class="small-text text-center" (click)="changeSort(purchaseSort.Film)">作品順</li>
-                <li [class.active]="conditions.sort === purchaseSort.Time" class="small-text text-center" (click)="changeSort(purchaseSort.Time)">上映時間順</li>
-            </ul>
+        </ul>
+    </div>
+    <div class="inner">
+        <p *ngIf="conditions.date !== ''" class="text-center mb-x-small">{{ conditions.date | dateFormat:'YYYY年MM月DD日(ddd)' }}</p>
+        <ul class="sort mb-small">
+            <li [class.active]="conditions.sort === purchaseSort.Film" class="small-text text-center" (click)="changeSort(purchaseSort.Film)">作品順</li>
+            <li [class.active]="conditions.sort === purchaseSort.Time" class="small-text text-center" (click)="changeSort(purchaseSort.Time)">上映時間順</li>
         </ul>
 
         <div *ngIf="!isLoading && filmOrder.length > 0 && conditions.sort === purchaseSort.Film">
@@ -31,9 +42,7 @@
                         {{ filmData.films[0].workPerformed.duration | duration: 'minutes' }}分
                     </div>
                 </div>
-                <div class="scroll">
-                    <app-purchase-performance-film *ngFor="let film of filmData.films" [performance]="film"></app-purchase-performance-film>
-                </div>
+                <app-purchase-performance-film *ngFor="let film of filmData.films" [performance]="film"></app-purchase-performance-film>
             </div>
         </div>
 
