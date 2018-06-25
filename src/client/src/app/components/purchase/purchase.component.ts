@@ -26,6 +26,7 @@ export class PurchaseComponent implements OnInit {
     public conditions: IPurchaseConditions;
     public error: string;
     public purchaseSort: typeof PurchaseSort;
+    public isPreSale: boolean;
 
     constructor(
         private router: Router,
@@ -49,6 +50,7 @@ export class PurchaseComponent implements OnInit {
         this.isLoading = true;
         try {
             this.conditions = this.select.data.purchase;
+            console.log('conditions', this.conditions);
             if (this.user.isMember()) {
                 // 会員
                 this.conditions.theater = this.user.getTheaterCode(0);
@@ -91,6 +93,10 @@ export class PurchaseComponent implements OnInit {
             const selectDate = this.dateList.find((date) => {
                 return (date.value === this.conditions.date);
             });
+            const preSaleList = this.dateList.filter((date) => {
+                return (date.preSale);
+            });
+            this.isPreSale = (preSaleList.length > 0);
             if (selectDate === undefined) {
                 this.select.data.purchase.date = '';
                 this.select.save();

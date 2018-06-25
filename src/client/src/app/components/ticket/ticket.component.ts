@@ -24,7 +24,7 @@ export class TicketComponent implements OnInit {
     constructor(
         private router: Router,
         private reservation: ReservationService,
-        private user: UserService
+        public user: UserService
     ) { }
 
     /**

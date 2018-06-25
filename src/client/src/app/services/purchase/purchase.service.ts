@@ -119,9 +119,11 @@ export class PurchaseService {
                 });
                 const dateScreeningEvents: IIndividualScreeningEvent[] = [];
                 tmpDateScreeningEvents.forEach((screeningEvent) => {
+                    const PRE_SALE = '1'; // 先行販売
                     const startDate = moment(screeningEvent.startDate).format('YYYYMMDD');
                     const limitDate = moment().add(3, 'days').format('YYYYMMDD');
-                    if (this.isSalse(screeningEvent) || startDate < limitDate) {
+                    if ((this.isSalse(screeningEvent) && startDate < limitDate)
+                || (this.isSalse(screeningEvent) && screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE)) {
                         dateScreeningEvents.push(screeningEvent);
                     }
                 });
@@ -188,10 +190,12 @@ export class PurchaseService {
 
         let count = 0;
         const PRE_SALE = '1'; // 先行販売
-        moment.locale('ja');
 
         return dateList.map((schedule) => {
             const formatDate = moment(schedule.date).format('YYYY/MM/DD');
+            const preSaleList = schedule.individualScreeningEvents.filter((individualScreeningEvent) => {
+                return (individualScreeningEvent.coaInfo.flgEarlyBooking === PRE_SALE);
+            });
             const result = {
                 value: schedule.date,
                 display: {
@@ -204,7 +208,8 @@ export class PurchaseService {
                             : (count === 2) ? `明後日 (${formatDate})` : formatDate
                 },
                 preSale: (schedule.individualScreeningEvents.length > 0
-                    && schedule.individualScreeningEvents[0].coaInfo.flgEarlyBooking === PRE_SALE),
+                    && preSaleList.length > 0
+                    && moment().add(2, 'day').unix() < moment(schedule.date).unix()),
                 serviceDay: (schedule.individualScreeningEvents.length > 0)
                     ? schedule.individualScreeningEvents[0].coaInfo.nameServiceDay
                     : ''

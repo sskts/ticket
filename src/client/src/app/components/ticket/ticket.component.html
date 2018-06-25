@@ -22,3 +22,4 @@
     </div>
 </div>
 <app-loading [show]="isLoading"></app-loading>
+<app-information *ngIf="!user.isMember()"></app-information>

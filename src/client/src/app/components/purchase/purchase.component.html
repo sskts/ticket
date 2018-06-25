@@ -10,14 +10,21 @@
                 </select>
             </li>
             <li>
-                <div class="control-label mb-x-small small-x-text text-light-gray">鑑賞日時</div>
+                <div class="control-label mb-x-small">
+                    <span class="text-light-gray small-x-text">鑑賞日時</span>
+                    <div *ngIf="isPreSale" class="preSale small-text text-red">先行販売</div>
+                </div>
                 <div class="dateList">
                     <ul class="scroll">
                         <li *ngFor="let date of dateList" class="text-center" [class.active]="conditions.date === date.value" (click)="selectDate(date)">
                             <div class="inner">
                                 <div class="month mb-xx-small">{{ date.display.month }}</div>
-                                <div class="day mb-xx-small"><strong>{{ date.display.day }}</strong> <span class="small-x-text">({{ date.display.week }})</span></div>
-                                <div class="service-day small-text">{{ date.serviceDay }}</div>
+                                <div class="day mb-xx-small">
+                                    <strong>{{ date.display.day }}</strong>
+                                    <span class="small-x-text">({{ date.display.week }})</span>
+                                </div>
+                                <div class="service-day small-text mb-xx-small">{{ date.serviceDay }}</div>
+                                <div *ngIf="date.preSale" class="pre-sale small-text">先行販売</div>
                             </div>
                         </li>
                     </ul>

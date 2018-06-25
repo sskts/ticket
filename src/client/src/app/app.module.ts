@@ -38,6 +38,7 @@ import { HeaderMenuNotMemberComponent } from './components/parts/header-menu-not
 import { HeaderMenuComponent } from './components/parts/header-menu/header-menu.component';
 import { HeaderComponent } from './components/parts/header/header.component';
 import { IconComponent } from './components/parts/icon/icon.component';
+import { InformationComponent } from './components/parts/information/information.component';
 import { LoadingComponent } from './components/parts/loading/loading.component';
 import { MembershipBenefitsComponent } from './components/parts/membership-benefits/membership-benefits.component';
 import { ModalComponent } from './components/parts/modal/modal.component';
@@ -122,7 +123,8 @@ import { UserService } from './services/user/user.service';
     AuthRegisterCreditComponent,
     AuthRegisterProgramMembershipComponent,
     HeaderMenuMemberComponent,
-    HeaderMenuNotMemberComponent
+    HeaderMenuNotMemberComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule,

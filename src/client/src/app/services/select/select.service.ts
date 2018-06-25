@@ -38,7 +38,7 @@ export class SelectService {
      */
     public load() {
         const data = this.storage.load(STORAGE_KEY, SaveType.Local);
-        if (this.data === undefined || this.data === null) {
+        if (data === undefined || data === null) {
             this.data = {
                 purchase: {
                     theater: '',
