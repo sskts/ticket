@@ -27,7 +27,7 @@ export class AuthRegisterTermsComponent implements OnInit {
         this.termsForm = this.formBuilder.group({
             terms: [false, [Validators.requiredTrue]]
         });
-        console.log(this.termsForm);
+        // console.log(this.termsForm);
         this.disable = false;
     }
 

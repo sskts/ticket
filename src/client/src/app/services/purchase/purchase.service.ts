@@ -274,7 +274,7 @@ export class PurchaseService {
      */
     public async performanceRedirect(performance: IIndividualScreeningEvent) {
         if (performance.offer.availability === 0) {
-            throw new Error('performance.offer.availability is 0');
+            return;
         }
         let params;
         if (!this.user.isMember()) {

@@ -50,7 +50,7 @@ export class PurchaseComponent implements OnInit {
         this.isLoading = true;
         try {
             this.conditions = this.select.data.purchase;
-            console.log('conditions', this.conditions);
+            // console.log('conditions', this.conditions);
             if (this.user.isMember()) {
                 // 会員
                 this.conditions.theater = this.user.getTheaterCode(0);
