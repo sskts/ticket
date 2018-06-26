@@ -2,6 +2,9 @@
 .contents {
     height: 100vh;
     min-height: auto;
+    background-image: url(/assets/images/auth/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .inner {
     padding: 150px 0 0;

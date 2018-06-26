@@ -73,6 +73,7 @@ import { SelectService } from './services/select/select.service';
 import { StorageService } from './services/storage/storage.service';
 import { TutorialGuardService } from './services/tutorial-guard/tutorial-guard.service';
 import { UserService } from './services/user/user.service';
+import { UtilService } from './services/util/util.service';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -150,7 +151,8 @@ import { UserService } from './services/user/user.service';
         CreditGuardService,
         ProgramMembershipGuardService,
         MemberService,
-        TutorialGuardService
+        TutorialGuardService,
+        UtilService
     ],
     bootstrap: [AppComponent]
 })

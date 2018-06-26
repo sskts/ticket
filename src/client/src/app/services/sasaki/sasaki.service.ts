@@ -4,6 +4,7 @@ import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import 'rxjs/add/operator/toPromise';
 import { environment } from '../../../environments/environment';
 import { StorageService } from '../storage/storage.service';
+import { UtilService } from '../util/util.service';
 
 enum MemberType {
     NotMember = '0',
@@ -27,7 +28,8 @@ export class SasakiService {
 
     constructor(
         private http: HttpClient,
-        private storage: StorageService
+        private storage: StorageService,
+        private util: UtilService
     ) { }
 
     /**
@@ -116,6 +118,8 @@ export class SasakiService {
         } catch (err) {
             if (memberType === MemberType.Member) {
                 await this.signIn();
+                const time = 3000;
+                await this.util.sleep(time);
 
                 return;
             }

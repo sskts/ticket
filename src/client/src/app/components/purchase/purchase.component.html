@@ -16,11 +16,11 @@
                 </div>
                 <div class="dateList">
                     <ul class="scroll">
-                        <li *ngFor="let date of dateList" class="text-center" [class.active]="conditions.date === date.value" (click)="selectDate(date)">
+                        <li *ngFor="let date of dateList" class="text-center text-light-gray" [class.active]="conditions.date === date.value" (click)="selectDate(date)">
                             <div class="inner">
                                 <div class="month mb-xx-small">{{ date.display.month }}</div>
                                 <div class="day mb-xx-small">
-                                    <strong>{{ date.display.day }}</strong>
+                                    <strong class="large-text">{{ date.display.day }}</strong>
                                     <span class="small-x-text">({{ date.display.week }})</span>
                                 </div>
                                 <div class="service-day small-text mb-xx-small">{{ date.serviceDay }}</div>
