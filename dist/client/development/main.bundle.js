@@ -1379,9 +1379,10 @@ var AuthRegisterCreditComponent = /** @class */ (function () {
                                     return;
                                 }
                                 var rect = validation.getBoundingClientRect();
-                                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                                var top = rect.top + scrollTop - 50;
-                                window.scrollTo(undefined, top);
+                                var contents = element.querySelector('.contents');
+                                var scrollTop = contents.scrollTop;
+                                var top = rect.top + scrollTop - 80;
+                                contents.scrollTo(0, top);
                             }, 0);
                             return [2 /*return*/];
                         }
@@ -3247,9 +3248,10 @@ var MemberEditCreditComponent = /** @class */ (function () {
                                     return;
                                 }
                                 var rect = validation.getBoundingClientRect();
-                                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                                var top = rect.top + scrollTop - 50;
-                                window.scrollTo(undefined, top);
+                                var contents = element.querySelector('.contents');
+                                var scrollTop = contents.scrollTop;
+                                var top = rect.top + scrollTop - 80;
+                                contents.scrollTo(0, top);
                             }, 0);
                             return [2 /*return*/];
                         }
@@ -3598,9 +3600,10 @@ var MemberEditProfileComponent = /** @class */ (function () {
                                     return;
                                 }
                                 var rect = validation.getBoundingClientRect();
-                                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                                var top = rect.top + scrollTop - 50;
-                                window.scrollTo(undefined, top);
+                                var contents = element.querySelector('.contents');
+                                var scrollTop = contents.scrollTop;
+                                var top = rect.top + scrollTop - 80;
+                                contents.scrollTo(0, top);
                             }, 0);
                             return [2 /*return*/];
                         }

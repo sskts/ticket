@@ -133,9 +133,10 @@ export class MemberEditProfileComponent implements OnInit {
                     return;
                 }
                 const rect = validation.getBoundingClientRect();
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const top = rect.top + scrollTop - 50;
-                window.scrollTo(undefined, top);
+                const contents = (<HTMLElement>element.querySelector('.contents'));
+                const scrollTop = contents.scrollTop;
+                const top = rect.top + scrollTop - 80;
+                contents.scrollTo(0, top);
             }, 0);
 
             return;
