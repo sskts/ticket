@@ -32,6 +32,5 @@ export class AppComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        window.scrollTo(0, 0);
     }
 }

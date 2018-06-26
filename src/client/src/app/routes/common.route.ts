@@ -8,6 +8,7 @@ import { PurchaseComponent } from '../components/purchase/purchase.component';
 import { RootComponent } from '../components/root/root.component';
 import { TicketComponent } from '../components/ticket/ticket.component';
 import { AuthGuardService } from '../services/auth-guard/auth-guard.service';
+import { TutorialGuardService } from '../services/tutorial-guard/tutorial-guard.service';
 
 /**
  * 認証ルーティング
@@ -31,5 +32,5 @@ export const route = {
  * ルートルーティング
  */
 export const rootRoute = {
-    path: 'root', canActivate: [AuthGuardService], component: RootComponent
+    path: 'root', canActivate: [TutorialGuardService, AuthGuardService], component: RootComponent
 };

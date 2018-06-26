@@ -1,22 +1,22 @@
 // tslint:disable:no-useless-files missing-jsdoc
 // /**
-//  * WalkThroughComponentテスト
+//  * TutorialComponentテスト
 //  */
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 // import { RouterTestingModule } from '@angular/router/testing';
 // import { SwiperModule } from 'angular2-useful-swiper';
 
 // import { LoadingComponent } from '../loading/loading.component';
-// import { WalkThroughComponent } from './walk-through.component';
+// import { TutorialComponent } from './walk-through.component';
 
-// describe('WalkThroughComponent', () => {
-//     let component: WalkThroughComponent;
-//     let fixture: ComponentFixture<WalkThroughComponent>;
+// describe('TutorialComponent', () => {
+//     let component: TutorialComponent;
+//     let fixture: ComponentFixture<TutorialComponent>;
 
 //     beforeEach(async(() => {
 //         TestBed.configureTestingModule({
 //             declarations: [
-//                 WalkThroughComponent,
+//                 TutorialComponent,
 //                 LoadingComponent
 //             ],
 //             providers: [],
@@ -29,7 +29,7 @@
 //     }));
 
 //     beforeEach(() => {
-//         fixture = TestBed.createComponent(WalkThroughComponent);
+//         fixture = TestBed.createComponent(TutorialComponent);
 //         component = fixture.componentInstance;
 //         fixture.detectChanges();
 //     });

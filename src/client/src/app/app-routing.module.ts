@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './components/error/error.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { WalkThroughComponent } from './components/walk-through/walk-through.component';
+import { TutorialComponent } from './components/tutorial/tutorial.component';
 import * as auth from './routes/auth.route';
 import * as common from './routes/common.route';
 import * as member from './routes/member.route';
@@ -17,7 +17,7 @@ const appRoutes: Routes = [
     auth.route,
     auth.logoutRoute,
     member.route,
-    { path: 'walkThrough', component: WalkThroughComponent },
+    { path: 'tutorial', component: TutorialComponent },
     { path: 'error/:redirect', component: ErrorComponent },
     { path: 'error', component: ErrorComponent },
     { path: '**', component: NotFoundComponent }

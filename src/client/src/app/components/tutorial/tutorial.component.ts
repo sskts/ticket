@@ -1,16 +1,16 @@
 /**
- * WalkThroughComponent
+ * TutorialComponent
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SaveType, StorageService } from '../../services/storage/storage.service';
 
 @Component({
-    selector: 'app-walk-through',
-    templateUrl: './walk-through.component.html',
-    styleUrls: ['./walk-through.component.scss']
+    selector: 'app-tutorial',
+    templateUrl: './tutorial.component.html',
+    styleUrls: ['./tutorial.component.scss']
 })
-export class WalkThroughComponent implements OnInit {
+export class TutorialComponent implements OnInit {
     public config: SwiperOptions;
     public step: number;
 

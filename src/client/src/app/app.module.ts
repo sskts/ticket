@@ -54,7 +54,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { RootComponent } from './components/root/root.component';
 import { TicketComponent } from './components/ticket/ticket.component';
-import { WalkThroughComponent } from './components/walk-through/walk-through.component';
+import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { AvailabilityPipe } from './pipes/availability/availability.pipe';
 import { DateFormatPipe } from './pipes/date-format/date-format.pipe';
 import { DurationPipe } from './pipes/duration/duration.pipe';
@@ -71,85 +71,87 @@ import { ReservationService } from './services/reservation/reservation.service';
 import { SasakiService } from './services/sasaki/sasaki.service';
 import { SelectService } from './services/select/select.service';
 import { StorageService } from './services/storage/storage.service';
+import { TutorialGuardService } from './services/tutorial-guard/tutorial-guard.service';
 import { UserService } from './services/user/user.service';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
-  declarations: [
-    AppComponent,
-    WalkThroughComponent,
-    NavigationComponent,
-    HeaderComponent,
-    NotFoundComponent,
-    BaseComponent,
-    TimeFormatPipe,
-    AvailabilityPipe,
-    DurationPipe,
-    AboutComponent,
-    LoadingComponent,
-    PolicyComponent,
-    LawComponent,
-    PrivacyComponent,
-    ErrorComponent,
-    TicketDetailComponent,
-    TicketNotFoundComponent,
-    PurchaseComponent,
-    HeaderMenuComponent,
-    TicketComponent,
-    AuthSelectComponent,
-    AuthLogoutComponent,
-    MemberBenefitsComponent,
-    MemberEditComponent,
-    MemberWithdrawComponent,
-    MemberPointComponent,
-    MemberPointHistoryComponent,
-    MemberMypageComponent,
-    PurchasePerformanceTimeComponent,
-    PurchasePerformanceFilmComponent,
-    IconComponent,
-    AuthSigninComponent,
-    AuthSignoutComponent,
-    MemberEditCreditComponent,
-    ModalComponent,
-    MemberEditProfileComponent,
-    RootComponent,
-    AuthRegisterTermsComponent,
-    AuthRegisterComponent,
-    MembershipBenefitsComponent,
-    PointSliderComponent,
-    PointStampsComponent,
-    BenefitsComponent,
-    DateFormatPipe,
-    AuthRegisterCreditComponent,
-    AuthRegisterProgramMembershipComponent,
-    HeaderMenuMemberComponent,
-    HeaderMenuNotMemberComponent,
-    InformationComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    MomentModule,
-    SwiperModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
-  ],
-  providers: [
-    AuthGuardService,
-    AwsCognitoService,
-    ReservationService,
-    SelectService,
-    StorageService,
-    CallNativeService,
-    UserService,
-    SasakiService,
-    MemberGuardService,
-    PurchaseService,
-    CreditGuardService,
-    ProgramMembershipGuardService,
-    MemberService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        TutorialComponent,
+        NavigationComponent,
+        HeaderComponent,
+        NotFoundComponent,
+        BaseComponent,
+        TimeFormatPipe,
+        AvailabilityPipe,
+        DurationPipe,
+        AboutComponent,
+        LoadingComponent,
+        PolicyComponent,
+        LawComponent,
+        PrivacyComponent,
+        ErrorComponent,
+        TicketDetailComponent,
+        TicketNotFoundComponent,
+        PurchaseComponent,
+        HeaderMenuComponent,
+        TicketComponent,
+        AuthSelectComponent,
+        AuthLogoutComponent,
+        MemberBenefitsComponent,
+        MemberEditComponent,
+        MemberWithdrawComponent,
+        MemberPointComponent,
+        MemberPointHistoryComponent,
+        MemberMypageComponent,
+        PurchasePerformanceTimeComponent,
+        PurchasePerformanceFilmComponent,
+        IconComponent,
+        AuthSigninComponent,
+        AuthSignoutComponent,
+        MemberEditCreditComponent,
+        ModalComponent,
+        MemberEditProfileComponent,
+        RootComponent,
+        AuthRegisterTermsComponent,
+        AuthRegisterComponent,
+        MembershipBenefitsComponent,
+        PointSliderComponent,
+        PointStampsComponent,
+        BenefitsComponent,
+        DateFormatPipe,
+        AuthRegisterCreditComponent,
+        AuthRegisterProgramMembershipComponent,
+        HeaderMenuMemberComponent,
+        HeaderMenuNotMemberComponent,
+        InformationComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        MomentModule,
+        SwiperModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
+    providers: [
+        AuthGuardService,
+        AwsCognitoService,
+        ReservationService,
+        SelectService,
+        StorageService,
+        CallNativeService,
+        UserService,
+        SasakiService,
+        MemberGuardService,
+        PurchaseService,
+        CreditGuardService,
+        ProgramMembershipGuardService,
+        MemberService,
+        TutorialGuardService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

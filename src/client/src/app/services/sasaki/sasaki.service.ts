@@ -5,6 +5,11 @@ import 'rxjs/add/operator/toPromise';
 import { environment } from '../../../environments/environment';
 import { StorageService } from '../storage/storage.service';
 
+enum MemberType {
+    NotMember = '0',
+    Member = '1'
+}
+
 @Injectable()
 export class SasakiService {
 
@@ -42,6 +47,7 @@ export class SasakiService {
             this.programMembership = new sasaki.service.ProgramMembership(option);
         } catch (err) {
             console.log(err);
+
             throw new Error('getServices is failed');
         }
     }
@@ -94,17 +100,27 @@ export class SasakiService {
      */
     public async authorize() {
         const user = this.storage.load('user');
-        const member = user.memberType;
+        const memberType = user.memberType;
         const url = '/api/authorize/getCredentials';
         const options = {
-            params: new HttpParams().set('member', member)
+            params: new HttpParams().set('member', memberType)
         };
-        const result = await this.http.get<{
-            credentials: {
-                accessToken: string;
-            };
-            userName?: string;
-        }>(url, options).toPromise();
+        let result;
+        try {
+            result = await this.http.get<{
+                credentials: {
+                    accessToken: string;
+                };
+                userName?: string;
+            }>(url, options).toPromise();
+        } catch (err) {
+            if (memberType === MemberType.Member) {
+                await this.signIn();
+
+                return;
+            }
+            throw err;
+        }
         const option = {
             domain: '',
             clientId: '',
