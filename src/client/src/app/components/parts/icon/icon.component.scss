@@ -82,9 +82,19 @@
     background-image: url(/assets/images/icon/late_show_white.svg);
 }
 
+.late-show-black {
+    @include icon();
+    background-image: url(/assets/images/icon/late_show_black.svg);
+}
+
 .first-show-white {
     @include icon();
     background-image: url(/assets/images/icon/first_show_white.svg);
+}
+
+.first-show-black {
+    @include icon();
+    background-image: url(/assets/images/icon/first_show_black.svg);
 }
 
 .vacancy-large-white {
@@ -155,4 +165,9 @@
 .benefits-white {
     @include icon();
     background-image: url(/assets/images/icon/benefits_white.svg);
+}
+
+.arrow-red {
+    @include icon();
+    background-image: url(/assets/images/icon/arrow_red.svg);
 }
