@@ -6,13 +6,13 @@
         </p>
         <div *ngIf="!isLoading">
             <div *ngIf="reservations.length > 0;">
-                <swiper [config]="config">
+                <div class="swiper-container" [swiper]="config">
                     <div class="swiper-wrapper">
                         <div *ngFor="let reservation of reservations" class="swiper-slide">
                             <app-ticket-detail [reservation]="reservation"></app-ticket-detail>
                         </div>
                     </div>
-                </swiper>
+                </div>
                 <div class="pagination-wrapper">
                     <div class="swiper-pagination"></div>
                 </div>

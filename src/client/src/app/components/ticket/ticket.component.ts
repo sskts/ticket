@@ -3,6 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SwiperConfigInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 import { IReservation, ReservationService } from '../../services/reservation/reservation.service';
 import { UserService } from '../../services/user/user.service';
 
@@ -17,7 +18,7 @@ import { UserService } from '../../services/user/user.service';
  * @implements OnInit
  */
 export class TicketComponent implements OnInit {
-    public config: SwiperOptions;
+    public config: SwiperConfigInterface;
     public isLoading: boolean;
     public reservations: IReservation[];
 
@@ -35,9 +36,12 @@ export class TicketComponent implements OnInit {
         window.scrollTo(0, 0);
         this.isLoading = true;
         this.reservations = [];
+        const pagination: SwiperPaginationInterface = {
+            el: '.swiper-pagination',
+            clickable: true
+        };
         this.config = {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
+            pagination: pagination,
             autoHeight: true
         };
         this.reservation.isMember = this.user.isMember();

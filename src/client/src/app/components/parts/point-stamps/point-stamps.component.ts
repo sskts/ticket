@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SwiperConfigInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 
 @Component({
     selector: 'app-point-stamps',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PointStampsComponent implements OnInit {
     @Input() public point: number;
-    public config: SwiperOptions;
+    public config: SwiperConfigInterface;
     public stamps: {
         label: number;
         status: boolean;
@@ -19,11 +20,14 @@ export class PointStampsComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
+        const pagination: SwiperPaginationInterface = {
+            el: '.swiper-pagination',
+            type: 'fraction',
+            clickable: true
+        };
         this.config = {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-            autoHeight: true,
-            paginationType: 'fraction'
+            pagination: pagination,
+            autoHeight: true
         };
 
         const stampGroupLimit = 6;

@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MomentModule } from 'angular2-moment';
-import { SwiperModule } from 'angular2-useful-swiper';
+import { SwiperModule } from 'ngx-swiper-wrapper';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { AppComponent } from './components/app/app.component';
@@ -132,10 +132,10 @@ import { UtilService } from './services/util/util.service';
         BrowserModule,
         HttpClientModule,
         MomentModule,
-        SwiperModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        SwiperModule
     ],
     providers: [
         AuthGuardService,

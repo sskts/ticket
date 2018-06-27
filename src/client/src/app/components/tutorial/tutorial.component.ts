@@ -3,6 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SwiperConfigInterface , SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 import { SaveType, StorageService } from '../../services/storage/storage.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { SaveType, StorageService } from '../../services/storage/storage.service
     styleUrls: ['./tutorial.component.scss']
 })
 export class TutorialComponent implements OnInit {
-    public config: SwiperOptions;
+    public config: SwiperConfigInterface;
     public step: number;
 
     constructor(
@@ -26,14 +27,24 @@ export class TutorialComponent implements OnInit {
     public ngOnInit() {
         window.scrollTo(0, 0);
         this.step = 0;
-        this.config = {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-            spaceBetween: 30,
-            onSlideChangeEnd: (swiper) => {
-                this.step = swiper.activeIndex;
-            }
+        const pagination: SwiperPaginationInterface = {
+            el: '.swiper-pagination',
+            clickable: true
         };
+        this.config = {
+            pagination: pagination,
+            spaceBetween: 30
+            // onSlideChangeEnd: (swiper) => {
+            //     this.step = swiper.activeIndex;
+            // }
+        };
+    }
+
+    /**
+     * スライド後イベント
+     */
+    public indexChange(index: number) {
+        this.step = index;
     }
 
     /**
