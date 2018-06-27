@@ -1,9 +1,9 @@
 /**
  * TicketComponent
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { SwiperConfigInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
+import { SwiperComponent, SwiperConfigInterface, SwiperDirective, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 import { IReservation, ReservationService } from '../../services/reservation/reservation.service';
 import { UserService } from '../../services/user/user.service';
 
@@ -18,6 +18,8 @@ import { UserService } from '../../services/user/user.service';
  * @implements OnInit
  */
 export class TicketComponent implements OnInit {
+    @ViewChild(SwiperComponent) public componentRef?: SwiperComponent;
+    @ViewChild(SwiperDirective) public directiveRef?: SwiperDirective;
     public config: SwiperConfigInterface;
     public isLoading: boolean;
     public reservations: IReservation[];
@@ -59,6 +61,11 @@ export class TicketComponent implements OnInit {
      * スライド
      */
     public slideChangeTransitionEnd() {
+        if (this.directiveRef === undefined) {
+            return;
+        }
+        this.directiveRef.update();
+        // console.log(this.componentRef, this.directiveRef);
         // const contents = (<HTMLElement>document.querySelector('.contents'));
         // contents.style.overflowY = 'hidden';
         // this.config.autoHeight = false;
