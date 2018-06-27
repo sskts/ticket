@@ -6,7 +6,7 @@
         </p>
         <div *ngIf="!isLoading">
             <div *ngIf="reservations.length > 0;">
-                <div class="swiper-container" [swiper]="config">
+                <div class="swiper-container" [swiper]="config" (slideChangeTransitionEnd)="slideChangeTransitionEnd()">
                     <div class="swiper-wrapper">
                         <div *ngFor="let reservation of reservations" class="swiper-slide">
                             <app-ticket-detail [reservation]="reservation"></app-ticket-detail>
