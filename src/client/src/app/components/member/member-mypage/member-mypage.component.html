@@ -1,4 +1,4 @@
-<div class="contents">
+<app-page>
     <div class="inner">
         <div *ngIf="!isLoading" class="text-center mb-middle">
             <div class="mb-middle">{{ user.getName() }}様</div>
@@ -30,7 +30,7 @@
             </li>
         </ul>
     </div>
-</div>
+</app-page>
 
 <app-loading [show]="isLoading"></app-loading>
 <app-information></app-information>

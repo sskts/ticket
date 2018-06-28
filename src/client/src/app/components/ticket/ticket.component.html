@@ -1,4 +1,4 @@
-<div class="contents">
+<app-page>
     <div class="inner">
         <p class="mb-small text-center small-text">
             購入した鑑賞作品の下記チケットのQRコードを
@@ -6,7 +6,7 @@
         </p>
         <div *ngIf="!isLoading">
             <div *ngIf="reservations.length > 0;">
-                <div class="swiper-container" #swiper [swiper]="config" (slideChangeTransitionEnd)="slideChangeTransitionEnd()">
+                <div class="swiper-container" #swiper [swiper]="config">
                     <div class="swiper-wrapper">
                         <div *ngFor="let reservation of reservations" class="swiper-slide">
                             <app-ticket-detail [reservation]="reservation"></app-ticket-detail>
@@ -20,6 +20,6 @@
             <app-ticket-not-found *ngIf="reservations.length === 0;"></app-ticket-not-found>
         </div>
     </div>
-</div>
+</app-page>
 <app-loading [show]="isLoading"></app-loading>
 <app-information *ngIf="!user.isMember()"></app-information>

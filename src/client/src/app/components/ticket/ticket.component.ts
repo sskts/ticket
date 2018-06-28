@@ -57,21 +57,4 @@ export class TicketComponent implements OnInit {
         this.isLoading = false;
     }
 
-    /**
-     * スライド
-     */
-    public slideChangeTransitionEnd() {
-        if (this.directiveRef === undefined) {
-            return;
-        }
-        this.directiveRef.update();
-        // console.log(this.componentRef, this.directiveRef);
-        // const contents = (<HTMLElement>document.querySelector('.contents'));
-        // contents.style.overflowY = 'hidden';
-        // this.config.autoHeight = false;
-        // setTimeout(() => {
-        //     contents.style.overflowY = 'auto';
-        // }, 100);
-    }
-
 }

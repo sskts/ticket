@@ -99,7 +99,7 @@ export class AuthRegisterCreditComponent implements OnInit {
                     return;
                 }
                 const rect = validation.getBoundingClientRect();
-                const contents = (<HTMLElement>element.querySelector('.contents'));
+                const contents = (<HTMLElement>element.querySelector('app-page'));
                 const scrollTop = contents.scrollTop;
                 const top = rect.top + scrollTop - 80;
                 contents.scrollTo(0, top);

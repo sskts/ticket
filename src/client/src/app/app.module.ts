@@ -74,6 +74,7 @@ import { StorageService } from './services/storage/storage.service';
 import { TutorialGuardService } from './services/tutorial-guard/tutorial-guard.service';
 import { UserService } from './services/user/user.service';
 import { UtilService } from './services/util/util.service';
+import { PageComponent } from './components/parts/page/page.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -126,7 +127,8 @@ import { UtilService } from './services/util/util.service';
         AuthRegisterProgramMembershipComponent,
         HeaderMenuMemberComponent,
         HeaderMenuNotMemberComponent,
-        InformationComponent
+        InformationComponent,
+        PageComponent
     ],
     imports: [
         BrowserModule,

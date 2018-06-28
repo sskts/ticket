@@ -1,4 +1,4 @@
-<div class="contents" [ngClass]="'step-' + step">
+<app-page [ngClass]="'step-' + step">
     <div class="swiper-container" [swiper]="config" (indexChange)="indexChange($event)">
         <div class="swiper-wrapper walk-through">
             <div class="swiper-slide">
@@ -96,4 +96,4 @@
         </div>
         <div class="swiper-pagination"></div>
     </div>
-</div>
+</app-page>
