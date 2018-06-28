@@ -75,6 +75,7 @@ export class PurchaseComponent implements OnInit {
         this.select.data.purchase = this.conditions;
         this.select.save();
         this.filmOrder = [];
+        this.timeOrder = [];
         try {
             await this.purchase.getSchedule();
             this.theaters = this.purchase.getTheater();
