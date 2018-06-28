@@ -23,7 +23,6 @@ export class AuthRegisterTermsComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        window.scrollTo(0, 0);
         this.termsForm = this.formBuilder.group({
             terms: [false, [Validators.requiredTrue]]
         });

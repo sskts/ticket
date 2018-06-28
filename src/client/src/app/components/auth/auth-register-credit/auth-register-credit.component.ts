@@ -35,7 +35,6 @@ export class AuthRegisterCreditComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        window.scrollTo(0, 0);
         this.isLoading = true;
         this.cardExpiration = {
             year: [],
@@ -99,7 +98,7 @@ export class AuthRegisterCreditComponent implements OnInit {
                     return;
                 }
                 const rect = validation.getBoundingClientRect();
-                const contents = (<HTMLElement>element.querySelector('app-page'));
+                const contents = (<HTMLElement>element.querySelector('app-page .scroll'));
                 const scrollTop = contents.scrollTop;
                 const top = rect.top + scrollTop - 80;
                 contents.scrollTo(0, top);

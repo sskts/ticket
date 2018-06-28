@@ -12,7 +12,6 @@ import { UserService } from '../../../services/user/user.service';
 export class MemberPointHistoryComponent implements OnInit {
     public isLoading: boolean;
     public accountMoneyTransferActions: factory.pecorino.action.transfer.moneyTransfer.IAction[];
-    public transactionType: typeof factory.pecorino.transactionType;
 
     constructor(
         public user: UserService,
@@ -25,8 +24,6 @@ export class MemberPointHistoryComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        window.scrollTo(0, 0);
-        this.transactionType = factory.pecorino.transactionType;
         this.isLoading = true;
         try {
             this.sasaki.getServices();

@@ -43,6 +43,8 @@ import { LoadingComponent } from './components/parts/loading/loading.component';
 import { MembershipBenefitsComponent } from './components/parts/membership-benefits/membership-benefits.component';
 import { ModalComponent } from './components/parts/modal/modal.component';
 import { NavigationComponent } from './components/parts/navigation/navigation.component';
+import { PageComponent } from './components/parts/page/page.component';
+import { PointHistoryListComponent } from './components/parts/point-history-list/point-history-list.component';
 import { PointSliderComponent } from './components/parts/point-slider/point-slider.component';
 import { PointStampsComponent } from './components/parts/point-stamps/point-stamps.component';
 import { PurchasePerformanceFilmComponent } from './components/parts/purchase-performance-film/purchase-performance-film.component';
@@ -74,7 +76,6 @@ import { StorageService } from './services/storage/storage.service';
 import { TutorialGuardService } from './services/tutorial-guard/tutorial-guard.service';
 import { UserService } from './services/user/user.service';
 import { UtilService } from './services/util/util.service';
-import { PageComponent } from './components/parts/page/page.component';
 
 // tslint:disable-next-line:no-stateless-class
 @NgModule({
@@ -128,7 +129,8 @@ import { PageComponent } from './components/parts/page/page.component';
         HeaderMenuMemberComponent,
         HeaderMenuNotMemberComponent,
         InformationComponent,
-        PageComponent
+        PageComponent,
+        PointHistoryListComponent
     ],
     imports: [
         BrowserModule,

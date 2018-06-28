@@ -28,7 +28,6 @@ export class MemberEditProfileComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        window.scrollTo(0, 0);
         try {
             this.profileForm = this.createForm();
             this.isLoading = false;
@@ -133,7 +132,7 @@ export class MemberEditProfileComponent implements OnInit {
                     return;
                 }
                 const rect = validation.getBoundingClientRect();
-                const contents = (<HTMLElement>element.querySelector('app-page'));
+                const contents = (<HTMLElement>element.querySelector('app-page .scroll'));
                 const scrollTop = contents.scrollTop;
                 const top = rect.top + scrollTop - 80;
                 contents.scrollTo(0, top);

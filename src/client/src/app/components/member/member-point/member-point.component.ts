@@ -21,7 +21,6 @@ export class MemberPointComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        window.scrollTo(0, 0);
         this.pointUseModal = false;
         this.isLoading = true;
         try {

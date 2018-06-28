@@ -25,7 +25,6 @@ export class TutorialComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        window.scrollTo(0, 0);
         this.step = 0;
         const pagination: SwiperPaginationInterface = {
             el: '.swiper-pagination',

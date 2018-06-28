@@ -46,7 +46,6 @@ export class PurchaseComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        window.scrollTo(0, 0);
         this.isLoading = true;
         try {
             this.conditions = this.select.data.purchase;

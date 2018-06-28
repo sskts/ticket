@@ -36,7 +36,6 @@ export class TicketComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        window.scrollTo(0, 0);
         this.touch = true;
         this.isLoading = true;
         this.reservations = [];

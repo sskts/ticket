@@ -33,7 +33,6 @@ export class MemberEditCreditComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        window.scrollTo(0, 0);
         this.isLoading = false;
         this.cardExpiration = {
             year: [],
@@ -95,7 +94,7 @@ export class MemberEditCreditComponent implements OnInit {
                     return;
                 }
                 const rect = validation.getBoundingClientRect();
-                const contents = (<HTMLElement>element.querySelector('app-page'));
+                const contents = (<HTMLElement>element.querySelector('app-page .scroll'));
                 const scrollTop = contents.scrollTop;
                 const top = rect.top + scrollTop - 80;
                 contents.scrollTo(0, top);

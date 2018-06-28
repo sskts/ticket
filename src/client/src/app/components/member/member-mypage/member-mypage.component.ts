@@ -23,7 +23,6 @@ export class MemberMypageComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        window.scrollTo(0, 0);
         this.isLoading = true;
         try {
             await this.user.updateAccount();

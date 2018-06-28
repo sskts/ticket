@@ -22,7 +22,6 @@ export class NotFoundComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        window.scrollTo(0, 0);
     }
 
 }

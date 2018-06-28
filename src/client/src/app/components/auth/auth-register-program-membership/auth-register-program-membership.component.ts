@@ -30,7 +30,6 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        window.scrollTo(0, 0);
         this.disable = false;
         this.alertModal = false;
         this.isLoading = true;

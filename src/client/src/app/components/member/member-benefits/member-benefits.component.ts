@@ -14,7 +14,6 @@ export class MemberBenefitsComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        window.scrollTo(0, 0);
     }
 
 }

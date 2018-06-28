@@ -872,7 +872,6 @@ var AboutComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     AboutComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
     };
     return AboutComponent;
 }());
@@ -1070,7 +1069,6 @@ var AuthLogoutComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     AuthLogoutComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
         this.isLoading = false;
     };
     /**
@@ -1323,7 +1321,6 @@ var AuthRegisterCreditComponent = /** @class */ (function () {
     AuthRegisterCreditComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                window.scrollTo(0, 0);
                 this.isLoading = true;
                 this.cardExpiration = {
                     year: [],
@@ -1392,7 +1389,7 @@ var AuthRegisterCreditComponent = /** @class */ (function () {
                                     return;
                                 }
                                 var rect = validation.getBoundingClientRect();
-                                var contents = element.querySelector('app-page');
+                                var contents = element.querySelector('app-page .scroll');
                                 var scrollTop = contents.scrollTop;
                                 var top = rect.top + scrollTop - 80;
                                 contents.scrollTo(0, top);
@@ -1632,7 +1629,6 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
-                        window.scrollTo(0, 0);
                         this.disable = false;
                         this.alertModal = false;
                         this.isLoading = true;
@@ -1881,7 +1877,6 @@ var AuthRegisterTermsComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     AuthRegisterTermsComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
         this.termsForm = this.formBuilder.group({
             terms: [false, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["t" /* Validators */].requiredTrue]]
         });
@@ -2023,7 +2018,6 @@ var AuthRegisterComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     AuthRegisterComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
     };
     return AuthRegisterComponent;
 }());
@@ -2668,7 +2662,6 @@ var BenefitsComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     BenefitsComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
     };
     return BenefitsComponent;
 }());
@@ -2796,7 +2789,6 @@ var ErrorComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     ErrorComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
     };
     /**
      * 接続
@@ -2916,7 +2908,6 @@ var LawComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     LawComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
     };
     return LawComponent;
 }());
@@ -3009,7 +3000,6 @@ var MemberBenefitsComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     MemberBenefitsComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
     };
     return MemberBenefitsComponent;
 }());
@@ -3233,7 +3223,6 @@ var MemberEditCreditComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     MemberEditCreditComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
         this.isLoading = false;
         this.cardExpiration = {
             year: [],
@@ -3297,7 +3286,7 @@ var MemberEditCreditComponent = /** @class */ (function () {
                                     return;
                                 }
                                 var rect = validation.getBoundingClientRect();
-                                var contents = element.querySelector('app-page');
+                                var contents = element.querySelector('app-page .scroll');
                                 var scrollTop = contents.scrollTop;
                                 var top = rect.top + scrollTop - 80;
                                 contents.scrollTo(0, top);
@@ -3544,7 +3533,6 @@ var MemberEditProfileComponent = /** @class */ (function () {
     MemberEditProfileComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                window.scrollTo(0, 0);
                 try {
                     this.profileForm = this.createForm();
                     this.isLoading = false;
@@ -3653,7 +3641,7 @@ var MemberEditProfileComponent = /** @class */ (function () {
                                     return;
                                 }
                                 var rect = validation.getBoundingClientRect();
-                                var contents = element.querySelector('app-page');
+                                var contents = element.querySelector('app-page .scroll');
                                 var scrollTop = contents.scrollTop;
                                 var top = rect.top + scrollTop - 80;
                                 contents.scrollTo(0, top);
@@ -3778,7 +3766,6 @@ var MemberEditComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     MemberEditComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
     };
     return MemberEditComponent;
 }());
@@ -3943,7 +3930,6 @@ var MemberMypageComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        window.scrollTo(0, 0);
                         this.isLoading = true;
                         _a.label = 1;
                     case 1:
@@ -3998,25 +3984,27 @@ var MemberMypageComponent = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MemberPointHistoryComponentNgFactory; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__member_point_history_component_scss_shim_ngstyle__ = __webpack_require__("./src/client/src/app/components/member/member-point-history/member-point-history.component.scss.shim.ngstyle.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_date_format_date_format_pipe__ = __webpack_require__("./src/client/src/app/pipes/date-format/date-format.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parts_point_history_list_point_history_list_component_ngfactory__ = __webpack_require__("./src/client/src/app/components/parts/point-history-list/point-history-list.component.ngfactory.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__parts_point_history_list_point_history_list_component__ = __webpack_require__("./src/client/src/app/components/parts/point-history-list/point-history-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__parts_page_page_component_ngfactory__ = __webpack_require__("./src/client/src/app/components/parts/page/page.component.ngfactory.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__parts_page_page_component__ = __webpack_require__("./src/client/src/app/components/parts/page/page.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__parts_icon_icon_component_ngfactory__ = __webpack_require__("./src/client/src/app/components/parts/icon/icon.component.ngfactory.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__parts_icon_icon_component__ = __webpack_require__("./src/client/src/app/components/parts/icon/icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__parts_loading_loading_component_ngfactory__ = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ngfactory.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__parts_loading_loading_component__ = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__member_point_history_component__ = __webpack_require__("./src/client/src/app/components/member/member-point-history/member-point-history.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_user_user_service__ = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_sasaki_sasaki_service__ = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__parts_icon_icon_component_ngfactory__ = __webpack_require__("./src/client/src/app/components/parts/icon/icon.component.ngfactory.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__parts_icon_icon_component__ = __webpack_require__("./src/client/src/app/components/parts/icon/icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__parts_loading_loading_component_ngfactory__ = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ngfactory.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__parts_loading_loading_component__ = __webpack_require__("./src/client/src/app/components/parts/loading/loading.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__member_point_history_component__ = __webpack_require__("./src/client/src/app/components/member/member-point-history/member-point-history.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_user_user_service__ = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_sasaki_sasaki_service__ = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
 /**
  * @fileoverview This file was generated by the Angular template compiler. Do not edit.
  *
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
  * tslint:disable
  */ 
+
 
 
 
@@ -4035,17 +4023,13 @@ var MemberMypageComponent = /** @class */ (function () {
 var styles_MemberPointHistoryComponent = [__WEBPACK_IMPORTED_MODULE_0__member_point_history_component_scss_shim_ngstyle__["a" /* styles */]];
 var RenderType_MemberPointHistoryComponent = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵcrt"]({ encapsulation: 0, styles: styles_MemberPointHistoryComponent, data: {} });
 
-function View_MemberPointHistoryComponent_2(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 18, "div", [["class", "history"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](2, 0, null, null, 9, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](4, 0, null, null, 0, "div", [["class", "circle circle-blue"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](6, 0, null, null, 0, "p", [["class", "mb-x-small"]], [[8, "innerHTML", 1]], null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](8, 0, null, null, 2, "div", [["class", "small-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](9, null, ["", ""])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵppd"](10, 2), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](13, 0, null, null, 4, "div", [["class", "point text-right"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](15, 0, null, null, 1, "span", [["class", "large-x-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](16, null, ["", ""])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                "]))], null, function (_ck, _v) { var currVal_0 = _v.parent.context.$implicit.description.replace(",", "<br>"); _ck(_v, 6, 0, currVal_0); var currVal_1 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵunv"](_v, 9, 0, _ck(_v, 10, 0, __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵnov"](_v.parent.parent, 0), _v.parent.context.$implicit.endDate, "YYYY\u5E74MM\u6708DD\u65E5")); _ck(_v, 9, 0, currVal_1); var currVal_2 = _v.parent.context.$implicit.amount; _ck(_v, 16, 0, currVal_2); }); }
-function View_MemberPointHistoryComponent_3(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 18, "div", [["class", "history"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](2, 0, null, null, 9, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](4, 0, null, null, 0, "div", [["class", "circle"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](6, 0, null, null, 0, "p", [["class", "mb-x-small"]], [[8, "innerHTML", 1]], null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](8, 0, null, null, 2, "div", [["class", "small-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](9, null, ["", ""])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵppd"](10, 2), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](13, 0, null, null, 4, "div", [["class", "point text-right"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](15, 0, null, null, 1, "span", [["class", "large-x-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](16, null, ["+", ""])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                "]))], null, function (_ck, _v) { var currVal_0 = _v.parent.context.$implicit.description.replace(",", "<br>"); _ck(_v, 6, 0, currVal_0); var currVal_1 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵunv"](_v, 9, 0, _ck(_v, 10, 0, __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵnov"](_v.parent.parent, 0), _v.parent.context.$implicit.endDate, "YYYY\u5E74MM\u6708DD\u65E5")); _ck(_v, 9, 0, currVal_1); var currVal_2 = _v.parent.context.$implicit.amount; _ck(_v, 16, 0, currVal_2); }); }
-function View_MemberPointHistoryComponent_4(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 18, "div", [["class", "history"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](2, 0, null, null, 9, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](4, 0, null, null, 0, "div", [["class", "circle circle-blue"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](6, 0, null, null, 0, "p", [["class", "mb-x-small"]], [[8, "innerHTML", 1]], null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](8, 0, null, null, 2, "div", [["class", "small-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](9, null, ["", ""])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵppd"](10, 2), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](13, 0, null, null, 4, "div", [["class", "point text-right"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](15, 0, null, null, 1, "span", [["class", "large-x-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](16, null, ["-", ""])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                "]))], null, function (_ck, _v) { var currVal_0 = _v.parent.context.$implicit.description.replace(",", "<br>"); _ck(_v, 6, 0, currVal_0); var currVal_1 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵunv"](_v, 9, 0, _ck(_v, 10, 0, __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵnov"](_v.parent.parent, 0), _v.parent.context.$implicit.endDate, "YYYY\u5E74MM\u6708DD\u65E5")); _ck(_v, 9, 0, currVal_1); var currVal_2 = _v.parent.context.$implicit.amount; _ck(_v, 16, 0, currVal_2); }); }
-function View_MemberPointHistoryComponent_5(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 18, "div", [["class", "history"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](2, 0, null, null, 9, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](4, 0, null, null, 0, "div", [["class", "circle circle-blue"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](6, 0, null, null, 0, "p", [["class", "mb-x-small"]], [[8, "innerHTML", 1]], null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](8, 0, null, null, 2, "div", [["class", "small-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](9, null, ["", ""])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵppd"](10, 2), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](13, 0, null, null, 4, "div", [["class", "point text-right"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](15, 0, null, null, 1, "span", [["class", "large-x-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](16, null, ["+", ""])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                "]))], null, function (_ck, _v) { var currVal_0 = _v.parent.context.$implicit.description.replace(",", "<br>"); _ck(_v, 6, 0, currVal_0); var currVal_1 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵunv"](_v, 9, 0, _ck(_v, 10, 0, __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵnov"](_v.parent.parent, 0), _v.parent.context.$implicit.endDate, "YYYY\u5E74MM\u6708DD\u65E5")); _ck(_v, 9, 0, currVal_1); var currVal_2 = _v.parent.context.$implicit.amount; _ck(_v, 16, 0, currVal_2); }); }
-function View_MemberPointHistoryComponent_1(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 13, "li", [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵand"](16777216, null, null, 1, null, View_MemberPointHistoryComponent_2)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](3, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["j" /* NgIf */], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewContainerRef"], __WEBPACK_IMPORTED_MODULE_1__angular_core__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵand"](16777216, null, null, 1, null, View_MemberPointHistoryComponent_3)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](6, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["j" /* NgIf */], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewContainerRef"], __WEBPACK_IMPORTED_MODULE_1__angular_core__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵand"](16777216, null, null, 1, null, View_MemberPointHistoryComponent_4)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](9, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["j" /* NgIf */], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewContainerRef"], __WEBPACK_IMPORTED_MODULE_1__angular_core__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵand"](16777216, null, null, 1, null, View_MemberPointHistoryComponent_5)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](12, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["j" /* NgIf */], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewContainerRef"], __WEBPACK_IMPORTED_MODULE_1__angular_core__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "]))], function (_ck, _v) { var _co = _v.component; var currVal_0 = ((_v.context.$implicit.purpose.typeOf === _co.transactionType.Deposit) && (_v.context.$implicit.amount < 0)); _ck(_v, 3, 0, currVal_0); var currVal_1 = ((_v.context.$implicit.purpose.typeOf === _co.transactionType.Deposit) && (_v.context.$implicit.amount > 0)); _ck(_v, 6, 0, currVal_1); var currVal_2 = ((_v.context.$implicit.purpose.typeOf === _co.transactionType.Transfer) && (_v.context.$implicit.fromLocation.accountNumber === _co.user.data.accounts[0].accountNumber)); _ck(_v, 9, 0, currVal_2); var currVal_3 = ((_v.context.$implicit.purpose.typeOf === _co.transactionType.Transfer) && (_v.context.$implicit.fromLocation.accountNumber !== _co.user.data.accounts[0].accountNumber)); _ck(_v, 12, 0, currVal_3); }, null); }
-function View_MemberPointHistoryComponent_0(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [__WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵpid"](0, __WEBPACK_IMPORTED_MODULE_3__pipes_date_format_date_format_pipe__["a" /* DateFormatPipe */], []), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](1, 0, null, null, 29, "app-page", [["class", "bg-02"]], null, null, null, __WEBPACK_IMPORTED_MODULE_4__parts_page_page_component_ngfactory__["b" /* View_PageComponent_0 */], __WEBPACK_IMPORTED_MODULE_4__parts_page_page_component_ngfactory__["a" /* RenderType_PageComponent */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](2, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_5__parts_page_page_component__["a" /* PageComponent */], [], null, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, 0, ["\n    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](4, 0, null, 0, 25, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](6, 0, null, null, 1, "p", [["class", "mb-small text-center small-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            \u8CAF\u307E\u3063\u305F\u30DD\u30A4\u30F3\u30C8\u306E\u78BA\u8A8D\u304C\u3067\u304D\u307E\u3059\u3002\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](9, 0, null, null, 4, "div", [["class", "mb-middle text-center"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            \u73FE\u5728\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](11, 0, null, null, 1, "span", [["class", "large-xx-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](12, null, ["", ""])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            \u30DD\u30A4\u30F3\u30C8\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](15, 0, null, null, 4, "ul", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵand"](16777216, null, null, 1, null, View_MemberPointHistoryComponent_1)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](18, 802816, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["i" /* NgForOf */], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewContainerRef"], __WEBPACK_IMPORTED_MODULE_1__angular_core__["TemplateRef"], __WEBPACK_IMPORTED_MODULE_1__angular_core__["IterableDiffers"]], { ngForOf: [0, "ngForOf"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](21, 0, null, null, 7, "div", [["class", "text-center"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](23, 0, null, null, 4, "a", [["class", "prev-link"], ["routerLink", "/member/point"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
-        var pd_0 = (__WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵnov"](_v, 24).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
+function View_MemberPointHistoryComponent_1(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 4, "li", [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n                "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](2, 0, null, null, 1, "app-point-history-list", [], null, null, null, __WEBPACK_IMPORTED_MODULE_2__parts_point_history_list_point_history_list_component_ngfactory__["b" /* View_PointHistoryListComponent_0 */], __WEBPACK_IMPORTED_MODULE_2__parts_point_history_list_point_history_list_component_ngfactory__["a" /* RenderType_PointHistoryListComponent */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](3, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_3__parts_point_history_list_point_history_list_component__["a" /* PointHistoryListComponent */], [], { action: [0, "action"], accountNumber: [1, "accountNumber"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "]))], function (_ck, _v) { var _co = _v.component; var currVal_0 = _v.context.$implicit; var currVal_1 = _co.user.data.accounts[0].accountNumber; _ck(_v, 3, 0, currVal_0, currVal_1); }, null); }
+function View_MemberPointHistoryComponent_0(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 29, "app-page", [["class", "bg-02"]], null, null, null, __WEBPACK_IMPORTED_MODULE_4__parts_page_page_component_ngfactory__["b" /* View_PageComponent_0 */], __WEBPACK_IMPORTED_MODULE_4__parts_page_page_component_ngfactory__["a" /* RenderType_PageComponent */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](1, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_5__parts_page_page_component__["a" /* PageComponent */], [], null, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, 0, ["\n    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](3, 0, null, 0, 25, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](5, 0, null, null, 1, "p", [["class", "mb-small text-center small-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            \u8CAF\u307E\u3063\u305F\u30DD\u30A4\u30F3\u30C8\u306E\u78BA\u8A8D\u304C\u3067\u304D\u307E\u3059\u3002\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](8, 0, null, null, 4, "div", [["class", "mb-middle text-center"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            \u73FE\u5728\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](10, 0, null, null, 1, "span", [["class", "large-xx-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](11, null, ["", ""])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            \u30DD\u30A4\u30F3\u30C8\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](14, 0, null, null, 4, "ul", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵand"](16777216, null, null, 1, null, View_MemberPointHistoryComponent_1)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](17, 802816, null, 0, __WEBPACK_IMPORTED_MODULE_6__angular_common__["i" /* NgForOf */], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewContainerRef"], __WEBPACK_IMPORTED_MODULE_1__angular_core__["TemplateRef"], __WEBPACK_IMPORTED_MODULE_1__angular_core__["IterableDiffers"]], { ngForOf: [0, "ngForOf"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](20, 0, null, null, 7, "div", [["class", "text-center"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n            "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](22, 0, null, null, 4, "a", [["class", "prev-link"], ["routerLink", "/member/point"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (__WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵnov"](_v, 23).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](24, 671744, null, 0, __WEBPACK_IMPORTED_MODULE_6__angular_router__["o" /* RouterLinkWithHref */], [__WEBPACK_IMPORTED_MODULE_6__angular_router__["l" /* Router */], __WEBPACK_IMPORTED_MODULE_6__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_common__["g" /* LocationStrategy */]], { routerLink: [0, "routerLink"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](25, 0, null, null, 1, "app-icon", [["height", "15"], ["iconName", "prev-circle-white"], ["width", "15"]], null, null, null, __WEBPACK_IMPORTED_MODULE_7__parts_icon_icon_component_ngfactory__["b" /* View_IconComponent_0 */], __WEBPACK_IMPORTED_MODULE_7__parts_icon_icon_component_ngfactory__["a" /* RenderType_IconComponent */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](26, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_8__parts_icon_icon_component__["a" /* IconComponent */], [__WEBPACK_IMPORTED_MODULE_9__angular_platform_browser__["b" /* DomSanitizer */]], { iconName: [0, "iconName"], width: [1, "width"], height: [2, "height"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\u4F1A\u54E1\u30DD\u30A4\u30F3\u30C8\u3078\u623B\u308B"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, 0, ["\n"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](32, 0, null, null, 1, "app-loading", [], null, null, null, __WEBPACK_IMPORTED_MODULE_10__parts_loading_loading_component_ngfactory__["b" /* View_LoadingComponent_0 */], __WEBPACK_IMPORTED_MODULE_10__parts_loading_loading_component_ngfactory__["a" /* RenderType_LoadingComponent */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](33, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_11__parts_loading_loading_component__["a" /* LoadingComponent */], [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; _ck(_v, 2, 0); var currVal_1 = _co.accountMoneyTransferActions; _ck(_v, 18, 0, currVal_1); var currVal_4 = "/member/point"; _ck(_v, 24, 0, currVal_4); var currVal_5 = "prev-circle-white"; var currVal_6 = "15"; var currVal_7 = "15"; _ck(_v, 26, 0, currVal_5, currVal_6, currVal_7); var currVal_8 = _co.isLoading; _ck(_v, 33, 0, currVal_8); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.data.accounts[0].availableBalance; _ck(_v, 12, 0, currVal_0); var currVal_2 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵnov"](_v, 24).target; var currVal_3 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵnov"](_v, 24).href; _ck(_v, 23, 0, currVal_2, currVal_3); }); }
-function View_MemberPointHistoryComponent_Host_0(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 1, "app-member-point-history", [], null, null, null, View_MemberPointHistoryComponent_0, RenderType_MemberPointHistoryComponent)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](1, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_12__member_point_history_component__["a" /* MemberPointHistoryComponent */], [__WEBPACK_IMPORTED_MODULE_13__services_user_user_service__["b" /* UserService */], __WEBPACK_IMPORTED_MODULE_6__angular_router__["l" /* Router */], __WEBPACK_IMPORTED_MODULE_14__services_sasaki_sasaki_service__["a" /* SasakiService */]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
-var MemberPointHistoryComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵccf"]("app-member-point-history", __WEBPACK_IMPORTED_MODULE_12__member_point_history_component__["a" /* MemberPointHistoryComponent */], View_MemberPointHistoryComponent_Host_0, {}, {}, []);
+    } return ad; }, null, null)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](23, 671744, null, 0, __WEBPACK_IMPORTED_MODULE_7__angular_router__["o" /* RouterLinkWithHref */], [__WEBPACK_IMPORTED_MODULE_7__angular_router__["l" /* Router */], __WEBPACK_IMPORTED_MODULE_7__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_6__angular_common__["g" /* LocationStrategy */]], { routerLink: [0, "routerLink"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](24, 0, null, null, 1, "app-icon", [["height", "15"], ["iconName", "prev-circle-white"], ["width", "15"]], null, null, null, __WEBPACK_IMPORTED_MODULE_8__parts_icon_icon_component_ngfactory__["b" /* View_IconComponent_0 */], __WEBPACK_IMPORTED_MODULE_8__parts_icon_icon_component_ngfactory__["a" /* RenderType_IconComponent */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](25, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_9__parts_icon_icon_component__["a" /* IconComponent */], [__WEBPACK_IMPORTED_MODULE_10__angular_platform_browser__["b" /* DomSanitizer */]], { iconName: [0, "iconName"], width: [1, "width"], height: [2, "height"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\u4F1A\u54E1\u30DD\u30A4\u30F3\u30C8\u3078\u623B\u308B"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, 0, ["\n"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](31, 0, null, null, 1, "app-loading", [], null, null, null, __WEBPACK_IMPORTED_MODULE_11__parts_loading_loading_component_ngfactory__["b" /* View_LoadingComponent_0 */], __WEBPACK_IMPORTED_MODULE_11__parts_loading_loading_component_ngfactory__["a" /* RenderType_LoadingComponent */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](32, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_12__parts_loading_loading_component__["a" /* LoadingComponent */], [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; _ck(_v, 1, 0); var currVal_1 = _co.accountMoneyTransferActions; _ck(_v, 17, 0, currVal_1); var currVal_4 = "/member/point"; _ck(_v, 23, 0, currVal_4); var currVal_5 = "prev-circle-white"; var currVal_6 = "15"; var currVal_7 = "15"; _ck(_v, 25, 0, currVal_5, currVal_6, currVal_7); var currVal_8 = _co.isLoading; _ck(_v, 32, 0, currVal_8); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.data.accounts[0].availableBalance; _ck(_v, 11, 0, currVal_0); var currVal_2 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵnov"](_v, 23).target; var currVal_3 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵnov"](_v, 23).href; _ck(_v, 22, 0, currVal_2, currVal_3); }); }
+function View_MemberPointHistoryComponent_Host_0(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 1, "app-member-point-history", [], null, null, null, View_MemberPointHistoryComponent_0, RenderType_MemberPointHistoryComponent)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](1, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_13__member_point_history_component__["a" /* MemberPointHistoryComponent */], [__WEBPACK_IMPORTED_MODULE_14__services_user_user_service__["b" /* UserService */], __WEBPACK_IMPORTED_MODULE_7__angular_router__["l" /* Router */], __WEBPACK_IMPORTED_MODULE_15__services_sasaki_sasaki_service__["a" /* SasakiService */]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+var MemberPointHistoryComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵccf"]("app-member-point-history", __WEBPACK_IMPORTED_MODULE_13__member_point_history_component__["a" /* MemberPointHistoryComponent */], View_MemberPointHistoryComponent_Host_0, {}, {}, []);
 
 
 
@@ -4062,7 +4046,7 @@ var MemberPointHistoryComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
  * tslint:disable
  */ 
-var styles = ["ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]:first-child {\n  border-top: 1px solid #FFF; }\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .history[_ngcontent-%COMP%] {\n  position: relative;\n  padding: 20px 20px 20px 50px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 1fr 60px;\n      grid-template-columns: 1fr 60px;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #FFF; }\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .circle[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 50%;\n  left: 25px;\n  margin: -6px 0 0 -6px;\n  width: 12px;\n  height: 12px;\n  border-radius: 6px;\n  background-color: red; }\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .circle-blue[_ngcontent-%COMP%] {\n  background-color: #00A0E9; }"];
+var styles = ["ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]:first-child {\n  border-top: 1px solid #FFF; }"];
 
 
 
@@ -4075,10 +4059,8 @@ var styles = ["ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]:first-child {\n  bo
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MemberPointHistoryComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__motionpicture_sskts_api_javascript_client__ = __webpack_require__("./node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__motionpicture_sskts_api_javascript_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__motionpicture_sskts_api_javascript_client__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sasaki_sasaki_service__ = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_user_service__ = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_sasaki_sasaki_service__ = __webpack_require__("./src/client/src/app/services/sasaki/sasaki.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_user_service__ = __webpack_require__("./src/client/src/app/services/user/user.service.ts");
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -4118,7 +4100,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
 var MemberPointHistoryComponent = /** @class */ (function () {
     function MemberPointHistoryComponent(user, router, sasaki) {
         this.user = user;
@@ -4135,8 +4116,6 @@ var MemberPointHistoryComponent = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        window.scrollTo(0, 0);
-                        this.transactionType = __WEBPACK_IMPORTED_MODULE_2__motionpicture_sskts_api_javascript_client__["factory"].pecorino.transactionType;
                         this.isLoading = true;
                         _b.label = 1;
                     case 1:
@@ -4320,7 +4299,6 @@ var MemberPointComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        window.scrollTo(0, 0);
                         this.pointUseModal = false;
                         this.isLoading = true;
                         _a.label = 1;
@@ -4483,7 +4461,6 @@ var MemberWithdrawComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     MemberWithdrawComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
         this.isLoading = false;
         this.confirmModal = false;
     };
@@ -4653,7 +4630,6 @@ var NotFoundComponent = /** @class */ (function () {
     NotFoundComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                window.scrollTo(0, 0);
                 return [2 /*return*/];
             });
         });
@@ -5876,6 +5852,103 @@ var PageComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/client/src/app/components/parts/point-history-list/point-history-list.component.ngfactory.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RenderType_PointHistoryListComponent; });
+/* harmony export (immutable) */ __webpack_exports__["b"] = View_PointHistoryListComponent_0;
+/* unused harmony export View_PointHistoryListComponent_Host_0 */
+/* unused harmony export PointHistoryListComponentNgFactory */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__point_history_list_component_scss_shim_ngstyle__ = __webpack_require__("./src/client/src/app/components/parts/point-history-list/point-history-list.component.scss.shim.ngstyle.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__point_history_list_component__ = __webpack_require__("./src/client/src/app/components/parts/point-history-list/point-history-list.component.ts");
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+
+
+
+var styles_PointHistoryListComponent = [__WEBPACK_IMPORTED_MODULE_0__point_history_list_component_scss_shim_ngstyle__["a" /* styles */]];
+var RenderType_PointHistoryListComponent = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵcrt"]({ encapsulation: 0, styles: styles_PointHistoryListComponent, data: {} });
+
+function View_PointHistoryListComponent_0(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 17, "div", [["class", "history"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](2, 0, null, null, 8, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](4, 0, null, null, 0, "div", [["class", "circle"]], [[2, "circle-blue", null]], null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](6, 0, null, null, 0, "p", [["class", "mb-x-small"]], [[8, "innerHTML", 1]], null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](8, 0, null, null, 1, "div", [["class", "small-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](9, null, ["", ""])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](12, 0, null, null, 4, "div", [["class", "point text-right"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n        "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](14, 0, null, null, 1, "span", [["class", "large-x-text"]], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](15, null, ["", ""])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n    "])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵted"](-1, null, ["\n"]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = (_co.circle === "blue"); _ck(_v, 4, 0, currVal_0); var currVal_1 = _co.description; _ck(_v, 6, 0, currVal_1); var currVal_2 = _co.date; _ck(_v, 9, 0, currVal_2); var currVal_3 = _co.amount; _ck(_v, 15, 0, currVal_3); }); }
+function View_PointHistoryListComponent_Host_0(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵeld"](0, 0, null, null, 1, "app-point-history-list", [], null, null, null, View_PointHistoryListComponent_0, RenderType_PointHistoryListComponent)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵdid"](1, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_2__point_history_list_component__["a" /* PointHistoryListComponent */], [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+var PointHistoryListComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵccf"]("app-point-history-list", __WEBPACK_IMPORTED_MODULE_2__point_history_list_component__["a" /* PointHistoryListComponent */], View_PointHistoryListComponent_Host_0, { action: "action", accountNumber: "accountNumber" }, {}, []);
+
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/parts/point-history-list/point-history-list.component.scss.shim.ngstyle.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return styles; });
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+var styles = [".history[_ngcontent-%COMP%] {\n  position: relative;\n  padding: 20px 20px 20px 50px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 1fr 60px;\n      grid-template-columns: 1fr 60px;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #FFF; }\n\n.circle[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 50%;\n  left: 25px;\n  margin: -6px 0 0 -6px;\n  width: 12px;\n  height: 12px;\n  border-radius: 6px;\n  background-color: red; }\n\n.circle-blue[_ngcontent-%COMP%] {\n  background-color: #00A0E9; }"];
+
+
+
+/***/ }),
+
+/***/ "./src/client/src/app/components/parts/point-history-list/point-history-list.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PointHistoryListComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__ = __webpack_require__("./node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+
+
+
+var PointHistoryListComponent = /** @class */ (function () {
+    function PointHistoryListComponent() {
+    }
+    PointHistoryListComponent.prototype.ngOnInit = function () {
+        var transactionType = __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__["factory"].pecorino.transactionType;
+        this.date = __WEBPACK_IMPORTED_MODULE_2_moment__().format('YYYY年MM月DD日');
+        this.description = (this.action.description !== undefined)
+            ? this.action.description.replace(/\,/g, '<br>')
+            : '';
+        if (this.action.purpose.typeOf === transactionType.Deposit
+            && this.action.amount < 0) {
+            this.circle = 'blue';
+            this.amount = String(this.action.amount);
+        }
+        else if (this.action.purpose.typeOf === transactionType.Deposit
+            && this.action.amount > 0) {
+            this.amount = "+" + this.action.amount;
+        }
+        else if (this.action.purpose.typeOf === transactionType.Transfer
+            && this.action.fromLocation.accountNumber === this.accountNumber) {
+            this.circle = 'blue';
+            this.amount = String(this.action.amount * -1);
+        }
+        else if (this.action.purpose.typeOf === transactionType.Transfer
+            && this.action.fromLocation.accountNumber !== this.accountNumber) {
+            this.circle = 'blue';
+            this.amount = String(this.action.amount);
+        }
+    };
+    return PointHistoryListComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/client/src/app/components/parts/point-slider/point-slider.component.ngfactory.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -6683,7 +6756,6 @@ var PolicyComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PolicyComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
     };
     return PolicyComponent;
 }());
@@ -6762,7 +6834,6 @@ var PrivacyComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PrivacyComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
     };
     return PrivacyComponent;
 }());
@@ -6984,7 +7055,6 @@ var PurchaseComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        window.scrollTo(0, 0);
                         this.isLoading = true;
                         _a.label = 1;
                     case 1:
@@ -7380,7 +7450,6 @@ var TicketComponent = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        window.scrollTo(0, 0);
                         this.touch = true;
                         this.isLoading = true;
                         this.reservations = [];
@@ -7518,7 +7587,6 @@ var TutorialComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     TutorialComponent.prototype.ngOnInit = function () {
-        window.scrollTo(0, 0);
         this.step = 0;
         var pagination = {
             el: '.swiper-pagination',
