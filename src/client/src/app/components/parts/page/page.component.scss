@@ -9,6 +9,9 @@
 
 .scroll {
     overflow: auto;
-    -webkit-overflow-scrolling: touch;
     height: 100%;
+}
+
+.touch {
+    -webkit-overflow-scrolling: touch;
 }

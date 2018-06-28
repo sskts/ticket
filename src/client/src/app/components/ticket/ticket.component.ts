@@ -23,6 +23,7 @@ export class TicketComponent implements OnInit {
     public config: SwiperConfigInterface;
     public isLoading: boolean;
     public reservations: IReservation[];
+    public touch: boolean;
 
     constructor(
         private router: Router,
@@ -36,6 +37,7 @@ export class TicketComponent implements OnInit {
      */
     public async ngOnInit() {
         window.scrollTo(0, 0);
+        this.touch = true;
         this.isLoading = true;
         this.reservations = [];
         const pagination: SwiperPaginationInterface = {
@@ -55,6 +57,16 @@ export class TicketComponent implements OnInit {
         }
 
         this.isLoading = false;
+    }
+
+    public slideChangeTransitionStart() {
+        // console.log('slideChangeTransitionStart');
+        this.touch = false;
+    }
+
+    public slideChangeTransitionEnd() {
+        // console.log('slideChangeTransitionEnd');
+        this.touch = true;
     }
 
 }
