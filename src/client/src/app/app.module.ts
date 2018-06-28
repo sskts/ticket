@@ -36,6 +36,7 @@ import { TimeFormatPipe } from './pipe/time-format/time-format.pipe';
 import { AuthGuardService } from './service/auth-guard/auth-guard.service';
 import { AwsCognitoService } from './service/aws-cognito/aws-cognito.service';
 import { CallNativeService } from './service/call-native/call-native.service';
+import { MaintenanceService } from './service/maintenance/maintenance.service';
 import { ReservationService } from './service/reservation/reservation.service';
 import { ScheduleService } from './service/schedule/schedule.service';
 import { SelectService } from './service/select/select.service';
@@ -84,7 +85,8 @@ import { StorageService } from './service/storage/storage.service';
     ScheduleService,
     SelectService,
     StorageService,
-    CallNativeService
+    CallNativeService,
+    MaintenanceService
   ],
   bootstrap: [AppComponent]
 })

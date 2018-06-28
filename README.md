@@ -33,6 +33,13 @@ set SSKTS_BASIC_AUTH_NAME=**********認証ユーザー名**********
 set SSKTS_BASIC_AUTH_PASS=**********認証パスワード**********
 ```
 
+メンテナンス表示
+
+```shell
+set MAINTENANCE_TIME=**********メンテナンス期間カンマつなぎ**********
+set MAINTENANCE_TEXT=**********メンテナンス文言**********
+```
+
 # Build
 
 ビルドは以下で実行できます。
