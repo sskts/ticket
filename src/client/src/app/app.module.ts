@@ -40,6 +40,7 @@ import { HeaderComponent } from './components/parts/header/header.component';
 import { IconComponent } from './components/parts/icon/icon.component';
 import { InformationComponent } from './components/parts/information/information.component';
 import { LoadingComponent } from './components/parts/loading/loading.component';
+import { MaintenanceComponent } from './components/parts/maintenance/maintenance.component';
 import { MembershipBenefitsComponent } from './components/parts/membership-benefits/membership-benefits.component';
 import { ModalComponent } from './components/parts/modal/modal.component';
 import { NavigationComponent } from './components/parts/navigation/navigation.component';
@@ -65,6 +66,7 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { AwsCognitoService } from './services/aws-cognito/aws-cognito.service';
 import { CallNativeService } from './services/call-native/call-native.service';
 import { CreditGuardService } from './services/credit-guard/credit-guard.service';
+import { MaintenanceService } from './services/maintenance/maintenance.service';
 import { MemberGuardService } from './services/member-guard/member-guard.service';
 import { MemberService } from './services/member/member.service';
 import { ProgramMembershipGuardService } from './services/program-membership-guard/program-membership-guard.service';
@@ -130,7 +132,8 @@ import { UtilService } from './services/util/util.service';
         HeaderMenuNotMemberComponent,
         InformationComponent,
         PageComponent,
-        PointHistoryListComponent
+        PointHistoryListComponent,
+        MaintenanceComponent
     ],
     imports: [
         BrowserModule,
@@ -156,7 +159,8 @@ import { UtilService } from './services/util/util.service';
         ProgramMembershipGuardService,
         MemberService,
         TutorialGuardService,
-        UtilService
+        UtilService,
+        MaintenanceService
     ],
     bootstrap: [AppComponent]
 })

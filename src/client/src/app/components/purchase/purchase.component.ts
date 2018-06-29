@@ -3,6 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IMaintenance, MaintenanceService } from '../../services/maintenance/maintenance.service';
 import { IDate, IFilmOrder, IIndividualScreeningEvent, IMovieTheater, PurchaseService } from '../../services/purchase/purchase.service';
 import { IPurchaseConditions, PurchaseSort, SelectService } from '../../services/select/select.service';
 import { UserService } from '../../services/user/user.service';
@@ -27,12 +28,14 @@ export class PurchaseComponent implements OnInit {
     public error: string;
     public purchaseSort: typeof PurchaseSort;
     public isPreSale: boolean;
+    public maintenanceInfo: IMaintenance;
 
     constructor(
         private router: Router,
         private purchase: PurchaseService,
         private select: SelectService,
-        private user: UserService
+        private user: UserService,
+        private maintenance: MaintenanceService
     ) {
         this.purchaseSort = PurchaseSort;
         this.theaters = [];
@@ -48,6 +51,13 @@ export class PurchaseComponent implements OnInit {
     public async ngOnInit() {
         this.isLoading = true;
         try {
+            this.maintenanceInfo = await this.maintenance.isMaintenance();
+            // console.log(this.maintenanceInfo);
+            if (this.maintenanceInfo.isMaintenance) {
+                this.isLoading = false;
+
+                return;
+            }
             this.conditions = this.select.data.purchase;
             // console.log('conditions', this.conditions);
             if (this.user.isMember()) {

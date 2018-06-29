@@ -26,6 +26,8 @@
 | `SSKTS_ALLOWED_IPS`                 | false    |                  | IP制限IPリスト(カンマ区切り)              |
 | `SSKTS_BASIC_AUTH_NAME`             | false    |                  | ベーシック認証ID                         |
 | `SSKTS_BASIC_AUTH_PASS`             | false    |                  | ベーシック認証PASS                       |
+| `MAINTENANCE_TIME`                  | false    |                  | メンテナンス期間(カンマ区切り)                      |
+| `MAINTENANCE_TEXT`                  | false    |                  | メンテナンス文言(BASE64エンコード)                       |
 | `DEBUG`                             | false    | sskts-ticket:*   | デバッグ                                |
 
 ## Azure Environment variables
@@ -34,6 +36,7 @@
 |-------------------------------------|----------|------------------|-----------------------------------------|
 | `WEBSITE_NODE_DEFAULT_VERSION`      | true     |                  | node.jsバージョン                        |
 | `WEBSITE_TIME_ZONE`                 | true     |                  | タイムゾーン設定(Tokyo Standard Time)     |
+
 
 # Build
 
