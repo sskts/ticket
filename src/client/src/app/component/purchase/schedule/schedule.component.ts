@@ -3,6 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IMaintenance, MaintenanceService } from '../../../service/maintenance/maintenance.service';
 import { IDate, IFilmOrder, IMovieTheater, ScheduleService } from '../../../service/schedule/schedule.service';
 import { SelectService } from '../../../service/select/select.service';
 
@@ -23,11 +24,13 @@ export class ScheduleComponent implements OnInit {
     public filmOrder: IFilmOrder[];
     public conditions: { theater: string; date: string };
     public error: string;
+    public maintenanceInfo: IMaintenance;
 
     constructor(
         private router: Router,
         private schedule: ScheduleService,
-        private select: SelectService
+        private select: SelectService,
+        private maintenance: MaintenanceService
     ) {
         this.theaters = [];
         this.dateList = [];
@@ -42,6 +45,12 @@ export class ScheduleComponent implements OnInit {
     public async ngOnInit(): Promise<void> {
         this.isLoading = true;
         try {
+            this.maintenanceInfo = await this.maintenance.isMaintenance();
+            if (this.maintenanceInfo.isMaintenance) {
+                this.isLoading = false;
+
+                return;
+            }
             this.conditions = this.select.getSelect().purchase;
             await this.schedule.getSchedule();
             this.theaters = this.schedule.getTheater();
