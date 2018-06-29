@@ -23,7 +23,8 @@
     "build": "npm run css-server && npm run build-server && npm run build-client",
     "preversion": "npm run build",
     "version": "git add -A",
-    "postversion": "git push origin --tags"
+    "postversion": "git push origin --tags",
+    "test": "npm -v"
   },
   "private": true,
   "dependencies": {
