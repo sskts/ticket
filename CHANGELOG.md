@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 1.3.0 - 2018-06-29
+### Added
+- メンテナンス表示機能追加
+
 ## 1.2.0 - 2018-05-24
 ### Changed
 - チケッティングサイト次期バージョンへ向けての互換性対応
