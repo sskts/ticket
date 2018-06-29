@@ -2014,6 +2014,7 @@ var ScheduleComponent = /** @class */ (function () {
                         _a.maintenanceInfo = _b.sent();
                         if (this.maintenanceInfo.isMaintenance) {
                             this.isLoading = false;
+                            return [2 /*return*/];
                         }
                         this.conditions = this.select.getSelect().purchase;
                         return [4 /*yield*/, this.schedule.getSchedule()];

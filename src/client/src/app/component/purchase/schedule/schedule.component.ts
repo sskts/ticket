@@ -48,6 +48,8 @@ export class ScheduleComponent implements OnInit {
             this.maintenanceInfo = await this.maintenance.isMaintenance();
             if (this.maintenanceInfo.isMaintenance) {
                 this.isLoading = false;
+
+                return;
             }
             this.conditions = this.select.getSelect().purchase;
             await this.schedule.getSchedule();
