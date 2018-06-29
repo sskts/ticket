@@ -29,6 +29,6 @@ export default session({
     cookie: {
         secure: true,
         httpOnly: true,
-        maxAge: 86400000 // 24 * 60 * 60 * 1000
+        maxAge: 604800000 // 7 * 24 * 60 * 60 * 1000
     }
 });

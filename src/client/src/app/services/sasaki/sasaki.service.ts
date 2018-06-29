@@ -4,12 +4,6 @@ import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import 'rxjs/add/operator/toPromise';
 import { environment } from '../../../environments/environment';
 import { StorageService } from '../storage/storage.service';
-import { UtilService } from '../util/util.service';
-
-enum MemberType {
-    NotMember = '0',
-    Member = '1'
-}
 
 @Injectable()
 export class SasakiService {
@@ -28,8 +22,7 @@ export class SasakiService {
 
     constructor(
         private http: HttpClient,
-        private storage: StorageService,
-        private util: UtilService
+        private storage: StorageService
     ) { }
 
     /**
@@ -107,24 +100,12 @@ export class SasakiService {
         const options = {
             params: new HttpParams().set('member', memberType)
         };
-        let result;
-        try {
-            result = await this.http.get<{
-                credentials: {
-                    accessToken: string;
-                };
-                userName?: string;
-            }>(url, options).toPromise();
-        } catch (err) {
-            if (memberType === MemberType.Member) {
-                await this.signIn();
-                const time = 3000;
-                await this.util.sleep(time);
-
-                return;
-            }
-            throw err;
-        }
+        const result = await this.http.get<{
+            credentials: {
+                accessToken: string;
+            };
+            userName?: string;
+        }>(url, options).toPromise();
         const option = {
             domain: '',
             clientId: '',
