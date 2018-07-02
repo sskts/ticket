@@ -40,5 +40,8 @@
     "test.ts",
     "**/*.d.ts",
     "**/*.spec.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "disableTypeScriptVersionCheck": true
+  }
 }
