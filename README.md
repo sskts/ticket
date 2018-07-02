@@ -13,7 +13,6 @@
 | `REDIS_PORT`                        | true     |                  | REDISポート                             |
 | `REDIS_KEY`                         | true     |                  | REDISキー                               |
 | `SSKTS_API_ENDPOINT`                | true     |                  | SSKTS API エンドポイント                 |
-| `GMO_ENDPOINT`                      | true     |                  | GMO API エンドポイント                   |
 | `CLIENT_ID`                         | true     |                  | クライアントID                           |
 | `CLIENT_SECRET`                     | true     |                  | クライアントSECRET                       |
 | `CLIENT_ID_OAUTH2`                  | true     |                  | OAUTH2クライアントID                     |

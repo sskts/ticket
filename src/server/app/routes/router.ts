@@ -20,8 +20,7 @@ export default (app: express.Application) => {
     app.get('/api/maintenance/confirm', maintenance.confirm);
 
     app.get('*', (_req, res, _next) => {
-        // res.sendFile(`${__dirname}/dist/client${process.env.NODE_ENV}/index.html`);
-        res.locals.GMO_ENDPOINT = process.env.GMO_ENDPOINT;
-        res.render('index');
+        const fileName = (process.env.NODE_ENV === 'production') ? 'production.html' : 'index.html';
+        res.sendFile(`${__dirname}/dist/client/${process.env.NODE_ENV}/${fileName}`);
     });
 };

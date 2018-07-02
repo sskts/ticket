@@ -64,6 +64,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "index": "src/client/src/production.html",
               "fileReplacements": [
                 {
                   "replace": "src/client/src/environments/environment.ts",
