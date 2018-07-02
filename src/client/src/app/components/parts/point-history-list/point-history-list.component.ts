@@ -19,7 +19,7 @@ export class PointHistoryListComponent implements OnInit {
 
     public ngOnInit() {
         const transactionType = factory.pecorino.transactionType;
-        this.date = moment().format('YYYY年MM月DD日');
+        this.date = moment(this.action.endDate).format('YYYY年MM月DD日');
         this.description = (this.action.description !== undefined)
             ? this.action.description.replace(/\,/g, '<br>')
             : '';

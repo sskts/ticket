@@ -5990,7 +5990,7 @@ var PointHistoryListComponent = /** @class */ (function () {
     }
     PointHistoryListComponent.prototype.ngOnInit = function () {
         var transactionType = __WEBPACK_IMPORTED_MODULE_1__motionpicture_sskts_api_javascript_client__["factory"].pecorino.transactionType;
-        this.date = __WEBPACK_IMPORTED_MODULE_2_moment__().format('YYYY年MM月DD日');
+        this.date = __WEBPACK_IMPORTED_MODULE_2_moment__(this.action.endDate).format('YYYY年MM月DD日');
         this.description = (this.action.description !== undefined)
             ? this.action.description.replace(/\,/g, '<br>')
             : '';
