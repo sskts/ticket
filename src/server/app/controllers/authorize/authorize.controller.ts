@@ -29,6 +29,7 @@ export async function getCredentials(req: Request, res: Response) {
             authModel = new AuthModel(req.session.auth);
         } else if (req.query.member === MemberType.Member) {
             authModel = new Auth2Model(req.session.auth);
+            log('credentials', authModel.credentials);
         } else {
             throw new Error('member does not macth MemberType');
         }
@@ -99,7 +100,7 @@ export async function signInRedirect(req: Request, res: Response, next: NextFunc
             req.query.code,
             <string>authModel.codeVerifier
         );
-        // log('credentials published', credentials);
+        log('credentials published', credentials);
 
         authModel.credentials = credentials;
         authModel.save(req.session);

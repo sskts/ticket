@@ -39,6 +39,7 @@ function getCredentials(req, res) {
             }
             else if (req.query.member === MemberType.Member) {
                 authModel = new auth2_model_1.Auth2Model(req.session.auth);
+                log('credentials', authModel.credentials);
             }
             else {
                 throw new Error('member does not macth MemberType');
@@ -111,7 +112,7 @@ function signInRedirect(req, res, next) {
             }
             const auth = authModel.create();
             const credentials = yield auth.getToken(req.query.code, authModel.codeVerifier);
-            // log('credentials published', credentials);
+            log('credentials published', credentials);
             authModel.credentials = credentials;
             authModel.save(req.session);
             auth.setCredentials(credentials);

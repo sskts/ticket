@@ -2,6 +2,7 @@
  * ルーティング
  */
 import * as express from 'express';
+import * as path from 'path';
 import * as authorize from '../controllers/authorize/authorize.controller';
 import * as maintenance from '../controllers/maintenance/maintenance.controller';
 
@@ -21,6 +22,6 @@ export default (app: express.Application) => {
 
     app.get('*', (_req, res, _next) => {
         const fileName = (process.env.NODE_ENV === 'production') ? 'production.html' : 'index.html';
-        res.sendFile(`${__dirname}/dist/client/${process.env.NODE_ENV}/${fileName}`);
+        res.sendFile(path.resolve(`dist/client/${process.env.NODE_ENV}/${fileName}`));
     });
 };

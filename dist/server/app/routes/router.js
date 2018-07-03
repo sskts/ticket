@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const path = require("path");
 const authorize = require("../controllers/authorize/authorize.controller");
 const maintenance = require("../controllers/maintenance/maintenance.controller");
 exports.default = (app) => {
@@ -15,6 +16,6 @@ exports.default = (app) => {
     app.get('/api/maintenance/confirm', maintenance.confirm);
     app.get('*', (_req, res, _next) => {
         const fileName = (process.env.NODE_ENV === 'production') ? 'production.html' : 'index.html';
-        res.sendFile(`${__dirname}/dist/client/${process.env.NODE_ENV}/${fileName}`);
+        res.sendFile(path.resolve(`dist/client/${process.env.NODE_ENV}/${fileName}`));
     });
 };
