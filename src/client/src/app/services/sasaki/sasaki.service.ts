@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import 'rxjs/add/operator/toPromise';
@@ -98,6 +98,11 @@ export class SasakiService {
         const memberType = user.memberType;
         const url = '/api/authorize/getCredentials';
         const options = {
+            headers: new HttpHeaders({
+                'Pragma': 'no-cache',
+                'Cache-Control': 'no-cache',
+                'If-Modified-Since': new Date(0).toUTCString()
+            }),
             params: new HttpParams().set('member', memberType)
         };
         const result = await this.http.get<{

@@ -69,7 +69,7 @@
                     </dd>
                 </dl>
 
-                <button type="submit" class="button button-primary center button-block mb-middle">変更する</button>
+                <button type="submit" class="button button-primary center button-block mb-middle" [class.invalid]="paymentForm.invalid">変更する</button>
                 <div class="text-center">
                     <a routerLink="/member/edit" class="prev-link"><app-icon iconName="prev-circle-white" width="15" height="15"></app-icon>戻る</a>
                 </div>
