@@ -153,7 +153,6 @@ export class PurchaseComponent implements OnInit {
      */
     public async update() {
         this.purchase.reset();
-        console.log(this.purchase.data);
         await this.changeConditions();
     }
 

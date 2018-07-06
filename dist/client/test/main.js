@@ -7731,7 +7731,6 @@ var PurchaseComponent = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         this.purchase.reset();
-                        console.log(this.purchase.data);
                         return [4 /*yield*/, this.changeConditions()];
                     case 1:
                         _a.sent();
@@ -9647,7 +9646,6 @@ var PurchaseService = /** @class */ (function () {
                     case 2:
                         _a.data = _b.sent();
                         this.storage.save(STORAGE_KEY, this.data);
-                        console.log(this.data);
                         return [3 /*break*/, 4];
                     case 3:
                         err_1 = _b.sent();

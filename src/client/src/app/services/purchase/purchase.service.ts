@@ -73,7 +73,7 @@ export class PurchaseService {
                     startThrough: moment().add(5, 'week').toDate()
                 });
                 this.storage.save(STORAGE_KEY, this.data);
-                console.log(this.data);
+                // console.log(this.data);
             } catch (err) {
                 console.log(err);
                 this.storage.remove(STORAGE_KEY);
