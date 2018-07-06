@@ -148,4 +148,13 @@ export class PurchaseComponent implements OnInit {
         await this.changeConditions();
     }
 
+    /**
+     * スケジュール更新
+     */
+    public async update() {
+        this.purchase.reset();
+        console.log(this.purchase.data);
+        await this.changeConditions();
+    }
+
 }

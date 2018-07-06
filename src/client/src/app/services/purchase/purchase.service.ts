@@ -44,9 +44,11 @@ export interface IDate {
     serviceDay: string;
 }
 
+const STORAGE_KEY = 'schedule';
+
 @Injectable()
 export class PurchaseService {
-    public data: IScheduleData;
+    public data?: IScheduleData;
 
     constructor(
         private storage: StorageService,
@@ -62,7 +64,7 @@ export class PurchaseService {
      */
     public async getSchedule(): Promise<IScheduleData> {
         const schedule: IScheduleData = (this.data === undefined)
-            ? this.storage.load('schedule')
+            ? this.storage.load(STORAGE_KEY)
             : this.data;
         if (schedule === undefined || schedule === null || schedule.expired < moment().unix()) {
             try {
@@ -70,11 +72,11 @@ export class PurchaseService {
                     startFrom: moment().toDate(),
                     startThrough: moment().add(5, 'week').toDate()
                 });
-                this.storage.save('schedule', this.data);
+                this.storage.save(STORAGE_KEY, this.data);
                 console.log(this.data);
             } catch (err) {
                 console.log(err);
-                this.storage.remove('schedule');
+                this.storage.remove(STORAGE_KEY);
                 throw err;
             }
         } else {
@@ -142,6 +144,14 @@ export class PurchaseService {
             schedule: schedule,
             expired: moment().add(expired, 'minutes').unix()
         };
+    }
+
+    /**
+     * リセット
+     */
+    public reset() {
+        this.storage.remove(STORAGE_KEY);
+        this.data = undefined;
     }
 
     /**

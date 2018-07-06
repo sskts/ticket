@@ -187,6 +187,10 @@ header {
     }
 }
 
+.position-relative {
+    position: relative;
+}
+
 .position-center {
     width: 100%;
     position: absolute;
@@ -312,8 +316,20 @@ header {
         background-color: transparent;
     }
 }
+.button-info {
+    background-color: transparent;
+    color: #FFF;
+    border: 1px solid #FFF;
+    &:hover {
+        background-color: transparent;
+    }
+}
+.button-secondary {
+    background-color: #383838;
+    color: #FFF;
+}
 .small-button {
-    padding: 10px;
+    padding: 10px 15px;
 }
 
 .button-column-02 {
