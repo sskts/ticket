@@ -8737,7 +8737,7 @@ var AwsCognitoService = /** @class */ (function () {
      */
     AwsCognitoService.prototype.authenticateWithDeviceId = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var args, deviceId;
+            var deviceId;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -8747,22 +8747,23 @@ var AwsCognitoService = /** @class */ (function () {
                         aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].region = AwsCognitoService.REGION;
                         deviceId = localStorage.getItem('deviceId');
                         if (deviceId !== null) {
-                            args = {
+                            aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].credentials = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoIdentityCredentials"]({
                                 IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
-                                identityId: deviceId
-                            };
+                                IdentityId: deviceId
+                            });
                         }
                         else {
-                            args = {
+                            aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].credentials = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoIdentityCredentials"]({
                                 IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
-                            };
+                            });
                         }
-                        aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].credentials = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoIdentityCredentials"](args);
                         this.credentials = aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].credentials;
-                        localStorage.setItem('deviceId', this.credentials.identityId);
                         return [4 /*yield*/, this.credentials.getPromise()];
                     case 1:
                         _a.sent();
+                        if (deviceId === null) {
+                            localStorage.setItem('deviceId', this.credentials.identityId);
+                        }
                         return [2 /*return*/];
                 }
             });
@@ -9842,7 +9843,7 @@ var PurchaseService = /** @class */ (function () {
                         }
                         params = {
                             id: performance.identifier,
-                            identityId: this.awsCognito.credentials.identityId,
+                            identityId: localStorage.getItem('deviceId'),
                             native: '1',
                             member: this.user.data.memberType
                         };

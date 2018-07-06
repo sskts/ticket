@@ -283,7 +283,7 @@ export class PurchaseService {
             }
             params = {
                 id: performance.identifier,
-                identityId: this.awsCognito.credentials.identityId,
+                identityId: localStorage.getItem('deviceId'),
                 native: '1',
                 member: this.user.data.memberType
             };
