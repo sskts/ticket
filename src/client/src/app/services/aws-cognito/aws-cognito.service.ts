@@ -28,19 +28,19 @@ export class AwsCognitoService {
         }
         AWS.config.region = AwsCognitoService.REGION;
         const deviceId = localStorage.getItem('deviceId');
-        if (deviceId !== null) {
+        if (deviceId === 'undefined' || deviceId === null) {
+            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
+            });
+        } else {
             AWS.config.credentials = new AWS.CognitoIdentityCredentials({
                 IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
                 IdentityId: deviceId
             });
-        } else {
-            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
-            });
         }
         this.credentials = (<AWS.CognitoIdentityCredentials>AWS.config.credentials);
         await this.credentials.getPromise();
-        if (deviceId === null) {
+        if (deviceId === 'undefined' || deviceId === null) {
             localStorage.setItem('deviceId', this.credentials.identityId);
         }
     }

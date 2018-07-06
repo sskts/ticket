@@ -8746,22 +8746,22 @@ var AwsCognitoService = /** @class */ (function () {
                         }
                         aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].region = AwsCognitoService.REGION;
                         deviceId = localStorage.getItem('deviceId');
-                        if (deviceId !== null) {
+                        if (deviceId === 'undefined' || deviceId === null) {
                             aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].credentials = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoIdentityCredentials"]({
-                                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
-                                IdentityId: deviceId
+                                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
                             });
                         }
                         else {
                             aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].credentials = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoIdentityCredentials"]({
-                                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
+                                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
+                                IdentityId: deviceId
                             });
                         }
                         this.credentials = aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].credentials;
                         return [4 /*yield*/, this.credentials.getPromise()];
                     case 1:
                         _a.sent();
-                        if (deviceId === null) {
+                        if (deviceId === 'undefined' || deviceId === null) {
                             localStorage.setItem('deviceId', this.credentials.identityId);
                         }
                         return [2 /*return*/];
@@ -9843,7 +9843,7 @@ var PurchaseService = /** @class */ (function () {
                         }
                         params = {
                             id: performance.identifier,
-                            identityId: localStorage.getItem('deviceId'),
+                            identityId: this.awsCognito.credentials.identityId,
                             native: '1',
                             member: this.user.data.memberType
                         };
