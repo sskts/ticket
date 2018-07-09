@@ -4562,43 +4562,37 @@ var MemberWithdrawComponent = /** @class */ (function () {
      */
     MemberWithdrawComponent.prototype.withdraw = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var ownershipInfoIdentifier, err_1, err_2;
+            var ownershipInfoIdentifier, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         this.isLoading = true;
                         _a.label = 1;
                     case 1:
-                        _a.trys.push([1, 8, , 9]);
+                        _a.trys.push([1, 5, , 6]);
                         ownershipInfoIdentifier = this.user.data.programMembershipOwnershipInfos[0].identifier;
                         return [4 /*yield*/, this.member.unRegister({
                                 ownershipInfoIdentifier: ownershipInfoIdentifier
                             })];
                     case 2:
                         _a.sent();
-                        _a.label = 3;
+                        // クレジットカード削除
+                        return [4 /*yield*/, this.user.deleteCreditCard().catch(function (err) {
+                                console.error(err);
+                            })];
                     case 3:
-                        _a.trys.push([3, 5, , 6]);
                         // クレジットカード削除
-                        return [4 /*yield*/, this.user.deleteCreditCard()];
+                        _a.sent();
+                        return [4 /*yield*/, this.sasaki.signOut()];
                     case 4:
-                        // クレジットカード削除
                         _a.sent();
                         return [3 /*break*/, 6];
                     case 5:
                         err_1 = _a.sent();
                         console.error(err_1);
-                        return [3 /*break*/, 6];
-                    case 6: return [4 /*yield*/, this.sasaki.signOut()];
-                    case 7:
-                        _a.sent();
-                        return [3 /*break*/, 9];
-                    case 8:
-                        err_2 = _a.sent();
-                        console.error(err_2);
                         this.isLoading = false;
-                        return [3 /*break*/, 9];
-                    case 9: return [2 /*return*/];
+                        return [3 /*break*/, 6];
+                    case 6: return [2 /*return*/];
                 }
             });
         });

@@ -38,12 +38,11 @@ export class MemberWithdrawComponent implements OnInit {
             await this.member.unRegister({
                 ownershipInfoIdentifier: ownershipInfoIdentifier
             });
-            try {
-                // クレジットカード削除
-                await this.user.deleteCreditCard();
-            } catch (err) {
+
+            // クレジットカード削除
+            await this.user.deleteCreditCard().catch((err) => {
                 console.error(err);
-            }
+            });
             await this.sasaki.signOut();
         } catch (err) {
             console.error(err);
