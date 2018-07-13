@@ -3,9 +3,9 @@
  */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ErrorComponent } from './components/error/error.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { TutorialComponent } from './components/tutorial/tutorial.component';
+import { ErrorComponent } from './components/pages/error/error.component';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { TutorialComponent } from './components/pages/tutorial/tutorial.component';
 import * as auth from './routes/auth.route';
 import * as common from './routes/common.route';
 import * as member from './routes/member.route';

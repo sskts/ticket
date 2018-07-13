@@ -171,3 +171,8 @@
     @include icon();
     background-image: url(/assets/images/icon/arrow_red.svg);
 }
+
+.update-white {
+    @include icon();
+    background-image: url(/assets/images/icon/update_white.svg);
+}

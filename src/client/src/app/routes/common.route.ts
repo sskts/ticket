@@ -1,12 +1,12 @@
-import { AboutComponent } from '../components/about/about.component';
-import { BaseComponent } from '../components/base/base.component';
-import { BenefitsComponent } from '../components/benefits/benefits.component';
-import { LawComponent } from '../components/law/law.component';
-import { PolicyComponent } from '../components/policy/policy.component';
-import { PrivacyComponent } from '../components/privacy/privacy.component';
-import { PurchaseComponent } from '../components/purchase/purchase.component';
-import { RootComponent } from '../components/root/root.component';
-import { TicketComponent } from '../components/ticket/ticket.component';
+import { AboutComponent } from '../components/pages/about/about.component';
+import { BaseComponent } from '../components/pages/base/base.component';
+import { BenefitsComponent } from '../components/pages/benefits/benefits.component';
+import { LawComponent } from '../components/pages/law/law.component';
+import { PolicyComponent } from '../components/pages/policy/policy.component';
+import { PrivacyComponent } from '../components/pages/privacy/privacy.component';
+import { PurchaseComponent } from '../components/pages/purchase/purchase.component';
+import { RootComponent } from '../components/pages/root/root.component';
+import { TicketComponent } from '../components/pages/ticket/ticket.component';
 import { AuthGuardService } from '../services/auth-guard/auth-guard.service';
 import { TutorialGuardService } from '../services/tutorial-guard/tutorial-guard.service';
 
