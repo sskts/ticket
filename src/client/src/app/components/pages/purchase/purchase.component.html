@@ -51,12 +51,12 @@
                             {{ filmData.films[0].workPerformed.duration | duration: 'minutes' }}分
                         </div>
                     </div>
-                    <app-purchase-performance-film *ngFor="let film of filmData.films" [performance]="film"></app-purchase-performance-film>
+                    <app-purchase-performance-film *ngFor="let performance of filmData.films" [performance]="performance" (select)="performanceSelect(performance)"></app-purchase-performance-film>
                 </div>
             </div>
 
             <div *ngIf="!isLoading && timeOrder.length > 0 && conditions.sort === purchaseSort.Time">
-                <app-purchase-performance-time *ngFor="let performance of timeOrder" [performance]="performance"></app-purchase-performance-time>
+                <app-purchase-performance-time *ngFor="let performance of timeOrder" [performance]="performance" (select)="performanceSelect(performance)"></app-purchase-performance-time>
             </div>
 
             <div class="no-schedule" *ngIf="!isLoading && filmOrder.length === 0">

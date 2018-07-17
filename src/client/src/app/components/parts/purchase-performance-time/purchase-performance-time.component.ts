@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as moment from 'moment';
-import { IIndividualScreeningEvent, PurchaseService } from '../../../services/purchase/purchase.service';
+import { IIndividualScreeningEvent } from '../../../services/purchase/purchase.service';
 
 @Component({
     selector: 'app-purchase-performance-time',
@@ -9,11 +9,10 @@ import { IIndividualScreeningEvent, PurchaseService } from '../../../services/pu
 })
 export class PurchasePerformanceTimeComponent implements OnInit {
     @Input() public performance: IIndividualScreeningEvent;
+    @Output() public select: EventEmitter<{}> = new EventEmitter();
     public salseFlg: boolean;
 
-    constructor(
-        private purchase: PurchaseService
-    ) { }
+    constructor() { }
 
     /**
      * 初期化
@@ -24,14 +23,6 @@ export class PurchasePerformanceTimeComponent implements OnInit {
         const startDate = moment(this.performance.startDate).unix();
         const addDate = moment().add(addMinutes, 'minutes').unix();
         this.salseFlg = (startDate > addDate);
-    }
-
-    /**
-     * パフォーマンス選択
-     * @method performanceSelect
-     */
-    public async performanceSelect() {
-        this.purchase.performanceRedirect(this.performance);
     }
 
 }

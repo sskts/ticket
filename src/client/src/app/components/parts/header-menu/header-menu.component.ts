@@ -3,7 +3,6 @@
  */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CallNativeService, InAppBrowserTarget } from '../../../services/call-native/call-native.service';
-import { UserService } from '../../../services/user/user.service';
 
 @Component({
     selector: 'app-header-menu',
@@ -11,12 +10,12 @@ import { UserService } from '../../../services/user/user.service';
     styleUrls: ['./header-menu.component.scss']
 })
 export class HeaderMenuComponent implements OnInit {
+    @Input() public isMember: boolean;
     @Input() public isOpen: boolean;
     @Output() public close: EventEmitter<{}> = new EventEmitter();
 
     constructor(
-        private callNative: CallNativeService,
-        public user: UserService
+        private callNative: CallNativeService
     ) { }
 
     /**

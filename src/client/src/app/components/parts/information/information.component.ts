@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SaveType, StorageService } from '../../../services/storage/storage.service';
 
-interface Iinformation {
+interface IInformation {
     modal: boolean;
     id: string;
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     images: string[];
     button?: {
         label: string;
@@ -14,13 +14,25 @@ interface Iinformation {
     notWatch: boolean;
 }
 
+interface IInformationData {
+    id: string;
+    title?: string;
+    description?: string;
+    images: string[];
+    button?: {
+        label: string;
+        link: string;
+    };
+}
+
 @Component({
     selector: 'app-information',
     templateUrl: './information.component.html',
     styleUrls: ['./information.component.scss']
 })
 export class InformationComponent implements OnInit {
-    public informations: Iinformation[];
+    @Input() public isMember: boolean;
+    public informations: IInformation[];
 
     constructor(
         private storage: StorageService
@@ -35,31 +47,12 @@ export class InformationComponent implements OnInit {
      * お知らせ表示
      */
     public showInformation() {
-        // tslint:disable:max-line-length
-        const data: {
-            id: string;
-            title: string;
-            description: string;
-            images: string[];
-            button?: {
-                label: string;
-                link: string;
-            };
-        }[] = [
-                // {
-                //     id: '123',
-                //     title: 'お知らせ1',
-                //     description: 'テスト文章<br>テスト文章2',
-                //     images: ['/assets/images/common/credit_back.svg'],
-                //     button: { label: 'テスト', link: '/member/mypage' }
-                // },
-                // {
-                //     id: '234',
-                //     title: 'お知らせ2',
-                //     description: 'テスト文章2テスト文章2テスト文章2テスト文章2テスト文章2テスト文章2',
-                //     images: ['/assets/images/common/credit_back.svg']
-                // }
-            ];
+        let data: IInformationData[];
+        if (this.isMember) {
+            data = this.getMemberInformation();
+        } else {
+            data = this.getInformation();
+        }
         const STORAGE_KEY = 'information';
         const informationSession = this.storage.load(STORAGE_KEY, SaveType.Session);
         let informationLocal = this.storage.load(STORAGE_KEY, SaveType.Local);
@@ -95,24 +88,54 @@ export class InformationComponent implements OnInit {
     }
 
     /**
+     * お知らせモーダル今後非表示
+     */
+    public informationNotWatch(information: IInformation) {
+        const STORAGE_KEY = 'information';
+        let informationLocal = this.storage.load(STORAGE_KEY, SaveType.Local);
+        if (informationLocal === null) {
+            informationLocal = {
+                notWatch: []
+            };
+        }
+        if (information.notWatch) {
+            informationLocal.notWatch.push(information.id);
+        } else {
+            informationLocal.notWatch = informationLocal.notWatch.filter((id: string) => {
+                return information.id !== id;
+            });
+        }
+        this.storage.save(STORAGE_KEY, informationLocal, SaveType.Local);
+    }
+
+    /**
      * お知らせモーダル閉じる
      */
-    public informationClose(information: Iinformation, index: number) {
+    public informationClose(information: IInformation, index: number) {
         information.modal = false;
-        if (information.notWatch) {
-            const STORAGE_KEY = 'information';
-            let informationLocal = this.storage.load(STORAGE_KEY, SaveType.Local);
-            if (informationLocal === null) {
-                informationLocal = {
-                    notWatch: []
-                };
-            }
-            informationLocal.notWatch.push(information.id);
-            this.storage.save(STORAGE_KEY, informationLocal, SaveType.Local);
-        }
         if (this.informations[index + 1] !== undefined) {
             this.informations[index + 1].modal = true;
         }
     }
 
+    /**
+     * 非会員お知らせ取得
+     */
+    private getInformation() {
+        return [
+            {
+                id: '2018071700',
+                description: 'シネマサンシャインアプリがパワーアップ!<br>会員登録をしてお得に映画鑑賞しよう。',
+                images: [],
+                button: { label: '会員登録はこちらから', link: '/benefits' }
+            }
+        ];
+    }
+
+    /**
+     * 会員お知らせ取得
+     */
+    private getMemberInformation() {
+        return [];
+    }
 }

@@ -1,5 +1,5 @@
 <div class="performance mb-x-small" [ngClass]="(salseFlg) ? (performance.offer.availability | availability).className : ''"
-    (click)="(salseFlg) ? performanceSelect() : null;">
+    (click)="(salseFlg) ? select.emit() : null;">
     <div class="date">
         <div class="mb-xx-small text-center">
             <strong class="large-text">{{ performance.startDate | timeFormat: performance.coaInfo.dateJouei }}</strong>

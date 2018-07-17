@@ -156,4 +156,12 @@ export class PurchaseComponent implements OnInit {
         await this.changeConditions();
     }
 
+    /**
+     * パフォーマンス選択
+     * @method performanceSelect
+     */
+    public async performanceSelect(performance: IIndividualScreeningEvent) {
+        this.purchase.performanceRedirect(performance);
+    }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-ticket-not-found',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./ticket-not-found.component.scss']
 })
 export class TicketNotFoundComponent implements OnInit {
-
+    @Input() public isMember: boolean;
     constructor() { }
 
     /**

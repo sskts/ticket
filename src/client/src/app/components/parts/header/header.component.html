@@ -12,4 +12,4 @@
     </div>
 </header>
 
-<app-header-menu [isOpen]="isMenuOpen" (close)="menuClose()"></app-header-menu>
+<app-header-menu [isMember]="user.isMember()" [isOpen]="isMenuOpen" (close)="menuClose()"></app-header-menu>

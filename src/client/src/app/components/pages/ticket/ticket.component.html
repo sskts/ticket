@@ -17,9 +17,9 @@
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
-            <app-ticket-not-found *ngIf="reservations.length === 0;"></app-ticket-not-found>
+            <app-ticket-not-found *ngIf="reservations.length === 0;" [isMember]="user.isMember()"></app-ticket-not-found>
         </div>
     </div>
 </app-page>
 <app-loading [show]="isLoading"></app-loading>
-<app-information *ngIf="!user.isMember()"></app-information>
+<app-information *ngIf="!user.isMember()" [isMember]="false"></app-information>
