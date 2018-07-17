@@ -8011,6 +8011,7 @@ var TicketDetailComponent = /** @class */ (function () {
                     case 0:
                         this.showQrCodeList = [];
                         this.qrCodeList = [];
+                        this.confirmationNumber = this.reservation.confirmationNumber.split('-')[0];
                         i = 0;
                         _a.label = 1;
                     case 1:

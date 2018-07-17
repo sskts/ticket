@@ -15,6 +15,7 @@ export class TicketDetailComponent implements OnInit {
     @Input() public reservation: IReservation;
     public showQrCodeList: boolean[];
     public qrCodeList: string[];
+    public confirmationNumber: string;
 
     constructor() { }
 
@@ -25,6 +26,7 @@ export class TicketDetailComponent implements OnInit {
     public async ngOnInit() {
         this.showQrCodeList = [];
         this.qrCodeList = [];
+        this.confirmationNumber = this.reservation.confirmationNumber.split('-')[0];
 
         for (let i = 0; i < this.reservation.reservedTickets.length; i++) {
             // QR生成
