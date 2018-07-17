@@ -2,7 +2,7 @@
     <div *ngIf="information.description !== undefined" class="modal-ttl large-text text-center mb-small">
         <strong>{{ information.title }}</strong>
     </div>
-    <p *ngIf="information.description !== undefined" class="mb-small" [innerHtml]="information.description"></p>
+    <p *ngIf="information.description !== undefined" class="mb-small text-center" [innerHtml]="information.description"></p>
     <div class="mb-small" *ngFor="let image of information.images">
         <img [src]="image">
     </div>
