@@ -10,5 +10,5 @@
         <input type="checkbox" id="notWatch{{ index }}" name="notWatch{{ index }}" [(ngModel)]="information.notWatch" (change)="informationNotWatch(information)">
         <label for="notWatch{{ index }}" class="not-watch">今後このメッセージを表示しない</label>
     </div>
-    <button *ngIf="information.button !== undefined" type="button" class="button button-block button-primary" [routerLink]="information.button.link">{{ information.button.label }}</button>
+    <button *ngIf="information.button !== undefined" type="button" class="button center button-block button-primary" [routerLink]="information.button.link">{{ information.button.label }}</button>
 </app-modal>
