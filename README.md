@@ -45,6 +45,14 @@
 npm run build
 ```
 
+# Tests
+
+構文チェックは以下で実行できます。
+
+```shell
+npm run check
+```
+
 # JsDoc
 
 ```shell
