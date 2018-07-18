@@ -7,7 +7,7 @@ import { Response } from 'express';
 import * as httpStatus from 'http-status';
 // import { AuthModel } from '../../models/auth/auth.model';
 
-const log = debug('SSKTS:base');
+const log = debug('sskts-ticket:base');
 
 /**
  * エラー

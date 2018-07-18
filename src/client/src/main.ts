@@ -10,6 +10,7 @@ import { environment } from './environments/environment';
 import * as moment from 'moment-timezone';
 
 moment.tz.setDefault('Asia/Tokyo');
+moment.locale('ja');
 
 if (environment.production) {
   enableProdMode();

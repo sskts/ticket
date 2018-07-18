@@ -6,33 +6,23 @@ export const environment = {
     production: false,
     version: '1.0.0',
 
-    region: 'ap-northeast-1', // identity poolのリージョンを指定する
+    SSKTS_API_ENDPOINT: 'https://sskts-api-development.azurewebsites.net',
 
-    identityPoolId: 'ap-northeast-1:6a67f523-93c3-4766-b96f-6552f21abd8d', // identity poolのID(AWS consoleで確認)
-    userPoolId: '',
-    clientId: '',
+    REGION: 'ap-northeast-1', // identity poolのリージョンを指定する
+    IDENTITY_POOL_ID: 'ap-northeast-1:6a67f523-93c3-4766-b96f-6552f21abd8d', // IDENTITY POOLのID(AWS CONSOLEで確認)
+    USER_POOL_ID: '',
+    CLIENT_ID: '',
 
-    rekognitionBucket: 'rekognition-pics',
-    albumName: 'usercontent',
-    bucketRegion: 'us-east-1',
+    REKOGNITION_BUCKET: 'rekognition-pics',
+    ALBUM_NAME: 'usercontent',
+    BUCKET_REGION: 'us-east-1',
 
-    ddbTableName: 'LoginTrail',
+    DDB_TABLE_NAME: 'LoginTrail',
+    TOKEN_ISSUER: '',
 
-    cognito_idp_endpoint: '',
-    cognito_identity_endpoint: '',
-    sts_endpoint: '',
+    PORTAL_SITE: 'http://devssktsportal.azurewebsites.net',
+    ENTRANCE_SERVER_URL: 'https://d2n1h4enbzumbc.cloudfront.net',
 
-    sasakiAuthDomain: 'sskts-development.auth.ap-northeast-1.amazoncognito.com',
-    sasakiAuthRedirectUri: 'https://sskts-ticket-development.azurewebsites.net/assets/signIn.html',
-    sasakiAuthLogoutUri: 'https://sskts-ticket-development.azurewebsites.net/assets/signOut.html',
-    tokenIssuer: '',
-    sasakiAPIEndpoint: 'https://sskts-api-development.azurewebsites.net',
+    ANALYTICS_ID: 'UA-99018492-4'
 
-    resourceServerDomain: 'https://sskts-api-development.azurewebsites.net',
-
-    portalSite: 'http://devssktsportal.azurewebsites.net',
-    ticketingSite: 'https://sskts-frontend-development.azurewebsites.net',
-    entranceServerUrl: 'https://d2n1h4enbzumbc.cloudfront.net',
-
-    analyticsId: 'UA-99018492-4'
 };

@@ -1,0 +1,14 @@
+<app-modal *ngFor="let information of informations; let index = index" [open]="information.modal" [layout]="true" (close)="informationClose(information, index)">
+    <div *ngIf="information.description !== undefined" class="modal-ttl large-text text-center mb-small">
+        <strong>{{ information.title }}</strong>
+    </div>
+    <p *ngIf="information.description !== undefined" class="mb-small text-center" [innerHtml]="information.description"></p>
+    <div class="mb-small" *ngFor="let image of information.images">
+        <img [src]="image">
+    </div>
+    <div class="mb-small text-center">
+        <input type="checkbox" id="notWatch{{ index }}" name="notWatch{{ index }}" [(ngModel)]="information.notWatch" (change)="informationNotWatch(information)">
+        <label for="notWatch{{ index }}" class="not-watch">今後このメッセージを表示しない</label>
+    </div>
+    <button *ngIf="information.button !== undefined" type="button" class="button center button-block button-primary" [routerLink]="information.button.link">{{ information.button.label }}</button>
+</app-modal>

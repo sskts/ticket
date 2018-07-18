@@ -1,0 +1,9 @@
+<div class="cover" [class.active]="isOpen" (click)="close.emit()"></div>
+
+<div class="menu" [class.active]="isOpen">
+    <!-- <div class="title">{{ name }}</div> -->
+    <app-header-menu-not-member *ngIf="!isMember" (close)="close.emit()" (openWebBrowse)="openWebBrowse($event)">
+    </app-header-menu-not-member>
+    <app-header-menu-member *ngIf="isMember" (close)="close.emit()" (openWebBrowse)="openWebBrowse($event)">
+    </app-header-menu-member>
+</div>
