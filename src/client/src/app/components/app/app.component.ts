@@ -4,6 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { SaveType, StorageService } from '../../services/storage/storage.service';
 
 declare const ga: Function;
 
@@ -12,7 +13,7 @@ declare const ga: Function;
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-    constructor(private router: Router) {
+    constructor(private router: Router, private storage: StorageService) {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 // Googleアナリティクス pageview
@@ -32,5 +33,7 @@ export class AppComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
+        const STORAGE_KEY = 'information';
+        this.storage.save(STORAGE_KEY, { show: true }, SaveType.Session);
     }
 }

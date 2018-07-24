@@ -56,7 +56,7 @@ export class InformationComponent implements OnInit {
         const STORAGE_KEY = 'information';
         const informationSession = this.storage.load(STORAGE_KEY, SaveType.Session);
         let informationLocal = this.storage.load(STORAGE_KEY, SaveType.Local);
-        if (informationSession !== null && informationSession.show) {
+        if (informationSession !== null && !informationSession.show) {
             return;
         }
         if (informationLocal === null) {
@@ -84,7 +84,7 @@ export class InformationComponent implements OnInit {
         if (this.informations.length > 0) {
             this.informations[0].modal = true;
         }
-        this.storage.save(STORAGE_KEY, { show: true }, SaveType.Session);
+        this.storage.save(STORAGE_KEY, { show: false }, SaveType.Session);
     }
 
     /**
