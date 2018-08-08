@@ -2,6 +2,7 @@
  * PolicyComponent
  */
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
     selector: 'app-policy',
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PolicyComponent implements OnInit {
 
-    constructor() { }
+    constructor(public user: UserService) { }
 
     /**
      * 初期化
