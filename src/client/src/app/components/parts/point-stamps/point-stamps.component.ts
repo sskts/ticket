@@ -20,16 +20,6 @@ export class PointStampsComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        const pagination: SwiperPaginationInterface = {
-            el: '.swiper-pagination',
-            type: 'fraction',
-            clickable: true
-        };
-        this.config = {
-            pagination: pagination,
-            autoHeight: true
-        };
-
         const stampGroupLimit = 6;
         // グループリスト作成
         this.stamps = [];
@@ -51,6 +41,17 @@ export class PointStampsComponent implements OnInit {
                 stamp.status = (groupIndex * stampGroupLimit) + index < this.point;
             });
         });
+
+        const pagination: SwiperPaginationInterface = {
+            el: '.swiper-pagination',
+            type: 'fraction',
+            clickable: true
+        };
+        this.config = {
+            pagination: pagination,
+            autoHeight: true,
+            initialSlide: this.stamps.length
+        };
 
     }
 
