@@ -6,6 +6,10 @@
             <br> 問題なければ退会ボタンを押してください。
         </p>
 
+        <p class="mb-middle">
+            退会した場合は保有していた全てのポイントが無効となり、本アプリに登録されていた会員情報は全て消去されます
+        </p>
+
         <div>
             <button type="button" class="button button-primary button-block center" (click)="confirmModal = true">退会</button>
         </div>
@@ -17,7 +21,7 @@
         <strong>本当に退会しますか？</strong>
     </div>
     <p class="small-text mb-small">
-        退会注意文言！
+        退会した場合は保有していた全てのポイントが無効となり、本アプリに登録されていた会員情報は全て消去されます
     </p>
     <button type="button" class="button button-danger button-block center" (click)="withdraw()">退会する</button>
 </app-modal>
