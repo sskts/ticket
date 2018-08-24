@@ -651,11 +651,11 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@motionpicture/sskts-api-javascript-client@3.3.0
+@motionpicture/sskts-api-javascript-client@4.0.0
 ISC
 ISC
 
-@motionpicture/sskts-api-abstract-client@3.3.0
+@motionpicture/sskts-api-abstract-client@4.0.0
 ISC
 ISC
 
@@ -925,11 +925,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-@motionpicture/sskts-factory@4.2.0
+@motionpicture/sskts-factory@5.0.0
 ISC
 ISC
 
-@motionpicture/pecorino-factory@0.0.0
+@pecorino/factory@1.0.0
 ISC
 ISC
 

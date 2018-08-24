@@ -10,7 +10,7 @@ export interface IData {
     memberType: MemberType;
     contact?: factory.person.IContact;
     creditCards: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
-    accounts: factory.pecorino.account.IAccount[];
+    accounts: factory.pecorino.account.IAccount<factory.accountType.Point>[];
     programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<'ProgramMembership'>[];
 }
 
