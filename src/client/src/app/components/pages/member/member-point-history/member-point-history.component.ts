@@ -11,7 +11,7 @@ import { UserService } from '../../../../services/user/user.service';
 })
 export class MemberPointHistoryComponent implements OnInit {
     public isLoading: boolean;
-    public accountMoneyTransferActions: factory.pecorino.action.transfer.moneyTransfer.IAction[];
+    public accountMoneyTransferActions: factory.pecorino.action.transfer.moneyTransfer.IAction<factory.accountType.Point>[];
 
     constructor(
         public user: UserService,
