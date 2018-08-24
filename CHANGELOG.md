@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.0.1 - 2018-08-24
+### Added
+- pecorino対応
+
 ## 2.0.0 - 2018-08-24
 ### Added
 - 会員版リリース
