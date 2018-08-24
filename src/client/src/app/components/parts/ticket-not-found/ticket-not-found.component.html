@@ -1,0 +1,9 @@
+<div class="position-center inner">
+    <div class="mb-middle text-center"><img src="/assets/images/ticket/no_ticket.svg" width="145" height="74"></div>
+    <p class="mb-middle text-center">現在鑑賞予定の作品はございません。</p>
+    <p class="text-center mb-large"><a routerLink="/about">このアプリについて</a></p>
+    <button *ngIf="!isMember" type="button" class="button button-block button-primary" routerLink="/benefits">会員登録はこちらから</button>
+</div>
+<button type="button" class="button button-primary button-block button-bottom" routerLink="/purchase">
+    <app-icon iconName="purchase-white" width="15" height="15"></app-icon>チケットを購入
+</button>

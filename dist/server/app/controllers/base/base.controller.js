@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const debug = require("debug");
 const httpStatus = require("http-status");
 // import { AuthModel } from '../../models/auth/auth.model';
-const log = debug('SSKTS:base');
+const log = debug('sskts-ticket:base');
 /**
  * エラー
  * @function error

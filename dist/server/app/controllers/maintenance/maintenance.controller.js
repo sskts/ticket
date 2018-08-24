@@ -14,7 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const debug = require("debug");
 const moment = require("moment");
 const base_controller_1 = require("../base/base.controller");
-const log = debug('SSKTS:maintenance');
+const log = debug('sskts-ticket:maintenance');
 function confirm(_req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('confirm');

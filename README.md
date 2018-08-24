@@ -3,42 +3,39 @@
 
 # Usage
 
-* set environment variables - For example,
+## Environment variables
 
-```shell
-set NODE_ENV=**********環境名**********
-set NPM_TOKEN=**********npm motionpicture トークン**********
-set REDIS_HOST=**********REDISホスト**********
-set REDIS_PORT=**********REDISポート**********
-set REDIS_KEY=**********REDISキー**********
-```
+| Name                                | Required | Value            | Purpose                                 |
+|-------------------------------------|----------|------------------|-----------------------------------------|
+| `NODE_ENV`                          | true     |                  | 環境名                                  |
+| `NPM_TOKEN`                         | true     |                  | npm トークン                            |
+| `REDIS_HOST`                        | true     |                  | REDISホスト                             |
+| `REDIS_PORT`                        | true     |                  | REDISポート                             |
+| `REDIS_KEY`                         | true     |                  | REDISキー                               |
+| `SSKTS_API_ENDPOINT`                | true     |                  | SSKTS API エンドポイント                 |
+| `CLIENT_ID`                         | true     |                  | クライアントID                           |
+| `CLIENT_SECRET`                     | true     |                  | クライアントSECRET                       |
+| `CLIENT_ID_OAUTH2`                  | true     |                  | OAUTH2クライアントID                     |
+| `CLIENT_SECRET_OAUTH2`              | true     |                  | OAUTH2クライアントSECRET                 |
+| `AUTHORIZE_SERVER_DOMAIN`           | true     |                  | 認可サーバードメイン                      |
+| `OAUTH2_SERVER_DOMAIN`              | true     |                  | OAUTH2認可サーバードメイン                |
+| `RESOURCE_SERVER_URL`               | true     |                  | リソースサーバーURL                      |
+| `AUTH_REDIRECT_URI`                 | true     |                  | サインインリダイレクトURL                 |
+| `AUTH_LOGUOT_URI`                   | true     |                  | サインアウトリダイレクトURL               |
+| `SSKTS_ALLOWED_IPS`                 | false    |                  | IP制限IPリスト(カンマ区切り)              |
+| `SSKTS_BASIC_AUTH_NAME`             | false    |                  | ベーシック認証ID                         |
+| `SSKTS_BASIC_AUTH_PASS`             | false    |                  | ベーシック認証PASS                       |
+| `MAINTENANCE_TIME`                  | false    |                  | メンテナンス期間(カンマ区切り)                      |
+| `MAINTENANCE_TEXT`                  | false    |                  | メンテナンス文言(BASE64エンコード)                       |
+| `DEBUG`                             | false    | sskts-ticket:*   | デバッグ                                |
 
-only on Aure WebApps
+## Azure Environment variables
 
-```shell
-set WEBSITE_NODE_DEFAULT_VERSION=**********node.jsバージョン**********
-set WEBSITE_TIME_ZONE=Tokyo Standard Time
-```
+| Name                                | Required | Value            | Purpose                                 |
+|-------------------------------------|----------|------------------|-----------------------------------------|
+| `WEBSITE_NODE_DEFAULT_VERSION`      | true     |                  | node.jsバージョン                        |
+| `WEBSITE_TIME_ZONE`                 | true     |                  | タイムゾーン設定(Tokyo Standard Time)     |
 
-IP制限をかけたい場合
-
-```shell
-set SSKTS_ALLOWED_IPS=**********カンマつなぎのIPリスト**********
-```
-
-ベーシック認証をかけたい場合
-
-```shell
-set SSKTS_BASIC_AUTH_NAME=**********認証ユーザー名**********
-set SSKTS_BASIC_AUTH_PASS=**********認証パスワード**********
-```
-
-メンテナンス表示
-
-```shell
-set MAINTENANCE_TIME=**********メンテナンス期間カンマつなぎ**********
-set MAINTENANCE_TEXT=**********メンテナンス文言**********
-```
 
 # Build
 
@@ -48,24 +45,13 @@ set MAINTENANCE_TEXT=**********メンテナンス文言**********
 npm run build
 ```
 
-- scss
-```shell
-npm run css
-```
-
 # Tests
 
-単体テストは以下で実行できます。
+構文チェックは以下で実行できます。
 
 ```shell
-npm test
+npm run check
 ```
-
-<!-- UIテストは以下で実行できます。
-
-```shell
-npm ui-test
-``` -->
 
 # JsDoc
 

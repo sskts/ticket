@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const sasaki = require("@motionpicture/sskts-api-nodejs-client");
-const uuid = require("uuid");
+const debug = require("debug");
+const log = debug('sskts-ticket:Auth2Model');
 /**
  * 認証モデル
  * @class Auth2Model
@@ -12,36 +13,45 @@ class Auth2Model {
      * @param {any} session
      */
     constructor(session) {
+        log('constructor');
         if (session === undefined) {
             session = {};
         }
-        this.state = (session.state !== undefined) ? session.state : uuid.v1();
         const resourceServerUrl = process.env.RESOURCE_SERVER_URL;
-        this.scopes = (session.scopes !== undefined) ? session.scopes : [
+        this.scopes = [
+            'phone',
+            'openid',
+            'email',
+            'aws.cognito.signin.user.admin',
+            'profile',
             `${resourceServerUrl}/transactions`,
             `${resourceServerUrl}/events.read-only`,
             `${resourceServerUrl}/organizations.read-only`,
             `${resourceServerUrl}/orders.read-only`,
-            `${resourceServerUrl}/places.read-only`
+            `${resourceServerUrl}/places.read-only`,
+            `${resourceServerUrl}/people.contacts`,
+            `${resourceServerUrl}/people.creditCards`,
+            `${resourceServerUrl}/people.ownershipInfos.read-only`
         ];
         this.credentials = session.credentials;
-        this.codeVerifier = session.codeVerifier;
+        this.state = Auth2Model.STATE;
+        this.codeVerifier = Auth2Model.CODE_VERIFIER;
     }
     /**
      * 認証クラス作成
      * @memberof Auth2Model
      * @method create
-     * @returns {sasaki.auth.ClientCredentials}
+     * @returns {sasaki.auth.OAuth2}
      */
     create() {
         const auth = new sasaki.auth.OAuth2({
-            domain: process.env.AUTHORIZE_SERVER_DOMAIN,
+            domain: process.env.OAUTH2_SERVER_DOMAIN,
             clientId: process.env.CLIENT_ID_OAUTH2,
             clientSecret: process.env.CLIENT_SECRET_OAUTH2,
             redirectUri: process.env.AUTH_REDIRECT_URI,
             logoutUri: process.env.AUTH_LOGUOT_URI,
             state: this.state,
-            scopes: this.scopes
+            scopes: this.scopes.join(' ')
         });
         if (this.credentials !== undefined) {
             auth.setCredentials(this.credentials);
@@ -64,4 +74,12 @@ class Auth2Model {
         session.auth = authSession;
     }
 }
+/**
+ * 状態（固定値）
+ */
+Auth2Model.STATE = 'STATE';
+/**
+ * 検証コード（固定値）
+ */
+Auth2Model.CODE_VERIFIER = 'CODE_VERIFIER';
 exports.Auth2Model = Auth2Model;

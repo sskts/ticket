@@ -21,15 +21,14 @@ const redisClient = redis.createClient(
 const sessionStore = new (connectRedis(session))({ client: redisClient });
 
 export default session({
-    secret: 'FrontendSecret',
+    secret: 'sskts-ticket-session-secret',
     resave: false,
     rolling: true,
-    proxy: true,
     saveUninitialized: false,
     store: sessionStore,
     cookie: {
         secure: true,
         httpOnly: true,
-        maxAge: 1800000 // 30 * 60 * 1000
+        maxAge: 604800000 // 7 * 24 * 60 * 60 * 1000
     }
 });

@@ -5,7 +5,7 @@ import * as debug from 'debug';
 import { Request, Response } from 'express';
 import * as moment from 'moment';
 import { errorProsess } from '../base/base.controller';
-const log = debug('SSKTS:maintenance');
+const log = debug('sskts-ticket:maintenance');
 
 export async function confirm(_req: Request, res: Response) {
     log('confirm');

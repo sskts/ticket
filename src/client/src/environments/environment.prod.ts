@@ -6,33 +6,23 @@ export const environment = {
     production: true,
     version: '1.0.0',
 
-    region: 'ap-northeast-1', // identity poolのリージョンを指定する
+    SSKTS_API_ENDPOINT: 'https://sskts-api-production.azurewebsites.net',
 
-    identityPoolId: 'ap-northeast-1:a8dd7a2a-020c-43d4-9e9f-e49159e89382', // identity poolのID(AWS consoleで確認)
-    userPoolId: '',
-    clientId: '',
+    REGION: 'ap-northeast-1', // identity poolのリージョンを指定する
+    IDENTITY_POOL_ID: 'ap-northeast-1:a8dd7a2a-020c-43d4-9e9f-e49159e89382', // IDENTITY POOLのID(AWS CONSOLEで確認)
+    USER_POOL_ID: '',
+    CLIENT_ID: '',
 
-    rekognitionBucket: 'rekognition-pics',
-    albumName: 'usercontent',
-    bucketRegion: 'us-east-1',
+    REKOGNITION_BUCKET: 'rekognition-pics',
+    ALBUM_NAME: 'usercontent',
+    BUCKET_REGION: 'us-east-1',
 
-    ddbTableName: 'LoginTrail',
+    DDB_TABLE_NAME: 'LoginTrail',
+    TOKEN_ISSUER: '',
 
-    cognito_idp_endpoint: '',
-    cognito_identity_endpoint: '',
-    sts_endpoint: '',
+    PORTAL_SITE: 'http://productionssktsportal.azurewebsites.net',
+    ENTRANCE_SERVER_URL: 'https://entrance.ticket-cinemasunshine.com',
 
-    sasakiAuthDomain: 'sskts-production.auth.ap-northeast-1.amazoncognito.com',
-    sasakiAuthRedirectUri: 'https://sskts-ticket-production.azurewebsites.net/signIn',
-    sasakiAuthLogoutUri: 'https://sskts-ticket-production.azurewebsites.net/signOut',
-    tokenIssuer: 'https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_bQcyLA7Jq',
-    sasakiAPIEndpoint: 'https://sskts-api-production.azurewebsites.net',
+    ANALYTICS_ID: 'UA-99018492-6'
 
-    resourceServerDomain: 'https://sskts-api-production.azurewebsites.net',
-
-    portalSite: 'http://www.cinemasunshine.co.jp',
-    ticketingSite: 'https://ticket-cinemasunshine.com',
-    entranceServerUrl: 'https://entrance.ticket-cinemasunshine.com',
-
-    analyticsId: 'UA-99018492-6'
 };
