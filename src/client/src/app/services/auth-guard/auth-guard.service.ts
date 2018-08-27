@@ -36,6 +36,16 @@ export class AuthGuardService implements CanActivate {
 
             return true;
         } catch (err) {
+            try {
+                const reSignInUrl = await this.sasaki.reSignIn();
+                if (reSignInUrl !== undefined) {
+                    location.href = reSignInUrl;
+
+                    return true;
+                }
+            } catch (err) {
+                console.error(err);
+            }
             console.log('canActivate', err);
             this.router.navigate(['/auth/select']);
 
