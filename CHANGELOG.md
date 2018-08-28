@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.0.3 - 2018-08-28
+### Fixed
+会員サービスデー文言削除
+
 ## 2.0.2 - 2018-08-27
 ### Added
 - 利用規約修正
