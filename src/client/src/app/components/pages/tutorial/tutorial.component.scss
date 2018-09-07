@@ -5,25 +5,31 @@ app-page {
     background-color: #008ecc;
 }
 .step-1 {
-    background-color: #0188d1;
+    background-color: #0081bb;
 }
 .step-2 {
-    background-color: #0075bd;
+    background-color: #0075aa;
 }
 .step-3 {
-    background-color: #0062ab;
+    background-color: #006899;
 }
 .step-4 {
-    background-color: #003c86;
+    background-color: #005b88;
 }
 .step-5 {
-    background-color: #00226c;
+    background-color: #004f77;
 }
 .step-6 {
-    background-color: #001a49;
+    background-color: #004266;
 }
 .step-7 {
-    background-color: #101a3a;
+    background-color: #003555;
+}
+.step-8 {
+    background-color: #002944;
+}
+.step-9 {
+    background-color: #001c33;
 }
 
 .inner {
@@ -44,4 +50,8 @@ app-page {
 
 .button-primary {
     max-width: none;
+}
+
+.walk-through .button-bottom {
+    bottom: 34px;
 }
