@@ -27,6 +27,8 @@
 | `SSKTS_BASIC_AUTH_PASS`             | false    |                  | ベーシック認証PASS                       |
 | `MAINTENANCE_TIME`                  | false    |                  | メンテナンス期間(カンマ区切り)                      |
 | `MAINTENANCE_TEXT`                  | false    |                  | メンテナンス文言(BASE64エンコード)                       |
+| `EXCLUDE_THEATERS_TIME`             | false    |                  | 除外劇場設定期間(カンマ区切り)                      |
+| `EXCLUDE_THEATERS`                  | false    |                  | 除外劇場コード(カンマ区切り)                       |
 | `DEBUG`                             | false    | sskts-ticket:*   | デバッグ                                |
 
 ## Azure Environment variables

@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
  - 有料会員機能追加
  - お知らせ表示機能追加
  - スケジュール更新機能追加
+ - 劇場除外機能追加
 ### Changed
  - チケット購入デザイン変更
 

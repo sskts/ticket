@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { MaintenanceService } from '../../../../services/maintenance/maintenance.service';
 import { MemberService } from '../../../../services/member/member.service';
 import { SasakiService } from '../../../../services/sasaki/sasaki.service';
 
@@ -22,7 +23,8 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         private router: Router,
         private formBuilder: FormBuilder,
         private sasaki: SasakiService,
-        private member: MemberService
+        private member: MemberService,
+        private maintenance: MaintenanceService
     ) { }
 
     /**
@@ -37,7 +39,21 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         try {
             await this.sasaki.getServices();
             // 劇場一覧取得
-            this.theaters = await this.sasaki.organization.searchMovieTheaters();
+            const searchMovieTheatersResult = await this.sasaki.organization.searchMovieTheaters();
+            // 除外劇場処理
+            const excludeTheatersResult = await this.maintenance.excludeTheaters();
+            if (excludeTheatersResult.isExclude) {
+                this.theaters = searchMovieTheatersResult.filter((theater) => {
+                    const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
+                        return (excludeCode === theater.location.branchCode);
+                    });
+
+                    return (excludeTheater === undefined);
+                });
+            } else {
+                this.theaters = searchMovieTheatersResult;
+            }
+
             // 会員プログラム取得
             this.programMemberships = await this.member.getProgramMemberships();
 
