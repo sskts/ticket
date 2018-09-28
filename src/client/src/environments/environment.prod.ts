@@ -20,7 +20,7 @@ export const environment = {
     DDB_TABLE_NAME: 'LoginTrail',
     TOKEN_ISSUER: '',
 
-    PORTAL_SITE: 'http://productionssktsportal.azurewebsites.net',
+    PORTAL_SITE: 'http://www.cinemasunshine.co.jp',
     ENTRANCE_SERVER_URL: 'https://entrance.ticket-cinemasunshine.com',
 
     ANALYTICS_ID: 'UA-99018492-6'
