@@ -11,6 +11,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 ### Security
+
+## 2.0.5 - 2018-09-28
+### Fixed
  - ポータルサイトリンク修正
 
 ## 2.0.4 - 2018-09-07
