@@ -5270,7 +5270,6 @@ var PurchaseComponent = /** @class */ (function () {
                         return [4 /*yield*/, this.purchase.getSchedule()];
                     case 2:
                         _b.sent();
-                        this.theaters = this.purchase.getTheater();
                         selectTheater = this.theaters.find(function (theater) {
                             return (theater.location.branchCode === _this.conditions.theater);
                         });
@@ -5368,19 +5367,22 @@ var PurchaseComponent = /** @class */ (function () {
                         this.isLoading = true;
                         _a.label = 1;
                     case 1:
-                        _a.trys.push([1, 4, , 5]);
-                        return [4 /*yield*/, this.changeConditions()];
+                        _a.trys.push([1, 5, , 6]);
+                        return [4 /*yield*/, this.purchase.getSchedule()];
                     case 2:
                         _a.sent();
                         return [4 /*yield*/, this.getTheater()];
                     case 3:
                         _a.sent();
-                        return [3 /*break*/, 5];
+                        return [4 /*yield*/, this.changeConditions()];
                     case 4:
+                        _a.sent();
+                        return [3 /*break*/, 6];
+                    case 5:
                         err_3 = _a.sent();
                         console.error(err_3);
-                        return [3 /*break*/, 5];
-                    case 5:
+                        return [3 /*break*/, 6];
+                    case 6:
                         this.isLoading = false;
                         return [2 /*return*/];
                 }

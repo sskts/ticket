@@ -87,7 +87,6 @@ export class PurchaseComponent implements OnInit {
         this.timeOrder = [];
         try {
             await this.purchase.getSchedule();
-            this.theaters = this.purchase.getTheater();
             const selectTheater = this.theaters.find((theater) => {
                 return (theater.location.branchCode === this.conditions.theater);
             });
@@ -155,8 +154,9 @@ export class PurchaseComponent implements OnInit {
         this.purchase.reset();
         this.isLoading = true;
         try {
-            await this.changeConditions();
+            await this.purchase.getSchedule();
             await this.getTheater();
+            await this.changeConditions();
         } catch (err) {
             console.error(err);
         }
