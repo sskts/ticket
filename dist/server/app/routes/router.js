@@ -13,6 +13,7 @@ exports.default = (app) => {
     app.get('/api/authorize/signOut', authorize.signOut);
     app.get('/signIn', authorize.signInRedirect);
     app.get('/signOut', authorize.signOutRedirect);
+    app.get('/api/maintenance/excludeTheaters', maintenance.excludeTheaters);
     app.get('/api/maintenance/confirm', maintenance.confirm);
     app.get('*', (_req, res, _next) => {
         const fileName = (process.env.NODE_ENV === 'production') ? 'production.html' : 'index.html';

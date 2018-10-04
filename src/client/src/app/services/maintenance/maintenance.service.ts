@@ -2,11 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 
-export interface IMaintenance {
+export interface IConfirm {
     isMaintenance: boolean;
     maintenanceText: string;
     startDate: string;
     endDate: string;
+}
+
+export interface IExcludeTheaters {
+    isExclude: boolean;
+    theaters: string[];
 }
 
 @Injectable()
@@ -16,12 +21,20 @@ export class MaintenanceService {
         private http: HttpClient
     ) { }
 
-    public async isMaintenance() {
+    public async confirm() {
         const options = {};
         const url = '/api/maintenance/confirm';
-        const maintenance = await this.http.get<IMaintenance>(url, options).toPromise();
+        const result = await this.http.get<IConfirm>(url, options).toPromise();
 
-        return maintenance;
+        return result;
+    }
+
+    public async excludeTheaters() {
+        const options = {};
+        const url = '/api/maintenance/excludeTheaters';
+        const result = await this.http.get<IExcludeTheaters>(url, options).toPromise();
+
+        return result;
     }
 
 }

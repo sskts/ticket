@@ -3,7 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IMaintenance, MaintenanceService } from '../../../services/maintenance/maintenance.service';
+import { IConfirm, MaintenanceService } from '../../../services/maintenance/maintenance.service';
 import { IDate, IFilmOrder, IIndividualScreeningEvent, IMovieTheater, PurchaseService } from '../../../services/purchase/purchase.service';
 import { IPurchaseConditions, PurchaseSort, SelectService } from '../../../services/select/select.service';
 import { UserService } from '../../../services/user/user.service';
@@ -28,7 +28,7 @@ export class PurchaseComponent implements OnInit {
     public error: string;
     public purchaseSort: typeof PurchaseSort;
     public isPreSale: boolean;
-    public maintenanceInfo: IMaintenance;
+    public maintenanceInfo: IConfirm;
 
     constructor(
         private router: Router,
@@ -51,7 +51,7 @@ export class PurchaseComponent implements OnInit {
     public async ngOnInit() {
         this.isLoading = true;
         try {
-            this.maintenanceInfo = await this.maintenance.isMaintenance();
+            this.maintenanceInfo = await this.maintenance.confirm();
             // console.log(this.maintenanceInfo);
             if (this.maintenanceInfo.isMaintenance) {
                 this.isLoading = false;
@@ -65,7 +65,7 @@ export class PurchaseComponent implements OnInit {
                 this.conditions.theater = this.user.getTheaterCode(0);
             }
             await this.purchase.getSchedule();
-            this.theaters = this.purchase.getTheater();
+            await this.getTheater();
             await this.changeConditions();
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
@@ -87,7 +87,6 @@ export class PurchaseComponent implements OnInit {
         this.timeOrder = [];
         try {
             await this.purchase.getSchedule();
-            this.theaters = this.purchase.getTheater();
             const selectTheater = this.theaters.find((theater) => {
                 return (theater.location.branchCode === this.conditions.theater);
             });
@@ -123,8 +122,8 @@ export class PurchaseComponent implements OnInit {
             this.timeOrder = getScreeningEventsResult.time;
             this.filmOrder = getScreeningEventsResult.film;
         } catch (err) {
+            console.error(err);
             this.router.navigate(['/error', { redirect: '/purchase' }]);
-            console.log(err);
         }
         this.isLoading = false;
     }
@@ -153,7 +152,15 @@ export class PurchaseComponent implements OnInit {
      */
     public async update() {
         this.purchase.reset();
-        await this.changeConditions();
+        this.isLoading = true;
+        try {
+            await this.purchase.getSchedule();
+            await this.getTheater();
+            await this.changeConditions();
+        } catch (err) {
+            console.error(err);
+        }
+        this.isLoading = false;
     }
 
     /**
@@ -162,6 +169,30 @@ export class PurchaseComponent implements OnInit {
      */
     public async performanceSelect(performance: IIndividualScreeningEvent) {
         this.purchase.performanceRedirect(performance);
+    }
+
+    private async getTheater() {
+        this.isLoading = true;
+        const theaters = this.purchase.getTheater();
+        try {
+            // 除外劇場処理
+            const excludeTheatersResult = await this.maintenance.excludeTheaters();
+            if (excludeTheatersResult.isExclude) {
+                this.theaters = theaters.filter((theater) => {
+                    const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
+                        return (excludeCode === theater.location.branchCode);
+                    });
+
+                    return (excludeTheater === undefined);
+                });
+            } else {
+                this.theaters = theaters;
+            }
+        } catch (err) {
+            console.error(err);
+            this.router.navigate(['/error', { redirect: '/purchase' }]);
+        }
+        this.isLoading = false;
     }
 
 }
