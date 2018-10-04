@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IMaintenance } from '../../../services/maintenance/maintenance.service';
+import { IConfirm } from '../../../services/maintenance/maintenance.service';
 
 @Component({
     selector: 'app-maintenance',
@@ -7,7 +7,7 @@ import { IMaintenance } from '../../../services/maintenance/maintenance.service'
     styleUrls: ['./maintenance.component.scss']
 })
 export class MaintenanceComponent implements OnInit {
-    @Input() public maintenanceInfo: IMaintenance;
+    @Input() public maintenanceInfo: IConfirm;
 
     constructor() { }
 

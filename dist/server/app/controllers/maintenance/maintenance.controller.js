@@ -49,3 +49,34 @@ function confirm(_req, res) {
     });
 }
 exports.confirm = confirm;
+function excludeTheaters(_req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        log('excludeTheaters');
+        try {
+            if (process.env.EXCLUDE_THEATERS_TIME === undefined
+                || process.env.EXCLUDE_THEATERS_TIME === ''
+                || process.env.EXCLUDE_THEATERS === undefined
+                || process.env.EXCLUDE_THEATERS === '') {
+                res.json({
+                    isExclude: false,
+                    theaters: []
+                });
+                return;
+            }
+            const excludeTime = process.env.EXCLUDE_THEATERS_TIME.trim().split(',');
+            const now = moment().unix();
+            const start = moment(excludeTime[0]).unix();
+            const end = moment(excludeTime[1]).unix();
+            const theaters = process.env.EXCLUDE_THEATERS.trim().split(',');
+            // log(`(${start} < ${now} && ${end} > ${now})`);
+            res.json({
+                isExclude: (start < now && end > now),
+                theaters: theaters
+            });
+        }
+        catch (err) {
+            base_controller_1.errorProsess(res, err);
+        }
+    });
+}
+exports.excludeTheaters = excludeTheaters;

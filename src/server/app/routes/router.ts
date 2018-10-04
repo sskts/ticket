@@ -18,6 +18,7 @@ export default (app: express.Application) => {
     app.get('/signIn', authorize.signInRedirect);
     app.get('/signOut', authorize.signOutRedirect);
 
+    app.get('/api/maintenance/excludeTheaters', maintenance.excludeTheaters);
     app.get('/api/maintenance/confirm', maintenance.confirm);
 
     app.get('*', (_req, res, _next) => {
