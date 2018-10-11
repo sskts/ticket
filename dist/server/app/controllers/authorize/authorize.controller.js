@@ -39,7 +39,6 @@ function getCredentials(req, res) {
             }
             else if (req.query.member === MemberType.Member) {
                 authModel = new auth2_model_1.Auth2Model(req.session.auth);
-                log('credentials', authModel.credentials);
             }
             else {
                 throw new Error('member does not macth MemberType');

@@ -25,6 +25,9 @@ export class MemberMypageComponent implements OnInit {
     public async ngOnInit() {
         this.isLoading = true;
         try {
+            if (this.user.data.userName === undefined) {
+                this.user.setUserName();
+            }
             await this.user.updateAccount();
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/member/mypage' }]);

@@ -93,6 +93,7 @@ export class UserService {
         if (this.sasaki.userName === undefined) {
             throw new Error('userName is undefined');
         }
+        this.data.userName = this.sasaki.userName;
         // 連絡先取得
         const contact = await this.sasaki.person.getContacts({
             personId: 'me'
@@ -356,6 +357,15 @@ export class UserService {
         }
         this.data.contact = contact;
 
+        this.save();
+    }
+
+    /**
+     * ユーザーネーム設定
+     */
+    public async setUserName() {
+        await this.sasaki.getServices();
+        this.data.userName = this.sasaki.userName;
         this.save();
     }
 

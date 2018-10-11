@@ -1,7 +1,7 @@
 <app-page>
     <div class="inner">
         <div *ngIf="!isLoading" class="text-center mb-middle">
-            <div class="mb-middle">{{ user.getName() }}様</div>
+            <div class="mb-middle">{{ user.data.userName }} 様</div>
             <div class="mb-middle">
                 現在
                 <span class="large-xx-text">{{ user.data.accounts[0].availableBalance }}</span>

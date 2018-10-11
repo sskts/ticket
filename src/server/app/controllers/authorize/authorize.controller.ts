@@ -29,7 +29,6 @@ export async function getCredentials(req: Request, res: Response) {
             authModel = new AuthModel();
         } else if (req.query.member === MemberType.Member) {
             authModel = new Auth2Model(req.session.auth);
-            log('credentials', authModel.credentials);
         } else {
             throw new Error('member does not macth MemberType');
         }
