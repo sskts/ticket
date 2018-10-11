@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.2.0 - 2018-10-11
+### Added
+ - ユーザーネーム表示追加
+
 ## 2.1.0 - 2018-10-04
 ### Added
  - 劇場表示・非表示制御機能追加
