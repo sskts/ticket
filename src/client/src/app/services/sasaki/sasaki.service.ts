@@ -69,6 +69,22 @@ export class SasakiService {
     }
 
     /**
+     * サインイン
+     */
+    public reSignIn(): Promise<string> {
+        return new Promise(async (resolve) => {
+            const url = '/api/authorize/signIn';
+            const result = await this.http.get<any>(url, {}).toPromise();
+            console.log(result.url);
+            if (result.url.indexOf('authorize') === -1) {
+                resolve(<string>(result.url));
+            } else {
+                resolve (undefined);
+            }
+        });
+    }
+
+    /**
      * サインアウト
      */
     public async signOut() {
