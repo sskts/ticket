@@ -50,11 +50,15 @@ export class SasakiService {
     /**
      * サインイン
      */
-    public async signIn() {
+    public async signIn(isReSignIn: boolean = false) {
         const url = '/api/authorize/signIn';
         const result = await this.http.get<any>(url, {}).toPromise();
+        let redirectUrl = result.url;
         console.log(result.url);
-        location.href = result.url;
+        if (isReSignIn) {
+            redirectUrl += '&isReSignIn=1';
+        }
+        location.href = redirectUrl;
     }
 
     /**
@@ -66,22 +70,6 @@ export class SasakiService {
         console.log(result.url);
         const signupUrl = (<string>result.url).replace(/\/authorize/, '/signup');
         location.href = signupUrl;
-    }
-
-    /**
-     * サインイン
-     */
-    public reSignIn(): Promise<string> {
-        return new Promise(async (resolve) => {
-            const url = '/api/authorize/signIn';
-            const result = await this.http.get<any>(url, {}).toPromise();
-            console.log(result.url);
-            if (result.url.indexOf('authorize') === -1) {
-                resolve(<string>(result.url));
-            } else {
-                resolve (undefined);
-            }
-        });
     }
 
     /**
