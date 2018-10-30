@@ -8691,11 +8691,11 @@ var AuthGuardService = /** @class */ (function () {
      */
     AuthGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var deviceId, err_1;
+            var deviceId, _1, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
+                        _a.trys.push([0, 2, , 7]);
                         return [4 /*yield*/, this.sasaki.authorize()];
                     case 1:
                         _a.sent();
@@ -8708,11 +8708,21 @@ var AuthGuardService = /** @class */ (function () {
                         }
                         return [2 /*return*/, true];
                     case 2:
-                        err_1 = _a.sent();
-                        console.log('canActivate', err_1);
+                        _1 = _a.sent();
+                        _a.label = 3;
+                    case 3:
+                        _a.trys.push([3, 5, , 6]);
+                        return [4 /*yield*/, this.sasaki.signIn(true)];
+                    case 4:
+                        _a.sent();
+                        return [3 /*break*/, 6];
+                    case 5:
+                        e_1 = _a.sent();
+                        console.error(e_1);
                         this.router.navigate(['/auth/select']);
-                        return [2 /*return*/, false];
-                    case 3: return [2 /*return*/];
+                        return [3 /*break*/, 6];
+                    case 6: return [2 /*return*/, false];
+                    case 7: return [2 /*return*/];
                 }
             });
         });
@@ -10356,9 +10366,10 @@ var SasakiService = /** @class */ (function () {
     /**
      * サインイン
      */
-    SasakiService.prototype.signIn = function () {
+    SasakiService.prototype.signIn = function (isReSignIn) {
+        if (isReSignIn === void 0) { isReSignIn = false; }
         return __awaiter(this, void 0, void 0, function () {
-            var url, result;
+            var url, result, redirectUrl;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -10366,8 +10377,12 @@ var SasakiService = /** @class */ (function () {
                         return [4 /*yield*/, this.http.get(url, {}).toPromise()];
                     case 1:
                         result = _a.sent();
+                        redirectUrl = result.url;
                         console.log(result.url);
-                        location.href = result.url;
+                        if (isReSignIn) {
+                            redirectUrl += '&isReSignIn=1';
+                        }
+                        location.href = redirectUrl;
                         return [2 /*return*/];
                 }
             });
