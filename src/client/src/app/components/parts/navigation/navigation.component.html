@@ -1,5 +1,5 @@
-<ul>
-    <li *ngIf="user.isMember()" routerLink="/member/mypage" routerLinkActive="active">
+<ul *ngIf="user.isMember()">
+    <li routerLink="/member/mypage" routerLinkActive="active">
         <div class="mb-xx-small">
             <app-icon iconName="home-white" width="15" height="15"></app-icon>
         </div>
@@ -12,7 +12,7 @@
         <div>購入済み
             <br>チケットホルダー</div>
     </li>
-    <li *ngIf="user.isMember()" routerLink="/member/point" routerLinkActive="active">
+    <li routerLink="/member/point" routerLinkActive="active">
         <div class="mb-xx-small">
             <app-icon iconName="point-white" width="15" height="15"></app-icon>
         </div>
@@ -24,5 +24,26 @@
         </div>
         <div>チケット購入</div>
     </li>
-    
+</ul>
+
+<ul *ngIf="!user.isMember()">
+    <li routerLink="/ticket" routerLinkActive="active">
+        <div class="mb-xx-small">
+            <app-icon iconName="ticket-holder-white" width="15" height="15"></app-icon>
+        </div>
+        <div>購入済み
+            <br>チケットホルダー</div>
+    </li>
+    <li routerLink="/purchase" routerLinkActive="active">
+        <div class="mb-xx-small">
+            <app-icon iconName="purchase-white" width="15" height="15"></app-icon>
+        </div>
+        <div>チケット購入</div>
+    </li>
+    <li routerLink="/auth/select">
+        <div class="mb-xx-small">
+            <app-icon iconName="login-white" width="15" height="15"></app-icon>
+        </div>
+        <div>ログイン</div>
+    </li>
 </ul>
