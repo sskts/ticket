@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.2.1 - 2018-10-30
+### Fixed
+ - ログアウト期間修正
+
 ## 2.2.0 - 2018-10-11
 ### Added
  - ユーザーネーム表示追加

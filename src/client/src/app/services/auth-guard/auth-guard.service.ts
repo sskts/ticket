@@ -35,9 +35,13 @@ export class AuthGuardService implements CanActivate {
             }
 
             return true;
-        } catch (err) {
-            console.log('canActivate', err);
-            this.router.navigate(['/auth/select']);
+        } catch (_) {
+            try {
+                await this.sasaki.signIn(true);
+            } catch (e) {
+                console.error(e);
+                this.router.navigate(['/auth/select']);
+            }
 
             return false;
         }
