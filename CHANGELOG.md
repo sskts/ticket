@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.3.0 - 2018-10-30
+### Added
+ - 旧ブラウザ用polyfill追加
+ - 非会員ナビゲーションへログイン追加
+
 ## 2.2.1 - 2018-10-30
 ### Fixed
  - ログアウト期間修正
