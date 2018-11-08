@@ -40,6 +40,7 @@ export class SasakiService {
                 placeOrder: new sasaki.service.transaction.PlaceOrder(option)
             };
             this.programMembership = new sasaki.service.ProgramMembership(option);
+            console.log('--------------------', this);
         } catch (err) {
             console.log(err);
 
@@ -114,10 +115,11 @@ export class SasakiService {
                 accessToken: string;
             };
             userName?: string;
+            clientId: string;
         }>(url, options).toPromise();
         const option = {
             domain: '',
-            clientId: '',
+            clientId: result.clientId,
             redirectUri: '',
             logoutUri: '',
             responseType: '',

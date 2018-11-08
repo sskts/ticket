@@ -47,7 +47,8 @@ export async function getCredentials(req: Request, res: Response) {
             : undefined;
         res.json({
             credentials: credentials,
-            userName: userName
+            userName: userName,
+            clientId: options.auth.options.clientId
         });
     } catch (err) {
         errorProsess(res, err);
