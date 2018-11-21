@@ -18,9 +18,7 @@ export enum SaveType {
 @Injectable()
 export class StorageService {
 
-    constructor() {
-        console.log('StorageService');
-     }
+    constructor() {}
 
     public load(key: string, saveType?: SaveType): any | null {
         const storage = (saveType === SaveType.Session) ? sessionStorage : localStorage;

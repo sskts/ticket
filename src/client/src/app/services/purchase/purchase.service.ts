@@ -11,7 +11,7 @@ import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { PurchaseSort } from '../select/select.service';
 import { StorageService } from '../storage/storage.service';
-import { UserService } from '../user/user.service';
+import { MemberType, UserService } from '../user/user.service';
 
 export type IMovieTheater = factory.organization.movieTheater.IOrganizationWithoutGMOInfo;
 export type IIndividualScreeningEvent = factory.event.individualScreeningEvent.IEventWithOffer;
@@ -287,7 +287,14 @@ export class PurchaseService {
             return;
         }
         let params;
-        if (!this.user.isMember()) {
+        if (this.user.isMember()) {
+            params = {
+                id: performance.identifier,
+                native: '1',
+                member: MemberType.Member,
+                clientId: this.sasaki.auth.options.clientId
+            };
+        } else {
             if (this.awsCognito.credentials === undefined) {
                 throw new Error('awsCognito.credentials is undefined');
             }
@@ -295,15 +302,8 @@ export class PurchaseService {
                 id: performance.identifier,
                 identityId: this.awsCognito.credentials.identityId,
                 native: '1',
-                member: this.user.data.memberType
-            };
-        } else {
-            const accessToken = await this.sasaki.auth.getAccessToken();
-            params = {
-                id: performance.identifier,
-                accessToken: accessToken,
-                native: '1',
-                member: this.user.data.memberType
+                member: MemberType.NotMember,
+                clientId: this.sasaki.auth.options.clientId
             };
         }
         let query = '';

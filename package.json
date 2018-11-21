@@ -1,6 +1,6 @@
 {
   "name": "ticket",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -24,7 +24,8 @@
     "build": "npm run build-server && npm run build-client",
     "preversion": "npm run build",
     "version": "git add -A",
-    "postversion": "git push origin --tags"
+    "postversion": "git push origin --tags",
+    "clean": "rimraf src/**/*.spec.ts"
   },
   "private": true,
   "dependencies": {
@@ -100,6 +101,7 @@
     "postcss": "^6.0.23",
     "postcss-cli": "^5.0.1",
     "protractor": "~5.2.2",
+    "rimraf": "^2.6.2",
     "ts-node": "~4.0.2",
     "tslint": "~5.8.0",
     "tslint-microsoft-contrib": "^5.0.1",

@@ -57,7 +57,8 @@ function getCredentials(req, res) {
                 : undefined;
             res.json({
                 credentials: credentials,
-                userName: userName
+                userName: userName,
+                clientId: options.auth.options.clientId
             });
         }
         catch (err) {

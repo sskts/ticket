@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
 /***/ "../../node_modules/moment/locale sync recursive ^\\.\\/.*$":
-/*!****************************************************************************************************************!*\
-  !*** C:/Users/hataguchi/Desktop/workspace/motionpicture/SSKTS/ticket/node_modules/moment/locale sync ^\.\/.*$ ***!
-  \****************************************************************************************************************/
+/*!************************************************************************************************************!*\
+  !*** C:/Users/hataguchi/Desktop/workspace/Cinema Sunshine/ticket/node_modules/moment/locale sync ^\.\/.*$ ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9922,48 +9922,43 @@ var PurchaseService = /** @class */ (function () {
      */
     PurchaseService.prototype.performanceRedirect = function (performance) {
         return __awaiter(this, void 0, void 0, function () {
-            var params, accessToken, query, i, key, value, url;
+            var params, query, i, key, value, url;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (performance.offer.availability === 0) {
-                            return [2 /*return*/];
-                        }
-                        if (!!this.user.isMember()) return [3 /*break*/, 1];
-                        if (this.awsCognito.credentials === undefined) {
-                            throw new Error('awsCognito.credentials is undefined');
-                        }
-                        params = {
-                            id: performance.identifier,
-                            identityId: this.awsCognito.credentials.identityId,
-                            native: '1',
-                            member: this.user.data.memberType
-                        };
-                        return [3 /*break*/, 3];
-                    case 1: return [4 /*yield*/, this.sasaki.auth.getAccessToken()];
-                    case 2:
-                        accessToken = _a.sent();
-                        params = {
-                            id: performance.identifier,
-                            accessToken: accessToken,
-                            native: '1',
-                            member: this.user.data.memberType
-                        };
-                        _a.label = 3;
-                    case 3:
-                        query = '';
-                        for (i = 0; i < Object.keys(params).length; i++) {
-                            key = Object.keys(params)[i];
-                            value = params[key];
-                            if (i > 0) {
-                                query += '&';
-                            }
-                            query += key + "=" + value;
-                        }
-                        url = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].ENTRANCE_SERVER_URL + "/ticket/index.html?" + query;
-                        location.href = url;
-                        return [2 /*return*/];
+                if (performance.offer.availability === 0) {
+                    return [2 /*return*/];
                 }
+                if (this.user.isMember()) {
+                    params = {
+                        id: performance.identifier,
+                        native: '1',
+                        member: _user_user_service__WEBPACK_IMPORTED_MODULE_8__["MemberType"].Member,
+                        clientId: this.sasaki.auth.options.clientId
+                    };
+                }
+                else {
+                    if (this.awsCognito.credentials === undefined) {
+                        throw new Error('awsCognito.credentials is undefined');
+                    }
+                    params = {
+                        id: performance.identifier,
+                        identityId: this.awsCognito.credentials.identityId,
+                        native: '1',
+                        member: _user_user_service__WEBPACK_IMPORTED_MODULE_8__["MemberType"].NotMember,
+                        clientId: this.sasaki.auth.options.clientId
+                    };
+                }
+                query = '';
+                for (i = 0; i < Object.keys(params).length; i++) {
+                    key = Object.keys(params)[i];
+                    value = params[key];
+                    if (i > 0) {
+                        query += '&';
+                    }
+                    query += key + "=" + value;
+                }
+                url = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].ENTRANCE_SERVER_URL + "/ticket/index.html?" + query;
+                location.href = url;
+                return [2 /*return*/];
             });
         });
     };
@@ -10362,6 +10357,7 @@ var SasakiService = /** @class */ (function () {
                             placeOrder: new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].transaction.PlaceOrder(option)
                         };
                         this.programMembership = new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].ProgramMembership(option);
+                        console.log('--------------------', this);
                         return [3 /*break*/, 3];
                     case 2:
                         err_1 = _a.sent();
@@ -10481,7 +10477,7 @@ var SasakiService = /** @class */ (function () {
                         result = _a.sent();
                         option = {
                             domain: '',
-                            clientId: '',
+                            clientId: result.clientId,
                             redirectUri: '',
                             logoutUri: '',
                             responseType: '',
@@ -10589,7 +10585,6 @@ var SaveType;
 })(SaveType || (SaveType = {}));
 var StorageService = /** @class */ (function () {
     function StorageService() {
-        console.log('StorageService');
     }
     StorageService.prototype.load = function (key, saveType) {
         var storage = (saveType === SaveType.Session) ? sessionStorage : localStorage;
@@ -11217,7 +11212,7 @@ var environment = {
     BUCKET_REGION: 'us-east-1',
     DDB_TABLE_NAME: 'LoginTrail',
     TOKEN_ISSUER: '',
-    PORTAL_SITE: 'http://testssktsportal.azurewebsites.net',
+    PORTAL_SITE: 'http://ssk-portal2018-frontend-win-test.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d24x7394fq3aqi.cloudfront.net',
     ANALYTICS_ID: 'UA-99018492-5'
 };
@@ -11265,7 +11260,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["platformBrowser"]().boot
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\hataguchi\Desktop\workspace\motionpicture\SSKTS\ticket\src\client\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\hataguchi\Desktop\workspace\Cinema Sunshine\ticket\src\client\src\main.ts */"./src/main.ts");
 
 
 /***/ }),
