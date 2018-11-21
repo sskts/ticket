@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.4.0 - 2018-11-21
+### Added
+ -クライアントID出し分け機能追加
+
 ## 2.3.0 - 2018-10-30
 ### Added
  - 旧ブラウザ用polyfill追加
