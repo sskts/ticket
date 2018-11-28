@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-icon',
@@ -10,19 +9,21 @@ export class IconComponent implements OnInit {
     @Input() public iconName: string;
     @Input() public width?: number;
     @Input() public height?: number;
-    public styles: SafeStyle;
-
-    constructor(private sanitizer: DomSanitizer) { }
+    public styles: Object;
 
     /**
      * 初期化
      * @method ngOnInit
      */
     public ngOnInit() {
-        this.styles = this.sanitizer.bypassSecurityTrustStyle('');
         if (this.width !== undefined && this.height !== undefined) {
-            const style = `width: ${this.width}px; height: ${this.height}px; background-size: ${this.width}px ${this.height}px;`;
-            this.styles = this.sanitizer.bypassSecurityTrustStyle(style);
+            this.styles = {
+                'width.px': this.width,
+                'height.px': this.height,
+                'background-size': `${this.width}px ${this.height}px`
+            };
+        } else {
+            this.styles = {};
         }
     }
 
