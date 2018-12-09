@@ -52,6 +52,13 @@ export class SasakiService {
      * サインイン
      */
     public async signIn(isReSignIn: boolean = false) {
+        await this.signInWithUserName(isReSignIn);
+    }
+
+    /**
+     * ユーザー名付きサインイン
+     */
+    public async signInWithUserName(isReSignIn: boolean = false, userName: string = '') {
         const url = '/api/authorize/signIn';
         const result = await this.http.get<any>(url, {}).toPromise();
         let redirectUrl = result.url;
@@ -59,7 +66,7 @@ export class SasakiService {
         if (isReSignIn) {
             redirectUrl += '&isReSignIn=1';
         }
-        location.href = redirectUrl;
+        location.href = redirectUrl += '&userName=' + encodeURIComponent(userName);
     }
 
     /**

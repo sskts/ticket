@@ -35,7 +35,9 @@ export class AuthSelectComponent implements OnInit {
     public async signIn() {
         this.isLoading = true;
         try {
-            await this.sasaki.signIn();
+            const userName = this.user.data.accounts.length > 0 ? this.user.data.accounts[0].name :
+            this.user.data.prevUserName ? this.user.data.prevUserName : "";
+            await this.sasaki.signInWithUserName(false, userName);
             this.user.data.memberType = MemberType.Member;
             this.user.save();
         } catch (error) {
