@@ -5319,30 +5319,34 @@ var PurchaseComponent = /** @class */ (function () {
      */
     PurchaseComponent.prototype.update = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, error_3;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var _a, _b, error_3;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         this.isLoading = true;
-                        _b.label = 1;
+                        _c.label = 1;
                     case 1:
-                        _b.trys.push([1, 4, , 5]);
+                        _c.trys.push([1, 5, , 6]);
                         return [4 /*yield*/, this.sasaki.getServices()];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         _a = this;
-                        return [4 /*yield*/, this.getScreeningEvents()];
+                        return [4 /*yield*/, this.getTheaters()];
                     case 3:
-                        _a.screeningEvents = _b.sent();
+                        _a.theaters = _c.sent();
+                        _b = this;
+                        return [4 /*yield*/, this.getScreeningEvents()];
+                    case 4:
+                        _b.screeningEvents = _c.sent();
                         this.createDateList();
                         this.createSchedule();
-                        return [3 /*break*/, 5];
-                    case 4:
-                        error_3 = _b.sent();
+                        return [3 /*break*/, 6];
+                    case 5:
+                        error_3 = _c.sent();
                         this.router.navigate(['/error', { redirect: '/purchase' }]);
                         console.error('PurchaseComponent.update', error_3);
-                        return [3 /*break*/, 5];
-                    case 5:
+                        return [3 /*break*/, 6];
+                    case 6:
                         this.isLoading = false;
                         return [2 /*return*/];
                 }

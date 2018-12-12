@@ -150,6 +150,7 @@ export class PurchaseComponent implements OnInit {
         this.isLoading = true;
         try {
             await this.sasaki.getServices();
+            this.theaters = await this.getTheaters();
             this.screeningEvents = await this.getScreeningEvents();
             this.createDateList();
             this.createSchedule();
