@@ -13,9 +13,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.4.1 - 2018-12-12
+### Fixed
+ - 入会登録が完了できない不具合修正
+
+### Added
+ - ログイン画面にユーザー名が表示される機能追加
+
 ## 2.4.0 - 2018-11-21
 ### Added
- -クライアントID出し分け機能追加
+ - クライアントID出し分け機能追加
 
 ## 2.3.0 - 2018-10-30
 ### Added
