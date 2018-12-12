@@ -3,10 +3,35 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { factory } from '@motionpicture/sskts-api-javascript-client';
+import * as moment from 'moment';
+import { environment } from '../../../../environments/environment';
+import { AwsCognitoService } from '../../../services/aws-cognito/aws-cognito.service';
 import { IConfirm, MaintenanceService } from '../../../services/maintenance/maintenance.service';
-import { IDate, IFilmOrder, IIndividualScreeningEvent, IMovieTheater, PurchaseService } from '../../../services/purchase/purchase.service';
+import { SasakiService } from '../../../services/sasaki/sasaki.service';
 import { IPurchaseConditions, PurchaseSort, SelectService } from '../../../services/select/select.service';
-import { UserService } from '../../../services/user/user.service';
+import { MemberType, UserService } from '../../../services/user/user.service';
+
+type IMovieTheater = factory.organization.movieTheater.IOrganizationWithoutGMOInfo;
+type IIndividualScreeningEvent = factory.event.individualScreeningEvent.IEventWithOffer;
+type ITimeOrder = IIndividualScreeningEvent;
+
+interface IFilmOrder {
+    id: string;
+    films: IIndividualScreeningEvent[];
+}
+
+interface IDate {
+    value: string;
+    display: {
+        year: string;
+        month: string;
+        week: string;
+        day: string;
+    };
+    preSale: boolean;
+    serviceDay: string;
+}
 
 @Component({
     selector: 'app-purchase',
@@ -23,7 +48,8 @@ export class PurchaseComponent implements OnInit {
     public theaters: IMovieTheater[];
     public dateList: IDate[];
     public filmOrder: IFilmOrder[];
-    public timeOrder: IIndividualScreeningEvent[];
+    public timeOrder: ITimeOrder[];
+    public screeningEvents: IIndividualScreeningEvent[];
     public conditions: IPurchaseConditions;
     public error: string;
     public purchaseSort: typeof PurchaseSort;
@@ -32,10 +58,11 @@ export class PurchaseComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private purchase: PurchaseService,
+        private sasaki: SasakiService,
         private select: SelectService,
         private user: UserService,
-        private maintenance: MaintenanceService
+        private maintenance: MaintenanceService,
+        private awsCognito: AwsCognitoService
     ) {
         this.purchaseSort = PurchaseSort;
         this.theaters = [];
@@ -52,78 +79,46 @@ export class PurchaseComponent implements OnInit {
         this.isLoading = true;
         try {
             this.maintenanceInfo = await this.maintenance.confirm();
-            // console.log(this.maintenanceInfo);
             if (this.maintenanceInfo.isMaintenance) {
                 this.isLoading = false;
 
                 return;
             }
             this.conditions = this.select.data.purchase;
-            // console.log('conditions', this.conditions);
             if (this.user.isMember()) {
                 // 会員
                 this.conditions.theater = this.user.getTheaterCode(0);
             }
-            await this.purchase.getSchedule();
-            await this.getTheater();
-            await this.changeConditions();
-        } catch (err) {
+            this.theaters = await this.getTheaters();
+            if (this.conditions.theater !== '') {
+                this.screeningEvents = await this.getScreeningEvents();
+                this.createDateList();
+                this.createSchedule();
+            }
+            localStorage.removeItem('schedule');
+        } catch (error) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
-            console.log('PurchaseComponent.ngOnInit', err);
+            console.error('PurchaseComponent.ngOnInit', error);
         }
 
         this.isLoading = false;
     }
 
     /**
-     * 条件変更
-     * @method changeConditions
+     * 劇場変更
      */
-    public async changeConditions() {
+    public async changeTheater() {
         this.isLoading = true;
-        this.select.data.purchase = this.conditions;
+        this.select.data.purchase.theater = this.conditions.theater;
         this.select.save();
-        this.filmOrder = [];
-        this.timeOrder = [];
         try {
-            await this.purchase.getSchedule();
-            const selectTheater = this.theaters.find((theater) => {
-                return (theater.location.branchCode === this.conditions.theater);
-            });
-            if (selectTheater === undefined) {
-                this.select.data.purchase.theater = '';
-                this.select.data.purchase.date = '';
-                this.select.save();
-                this.isLoading = false;
-
-                return;
-            }
-            this.dateList = await this.purchase.getDate(selectTheater.location.branchCode);
-            const selectDate = this.dateList.find((date) => {
-                return (date.value === this.conditions.date);
-            });
-            const preSaleList = this.dateList.filter((date) => {
-                return (date.preSale);
-            });
-            this.isPreSale = (preSaleList.length > 0);
-            if (selectDate === undefined) {
-                this.select.data.purchase.date = '';
-                this.select.save();
-                this.isLoading = false;
-
-                return;
-            }
-
-            const getScreeningEventsResult = this.purchase.getScreeningEvents({
-                theater: this.conditions.theater,
-                date: this.conditions.date,
-                sort: this.conditions.sort
-            });
-            this.timeOrder = getScreeningEventsResult.time;
-            this.filmOrder = getScreeningEventsResult.film;
-        } catch (err) {
-            console.error(err);
+            await this.sasaki.getServices();
+            this.screeningEvents = await this.getScreeningEvents();
+            this.createDateList();
+            this.createSchedule();
+        } catch (error) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
+            console.error('PurchaseComponent.changeTheater', error);
         }
         this.isLoading = false;
     }
@@ -135,7 +130,6 @@ export class PurchaseComponent implements OnInit {
     public async changeSort(sort: PurchaseSort) {
         this.select.data.purchase.sort = sort;
         this.select.save();
-        await this.changeConditions();
     }
 
     /**
@@ -144,21 +138,24 @@ export class PurchaseComponent implements OnInit {
      */
     public async selectDate(date: IDate) {
         this.conditions.date = date.value;
-        await this.changeConditions();
+        this.select.data.purchase.date = this.conditions.date;
+        this.select.save();
+        this.createSchedule();
     }
 
     /**
      * スケジュール更新
      */
     public async update() {
-        this.purchase.reset();
         this.isLoading = true;
         try {
-            await this.purchase.getSchedule();
-            await this.getTheater();
-            await this.changeConditions();
-        } catch (err) {
-            console.error(err);
+            await this.sasaki.getServices();
+            this.screeningEvents = await this.getScreeningEvents();
+            this.createDateList();
+            this.createSchedule();
+        } catch (error) {
+            this.router.navigate(['/error', { redirect: '/purchase' }]);
+            console.error('PurchaseComponent.update', error);
         }
         this.isLoading = false;
     }
@@ -168,31 +165,142 @@ export class PurchaseComponent implements OnInit {
      * @method performanceSelect
      */
     public async performanceSelect(performance: IIndividualScreeningEvent) {
-        this.purchase.performanceRedirect(performance);
+        if (performance.offer.availability === 0) {
+            return;
+        }
+        let params;
+        if (this.user.isMember()) {
+            params = {
+                id: performance.identifier,
+                native: '1',
+                member: MemberType.Member,
+                clientId: this.sasaki.auth.options.clientId
+            };
+        } else {
+            if (this.awsCognito.credentials === undefined) {
+                throw new Error('awsCognito.credentials is undefined');
+            }
+            params = {
+                id: performance.identifier,
+                identityId: this.awsCognito.credentials.identityId,
+                native: '1',
+                member: MemberType.NotMember,
+                clientId: this.sasaki.auth.options.clientId
+            };
+        }
+        let query = '';
+        for (let i = 0; i < Object.keys(params).length; i++) {
+            const key = Object.keys(params)[i];
+            const value = (<any>params)[key];
+            if (i > 0) {
+                query += '&';
+            }
+            query += `${key}=${value}`;
+        }
+        const url = `${environment.ENTRANCE_SERVER_URL}/ticket/index.html?${query}`;
+        location.href = url;
     }
 
-    private async getTheater() {
-        this.isLoading = true;
-        const theaters = this.purchase.getTheater();
-        try {
-            // 除外劇場処理
-            const excludeTheatersResult = await this.maintenance.excludeTheaters();
-            if (excludeTheatersResult.isExclude) {
-                this.theaters = theaters.filter((theater) => {
-                    const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
-                        return (excludeCode === theater.location.branchCode);
-                    });
+    /**
+     * 劇場一覧取得
+     */
+    private async getTheaters() {
+        await this.sasaki.getServices();
+        const theaters = await this.sasaki.organization.searchMovieTheaters();
+        // 除外劇場処理
+        const excludeTheatersResult = await this.maintenance.excludeTheaters();
+        if (!excludeTheatersResult.isExclude) {
+            return theaters;
+        }
 
-                    return (excludeTheater === undefined);
+        return theaters.filter((theater) => {
+            const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
+                return (excludeCode === theater.location.branchCode);
+            });
+
+            return (excludeTheater === undefined);
+        });
+    }
+
+    /**
+     * スケジュール取得
+     */
+    private async getScreeningEvents() {
+        await this.sasaki.getServices();
+        const branchCode = this.conditions.theater;
+        const findResult = this.theaters.find(theater => theater.location.branchCode === branchCode);
+        if (findResult === undefined) {
+            return [];
+        }
+        const screeningEvents = await this.sasaki.event.searchIndividualScreeningEvent({
+            eventStatuses: [factory.eventStatusType.EventScheduled],
+            startFrom: moment().toDate(),
+            startThrough: moment().add(5, 'week').toDate(),
+            superEventLocationIdentifiers: [findResult.identifier]
+        });
+
+        return screeningEvents;
+    }
+
+    /**
+     * 日付作成
+     */
+    private createDateList() {
+        const result: IDate[] = [];
+        this.screeningEvents.forEach((screeningEvent) => {
+            const PRE_SALE = '1'; // 先行販売
+            const startDate = moment(screeningEvent.startDate).format('YYYYMMDD');
+            const limitDate = moment().add(3, 'days').format('YYYYMMDD');
+            const today = moment().format('YYYYMMDD');
+            const isSalse = screeningEvent.coaInfo.rsvStartDate <= today || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE;
+            if (!isSalse
+                || (startDate >= limitDate && screeningEvent.coaInfo.flgEarlyBooking !== PRE_SALE)) {
+                return;
+            }
+            const findResult = result.find((date) => screeningEvent.coaInfo.dateJouei === date.value);
+            if (findResult === undefined) {
+                const date = moment(screeningEvent.coaInfo.dateJouei);
+                result.push({
+                    value: screeningEvent.coaInfo.dateJouei,
+                    display: {
+                        month: date.format('MM'),
+                        week: date.format('ddd'),
+                        day: date.format('DD'),
+                        year: date.format('YYYY')
+                    },
+                    preSale: (screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE),
+                    serviceDay: screeningEvent.coaInfo.nameServiceDay
+                });
+            }
+        });
+        this.dateList = result;
+        this.isPreSale = (this.dateList.find(date => date.preSale) !== undefined);
+    }
+
+    /**
+     * スケジュール作成
+     */
+    private createSchedule() {
+        this.filmOrder = [];
+        this.timeOrder = [];
+
+        const screeningEvents = this.screeningEvents
+            .filter(screeningEvent => screeningEvent.coaInfo.dateJouei === this.conditions.date);
+
+        this.timeOrder = screeningEvents;
+        screeningEvents.forEach((screeningEvent) => {
+            const film = this.filmOrder.find((event) => {
+                return (event.id === (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum));
+            });
+            if (film === undefined) {
+                this.filmOrder.push({
+                    id: (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum),
+                    films: [screeningEvent]
                 });
             } else {
-                this.theaters = theaters;
+                film.films.push(screeningEvent);
             }
-        } catch (err) {
-            console.error(err);
-            this.router.navigate(['/error', { redirect: '/purchase' }]);
-        }
-        this.isLoading = false;
+        });
     }
 
 }

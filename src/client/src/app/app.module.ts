@@ -70,7 +70,6 @@ import { MaintenanceService } from './services/maintenance/maintenance.service';
 import { MemberGuardService } from './services/member-guard/member-guard.service';
 import { MemberService } from './services/member/member.service';
 import { ProgramMembershipGuardService } from './services/program-membership-guard/program-membership-guard.service';
-import { PurchaseService } from './services/purchase/purchase.service';
 import { ReservationService } from './services/reservation/reservation.service';
 import { SasakiService } from './services/sasaki/sasaki.service';
 import { SelectService } from './services/select/select.service';
@@ -154,7 +153,6 @@ import { UtilService } from './services/util/util.service';
         UserService,
         SasakiService,
         MemberGuardService,
-        PurchaseService,
         CreditGuardService,
         ProgramMembershipGuardService,
         MemberService,
