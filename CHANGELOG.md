@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.5.0 - 2018-12-13
+### Changed
+ - スケジュール取得を劇場単位へ変更
+
 ## 2.4.1 - 2018-12-12
 ### Fixed
  - 入会登録が完了できない不具合修正
