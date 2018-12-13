@@ -2,8 +2,10 @@
  * PurchasePerformanceFilmComponent
  */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { factory } from '@motionpicture/sskts-api-abstract-client';
 import * as moment from 'moment';
-import { IIndividualScreeningEvent } from '../../../services/purchase/purchase.service';
+
+type IIndividualScreeningEvent = factory.event.individualScreeningEvent.IEventWithOffer;
 
 @Component({
     selector: 'app-purchase-performance-film',

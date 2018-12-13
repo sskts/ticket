@@ -40,7 +40,6 @@ export class SasakiService {
                 placeOrder: new sasaki.service.transaction.PlaceOrder(option)
             };
             this.programMembership = new sasaki.service.ProgramMembership(option);
-            console.log('--------------------', this);
         } catch (err) {
             console.log(err);
 
