@@ -12,6 +12,7 @@ export interface IData {
     creditCards: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
     accounts: factory.pecorino.account.IAccount<factory.accountType.Point>[];
     programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<'ProgramMembership'>[];
+    prevUserName?: string;
 }
 
 export enum MemberType {
@@ -52,7 +53,8 @@ export class UserService {
                 memberType: MemberType.NotMember,
                 creditCards: [],
                 accounts: [],
-                programMembershipOwnershipInfos: []
+                programMembershipOwnershipInfos: [],
+                prevUserName: ""
             };
 
             return;
@@ -73,11 +75,13 @@ export class UserService {
      * @method reset
      */
     public reset() {
+        const prevUserName = this.data.accounts.length === 0 ? '' : this.data.accounts[0].name;
         this.data = {
             memberType: MemberType.NotMember,
             creditCards: [],
             accounts: [],
-            programMembershipOwnershipInfos: []
+            programMembershipOwnershipInfos: [],
+            prevUserName: prevUserName
         };
         this.save();
     }

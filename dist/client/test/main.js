@@ -2066,7 +2066,7 @@ var AuthSelectComponent = /** @class */ (function () {
      */
     AuthSelectComponent.prototype.signIn = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var error_1;
+            var userName, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -2074,7 +2074,9 @@ var AuthSelectComponent = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, this.sasaki.signIn()];
+                        userName = this.user.data.accounts.length > 0 ? this.user.data.accounts[0].name :
+                            this.user.data.prevUserName ? this.user.data.prevUserName : "";
+                        return [4 /*yield*/, this.sasaki.signInWithUserName(false, userName)];
                     case 2:
                         _a.sent();
                         this.user.data.memberType = _services_user_user_service__WEBPACK_IMPORTED_MODULE_4__["MemberType"].Member;
@@ -10058,6 +10060,23 @@ var SasakiService = /** @class */ (function () {
     SasakiService.prototype.signIn = function (isReSignIn) {
         if (isReSignIn === void 0) { isReSignIn = false; }
         return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.signInWithUserName(isReSignIn)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * ユーザー名付きサインイン
+     */
+    SasakiService.prototype.signInWithUserName = function (isReSignIn, userName) {
+        if (isReSignIn === void 0) { isReSignIn = false; }
+        if (userName === void 0) { userName = ''; }
+        return __awaiter(this, void 0, void 0, function () {
             var url, result, redirectUrl;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -10071,7 +10090,7 @@ var SasakiService = /** @class */ (function () {
                         if (isReSignIn) {
                             redirectUrl += '&isReSignIn=1';
                         }
-                        location.href = redirectUrl;
+                        location.href = redirectUrl += '&userName=' + encodeURIComponent(userName);
                         return [2 /*return*/];
                 }
             });
@@ -10413,7 +10432,8 @@ var UserService = /** @class */ (function () {
                 memberType: MemberType.NotMember,
                 creditCards: [],
                 accounts: [],
-                programMembershipOwnershipInfos: []
+                programMembershipOwnershipInfos: [],
+                prevUserName: ""
             };
             return;
         }
@@ -10431,11 +10451,13 @@ var UserService = /** @class */ (function () {
      * @method reset
      */
     UserService.prototype.reset = function () {
+        var prevUserName = this.data.accounts.length === 0 ? '' : this.data.accounts[0].name;
         this.data = {
             memberType: MemberType.NotMember,
             creditCards: [],
             accounts: [],
-            programMembershipOwnershipInfos: []
+            programMembershipOwnershipInfos: [],
+            prevUserName: prevUserName
         };
         this.save();
     };
