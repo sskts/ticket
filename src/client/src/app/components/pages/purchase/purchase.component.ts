@@ -65,10 +65,6 @@ export class PurchaseComponent implements OnInit {
         private awsCognito: AwsCognitoService
     ) {
         this.purchaseSort = PurchaseSort;
-        this.theaters = [];
-        this.dateList = [];
-        this.filmOrder = [];
-        this.timeOrder = [];
     }
 
     /**
@@ -89,12 +85,7 @@ export class PurchaseComponent implements OnInit {
                 // 会員
                 this.conditions.theater = this.user.getTheaterCode(0);
             }
-            this.theaters = await this.getTheaters();
-            if (this.conditions.theater !== '') {
-                this.screeningEvents = await this.getScreeningEvents();
-                this.createDateList();
-                this.createSchedule();
-            }
+            await this.initialize();
             localStorage.removeItem('schedule');
         } catch (error) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
@@ -102,6 +93,26 @@ export class PurchaseComponent implements OnInit {
         }
 
         this.isLoading = false;
+    }
+
+    /**
+     * 初期化
+     */
+    private async initialize() {
+        this.theaters = [];
+        this.dateList = [];
+        this.filmOrder = [];
+        this.timeOrder = [];
+        this.theaters = await this.getTheaters();
+        const findResult = this.theaters.find(theater => theater.location.branchCode === this.conditions.theater);
+        if (findResult === undefined) {
+            this.conditions.theater = '';
+        }
+        if (this.conditions.theater !== '') {
+            this.screeningEvents = await this.getScreeningEvents();
+            this.createDateList();
+            this.createSchedule();
+        }
     }
 
     /**
@@ -149,11 +160,7 @@ export class PurchaseComponent implements OnInit {
     public async update() {
         this.isLoading = true;
         try {
-            await this.sasaki.getServices();
-            this.theaters = await this.getTheaters();
-            this.screeningEvents = await this.getScreeningEvents();
-            this.createDateList();
-            this.createSchedule();
+            await this.initialize();
         } catch (error) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
             console.error('PurchaseComponent.update', error);

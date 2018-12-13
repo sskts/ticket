@@ -5192,10 +5192,6 @@ var PurchaseComponent = /** @class */ (function () {
         this.maintenance = maintenance;
         this.awsCognito = awsCognito;
         this.purchaseSort = _services_select_select_service__WEBPACK_IMPORTED_MODULE_8__["PurchaseSort"];
-        this.theaters = [];
-        this.dateList = [];
-        this.filmOrder = [];
-        this.timeOrder = [];
     }
     /**
      * 初期化
@@ -5203,18 +5199,18 @@ var PurchaseComponent = /** @class */ (function () {
      */
     PurchaseComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, _b, _c, error_1;
-            return __generator(this, function (_d) {
-                switch (_d.label) {
+            var _a, error_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
                         this.isLoading = true;
-                        _d.label = 1;
+                        _b.label = 1;
                     case 1:
-                        _d.trys.push([1, 6, , 7]);
+                        _b.trys.push([1, 4, , 5]);
                         _a = this;
                         return [4 /*yield*/, this.maintenance.confirm()];
                     case 2:
-                        _a.maintenanceInfo = _d.sent();
+                        _a.maintenanceInfo = _b.sent();
                         if (this.maintenanceInfo.isMaintenance) {
                             this.isLoading = false;
                             return [2 /*return*/];
@@ -5224,29 +5220,54 @@ var PurchaseComponent = /** @class */ (function () {
                             // 会員
                             this.conditions.theater = this.user.getTheaterCode(0);
                         }
-                        _b = this;
-                        return [4 /*yield*/, this.getTheaters()];
+                        return [4 /*yield*/, this.initialize()];
                     case 3:
-                        _b.theaters = _d.sent();
-                        if (!(this.conditions.theater !== '')) return [3 /*break*/, 5];
-                        _c = this;
-                        return [4 /*yield*/, this.getScreeningEvents()];
-                    case 4:
-                        _c.screeningEvents = _d.sent();
-                        this.createDateList();
-                        this.createSchedule();
-                        _d.label = 5;
-                    case 5:
+                        _b.sent();
                         localStorage.removeItem('schedule');
-                        return [3 /*break*/, 7];
-                    case 6:
-                        error_1 = _d.sent();
+                        return [3 /*break*/, 5];
+                    case 4:
+                        error_1 = _b.sent();
                         this.router.navigate(['/error', { redirect: '/purchase' }]);
                         console.error('PurchaseComponent.ngOnInit', error_1);
-                        return [3 /*break*/, 7];
-                    case 7:
+                        return [3 /*break*/, 5];
+                    case 5:
                         this.isLoading = false;
                         return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * 初期化
+     */
+    PurchaseComponent.prototype.initialize = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, findResult, _b;
+            var _this = this;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        this.theaters = [];
+                        this.dateList = [];
+                        this.filmOrder = [];
+                        this.timeOrder = [];
+                        _a = this;
+                        return [4 /*yield*/, this.getTheaters()];
+                    case 1:
+                        _a.theaters = _c.sent();
+                        findResult = this.theaters.find(function (theater) { return theater.location.branchCode === _this.conditions.theater; });
+                        if (findResult === undefined) {
+                            this.conditions.theater = '';
+                        }
+                        if (!(this.conditions.theater !== '')) return [3 /*break*/, 3];
+                        _b = this;
+                        return [4 /*yield*/, this.getScreeningEvents()];
+                    case 2:
+                        _b.screeningEvents = _c.sent();
+                        this.createDateList();
+                        this.createSchedule();
+                        _c.label = 3;
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -5321,34 +5342,24 @@ var PurchaseComponent = /** @class */ (function () {
      */
     PurchaseComponent.prototype.update = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, _b, error_3;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            var error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
                         this.isLoading = true;
-                        _c.label = 1;
+                        _a.label = 1;
                     case 1:
-                        _c.trys.push([1, 5, , 6]);
-                        return [4 /*yield*/, this.sasaki.getServices()];
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.initialize()];
                     case 2:
-                        _c.sent();
-                        _a = this;
-                        return [4 /*yield*/, this.getTheaters()];
+                        _a.sent();
+                        return [3 /*break*/, 4];
                     case 3:
-                        _a.theaters = _c.sent();
-                        _b = this;
-                        return [4 /*yield*/, this.getScreeningEvents()];
-                    case 4:
-                        _b.screeningEvents = _c.sent();
-                        this.createDateList();
-                        this.createSchedule();
-                        return [3 /*break*/, 6];
-                    case 5:
-                        error_3 = _c.sent();
+                        error_3 = _a.sent();
                         this.router.navigate(['/error', { redirect: '/purchase' }]);
                         console.error('PurchaseComponent.update', error_3);
-                        return [3 /*break*/, 6];
-                    case 6:
+                        return [3 /*break*/, 4];
+                    case 4:
                         this.isLoading = false;
                         return [2 /*return*/];
                 }
@@ -10043,7 +10054,6 @@ var SasakiService = /** @class */ (function () {
                             placeOrder: new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].transaction.PlaceOrder(option)
                         };
                         this.programMembership = new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].ProgramMembership(option);
-                        console.log('--------------------', this);
                         return [3 /*break*/, 3];
                     case 2:
                         err_1 = _a.sent();
