@@ -5512,10 +5512,15 @@ var PurchaseComponent = /** @class */ (function () {
         var _this = this;
         this.filmOrder = [];
         this.timeOrder = [];
-        var screeningEvents = this.screeningEvents
+        var PRE_SALE = '1'; // 先行販売
+        var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
+        var dateFilterResult = this.screeningEvents
             .filter(function (screeningEvent) { return screeningEvent.coaInfo.dateJouei === _this.conditions.date; });
-        this.timeOrder = screeningEvents;
-        screeningEvents.forEach(function (screeningEvent) {
+        var displayFilterResult = dateFilterResult
+            .filter(function (screeningEvent) { return (screeningEvent.coaInfo.rsvStartDate <= today
+            || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE); });
+        this.timeOrder = displayFilterResult;
+        displayFilterResult.forEach(function (screeningEvent) {
             var film = _this.filmOrder.find(function (event) {
                 return (event.id === (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum));
             });

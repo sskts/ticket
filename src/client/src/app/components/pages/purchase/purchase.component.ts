@@ -291,12 +291,17 @@ export class PurchaseComponent implements OnInit {
     private createSchedule() {
         this.filmOrder = [];
         this.timeOrder = [];
-
-        const screeningEvents = this.screeningEvents
+        const PRE_SALE = '1'; // 先行販売
+        const today = moment().format('YYYYMMDD');
+        const dateFilterResult = this.screeningEvents
             .filter(screeningEvent => screeningEvent.coaInfo.dateJouei === this.conditions.date);
 
-        this.timeOrder = screeningEvents;
-        screeningEvents.forEach((screeningEvent) => {
+        const displayFilterResult = dateFilterResult
+            .filter(screeningEvent => (screeningEvent.coaInfo.rsvStartDate <= today
+                || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE));
+
+        this.timeOrder = displayFilterResult;
+        displayFilterResult.forEach((screeningEvent) => {
             const film = this.filmOrder.find((event) => {
                 return (event.id === (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum));
             });
