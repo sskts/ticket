@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.5.1 - 2018-12-26
+### Fixed
+ - 予約開始日のフィルターを追加
+
 ## 2.5.0 - 2018-12-13
 ### Changed
  - スケジュール取得を劇場単位へ変更
