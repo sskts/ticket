@@ -16,6 +16,8 @@ export class PurchasePerformanceFilmComponent implements OnInit {
     @Input() public performance: IIndividualScreeningEvent;
     @Output() public select: EventEmitter<{}> = new EventEmitter();
     public salseFlg: boolean;
+    public isWindow: boolean;
+    public isNotAccepted: boolean;
 
     constructor() { }
 
@@ -24,7 +26,11 @@ export class PurchasePerformanceFilmComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        this.salseFlg = moment(this.performance.startDate).unix() > moment().add(30, 'minutes').unix();
+        const PRE_SALE = '1';
+        this.isWindow = moment(this.performance.startDate).unix() <= moment().add(30, 'minutes').unix();
+        this.isNotAccepted = (this.performance.coaInfo.flgEarlyBooking !== PRE_SALE &&
+            moment(this.performance.coaInfo.rsvStartDate) > moment());
+        this.salseFlg = !this.isNotAccepted && !this.isWindow;
     }
 
 }

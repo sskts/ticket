@@ -258,7 +258,7 @@ export class PurchaseComponent implements OnInit {
         this.screeningEvents.forEach((screeningEvent) => {
             const PRE_SALE = '1'; // 先行販売
             const startDate = moment(screeningEvent.startDate).format('YYYYMMDD');
-            const limitDate = moment().add(3, 'days').format('YYYYMMDD');
+            const limitDate = moment().add(7, 'days').format('YYYYMMDD');
             const today = moment().format('YYYYMMDD');
             const isSalse = screeningEvent.coaInfo.rsvStartDate <= today || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE;
             if (!isSalse
@@ -293,12 +293,14 @@ export class PurchaseComponent implements OnInit {
         this.timeOrder = [];
         const PRE_SALE = '1'; // 先行販売
         const today = moment().format('YYYYMMDD');
+        const limitDate = moment().add(7, 'days').format('YYYYMMDD');
         const dateFilterResult = this.screeningEvents
             .filter(screeningEvent => screeningEvent.coaInfo.dateJouei === this.conditions.date);
 
         const displayFilterResult = dateFilterResult
             .filter(screeningEvent => (screeningEvent.coaInfo.rsvStartDate <= today
-                || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE));
+                || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE
+                || screeningEvent.coaInfo.dateJouei <= limitDate));
 
         this.timeOrder = displayFilterResult;
         displayFilterResult.forEach((screeningEvent) => {
