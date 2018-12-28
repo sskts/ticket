@@ -5474,14 +5474,14 @@ var PurchaseComponent = /** @class */ (function () {
      */
     PurchaseComponent.prototype.createDateList = function () {
         var result = [];
+        var limitDate = moment__WEBPACK_IMPORTED_MODULE_3__().add(7, 'days').format('YYYYMMDD');
+        var salesDate = moment__WEBPACK_IMPORTED_MODULE_3__().add(2, 'days').format('YYYYMMDD');
+        var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
         this.screeningEvents.forEach(function (screeningEvent) {
             var PRE_SALE = '1'; // 先行販売
             var startDate = moment__WEBPACK_IMPORTED_MODULE_3__(screeningEvent.startDate).format('YYYYMMDD');
-            var limitDate = moment__WEBPACK_IMPORTED_MODULE_3__().add(7, 'days').format('YYYYMMDD');
-            var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
             var isSalse = screeningEvent.coaInfo.rsvStartDate <= today || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE;
-            if (!isSalse
-                || (startDate >= limitDate && screeningEvent.coaInfo.flgEarlyBooking !== PRE_SALE)) {
+            if (!isSalse && startDate >= limitDate) {
                 return;
             }
             var findResult = result.find(function (date) { return screeningEvent.coaInfo.dateJouei === date.value; });
@@ -5495,9 +5495,12 @@ var PurchaseComponent = /** @class */ (function () {
                         day: date.format('DD'),
                         year: date.format('YYYY')
                     },
-                    preSale: (screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE),
+                    preSale: (screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE && startDate > salesDate),
                     serviceDay: screeningEvent.coaInfo.nameServiceDay
                 });
+            }
+            else if (screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE && startDate > salesDate) {
+                findResult.preSale = true;
             }
         });
         this.dateList = result;

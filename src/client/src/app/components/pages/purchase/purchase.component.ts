@@ -255,14 +255,14 @@ export class PurchaseComponent implements OnInit {
      */
     private createDateList() {
         const result: IDate[] = [];
+        const limitDate = moment().add(7, 'days').format('YYYYMMDD');
+        const salesDate = moment().add(2, 'days').format('YYYYMMDD');
+        const today = moment().format('YYYYMMDD');
         this.screeningEvents.forEach((screeningEvent) => {
             const PRE_SALE = '1'; // 先行販売
             const startDate = moment(screeningEvent.startDate).format('YYYYMMDD');
-            const limitDate = moment().add(7, 'days').format('YYYYMMDD');
-            const today = moment().format('YYYYMMDD');
             const isSalse = screeningEvent.coaInfo.rsvStartDate <= today || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE;
-            if (!isSalse
-                || (startDate >= limitDate && screeningEvent.coaInfo.flgEarlyBooking !== PRE_SALE)) {
+            if (!isSalse && startDate >= limitDate) {
                 return;
             }
             const findResult = result.find((date) => screeningEvent.coaInfo.dateJouei === date.value);
@@ -276,9 +276,11 @@ export class PurchaseComponent implements OnInit {
                         day: date.format('DD'),
                         year: date.format('YYYY')
                     },
-                    preSale: (screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE),
+                    preSale: (screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE && startDate > salesDate),
                     serviceDay: screeningEvent.coaInfo.nameServiceDay
                 });
+            } else if(screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE && startDate > salesDate) {
+                findResult.preSale = true;
             }
         });
         this.dateList = result;
