@@ -5470,17 +5470,28 @@ var PurchaseComponent = /** @class */ (function () {
         });
     };
     /**
+     * 先行販売かどうかをチェックする
+     */
+    PurchaseComponent.prototype.checkEventPreSale = function (event) {
+        var salesDate = moment__WEBPACK_IMPORTED_MODULE_3__().add(2, 'days').format('YYYYMMDD');
+        var startDate = moment__WEBPACK_IMPORTED_MODULE_3__(event.startDate).format('YYYYMMDD');
+        var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
+        var PRE_SALE = '1'; // 先行販売
+        return event.coaInfo.rsvStartDate <= today &&
+            event.coaInfo.flgEarlyBooking === PRE_SALE &&
+            salesDate < startDate;
+    };
+    /**
      * 日付作成
      */
     PurchaseComponent.prototype.createDateList = function () {
+        var _this = this;
         var result = [];
         var limitDate = moment__WEBPACK_IMPORTED_MODULE_3__().add(7, 'days').format('YYYYMMDD');
-        var salesDate = moment__WEBPACK_IMPORTED_MODULE_3__().add(2, 'days').format('YYYYMMDD');
         var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
         this.screeningEvents.forEach(function (screeningEvent) {
-            var PRE_SALE = '1'; // 先行販売
             var startDate = moment__WEBPACK_IMPORTED_MODULE_3__(screeningEvent.startDate).format('YYYYMMDD');
-            var isSalse = screeningEvent.coaInfo.rsvStartDate <= today || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE;
+            var isSalse = screeningEvent.coaInfo.rsvStartDate <= today;
             if (!isSalse && startDate >= limitDate) {
                 return;
             }
@@ -5495,11 +5506,11 @@ var PurchaseComponent = /** @class */ (function () {
                         day: date.format('DD'),
                         year: date.format('YYYY')
                     },
-                    preSale: (screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE && startDate > salesDate),
+                    preSale: _this.checkEventPreSale(screeningEvent),
                     serviceDay: screeningEvent.coaInfo.nameServiceDay
                 });
             }
-            else if (screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE && startDate > salesDate) {
+            else if (_this.checkEventPreSale(screeningEvent)) {
                 findResult.preSale = true;
             }
         });
@@ -5513,14 +5524,13 @@ var PurchaseComponent = /** @class */ (function () {
         var _this = this;
         this.filmOrder = [];
         this.timeOrder = [];
-        var PRE_SALE = '1'; // 先行販売
         var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
         var limitDate = moment__WEBPACK_IMPORTED_MODULE_3__().add(7, 'days').format('YYYYMMDD');
         var dateFilterResult = this.screeningEvents
             .filter(function (screeningEvent) { return screeningEvent.coaInfo.dateJouei === _this.conditions.date; });
         var displayFilterResult = dateFilterResult
             .filter(function (screeningEvent) { return (screeningEvent.coaInfo.rsvStartDate <= today
-            || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE
+            || _this.checkEventPreSale(screeningEvent)
             || screeningEvent.coaInfo.dateJouei <= limitDate); });
         this.timeOrder = displayFilterResult;
         displayFilterResult.forEach(function (screeningEvent) {
@@ -7929,10 +7939,8 @@ var PurchasePerformanceFilmComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PurchasePerformanceFilmComponent.prototype.ngOnInit = function () {
-        var PRE_SALE = '1';
         this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(30, 'minutes').unix();
-        this.isNotAccepted = (this.performance.coaInfo.flgEarlyBooking !== PRE_SALE &&
-            moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__());
+        this.isNotAccepted = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     };
     return PurchasePerformanceFilmComponent;
@@ -8044,11 +8052,8 @@ var PurchasePerformanceTimeComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PurchasePerformanceTimeComponent.prototype.ngOnInit = function () {
-        var PRE_SALE = '1';
-        console.log(this.performance.coaInfo.rsvStartDate);
         this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(30, 'minutes').unix();
-        this.isNotAccepted = (this.performance.coaInfo.flgEarlyBooking !== PRE_SALE &&
-            moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__());
+        this.isNotAccepted = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     };
     return PurchasePerformanceTimeComponent;

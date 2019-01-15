@@ -11,6 +11,7 @@ import { IConfirm, MaintenanceService } from '../../../services/maintenance/main
 import { SasakiService } from '../../../services/sasaki/sasaki.service';
 import { IPurchaseConditions, PurchaseSort, SelectService } from '../../../services/select/select.service';
 import { MemberType, UserService } from '../../../services/user/user.service';
+import { IEventWithOffer } from '@motionpicture/sskts-factory/lib/factory/event/individualScreeningEvent';
 
 type IMovieTheater = factory.organization.movieTheater.IOrganizationWithoutGMOInfo;
 type IIndividualScreeningEvent = factory.event.individualScreeningEvent.IEventWithOffer;
@@ -251,17 +252,28 @@ export class PurchaseComponent implements OnInit {
     }
 
     /**
+     * 先行販売かどうかをチェックする
+     */
+    private checkEventPreSale(event : IEventWithOffer): boolean {
+        const salesDate = moment().add(2, 'days').format('YYYYMMDD');
+        const startDate = moment(event.startDate).format('YYYYMMDD');
+        const today = moment().format('YYYYMMDD');
+        const PRE_SALE = '1'; // 先行販売
+        return event.coaInfo.rsvStartDate <= today &&
+            event.coaInfo.flgEarlyBooking === PRE_SALE && 
+            salesDate < startDate;
+    }
+
+    /**
      * 日付作成
      */
     private createDateList() {
         const result: IDate[] = [];
         const limitDate = moment().add(7, 'days').format('YYYYMMDD');
-        const salesDate = moment().add(2, 'days').format('YYYYMMDD');
         const today = moment().format('YYYYMMDD');
         this.screeningEvents.forEach((screeningEvent) => {
-            const PRE_SALE = '1'; // 先行販売
             const startDate = moment(screeningEvent.startDate).format('YYYYMMDD');
-            const isSalse = screeningEvent.coaInfo.rsvStartDate <= today || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE;
+            const isSalse = screeningEvent.coaInfo.rsvStartDate <= today;
             if (!isSalse && startDate >= limitDate) {
                 return;
             }
@@ -276,10 +288,10 @@ export class PurchaseComponent implements OnInit {
                         day: date.format('DD'),
                         year: date.format('YYYY')
                     },
-                    preSale: (screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE && startDate > salesDate),
+                    preSale: this.checkEventPreSale(screeningEvent),
                     serviceDay: screeningEvent.coaInfo.nameServiceDay
                 });
-            } else if(screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE && startDate > salesDate) {
+            } else if(this.checkEventPreSale(screeningEvent)) {
                 findResult.preSale = true;
             }
         });
@@ -293,7 +305,6 @@ export class PurchaseComponent implements OnInit {
     private createSchedule() {
         this.filmOrder = [];
         this.timeOrder = [];
-        const PRE_SALE = '1'; // 先行販売
         const today = moment().format('YYYYMMDD');
         const limitDate = moment().add(7, 'days').format('YYYYMMDD');
         const dateFilterResult = this.screeningEvents
@@ -301,7 +312,7 @@ export class PurchaseComponent implements OnInit {
 
         const displayFilterResult = dateFilterResult
             .filter(screeningEvent => (screeningEvent.coaInfo.rsvStartDate <= today
-                || screeningEvent.coaInfo.flgEarlyBooking === PRE_SALE
+                || this.checkEventPreSale(screeningEvent)
                 || screeningEvent.coaInfo.dateJouei <= limitDate));
 
         this.timeOrder = displayFilterResult;

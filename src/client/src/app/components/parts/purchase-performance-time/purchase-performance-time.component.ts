@@ -23,11 +23,8 @@ export class PurchasePerformanceTimeComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        const PRE_SALE = '1';
-        console.log(this.performance.coaInfo.rsvStartDate);
         this.isWindow = moment(this.performance.startDate).unix() <= moment().add(30, 'minutes').unix();
-        this.isNotAccepted = (this.performance.coaInfo.flgEarlyBooking !== PRE_SALE &&
-            moment(this.performance.coaInfo.rsvStartDate) > moment());
+        this.isNotAccepted =moment(this.performance.coaInfo.rsvStartDate) > moment();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     }
 
