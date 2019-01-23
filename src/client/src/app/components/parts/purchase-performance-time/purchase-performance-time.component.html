@@ -12,7 +12,8 @@
         <div *ngIf="salseFlg" class="status">
             <app-icon [iconName]="(performance.offer.availability | availability).icon" width="15" height="15"></app-icon>
         </div>
-        <div *ngIf="!salseFlg" class="status window small-x-text">窓口</div>
+        <div *ngIf="isNotAccepted" class="status window small-x-text">予約<br>不可</div>
+        <div *ngIf="isWindow" class="status window small-x-text">窓口</div>
     </div>
     <div class="info">
         <div class="screen small-x-text mb-xx-small">{{ performance.location.name.ja }}</div>
