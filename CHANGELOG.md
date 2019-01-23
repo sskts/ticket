@@ -13,6 +13,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.5.2 - 2019-01-23
+### Changed
+ - 購入画面に7日分の映画予定を表示
+
+### Fixed
+ - 先行販売のチケットが予約可能日になっていないにも関わらず購入可能になってしまう不具合修正
+
 ## 2.5.1 - 2018-12-26
 ### Fixed
  - 予約開始日のフィルターを追加

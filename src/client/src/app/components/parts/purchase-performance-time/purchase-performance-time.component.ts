@@ -13,6 +13,8 @@ export class PurchasePerformanceTimeComponent implements OnInit {
     @Input() public performance: IIndividualScreeningEvent;
     @Output() public select: EventEmitter<{}> = new EventEmitter();
     public salseFlg: boolean;
+    public isWindow: boolean;
+    public isNotAccepted: boolean;
 
     constructor() { }
 
@@ -21,10 +23,9 @@ export class PurchasePerformanceTimeComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        const addMinutes = 30;
-        const startDate = moment(this.performance.startDate).unix();
-        const addDate = moment().add(addMinutes, 'minutes').unix();
-        this.salseFlg = (startDate > addDate);
+        this.isWindow = moment(this.performance.startDate).unix() <= moment().add(30, 'minutes').unix();
+        this.isNotAccepted =moment(this.performance.coaInfo.rsvStartDate) > moment();
+        this.salseFlg = !this.isNotAccepted && !this.isWindow;
     }
 
 }
