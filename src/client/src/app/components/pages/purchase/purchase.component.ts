@@ -82,7 +82,7 @@ export class PurchaseComponent implements OnInit {
                 return;
             }
             this.conditions = this.select.data.purchase;
-            if (this.user.isMember()) {
+            if (this.user.isMember() && this.conditions.theater === '') {
                 // 会員
                 this.conditions.theater = this.user.getTheaterCode(0);
             }
