@@ -7939,7 +7939,7 @@ var PurchasePerformanceFilmComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PurchasePerformanceFilmComponent.prototype.ngOnInit = function () {
-        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(30, 'minutes').unix();
+        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(5, 'minutes').unix();
         this.isNotAccepted = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     };
@@ -8052,7 +8052,7 @@ var PurchasePerformanceTimeComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PurchasePerformanceTimeComponent.prototype.ngOnInit = function () {
-        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(30, 'minutes').unix();
+        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(5, 'minutes').unix();
         this.isNotAccepted = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     };
