@@ -2073,7 +2073,7 @@ var AuthSelectComponent = /** @class */ (function () {
                     case 1:
                         _a.trys.push([1, 3, , 4]);
                         userName = this.user.data.accounts.length > 0 ? this.user.data.accounts[0].name :
-                            this.user.data.prevUserName ? this.user.data.prevUserName : "";
+                            this.user.data.prevUserName ? this.user.data.prevUserName : '';
                         return [4 /*yield*/, this.sasaki.signInWithUserName(false, userName)];
                     case 2:
                         _a.sent();
@@ -7939,7 +7939,8 @@ var PurchasePerformanceFilmComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PurchasePerformanceFilmComponent.prototype.ngOnInit = function () {
-        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(5, 'minutes').unix();
+        var VALID_TIME = 10;
+        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(VALID_TIME, 'minutes').unix();
         this.isNotAccepted = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     };
@@ -8052,7 +8053,8 @@ var PurchasePerformanceTimeComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PurchasePerformanceTimeComponent.prototype.ngOnInit = function () {
-        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(5, 'minutes').unix();
+        var VALID_TIME = 10;
+        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(VALID_TIME, 'minutes').unix();
         this.isNotAccepted = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     };
@@ -10464,7 +10466,7 @@ var UserService = /** @class */ (function () {
                 creditCards: [],
                 accounts: [],
                 programMembershipOwnershipInfos: [],
-                prevUserName: ""
+                prevUserName: ''
             };
             return;
         }
