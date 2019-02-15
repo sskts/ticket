@@ -26,7 +26,8 @@ export class PurchasePerformanceFilmComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        this.isWindow = moment(this.performance.startDate).unix() <= moment().add(30, 'minutes').unix();
+        const VALID_TIME = 10;
+        this.isWindow = moment(this.performance.startDate).unix() <= moment().add(VALID_TIME, 'minutes').unix();
         this.isNotAccepted = moment(this.performance.coaInfo.rsvStartDate) > moment();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     }
