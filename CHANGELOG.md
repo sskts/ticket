@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.5.3 - 2019-02-15
+### Changed
+ - 購入画面から戻った際に選んでいた劇場に戻る
+ - 10分前まで購入可能にする
+
 ## 2.5.2 - 2019-01-23
 ### Changed
  - 購入画面に7日分の映画予定を表示
