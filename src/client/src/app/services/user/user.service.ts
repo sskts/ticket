@@ -54,7 +54,7 @@ export class UserService {
                 creditCards: [],
                 accounts: [],
                 programMembershipOwnershipInfos: [],
-                prevUserName: ""
+                prevUserName: ''
             };
 
             return;

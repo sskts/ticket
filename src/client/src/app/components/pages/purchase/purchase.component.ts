@@ -4,6 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { IEventWithOffer } from '@motionpicture/sskts-factory/lib/factory/event/individualScreeningEvent';
 import * as moment from 'moment';
 import { environment } from '../../../../environments/environment';
 import { AwsCognitoService } from '../../../services/aws-cognito/aws-cognito.service';
@@ -11,7 +12,6 @@ import { IConfirm, MaintenanceService } from '../../../services/maintenance/main
 import { SasakiService } from '../../../services/sasaki/sasaki.service';
 import { IPurchaseConditions, PurchaseSort, SelectService } from '../../../services/select/select.service';
 import { MemberType, UserService } from '../../../services/user/user.service';
-import { IEventWithOffer } from '@motionpicture/sskts-factory/lib/factory/event/individualScreeningEvent';
 
 type IMovieTheater = factory.organization.movieTheater.IOrganizationWithoutGMOInfo;
 type IIndividualScreeningEvent = factory.event.individualScreeningEvent.IEventWithOffer;
@@ -82,7 +82,7 @@ export class PurchaseComponent implements OnInit {
                 return;
             }
             this.conditions = this.select.data.purchase;
-            if (this.user.isMember()) {
+            if (this.user.isMember() && this.conditions.theater === '') {
                 // 会員
                 this.conditions.theater = this.user.getTheaterCode(0);
             }
@@ -254,13 +254,13 @@ export class PurchaseComponent implements OnInit {
     /**
      * 先行販売かどうかをチェックする
      */
-    private checkEventPreSale(event : IEventWithOffer): boolean {
+    private checkEventPreSale(event: IEventWithOffer): boolean {
         const salesDate = moment().add(2, 'days').format('YYYYMMDD');
         const startDate = moment(event.startDate).format('YYYYMMDD');
         const today = moment().format('YYYYMMDD');
         const PRE_SALE = '1'; // 先行販売
         return event.coaInfo.rsvStartDate <= today &&
-            event.coaInfo.flgEarlyBooking === PRE_SALE && 
+            event.coaInfo.flgEarlyBooking === PRE_SALE &&
             salesDate < startDate;
     }
 
@@ -291,7 +291,7 @@ export class PurchaseComponent implements OnInit {
                     preSale: this.checkEventPreSale(screeningEvent),
                     serviceDay: screeningEvent.coaInfo.nameServiceDay
                 });
-            } else if(this.checkEventPreSale(screeningEvent)) {
+            } else if (this.checkEventPreSale(screeningEvent)) {
                 findResult.preSale = true;
             }
         });

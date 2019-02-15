@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
 /***/ "../../node_modules/moment/locale sync recursive ^\\.\\/.*$":
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/yuiwasaki/Documents/workspace/cinemasunshine/ticket/node_modules/moment/locale sync ^\.\/.*$ ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************************!*\
+  !*** C:/Users/yuiwa/Documents/workspace/motionpicture/cinemasunshine/ticket/node_modules/moment/locale sync ^\.\/.*$ ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2073,7 +2073,7 @@ var AuthSelectComponent = /** @class */ (function () {
                     case 1:
                         _a.trys.push([1, 3, , 4]);
                         userName = this.user.data.accounts.length > 0 ? this.user.data.accounts[0].name :
-                            this.user.data.prevUserName ? this.user.data.prevUserName : "";
+                            this.user.data.prevUserName ? this.user.data.prevUserName : '';
                         return [4 /*yield*/, this.sasaki.signInWithUserName(false, userName)];
                     case 2:
                         _a.sent();
@@ -5214,7 +5214,7 @@ var PurchaseComponent = /** @class */ (function () {
                             return [2 /*return*/];
                         }
                         this.conditions = this.select.data.purchase;
-                        if (this.user.isMember()) {
+                        if (this.user.isMember() && this.conditions.theater === '') {
                             // 会員
                             this.conditions.theater = this.user.getTheaterCode(0);
                         }
@@ -7939,7 +7939,8 @@ var PurchasePerformanceFilmComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PurchasePerformanceFilmComponent.prototype.ngOnInit = function () {
-        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(30, 'minutes').unix();
+        var VALID_TIME = 10;
+        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(VALID_TIME, 'minutes').unix();
         this.isNotAccepted = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     };
@@ -8052,7 +8053,8 @@ var PurchasePerformanceTimeComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PurchasePerformanceTimeComponent.prototype.ngOnInit = function () {
-        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(30, 'minutes').unix();
+        var VALID_TIME = 10;
+        this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(VALID_TIME, 'minutes').unix();
         this.isNotAccepted = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     };
@@ -10464,7 +10466,7 @@ var UserService = /** @class */ (function () {
                 creditCards: [],
                 accounts: [],
                 programMembershipOwnershipInfos: [],
-                prevUserName: ""
+                prevUserName: ''
             };
             return;
         }
@@ -10997,7 +10999,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["platformBrowser"]().boot
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\yuiwasaki\Documents\workspace\cinemasunshine\ticket\src\client\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\yuiwa\Documents\workspace\motionpicture\cinemasunshine\ticket\src\client\src\main.ts */"./src/main.ts");
 
 
 /***/ }),
