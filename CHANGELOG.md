@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.5.4 - 2019-02-18
+### Added
+ - main.jsが存在しなかったため追加
+
 ## 2.5.3 - 2019-02-15
 ### Changed
  - 購入画面から戻った際に選んでいた劇場に戻る
