@@ -3,15 +3,20 @@ import { factory } from '@motionpicture/sskts-api-javascript-client';
 import { environment } from '../../../environments/environment';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { SaveType, StorageService } from '../storage/storage.service';
+import { IProgramMembership } from '@motionpicture/sskts-factory/lib/factory/programMembership';
+// import PaymentMethodType from '@chevre/factory/lib/factory/paymentMethodType';
+// @cinerino\api-abstract-client\lib\service\person\ownershipInfo.d.ts
 
 
 export interface IData {
     userName?: string;
     memberType: MemberType;
-    contact?: factory.person.IContact;
+    //contact?: factory.person.IContact;
+    profile?: factory.person.IProfile;
     creditCards: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
     accounts: factory.pecorino.account.IAccount<factory.accountType.Point>[];
-    programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<'ProgramMembership'>[];
+    programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<IProgramMembership>[];
+    //programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfoWithDetail<factory.ownershipInfo.IGoodType>[];
     prevUserName?: string;
 }
 
@@ -99,13 +104,14 @@ export class UserService {
         }
         this.data.userName = this.sasaki.userName;
         // 連絡先取得
-        const contact = await this.sasaki.person.getContacts({
+        /*const contact = await this.sasaki.person.getContacts({
             personId: 'me'
-        });
-        if (contact === undefined) {
-            throw new Error('contact is undefined');
+        });*/
+        const profile = await this.sasaki.person.getProfile({id: 'me'});
+        if (profile === undefined) {
+            throw new Error('profile is undefined');
         }
-        this.data.contact = contact;
+        this.data.profile= profile;
 
         try {
             // クレジットカード検索
@@ -137,10 +143,8 @@ export class UserService {
         }
 
         const programMembershipOwnershipInfos = await this.sasaki.person.searchOwnershipInfos({
-            ownedBy: 'me',
             goodType: 'ProgramMembership'
         });
-
         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos;
 
         this.save();
@@ -185,10 +189,10 @@ export class UserService {
      * @method getName
      */
     public getName() {
-        if (this.data.contact === undefined) {
+        if (this.data.profile === undefined) {
             return '';
         }
-        return `${this.data.contact.familyName} ${this.data.contact.givenName}`;
+        return `${this.data.profile.familyName} ${this.data.profile.givenName}`;
     }
 
     /**
@@ -196,10 +200,10 @@ export class UserService {
      * @method getTelephone
      */
     public getTelephone() {
-        if (this.data.contact === undefined) {
+        if (this.data.profile === undefined) {
             return '';
         }
-        return this.data.contact.telephone.replace(/\-/g, '');
+        return this.data.profile.telephone.replace(/\-/g, '');
     }
 
     /**
@@ -274,9 +278,14 @@ export class UserService {
         await this.sasaki.getServices();
         // 池袋
         const branchCode = (environment.production) ? '001' : '101';
-        const movieTheater = await this.sasaki.organization.findMovieTheaterByBranchCode({
+        //const movieTheater = this.sasaki.seller.search({})
+        const movieTheater = await this.sasaki.seller.findById({id: branchCode});
+        console.log(movieTheater.paymentAccepted);
+        //    movieTheater.paymentAccepted[0].paymentMethodType === PaymentMethodType.CreditCard
+       
+        /*const movieTheater = await this.sasaki.organization.findMovieTheaterByBranchCode({
             branchCode: branchCode
-        });
+        });*/
         return new Promise<IGmoTokenObject>((resolve, reject) => {
             (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
                 if (response.resultCode === '000') {
@@ -344,22 +353,20 @@ export class UserService {
         postalCode: string;
     }) {
         await this.sasaki.getServices();
-        await this.sasaki.person.updateContacts({
-            personId: 'me',
-            contacts: {
-                familyName: args.familyName,
-                givenName: args.givenName,
-                email: args.email,
-                telephone: args.telephone
-            }
+        await this.sasaki.person.updateProfile({
+            id: 'me',
+            familyName: args.familyName,
+            givenName: args.givenName,
+            email: args.email,
+            telephone: args.telephone
         });
-        const contact = await this.sasaki.person.getContacts({
-            personId: 'me'
+        const profile = await this.sasaki.person.getProfile({
+            id: 'me'
         });
-        if (contact === undefined) {
-            throw new Error('contact is undefined');
+        if (profile === undefined) {
+            throw new Error('profile is undefined');
         }
-        this.data.contact = contact;
+        this.data.profile = profile;
 
         this.save();
     }

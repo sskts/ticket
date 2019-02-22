@@ -12,9 +12,11 @@ export class SasakiService {
     public userName?: string;
     public event: sasaki.service.Event;
     public order: sasaki.service.Order;
-    public organization: sasaki.service.Organization;
+    //public organization: sasaki.service.Organization;
+    public seller: sasaki.service.Seller;
     public person: sasaki.service.Person;
-    public place: sasaki.service.Place;
+    public ownerShip: sasaki.service.person.OwnershipInfo;
+    //public place: sasaki.service.Place;
     public transaction: {
         placeOrder: sasaki.service.transaction.PlaceOrder
     };
@@ -33,9 +35,11 @@ export class SasakiService {
             const option = await this.createOption();
             this.event = new sasaki.service.Event(option);
             this.order = new sasaki.service.Order(option);
-            this.organization = new sasaki.service.Organization(option);
+            this.seller = new sasaki.service.Seller(option);
+            //this.organization = new sasaki.service.Organization(option);
             this.person = new sasaki.service.Person(option);
-            this.place = new sasaki.service.Place(option);
+            this.ownerShip = new sasaki.service.person.OwnershipInfo(option);
+            //this.place = new sasaki.service.Place(option);
             this.transaction = {
                 placeOrder: new sasaki.service.transaction.PlaceOrder(option)
             };
