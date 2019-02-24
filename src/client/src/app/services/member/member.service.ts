@@ -32,12 +32,14 @@ export class MemberService {
 
         const branchCode = args.theaterCode;
         // 販売劇場検索
-        const seller = await this.sasaki.organization.findMovieTheaterByBranchCode({
-            branchCode: branchCode
+        const result = await this.sasaki.seller.search({
+            location: {branchCodes: [branchCode]},
+            typeOfs: [factory.organizationType.MovieTheater]
         });
-        if (seller === null) {
+        if (result.totalCount === 0) {
             throw new Error('販売劇場が見つかりませんでした。');
         }
+        const seller = result.data[0];
 
         const programMembership = args.programMembership;
         if (programMembership.id === undefined
@@ -77,7 +79,6 @@ export class MemberService {
                 try {
                     const programMembershipOwnershipInfos =
                         await this.sasaki.person.searchOwnershipInfos({
-                            ownedBy: 'me',
                             goodType: 'ProgramMembership'
                         });
                     if (programMembershipOwnershipInfos.length > 0) {

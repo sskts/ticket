@@ -92,7 +92,7 @@ export class MemberEditProfileComponent implements OnInit {
             },
         };
 
-        const contact = this.user.data.contact;
+        const contact = this.user.data.profile;
         if (contact === undefined) {
             throw new Error('contact is undefined');
         }

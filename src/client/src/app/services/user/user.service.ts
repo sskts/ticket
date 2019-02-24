@@ -1,22 +1,17 @@
 import { Injectable } from '@angular/core';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { IProgramMembership } from '@motionpicture/sskts-factory/lib/factory/programMembership';
 import { environment } from '../../../environments/environment';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { SaveType, StorageService } from '../storage/storage.service';
-import { IProgramMembership } from '@motionpicture/sskts-factory/lib/factory/programMembership';
-// import PaymentMethodType from '@chevre/factory/lib/factory/paymentMethodType';
-// @cinerino\api-abstract-client\lib\service\person\ownershipInfo.d.ts
-
 
 export interface IData {
     userName?: string;
     memberType: MemberType;
-    //contact?: factory.person.IContact;
     profile?: factory.person.IProfile;
     creditCards: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
     accounts: factory.pecorino.account.IAccount<factory.accountType.Point>[];
     programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<IProgramMembership>[];
-    //programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfoWithDetail<factory.ownershipInfo.IGoodType>[];
     prevUserName?: string;
 }
 
@@ -111,7 +106,7 @@ export class UserService {
         if (profile === undefined) {
             throw new Error('profile is undefined');
         }
-        this.data.profile= profile;
+        this.data.profile = profile;
 
         try {
             // クレジットカード検索
@@ -231,7 +226,8 @@ export class UserService {
         if (this.data.programMembershipOwnershipInfos.length === 0
             || programMembershipOwnershipInfo === undefined
             || programMembershipOwnershipInfo.acquiredFrom === undefined
-            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== factory.organizationType.MovieTheater) {
+            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== factory.organizationType.MovieTheater
+            || programMembershipOwnershipInfo.acquiredFrom.location === undefined) {
             return '';
         }
 
@@ -278,14 +274,23 @@ export class UserService {
         await this.sasaki.getServices();
         // 池袋
         const branchCode = (environment.production) ? '001' : '101';
-        //const movieTheater = this.sasaki.seller.search({})
-        const movieTheater = await this.sasaki.seller.findById({id: branchCode});
-        console.log(movieTheater.paymentAccepted);
-        //    movieTheater.paymentAccepted[0].paymentMethodType === PaymentMethodType.CreditCard
-       
-        /*const movieTheater = await this.sasaki.organization.findMovieTheaterByBranchCode({
-            branchCode: branchCode
-        });*/
+        const result = await this.sasaki.seller.search({
+            location: {branchCodes: [branchCode]},
+            typeOfs: [factory.organizationType.MovieTheater]
+        });
+        const movieTheater = result.data[0];
+        if (movieTheater.paymentAccepted === undefined) {
+            throw new Error('movieTheater is undefined');
+        }
+        const payment = movieTheater.paymentAccepted.find(paymentAccepted =>
+            paymentAccepted.paymentMethodType === factory.paymentMethodType.CreditCard);
+        if (payment === undefined) {
+            throw new Error('payment is undefined');
+        }
+        const gmoInfo = this.getGMOInfo(payment);
+        if (gmoInfo === undefined) {
+            throw new Error('gmoInfo is undefined');
+        }
         return new Promise<IGmoTokenObject>((resolve, reject) => {
             (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
                 if (response.resultCode === '000') {
@@ -296,7 +301,7 @@ export class UserService {
             };
             const Multipayment = (<any>window).Multipayment;
             // shopId
-            Multipayment.init(movieTheater.gmoInfo.shopId);
+            Multipayment.init(gmoInfo.shopId);
             Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
         });
     }
@@ -378,6 +383,13 @@ export class UserService {
         await this.sasaki.getServices();
         this.data.userName = this.sasaki.userName;
         this.save();
+    }
+
+    /**
+     * GMO情報を取得する
+     */
+    private getGMOInfo(accepted: any): factory.seller.IGMOInfo | undefined {
+        return accepted.gmoInfo;
     }
 
 }

@@ -25,7 +25,6 @@ export class ProgramMembershipGuardService implements CanActivate {
         }
         await this.sasaki.getServices();
         const programMembershipOwnershipInfos = await this.sasaki.person.searchOwnershipInfos({
-            ownedBy: 'me',
             goodType: 'ProgramMembership'
         });
         if (programMembershipOwnershipInfos.length === 0) {

@@ -1410,9 +1410,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "../../node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_maintenance_maintenance_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../services/maintenance/maintenance.service */ "./src/app/services/maintenance/maintenance.service.ts");
-/* harmony import */ var _services_member_member_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../services/member/member.service */ "./src/app/services/member/member.service.ts");
-/* harmony import */ var _services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../services/sasaki/sasaki.service */ "./src/app/services/sasaki/sasaki.service.ts");
+/* harmony import */ var _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @motionpicture/sskts-api-javascript-client */ "../../node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
+/* harmony import */ var _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _services_maintenance_maintenance_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../services/maintenance/maintenance.service */ "./src/app/services/maintenance/maintenance.service.ts");
+/* harmony import */ var _services_member_member_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../services/member/member.service */ "./src/app/services/member/member.service.ts");
+/* harmony import */ var _services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../services/sasaki/sasaki.service */ "./src/app/services/sasaki/sasaki.service.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -1454,6 +1456,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
     function AuthRegisterProgramMembershipComponent(router, formBuilder, sasaki, member, maintenance) {
         this.router = router;
@@ -1468,7 +1471,7 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
      */
     AuthRegisterProgramMembershipComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var searchMovieTheatersResult, excludeTheatersResult_1, _a, err_1;
+            var result, searchMovieTheatersResult, excludeTheatersResult_1, _a, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -1482,16 +1485,17 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                         return [4 /*yield*/, this.sasaki.getServices()];
                     case 2:
                         _b.sent();
-                        return [4 /*yield*/, this.sasaki.organization.searchMovieTheaters()];
+                        return [4 /*yield*/, this.sasaki.seller.search({ typeOfs: [_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].organizationType.MovieTheater] })];
                     case 3:
-                        searchMovieTheatersResult = _b.sent();
+                        result = _b.sent();
+                        searchMovieTheatersResult = result.data;
                         return [4 /*yield*/, this.maintenance.excludeTheaters()];
                     case 4:
                         excludeTheatersResult_1 = _b.sent();
                         if (excludeTheatersResult_1.isExclude) {
                             this.theaters = searchMovieTheatersResult.filter(function (theater) {
                                 var excludeTheater = excludeTheatersResult_1.theaters.find(function (excludeCode) {
-                                    return (excludeCode === theater.location.branchCode);
+                                    return (theater.location !== undefined && excludeCode === theater.location.branchCode);
                                 });
                                 return (excludeTheater === undefined);
                             });
@@ -3623,7 +3627,7 @@ var MemberEditProfileComponent = /** @class */ (function () {
                 validators: []
             },
         };
-        var contact = this.user.data.contact;
+        var contact = this.user.data.profile;
         if (contact === undefined) {
             throw new Error('contact is undefined');
         }
@@ -3752,7 +3756,7 @@ function View_MemberEditComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED
     } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](34, 16384, null, 0, _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterLink"], [_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"], [8, null], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], { routerLink: [0, "routerLink"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u57FA\u672C\u60C5\u5831\u5909\u66F4"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](36, 0, null, null, 14, "div", [["class", "credit"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](37, 0, null, null, 1, "h2", [["class", "text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u30AB\u30FC\u30C9\u60C5\u5831"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](39, 0, null, null, 8, "ul", [["class", "mb-small"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](40, 0, null, null, 3, "li", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](41, 0, null, null, 1, "app-icon", [["height", "15"], ["iconName", "credit-no-white"], ["width", "15"]], null, null, null, _parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_IconComponent_0"], _parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_IconComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](42, 114688, null, 0, _parts_icon_icon_component__WEBPACK_IMPORTED_MODULE_5__["IconComponent"], [], { iconName: [0, "iconName"], width: [1, "width"], height: [2, "height"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](43, null, ["", " "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](44, 0, null, null, 3, "li", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](45, 0, null, null, 1, "app-icon", [["height", "15"], ["iconName", "credit-expire-white"], ["width", "15"]], null, null, null, _parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_IconComponent_0"], _parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_IconComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](46, 114688, null, 0, _parts_icon_icon_component__WEBPACK_IMPORTED_MODULE_5__["IconComponent"], [], { iconName: [0, "iconName"], width: [1, "width"], height: [2, "height"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](47, null, ["", " "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](48, 0, null, null, 2, "button", [["class", "button button-primary button-block center mb-middle"], ["routerLink", "/member/edit/credit"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
         var pd_0 = (_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 49).onClick() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](49, 16384, null, 0, _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterLink"], [_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"], [8, null], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], { routerLink: [0, "routerLink"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u30AF\u30EC\u30B8\u30C3\u30C8\u30AB\u30FC\u30C9\u5909\u66F4"]))], function (_ck, _v) { _ck(_v, 1, 0); var currVal_0 = "about-white"; var currVal_1 = "15"; var currVal_2 = "15"; _ck(_v, 11, 0, currVal_0, currVal_1, currVal_2); var currVal_4 = "user-white"; var currVal_5 = "15"; var currVal_6 = "15"; _ck(_v, 15, 0, currVal_4, currVal_5, currVal_6); var currVal_8 = "email-white"; var currVal_9 = "15"; var currVal_10 = "15"; _ck(_v, 19, 0, currVal_8, currVal_9, currVal_10); var currVal_12 = "telephone-white"; var currVal_13 = "15"; var currVal_14 = "15"; _ck(_v, 23, 0, currVal_12, currVal_13, currVal_14); var currVal_16 = "my-theater-white"; var currVal_17 = "15"; var currVal_18 = "15"; _ck(_v, 27, 0, currVal_16, currVal_17, currVal_18); var currVal_20 = "account-white"; var currVal_21 = "15"; var currVal_22 = "15"; _ck(_v, 31, 0, currVal_20, currVal_21, currVal_22); var currVal_24 = "/member/edit/profile"; _ck(_v, 34, 0, currVal_24); var currVal_25 = "credit-no-white"; var currVal_26 = "15"; var currVal_27 = "15"; _ck(_v, 42, 0, currVal_25, currVal_26, currVal_27); var currVal_29 = "credit-expire-white"; var currVal_30 = "15"; var currVal_31 = "15"; _ck(_v, 46, 0, currVal_29, currVal_30, currVal_31); var currVal_33 = "/member/edit/credit"; _ck(_v, 49, 0, currVal_33); }, function (_ck, _v) { var _co = _v.component; var currVal_3 = _co.user.data.userName; _ck(_v, 12, 0, currVal_3); var currVal_7 = _co.user.getName(); _ck(_v, 16, 0, currVal_7); var currVal_11 = ((_co.user.data.contact == null) ? null : _co.user.data.contact.email); _ck(_v, 20, 0, currVal_11); var currVal_15 = _co.user.getTelephone(); _ck(_v, 24, 0, currVal_15); var currVal_19 = _co.user.getTheaterName(0); _ck(_v, 28, 0, currVal_19); var tmp_23_0 = null; var currVal_23 = (((tmp_23_0 = _co.user.getAccount(0)) == null) ? null : tmp_23_0.accountNumber); _ck(_v, 32, 0, currVal_23); var tmp_28_0 = null; var currVal_28 = (((tmp_28_0 = _co.user.getCreditCard(0)) == null) ? null : tmp_28_0.cardNo); _ck(_v, 43, 0, currVal_28); var tmp_32_0 = null; var currVal_32 = (((tmp_32_0 = _co.user.getCreditCard(0)) == null) ? null : tmp_32_0.expire); _ck(_v, 47, 0, currVal_32); }); }
+    } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](49, 16384, null, 0, _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterLink"], [_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"], [8, null], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], { routerLink: [0, "routerLink"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u30AF\u30EC\u30B8\u30C3\u30C8\u30AB\u30FC\u30C9\u5909\u66F4"]))], function (_ck, _v) { _ck(_v, 1, 0); var currVal_0 = "about-white"; var currVal_1 = "15"; var currVal_2 = "15"; _ck(_v, 11, 0, currVal_0, currVal_1, currVal_2); var currVal_4 = "user-white"; var currVal_5 = "15"; var currVal_6 = "15"; _ck(_v, 15, 0, currVal_4, currVal_5, currVal_6); var currVal_8 = "email-white"; var currVal_9 = "15"; var currVal_10 = "15"; _ck(_v, 19, 0, currVal_8, currVal_9, currVal_10); var currVal_12 = "telephone-white"; var currVal_13 = "15"; var currVal_14 = "15"; _ck(_v, 23, 0, currVal_12, currVal_13, currVal_14); var currVal_16 = "my-theater-white"; var currVal_17 = "15"; var currVal_18 = "15"; _ck(_v, 27, 0, currVal_16, currVal_17, currVal_18); var currVal_20 = "account-white"; var currVal_21 = "15"; var currVal_22 = "15"; _ck(_v, 31, 0, currVal_20, currVal_21, currVal_22); var currVal_24 = "/member/edit/profile"; _ck(_v, 34, 0, currVal_24); var currVal_25 = "credit-no-white"; var currVal_26 = "15"; var currVal_27 = "15"; _ck(_v, 42, 0, currVal_25, currVal_26, currVal_27); var currVal_29 = "credit-expire-white"; var currVal_30 = "15"; var currVal_31 = "15"; _ck(_v, 46, 0, currVal_29, currVal_30, currVal_31); var currVal_33 = "/member/edit/credit"; _ck(_v, 49, 0, currVal_33); }, function (_ck, _v) { var _co = _v.component; var currVal_3 = _co.user.data.userName; _ck(_v, 12, 0, currVal_3); var currVal_7 = _co.user.getName(); _ck(_v, 16, 0, currVal_7); var currVal_11 = ((_co.user.data.profile == null) ? null : _co.user.data.profile.email); _ck(_v, 20, 0, currVal_11); var currVal_15 = _co.user.getTelephone(); _ck(_v, 24, 0, currVal_15); var currVal_19 = _co.user.getTheaterName(0); _ck(_v, 28, 0, currVal_19); var tmp_23_0 = null; var currVal_23 = (((tmp_23_0 = _co.user.getAccount(0)) == null) ? null : tmp_23_0.accountNumber); _ck(_v, 32, 0, currVal_23); var tmp_28_0 = null; var currVal_28 = (((tmp_28_0 = _co.user.getCreditCard(0)) == null) ? null : tmp_28_0.cardNo); _ck(_v, 43, 0, currVal_28); var tmp_32_0 = null; var currVal_32 = (((tmp_32_0 = _co.user.getCreditCard(0)) == null) ? null : tmp_32_0.expire); _ck(_v, 47, 0, currVal_32); }); }
 function View_MemberEditComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-member-edit", [], null, null, null, View_MemberEditComponent_0, RenderType_MemberEditComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _member_edit_component__WEBPACK_IMPORTED_MODULE_7__["MemberEditComponent"], [_services_user_user_service__WEBPACK_IMPORTED_MODULE_8__["UserService"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var MemberEditComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-member-edit", _member_edit_component__WEBPACK_IMPORTED_MODULE_7__["MemberEditComponent"], View_MemberEditComponent_Host_0, {}, {}, []);
 
@@ -5197,7 +5201,7 @@ var PurchaseComponent = /** @class */ (function () {
      */
     PurchaseComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, error_1;
+            var _a, theater, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -5215,8 +5219,8 @@ var PurchaseComponent = /** @class */ (function () {
                         }
                         this.conditions = this.select.data.purchase;
                         if (this.user.isMember() && this.conditions.theater === '') {
-                            // 会員
-                            this.conditions.theater = this.user.getTheaterCode(0);
+                            theater = this.user.getTheaterCode(0);
+                            this.conditions.theater = theater ? theater : '';
                         }
                         return [4 /*yield*/, this.initialize()];
                     case 3:
@@ -5253,7 +5257,9 @@ var PurchaseComponent = /** @class */ (function () {
                         return [4 /*yield*/, this.getTheaters()];
                     case 1:
                         _a.theaters = _c.sent();
-                        findResult = this.theaters.find(function (theater) { return theater.location.branchCode === _this.conditions.theater; });
+                        findResult = this.theaters.find(function (theater) {
+                            return theater.location !== undefined && theater.location.branchCode === _this.conditions.theater;
+                        });
                         if (findResult === undefined) {
                             this.conditions.theater = '';
                         }
@@ -5372,7 +5378,7 @@ var PurchaseComponent = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var params, query, i, key, value, url;
             return __generator(this, function (_a) {
-                if (performance.offer.availability === 0) {
+                if (performance.offers.availability === 0) {
                     return [2 /*return*/];
                 }
                 if (this.user.isMember()) {
@@ -5415,15 +5421,16 @@ var PurchaseComponent = /** @class */ (function () {
      */
     PurchaseComponent.prototype.getTheaters = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var theaters, excludeTheatersResult;
+            var result, theaters, excludeTheatersResult;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.sasaki.organization.searchMovieTheaters()];
+                        return [4 /*yield*/, this.sasaki.seller.search({ typeOfs: [_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__["factory"].organizationType.MovieTheater] })];
                     case 2:
-                        theaters = _a.sent();
+                        result = _a.sent();
+                        theaters = result.data;
                         return [4 /*yield*/, this.maintenance.excludeTheaters()];
                     case 3:
                         excludeTheatersResult = _a.sent();
@@ -5432,7 +5439,7 @@ var PurchaseComponent = /** @class */ (function () {
                         }
                         return [2 /*return*/, theaters.filter(function (theater) {
                                 var excludeTheater = excludeTheatersResult.theaters.find(function (excludeCode) {
-                                    return (excludeCode === theater.location.branchCode);
+                                    return (theater.location === undefined || excludeCode === theater.location.branchCode);
                                 });
                                 return (excludeTheater === undefined);
                             })];
@@ -5452,19 +5459,21 @@ var PurchaseComponent = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         branchCode = this.conditions.theater;
-                        findResult = this.theaters.find(function (theater) { return theater.location.branchCode === branchCode; });
+                        findResult = this.theaters.find(function (theater) { return theater.location !== undefined && theater.location.branchCode === branchCode; });
                         if (findResult === undefined) {
                             return [2 /*return*/, []];
                         }
-                        return [4 /*yield*/, this.sasaki.event.searchIndividualScreeningEvent({
+                        return [4 /*yield*/, this.sasaki.event.searchScreeningEvents({
+                                typeOf: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__["factory"].eventType.ScreeningEvent,
                                 eventStatuses: [_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__["factory"].eventStatusType.EventScheduled],
                                 startFrom: moment__WEBPACK_IMPORTED_MODULE_3__().toDate(),
                                 startThrough: moment__WEBPACK_IMPORTED_MODULE_3__().add(5, 'week').toDate(),
-                                superEventLocationIdentifiers: [findResult.identifier]
+                                sort: { startDate: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__["factory"].sortType.Ascending },
+                                superEvent: { locationBranchCodes: [branchCode] }
                             })];
                     case 2:
                         screeningEvents = _a.sent();
-                        return [2 /*return*/, screeningEvents];
+                        return [2 /*return*/, screeningEvents.data];
                 }
             });
         });
@@ -5477,7 +5486,8 @@ var PurchaseComponent = /** @class */ (function () {
         var startDate = moment__WEBPACK_IMPORTED_MODULE_3__(event.startDate).format('YYYYMMDD');
         var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
         var PRE_SALE = '1'; // 先行販売
-        return event.coaInfo.rsvStartDate <= today &&
+        return event.coaInfo !== undefined &&
+            event.coaInfo.rsvStartDate <= today &&
             event.coaInfo.flgEarlyBooking === PRE_SALE &&
             salesDate < startDate;
     };
@@ -5490,12 +5500,16 @@ var PurchaseComponent = /** @class */ (function () {
         var limitDate = moment__WEBPACK_IMPORTED_MODULE_3__().add(7, 'days').format('YYYYMMDD');
         var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
         this.screeningEvents.forEach(function (screeningEvent) {
+            if (screeningEvent.coaInfo === undefined) {
+                return;
+            }
+            var coaInfo = screeningEvent.coaInfo;
             var startDate = moment__WEBPACK_IMPORTED_MODULE_3__(screeningEvent.startDate).format('YYYYMMDD');
-            var isSalse = screeningEvent.coaInfo.rsvStartDate <= today;
+            var isSalse = coaInfo.rsvStartDate <= today;
             if (!isSalse && startDate >= limitDate) {
                 return;
             }
-            var findResult = result.find(function (date) { return screeningEvent.coaInfo.dateJouei === date.value; });
+            var findResult = result.find(function (date) { return coaInfo.dateJouei === date.value; });
             if (findResult === undefined) {
                 var date = moment__WEBPACK_IMPORTED_MODULE_3__(screeningEvent.coaInfo.dateJouei);
                 result.push({
@@ -5507,7 +5521,7 @@ var PurchaseComponent = /** @class */ (function () {
                         year: date.format('YYYY')
                     },
                     preSale: _this.checkEventPreSale(screeningEvent),
-                    serviceDay: screeningEvent.coaInfo.nameServiceDay
+                    serviceDay: coaInfo.nameServiceDay
                 });
             }
             else if (_this.checkEventPreSale(screeningEvent)) {
@@ -5527,19 +5541,24 @@ var PurchaseComponent = /** @class */ (function () {
         var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
         var limitDate = moment__WEBPACK_IMPORTED_MODULE_3__().add(7, 'days').format('YYYYMMDD');
         var dateFilterResult = this.screeningEvents
-            .filter(function (screeningEvent) { return screeningEvent.coaInfo.dateJouei === _this.conditions.date; });
+            .filter(function (screeningEvent) { return screeningEvent.coaInfo !== undefined && screeningEvent.coaInfo.dateJouei === _this.conditions.date; });
         var displayFilterResult = dateFilterResult
-            .filter(function (screeningEvent) { return (screeningEvent.coaInfo.rsvStartDate <= today
-            || _this.checkEventPreSale(screeningEvent)
-            || screeningEvent.coaInfo.dateJouei <= limitDate); });
+            .filter(function (screeningEvent) { return (screeningEvent.coaInfo !== undefined
+            && (screeningEvent.coaInfo.rsvStartDate <= today
+                || _this.checkEventPreSale(screeningEvent)
+                || screeningEvent.coaInfo.dateJouei <= limitDate)); });
         this.timeOrder = displayFilterResult;
         displayFilterResult.forEach(function (screeningEvent) {
+            if (screeningEvent.coaInfo === undefined) {
+                return;
+            }
+            var coaInfo = screeningEvent.coaInfo;
             var film = _this.filmOrder.find(function (event) {
-                return (event.id === (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum));
+                return (coaInfo !== undefined && event.id === (coaInfo.titleCode + coaInfo.titleBranchNum));
             });
             if (film === undefined) {
                 _this.filmOrder.push({
-                    id: (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum),
+                    id: (coaInfo.titleCode + coaInfo.titleBranchNum),
                     films: [screeningEvent]
                 });
             }
@@ -7882,7 +7901,7 @@ function View_PurchasePerformanceFilmComponent_5(_l) { return _angular_core__WEB
 function View_PurchasePerformanceFilmComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpid"](0, _pipes_availability_availability_pipe__WEBPACK_IMPORTED_MODULE_4__["AvailabilityPipe"], []), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpid"](0, _pipes_time_format_time_format_pipe__WEBPACK_IMPORTED_MODULE_5__["TimeFormatPipe"], []), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, null, 24, "div", [["class", "performance"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](3, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgClass"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["KeyValueDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]], { klass: [0, "klass"], ngClass: [1, "ngClass"] }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵppd"](4, 1), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 8, "div", [["class", "date"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 3, "div", [["class", "mb-xx-small text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 2, "strong", [["class", "large-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](8, null, ["", ""])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵppd"](9, 2), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 3, "div", [["class", "text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 2, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](12, null, ["\uFF5E ", ""])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵppd"](13, 2), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](14, 0, null, null, 1, "div", [["class", "screen small-x-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](15, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 6, "div", [["class", "button text-center"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = ((_co.salseFlg ? _co.select.emit() : null) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceFilmComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](18, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceFilmComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](20, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceFilmComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](22, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceFilmComponent_4)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](24, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceFilmComponent_5)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](26, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = "performance"; var currVal_1 = (_co.salseFlg ? _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 3, 1, _ck(_v, 4, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 0), _co.performance.offer.availability)).className : ""); _ck(_v, 3, 0, currVal_0, currVal_1); var currVal_5 = _co.salseFlg; _ck(_v, 18, 0, currVal_5); var currVal_6 = _co.isNotAccepted; _ck(_v, 20, 0, currVal_6); var currVal_7 = _co.isWindow; _ck(_v, 22, 0, currVal_7); var currVal_8 = (((_co.performance.coaInfo.kbnService == null) ? null : _co.performance.coaInfo.kbnService.kubunCode) === "001"); _ck(_v, 24, 0, currVal_8); var currVal_9 = (((_co.performance.coaInfo.kbnService == null) ? null : _co.performance.coaInfo.kbnService.kubunCode) === "002"); _ck(_v, 26, 0, currVal_9); }, function (_ck, _v) { var _co = _v.component; var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 8, 0, _ck(_v, 9, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 1), _co.performance.startDate, _co.performance.coaInfo.dateJouei)); _ck(_v, 8, 0, currVal_2); var currVal_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 12, 0, _ck(_v, 13, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 1), _co.performance.endDate, _co.performance.coaInfo.dateJouei)); _ck(_v, 12, 0, currVal_3); var currVal_4 = _co.performance.location.name.ja; _ck(_v, 15, 0, currVal_4); }); }
+    } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceFilmComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](18, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceFilmComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](20, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceFilmComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](22, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceFilmComponent_4)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](24, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceFilmComponent_5)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](26, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = "performance"; var currVal_1 = (_co.salseFlg ? _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 3, 1, _ck(_v, 4, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 0), _co.performance.offers.availability)).className : ""); _ck(_v, 3, 0, currVal_0, currVal_1); var currVal_5 = _co.salseFlg; _ck(_v, 18, 0, currVal_5); var currVal_6 = _co.isNotAccepted; _ck(_v, 20, 0, currVal_6); var currVal_7 = _co.isWindow; _ck(_v, 22, 0, currVal_7); var currVal_8 = (((_co.performance.coaInfo == null) ? null : ((_co.performance.coaInfo.kbnService == null) ? null : _co.performance.coaInfo.kbnService.kubunCode)) === "001"); _ck(_v, 24, 0, currVal_8); var currVal_9 = (((_co.performance.coaInfo == null) ? null : ((_co.performance.coaInfo.kbnService == null) ? null : _co.performance.coaInfo.kbnService.kubunCode)) === "002"); _ck(_v, 26, 0, currVal_9); }, function (_ck, _v) { var _co = _v.component; var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 8, 0, _ck(_v, 9, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 1), _co.performance.startDate, ((_co.performance.coaInfo == null) ? null : _co.performance.coaInfo.dateJouei))); _ck(_v, 8, 0, currVal_2); var currVal_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 12, 0, _ck(_v, 13, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 1), _co.performance.endDate, ((_co.performance.coaInfo == null) ? null : _co.performance.coaInfo.dateJouei))); _ck(_v, 12, 0, currVal_3); var currVal_4 = _co.performance.location.name.ja; _ck(_v, 15, 0, currVal_4); }); }
 function View_PurchasePerformanceFilmComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-purchase-performance-film", [], null, null, null, View_PurchasePerformanceFilmComponent_0, RenderType_PurchasePerformanceFilmComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _purchase_performance_film_component__WEBPACK_IMPORTED_MODULE_7__["PurchasePerformanceFilmComponent"], [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var PurchasePerformanceFilmComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-purchase-performance-film", _purchase_performance_film_component__WEBPACK_IMPORTED_MODULE_7__["PurchasePerformanceFilmComponent"], View_PurchasePerformanceFilmComponent_Host_0, { performance: "performance" }, { select: "select" }, []);
 
@@ -7941,7 +7960,7 @@ var PurchasePerformanceFilmComponent = /** @class */ (function () {
     PurchasePerformanceFilmComponent.prototype.ngOnInit = function () {
         var VALID_TIME = 10;
         this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(VALID_TIME, 'minutes').unix();
-        this.isNotAccepted = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
+        this.isNotAccepted = this.performance.coaInfo === undefined || moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     };
     return PurchasePerformanceFilmComponent;
@@ -7999,7 +8018,7 @@ function View_PurchasePerformanceTimeComponent_5(_l) { return _angular_core__WEB
 function View_PurchasePerformanceTimeComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpid"](0, _pipes_availability_availability_pipe__WEBPACK_IMPORTED_MODULE_4__["AvailabilityPipe"], []), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpid"](0, _pipes_time_format_time_format_pipe__WEBPACK_IMPORTED_MODULE_5__["TimeFormatPipe"], []), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpid"](0, _pipes_duration_duration_pipe__WEBPACK_IMPORTED_MODULE_6__["DurationPipe"], []), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 30, "div", [["class", "performance mb-x-small"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = ((_co.salseFlg ? _co.select.emit() : null) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgClass"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["KeyValueDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]], { klass: [0, "klass"], ngClass: [1, "ngClass"] }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵppd"](5, 1), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 8, "div", [["class", "date"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 3, "div", [["class", "mb-xx-small text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 2, "strong", [["class", "large-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](9, null, ["", ""])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵppd"](10, 2), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 3, "div", [["class", "text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](12, 0, null, null, 2, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](13, null, ["\uFF5E ", ""])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵppd"](14, 2), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](15, 0, null, null, 6, "div", [["class", "status-cover"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceTimeComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](17, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceTimeComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](19, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceTimeComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](21, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](22, 0, null, null, 7, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](23, 0, null, null, 1, "div", [["class", "screen small-x-text mb-xx-small"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](24, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](25, 0, null, null, 2, "div", [["class", "duration small-x-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](26, null, ["", "\u5206"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵppd"](27, 2), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](28, 0, null, null, 1, "p", [["class", "title"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](29, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceTimeComponent_4)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](31, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceTimeComponent_5)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](33, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = "performance mb-x-small"; var currVal_1 = (_co.salseFlg ? _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 4, 1, _ck(_v, 5, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 0), _co.performance.offer.availability)).className : ""); _ck(_v, 4, 0, currVal_0, currVal_1); var currVal_4 = _co.salseFlg; _ck(_v, 17, 0, currVal_4); var currVal_5 = _co.isNotAccepted; _ck(_v, 19, 0, currVal_5); var currVal_6 = _co.isWindow; _ck(_v, 21, 0, currVal_6); var currVal_10 = (((_co.performance.coaInfo.kbnService == null) ? null : _co.performance.coaInfo.kbnService.kubunCode) === "001"); _ck(_v, 31, 0, currVal_10); var currVal_11 = (((_co.performance.coaInfo.kbnService == null) ? null : _co.performance.coaInfo.kbnService.kubunCode) === "002"); _ck(_v, 33, 0, currVal_11); }, function (_ck, _v) { var _co = _v.component; var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 9, 0, _ck(_v, 10, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 1), _co.performance.startDate, _co.performance.coaInfo.dateJouei)); _ck(_v, 9, 0, currVal_2); var currVal_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 13, 0, _ck(_v, 14, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 1), _co.performance.endDate, _co.performance.coaInfo.dateJouei)); _ck(_v, 13, 0, currVal_3); var currVal_7 = _co.performance.location.name.ja; _ck(_v, 24, 0, currVal_7); var currVal_8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 26, 0, _ck(_v, 27, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 2), _co.performance.workPerformed.duration, "minutes")); _ck(_v, 26, 0, currVal_8); var currVal_9 = _co.performance.name.ja; _ck(_v, 29, 0, currVal_9); }); }
+    } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgClass"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["KeyValueDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]], { klass: [0, "klass"], ngClass: [1, "ngClass"] }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵppd"](5, 1), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 8, "div", [["class", "date"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 3, "div", [["class", "mb-xx-small text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 2, "strong", [["class", "large-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](9, null, ["", ""])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵppd"](10, 2), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 3, "div", [["class", "text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](12, 0, null, null, 2, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](13, null, ["\uFF5E ", ""])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵppd"](14, 2), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](15, 0, null, null, 6, "div", [["class", "status-cover"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceTimeComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](17, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceTimeComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](19, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceTimeComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](21, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](22, 0, null, null, 7, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](23, 0, null, null, 1, "div", [["class", "screen small-x-text mb-xx-small"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](24, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](25, 0, null, null, 2, "div", [["class", "duration small-x-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](26, null, ["", "\u5206"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵppd"](27, 2), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](28, 0, null, null, 1, "p", [["class", "title"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](29, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceTimeComponent_4)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](31, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_PurchasePerformanceTimeComponent_5)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](33, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = "performance mb-x-small"; var currVal_1 = (_co.salseFlg ? _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 4, 1, _ck(_v, 5, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 0), _co.performance.offers.availability)).className : ""); _ck(_v, 4, 0, currVal_0, currVal_1); var currVal_4 = _co.salseFlg; _ck(_v, 17, 0, currVal_4); var currVal_5 = _co.isNotAccepted; _ck(_v, 19, 0, currVal_5); var currVal_6 = _co.isWindow; _ck(_v, 21, 0, currVal_6); var currVal_10 = (((_co.performance.coaInfo == null) ? null : ((_co.performance.coaInfo.kbnService == null) ? null : _co.performance.coaInfo.kbnService.kubunCode)) === "001"); _ck(_v, 31, 0, currVal_10); var currVal_11 = (((_co.performance.coaInfo == null) ? null : ((_co.performance.coaInfo.kbnService == null) ? null : _co.performance.coaInfo.kbnService.kubunCode)) === "002"); _ck(_v, 33, 0, currVal_11); }, function (_ck, _v) { var _co = _v.component; var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 9, 0, _ck(_v, 10, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 1), _co.performance.startDate, ((_co.performance.coaInfo == null) ? null : _co.performance.coaInfo.dateJouei))); _ck(_v, 9, 0, currVal_2); var currVal_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 13, 0, _ck(_v, 14, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 1), _co.performance.endDate, ((_co.performance.coaInfo == null) ? null : _co.performance.coaInfo.dateJouei))); _ck(_v, 13, 0, currVal_3); var currVal_7 = _co.performance.location.name.ja; _ck(_v, 24, 0, currVal_7); var currVal_8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunv"](_v, 26, 0, _ck(_v, 27, 0, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 2), _co.performance.workPerformed.duration, "minutes")); _ck(_v, 26, 0, currVal_8); var currVal_9 = _co.performance.name.ja; _ck(_v, 29, 0, currVal_9); }); }
 function View_PurchasePerformanceTimeComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-purchase-performance-time", [], null, null, null, View_PurchasePerformanceTimeComponent_0, RenderType_PurchasePerformanceTimeComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _purchase_performance_time_component__WEBPACK_IMPORTED_MODULE_8__["PurchasePerformanceTimeComponent"], [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var PurchasePerformanceTimeComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-purchase-performance-time", _purchase_performance_time_component__WEBPACK_IMPORTED_MODULE_8__["PurchasePerformanceTimeComponent"], View_PurchasePerformanceTimeComponent_Host_0, { performance: "performance" }, { select: "select" }, []);
 
@@ -8055,7 +8074,7 @@ var PurchasePerformanceTimeComponent = /** @class */ (function () {
     PurchasePerformanceTimeComponent.prototype.ngOnInit = function () {
         var VALID_TIME = 10;
         this.isWindow = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.startDate).unix() <= moment__WEBPACK_IMPORTED_MODULE_1__().add(VALID_TIME, 'minutes').unix();
-        this.isNotAccepted = moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
+        this.isNotAccepted = this.performance.coaInfo === undefined || moment__WEBPACK_IMPORTED_MODULE_1__(this.performance.coaInfo.rsvStartDate) > moment__WEBPACK_IMPORTED_MODULE_1__();
         this.salseFlg = !this.isNotAccepted && !this.isWindow;
     };
     return PurchasePerformanceTimeComponent;
@@ -8226,7 +8245,7 @@ var TicketDetailComponent = /** @class */ (function () {
                             margin: 0,
                             scale: (80 / basicSize)
                         };
-                        return [4 /*yield*/, qrcode__WEBPACK_IMPORTED_MODULE_2__["toDataURL"](ticketToken, option)];
+                        return [4 /*yield*/, qrcode__WEBPACK_IMPORTED_MODULE_2__["toDataURL"](ticketToken ? ticketToken : '', option)];
                     case 2:
                         qrCode = _a.sent();
                         this.qrCodeList.push(qrCode);
@@ -9424,7 +9443,9 @@ var MemberGuardService = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberService", function() { return MemberService; });
-/* harmony import */ var _sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sasaki/sasaki.service */ "./src/app/services/sasaki/sasaki.service.ts");
+/* harmony import */ var _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @motionpicture/sskts-api-javascript-client */ "../../node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
+/* harmony import */ var _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sasaki/sasaki.service */ "./src/app/services/sasaki/sasaki.service.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -9461,6 +9482,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
     }
 };
 
+
 var MemberService = /** @class */ (function () {
     function MemberService(sasaki) {
         this.sasaki = sasaki;
@@ -9490,21 +9512,23 @@ var MemberService = /** @class */ (function () {
      */
     MemberService.prototype.register = function (args) {
         return __awaiter(this, void 0, void 0, function () {
-            var branchCode, seller, programMembership, offer, registerProgramMembership;
+            var branchCode, result, seller, programMembership, offer, registerProgramMembership;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
                         _a.sent();
                         branchCode = args.theaterCode;
-                        return [4 /*yield*/, this.sasaki.organization.findMovieTheaterByBranchCode({
-                                branchCode: branchCode
+                        return [4 /*yield*/, this.sasaki.seller.search({
+                                location: { branchCodes: [branchCode] },
+                                typeOfs: [_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater]
                             })];
                     case 2:
-                        seller = _a.sent();
-                        if (seller === null) {
+                        result = _a.sent();
+                        if (result.totalCount === 0) {
                             throw new Error('販売劇場が見つかりませんでした。');
                         }
+                        seller = result.data[0];
                         programMembership = args.programMembership;
                         if (programMembership.id === undefined
                             || programMembership.offers === undefined) {
@@ -9552,7 +9576,6 @@ var MemberService = /** @class */ (function () {
                                             case 0:
                                                 _a.trys.push([0, 2, , 3]);
                                                 return [4 /*yield*/, this.sasaki.person.searchOwnershipInfos({
-                                                        ownedBy: 'me',
                                                         goodType: 'ProgramMembership'
                                                     })];
                                             case 1:
@@ -9686,7 +9709,6 @@ var ProgramMembershipGuardService = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, this.sasaki.person.searchOwnershipInfos({
-                                ownedBy: 'me',
                                 goodType: 'ProgramMembership'
                             })];
                     case 2:
@@ -9878,18 +9900,17 @@ var ReservationService = /** @class */ (function () {
      */
     ReservationService.prototype.fitchReservation = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var reservationOwnerships, orders, _loop_1, _i, reservationOwnerships_1, reservationOwnership, expired;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var reservationOwnerships, orders, _loop_1, _i, _a, reservationOwnership, expired;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0: return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
-                        _a.sent();
-                        return [4 /*yield*/, this.sasaki.person.searchOwnershipInfos({
-                                goodType: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].reservationType.EventReservation,
-                                ownedBy: 'me'
+                        _b.sent();
+                        return [4 /*yield*/, this.sasaki.ownerShip.search({
+                                id: 'me'
                             })];
                     case 2:
-                        reservationOwnerships = _a.sent();
+                        reservationOwnerships = _b.sent();
                         console.log(reservationOwnerships);
                         orders = [];
                         _loop_1 = function (reservationOwnership) {
@@ -9914,8 +9935,8 @@ var ReservationService = /** @class */ (function () {
                                 target.reservedTickets.push(reservedTicket);
                             }
                         };
-                        for (_i = 0, reservationOwnerships_1 = reservationOwnerships; _i < reservationOwnerships_1.length; _i++) {
-                            reservationOwnership = reservationOwnerships_1[_i];
+                        for (_i = 0, _a = reservationOwnerships.data; _i < _a.length; _i++) {
+                            reservationOwnership = _a[_i];
                             _loop_1(reservationOwnership);
                         }
                         expired = 10;
@@ -10070,9 +10091,9 @@ var SasakiService = /** @class */ (function () {
                         option = _a.sent();
                         this.event = new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].Event(option);
                         this.order = new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].Order(option);
-                        this.organization = new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].Organization(option);
+                        this.seller = new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].Seller(option);
                         this.person = new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].Person(option);
-                        this.place = new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].Place(option);
+                        this.ownerShip = new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].person.OwnershipInfo(option);
                         this.transaction = {
                             placeOrder: new _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["service"].transaction.PlaceOrder(option)
                         };
@@ -10500,7 +10521,7 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.initMember = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var contact, creditCards, err_1, accounts, account, programMembershipOwnershipInfos;
+            var profile, creditCards, err_1, accounts, account, programMembershipOwnershipInfos;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -10513,15 +10534,13 @@ var UserService = /** @class */ (function () {
                             throw new Error('userName is undefined');
                         }
                         this.data.userName = this.sasaki.userName;
-                        return [4 /*yield*/, this.sasaki.person.getContacts({
-                                personId: 'me'
-                            })];
+                        return [4 /*yield*/, this.sasaki.person.getProfile({ id: 'me' })];
                     case 2:
-                        contact = _a.sent();
-                        if (contact === undefined) {
-                            throw new Error('contact is undefined');
+                        profile = _a.sent();
+                        if (profile === undefined) {
+                            throw new Error('profile is undefined');
                         }
-                        this.data.contact = contact;
+                        this.data.profile = profile;
                         _a.label = 3;
                     case 3:
                         _a.trys.push([3, 5, , 6]);
@@ -10558,7 +10577,6 @@ var UserService = /** @class */ (function () {
                         this.data.accounts = accounts;
                         _a.label = 10;
                     case 10: return [4 /*yield*/, this.sasaki.person.searchOwnershipInfos({
-                            ownedBy: 'me',
                             goodType: 'ProgramMembership'
                         })];
                     case 11:
@@ -10621,20 +10639,20 @@ var UserService = /** @class */ (function () {
      * @method getName
      */
     UserService.prototype.getName = function () {
-        if (this.data.contact === undefined) {
+        if (this.data.profile === undefined) {
             return '';
         }
-        return this.data.contact.familyName + " " + this.data.contact.givenName;
+        return this.data.profile.familyName + " " + this.data.profile.givenName;
     };
     /**
      * 電話番号取得（ハイフンなし）
      * @method getTelephone
      */
     UserService.prototype.getTelephone = function () {
-        if (this.data.contact === undefined) {
+        if (this.data.profile === undefined) {
             return '';
         }
-        return this.data.contact.telephone.replace(/\-/g, '');
+        return this.data.profile.telephone.replace(/\-/g, '');
     };
     /**
      * よく行く劇場名取得
@@ -10659,7 +10677,8 @@ var UserService = /** @class */ (function () {
         if (this.data.programMembershipOwnershipInfos.length === 0
             || programMembershipOwnershipInfo === undefined
             || programMembershipOwnershipInfo.acquiredFrom === undefined
-            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater) {
+            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater
+            || programMembershipOwnershipInfo.acquiredFrom.location === undefined) {
             return '';
         }
         return programMembershipOwnershipInfo.acquiredFrom.location.branchCode;
@@ -10693,7 +10712,7 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.getGmoObject = function (args) {
         return __awaiter(this, void 0, void 0, function () {
-            var sendParam, branchCode, movieTheater;
+            var sendParam, branchCode, result, movieTheater, payment, gmoInfo;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -10703,11 +10722,26 @@ var UserService = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         branchCode = (_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].production) ? '001' : '101';
-                        return [4 /*yield*/, this.sasaki.organization.findMovieTheaterByBranchCode({
-                                branchCode: branchCode
+                        return [4 /*yield*/, this.sasaki.seller.search({
+                                location: { branchCodes: [branchCode] },
+                                typeOfs: [_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater]
                             })];
                     case 2:
-                        movieTheater = _a.sent();
+                        result = _a.sent();
+                        movieTheater = result.data[0];
+                        if (movieTheater.paymentAccepted === undefined) {
+                            throw new Error('movieTheater is undefined');
+                        }
+                        payment = movieTheater.paymentAccepted.find(function (paymentAccepted) {
+                            return paymentAccepted.paymentMethodType === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].paymentMethodType.CreditCard;
+                        });
+                        if (payment === undefined) {
+                            throw new Error('payment is undefined');
+                        }
+                        gmoInfo = this.getGMOInfo(payment);
+                        if (gmoInfo === undefined) {
+                            throw new Error('gmoInfo is undefined');
+                        }
                         return [2 /*return*/, new Promise(function (resolve, reject) {
                                 window.someCallbackFunction = function someCallbackFunction(response) {
                                     if (response.resultCode === '000') {
@@ -10719,7 +10753,7 @@ var UserService = /** @class */ (function () {
                                 };
                                 var Multipayment = window.Multipayment;
                                 // shopId
-                                Multipayment.init(movieTheater.gmoInfo.shopId);
+                                Multipayment.init(gmoInfo.shopId);
                                 Multipayment.getToken(sendParam, window.someCallbackFunction);
                             })];
                 }
@@ -10802,32 +10836,30 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.updateProfile = function (args) {
         return __awaiter(this, void 0, void 0, function () {
-            var contact;
+            var profile;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.sasaki.person.updateContacts({
-                                personId: 'me',
-                                contacts: {
-                                    familyName: args.familyName,
-                                    givenName: args.givenName,
-                                    email: args.email,
-                                    telephone: args.telephone
-                                }
+                        return [4 /*yield*/, this.sasaki.person.updateProfile({
+                                id: 'me',
+                                familyName: args.familyName,
+                                givenName: args.givenName,
+                                email: args.email,
+                                telephone: args.telephone
                             })];
                     case 2:
                         _a.sent();
-                        return [4 /*yield*/, this.sasaki.person.getContacts({
-                                personId: 'me'
+                        return [4 /*yield*/, this.sasaki.person.getProfile({
+                                id: 'me'
                             })];
                     case 3:
-                        contact = _a.sent();
-                        if (contact === undefined) {
-                            throw new Error('contact is undefined');
+                        profile = _a.sent();
+                        if (profile === undefined) {
+                            throw new Error('profile is undefined');
                         }
-                        this.data.contact = contact;
+                        this.data.profile = profile;
                         this.save();
                         return [2 /*return*/];
                 }
@@ -10850,6 +10882,12 @@ var UserService = /** @class */ (function () {
                 }
             });
         });
+    };
+    /**
+     * GMO情報を取得する
+     */
+    UserService.prototype.getGMOInfo = function (accepted) {
+        return accepted.gmoInfo;
     };
     return UserService;
 }());
