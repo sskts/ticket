@@ -317,8 +317,9 @@ export class PurchaseComponent implements OnInit {
         this.timeOrder = [];
         const today = moment().format('YYYYMMDD');
         const limitDate = moment().add(7, 'days').format('YYYYMMDD');
+        const searchDate = this.conditions.date < today ? today : this.conditions.date;
         const dateFilterResult = this.screeningEvents
-            .filter(screeningEvent => screeningEvent.coaInfo !== undefined && screeningEvent.coaInfo.dateJouei === this.conditions.date);
+            .filter(screeningEvent => screeningEvent.coaInfo !== undefined && screeningEvent.coaInfo.dateJouei === searchDate);
 
         const displayFilterResult = dateFilterResult
             .filter(screeningEvent => (screeningEvent.coaInfo !== undefined

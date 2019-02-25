@@ -5545,8 +5545,9 @@ var PurchaseComponent = /** @class */ (function () {
         this.timeOrder = [];
         var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
         var limitDate = moment__WEBPACK_IMPORTED_MODULE_3__().add(7, 'days').format('YYYYMMDD');
+        var searchDate = this.conditions.date < today ? today : this.conditions.date;
         var dateFilterResult = this.screeningEvents
-            .filter(function (screeningEvent) { return screeningEvent.coaInfo !== undefined && screeningEvent.coaInfo.dateJouei === _this.conditions.date; });
+            .filter(function (screeningEvent) { return screeningEvent.coaInfo !== undefined && screeningEvent.coaInfo.dateJouei === searchDate; });
         var displayFilterResult = dateFilterResult
             .filter(function (screeningEvent) { return (screeningEvent.coaInfo !== undefined
             && (screeningEvent.coaInfo.rsvStartDate <= today
