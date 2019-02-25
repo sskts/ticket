@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
-import { IProgramMembership } from '@motionpicture/sskts-factory/lib/factory/programMembership';
 import { environment } from '../../../environments/environment';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { SaveType, StorageService } from '../storage/storage.service';
+
+type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>;
+type programMembershipType = factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<'ProgramMembership'>>;
 
 export interface IData {
     userName?: string;
     memberType: MemberType;
     profile?: factory.person.IProfile;
     creditCards: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
-    accounts: factory.pecorino.account.IAccount<factory.accountType.Point>[];
-    programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<IProgramMembership>[];
+    accounts: accountType[];
+    programMembershipOwnershipInfos: programMembershipType[];
     prevUserName?: string;
 }
 
@@ -75,7 +77,8 @@ export class UserService {
      * @method reset
      */
     public reset() {
-        const prevUserName = this.data.accounts.length === 0 ? '' : this.data.accounts[0].name;
+        const prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
+            this.data.accounts.length === 0 ? '' : this.data.accounts[0].typeOfGood.name;
         this.data = {
             memberType: MemberType.NotMember,
             creditCards: [],
@@ -99,10 +102,7 @@ export class UserService {
         }
         this.data.userName = this.sasaki.userName;
         // 連絡先取得
-        /*const contact = await this.sasaki.person.getContacts({
-            personId: 'me'
-        });*/
-        const profile = await this.sasaki.person.getProfile({id: 'me'});
+        const profile = await this.sasaki.person.getProfile({id: 'me' });
         if (profile === undefined) {
             throw new Error('profile is undefined');
         }
@@ -110,7 +110,7 @@ export class UserService {
 
         try {
             // クレジットカード検索
-            const creditCards = await this.sasaki.person.findCreditCards({
+            const creditCards = await this.sasaki.ownerShip.searchCreditCards({
                 personId: 'me'
             });
             this.data.creditCards = creditCards;
@@ -120,28 +120,35 @@ export class UserService {
         }
 
         // 口座検索
-        let accounts = await this.sasaki.person.findAccounts({
-            personId: 'me'
+        const accountSearchResult = await this.sasaki.ownerShip.search({
+            id: 'me',
+            typeOfGood: {
+                typeOf: factory.ownershipInfo.AccountGoodType.Account,
+                accountType: factory.accountType.Point
+            }
         });
-        accounts = accounts.filter((account) => {
-            return account.status === factory.pecorino.accountStatusType.Opened;
+        const accounts = accountSearchResult.data.filter((account) => {
+            return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
+                && account.typeOfGood.accountType === factory.accountType.Point
+                && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
         });
         if (accounts.length === 0) {
             // 口座開設
-            const account = await this.sasaki.person.openAccount({
-                personId: 'me',
-                name: this.sasaki.userName
+            const openAccountResult = await this.sasaki.ownerShip.openAccount({
+                id: 'me',
+                accountType: factory.accountType.Point,
+                name: (<string>this.sasaki.userName)
             });
-            this.data.accounts.push(account);
+            this.data.accounts = [openAccountResult];
         } else {
-            this.data.accounts = accounts;
+            this.data.accounts = <accountType[]>accounts;
         }
 
-        const programMembershipOwnershipInfos = await this.sasaki.person.searchOwnershipInfos({
-            goodType: 'ProgramMembership'
+        const programMembershipOwnershipInfos = await this.sasaki.ownerShip.search<'ProgramMembership'>({
+            id: 'me',
+            typeOfGood: 'ProgramMembership'
         });
-        this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos;
-
+        this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
         this.save();
     }
 
@@ -152,21 +159,28 @@ export class UserService {
     public async updateAccount() {
         await this.sasaki.getServices();
         // 口座検索
-        let accounts = await this.sasaki.person.findAccounts({
-            personId: 'me'
+        const accountSearchResult = await this.sasaki.ownerShip.search({
+            id: 'me',
+            typeOfGood: {
+                typeOf: factory.ownershipInfo.AccountGoodType.Account,
+                accountType: factory.accountType.Point
+            }
         });
-        accounts = accounts.filter((account) => {
-            return account.status === factory.pecorino.accountStatusType.Opened;
+        const accounts = accountSearchResult.data.filter((account) => {
+            return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
+                && account.typeOfGood.accountType === factory.accountType.Point
+                && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
         });
         if (accounts.length === 0) {
             // 口座開設
-            const account = await this.sasaki.person.openAccount({
-                personId: 'me',
-                name: this.getName()
+            const openAccountResult = await this.sasaki.ownerShip.openAccount({
+                id: 'me',
+                accountType: factory.accountType.Point,
+                name: (<string>this.sasaki.userName)
             });
-            this.data.accounts.push(account);
+            this.data.accounts = [openAccountResult];
         } else {
-            this.data.accounts = accounts;
+            this.data.accounts = <accountType[]>accounts;
         }
         this.save();
     }
@@ -279,18 +293,7 @@ export class UserService {
             typeOfs: [factory.organizationType.MovieTheater]
         });
         const movieTheater = result.data[0];
-        if (movieTheater.paymentAccepted === undefined) {
-            throw new Error('movieTheater is undefined');
-        }
-        const payment = movieTheater.paymentAccepted.find(paymentAccepted =>
-            paymentAccepted.paymentMethodType === factory.paymentMethodType.CreditCard);
-        if (payment === undefined) {
-            throw new Error('payment is undefined');
-        }
-        const gmoInfo = this.getGMOInfo(payment);
-        if (gmoInfo === undefined) {
-            throw new Error('gmoInfo is undefined');
-        }
+
         return new Promise<IGmoTokenObject>((resolve, reject) => {
             (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
                 if (response.resultCode === '000') {
@@ -301,7 +304,14 @@ export class UserService {
             };
             const Multipayment = (<any>window).Multipayment;
             // shopId
-            Multipayment.init(gmoInfo.shopId);
+            if (movieTheater.paymentAccepted === undefined) {
+                return reject(new Error('The settlement method does not correspond'));
+            }
+            const paymentAccepted = movieTheater.paymentAccepted.find(p => p.paymentMethodType === factory.paymentMethodType.CreditCard);
+            if (paymentAccepted === undefined || paymentAccepted.paymentMethodType !== factory.paymentMethodType.CreditCard) {
+                return reject(new Error('The settlement method does not correspond'));
+            }
+            Multipayment.init((<factory.seller.ICreditCardPaymentAccepted>paymentAccepted).gmoInfo.shopId);
             Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
         });
     }
@@ -313,18 +323,18 @@ export class UserService {
     public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
         await this.sasaki.getServices();
         // 登録
-        await this.sasaki.person.addCreditCard({
+        await this.sasaki.ownerShip.addCreditCard({
             personId: 'me',
             creditCard: {
                 token: gmoTokenObject.token
             }
         });
-        this.data.creditCards = await this.sasaki.person.findCreditCards({
+        this.data.creditCards = await this.sasaki.ownerShip.searchCreditCards({
             personId: 'me'
         });
         if (this.data.creditCards.length > 1) {
             await this.deleteCreditCard();
-            this.data.creditCards = await this.sasaki.person.findCreditCards({
+            this.data.creditCards = await this.sasaki.ownerShip.searchCreditCards({
                 personId: 'me'
             });
         }
@@ -340,7 +350,7 @@ export class UserService {
         if (this.data.creditCards.length === 0) {
             return;
         }
-        await this.sasaki.person.deleteCreditCard({
+        await this.sasaki.ownerShip.deleteCreditCard({
             personId: 'me',
             cardSeq: this.data.creditCards[0].cardSeq
         });
@@ -384,12 +394,4 @@ export class UserService {
         this.data.userName = this.sasaki.userName;
         this.save();
     }
-
-    /**
-     * GMO情報を取得する
-     */
-    private getGMOInfo(accepted: any): factory.seller.IGMOInfo | undefined {
-        return accepted.gmoInfo;
-    }
-
 }

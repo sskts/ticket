@@ -2076,7 +2076,8 @@ var AuthSelectComponent = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        userName = this.user.data.accounts.length > 0 ? this.user.data.accounts[0].name :
+                        userName = this.user.data.accounts.length > 0 ?
+                            this.user.data.accounts[0].typeOfGood.name :
                             this.user.data.prevUserName ? this.user.data.prevUserName : '';
                         return [4 /*yield*/, this.sasaki.signInWithUserName(false, userName)];
                     case 2:
@@ -3871,9 +3872,9 @@ __webpack_require__.r(__webpack_exports__);
 var styles_MemberMypageComponent = [_member_mypage_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 var RenderType_MemberMypageComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_MemberMypageComponent, data: {} });
 
-function View_MemberMypageComponent_2(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "div", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](1, null, [" \u3042\u3068", "\u30DD\u30A4\u30F3\u30C8\u3067\u7121\u6599\u9451\u8CDE "]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = (6 - _co.user.data.accounts[0].availableBalance); _ck(_v, 1, 0, currVal_0); }); }
+function View_MemberMypageComponent_2(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "div", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](1, null, [" \u3042\u3068", "\u30DD\u30A4\u30F3\u30C8\u3067\u7121\u6599\u9451\u8CDE "]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = (6 - _co.user.data.accounts[0].typeOfGood.availableBalance); _ck(_v, 1, 0, currVal_0); }); }
 function View_MemberMypageComponent_3(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "div", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u7121\u6599\u9451\u8CDE\u5238\u3092\u4F7F\u7528\u3067\u304D\u307E\u3059 "]))], null, null); }
-function View_MemberMypageComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 13, "div", [["class", "text-center mb-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "div", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", " \u69D8"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 4, "div", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u73FE\u5728 "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "span", [["class", "large-xx-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](6, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u30DD\u30A4\u30F3\u30C8 "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberMypageComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](9, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberMypageComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](11, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](12, 0, null, null, 1, "app-point-slider", [], null, null, null, _parts_point_slider_point_slider_component_ngfactory__WEBPACK_IMPORTED_MODULE_3__["View_PointSliderComponent_0"], _parts_point_slider_point_slider_component_ngfactory__WEBPACK_IMPORTED_MODULE_3__["RenderType_PointSliderComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](13, 114688, null, 0, _parts_point_slider_point_slider_component__WEBPACK_IMPORTED_MODULE_4__["PointSliderComponent"], [], { point: [0, "point"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_2 = (_co.user.data.accounts[0].availableBalance < 6); _ck(_v, 9, 0, currVal_2); var currVal_3 = (_co.user.data.accounts[0].availableBalance >= 6); _ck(_v, 11, 0, currVal_3); var currVal_4 = _co.user.data.accounts[0].availableBalance; _ck(_v, 13, 0, currVal_4); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.data.userName; _ck(_v, 2, 0, currVal_0); var currVal_1 = _co.user.data.accounts[0].availableBalance; _ck(_v, 6, 0, currVal_1); }); }
+function View_MemberMypageComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 13, "div", [["class", "text-center mb-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "div", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", " \u69D8"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 4, "div", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u73FE\u5728 "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "span", [["class", "large-xx-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](6, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u30DD\u30A4\u30F3\u30C8 "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberMypageComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](9, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberMypageComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](11, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](12, 0, null, null, 1, "app-point-slider", [], null, null, null, _parts_point_slider_point_slider_component_ngfactory__WEBPACK_IMPORTED_MODULE_3__["View_PointSliderComponent_0"], _parts_point_slider_point_slider_component_ngfactory__WEBPACK_IMPORTED_MODULE_3__["RenderType_PointSliderComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](13, 114688, null, 0, _parts_point_slider_point_slider_component__WEBPACK_IMPORTED_MODULE_4__["PointSliderComponent"], [], { point: [0, "point"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_2 = (_co.user.data.accounts[0].typeOfGood.availableBalance < 6); _ck(_v, 9, 0, currVal_2); var currVal_3 = (_co.user.data.accounts[0].typeOfGood.availableBalance >= 6); _ck(_v, 11, 0, currVal_3); var currVal_4 = _co.user.data.accounts[0].typeOfGood.availableBalance; _ck(_v, 13, 0, currVal_4); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.data.userName; _ck(_v, 2, 0, currVal_0); var currVal_1 = _co.user.data.accounts[0].typeOfGood.availableBalance; _ck(_v, 6, 0, currVal_1); }); }
 function View_MemberMypageComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 19, "app-page", [], null, null, null, _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["View_PageComponent_0"], _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RenderType_PageComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _parts_page_page_component__WEBPACK_IMPORTED_MODULE_6__["PageComponent"], [], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, 0, 17, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberMypageComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 14, "ul", [["class", "menu"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 2, "li", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.redirectToPurchaseTime() !== false);
         ad = (pd_0 && ad);
@@ -4087,11 +4088,11 @@ __webpack_require__.r(__webpack_exports__);
 var styles_MemberPointHistoryComponent = [_member_point_history_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 var RenderType_MemberPointHistoryComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_MemberPointHistoryComponent, data: {} });
 
-function View_MemberPointHistoryComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "li", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "app-point-history-list", [], null, null, null, _parts_point_history_list_point_history_list_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_PointHistoryListComponent_0"], _parts_point_history_list_point_history_list_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_PointHistoryListComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 114688, null, 0, _parts_point_history_list_point_history_list_component__WEBPACK_IMPORTED_MODULE_3__["PointHistoryListComponent"], [], { action: [0, "action"], accountNumber: [1, "accountNumber"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _v.context.$implicit; var currVal_1 = _co.user.data.accounts[0].accountNumber; _ck(_v, 2, 0, currVal_0, currVal_1); }, null); }
+function View_MemberPointHistoryComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "li", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "app-point-history-list", [], null, null, null, _parts_point_history_list_point_history_list_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_PointHistoryListComponent_0"], _parts_point_history_list_point_history_list_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_PointHistoryListComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 114688, null, 0, _parts_point_history_list_point_history_list_component__WEBPACK_IMPORTED_MODULE_3__["PointHistoryListComponent"], [], { action: [0, "action"], accountNumber: [1, "accountNumber"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _v.context.$implicit; var currVal_1 = _co.user.data.accounts[0].typeOfGood.accountNumber; _ck(_v, 2, 0, currVal_0, currVal_1); }, null); }
 function View_MemberPointHistoryComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 18, "app-page", [["class", "bg-02"]], null, null, null, _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_PageComponent_0"], _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_PageComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _parts_page_page_component__WEBPACK_IMPORTED_MODULE_5__["PageComponent"], [], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, 0, 16, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "p", [["class", "mb-small text-center small-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u8CAF\u307E\u3063\u305F\u30DD\u30A4\u30F3\u30C8\u306E\u78BA\u8A8D\u304C\u3067\u304D\u307E\u3059\u3002 "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 4, "div", [["class", "mb-middle text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u73FE\u5728 "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 1, "span", [["class", "large-xx-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](8, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u30DD\u30A4\u30F3\u30C8 "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 2, "ul", [["class", "mb-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberPointHistoryComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](12, 802816, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], { ngForOf: [0, "ngForOf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 5, "div", [["class", "text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](14, 0, null, null, 4, "a", [["class", "prev-link"], ["routerLink", "/member/point"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
         var pd_0 = (_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 15).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](15, 671744, null, 0, _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterLinkWithHref"], [_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["LocationStrategy"]], { routerLink: [0, "routerLink"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 1, "app-icon", [["height", "15"], ["iconName", "prev-circle-white"], ["width", "15"]], null, null, null, _parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_8__["View_IconComponent_0"], _parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_8__["RenderType_IconComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](17, 114688, null, 0, _parts_icon_icon_component__WEBPACK_IMPORTED_MODULE_9__["IconComponent"], [], { iconName: [0, "iconName"], width: [1, "width"], height: [2, "height"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u4F1A\u54E1\u30DD\u30A4\u30F3\u30C8\u3078\u623B\u308B"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](19, 0, null, null, 1, "app-loading", [], null, null, null, _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_10__["View_LoadingComponent_0"], _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_10__["RenderType_LoadingComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](20, 114688, null, 0, _parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_11__["LoadingComponent"], [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; _ck(_v, 1, 0); var currVal_1 = _co.accountMoneyTransferActions; _ck(_v, 12, 0, currVal_1); var currVal_4 = "/member/point"; _ck(_v, 15, 0, currVal_4); var currVal_5 = "prev-circle-white"; var currVal_6 = "15"; var currVal_7 = "15"; _ck(_v, 17, 0, currVal_5, currVal_6, currVal_7); var currVal_8 = _co.isLoading; _ck(_v, 20, 0, currVal_8); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.data.accounts[0].availableBalance; _ck(_v, 8, 0, currVal_0); var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 15).target; var currVal_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 15).href; _ck(_v, 14, 0, currVal_2, currVal_3); }); }
+    } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](15, 671744, null, 0, _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterLinkWithHref"], [_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["LocationStrategy"]], { routerLink: [0, "routerLink"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 1, "app-icon", [["height", "15"], ["iconName", "prev-circle-white"], ["width", "15"]], null, null, null, _parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_8__["View_IconComponent_0"], _parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_8__["RenderType_IconComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](17, 114688, null, 0, _parts_icon_icon_component__WEBPACK_IMPORTED_MODULE_9__["IconComponent"], [], { iconName: [0, "iconName"], width: [1, "width"], height: [2, "height"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u4F1A\u54E1\u30DD\u30A4\u30F3\u30C8\u3078\u623B\u308B"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](19, 0, null, null, 1, "app-loading", [], null, null, null, _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_10__["View_LoadingComponent_0"], _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_10__["RenderType_LoadingComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](20, 114688, null, 0, _parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_11__["LoadingComponent"], [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; _ck(_v, 1, 0); var currVal_1 = _co.accountMoneyTransferActions; _ck(_v, 12, 0, currVal_1); var currVal_4 = "/member/point"; _ck(_v, 15, 0, currVal_4); var currVal_5 = "prev-circle-white"; var currVal_6 = "15"; var currVal_7 = "15"; _ck(_v, 17, 0, currVal_5, currVal_6, currVal_7); var currVal_8 = _co.isLoading; _ck(_v, 20, 0, currVal_8); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.data.accounts[0].typeOfGood.availableBalance; _ck(_v, 8, 0, currVal_0); var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 15).target; var currVal_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 15).href; _ck(_v, 14, 0, currVal_2, currVal_3); }); }
 function View_MemberPointHistoryComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-member-point-history", [], null, null, null, View_MemberPointHistoryComponent_0, RenderType_MemberPointHistoryComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _member_point_history_component__WEBPACK_IMPORTED_MODULE_12__["MemberPointHistoryComponent"], [_services_user_user_service__WEBPACK_IMPORTED_MODULE_13__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"], _services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_14__["SasakiService"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var MemberPointHistoryComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-member-point-history", _member_point_history_component__WEBPACK_IMPORTED_MODULE_12__["MemberPointHistoryComponent"], View_MemberPointHistoryComponent_Host_0, {}, {}, []);
 
@@ -4133,8 +4134,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberPointHistoryComponent", function() { return MemberPointHistoryComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../services/sasaki/sasaki.service */ "./src/app/services/sasaki/sasaki.service.ts");
-/* harmony import */ var _services_user_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../services/user/user.service */ "./src/app/services/user/user.service.ts");
+/* harmony import */ var _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @motionpicture/sskts-api-javascript-client */ "../../node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
+/* harmony import */ var _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../services/sasaki/sasaki.service */ "./src/app/services/sasaki/sasaki.service.ts");
+/* harmony import */ var _services_user_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../services/user/user.service */ "./src/app/services/user/user.service.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -4174,6 +4177,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var MemberPointHistoryComponent = /** @class */ (function () {
     function MemberPointHistoryComponent(user, router, sasaki) {
         this.user = user;
@@ -4186,32 +4190,33 @@ var MemberPointHistoryComponent = /** @class */ (function () {
      */
     MemberPointHistoryComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, err_1;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var result, err_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
                         this.isLoading = true;
-                        _b.label = 1;
+                        _a.label = 1;
                     case 1:
-                        _b.trys.push([1, 4, , 5]);
+                        _a.trys.push([1, 4, , 5]);
                         this.sasaki.getServices();
                         return [4 /*yield*/, this.user.updateAccount()];
                     case 2:
-                        _b.sent();
+                        _a.sent();
                         if (this.user.data.accounts.length === 0) {
                             throw new Error('account is not found');
                         }
-                        _a = this;
-                        return [4 /*yield*/, this.sasaki.person.searchAccountMoneyTransferActions({
-                                personId: 'me',
-                                accountNumber: this.user.data.accounts[0].accountNumber
+                        return [4 /*yield*/, this.sasaki.ownerShip.searchAccountMoneyTransferActions({
+                                id: 'me',
+                                accountType: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__["factory"].accountType.Point,
+                                accountNumber: this.user.data.accounts[0].typeOfGood.accountNumber
                             })];
                     case 3:
-                        _a.accountMoneyTransferActions = _b.sent();
+                        result = _a.sent();
+                        this.accountMoneyTransferActions = result.data;
                         console.log(this.accountMoneyTransferActions);
                         return [3 /*break*/, 5];
                     case 4:
-                        err_1 = _b.sent();
+                        err_1 = _a.sent();
                         this.router.navigate(['/error', { redirect: '/member/point/history' }]);
                         console.log('MemberPointHistoryComponent.ngOnInit', err_1);
                         return [3 /*break*/, 5];
@@ -4288,7 +4293,7 @@ function View_MemberPointComponent_1(_l) { return _angular_core__WEBPACK_IMPORTE
     } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](14, 16384, null, 0, _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLink"], [_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], [8, null], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], { routerLink: [0, "routerLink"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u30DD\u30A4\u30F3\u30C8\u4F7F\u7528\u5C65\u6B74"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 2, "button", [["class", "button button-info"], ["routerLink", "/member/point/benefits"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
         var pd_0 = (_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 17).onClick() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](17, 16384, null, 0, _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLink"], [_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], [8, null], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], { routerLink: [0, "routerLink"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u30DD\u30A4\u30F3\u30C8\u7279\u5178\u4E00\u89A7"]))], function (_ck, _v) { var _co = _v.component; var currVal_1 = _co.user.data.accounts[0].availableBalance; _ck(_v, 8, 0, currVal_1); var currVal_2 = "/member/point/history"; _ck(_v, 14, 0, currVal_2); var currVal_3 = "/member/point/benefits"; _ck(_v, 17, 0, currVal_3); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.data.accounts[0].availableBalance; _ck(_v, 4, 0, currVal_0); }); }
+    } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](17, 16384, null, 0, _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLink"], [_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], [8, null], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], { routerLink: [0, "routerLink"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u30DD\u30A4\u30F3\u30C8\u7279\u5178\u4E00\u89A7"]))], function (_ck, _v) { var _co = _v.component; var currVal_1 = _co.user.data.accounts[0].typeOfGood.availableBalance; _ck(_v, 8, 0, currVal_1); var currVal_2 = "/member/point/history"; _ck(_v, 14, 0, currVal_2); var currVal_3 = "/member/point/benefits"; _ck(_v, 17, 0, currVal_3); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.data.accounts[0].typeOfGood.availableBalance; _ck(_v, 4, 0, currVal_0); }); }
 function View_MemberPointComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "app-page", [["class", "bg-02"]], null, null, null, _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["View_PageComponent_0"], _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RenderType_PageComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _parts_page_page_component__WEBPACK_IMPORTED_MODULE_6__["PageComponent"], [], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, 0, 4, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "p", [["class", "mb-small text-center small-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u8CAF\u307E\u3063\u305F\u30DD\u30A4\u30F3\u30C8\u306E\u78BA\u8A8D\u304C\u3067\u304D\u307E\u3059\u3002 "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberPointComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 1, "app-loading", [], null, null, null, _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_8__["View_LoadingComponent_0"], _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_8__["RenderType_LoadingComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](8, 114688, null, 0, _parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_9__["LoadingComponent"], [], { show: [0, "show"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 8, "app-modal", [["class", "point-use-modal"]], null, [[null, "close"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("close" === en)) {
         var pd_0 = ((_co.pointUseModal = false) !== false);
         ad = (pd_0 && ad);
@@ -9525,9 +9530,6 @@ var MemberService = /** @class */ (function () {
                             })];
                     case 2:
                         result = _a.sent();
-                        if (result.totalCount === 0) {
-                            throw new Error('販売劇場が見つかりませんでした。');
-                        }
                         seller = result.data[0];
                         programMembership = args.programMembership;
                         if (programMembership.id === undefined
@@ -9570,16 +9572,20 @@ var MemberService = /** @class */ (function () {
                         count = 0;
                         return [2 /*return*/, new Promise(function (resolve, reject) {
                                 var timer = setInterval(function () { return __awaiter(_this, void 0, void 0, function () {
-                                    var programMembershipOwnershipInfos, err_1;
+                                    var result, programMembershipOwnershipInfos, err_1;
                                     return __generator(this, function (_a) {
                                         switch (_a.label) {
                                             case 0:
                                                 _a.trys.push([0, 2, , 3]);
-                                                return [4 /*yield*/, this.sasaki.person.searchOwnershipInfos({
-                                                        goodType: 'ProgramMembership'
+                                                return [4 /*yield*/, this.sasaki.ownerShip.search({
+                                                        id: 'me',
+                                                        typeOfGood: {
+                                                            typeOf: 'ProgramMembership'
+                                                        }
                                                     })];
                                             case 1:
-                                                programMembershipOwnershipInfos = _a.sent();
+                                                result = _a.sent();
+                                                programMembershipOwnershipInfos = result.data;
                                                 if (programMembershipOwnershipInfos.length > 0) {
                                                     clearInterval(timer);
                                                     resolve(true);
@@ -9695,7 +9701,7 @@ var ProgramMembershipGuardService = /** @class */ (function () {
    */
     ProgramMembershipGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var programMembershipOwnershipInfos;
+            var result, programMembershipOwnershipInfos;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -9708,11 +9714,15 @@ var ProgramMembershipGuardService = /** @class */ (function () {
                         return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.sasaki.person.searchOwnershipInfos({
-                                goodType: 'ProgramMembership'
+                        return [4 /*yield*/, this.sasaki.ownerShip.search({
+                                id: 'me',
+                                typeOfGood: {
+                                    typeOf: 'ProgramMembership'
+                                }
                             })];
                     case 2:
-                        programMembershipOwnershipInfos = _a.sent();
+                        result = _a.sent();
+                        programMembershipOwnershipInfos = result.data;
                         if (programMembershipOwnershipInfos.length === 0) {
                             this.router.navigate(['/auth/register/credit']);
                             return [2 /*return*/, false];
@@ -9907,7 +9917,10 @@ var ReservationService = /** @class */ (function () {
                     case 1:
                         _b.sent();
                         return [4 /*yield*/, this.sasaki.ownerShip.search({
-                                id: 'me'
+                                id: 'me',
+                                typeOfGood: {
+                                    typeOf: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].reservationType.EventReservation
+                                }
                             })];
                     case 2:
                         reservationOwnerships = _b.sent();
@@ -10505,7 +10518,8 @@ var UserService = /** @class */ (function () {
      * @method reset
      */
     UserService.prototype.reset = function () {
-        var prevUserName = this.data.accounts.length === 0 ? '' : this.data.accounts[0].name;
+        var prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
+            this.data.accounts.length === 0 ? '' : this.data.accounts[0].typeOfGood.name;
         this.data = {
             memberType: MemberType.NotMember,
             creditCards: [],
@@ -10521,7 +10535,7 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.initMember = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var profile, creditCards, err_1, accounts, account, programMembershipOwnershipInfos;
+            var profile, creditCards, err_1, accountSearchResult, accounts, openAccountResult, programMembershipOwnershipInfos;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -10544,7 +10558,7 @@ var UserService = /** @class */ (function () {
                         _a.label = 3;
                     case 3:
                         _a.trys.push([3, 5, , 6]);
-                        return [4 /*yield*/, this.sasaki.person.findCreditCards({
+                        return [4 /*yield*/, this.sasaki.ownerShip.searchCreditCards({
                                 personId: 'me'
                             })];
                     case 4:
@@ -10556,32 +10570,40 @@ var UserService = /** @class */ (function () {
                         console.log(err_1);
                         this.data.creditCards = [];
                         return [3 /*break*/, 6];
-                    case 6: return [4 /*yield*/, this.sasaki.person.findAccounts({
-                            personId: 'me'
+                    case 6: return [4 /*yield*/, this.sasaki.ownerShip.search({
+                            id: 'me',
+                            typeOfGood: {
+                                typeOf: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].ownershipInfo.AccountGoodType.Account,
+                                accountType: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].accountType.Point
+                            }
                         })];
                     case 7:
-                        accounts = _a.sent();
-                        accounts = accounts.filter(function (account) {
-                            return account.status === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.accountStatusType.Opened;
+                        accountSearchResult = _a.sent();
+                        accounts = accountSearchResult.data.filter(function (account) {
+                            return (account.typeOfGood.typeOf === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.account.TypeOf.Account
+                                && account.typeOfGood.accountType === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].accountType.Point
+                                && account.typeOfGood.status === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.accountStatusType.Opened);
                         });
                         if (!(accounts.length === 0)) return [3 /*break*/, 9];
-                        return [4 /*yield*/, this.sasaki.person.openAccount({
-                                personId: 'me',
+                        return [4 /*yield*/, this.sasaki.ownerShip.openAccount({
+                                id: 'me',
+                                accountType: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].accountType.Point,
                                 name: this.sasaki.userName
                             })];
                     case 8:
-                        account = _a.sent();
-                        this.data.accounts.push(account);
+                        openAccountResult = _a.sent();
+                        this.data.accounts = [openAccountResult];
                         return [3 /*break*/, 10];
                     case 9:
                         this.data.accounts = accounts;
                         _a.label = 10;
-                    case 10: return [4 /*yield*/, this.sasaki.person.searchOwnershipInfos({
-                            goodType: 'ProgramMembership'
+                    case 10: return [4 /*yield*/, this.sasaki.ownerShip.search({
+                            id: 'me',
+                            typeOfGood: 'ProgramMembership'
                         })];
                     case 11:
                         programMembershipOwnershipInfos = _a.sent();
-                        this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos;
+                        this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
                         this.save();
                         return [2 /*return*/];
                 }
@@ -10594,28 +10616,35 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.updateAccount = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var accounts, account;
+            var accountSearchResult, accounts, openAccountResult;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.sasaki.person.findAccounts({
-                                personId: 'me'
+                        return [4 /*yield*/, this.sasaki.ownerShip.search({
+                                id: 'me',
+                                typeOfGood: {
+                                    typeOf: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].ownershipInfo.AccountGoodType.Account,
+                                    accountType: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].accountType.Point
+                                }
                             })];
                     case 2:
-                        accounts = _a.sent();
-                        accounts = accounts.filter(function (account) {
-                            return account.status === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.accountStatusType.Opened;
+                        accountSearchResult = _a.sent();
+                        accounts = accountSearchResult.data.filter(function (account) {
+                            return (account.typeOfGood.typeOf === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.account.TypeOf.Account
+                                && account.typeOfGood.accountType === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].accountType.Point
+                                && account.typeOfGood.status === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.accountStatusType.Opened);
                         });
                         if (!(accounts.length === 0)) return [3 /*break*/, 4];
-                        return [4 /*yield*/, this.sasaki.person.openAccount({
-                                personId: 'me',
-                                name: this.getName()
+                        return [4 /*yield*/, this.sasaki.ownerShip.openAccount({
+                                id: 'me',
+                                accountType: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].accountType.Point,
+                                name: this.sasaki.userName
                             })];
                     case 3:
-                        account = _a.sent();
-                        this.data.accounts.push(account);
+                        openAccountResult = _a.sent();
+                        this.data.accounts = [openAccountResult];
                         return [3 /*break*/, 5];
                     case 4:
                         this.data.accounts = accounts;
@@ -10712,7 +10741,7 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.getGmoObject = function (args) {
         return __awaiter(this, void 0, void 0, function () {
-            var sendParam, branchCode, result, movieTheater, payment, gmoInfo;
+            var sendParam, branchCode, result, movieTheater;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -10729,19 +10758,6 @@ var UserService = /** @class */ (function () {
                     case 2:
                         result = _a.sent();
                         movieTheater = result.data[0];
-                        if (movieTheater.paymentAccepted === undefined) {
-                            throw new Error('movieTheater is undefined');
-                        }
-                        payment = movieTheater.paymentAccepted.find(function (paymentAccepted) {
-                            return paymentAccepted.paymentMethodType === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].paymentMethodType.CreditCard;
-                        });
-                        if (payment === undefined) {
-                            throw new Error('payment is undefined');
-                        }
-                        gmoInfo = this.getGMOInfo(payment);
-                        if (gmoInfo === undefined) {
-                            throw new Error('gmoInfo is undefined');
-                        }
                         return [2 /*return*/, new Promise(function (resolve, reject) {
                                 window.someCallbackFunction = function someCallbackFunction(response) {
                                     if (response.resultCode === '000') {
@@ -10753,7 +10769,14 @@ var UserService = /** @class */ (function () {
                                 };
                                 var Multipayment = window.Multipayment;
                                 // shopId
-                                Multipayment.init(gmoInfo.shopId);
+                                if (movieTheater.paymentAccepted === undefined) {
+                                    return reject(new Error('The settlement method does not correspond'));
+                                }
+                                var paymentAccepted = movieTheater.paymentAccepted.find(function (p) { return p.paymentMethodType === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].paymentMethodType.CreditCard; });
+                                if (paymentAccepted === undefined || paymentAccepted.paymentMethodType !== _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].paymentMethodType.CreditCard) {
+                                    return reject(new Error('The settlement method does not correspond'));
+                                }
+                                Multipayment.init(paymentAccepted.gmoInfo.shopId);
                                 Multipayment.getToken(sendParam, window.someCallbackFunction);
                             })];
                 }
@@ -10773,7 +10796,7 @@ var UserService = /** @class */ (function () {
                     case 1:
                         _c.sent();
                         // 登録
-                        return [4 /*yield*/, this.sasaki.person.addCreditCard({
+                        return [4 /*yield*/, this.sasaki.ownerShip.addCreditCard({
                                 personId: 'me',
                                 creditCard: {
                                     token: gmoTokenObject.token
@@ -10783,7 +10806,7 @@ var UserService = /** @class */ (function () {
                         // 登録
                         _c.sent();
                         _a = this.data;
-                        return [4 /*yield*/, this.sasaki.person.findCreditCards({
+                        return [4 /*yield*/, this.sasaki.ownerShip.searchCreditCards({
                                 personId: 'me'
                             })];
                     case 3:
@@ -10793,7 +10816,7 @@ var UserService = /** @class */ (function () {
                     case 4:
                         _c.sent();
                         _b = this.data;
-                        return [4 /*yield*/, this.sasaki.person.findCreditCards({
+                        return [4 /*yield*/, this.sasaki.ownerShip.searchCreditCards({
                                 personId: 'me'
                             })];
                     case 5:
@@ -10819,7 +10842,7 @@ var UserService = /** @class */ (function () {
                         if (this.data.creditCards.length === 0) {
                             return [2 /*return*/];
                         }
-                        return [4 /*yield*/, this.sasaki.person.deleteCreditCard({
+                        return [4 /*yield*/, this.sasaki.ownerShip.deleteCreditCard({
                                 personId: 'me',
                                 cardSeq: this.data.creditCards[0].cardSeq
                             })];
@@ -10882,12 +10905,6 @@ var UserService = /** @class */ (function () {
                 }
             });
         });
-    };
-    /**
-     * GMO情報を取得する
-     */
-    UserService.prototype.getGMOInfo = function (accepted) {
-        return accepted.gmoInfo;
     };
     return UserService;
 }());

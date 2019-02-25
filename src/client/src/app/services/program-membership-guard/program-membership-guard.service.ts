@@ -24,9 +24,14 @@ export class ProgramMembershipGuardService implements CanActivate {
             return true;
         }
         await this.sasaki.getServices();
-        const programMembershipOwnershipInfos = await this.sasaki.person.searchOwnershipInfos({
-            goodType: 'ProgramMembership'
-        });
+        const result =
+            await this.sasaki.ownerShip.search<'ProgramMembership'>({
+                id: 'me',
+                typeOfGood: {
+                    typeOf: 'ProgramMembership'
+                }
+            });
+        const programMembershipOwnershipInfos = result.data;
         if (programMembershipOwnershipInfos.length === 0) {
             this.router.navigate(['/auth/register/credit']);
 

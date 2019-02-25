@@ -36,9 +36,6 @@ export class MemberService {
             location: {branchCodes: [branchCode]},
             typeOfs: [factory.organizationType.MovieTheater]
         });
-        if (result.totalCount === 0) {
-            throw new Error('販売劇場が見つかりませんでした。');
-        }
         const seller = result.data[0];
 
         const programMembership = args.programMembership;
@@ -77,10 +74,14 @@ export class MemberService {
         return new Promise<boolean>((resolve, reject) => {
             const timer = setInterval(async () => {
                 try {
-                    const programMembershipOwnershipInfos =
-                        await this.sasaki.person.searchOwnershipInfos({
-                            goodType: 'ProgramMembership'
+                    const result =
+                        await this.sasaki.ownerShip.search({
+                            id: 'me',
+                            typeOfGood: {
+                                typeOf: 'ProgramMembership'
+                            }
                         });
+                    const programMembershipOwnershipInfos = result.data;
                     if (programMembershipOwnershipInfos.length > 0) {
                         clearInterval(timer);
                         resolve(true);

@@ -5,12 +5,12 @@
         </p>
         <div class="mb-middle text-center">
             現在
-            <span class="large-xx-text">{{ user.data.accounts[0].availableBalance }}</span>
+            <span class="large-xx-text">{{ this.user.data.accounts[0].typeOfGood.availableBalance }}</span>
             ポイント
         </div>
         <ul class="mb-middle">
             <li *ngFor="let action of accountMoneyTransferActions">
-                <app-point-history-list [action]="action" [accountNumber]="user.data.accounts[0].accountNumber"></app-point-history-list>
+                <app-point-history-list [action]="action" [accountNumber]="user.data.accounts[0].typeOfGood.accountNumber"></app-point-history-list>
             </li>
         </ul>
         <div class="text-center">
