@@ -57,11 +57,16 @@ export class AuthModel {
         this.state = (session.state !== undefined) ? session.state : uuid.v1();
         const resourceServerUrl  = <string>process.env.RESOURCE_SERVER_URL;
         this.scopes = (session.scopes !== undefined) ? session.scopes : [
-            `${resourceServerUrl}/transactions`,
-            `${resourceServerUrl}/events.read-only`,
+            `${resourceServerUrl}/sellers.read-only`,
+            `${resourceServerUrl}/places`,
             `${resourceServerUrl}/organizations.read-only`,
+            `${resourceServerUrl}/events.read-only`,
             `${resourceServerUrl}/orders.read-only`,
-            `${resourceServerUrl}/places.read-only`
+            `${resourceServerUrl}/organizations`,
+            `${resourceServerUrl}/places.read-only`,
+            `${resourceServerUrl}/orders`,
+            `${resourceServerUrl}/transactions`,
+            `${resourceServerUrl}/events`
         ];
         this.credentials = session.credentials;
         this.codeVerifier = session.codeVerifier;
