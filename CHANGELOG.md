@@ -13,6 +13,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.5.5 - 2019-02-27
+### Changed
+ - sskts-api-javascript-clientを v6.0.0に変更
+ - sskts-api-nodejs-client をv6.0.0に変更
+ - 購入チケット一覧の選択日が過去の日付の場合に今日のチケット一覧が表示されるよう変更
+
 ## 2.5.4 - 2019-02-18
 ### Added
  - main.jsが存在しなかったため追加
