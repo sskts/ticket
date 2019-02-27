@@ -5,6 +5,7 @@ import { factory } from '@motionpicture/sskts-api-javascript-client';
 import { MaintenanceService } from '../../../../services/maintenance/maintenance.service';
 import { MemberService } from '../../../../services/member/member.service';
 import { SasakiService } from '../../../../services/sasaki/sasaki.service';
+type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
 
 @Component({
     selector: 'app-auth-register-program-membership',
@@ -17,7 +18,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
     public alertModal: boolean;
     public disable: boolean;
     public optionsForm: FormGroup;
-    public theaters: factory.organization.movieTheater.IPublicFields[];
+    public theaters: IMovieTheater[];
 
     constructor(
         private router: Router,
@@ -39,13 +40,14 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         try {
             await this.sasaki.getServices();
             // 劇場一覧取得
-            const searchMovieTheatersResult = await this.sasaki.organization.searchMovieTheaters();
+            const result = await this.sasaki.seller.search({typeOfs: [factory.organizationType.MovieTheater]});
+            const searchMovieTheatersResult = result.data;
             // 除外劇場処理
             const excludeTheatersResult = await this.maintenance.excludeTheaters();
             if (excludeTheatersResult.isExclude) {
                 this.theaters = searchMovieTheatersResult.filter((theater) => {
                     const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
-                        return (excludeCode === theater.location.branchCode);
+                        return (theater.location !== undefined && excludeCode === theater.location.branchCode);
                     });
 
                     return (excludeTheater === undefined);

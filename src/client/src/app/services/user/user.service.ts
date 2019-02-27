@@ -4,14 +4,16 @@ import { environment } from '../../../environments/environment';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { SaveType, StorageService } from '../storage/storage.service';
 
+type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>;
+type programMembershipType = factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<'ProgramMembership'>>;
 
 export interface IData {
     userName?: string;
     memberType: MemberType;
-    contact?: factory.person.IContact;
+    profile?: factory.person.IProfile;
     creditCards: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
-    accounts: factory.pecorino.account.IAccount<factory.accountType.Point>[];
-    programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<'ProgramMembership'>[];
+    accounts: accountType[];
+    programMembershipOwnershipInfos: programMembershipType[];
     prevUserName?: string;
 }
 
@@ -75,7 +77,8 @@ export class UserService {
      * @method reset
      */
     public reset() {
-        const prevUserName = this.data.accounts.length === 0 ? '' : this.data.accounts[0].name;
+        const prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
+            this.data.accounts.length === 0 ? '' : this.data.accounts[0].typeOfGood.name;
         this.data = {
             memberType: MemberType.NotMember,
             creditCards: [],
@@ -99,17 +102,15 @@ export class UserService {
         }
         this.data.userName = this.sasaki.userName;
         // 連絡先取得
-        const contact = await this.sasaki.person.getContacts({
-            personId: 'me'
-        });
-        if (contact === undefined) {
-            throw new Error('contact is undefined');
+        const profile = await this.sasaki.person.getProfile({id: 'me' });
+        if (profile === undefined) {
+            throw new Error('profile is undefined');
         }
-        this.data.contact = contact;
+        this.data.profile = profile;
 
         try {
             // クレジットカード検索
-            const creditCards = await this.sasaki.person.findCreditCards({
+            const creditCards = await this.sasaki.ownerShip.searchCreditCards({
                 personId: 'me'
             });
             this.data.creditCards = creditCards;
@@ -119,30 +120,35 @@ export class UserService {
         }
 
         // 口座検索
-        let accounts = await this.sasaki.person.findAccounts({
-            personId: 'me'
+        const accountSearchResult = await this.sasaki.ownerShip.search({
+            id: 'me',
+            typeOfGood: {
+                typeOf: factory.ownershipInfo.AccountGoodType.Account,
+                accountType: factory.accountType.Point
+            }
         });
-        accounts = accounts.filter((account) => {
-            return account.status === factory.pecorino.accountStatusType.Opened;
+        const accounts = accountSearchResult.data.filter((account) => {
+            return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
+                && account.typeOfGood.accountType === factory.accountType.Point
+                && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
         });
         if (accounts.length === 0) {
             // 口座開設
-            const account = await this.sasaki.person.openAccount({
-                personId: 'me',
-                name: this.sasaki.userName
+            const openAccountResult = await this.sasaki.ownerShip.openAccount({
+                id: 'me',
+                accountType: factory.accountType.Point,
+                name: (<string>this.sasaki.userName)
             });
-            this.data.accounts.push(account);
+            this.data.accounts = [openAccountResult];
         } else {
-            this.data.accounts = accounts;
+            this.data.accounts = <accountType[]>accounts;
         }
 
-        const programMembershipOwnershipInfos = await this.sasaki.person.searchOwnershipInfos({
-            ownedBy: 'me',
-            goodType: 'ProgramMembership'
+        const programMembershipOwnershipInfos = await this.sasaki.ownerShip.search<'ProgramMembership'>({
+            id: 'me',
+            typeOfGood: 'ProgramMembership'
         });
-
-        this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos;
-
+        this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
         this.save();
     }
 
@@ -153,21 +159,28 @@ export class UserService {
     public async updateAccount() {
         await this.sasaki.getServices();
         // 口座検索
-        let accounts = await this.sasaki.person.findAccounts({
-            personId: 'me'
+        const accountSearchResult = await this.sasaki.ownerShip.search({
+            id: 'me',
+            typeOfGood: {
+                typeOf: factory.ownershipInfo.AccountGoodType.Account,
+                accountType: factory.accountType.Point
+            }
         });
-        accounts = accounts.filter((account) => {
-            return account.status === factory.pecorino.accountStatusType.Opened;
+        const accounts = accountSearchResult.data.filter((account) => {
+            return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
+                && account.typeOfGood.accountType === factory.accountType.Point
+                && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
         });
         if (accounts.length === 0) {
             // 口座開設
-            const account = await this.sasaki.person.openAccount({
-                personId: 'me',
-                name: this.getName()
+            const openAccountResult = await this.sasaki.ownerShip.openAccount({
+                id: 'me',
+                accountType: factory.accountType.Point,
+                name: (<string>this.sasaki.userName)
             });
-            this.data.accounts.push(account);
+            this.data.accounts = [openAccountResult];
         } else {
-            this.data.accounts = accounts;
+            this.data.accounts = <accountType[]>accounts;
         }
         this.save();
     }
@@ -185,10 +198,10 @@ export class UserService {
      * @method getName
      */
     public getName() {
-        if (this.data.contact === undefined) {
+        if (this.data.profile === undefined) {
             return '';
         }
-        return `${this.data.contact.familyName} ${this.data.contact.givenName}`;
+        return `${this.data.profile.familyName} ${this.data.profile.givenName}`;
     }
 
     /**
@@ -196,10 +209,11 @@ export class UserService {
      * @method getTelephone
      */
     public getTelephone() {
-        if (this.data.contact === undefined) {
+        if (this.data.profile === undefined) {
             return '';
         }
-        return this.data.contact.telephone.replace(/\-/g, '');
+        const no = this.data.profile.telephone.replace(/\-/g, '');
+        return no.replace(/^\+81/g, '0');
     }
 
     /**
@@ -227,7 +241,8 @@ export class UserService {
         if (this.data.programMembershipOwnershipInfos.length === 0
             || programMembershipOwnershipInfo === undefined
             || programMembershipOwnershipInfo.acquiredFrom === undefined
-            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== factory.organizationType.MovieTheater) {
+            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== factory.organizationType.MovieTheater
+            || programMembershipOwnershipInfo.acquiredFrom.location === undefined) {
             return '';
         }
 
@@ -274,9 +289,12 @@ export class UserService {
         await this.sasaki.getServices();
         // 池袋
         const branchCode = (environment.production) ? '001' : '101';
-        const movieTheater = await this.sasaki.organization.findMovieTheaterByBranchCode({
-            branchCode: branchCode
+        const result = await this.sasaki.seller.search({
+            location: {branchCodes: [branchCode]},
+            typeOfs: [factory.organizationType.MovieTheater]
         });
+        const movieTheater = result.data[0];
+
         return new Promise<IGmoTokenObject>((resolve, reject) => {
             (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
                 if (response.resultCode === '000') {
@@ -287,7 +305,14 @@ export class UserService {
             };
             const Multipayment = (<any>window).Multipayment;
             // shopId
-            Multipayment.init(movieTheater.gmoInfo.shopId);
+            if (movieTheater.paymentAccepted === undefined) {
+                return reject(new Error('The settlement method does not correspond'));
+            }
+            const paymentAccepted = movieTheater.paymentAccepted.find(p => p.paymentMethodType === factory.paymentMethodType.CreditCard);
+            if (paymentAccepted === undefined || paymentAccepted.paymentMethodType !== factory.paymentMethodType.CreditCard) {
+                return reject(new Error('The settlement method does not correspond'));
+            }
+            Multipayment.init((<factory.seller.ICreditCardPaymentAccepted>paymentAccepted).gmoInfo.shopId);
             Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
         });
     }
@@ -299,18 +324,18 @@ export class UserService {
     public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
         await this.sasaki.getServices();
         // 登録
-        await this.sasaki.person.addCreditCard({
+        await this.sasaki.ownerShip.addCreditCard({
             personId: 'me',
             creditCard: {
                 token: gmoTokenObject.token
             }
         });
-        this.data.creditCards = await this.sasaki.person.findCreditCards({
+        this.data.creditCards = await this.sasaki.ownerShip.searchCreditCards({
             personId: 'me'
         });
         if (this.data.creditCards.length > 1) {
             await this.deleteCreditCard();
-            this.data.creditCards = await this.sasaki.person.findCreditCards({
+            this.data.creditCards = await this.sasaki.ownerShip.searchCreditCards({
                 personId: 'me'
             });
         }
@@ -326,7 +351,7 @@ export class UserService {
         if (this.data.creditCards.length === 0) {
             return;
         }
-        await this.sasaki.person.deleteCreditCard({
+        await this.sasaki.ownerShip.deleteCreditCard({
             personId: 'me',
             cardSeq: this.data.creditCards[0].cardSeq
         });
@@ -343,23 +368,22 @@ export class UserService {
         telephone: string;
         postalCode: string;
     }) {
+        const tel = args.telephone.replace(/^0/, '+81')
         await this.sasaki.getServices();
-        await this.sasaki.person.updateContacts({
-            personId: 'me',
-            contacts: {
-                familyName: args.familyName,
-                givenName: args.givenName,
-                email: args.email,
-                telephone: args.telephone
-            }
+        await this.sasaki.person.updateProfile({
+            id: 'me',
+            familyName: args.familyName,
+            givenName: args.givenName,
+            email: args.email,
+            telephone: tel
         });
-        const contact = await this.sasaki.person.getContacts({
-            personId: 'me'
+        const profile = await this.sasaki.person.getProfile({
+            id: 'me'
         });
-        if (contact === undefined) {
-            throw new Error('contact is undefined');
+        if (profile === undefined) {
+            throw new Error('profile is undefined');
         }
-        this.data.contact = contact;
+        this.data.profile = profile;
 
         this.save();
     }
@@ -372,5 +396,4 @@ export class UserService {
         this.data.userName = this.sasaki.userName;
         this.save();
     }
-
 }

@@ -4,7 +4,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
-import { IEventWithOffer } from '@motionpicture/sskts-factory/lib/factory/event/individualScreeningEvent';
 import * as moment from 'moment';
 import { environment } from '../../../../environments/environment';
 import { AwsCognitoService } from '../../../services/aws-cognito/aws-cognito.service';
@@ -13,13 +12,14 @@ import { SasakiService } from '../../../services/sasaki/sasaki.service';
 import { IPurchaseConditions, PurchaseSort, SelectService } from '../../../services/select/select.service';
 import { MemberType, UserService } from '../../../services/user/user.service';
 
-type IMovieTheater = factory.organization.movieTheater.IOrganizationWithoutGMOInfo;
-type IIndividualScreeningEvent = factory.event.individualScreeningEvent.IEventWithOffer;
-type ITimeOrder = IIndividualScreeningEvent;
+type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
+type IEvent = factory.event.screeningEvent.IEvent;
+type ICOAInfo = factory.event.screeningEvent.ICOAInfo;
+type ITimeOrder = IEvent;
 
 interface IFilmOrder {
     id: string;
-    films: IIndividualScreeningEvent[];
+    films: IEvent[];
 }
 
 interface IDate {
@@ -50,7 +50,7 @@ export class PurchaseComponent implements OnInit {
     public dateList: IDate[];
     public filmOrder: IFilmOrder[];
     public timeOrder: ITimeOrder[];
-    public screeningEvents: IIndividualScreeningEvent[];
+    public screeningEvents: IEvent[];
     public conditions: IPurchaseConditions;
     public error: string;
     public purchaseSort: typeof PurchaseSort;
@@ -84,7 +84,8 @@ export class PurchaseComponent implements OnInit {
             this.conditions = this.select.data.purchase;
             if (this.user.isMember() && this.conditions.theater === '') {
                 // 会員
-                this.conditions.theater = this.user.getTheaterCode(0);
+                const theater = this.user.getTheaterCode(0);
+                this.conditions.theater = theater ? theater : '';
             }
             await this.initialize();
             localStorage.removeItem('schedule');
@@ -105,7 +106,8 @@ export class PurchaseComponent implements OnInit {
         this.filmOrder = [];
         this.timeOrder = [];
         this.theaters = await this.getTheaters();
-        const findResult = this.theaters.find(theater => theater.location.branchCode === this.conditions.theater);
+        const findResult = this.theaters.find(theater =>
+            theater.location !== undefined && theater.location.branchCode === this.conditions.theater);
         if (findResult === undefined) {
             this.conditions.theater = '';
         }
@@ -173,8 +175,8 @@ export class PurchaseComponent implements OnInit {
      * パフォーマンス選択
      * @method performanceSelect
      */
-    public async performanceSelect(performance: IIndividualScreeningEvent) {
-        if (performance.offer.availability === 0) {
+    public async performanceSelect(performance: IEvent) {
+        if (performance.offers.availability === 0) {
             return;
         }
         let params;
@@ -215,7 +217,8 @@ export class PurchaseComponent implements OnInit {
      */
     private async getTheaters() {
         await this.sasaki.getServices();
-        const theaters = await this.sasaki.organization.searchMovieTheaters();
+        const result = await this.sasaki.seller.search({typeOfs: [factory.organizationType.MovieTheater]});
+        const theaters = result.data;
         // 除外劇場処理
         const excludeTheatersResult = await this.maintenance.excludeTheaters();
         if (!excludeTheatersResult.isExclude) {
@@ -224,7 +227,7 @@ export class PurchaseComponent implements OnInit {
 
         return theaters.filter((theater) => {
             const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
-                return (excludeCode === theater.location.branchCode);
+                return (theater.location === undefined || excludeCode === theater.location.branchCode);
             });
 
             return (excludeTheater === undefined);
@@ -237,29 +240,32 @@ export class PurchaseComponent implements OnInit {
     private async getScreeningEvents() {
         await this.sasaki.getServices();
         const branchCode = this.conditions.theater;
-        const findResult = this.theaters.find(theater => theater.location.branchCode === branchCode);
+        const findResult = this.theaters.find(theater => theater.location !== undefined && theater.location.branchCode === branchCode);
         if (findResult === undefined) {
             return [];
         }
-        const screeningEvents = await this.sasaki.event.searchIndividualScreeningEvent({
+        const screeningEvents = await this.sasaki.event.searchScreeningEvents({
+            typeOf: factory.eventType.ScreeningEvent,
             eventStatuses: [factory.eventStatusType.EventScheduled],
             startFrom: moment().toDate(),
             startThrough: moment().add(5, 'week').toDate(),
-            superEventLocationIdentifiers: [findResult.identifier]
+            sort: {startDate: factory.sortType.Ascending },
+            superEvent: { locationBranchCodes: [branchCode] }
         });
 
-        return screeningEvents;
+        return screeningEvents.data;
     }
 
     /**
      * 先行販売かどうかをチェックする
      */
-    private checkEventPreSale(event: IEventWithOffer): boolean {
+    private checkEventPreSale(event: IEvent): boolean {
         const salesDate = moment().add(2, 'days').format('YYYYMMDD');
         const startDate = moment(event.startDate).format('YYYYMMDD');
         const today = moment().format('YYYYMMDD');
         const PRE_SALE = '1'; // 先行販売
-        return event.coaInfo.rsvStartDate <= today &&
+        return event.coaInfo !== undefined &&
+            event.coaInfo.rsvStartDate <= today &&
             event.coaInfo.flgEarlyBooking === PRE_SALE &&
             salesDate < startDate;
     }
@@ -272,12 +278,16 @@ export class PurchaseComponent implements OnInit {
         const limitDate = moment().add(7, 'days').format('YYYYMMDD');
         const today = moment().format('YYYYMMDD');
         this.screeningEvents.forEach((screeningEvent) => {
+            if (screeningEvent.coaInfo === undefined) {
+                return;
+            }
+            const coaInfo: ICOAInfo = screeningEvent.coaInfo;
             const startDate = moment(screeningEvent.startDate).format('YYYYMMDD');
-            const isSalse = screeningEvent.coaInfo.rsvStartDate <= today;
+            const isSalse = coaInfo.rsvStartDate <= today;
             if (!isSalse && startDate >= limitDate) {
                 return;
             }
-            const findResult = result.find((date) => screeningEvent.coaInfo.dateJouei === date.value);
+            const findResult = result.find((date) => coaInfo.dateJouei === date.value);
             if (findResult === undefined) {
                 const date = moment(screeningEvent.coaInfo.dateJouei);
                 result.push({
@@ -289,7 +299,7 @@ export class PurchaseComponent implements OnInit {
                         year: date.format('YYYY')
                     },
                     preSale: this.checkEventPreSale(screeningEvent),
-                    serviceDay: screeningEvent.coaInfo.nameServiceDay
+                    serviceDay: coaInfo.nameServiceDay
                 });
             } else if (this.checkEventPreSale(screeningEvent)) {
                 findResult.preSale = true;
@@ -307,22 +317,28 @@ export class PurchaseComponent implements OnInit {
         this.timeOrder = [];
         const today = moment().format('YYYYMMDD');
         const limitDate = moment().add(7, 'days').format('YYYYMMDD');
+        const searchDate = this.conditions.date < today ? today : this.conditions.date;
         const dateFilterResult = this.screeningEvents
-            .filter(screeningEvent => screeningEvent.coaInfo.dateJouei === this.conditions.date);
+            .filter(screeningEvent => screeningEvent.coaInfo !== undefined && screeningEvent.coaInfo.dateJouei === searchDate);
 
         const displayFilterResult = dateFilterResult
-            .filter(screeningEvent => (screeningEvent.coaInfo.rsvStartDate <= today
+            .filter(screeningEvent => (screeningEvent.coaInfo !== undefined
+                && (screeningEvent.coaInfo.rsvStartDate <= today
                 || this.checkEventPreSale(screeningEvent)
-                || screeningEvent.coaInfo.dateJouei <= limitDate));
+                || screeningEvent.coaInfo.dateJouei <= limitDate)));
 
         this.timeOrder = displayFilterResult;
         displayFilterResult.forEach((screeningEvent) => {
+            if (screeningEvent.coaInfo === undefined) {
+                return;
+            }
+            const coaInfo: ICOAInfo = screeningEvent.coaInfo;
             const film = this.filmOrder.find((event) => {
-                return (event.id === (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum));
+                return (coaInfo !== undefined && event.id === (coaInfo.titleCode + coaInfo.titleBranchNum));
             });
             if (film === undefined) {
                 this.filmOrder.push({
-                    id: (screeningEvent.coaInfo.titleCode + screeningEvent.coaInfo.titleBranchNum),
+                    id: (coaInfo.titleCode + coaInfo.titleBranchNum),
                     films: [screeningEvent]
                 });
             } else {
