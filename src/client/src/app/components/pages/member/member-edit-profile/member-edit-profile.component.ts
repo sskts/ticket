@@ -98,7 +98,7 @@ export class MemberEditProfileComponent implements OnInit {
         }
         profile.givenName.value = contact.givenName;
         profile.familyName.value = contact.familyName;
-        profile.telephone.value = contact.telephone.replace(/\-/g, '');
+        profile.telephone.value = this.user.getTelephone();
         this.staticProfile = {
             email: contact.email
         };
