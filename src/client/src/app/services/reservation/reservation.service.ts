@@ -3,16 +3,16 @@
  */
 import { Injectable } from '@angular/core';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
-import { IEvent } from '@motionpicture/sskts-factory/lib/factory/event';
-import { ITicket } from '@motionpicture/sskts-factory/lib/factory/reservation';
 import * as moment from 'moment';
 import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { StorageService } from '../storage/storage.service';
+type ITicket = factory.reservation.ITicket<factory.reservation.event.IPriceSpecification>;
+type IReservationFor = factory.reservation.event.IReservationFor;
 
 export interface IReservation {
     confirmationNumber: string;
-    reservationsFor: IEvent[];
+    reservationsFor: IReservationFor[];
     reservedTickets: ITicket[];
 }
 
@@ -79,7 +79,7 @@ export class ReservationService {
         const orders: IReservation[] = [];
         if (Array.isArray(reservationRecord.orders)) {
             reservationRecord.orders.forEach((order) => {
-                const reservationsFor: IEvent[] = [];
+                const reservationsFor: IReservationFor[] = [];
                 order.acceptedOffers.forEach((offer) => {
                     if (offer.itemOffered.typeOf !== factory.reservationType.EventReservation) {
                         return;
@@ -114,13 +114,15 @@ export class ReservationService {
      */
     private async fitchReservation(): Promise<IReservationData> {
         await this.sasaki.getServices();
-        const reservationOwnerships = await this.sasaki.person.searchOwnershipInfos({
-            goodType: factory.reservationType.EventReservation,
-            ownedBy: 'me'
+        const reservationOwnerships = await this.sasaki.ownerShip.search<factory.reservationType.EventReservation>({
+            id: 'me',
+            typeOfGood: {
+                typeOf: factory.reservationType.EventReservation
+            }
         });
         console.log(reservationOwnerships);
         const orders: IReservation[] = [];
-        for (const reservationOwnership of reservationOwnerships) {
+        for (const reservationOwnership of reservationOwnerships.data) {
             const confirmationNumber = reservationOwnership.typeOfGood.reservationNumber.split('-')[0];
             const reservationFor = reservationOwnership.typeOfGood.reservationFor;
             const reservedTicket = reservationOwnership.typeOfGood.reservedTicket;

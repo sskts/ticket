@@ -31,10 +31,12 @@ export class MemberPointHistoryComponent implements OnInit {
             if (this.user.data.accounts.length === 0) {
                 throw new Error('account is not found');
             }
-            this.accountMoneyTransferActions = await this.sasaki.person.searchAccountMoneyTransferActions({
-                personId: 'me',
-                accountNumber: this.user.data.accounts[0].accountNumber
+            const result = await this.sasaki.ownerShip.searchAccountMoneyTransferActions<factory.accountType.Point>({
+                id: 'me',
+                accountType: factory.accountType.Point,
+                accountNumber: this.user.data.accounts[0].typeOfGood.accountNumber
             });
+            this.accountMoneyTransferActions = result.data;
             console.log(this.accountMoneyTransferActions);
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/member/point/history' }]);

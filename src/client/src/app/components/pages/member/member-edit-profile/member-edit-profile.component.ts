@@ -92,13 +92,13 @@ export class MemberEditProfileComponent implements OnInit {
             },
         };
 
-        const contact = this.user.data.contact;
+        const contact = this.user.data.profile;
         if (contact === undefined) {
             throw new Error('contact is undefined');
         }
         profile.givenName.value = contact.givenName;
         profile.familyName.value = contact.familyName;
-        profile.telephone.value = contact.telephone.replace(/\-/g, '');
+        profile.telephone.value = this.user.getTelephone();
         this.staticProfile = {
             email: contact.email
         };

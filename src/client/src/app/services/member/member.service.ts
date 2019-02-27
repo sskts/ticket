@@ -32,12 +32,11 @@ export class MemberService {
 
         const branchCode = args.theaterCode;
         // 販売劇場検索
-        const seller = await this.sasaki.organization.findMovieTheaterByBranchCode({
-            branchCode: branchCode
+        const result = await this.sasaki.seller.search({
+            location: {branchCodes: [branchCode]},
+            typeOfs: [factory.organizationType.MovieTheater]
         });
-        if (seller === null) {
-            throw new Error('販売劇場が見つかりませんでした。');
-        }
+        const seller = result.data[0];
 
         const programMembership = args.programMembership;
         if (programMembership.id === undefined
@@ -75,11 +74,14 @@ export class MemberService {
         return new Promise<boolean>((resolve, reject) => {
             const timer = setInterval(async () => {
                 try {
-                    const programMembershipOwnershipInfos =
-                        await this.sasaki.person.searchOwnershipInfos({
-                            ownedBy: 'me',
-                            goodType: 'ProgramMembership'
+                    const result =
+                        await this.sasaki.ownerShip.search({
+                            id: 'me',
+                            typeOfGood: {
+                                typeOf: 'ProgramMembership'
+                            }
                         });
+                    const programMembershipOwnershipInfos = result.data;
                     if (programMembershipOwnershipInfos.length > 0) {
                         clearInterval(timer);
                         resolve(true);

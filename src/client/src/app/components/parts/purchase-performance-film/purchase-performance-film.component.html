@@ -1,10 +1,10 @@
-<div class="performance" [ngClass]="(salseFlg) ? (performance.offer.availability | availability).className : ''">
+<div class="performance" [ngClass]="(salseFlg) ? (performance.offers.availability | availability).className : ''">
     <div class="date">
         <div class="mb-xx-small text-center">
-            <strong class="large-text">{{ performance.startDate | timeFormat: performance.coaInfo.dateJouei }}</strong>
+            <strong class="large-text">{{ performance.startDate | timeFormat: performance.coaInfo?.dateJouei }}</strong>
         </div>
         <div class="text-center">
-            <span>～ {{ performance.endDate | timeFormat: performance.coaInfo.dateJouei }}</span>
+            <span>～ {{ performance.endDate | timeFormat: performance.coaInfo?.dateJouei }}</span>
         </div>
     </div>
     <div class="screen small-x-text">{{ performance.location.name.ja }}</div>
@@ -15,10 +15,10 @@
         <div *ngIf="isNotAccepted" class="status window">予約不可</div>
         <div *ngIf="isWindow" class="status window">窓口</div>
     </div>
-    <div *ngIf="performance.coaInfo.kbnService?.kubunCode === '001'" class="service">
+    <div *ngIf="performance.coaInfo?.kbnService?.kubunCode === '001'" class="service">
         <app-icon iconName="first-show-black" width="10" height="10"></app-icon>
     </div>
-    <div *ngIf="performance.coaInfo.kbnService?.kubunCode === '002'" class="service">
+    <div *ngIf="performance.coaInfo?.kbnService?.kubunCode === '002'" class="service">
         <app-icon iconName="late-show-black" width="10" height="10"></app-icon>
     </div>
 </div>
