@@ -212,7 +212,8 @@ export class UserService {
         if (this.data.profile === undefined) {
             return '';
         }
-        return this.data.profile.telephone.replace(/\-/g, '');
+        const no = this.data.profile.telephone.replace(/\-/g, '');
+        return no.replace(/^\+81/g, '0');
     }
 
     /**
@@ -367,13 +368,14 @@ export class UserService {
         telephone: string;
         postalCode: string;
     }) {
+        const tel = args.telephone.replace(/^0/, '+81')
         await this.sasaki.getServices();
         await this.sasaki.person.updateProfile({
             id: 'me',
             familyName: args.familyName,
             givenName: args.givenName,
             email: args.email,
-            telephone: args.telephone
+            telephone: tel
         });
         const profile = await this.sasaki.person.getProfile({
             id: 'me'
