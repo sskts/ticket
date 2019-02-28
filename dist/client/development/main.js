@@ -10476,6 +10476,9 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+// ユーザーのデータ構造が変更された際にここを１インクリメントする
+// 過去のデータを読み込んだ際に対応するため
+var USER_DATA_VERSION = 1;
 var MemberType;
 (function (MemberType) {
     MemberType["NotMember"] = "0";
@@ -10497,6 +10500,7 @@ var UserService = /** @class */ (function () {
         var data = this.storage.load(STORAGE_KEY, _storage_storage_service__WEBPACK_IMPORTED_MODULE_3__["SaveType"].Local);
         if (data === null) {
             this.data = {
+                version: USER_DATA_VERSION,
                 memberType: MemberType.NotMember,
                 creditCards: [],
                 accounts: [],
@@ -10505,6 +10509,9 @@ var UserService = /** @class */ (function () {
             };
             return;
         }
+        if (this.data.version < USER_DATA_VERSION) {
+            this.initMember();
+        }
         this.data = data;
     };
     /**
@@ -10512,6 +10519,7 @@ var UserService = /** @class */ (function () {
      * @method save
      */
     UserService.prototype.save = function () {
+        this.data.version = USER_DATA_VERSION;
         this.storage.save(STORAGE_KEY, this.data, _storage_storage_service__WEBPACK_IMPORTED_MODULE_3__["SaveType"].Local);
     };
     /**
@@ -10522,6 +10530,7 @@ var UserService = /** @class */ (function () {
         var prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
             this.data.accounts.length === 0 ? '' : this.data.accounts[0].typeOfGood.name;
         this.data = {
+            version: USER_DATA_VERSION,
             memberType: MemberType.NotMember,
             creditCards: [],
             accounts: [],
