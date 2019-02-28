@@ -104,7 +104,6 @@ export class UserService {
      * @method initMember
      */
     public async initMember() {
-        this.data.version = USER_DATA_VERSION;
         this.data.memberType = MemberType.Member;
         this.save();
         await this.sasaki.getServices();
@@ -160,6 +159,7 @@ export class UserService {
             typeOfGood: 'ProgramMembership'
         });
         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
+        this.data.version = USER_DATA_VERSION;
         this.save();
     }
 

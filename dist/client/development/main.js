@@ -10548,7 +10548,6 @@ var UserService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.data.version = USER_DATA_VERSION;
                         this.data.memberType = MemberType.Member;
                         this.save();
                         return [4 /*yield*/, this.sasaki.getServices()];
@@ -10614,6 +10613,7 @@ var UserService = /** @class */ (function () {
                     case 11:
                         programMembershipOwnershipInfos = _a.sent();
                         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
+                        this.data.version = USER_DATA_VERSION;
                         this.save();
                         return [2 /*return*/];
                 }
