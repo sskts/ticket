@@ -7,7 +7,12 @@ import { SaveType, StorageService } from '../storage/storage.service';
 type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>;
 type programMembershipType = factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<'ProgramMembership'>>;
 
+// ユーザーのデータ構造が変更された際にここを１インクリメントする
+// 過去のデータを読み込んだ際に対応するため
+const USER_DATA_VERSION = 1;
+
 export interface IData {
+    version: Number;
     userName?: string;
     memberType: MemberType;
     profile?: factory.person.IProfile;
@@ -52,6 +57,7 @@ export class UserService {
         const data: IData | null = this.storage.load(STORAGE_KEY, SaveType.Local);
         if (data === null) {
             this.data = {
+                version: USER_DATA_VERSION,
                 memberType: MemberType.NotMember,
                 creditCards: [],
                 accounts: [],
@@ -62,6 +68,9 @@ export class UserService {
             return;
         }
         this.data = data;
+        if(this.data.version === undefined || this.data.version < USER_DATA_VERSION) {
+            this.initMember();
+        }
     }
 
     /**
@@ -80,6 +89,7 @@ export class UserService {
         const prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
             this.data.accounts.length === 0 ? '' : this.data.accounts[0].typeOfGood.name;
         this.data = {
+            version: USER_DATA_VERSION,
             memberType: MemberType.NotMember,
             creditCards: [],
             accounts: [],
@@ -149,6 +159,7 @@ export class UserService {
             typeOfGood: 'ProgramMembership'
         });
         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
+        this.data.version = USER_DATA_VERSION;
         this.save();
     }
 
