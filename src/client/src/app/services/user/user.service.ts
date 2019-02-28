@@ -68,7 +68,7 @@ export class UserService {
             return;
         }
         this.data = data;
-        if(this.data.version < USER_DATA_VERSION) {
+        if(this.data.version === undefined || this.data.version < USER_DATA_VERSION) {
             this.initMember();
         }
     }
