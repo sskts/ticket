@@ -10509,10 +10509,10 @@ var UserService = /** @class */ (function () {
             };
             return;
         }
+        this.data = data;
         if (this.data.version < USER_DATA_VERSION) {
             this.initMember();
         }
-        this.data = data;
     };
     /**
      * 保存
