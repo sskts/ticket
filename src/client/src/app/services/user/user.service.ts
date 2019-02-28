@@ -78,7 +78,6 @@ export class UserService {
      * @method save
      */
     public save() {
-        this.data.version = USER_DATA_VERSION;
         this.storage.save(STORAGE_KEY, this.data, SaveType.Local);
     }
 
@@ -105,6 +104,7 @@ export class UserService {
      * @method initMember
      */
     public async initMember() {
+        this.data.version = USER_DATA_VERSION;
         this.data.memberType = MemberType.Member;
         this.save();
         await this.sasaki.getServices();

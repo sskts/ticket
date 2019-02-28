@@ -10519,7 +10519,6 @@ var UserService = /** @class */ (function () {
      * @method save
      */
     UserService.prototype.save = function () {
-        this.data.version = USER_DATA_VERSION;
         this.storage.save(STORAGE_KEY, this.data, _storage_storage_service__WEBPACK_IMPORTED_MODULE_3__["SaveType"].Local);
     };
     /**
@@ -10549,6 +10548,7 @@ var UserService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        this.data.version = USER_DATA_VERSION;
                         this.data.memberType = MemberType.Member;
                         this.save();
                         return [4 /*yield*/, this.sasaki.getServices()];
