@@ -5546,6 +5546,7 @@ var PurchaseComponent = /** @class */ (function () {
         var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
         var limitDate = moment__WEBPACK_IMPORTED_MODULE_3__().add(7, 'days').format('YYYYMMDD');
         var searchDate = this.conditions.date < today ? today : this.conditions.date;
+        this.conditions.date = searchDate;
         var dateFilterResult = this.screeningEvents
             .filter(function (screeningEvent) { return screeningEvent.coaInfo !== undefined && screeningEvent.coaInfo.dateJouei === searchDate; });
         var displayFilterResult = dateFilterResult
@@ -10476,6 +10477,9 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+// ユーザーのデータ構造が変更された際にここを１インクリメントする
+// 過去のデータを読み込んだ際に対応するため
+var USER_DATA_VERSION = 1;
 var MemberType;
 (function (MemberType) {
     MemberType["NotMember"] = "0";
@@ -10497,6 +10501,7 @@ var UserService = /** @class */ (function () {
         var data = this.storage.load(STORAGE_KEY, _storage_storage_service__WEBPACK_IMPORTED_MODULE_3__["SaveType"].Local);
         if (data === null) {
             this.data = {
+                version: USER_DATA_VERSION,
                 memberType: MemberType.NotMember,
                 creditCards: [],
                 accounts: [],
@@ -10506,6 +10511,9 @@ var UserService = /** @class */ (function () {
             return;
         }
         this.data = data;
+        if (this.data.version === undefined || this.data.version < USER_DATA_VERSION) {
+            this.initMember();
+        }
     };
     /**
      * 保存
@@ -10522,6 +10530,7 @@ var UserService = /** @class */ (function () {
         var prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
             this.data.accounts.length === 0 ? '' : this.data.accounts[0].typeOfGood.name;
         this.data = {
+            version: USER_DATA_VERSION,
             memberType: MemberType.NotMember,
             creditCards: [],
             accounts: [],
@@ -10605,6 +10614,7 @@ var UserService = /** @class */ (function () {
                     case 11:
                         programMembershipOwnershipInfos = _a.sent();
                         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
+                        this.data.version = USER_DATA_VERSION;
                         this.save();
                         return [2 /*return*/];
                 }
