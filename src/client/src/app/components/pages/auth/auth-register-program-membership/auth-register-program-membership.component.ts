@@ -40,14 +40,17 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         try {
             await this.sasaki.getServices();
             // 劇場一覧取得
-            const result = await this.sasaki.seller.search({typeOfs: [factory.organizationType.MovieTheater]});
+            const result = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
             const searchMovieTheatersResult = result.data;
             // 除外劇場処理
             const excludeTheatersResult = await this.maintenance.excludeTheaters();
             if (excludeTheatersResult.isExclude) {
                 this.theaters = searchMovieTheatersResult.filter((theater) => {
                     const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
-                        return (theater.location !== undefined && excludeCode === theater.location.branchCode);
+                        return (theater.location === undefined
+                            || theater.location.branchCode === undefined
+                            || theater.location.branchCode === ''
+                            || excludeCode === theater.location.branchCode);
                     });
 
                     return (excludeTheater === undefined);
