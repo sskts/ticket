@@ -217,7 +217,7 @@ export class PurchaseComponent implements OnInit {
      */
     private async getTheaters() {
         await this.sasaki.getServices();
-        const result = await this.sasaki.seller.search({typeOfs: [factory.organizationType.MovieTheater]});
+        const result = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
         const theaters = result.data;
         // 除外劇場処理
         const excludeTheatersResult = await this.maintenance.excludeTheaters();
@@ -227,7 +227,10 @@ export class PurchaseComponent implements OnInit {
 
         return theaters.filter((theater) => {
             const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
-                return (theater.location === undefined || excludeCode === theater.location.branchCode);
+                return (theater.location === undefined
+                    || theater.location.branchCode === undefined
+                    || theater.location.branchCode === ''
+                    || excludeCode === theater.location.branchCode);
             });
 
             return (excludeTheater === undefined);
@@ -249,7 +252,7 @@ export class PurchaseComponent implements OnInit {
             eventStatuses: [factory.eventStatusType.EventScheduled],
             startFrom: moment().toDate(),
             startThrough: moment().add(5, 'week').toDate(),
-            sort: {startDate: factory.sortType.Ascending },
+            sort: { startDate: factory.sortType.Ascending },
             superEvent: { locationBranchCodes: [branchCode] }
         });
 
@@ -325,8 +328,8 @@ export class PurchaseComponent implements OnInit {
         const displayFilterResult = dateFilterResult
             .filter(screeningEvent => (screeningEvent.coaInfo !== undefined
                 && (screeningEvent.coaInfo.rsvStartDate <= today
-                || this.checkEventPreSale(screeningEvent)
-                || screeningEvent.coaInfo.dateJouei <= limitDate)));
+                    || this.checkEventPreSale(screeningEvent)
+                    || screeningEvent.coaInfo.dateJouei <= limitDate)));
 
         this.timeOrder = displayFilterResult;
         displayFilterResult.forEach((screeningEvent) => {

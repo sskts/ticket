@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.5.6 - 2019-03-05
+### Changed
+ - branchCodeがない劇場も非表示へ変更
+
 ## 2.5.5 - 2019-02-27
 ### Changed
  - sskts-api-javascript-clientを v6.0.0に変更
