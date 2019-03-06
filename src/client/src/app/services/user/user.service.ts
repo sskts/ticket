@@ -9,7 +9,7 @@ type programMembershipType = factory.ownershipInfo.IOwnershipInfo<factory.owners
 
 // ユーザーのデータ構造が変更された際にここを１インクリメントする
 // 過去のデータを読み込んだ際に対応するため
-const USER_DATA_VERSION = 1;
+const USER_DATA_VERSION = 2;
 
 export interface IData {
     version: Number;
@@ -68,7 +68,7 @@ export class UserService {
             return;
         }
         this.data = data;
-        if(this.data.version === undefined || this.data.version < USER_DATA_VERSION) {
+        if (this.data.version === undefined || this.data.version < USER_DATA_VERSION) {
             this.initMember();
         }
     }
@@ -86,8 +86,10 @@ export class UserService {
      * @method reset
      */
     public reset() {
-        const prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
-            this.data.accounts.length === 0 ? '' : this.data.accounts[0].typeOfGood.name;
+        const prevUserName =
+            this.sasaki.userName !== undefined ? this.sasaki.userName :
+            this.data.accounts.length > 0 && this.data.accounts[0].typeOfGood ? this.data.accounts[0].typeOfGood.name :
+            this.data.prevUserName ? this.data.prevUserName : '';
         this.data = {
             version: USER_DATA_VERSION,
             memberType: MemberType.NotMember,
@@ -379,7 +381,7 @@ export class UserService {
         telephone: string;
         postalCode: string;
     }) {
-        const tel = args.telephone.replace(/^0/, '+81')
+        const tel = args.telephone.replace(/^0/, '+81');
         await this.sasaki.getServices();
         await this.sasaki.person.updateProfile({
             id: 'me',
