@@ -10536,7 +10536,8 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.reset = function () {
         var prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
-            this.data.accounts.length === 0 ? '' : this.data.accounts[0].typeOfGood.name;
+            this.data.accounts.length > 0 && this.data.accounts[0].typeOfGood ? this.data.accounts[0].typeOfGood.name :
+                this.data.prevUserName ? this.data.prevUserName : '';
         this.data = {
             version: USER_DATA_VERSION,
             memberType: MemberType.NotMember,
