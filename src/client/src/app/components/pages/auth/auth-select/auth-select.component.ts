@@ -35,7 +35,10 @@ export class AuthSelectComponent implements OnInit {
     public async signIn() {
         this.isLoading = true;
         try {
-            const userName = this.user.data.accounts.length > 0 ?
+            const userName =
+                (!this.user || !this.user.data || !this.user.data.accounts) ? '' :
+                this.user.data.accounts.length > 0 &&
+                this.user.data.accounts[0].typeOfGood ?
                 this.user.data.accounts[0].typeOfGood.name :
                 this.user.data.prevUserName ? this.user.data.prevUserName : '';
             await this.sasaki.signInWithUserName(false, userName);
