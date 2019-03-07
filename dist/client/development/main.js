@@ -10237,22 +10237,15 @@ var SasakiService = /** @class */ (function () {
      */
     SasakiService.prototype.authorize = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var user, memberType, url, options, result, option;
+            var user, memberType, url, body, result, option;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         user = this.storage.load('user');
                         memberType = user.memberType;
                         url = '/api/authorize/getCredentials';
-                        options = {
-                            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]({
-                                'Pragma': 'no-cache',
-                                'Cache-Control': 'no-cache',
-                                'If-Modified-Since': new Date(0).toUTCString()
-                            }),
-                            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpParams"]().set('member', memberType)
-                        };
-                        return [4 /*yield*/, this.http.get(url, options).toPromise()];
+                        body = { member: memberType };
+                        return [4 /*yield*/, this.http.post(url, body).toPromise()];
                     case 1:
                         result = _a.sent();
                         option = {
