@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import 'rxjs/add/operator/toPromise';
-import { environment } from '../../../environments/environment';
 import { StorageService } from '../storage/storage.service';
 
 @Injectable()
@@ -19,6 +18,7 @@ export class SasakiService {
         placeOrder: sasaki.service.transaction.PlaceOrder
     };
     public programMembership: sasaki.service.ProgramMembership;
+    private endpoint: string;
 
     constructor(
         private http: HttpClient,
@@ -96,7 +96,7 @@ export class SasakiService {
         await this.authorize();
 
         return {
-            endpoint: environment.SSKTS_API_ENDPOINT,
+            endpoint: this.endpoint,
             auth: this.auth
         };
     }
@@ -117,11 +117,10 @@ export class SasakiService {
             params: new HttpParams().set('member', memberType)
         };
         const result = await this.http.get<{
-            credentials: {
-                accessToken: string;
-            };
+            credentials: { accessToken: string; };
             userName?: string;
             clientId: string;
+            endpoint: string;
         }>(url, options).toPromise();
         const option = {
             domain: '',
@@ -137,5 +136,6 @@ export class SasakiService {
         this.auth = sasaki.createAuthInstance(option);
         this.auth.setCredentials(result.credentials);
         this.userName = result.userName;
+        this.endpoint = result.endpoint;
     }
 }

@@ -33,6 +33,7 @@ function getCredentials(req, res) {
             if (req.session === undefined) {
                 throw new Error('session is undefined');
             }
+            const endpoint = process.env.SSKTS_API_ENDPOINT;
             let authModel;
             if (req.query.member === MemberType.NotMember) {
                 authModel = new auth_model_1.AuthModel();
@@ -43,23 +44,15 @@ function getCredentials(req, res) {
             else {
                 throw new Error('member does not macth MemberType');
             }
-            const options = {
-                endpoint: process.env.SSKTS_API_ENDPOINT,
-                auth: authModel.create()
-            };
+            const options = { endpoint, auth: authModel.create() };
             const accessToken = yield options.auth.getAccessToken();
-            const credentials = {
-                accessToken: accessToken
-            };
+            const credentials = { accessToken };
+            const clientId = options.auth.options.clientId;
             log('getCredentials MemberType', req.query.member);
             const userName = (req.query.member === MemberType.Member)
                 ? options.auth.verifyIdToken({}).getUsername()
                 : undefined;
-            res.json({
-                credentials: credentials,
-                userName: userName,
-                clientId: options.auth.options.clientId
-            });
+            res.json({ credentials, userName, clientId, endpoint });
         }
         catch (err) {
             base_controller_1.errorProsess(res, err);
