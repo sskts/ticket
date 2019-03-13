@@ -1,8 +1,7 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as sasaki from '@motionpicture/sskts-api-javascript-client';
 import 'rxjs/add/operator/toPromise';
-import { environment } from '../../../environments/environment';
 import { StorageService } from '../storage/storage.service';
 
 @Injectable()
@@ -19,6 +18,7 @@ export class SasakiService {
         placeOrder: sasaki.service.transaction.PlaceOrder
     };
     public programMembership: sasaki.service.ProgramMembership;
+    private endpoint: string;
 
     constructor(
         private http: HttpClient,
@@ -96,7 +96,7 @@ export class SasakiService {
         await this.authorize();
 
         return {
-            endpoint: environment.SSKTS_API_ENDPOINT,
+            endpoint: this.endpoint,
             auth: this.auth
         };
     }
@@ -108,21 +108,13 @@ export class SasakiService {
         const user = this.storage.load('user');
         const memberType = user.memberType;
         const url = '/api/authorize/getCredentials';
-        const options = {
-            headers: new HttpHeaders({
-                'Pragma': 'no-cache',
-                'Cache-Control': 'no-cache',
-                'If-Modified-Since': new Date(0).toUTCString()
-            }),
-            params: new HttpParams().set('member', memberType)
-        };
-        const result = await this.http.get<{
-            credentials: {
-                accessToken: string;
-            };
+        const body = { member: memberType };
+        const result = await this.http.post<{
+            credentials: { accessToken: string; };
             userName?: string;
             clientId: string;
-        }>(url, options).toPromise();
+            endpoint: string;
+        }>(url, body).toPromise();
         const option = {
             domain: '',
             clientId: result.clientId,
@@ -137,5 +129,6 @@ export class SasakiService {
         this.auth = sasaki.createAuthInstance(option);
         this.auth.setCredentials(result.credentials);
         this.userName = result.userName;
+        this.endpoint = result.endpoint;
     }
 }

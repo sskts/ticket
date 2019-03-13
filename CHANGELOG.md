@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.6.0 - 2019-03-13
+### Changed
+ - APIエンドポイントを設定ファイルから削除
+ - 認証情報取得をPOSTへ変更
+
 ## 2.5.7 - 2019-03-06
 ### Fixed
  - 旧バージョンからユーザー情報が更新されない不具合修正
