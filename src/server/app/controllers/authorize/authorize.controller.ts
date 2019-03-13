@@ -19,37 +19,31 @@ export enum MemberType {
  * @param {Response} res
  */
 export async function getCredentials(req: Request, res: Response) {
-    log('getCredentials');
+    log('getCredentials', req.method);
     try {
         if (req.session === undefined) {
             throw new Error('session is undefined');
         }
+        const body = (req.method === 'POST' || req.method === 'post') ? req.body : req.query;
+        const endpoint = (<string>process.env.SSKTS_API_ENDPOINT);
         let authModel;
-        if (req.query.member === MemberType.NotMember) {
+        if (body.member === MemberType.NotMember) {
             authModel = new AuthModel();
-        } else if (req.query.member === MemberType.Member) {
+        } else if (body.member === MemberType.Member) {
             authModel = new Auth2Model(req.session.auth);
         } else {
             throw new Error('member does not macth MemberType');
         }
-        const options = {
-            endpoint: (<string>process.env.SSKTS_API_ENDPOINT),
-            auth: authModel.create()
-        };
+        const options = { endpoint, auth: authModel.create() };
         const accessToken = await options.auth.getAccessToken();
-        const credentials = {
-            accessToken: accessToken
-        };
+        const credentials = { accessToken };
+        const clientId = options.auth.options.clientId;
 
-        log('getCredentials MemberType', req.query.member);
-        const userName = (req.query.member === MemberType.Member)
+        log('getCredentials MemberType', body.member);
+        const userName = (body.member === MemberType.Member)
             ? options.auth.verifyIdToken(<any>{}).getUsername()
             : undefined;
-        res.json({
-            credentials: credentials,
-            userName: userName,
-            clientId: options.auth.options.clientId
-        });
+        res.json({ credentials, userName, clientId, endpoint });
     } catch (err) {
         errorProsess(res, err);
     }

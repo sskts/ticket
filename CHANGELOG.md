@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 ### Changed
+ - APIエンドポイントを設定ファイルから削除
+ - 認証情報取得をPOSTへ変更
 
 ### Fixed
 

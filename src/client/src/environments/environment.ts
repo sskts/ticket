@@ -6,8 +6,6 @@ export const environment = {
     production: false,
     version: '1.0.0',
 
-    SSKTS_API_ENDPOINT: 'https://sskts-api-development.azurewebsites.net',
-
     REGION: 'ap-northeast-1', // identity poolのリージョンを指定する
     IDENTITY_POOL_ID: 'ap-northeast-1:6a67f523-93c3-4766-b96f-6552f21abd8d', // IDENTITY POOLのID(AWS CONSOLEで確認)
     USER_POOL_ID: '',
