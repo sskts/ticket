@@ -178,7 +178,7 @@ export class UserService {
                         if (!accountMutex || accountMutex.expire < now) {
                             clearInterval(timer);
                             resolve(true);
-                        } else if (count < limit) {
+                        } else if (count >= limit) {
                             clearInterval(timer);
                             resolve(false);
                         }
