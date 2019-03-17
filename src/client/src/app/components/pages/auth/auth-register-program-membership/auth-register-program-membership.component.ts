@@ -6,6 +6,7 @@ import { MaintenanceService } from '../../../../services/maintenance/maintenance
 import { MemberService } from '../../../../services/member/member.service';
 import { SasakiService } from '../../../../services/sasaki/sasaki.service';
 type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
+type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>;
 
 @Component({
     selector: 'app-auth-register-program-membership',
@@ -99,6 +100,17 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         this.disable = true;
         this.isLoading = true;
         try {
+            const accounts = await this.searchPointAccount();
+            if (accounts.length > 1) {
+                // ポイントアカウントが複数存在する場合、最初の一件を残してクローズする
+                for (let i = 1; i < accounts.length; i++) {
+                    await this.sasaki.ownerShip.closeAccount({
+                        id: 'me',
+                        accountType: factory.accountType.Point,
+                        accountNumber: accounts[i].typeOfGood.accountNumber
+                    });
+                }
+            }
             // 販売劇場検索
             const theaterCode = this.optionsForm.controls.theater.value;
             const programMembership = this.programMemberships[0];
@@ -125,5 +137,28 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             this.alertModal = true;
         }
     }
+
+    /**
+     * ポイントアカウントを検索する
+     * @method searchPointAccount
+     */
+    private async searchPointAccount() {
+        // 口座検索
+        const accountSearchResult = await this.sasaki.ownerShip.search({
+            id: 'me',
+            typeOfGood: {
+                typeOf: factory.ownershipInfo.AccountGoodType.Account,
+                accountType: factory.accountType.Point
+            }
+        });
+        const accounts = accountSearchResult.data.filter((account) => {
+            return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
+                && account.typeOfGood.accountType === factory.accountType.Point
+                && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
+        });
+        return <accountType[]>accounts;
+    }
+
+
 
 }

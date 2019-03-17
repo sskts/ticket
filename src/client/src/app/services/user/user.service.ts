@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
+import * as moment from 'moment';
 import { environment } from '../../../environments/environment';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { SaveType, StorageService } from '../storage/storage.service';
@@ -32,6 +33,10 @@ export interface IGmoTokenObject {
     toBeExpiredAt: string;
     maskedCardNo: string;
     isSecurityCodeSet: boolean;
+}
+
+interface PointAccountMutex {
+    expire: Number;
 }
 
 const STORAGE_KEY = 'user';
@@ -131,30 +136,8 @@ export class UserService {
             this.data.creditCards = [];
         }
 
-        // 口座検索
-        const accountSearchResult = await this.sasaki.ownerShip.search({
-            id: 'me',
-            typeOfGood: {
-                typeOf: factory.ownershipInfo.AccountGoodType.Account,
-                accountType: factory.accountType.Point
-            }
-        });
-        const accounts = accountSearchResult.data.filter((account) => {
-            return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
-                && account.typeOfGood.accountType === factory.accountType.Point
-                && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
-        });
-        if (accounts.length === 0) {
-            // 口座開設
-            const openAccountResult = await this.sasaki.ownerShip.openAccount({
-                id: 'me',
-                accountType: factory.accountType.Point,
-                name: (<string>this.sasaki.userName)
-            });
-            this.data.accounts = [openAccountResult];
-        } else {
-            this.data.accounts = <accountType[]>accounts;
-        }
+        // 口座検索または作成
+        this.data.accounts = await this.openPointAccountIfNotExists();
 
         const programMembershipOwnershipInfos = await this.sasaki.ownerShip.search<'ProgramMembership'>({
             id: 'me',
@@ -171,6 +154,70 @@ export class UserService {
      */
     public async updateAccount() {
         await this.sasaki.getServices();
+        // 口座検索または作成
+        this.data.accounts = await this.openPointAccountIfNotExists();
+        this.save();
+    }
+
+    /**
+     * ポイントアカウントを検索し、存在しない場合は作成する
+     * 検索された
+     * @method openPointAccountIfNotExists
+     */
+    private async openPointAccountIfNotExists() {
+        const POINT_ACCOUNT_MUTEX_KEY = 'point_account_mutex';
+        try {
+            // 排他制御処理 15秒間
+            await new Promise((resolve) => {
+                const limit = 50;
+                let count = 0;
+                const timer = setInterval(async () => {
+                    try {
+                        const now = moment().unix();
+                        const accountMutex: PointAccountMutex | null = this.storage.load(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
+                        if (!accountMutex || accountMutex.expire < now) {
+                            clearInterval(timer);
+                            resolve(true);
+                        } else if (count < limit) {
+                            clearInterval(timer);
+                            resolve(false);
+                        }
+                        count++;
+                    } catch (error) {
+                        clearInterval(timer);
+                        throw error;
+                    }
+                }, 300);
+            });
+            const mutex: PointAccountMutex = { expire: moment().add(15, 'seconds').unix() };
+            this.storage.save(POINT_ACCOUNT_MUTEX_KEY, mutex, SaveType.Local);
+
+            let accounts = await this.searchPointAccount();
+            if (accounts.length === 0) {
+                await this.openPointAccount();
+                accounts = await this.searchPointAccount();
+            }
+            this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
+            return accounts;
+        } catch (error) {
+            this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
+            throw error;
+        }
+    }
+
+    private async openPointAccount() {
+        await this.sasaki.ownerShip.openAccount({
+            id: 'me',
+            accountType: factory.accountType.Point,
+            name: (<string>this.sasaki.userName)
+        });
+    }
+
+    /**
+     * ポイントアカウントを検索する
+     * @method searchPointAccount
+     */
+    private async searchPointAccount() {
         // 口座検索
         const accountSearchResult = await this.sasaki.ownerShip.search({
             id: 'me',
@@ -184,18 +231,7 @@ export class UserService {
                 && account.typeOfGood.accountType === factory.accountType.Point
                 && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
         });
-        if (accounts.length === 0) {
-            // 口座開設
-            const openAccountResult = await this.sasaki.ownerShip.openAccount({
-                id: 'me',
-                accountType: factory.accountType.Point,
-                name: (<string>this.sasaki.userName)
-            });
-            this.data.accounts = [openAccountResult];
-        } else {
-            this.data.accounts = <accountType[]>accounts;
-        }
-        this.save();
+        return <accountType[]>accounts;
     }
 
     /**
