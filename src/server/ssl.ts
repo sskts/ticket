@@ -9,7 +9,7 @@ import * as app from './app/app';
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.PORT || '443');
+const port = normalizePort(process.env.PORT === undefined ? '443' : process.env.PORT);
 // tslint:disable-next-line:no-backbone-get-set-outside-model
 app.set('port', port);
 

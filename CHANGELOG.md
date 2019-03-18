@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.6.1 - 2019-03-18
+### Fixed
+ - ポイント口座が二つできる問題を修正
+ - jslintを修正
+
 ## 2.6.0 - 2019-03-13
 ### Changed
  - APIエンドポイントを設定ファイルから削除

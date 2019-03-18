@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
+import * as moment from 'moment';
 import { environment } from '../../../environments/environment';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { SaveType, StorageService } from '../storage/storage.service';
+import { UtilService } from '../util/util.service';
 
 type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>;
 type programMembershipType = factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<'ProgramMembership'>>;
 
 // ユーザーのデータ構造が変更された際にここを１インクリメントする
 // 過去のデータを読み込んだ際に対応するため
-const USER_DATA_VERSION = 2;
+const USER_DATA_VERSION = 3;
 
 export interface IData {
     version: Number;
@@ -34,6 +36,10 @@ export interface IGmoTokenObject {
     isSecurityCodeSet: boolean;
 }
 
+interface PointAccountMutex {
+    expire: Number;
+}
+
 const STORAGE_KEY = 'user';
 
 @Injectable()
@@ -43,7 +49,8 @@ export class UserService {
 
     constructor(
         private storage: StorageService,
-        private sasaki: SasakiService
+        private sasaki: SasakiService,
+        private util: UtilService
     ) {
         this.load();
         this.save();
@@ -88,8 +95,10 @@ export class UserService {
     public reset() {
         const prevUserName =
             this.sasaki.userName !== undefined ? this.sasaki.userName :
-            this.data.accounts.length > 0 && this.data.accounts[0].typeOfGood ? this.data.accounts[0].typeOfGood.name :
-            this.data.prevUserName ? this.data.prevUserName : '';
+            this.data.accounts.length > 0 &&
+            this.data.accounts[0].typeOfGood !== null &&
+            this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
+            this.data.prevUserName !== undefined ? this.data.prevUserName : '';
         this.data = {
             version: USER_DATA_VERSION,
             memberType: MemberType.NotMember,
@@ -131,30 +140,8 @@ export class UserService {
             this.data.creditCards = [];
         }
 
-        // 口座検索
-        const accountSearchResult = await this.sasaki.ownerShip.search({
-            id: 'me',
-            typeOfGood: {
-                typeOf: factory.ownershipInfo.AccountGoodType.Account,
-                accountType: factory.accountType.Point
-            }
-        });
-        const accounts = accountSearchResult.data.filter((account) => {
-            return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
-                && account.typeOfGood.accountType === factory.accountType.Point
-                && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
-        });
-        if (accounts.length === 0) {
-            // 口座開設
-            const openAccountResult = await this.sasaki.ownerShip.openAccount({
-                id: 'me',
-                accountType: factory.accountType.Point,
-                name: (<string>this.sasaki.userName)
-            });
-            this.data.accounts = [openAccountResult];
-        } else {
-            this.data.accounts = <accountType[]>accounts;
-        }
+        // 口座検索または作成
+        this.data.accounts = await this.openPointAccountIfNotExists();
 
         const programMembershipOwnershipInfos = await this.sasaki.ownerShip.search<'ProgramMembership'>({
             id: 'me',
@@ -171,6 +158,58 @@ export class UserService {
      */
     public async updateAccount() {
         await this.sasaki.getServices();
+        // 口座検索または作成
+        this.data.accounts = await this.openPointAccountIfNotExists();
+        this.save();
+    }
+
+    /**
+     * ポイントアカウントを検索し、存在しない場合は作成する
+     * 検索された
+     * @method openPointAccountIfNotExists
+     */
+    private async openPointAccountIfNotExists() {
+        const POINT_ACCOUNT_MUTEX_KEY = 'point_account_mutex';
+        try {
+            // 排他制御処理 15秒間
+            const limit = 50;
+            for (let i = 0; i < limit; i++) {
+                const now = moment().unix();
+                const accountMutex: PointAccountMutex | null = this.storage.load(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
+                if (accountMutex === null || accountMutex.expire < now) {
+                    break;
+                }
+                await this.util.sleep(300);
+            }
+            const mutex: PointAccountMutex = { expire: moment().add(15, 'seconds').unix() };
+            this.storage.save(POINT_ACCOUNT_MUTEX_KEY, mutex, SaveType.Local);
+
+            let accounts = await this.searchPointAccount();
+            if (accounts.length === 0) {
+                await this.openPointAccount();
+                accounts = await this.searchPointAccount();
+            }
+            this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
+            return accounts;
+        } catch (error) {
+            this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
+            throw error;
+        }
+    }
+
+    private async openPointAccount() {
+        await this.sasaki.ownerShip.openAccount({
+            id: 'me',
+            accountType: factory.accountType.Point,
+            name: (<string>this.sasaki.userName)
+        });
+    }
+
+    /**
+     * ポイントアカウントを検索する
+     * @method searchPointAccount
+     */
+    private async searchPointAccount() {
         // 口座検索
         const accountSearchResult = await this.sasaki.ownerShip.search({
             id: 'me',
@@ -184,18 +223,7 @@ export class UserService {
                 && account.typeOfGood.accountType === factory.accountType.Point
                 && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
         });
-        if (accounts.length === 0) {
-            // 口座開設
-            const openAccountResult = await this.sasaki.ownerShip.openAccount({
-                id: 'me',
-                accountType: factory.accountType.Point,
-                name: (<string>this.sasaki.userName)
-            });
-            this.data.accounts = [openAccountResult];
-        } else {
-            this.data.accounts = <accountType[]>accounts;
-        }
-        this.save();
+        return <accountType[]>accounts;
     }
 
     /**
