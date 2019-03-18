@@ -10540,7 +10540,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 // ユーザーのデータ構造が変更された際にここを１インクリメントする
 // 過去のデータを読み込んだ際に対応するため
-var USER_DATA_VERSION = 2;
+var USER_DATA_VERSION = 3;
 var MemberType;
 (function (MemberType) {
     MemberType["NotMember"] = "0";
