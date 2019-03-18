@@ -9,6 +9,7 @@ import { UserService } from '../../../../services/user/user.service';
 })
 export class AuthSigninComponent implements OnInit {
 
+    public isLoading: boolean;
     constructor(
         private router: Router,
         private user: UserService
@@ -20,6 +21,7 @@ export class AuthSigninComponent implements OnInit {
      */
     public async ngOnInit() {
         try {
+            this.isLoading = true;
             await this.user.initMember();
             this.router.navigate(['/']);
         } catch (err) {

@@ -39,7 +39,7 @@ export class TicketDetailComponent implements OnInit {
                     margin: 0,
                     scale: (80 / basicSize)
                 };
-                const qrCode = await qrcode.toDataURL(ticketToken ? ticketToken : '', option);
+                const qrCode = await qrcode.toDataURL(ticketToken !== undefined ? ticketToken : '', option);
                 this.qrCodeList.push(qrCode);
             }
         }
