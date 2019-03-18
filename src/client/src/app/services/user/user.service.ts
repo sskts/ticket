@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { environment } from '../../../environments/environment';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { SaveType, StorageService } from '../storage/storage.service';
+import { UtilService } from '../util/util.service';
 
 type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>;
 type programMembershipType = factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<'ProgramMembership'>>;
@@ -48,7 +49,8 @@ export class UserService {
 
     constructor(
         private storage: StorageService,
-        private sasaki: SasakiService
+        private sasaki: SasakiService,
+        private util: UtilService
     ) {
         this.load();
         this.save();
@@ -93,8 +95,10 @@ export class UserService {
     public reset() {
         const prevUserName =
             this.sasaki.userName !== undefined ? this.sasaki.userName :
-            this.data.accounts.length > 0 && this.data.accounts[0].typeOfGood ? this.data.accounts[0].typeOfGood.name :
-            this.data.prevUserName ? this.data.prevUserName : '';
+            this.data.accounts.length > 0 &&
+            this.data.accounts[0].typeOfGood !== null &&
+            this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
+            this.data.prevUserName !== undefined ? this.data.prevUserName : '';
         this.data = {
             version: USER_DATA_VERSION,
             memberType: MemberType.NotMember,
@@ -168,27 +172,15 @@ export class UserService {
         const POINT_ACCOUNT_MUTEX_KEY = 'point_account_mutex';
         try {
             // 排他制御処理 15秒間
-            await new Promise((resolve) => {
-                const limit = 50;
-                let count = 0;
-                const timer = setInterval(async () => {
-                    try {
-                        const now = moment().unix();
-                        const accountMutex: PointAccountMutex | null = this.storage.load(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
-                        if (!accountMutex || accountMutex.expire < now) {
-                            clearInterval(timer);
-                            resolve(true);
-                        } else if (count >= limit) {
-                            clearInterval(timer);
-                            resolve(false);
-                        }
-                        count++;
-                    } catch (error) {
-                        clearInterval(timer);
-                        throw error;
-                    }
-                }, 300);
-            });
+            const limit = 50;
+            for (let i = 0; i < limit; i++) {
+                const now = moment().unix();
+                const accountMutex: PointAccountMutex | null = this.storage.load(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
+                if (accountMutex === null || accountMutex.expire < now) {
+                    break;
+                }
+                await this.util.sleep(300);
+            }
             const mutex: PointAccountMutex = { expire: moment().add(15, 'seconds').unix() };
             this.storage.save(POINT_ACCOUNT_MUTEX_KEY, mutex, SaveType.Local);
 

@@ -85,7 +85,7 @@ export class PurchaseComponent implements OnInit {
             if (this.user.isMember() && this.conditions.theater === '') {
                 // 会員
                 const theater = this.user.getTheaterCode(0);
-                this.conditions.theater = theater ? theater : '';
+                this.conditions.theater = theater !== undefined ? theater : '';
             }
             await this.initialize();
             localStorage.removeItem('schedule');

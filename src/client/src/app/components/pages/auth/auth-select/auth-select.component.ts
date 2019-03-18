@@ -36,11 +36,14 @@ export class AuthSelectComponent implements OnInit {
         this.isLoading = true;
         try {
             const userName =
-                (!this.user || !this.user.data || !this.user.data.accounts) ? '' :
+                (this.user === null || this.user === undefined ||
+                this.user.data === null || this.user.data === undefined ||
+                this.user.data.accounts === null || this.user.data.accounts === undefined) ? '' :
                 this.user.data.accounts.length > 0 &&
-                this.user.data.accounts[0].typeOfGood ?
+                (this.user.data.accounts[0].typeOfGood !== null &&
+                this.user.data.accounts[0].typeOfGood !== undefined) ?
                 this.user.data.accounts[0].typeOfGood.name :
-                this.user.data.prevUserName ? this.user.data.prevUserName : '';
+                this.user.data.prevUserName !== undefined ? this.user.data.prevUserName : '';
             await this.sasaki.signInWithUserName(false, userName);
             this.user.data.memberType = MemberType.Member;
             this.user.save();
