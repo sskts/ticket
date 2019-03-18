@@ -11,7 +11,7 @@ type programMembershipType = factory.ownershipInfo.IOwnershipInfo<factory.owners
 
 // ユーザーのデータ構造が変更された際にここを１インクリメントする
 // 過去のデータを読み込んだ際に対応するため
-const USER_DATA_VERSION = 2;
+const USER_DATA_VERSION = 3;
 
 export interface IData {
     version: Number;
