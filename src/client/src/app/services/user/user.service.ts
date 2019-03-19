@@ -218,12 +218,17 @@ export class UserService {
                 accountType: factory.accountType.Point
             }
         });
-        const accounts = accountSearchResult.data.filter((account) => {
+        const accounts = <accountType[]>accountSearchResult.data.filter((account) => {
             return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
                 && account.typeOfGood.accountType === factory.accountType.Point
                 && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
         });
-        return <accountType[]>accounts;
+        // 口座開設についてあとに作ったものが先にくるようにソートする
+        accounts.sort((a: accountType, b: accountType) => {
+            return (a.typeOfGood.openDate > b.typeOfGood.openDate) ? -1 :
+                (a.typeOfGood.openDate < b.typeOfGood.openDate) ? 1 : 0;
+        });
+        return accounts;
     }
 
     /**

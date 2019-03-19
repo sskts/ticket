@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.6.2 - 2019-03-19
+### Changed
+ - ポイント口座のソート順を変更(後に作った口座が先に来るように修正)
+
 ## 2.6.1 - 2019-03-18
 ### Fixed
  - ポイント口座が二つできる問題を修正
