@@ -10787,6 +10787,11 @@ var UserService = /** @class */ (function () {
                                 && account.typeOfGood.accountType === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].accountType.Point
                                 && account.typeOfGood.status === _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.accountStatusType.Opened);
                         });
+                        // 口座開設についてあとに作ったものが先にくるようにソートする
+                        accounts.sort(function (a, b) {
+                            return (a.typeOfGood.openDate > b.typeOfGood.openDate) ? -1 :
+                                (a.typeOfGood.openDate < b.typeOfGood.openDate) ? 1 : 0;
+                        });
                         return [2 /*return*/, accounts];
                 }
             });
