@@ -217,8 +217,12 @@ export class PurchaseComponent implements OnInit {
      */
     private async getTheaters() {
         await this.sasaki.getServices();
-        const result = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
-        const theaters = result.data;
+        const sellerSearchResult = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
+        const theaters = sellerSearchResult.data.filter((s) => {
+            return (s.location !== undefined
+                && s.location.branchCode !== undefined
+                && s.location.branchCode !== '');
+        });
         // 除外劇場処理
         const excludeTheatersResult = await this.maintenance.excludeTheaters();
         if (!excludeTheatersResult.isExclude) {
@@ -229,7 +233,6 @@ export class PurchaseComponent implements OnInit {
             const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
                 return (theater.location === undefined
                     || theater.location.branchCode === undefined
-                    || theater.location.branchCode === ''
                     || excludeCode === theater.location.branchCode);
             });
 
