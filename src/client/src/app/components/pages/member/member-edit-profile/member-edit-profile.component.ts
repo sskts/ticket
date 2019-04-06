@@ -13,9 +13,6 @@ export class MemberEditProfileComponent implements OnInit {
     public profileForm: FormGroup;
     public isLoading: boolean;
     public disable: boolean;
-    public staticProfile: {
-        email: string;
-    };
     constructor(
         private formBuilder: FormBuilder,
         private elementRef: ElementRef,
@@ -86,6 +83,13 @@ export class MemberEditProfileComponent implements OnInit {
                     }
                 ]
             },
+            email: {
+                value: '',
+                validators: [
+                    Validators.required,
+                    Validators.email,
+                ],
+            },
             postalCode: {
                 value: '',
                 validators: []
@@ -99,13 +103,12 @@ export class MemberEditProfileComponent implements OnInit {
         profile.givenName.value = contact.givenName;
         profile.familyName.value = contact.familyName;
         profile.telephone.value = this.user.getTelephone();
-        this.staticProfile = {
-            email: contact.email
-        };
+        profile.email.value = contact.email;
 
         return this.formBuilder.group({
             familyName: [profile.familyName.value, profile.familyName.validators],
             givenName: [profile.givenName.value, profile.givenName.validators],
+            email: [profile.email.value, profile.email.validators],
             telephone: [profile.telephone.value, profile.telephone.validators],
             postalCode: [profile.postalCode.value, profile.postalCode.validators]
         });
@@ -123,6 +126,7 @@ export class MemberEditProfileComponent implements OnInit {
             // フォームのステータス変更
             this.profileForm.controls.familyName.markAsTouched();
             this.profileForm.controls.givenName.markAsTouched();
+            this.profileForm.controls.email.markAsTouched();
             this.profileForm.controls.telephone.markAsTouched();
             this.profileForm.controls.postalCode.markAsTouched();
             setTimeout(() => {
@@ -147,7 +151,7 @@ export class MemberEditProfileComponent implements OnInit {
             await this.user.updateProfile({
                 familyName: this.profileForm.controls.familyName.value,
                 givenName: this.profileForm.controls.givenName.value,
-                email: this.staticProfile.email,
+                email: this.profileForm.controls.email.value,
                 telephone: this.profileForm.controls.telephone.value,
                 postalCode: this.profileForm.controls.postalCode.value,
             });
