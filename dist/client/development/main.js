@@ -3841,7 +3841,11 @@ var MemberEditProfileComponent = /** @class */ (function () {
                         return [4 /*yield*/, this.sasaki.seller.search({ typeOfs: [_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].organizationType.MovieTheater] })];
                     case 2:
                         result = _a.sent();
-                        theaters = result.data;
+                        theaters = result.data.filter(function (s) {
+                            return (s.location !== undefined
+                                && s.location.branchCode !== undefined
+                                && s.location.branchCode !== '');
+                        });
                         return [4 /*yield*/, this.maintenance.excludeTheaters()];
                     case 3:
                         excludeTheatersResult = _a.sent();

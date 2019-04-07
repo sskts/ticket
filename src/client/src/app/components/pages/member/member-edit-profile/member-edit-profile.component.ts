@@ -184,12 +184,18 @@ export class MemberEditProfileComponent implements OnInit {
     private async getTheaters() {
         await this.sasaki.getServices();
         const result = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
-        const theaters = result.data;
+        const theaters = result.data.filter((s) => {
+            return (s.location !== undefined
+                && s.location.branchCode !== undefined
+                && s.location.branchCode !== '');
+        });
         // 除外劇場処理
         const excludeTheatersResult = await this.maintenance.excludeTheaters();
+
         if (!excludeTheatersResult.isExclude) {
             return theaters;
         }
+
 
         return theaters.filter((theater) => {
             const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
