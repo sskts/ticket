@@ -145,7 +145,9 @@ export class UserService {
 
         const programMembershipOwnershipInfos = await this.sasaki.ownerShip.search<'ProgramMembership'>({
             id: 'me',
-            typeOfGood: 'ProgramMembership'
+            typeOfGood: {
+                typeOf: 'ProgramMembership'
+            }
         });
         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
         this.data.version = USER_DATA_VERSION;

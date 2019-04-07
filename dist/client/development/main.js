@@ -10843,7 +10843,9 @@ var UserService = /** @class */ (function () {
                         _a.accounts = _b.sent();
                         return [4 /*yield*/, this.sasaki.ownerShip.search({
                                 id: 'me',
-                                typeOfGood: 'ProgramMembership'
+                                typeOfGood: {
+                                    typeOf: 'ProgramMembership'
+                                }
                             })];
                     case 8:
                         programMembershipOwnershipInfos = _b.sent();

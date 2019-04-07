@@ -196,7 +196,6 @@ export class MemberEditProfileComponent implements OnInit {
             return theaters;
         }
 
-
         return theaters.filter((theater) => {
             const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
                 return (theater.location === undefined
