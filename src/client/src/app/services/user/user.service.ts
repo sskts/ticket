@@ -281,6 +281,7 @@ export class UserService {
     /**
      * よく行く劇場コード取得
      * @method getTheaterCode
+
      */
     public getTheaterCode(index: number) {
         const programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
@@ -413,6 +414,7 @@ export class UserService {
         email: string;
         telephone: string;
         postalCode: string;
+        theaterCode: string;
     }) {
         const tel = args.telephone.replace(/^0/, '+81');
         await this.sasaki.getServices();
@@ -421,7 +423,10 @@ export class UserService {
             familyName: args.familyName,
             givenName: args.givenName,
             email: args.email,
-            telephone: tel
+            telephone: tel,
+            additionalProperty: [
+                { name: 'custom:theaterCode', value: args.theaterCode }
+            ]
         });
         const profile = await this.sasaki.person.getProfile({
             id: 'me'
@@ -441,5 +446,20 @@ export class UserService {
         await this.sasaki.getServices();
         this.data.userName = this.sasaki.userName;
         this.save();
+    }
+
+    /**
+     * よく行く劇場コードを取得する
+     */
+    public getWellGoTheaterCode() {
+        if (this.data.profile !== undefined && this.data.profile.additionalProperty !== undefined) {
+            const code = this.data.profile.additionalProperty.find((prop) => {
+                return prop.name === 'custom:theaterCode';
+            });
+            if (code !== undefined) {
+                return code.value;
+            }
+        }
+        return this.getTheaterCode(0);
     }
 }

@@ -84,7 +84,7 @@ export class PurchaseComponent implements OnInit {
             this.conditions = this.select.data.purchase;
             if (this.user.isMember() && this.conditions.theater === '') {
                 // 会員
-                const theater = this.user.getTheaterCode(0);
+                const theater = this.user.getWellGoTheaterCode();
                 this.conditions.theater = theater !== undefined ? theater : '';
             }
             await this.initialize();
