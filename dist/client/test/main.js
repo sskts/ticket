@@ -11039,12 +11039,12 @@ var UserService = /** @class */ (function () {
         var programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
         if (this.data.programMembershipOwnershipInfos.length === 0
             || programMembershipOwnershipInfo === undefined
-            || programMembershipOwnershipInfo.acquiredFrom === undefined
-            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater
-            || programMembershipOwnershipInfo.acquiredFrom.location === undefined) {
+            || programMembershipOwnershipInfo.typeOfGood === undefined
+            || programMembershipOwnershipInfo.typeOfGood.hostingOrganization === undefined
+            || programMembershipOwnershipInfo.typeOfGood.hostingOrganization.location === undefined) {
             return '';
         }
-        return programMembershipOwnershipInfo.acquiredFrom.location.branchCode;
+        return programMembershipOwnershipInfo.typeOfGood.hostingOrganization.location.branchCode;
     };
     /**
      * 口座情報取得
