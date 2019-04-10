@@ -13,6 +13,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.6.3 - 2019-04-10
+### Added
+ - よく行く劇場変更機能追加
+### Changed
+ - branchCodeが存在しないものを除外
+
 ## 2.6.2 - 2019-03-19
 ### Changed
  - ポイント口座のソート順を変更(後に作った口座が先に来るように修正)
