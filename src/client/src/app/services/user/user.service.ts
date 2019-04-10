@@ -441,6 +441,18 @@ export class UserService {
         this.save();
     }
 
+    public async resetProfile() {
+        await this.sasaki.getServices();
+        const profile = await this.sasaki.person.getProfile({
+            id: 'me'
+        });
+        if (profile === undefined) {
+            throw new Error('profile is undefined');
+        }
+        this.data.profile = profile;
+        this.save();
+    }
+
     /**
      * ユーザーネーム設定
      */

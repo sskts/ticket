@@ -12,8 +12,13 @@
                 <li>
                     <app-icon iconName="user-white" width="15" height="15"></app-icon>{{ user.getName() }}
                 </li>
-                <li>
+                <li *ngIf="emailVerified">
                     <app-icon iconName="email-white" width="15" height="15"></app-icon>{{ user.data.profile?.email }}
+                </li>
+                <li *ngIf="!emailVerified" class="not-verified" (click)="verifyCodeModal = true">
+                    <app-icon iconName="email-white" width="15" height="15"></app-icon>
+                    <div class="text-red not-verified-email">{{ user.data.profile?.email }}</div>
+                    <div class="text-red not-verified-text small-text">未認証</div>
                 </li>
                 <li>
                     <app-icon iconName="telephone-white" width="15" height="15"></app-icon>{{ user.getTelephone() }}
@@ -44,3 +49,50 @@
         </div>
     </div>
 </app-page>
+<app-modal class="verify-code-modal" [open]="verifyCodeModal" [layout]="true" (close)="verifyCodeModal = false">
+    <div class="mb-middle large-text text-center"><strong>メールアドレスが認証されていません</strong></div>
+    <div class="mb-middle text-center">
+        <input type="password" class="input-block modal-block" placeholder="ワンタイムパスワードを入力してください" [(ngModel)]="verifyCode">
+        <div *ngIf="error" class="mb-x-small text-center">
+            <ng-container *ngIf="error.code === 'CodeMismatchException';then CodeMismatchExceptionTemplate; else LimitExceededExceptionTemplate"></ng-container>
+        </div>
+    </div>
+    <div class="mb-middle">
+        <button (click)="confirmVerificationCode()" class="button button-primary button-block center">確認</button>
+    </div>
+    <div class="mb-x-small text-center">
+        <p class="block modal-block">
+            <a *ngIf="!isOnetimePassSended" (click)="clickResendVerifyCode()">ワンタイムパスワードを再送</a>
+            <a *ngIf="isOnetimePassSended">✔　ワンタイムパスワードが送信されました</a>
+        </p>
+    </div>
+    <div class="mb-small">
+        <p class="text-red small-x-text">※メールアドレスが認証されていない状態だと、メールが送付できずパスワードの変更など一部機能がご利用になれません。</p>
+    </div>
+    <app-loading [show]="isLoading"></app-loading>
+</app-modal>
+
+<ng-template #CodeMismatchExceptionTemplate>
+    <p class="text-red small-x-text">ワンタイムパスワードが正しくありません。</p>
+</ng-template>
+<ng-template #LimitExceededExceptionTemplate>
+    <ng-container
+        *ngIf="error.code === 'LimitExceededException';else ExpiredCodeExceptionTemplate">
+        <p class="text-red small-x-text">ワンタイムパスワードの試行回数が上限に達しました。しばらく待ってから再度お試しください。</p>
+    </ng-container>
+</ng-template>
+<ng-template #ExpiredCodeExceptionTemplate>
+    <ng-container
+        *ngIf="error.code === 'ExpiredCodeException';else TooManyRequestsExceptionTemplate">
+        <p class="text-red small-x-text">ワンタイムパスワードの有効期限が切れています。</p>
+    </ng-container>
+</ng-template>
+<ng-template #TooManyRequestsExceptionTemplate>
+    <ng-container
+        *ngIf="error.code === 'TooManyRequestsException';else OtherErrorTemplate">
+        <p class="text-red small-x-text">サーバーが混雑しています。しばらく待ってから再度実行してください。</p>
+    </ng-container>
+</ng-template>
+<ng-template #OtherErrorTemplate>
+    <p class="text-red small-x-text">エラーが発生しました。</p>
+</ng-template>

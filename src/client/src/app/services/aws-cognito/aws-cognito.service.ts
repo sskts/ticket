@@ -132,6 +132,62 @@ export class AwsCognitoService {
     }
 
     /**
+     * メールアドレスに送付されたコードを確認する
+     * @param {string} accessToken
+     * @param {string} code
+     */
+    public async verifyEmailAddress(accessToken: string, code: string) {
+        AWS.config.region = environment.REGION;
+        const credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
+        });
+        await credentials.getPromise();
+        const provider = new AWS.CognitoIdentityServiceProvider({
+            apiVersion: 'latest',
+            credentials: credentials,
+        });
+        return new Promise((resolve, reject) => {
+            provider.verifyUserAttribute({
+                AccessToken: accessToken,
+                AttributeName: "email",
+                Code: code
+            }, async (err, _) => {
+                if (err !== null) {
+                    console.log(err);
+                    reject(err);
+                }else {
+                    resolve();
+                }
+            });
+        })
+    }
+
+    public async resendVerifyEmailCode(accessToken: string) {
+        AWS.config.region = environment.REGION;
+        const credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
+        });
+        await credentials.getPromise();
+        const provider = new AWS.CognitoIdentityServiceProvider({
+            apiVersion: 'latest',
+            credentials: credentials,
+        });
+        return new Promise((resolve, reject) => {
+            provider.getUserAttributeVerificationCode({
+                AccessToken: accessToken,
+                AttributeName: 'email'
+            }, async (err, _) => {
+                if (err !== null) {
+                    console.log(err);
+                    reject(err);
+                } else {
+                    resolve();
+                }
+            });
+        });
+    }
+
+    /**
      * レコードの形式へ変換
      * @param {any} value
      * @param {number} count

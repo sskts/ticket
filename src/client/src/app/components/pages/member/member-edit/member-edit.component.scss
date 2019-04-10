@@ -10,3 +10,20 @@
         }
     }
 }
+
+input.input-block {
+    color: black;
+}
+
+.modal-block {
+    max-width: 375px;
+}
+
+.not-verified {
+    display: flex;
+}
+
+.not-verified-email {
+    flex: 1;
+    text-decoration: underline;
+}
