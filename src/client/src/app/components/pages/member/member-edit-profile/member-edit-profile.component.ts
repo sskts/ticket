@@ -1,8 +1,13 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { factory } from '@motionpicture/sskts-api-javascript-client';
 import * as libphonenumber from 'libphonenumber-js';
+import { MaintenanceService } from '../../../../services/maintenance/maintenance.service';
+import { SasakiService } from '../../../../services/sasaki/sasaki.service';
 import { UserService } from '../../../../services/user/user.service';
+
+type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
 
 @Component({
     selector: 'app-member-edit-profile',
@@ -13,14 +18,17 @@ export class MemberEditProfileComponent implements OnInit {
     public profileForm: FormGroup;
     public isLoading: boolean;
     public disable: boolean;
+    public theaters: IMovieTheater[];
     public staticProfile: {
-        email: string;
+        email: string
     };
     constructor(
         private formBuilder: FormBuilder,
         private elementRef: ElementRef,
         private router: Router,
-        private user: UserService
+        private user: UserService,
+        private maintenance: MaintenanceService,
+        private sasaki: SasakiService,
     ) { }
 
     /**
@@ -32,6 +40,7 @@ export class MemberEditProfileComponent implements OnInit {
             this.profileForm = this.createForm();
             this.isLoading = false;
             this.disable = false;
+            this.theaters = await this.getTheaters();
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/member/edit/profile' }]);
         }
@@ -86,6 +95,10 @@ export class MemberEditProfileComponent implements OnInit {
                     }
                 ]
             },
+            theaterCode: {
+                value: '',
+                validators: []
+            },
             postalCode: {
                 value: '',
                 validators: []
@@ -102,11 +115,14 @@ export class MemberEditProfileComponent implements OnInit {
         this.staticProfile = {
             email: contact.email
         };
+        const theaterCode = this.user.getWellGoTheaterCode();
+        profile.theaterCode.value = theaterCode === undefined ? '' : theaterCode;
 
         return this.formBuilder.group({
             familyName: [profile.familyName.value, profile.familyName.validators],
             givenName: [profile.givenName.value, profile.givenName.validators],
             telephone: [profile.telephone.value, profile.telephone.validators],
+            theaterCode: [profile.theaterCode.value, profile.theaterCode.validators],
             postalCode: [profile.postalCode.value, profile.postalCode.validators]
         });
     }
@@ -150,6 +166,7 @@ export class MemberEditProfileComponent implements OnInit {
                 email: this.staticProfile.email,
                 telephone: this.profileForm.controls.telephone.value,
                 postalCode: this.profileForm.controls.postalCode.value,
+                theaterCode: this.profileForm.controls.theaterCode.value,
             });
             this.router.navigate(['/member/edit']);
         } catch (err) {
@@ -157,4 +174,33 @@ export class MemberEditProfileComponent implements OnInit {
         }
     }
 
+        /**
+     * 劇場一覧取得
+     */
+    private async getTheaters() {
+        await this.sasaki.getServices();
+        const result = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
+        const theaters = result.data.filter((s) => {
+            return (s.location !== undefined
+                && s.location.branchCode !== undefined
+                && s.location.branchCode !== '');
+        });
+        // 除外劇場処理
+        const excludeTheatersResult = await this.maintenance.excludeTheaters();
+
+        if (!excludeTheatersResult.isExclude) {
+            return theaters;
+        }
+
+        return theaters.filter((theater) => {
+            const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
+                return (theater.location === undefined
+                    || theater.location.branchCode === undefined
+                    || theater.location.branchCode === ''
+                    || excludeCode === theater.location.branchCode);
+            });
+
+            return (excludeTheater === undefined);
+        });
+    }
 }
