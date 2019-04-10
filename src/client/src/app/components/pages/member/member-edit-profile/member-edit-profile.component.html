@@ -48,7 +48,7 @@
                     <dt class="mb-small">
                         <strong>メールアドレス</strong>
                     </dt>
-                    <dd> {{ staticProfile.email }} </dd>
+                    <dd>{{ staticProfile.email }}</dd>
                 </dl>
 
                 <dl class="mb-middle">
@@ -78,8 +78,14 @@
                     <dt class="mb-small">
                         <strong>よく行く劇場</strong>
                     </dt>
-                    <dd>
-                        {{ user.getTheaterName(0) }}
+                    <dd class="mb-x-small">
+                        <select formControlName="theaterCode">
+                            <option *ngFor="let theater of theaters"
+                                [value]="theater.location.branchCode"
+                                [selected]="theater.location.branchCode === profileForm.controls['theaterCode'].value">
+                                {{ theater.name.ja }}
+                            </option>
+                        </select>
                     </dd>
                 </dl>
                 <dl class="mb-middle">

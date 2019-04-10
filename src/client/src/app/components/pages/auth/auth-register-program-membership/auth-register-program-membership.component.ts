@@ -41,8 +41,12 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         try {
             await this.sasaki.getServices();
             // 劇場一覧取得
-            const result = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
-            const searchMovieTheatersResult = result.data;
+            const sellerSearchResult = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
+            const searchMovieTheatersResult = sellerSearchResult.data.filter((s) => {
+                return (s.location !== undefined
+                    && s.location.branchCode !== undefined
+                    && s.location.branchCode !== '');
+            });
             // 除外劇場処理
             const excludeTheatersResult = await this.maintenance.excludeTheaters();
             if (excludeTheatersResult.isExclude) {
@@ -50,7 +54,6 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
                     const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
                         return (theater.location === undefined
                             || theater.location.branchCode === undefined
-                            || theater.location.branchCode === ''
                             || excludeCode === theater.location.branchCode);
                     });
 
