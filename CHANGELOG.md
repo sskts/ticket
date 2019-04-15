@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.6.4 - 2019-04-10
+### Changed
+ - 「特定商取引法に基づく表記」の文言変更
+
 ## 2.6.3 - 2019-04-10
 ### Added
  - よく行く劇場変更機能追加
