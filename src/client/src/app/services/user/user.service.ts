@@ -257,7 +257,7 @@ export class UserService {
      * @method getTelephone
      */
     public getTelephone() {
-        if (this.data.profile === undefined) {
+        if (this.data.profile === undefined || this.data.profile.telephone === undefined) {
             return '';
         }
         const no = this.data.profile.telephone.replace(/\-/g, '');

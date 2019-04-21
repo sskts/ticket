@@ -6,6 +6,7 @@ import { MemberEditComponent } from '../components/pages/member/member-edit/memb
 import { MemberMypageComponent } from '../components/pages/member/member-mypage/member-mypage.component';
 import { MemberPointHistoryComponent } from '../components/pages/member/member-point-history/member-point-history.component';
 import { MemberPointComponent } from '../components/pages/member/member-point/member-point.component';
+import { MemberTicketHistoryComponent } from '../components/pages/member/member-ticket-history/member-ticket-history.component';
 import { MemberWithdrawComponent } from '../components/pages/member/member-withdraw/member-withdraw.component';
 import { AuthGuardService } from '../services/auth-guard/auth-guard.service';
 import { MemberGuardService } from '../services/member-guard/member-guard.service';
@@ -35,6 +36,12 @@ export const route = {
                 { path: '', component: MemberEditComponent },
                 { path: 'credit', component: MemberEditCreditComponent },
                 { path: 'profile', component: MemberEditProfileComponent }
+            ]
+        },
+        { 
+            path: 'ticket',
+            children: [
+                { path: 'history', component: MemberTicketHistoryComponent }
             ]
         }
     ]

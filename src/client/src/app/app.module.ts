@@ -31,6 +31,7 @@ import { MemberEditComponent } from './components/pages/member/member-edit/membe
 import { MemberMypageComponent } from './components/pages/member/member-mypage/member-mypage.component';
 import { MemberPointHistoryComponent } from './components/pages/member/member-point-history/member-point-history.component';
 import { MemberPointComponent } from './components/pages/member/member-point/member-point.component';
+import { MemberTicketHistoryComponent } from './components/pages/member/member-ticket-history/member-ticket-history.component';
 import { MemberWithdrawComponent } from './components/pages/member/member-withdraw/member-withdraw.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { PolicyComponent } from './components/pages/policy/policy.component';
@@ -52,6 +53,7 @@ import { ModalComponent } from './components/parts/modal/modal.component';
 import { NavigationComponent } from './components/parts/navigation/navigation.component';
 import { PageComponent } from './components/parts/page/page.component';
 import { PointHistoryListComponent } from './components/parts/point-history-list/point-history-list.component';
+import { TicketHistoryDetailComponent } from './components/parts/tiket-history-detail/ticket-history-detail.component';
 import { PointSliderComponent } from './components/parts/point-slider/point-slider.component';
 import { PointStampsComponent } from './components/parts/point-stamps/point-stamps.component';
 import { PurchasePerformanceFilmComponent } from './components/parts/purchase-performance-film/purchase-performance-film.component';
@@ -108,6 +110,7 @@ import { UtilService } from './services/util/util.service';
         MemberWithdrawComponent,
         MemberPointComponent,
         MemberPointHistoryComponent,
+        MemberTicketHistoryComponent,
         MemberMypageComponent,
         PurchasePerformanceTimeComponent,
         PurchasePerformanceFilmComponent,
@@ -132,6 +135,7 @@ import { UtilService } from './services/util/util.service';
         InformationComponent,
         PageComponent,
         PointHistoryListComponent,
+        TicketHistoryDetailComponent,
         MaintenanceComponent
     ],
     imports: [
