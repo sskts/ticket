@@ -23,6 +23,7 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentInit {
     public endTime: string;
     public centerHeight: number;
     public topHeight: number;
+		public theaterName: string;
 
     constructor() {}
 
@@ -42,6 +43,13 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentInit {
         this.startDate = startDate.format('YYYY.MM.DD(dd)');
         this.startTime = startDate.format('HH:mm');
         this.endTime = moment(this.reservation.typeOfGood.reservationFor.endDate).format('HH:mm');
+				if (this.reservation.acquiredFrom !== undefined) {
+						if (typeof this.reservation.acquiredFrom.name === 'string') {
+								this.theaterName = this.reservation.acquiredFrom.name;
+						} else if (this.reservation.acquiredFrom.name !== undefined){
+								this.theaterName = this.reservation.acquiredFrom.name.ja;
+						}
+				}
     }
 
     public ngAfterContentInit() {
