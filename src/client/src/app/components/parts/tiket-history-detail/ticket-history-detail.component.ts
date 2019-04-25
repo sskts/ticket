@@ -34,7 +34,7 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentInit {
         this.centerHeight = 0;
         this.topHeight = 0;
         this.totalPrice = '';
-        const total = this.reservation.typeOfGood.reservedTicket.totalPrice;
+				const total = this.reservation.typeOfGood.reservedTicket.coaTicketInfo === undefined ? undefined : this.reservation.typeOfGood.reservedTicket.coaTicketInfo.salePrice;
         if (typeof total === 'number') {
             this.totalPrice = total.toLocaleString();
         }
