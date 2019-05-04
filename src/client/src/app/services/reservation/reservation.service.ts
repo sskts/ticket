@@ -7,8 +7,8 @@ import * as moment from 'moment';
 import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { StorageService } from '../storage/storage.service';
-type ITicket = factory.chevre.reservation.ITicket<factory.chevre.reservationType.EventReservation>;
-type IReservationFor = factory.chevre.reservation.IReservationFor<factory.chevre.reservationType.EventReservation>;
+type ITicket = factory.chevre.reservation.ITicket<factory.chevre.priceSpecification.IPriceSpecification<factory.chevre.priceSpecificationType.CompoundPriceSpecification>>;
+type IReservationFor = factory.chevre.reservation.event.IReservationFor;
 
 export interface IReservation {
     confirmationNumber: string;

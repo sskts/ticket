@@ -4667,23 +4667,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberTicketHistoryComponentNgFactory", function() { return MemberTicketHistoryComponentNgFactory; });
 /* harmony import */ var _member_ticket_history_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./member-ticket-history.component.scss.shim.ngstyle */ "./src/app/components/pages/member/member-ticket-history/member-ticket-history.component.scss.shim.ngstyle.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _parts_tiket_history_detail_ticket_history_detail_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../parts/tiket-history-detail/ticket-history-detail.component.ngfactory */ "./src/app/components/parts/tiket-history-detail/ticket-history-detail.component.ngfactory.js");
-/* harmony import */ var _parts_tiket_history_detail_ticket_history_detail_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../parts/tiket-history-detail/ticket-history-detail.component */ "./src/app/components/parts/tiket-history-detail/ticket-history-detail.component.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "../../node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _parts_ticket_not_found_ticket_not_found_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../parts/ticket-not-found/ticket-not-found.component.ngfactory */ "./src/app/components/parts/ticket-not-found/ticket-not-found.component.ngfactory.js");
-/* harmony import */ var _parts_ticket_not_found_ticket_not_found_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../parts/ticket-not-found/ticket-not-found.component */ "./src/app/components/parts/ticket-not-found/ticket-not-found.component.ts");
-/* harmony import */ var _parts_information_information_component_ngfactory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../parts/information/information.component.ngfactory */ "./src/app/components/parts/information/information.component.ngfactory.js");
-/* harmony import */ var _parts_information_information_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../parts/information/information.component */ "./src/app/components/parts/information/information.component.ts");
-/* harmony import */ var _services_storage_storage_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../services/storage/storage.service */ "./src/app/services/storage/storage.service.ts");
-/* harmony import */ var _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../parts/page/page.component.ngfactory */ "./src/app/components/parts/page/page.component.ngfactory.js");
-/* harmony import */ var _parts_page_page_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../parts/page/page.component */ "./src/app/components/parts/page/page.component.ts");
-/* harmony import */ var _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../parts/loading/loading.component.ngfactory */ "./src/app/components/parts/loading/loading.component.ngfactory.js");
-/* harmony import */ var _parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../parts/loading/loading.component */ "./src/app/components/parts/loading/loading.component.ts");
-/* harmony import */ var _member_ticket_history_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./member-ticket-history.component */ "./src/app/components/pages/member/member-ticket-history/member-ticket-history.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_reservation_reservation_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../services/reservation/reservation.service */ "./src/app/services/reservation/reservation.service.ts");
-/* harmony import */ var _services_user_user_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../../services/user/user.service */ "./src/app/services/user/user.service.ts");
-/* harmony import */ var _services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../../services/sasaki/sasaki.service */ "./src/app/services/sasaki/sasaki.service.ts");
+/* harmony import */ var _parts_ticket_history_detail_ticket_history_detail_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../parts/ticket-history-detail/ticket-history-detail.component.ngfactory */ "./src/app/components/parts/ticket-history-detail/ticket-history-detail.component.ngfactory.js");
+/* harmony import */ var _parts_ticket_history_detail_ticket_history_detail_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../parts/ticket-history-detail/ticket-history-detail.component */ "./src/app/components/parts/ticket-history-detail/ticket-history-detail.component.ts");
+/* harmony import */ var _services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../services/sasaki/sasaki.service */ "./src/app/services/sasaki/sasaki.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "../../node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _parts_ticket_not_found_ticket_not_found_component_ngfactory__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../parts/ticket-not-found/ticket-not-found.component.ngfactory */ "./src/app/components/parts/ticket-not-found/ticket-not-found.component.ngfactory.js");
+/* harmony import */ var _parts_ticket_not_found_ticket_not_found_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../parts/ticket-not-found/ticket-not-found.component */ "./src/app/components/parts/ticket-not-found/ticket-not-found.component.ts");
+/* harmony import */ var _parts_information_information_component_ngfactory__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../parts/information/information.component.ngfactory */ "./src/app/components/parts/information/information.component.ngfactory.js");
+/* harmony import */ var _parts_information_information_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../parts/information/information.component */ "./src/app/components/parts/information/information.component.ts");
+/* harmony import */ var _services_storage_storage_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../services/storage/storage.service */ "./src/app/services/storage/storage.service.ts");
+/* harmony import */ var _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../parts/page/page.component.ngfactory */ "./src/app/components/parts/page/page.component.ngfactory.js");
+/* harmony import */ var _parts_page_page_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../parts/page/page.component */ "./src/app/components/parts/page/page.component.ts");
+/* harmony import */ var _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../parts/loading/loading.component.ngfactory */ "./src/app/components/parts/loading/loading.component.ngfactory.js");
+/* harmony import */ var _parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../parts/loading/loading.component */ "./src/app/components/parts/loading/loading.component.ts");
+/* harmony import */ var _member_ticket_history_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./member-ticket-history.component */ "./src/app/components/pages/member/member-ticket-history/member-ticket-history.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_reservation_reservation_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../../services/reservation/reservation.service */ "./src/app/services/reservation/reservation.service.ts");
+/* harmony import */ var _services_user_user_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../../services/user/user.service */ "./src/app/services/user/user.service.ts");
 /**
  * @fileoverview This file was generated by the Angular template compiler. Do not edit.
  *
@@ -4712,14 +4712,14 @@ __webpack_require__.r(__webpack_exports__);
 var styles_MemberTicketHistoryComponent = [_member_ticket_history_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 var RenderType_MemberTicketHistoryComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_MemberTicketHistoryComponent, data: {} });
 
-function View_MemberTicketHistoryComponent_3(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [["class", "detail"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "app-ticket-history-detail", [], null, null, null, _parts_tiket_history_detail_ticket_history_detail_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_TicketHistoryDetailComponent_0"], _parts_tiket_history_detail_ticket_history_detail_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_TicketHistoryDetailComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 1163264, null, 0, _parts_tiket_history_detail_ticket_history_detail_component__WEBPACK_IMPORTED_MODULE_3__["TicketHistoryDetailComponent"], [], { reservation: [0, "reservation"] }, null)], function (_ck, _v) { var currVal_0 = _v.context.$implicit; _ck(_v, 2, 0, currVal_0); }, null); }
-function View_MemberTicketHistoryComponent_2(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberTicketHistoryComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 802816, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], { ngForOf: [0, "ngForOf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.reservations; _ck(_v, 2, 0, currVal_0); }, null); }
-function View_MemberTicketHistoryComponent_4(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-ticket-not-found", [], null, null, null, _parts_ticket_not_found_ticket_not_found_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["View_TicketNotFoundComponent_0"], _parts_ticket_not_found_ticket_not_found_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RenderType_TicketNotFoundComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _parts_ticket_not_found_ticket_not_found_component__WEBPACK_IMPORTED_MODULE_6__["TicketNotFoundComponent"], [], { isMember: [0, "isMember"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.isMember(); _ck(_v, 1, 0, currVal_0); }, null); }
-function View_MemberTicketHistoryComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 4, "div", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberTicketHistoryComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberTicketHistoryComponent_4)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = (_co.reservations.length > 0); _ck(_v, 2, 0, currVal_0); var currVal_1 = (_co.reservations.length === 0); _ck(_v, 4, 0, currVal_1); }, null); }
-function View_MemberTicketHistoryComponent_5(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-information", [], null, null, null, _parts_information_information_component_ngfactory__WEBPACK_IMPORTED_MODULE_7__["View_InformationComponent_0"], _parts_information_information_component_ngfactory__WEBPACK_IMPORTED_MODULE_7__["RenderType_InformationComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _parts_information_information_component__WEBPACK_IMPORTED_MODULE_8__["InformationComponent"], [_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_9__["StorageService"]], { isMember: [0, "isMember"] }, null)], function (_ck, _v) { var currVal_0 = false; _ck(_v, 1, 0, currVal_0); }, null); }
-function View_MemberTicketHistoryComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "app-page", [["class", "bg-02"]], null, null, null, _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_10__["View_PageComponent_0"], _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_10__["RenderType_PageComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _parts_page_page_component__WEBPACK_IMPORTED_MODULE_11__["PageComponent"], [], { touch: [0, "touch"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, 0, 4, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "p", [["class", "mb-small text-center small-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u9451\u8CDE\u5C65\u6B74\u306E\u78BA\u8A8D\u304C\u3067\u304D\u307E\u3059\u3002 "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberTicketHistoryComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 1, "app-loading", [], null, null, null, _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_12__["View_LoadingComponent_0"], _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_12__["RenderType_LoadingComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](8, 114688, null, 0, _parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_13__["LoadingComponent"], [], { show: [0, "show"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberTicketHistoryComponent_5)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](10, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.touch; _ck(_v, 1, 0, currVal_0); var currVal_1 = !_co.isLoading; _ck(_v, 6, 0, currVal_1); var currVal_2 = _co.isLoading; _ck(_v, 8, 0, currVal_2); var currVal_3 = !_co.user.isMember(); _ck(_v, 10, 0, currVal_3); }, null); }
-function View_MemberTicketHistoryComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-member-ticket-history", [], null, null, null, View_MemberTicketHistoryComponent_0, RenderType_MemberTicketHistoryComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _member_ticket_history_component__WEBPACK_IMPORTED_MODULE_14__["MemberTicketHistoryComponent"], [_angular_router__WEBPACK_IMPORTED_MODULE_15__["Router"], _services_reservation_reservation_service__WEBPACK_IMPORTED_MODULE_16__["ReservationService"], _services_user_user_service__WEBPACK_IMPORTED_MODULE_17__["UserService"], _services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_18__["SasakiService"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
-var MemberTicketHistoryComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-member-ticket-history", _member_ticket_history_component__WEBPACK_IMPORTED_MODULE_14__["MemberTicketHistoryComponent"], View_MemberTicketHistoryComponent_Host_0, {}, {}, []);
+function View_MemberTicketHistoryComponent_3(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [["class", "detail"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "app-ticket-history-detail", [], null, null, null, _parts_ticket_history_detail_ticket_history_detail_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_TicketHistoryDetailComponent_0"], _parts_ticket_history_detail_ticket_history_detail_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_TicketHistoryDetailComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 2211840, null, 0, _parts_ticket_history_detail_ticket_history_detail_component__WEBPACK_IMPORTED_MODULE_3__["TicketHistoryDetailComponent"], [_services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_4__["SasakiService"]], { reservation: [0, "reservation"] }, null)], function (_ck, _v) { var currVal_0 = _v.context.$implicit; _ck(_v, 2, 0, currVal_0); }, null); }
+function View_MemberTicketHistoryComponent_2(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberTicketHistoryComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 802816, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], { ngForOf: [0, "ngForOf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.reservations; _ck(_v, 2, 0, currVal_0); }, null); }
+function View_MemberTicketHistoryComponent_4(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-ticket-not-found", [], null, null, null, _parts_ticket_not_found_ticket_not_found_component_ngfactory__WEBPACK_IMPORTED_MODULE_6__["View_TicketNotFoundComponent_0"], _parts_ticket_not_found_ticket_not_found_component_ngfactory__WEBPACK_IMPORTED_MODULE_6__["RenderType_TicketNotFoundComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _parts_ticket_not_found_ticket_not_found_component__WEBPACK_IMPORTED_MODULE_7__["TicketNotFoundComponent"], [], { isMember: [0, "isMember"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.user.isMember(); _ck(_v, 1, 0, currVal_0); }, null); }
+function View_MemberTicketHistoryComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 4, "div", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberTicketHistoryComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberTicketHistoryComponent_4)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = (_co.reservations.length > 0); _ck(_v, 2, 0, currVal_0); var currVal_1 = (_co.reservations.length === 0); _ck(_v, 4, 0, currVal_1); }, null); }
+function View_MemberTicketHistoryComponent_5(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-information", [], null, null, null, _parts_information_information_component_ngfactory__WEBPACK_IMPORTED_MODULE_8__["View_InformationComponent_0"], _parts_information_information_component_ngfactory__WEBPACK_IMPORTED_MODULE_8__["RenderType_InformationComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _parts_information_information_component__WEBPACK_IMPORTED_MODULE_9__["InformationComponent"], [_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_10__["StorageService"]], { isMember: [0, "isMember"] }, null)], function (_ck, _v) { var currVal_0 = false; _ck(_v, 1, 0, currVal_0); }, null); }
+function View_MemberTicketHistoryComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "app-page", [["class", "bg-02"]], null, null, null, _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_11__["View_PageComponent_0"], _parts_page_page_component_ngfactory__WEBPACK_IMPORTED_MODULE_11__["RenderType_PageComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _parts_page_page_component__WEBPACK_IMPORTED_MODULE_12__["PageComponent"], [], { touch: [0, "touch"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, 0, 4, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "p", [["class", "mb-small text-center small-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u9451\u8CDE\u5C65\u6B74\u306E\u78BA\u8A8D\u304C\u3067\u304D\u307E\u3059\u3002 "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberTicketHistoryComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 1, "app-loading", [], null, null, null, _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_13__["View_LoadingComponent_0"], _parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_13__["RenderType_LoadingComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](8, 114688, null, 0, _parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_14__["LoadingComponent"], [], { show: [0, "show"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberTicketHistoryComponent_5)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](10, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.touch; _ck(_v, 1, 0, currVal_0); var currVal_1 = !_co.isLoading; _ck(_v, 6, 0, currVal_1); var currVal_2 = _co.isLoading; _ck(_v, 8, 0, currVal_2); var currVal_3 = !_co.user.isMember(); _ck(_v, 10, 0, currVal_3); }, null); }
+function View_MemberTicketHistoryComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-member-ticket-history", [], null, null, null, View_MemberTicketHistoryComponent_0, RenderType_MemberTicketHistoryComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _member_ticket_history_component__WEBPACK_IMPORTED_MODULE_15__["MemberTicketHistoryComponent"], [_angular_router__WEBPACK_IMPORTED_MODULE_16__["Router"], _services_reservation_reservation_service__WEBPACK_IMPORTED_MODULE_17__["ReservationService"], _services_user_user_service__WEBPACK_IMPORTED_MODULE_18__["UserService"], _services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_4__["SasakiService"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+var MemberTicketHistoryComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-member-ticket-history", _member_ticket_history_component__WEBPACK_IMPORTED_MODULE_15__["MemberTicketHistoryComponent"], View_MemberTicketHistoryComponent_Host_0, {}, {}, []);
 
 
 
@@ -8730,6 +8730,205 @@ var TicketDetailComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/components/parts/ticket-history-detail/ticket-history-detail.component.ngfactory.js":
+/*!*****************************************************************************************************!*\
+  !*** ./src/app/components/parts/ticket-history-detail/ticket-history-detail.component.ngfactory.js ***!
+  \*****************************************************************************************************/
+/*! exports provided: RenderType_TicketHistoryDetailComponent, View_TicketHistoryDetailComponent_0, View_TicketHistoryDetailComponent_Host_0, TicketHistoryDetailComponentNgFactory */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RenderType_TicketHistoryDetailComponent", function() { return RenderType_TicketHistoryDetailComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "View_TicketHistoryDetailComponent_0", function() { return View_TicketHistoryDetailComponent_0; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "View_TicketHistoryDetailComponent_Host_0", function() { return View_TicketHistoryDetailComponent_Host_0; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TicketHistoryDetailComponentNgFactory", function() { return TicketHistoryDetailComponentNgFactory; });
+/* harmony import */ var _ticket_history_detail_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ticket-history-detail.component.scss.shim.ngstyle */ "./src/app/components/parts/ticket-history-detail/ticket-history-detail.component.scss.shim.ngstyle.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ticket_history_detail_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ticket-history-detail.component */ "./src/app/components/parts/ticket-history-detail/ticket-history-detail.component.ts");
+/* harmony import */ var _services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/sasaki/sasaki.service */ "./src/app/services/sasaki/sasaki.service.ts");
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+
+
+
+
+var styles_TicketHistoryDetailComponent = [_ticket_history_detail_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
+var RenderType_TicketHistoryDetailComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_TicketHistoryDetailComponent, data: {} });
+
+function View_TicketHistoryDetailComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](402653184, 1, { mainElement: 0 }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](402653184, 2, { topImageElement: 0 }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](402653184, 3, { centerImageElement: 0 }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 27, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 3, "div", [["class", "background"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, [[2, 0], ["topimage", 1]], null, 0, "img", [["src", "/assets/images/ticket-history/header.png"]], [[4, "height", "px"]], null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, [[3, 0], ["centerimage", 1]], null, 0, "div", [["class", "center"]], [[4, "height", "px"]], null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 0, "img", [["src", "/assets/images/ticket-history/footer.png"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 22, "div", [["class", "details"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, [[1, 0], ["main", 1]], null, 19, "div", [["class", "main"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 4, "div", [["class", "date-time"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 1, "span", [["class", "date"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](12, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 1, "span", [["class", "time"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](14, null, ["\u3000", "-", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](15, 0, null, null, 1, "div", [["class", "title"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](16, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](17, 0, null, null, 11, "div", [["class", "location"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](18, 0, null, null, 4, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](19, 0, null, null, 1, "div", [["class", "title"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u5287\u5834"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 1, "div", [["class", "name"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](22, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](23, 0, null, null, 0, "div", [["class", "separator"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](24, 0, null, null, 4, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](25, 0, null, null, 1, "div", [["class", "title"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u30B7\u30FC\u30C8"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](27, 0, null, null, 1, "div", [["class", "name"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](28, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](29, 0, null, null, 1, "div", [["class", "bottom"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](30, null, ["\u5408\u8A08 \uFFE5", ""]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = ((_co.topHeight === 0) ? null : _co.topHeight); _ck(_v, 5, 0, currVal_0); var currVal_1 = _co.centerHeight; _ck(_v, 6, 0, currVal_1); var currVal_2 = _co.startDate; _ck(_v, 12, 0, currVal_2); var currVal_3 = _co.startTime; var currVal_4 = _co.endTime; _ck(_v, 14, 0, currVal_3, currVal_4); var currVal_5 = _co.reservation.typeOfGood.reservationFor.name.ja; _ck(_v, 16, 0, currVal_5); var currVal_6 = _co.theaterName; _ck(_v, 22, 0, currVal_6); var currVal_7 = _co.reservation.typeOfGood.reservationFor.location.name.ja; _ck(_v, 28, 0, currVal_7); var currVal_8 = _co.totalPrice; _ck(_v, 30, 0, currVal_8); }); }
+function View_TicketHistoryDetailComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-ticket-history-detail", [], null, null, null, View_TicketHistoryDetailComponent_0, RenderType_TicketHistoryDetailComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 2211840, null, 0, _ticket_history_detail_component__WEBPACK_IMPORTED_MODULE_2__["TicketHistoryDetailComponent"], [_services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_3__["SasakiService"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+var TicketHistoryDetailComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-ticket-history-detail", _ticket_history_detail_component__WEBPACK_IMPORTED_MODULE_2__["TicketHistoryDetailComponent"], View_TicketHistoryDetailComponent_Host_0, { reservation: "reservation" }, {}, []);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/parts/ticket-history-detail/ticket-history-detail.component.scss.shim.ngstyle.js":
+/*!*************************************************************************************************************!*\
+  !*** ./src/app/components/parts/ticket-history-detail/ticket-history-detail.component.scss.shim.ngstyle.js ***!
+  \*************************************************************************************************************/
+/*! exports provided: styles */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styles", function() { return styles; });
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+var styles = [".inner[_ngcontent-%COMP%] {\n  margin: auto;\n  padding: 0;\n  position: relative;\n  max-width: 352px; }\n  .inner[_ngcontent-%COMP%]   .background[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n    width: 100%; }\n  .inner[_ngcontent-%COMP%]   .background[_ngcontent-%COMP%]   .center[_ngcontent-%COMP%] {\n    width: 100%;\n    background-image: url(\"/assets/images/ticket-history/center.png\");\n    background-repeat: repeat-y;\n    background-size: contain; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%] {\n    top: 0px;\n    position: absolute;\n    height: 100%;\n    width: 100%;\n    color: #010101; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%] {\n      padding: 30px 30px 10px 30px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .date-time[_ngcontent-%COMP%] {\n        text-align: center;\n        line-height: 18px;\n        vertical-align: middle;\n        padding-bottom: 12px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .date-time[_ngcontent-%COMP%]   .time[_ngcontent-%COMP%] {\n          font-weight: bold;\n          font-size: 18px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n        font-weight: bold;\n        font-size: 24px;\n        padding-bottom: 12px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .location[_ngcontent-%COMP%] {\n        display: flex; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .location[_ngcontent-%COMP%]   .info[_ngcontent-%COMP%] {\n          flex: 1; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .location[_ngcontent-%COMP%]   .info[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n            font-size: 12px;\n            padding-bottom: 8px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .location[_ngcontent-%COMP%]   .info[_ngcontent-%COMP%]   .name[_ngcontent-%COMP%] {\n            font-weight: bold;\n            font-size: 16px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .location[_ngcontent-%COMP%]   .separator[_ngcontent-%COMP%] {\n          width: 2px;\n          background-color: #D2D3D5;\n          margin: 0 20px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .bottom[_ngcontent-%COMP%] {\n      position: absolute;\n      text-align: center;\n      bottom: 10px;\n      width: 100%; }"];
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/parts/ticket-history-detail/ticket-history-detail.component.ts":
+/*!*******************************************************************************************!*\
+  !*** ./src/app/components/parts/ticket-history-detail/ticket-history-detail.component.ts ***!
+  \*******************************************************************************************/
+/*! exports provided: TicketHistoryDetailComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TicketHistoryDetailComponent", function() { return TicketHistoryDetailComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @motionpicture/sskts-api-javascript-client */ "../../node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
+/* harmony import */ var _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _services_sasaki_sasaki_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/sasaki/sasaki.service */ "./src/app/services/sasaki/sasaki.service.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * TicketDetailComponent
+ */
+
+
+
+
+// import * as qrcode from 'qrcode';
+var TicketHistoryDetailComponent = /** @class */ (function () {
+    function TicketHistoryDetailComponent(sasaki) {
+        this.sasaki = sasaki;
+    }
+    /**
+     * 初期化
+     * @method ngOnInit
+     */
+    TicketHistoryDetailComponent.prototype.ngOnInit = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var total, startDate, _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        this.centerHeight = 0;
+                        this.topHeight = 0;
+                        this.totalPrice = '';
+                        total = this.reservation.typeOfGood.reservedTicket.coaTicketInfo === undefined ? undefined : this.reservation.typeOfGood.reservedTicket.coaTicketInfo.salePrice;
+                        if (typeof total === 'number') {
+                            this.totalPrice = total.toLocaleString();
+                        }
+                        startDate = moment__WEBPACK_IMPORTED_MODULE_2__(this.reservation.typeOfGood.reservationFor.startDate);
+                        this.startDate = startDate.format('YYYY.MM.DD(dd)');
+                        this.startTime = startDate.format('HH:mm');
+                        if (this.reservation.typeOfGood.reservationFor.endDate !== undefined) {
+                            this.endTime = moment__WEBPACK_IMPORTED_MODULE_2__(this.reservation.typeOfGood.reservationFor.endDate).format('HH:mm');
+                        }
+                        if (!(this.reservation.typeOfGood.reservationFor.coaInfo !== undefined && typeof this.reservation.typeOfGood.reservationFor.coaInfo.theaterCode === 'string')) return [3 /*break*/, 2];
+                        _a = this;
+                        return [4 /*yield*/, this.getTheaterName(this.reservation.typeOfGood.reservationFor.coaInfo.theaterCode)];
+                    case 1:
+                        _a.theaterName = _b.sent();
+                        _b.label = 2;
+                    case 2: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * 劇場一覧取得
+     */
+    TicketHistoryDetailComponent.prototype.getTheaterName = function (code) {
+        return __awaiter(this, void 0, void 0, function () {
+            var result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.sasaki.getServices()];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.sasaki.seller.search({
+                                typeOfs: [_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["factory"].organizationType.MovieTheater],
+                                location: { branchCodes: [code] }
+                            })];
+                    case 2:
+                        result = _a.sent();
+                        if (result.data.length > 0) {
+                            return [2 /*return*/, result.data[0].name.ja];
+                        }
+                        return [2 /*return*/, ''];
+                }
+            });
+        });
+    };
+    TicketHistoryDetailComponent.prototype.ngAfterContentChecked = function () {
+        if (this.theaterName !== '') {
+            this.centerHeight = this.mainElement.nativeElement.offsetHeight - this.topImageElement.nativeElement.offsetHeight;
+            this.topHeight = Math.floor(this.topImageElement.nativeElement.offsetHeight);
+            if (this.topHeight % 2 == 1) {
+                this.topHeight++;
+            }
+        }
+        ;
+    };
+    return TicketHistoryDetailComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/components/parts/ticket-not-found/ticket-not-found.component.ngfactory.js":
 /*!*******************************************************************************************!*\
   !*** ./src/app/components/parts/ticket-not-found/ticket-not-found.component.ngfactory.js ***!
@@ -8828,172 +9027,6 @@ var TicketNotFoundComponent = /** @class */ (function () {
     TicketNotFoundComponent.prototype.ngOnInit = function () {
     };
     return TicketNotFoundComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/components/parts/tiket-history-detail/ticket-history-detail.component.ngfactory.js":
-/*!****************************************************************************************************!*\
-  !*** ./src/app/components/parts/tiket-history-detail/ticket-history-detail.component.ngfactory.js ***!
-  \****************************************************************************************************/
-/*! exports provided: RenderType_TicketHistoryDetailComponent, View_TicketHistoryDetailComponent_0, View_TicketHistoryDetailComponent_Host_0, TicketHistoryDetailComponentNgFactory */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RenderType_TicketHistoryDetailComponent", function() { return RenderType_TicketHistoryDetailComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "View_TicketHistoryDetailComponent_0", function() { return View_TicketHistoryDetailComponent_0; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "View_TicketHistoryDetailComponent_Host_0", function() { return View_TicketHistoryDetailComponent_Host_0; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TicketHistoryDetailComponentNgFactory", function() { return TicketHistoryDetailComponentNgFactory; });
-/* harmony import */ var _ticket_history_detail_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ticket-history-detail.component.scss.shim.ngstyle */ "./src/app/components/parts/tiket-history-detail/ticket-history-detail.component.scss.shim.ngstyle.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ticket_history_detail_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ticket-history-detail.component */ "./src/app/components/parts/tiket-history-detail/ticket-history-detail.component.ts");
-/**
- * @fileoverview This file was generated by the Angular template compiler. Do not edit.
- *
- * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
- * tslint:disable
- */ 
-
-
-
-var styles_TicketHistoryDetailComponent = [_ticket_history_detail_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
-var RenderType_TicketHistoryDetailComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_TicketHistoryDetailComponent, data: {} });
-
-function View_TicketHistoryDetailComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](402653184, 1, { mainElement: 0 }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](402653184, 2, { topImageElement: 0 }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](402653184, 3, { centerImageElement: 0 }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 27, "div", [["class", "inner"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 3, "div", [["class", "background"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, [[2, 0], ["topimage", 1]], null, 0, "img", [["src", "/assets/images/ticket-history/header.png"]], [[4, "height", "px"]], null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, [[3, 0], ["centerimage", 1]], null, 0, "div", [["class", "center"]], [[4, "height", "px"]], null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 0, "img", [["src", "/assets/images/ticket-history/footer.png"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 22, "div", [["class", "details"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, [[1, 0], ["main", 1]], null, 19, "div", [["class", "main"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 4, "div", [["class", "date-time"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 1, "span", [["class", "date"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](12, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 1, "span", [["class", "time"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](14, null, ["\u3000", "-", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](15, 0, null, null, 1, "div", [["class", "title"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](16, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](17, 0, null, null, 11, "div", [["class", "location"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](18, 0, null, null, 4, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](19, 0, null, null, 1, "div", [["class", "title"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u5287\u5834"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 1, "div", [["class", "name"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](22, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](23, 0, null, null, 0, "div", [["class", "separator"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](24, 0, null, null, 4, "div", [["class", "info"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](25, 0, null, null, 1, "div", [["class", "title"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u30B7\u30FC\u30C8"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](27, 0, null, null, 1, "div", [["class", "name"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](28, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](29, 0, null, null, 1, "div", [["class", "bottom"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](30, null, ["\u5408\u8A08 \uFFE5", ""]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = ((_co.topHeight === 0) ? null : _co.topHeight); _ck(_v, 5, 0, currVal_0); var currVal_1 = _co.centerHeight; _ck(_v, 6, 0, currVal_1); var currVal_2 = _co.startDate; _ck(_v, 12, 0, currVal_2); var currVal_3 = _co.startTime; var currVal_4 = _co.endTime; _ck(_v, 14, 0, currVal_3, currVal_4); var currVal_5 = _co.reservation.typeOfGood.reservationFor.name.ja; _ck(_v, 16, 0, currVal_5); var currVal_6 = _co.theaterName; _ck(_v, 22, 0, currVal_6); var currVal_7 = _co.reservation.typeOfGood.reservationFor.location.name.ja; _ck(_v, 28, 0, currVal_7); var currVal_8 = _co.totalPrice; _ck(_v, 30, 0, currVal_8); }); }
-function View_TicketHistoryDetailComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-ticket-history-detail", [], null, null, null, View_TicketHistoryDetailComponent_0, RenderType_TicketHistoryDetailComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 1163264, null, 0, _ticket_history_detail_component__WEBPACK_IMPORTED_MODULE_2__["TicketHistoryDetailComponent"], [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
-var TicketHistoryDetailComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-ticket-history-detail", _ticket_history_detail_component__WEBPACK_IMPORTED_MODULE_2__["TicketHistoryDetailComponent"], View_TicketHistoryDetailComponent_Host_0, { reservation: "reservation" }, {}, []);
-
-
-
-/***/ }),
-
-/***/ "./src/app/components/parts/tiket-history-detail/ticket-history-detail.component.scss.shim.ngstyle.js":
-/*!************************************************************************************************************!*\
-  !*** ./src/app/components/parts/tiket-history-detail/ticket-history-detail.component.scss.shim.ngstyle.js ***!
-  \************************************************************************************************************/
-/*! exports provided: styles */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styles", function() { return styles; });
-/**
- * @fileoverview This file was generated by the Angular template compiler. Do not edit.
- *
- * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
- * tslint:disable
- */ 
-var styles = [".inner[_ngcontent-%COMP%] {\n  margin: auto;\n  padding: 0;\n  position: relative;\n  max-width: 352px; }\n  .inner[_ngcontent-%COMP%]   .background[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n    width: 100%; }\n  .inner[_ngcontent-%COMP%]   .background[_ngcontent-%COMP%]   .center[_ngcontent-%COMP%] {\n    width: 100%;\n    background-image: url(\"/assets/images/ticket-history/center.png\");\n    background-repeat: repeat-y;\n    background-size: contain; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%] {\n    top: 0px;\n    position: absolute;\n    height: 100%;\n    width: 100%;\n    color: #010101; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%] {\n      padding: 30px 30px 10px 30px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .date-time[_ngcontent-%COMP%] {\n        text-align: center;\n        line-height: 18px;\n        vertical-align: middle;\n        padding-bottom: 12px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .date-time[_ngcontent-%COMP%]   .time[_ngcontent-%COMP%] {\n          font-weight: bold;\n          font-size: 18px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n        font-weight: bold;\n        font-size: 24px;\n        padding-bottom: 12px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .location[_ngcontent-%COMP%] {\n        display: flex; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .location[_ngcontent-%COMP%]   .info[_ngcontent-%COMP%] {\n          flex: 1; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .location[_ngcontent-%COMP%]   .info[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n            font-size: 12px;\n            padding-bottom: 8px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .location[_ngcontent-%COMP%]   .info[_ngcontent-%COMP%]   .name[_ngcontent-%COMP%] {\n            font-weight: bold;\n            font-size: 16px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .main[_ngcontent-%COMP%]   .location[_ngcontent-%COMP%]   .separator[_ngcontent-%COMP%] {\n          width: 2px;\n          background-color: #D2D3D5;\n          margin: 0 20px; }\n  .inner[_ngcontent-%COMP%]   .details[_ngcontent-%COMP%]   .bottom[_ngcontent-%COMP%] {\n      position: absolute;\n      text-align: center;\n      bottom: 10px;\n      width: 100%; }"];
-
-
-
-/***/ }),
-
-/***/ "./src/app/components/parts/tiket-history-detail/ticket-history-detail.component.ts":
-/*!******************************************************************************************!*\
-  !*** ./src/app/components/parts/tiket-history-detail/ticket-history-detail.component.ts ***!
-  \******************************************************************************************/
-/*! exports provided: TicketHistoryDetailComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TicketHistoryDetailComponent", function() { return TicketHistoryDetailComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @motionpicture/sskts-api-javascript-client */ "../../node_modules/@motionpicture/sskts-api-javascript-client/lib/index.js");
-/* harmony import */ var _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-/**
- * TicketDetailComponent
- */
-
-
-
-// import * as qrcode from 'qrcode';
-var TicketHistoryDetailComponent = /** @class */ (function () {
-    function TicketHistoryDetailComponent() {
-    }
-    /**
-     * 初期化
-     * @method ngOnInit
-     */
-    TicketHistoryDetailComponent.prototype.ngOnInit = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var total, startDate;
-            return __generator(this, function (_a) {
-                this.centerHeight = 0;
-                this.topHeight = 0;
-                this.totalPrice = '';
-                total = this.reservation.typeOfGood.reservedTicket.coaTicketInfo === undefined ? undefined : this.reservation.typeOfGood.reservedTicket.coaTicketInfo.salePrice;
-                if (typeof total === 'number') {
-                    this.totalPrice = total.toLocaleString();
-                }
-                startDate = moment__WEBPACK_IMPORTED_MODULE_2__(this.reservation.typeOfGood.reservationFor.startDate);
-                this.startDate = startDate.format('YYYY.MM.DD(dd)');
-                this.startTime = startDate.format('HH:mm');
-                this.endTime = moment__WEBPACK_IMPORTED_MODULE_2__(this.reservation.typeOfGood.reservationFor.endDate).format('HH:mm');
-                if (this.reservation.acquiredFrom !== undefined) {
-                    if (typeof this.reservation.acquiredFrom.name === 'string') {
-                        this.theaterName = this.reservation.acquiredFrom.name;
-                    }
-                    else if (this.reservation.acquiredFrom.name !== undefined) {
-                        this.theaterName = this.reservation.acquiredFrom.name.ja;
-                    }
-                }
-                return [2 /*return*/];
-            });
-        });
-    };
-    TicketHistoryDetailComponent.prototype.ngAfterContentInit = function () {
-        var _this = this;
-        this.topImageElement.nativeElement.onload = function () {
-            _this.centerHeight = _this.mainElement.nativeElement.offsetHeight - _this.topImageElement.nativeElement.offsetHeight;
-            _this.topHeight = Math.floor(_this.topImageElement.nativeElement.offsetHeight);
-            if (_this.topHeight % 2 == 1) {
-                _this.topHeight++;
-            }
-        };
-    };
-    return TicketHistoryDetailComponent;
 }());
 
 
@@ -10817,8 +10850,8 @@ var SasakiService = /** @class */ (function () {
         });
     };
     /**
-     * サインアウト
-     */
+    * サインアウト
+    */
     SasakiService.prototype.signOut = function () {
         return __awaiter(this, void 0, void 0, function () {
             var url, result;
@@ -10837,8 +10870,8 @@ var SasakiService = /** @class */ (function () {
         });
     };
     /**
-     * @method createOption
-     */
+    * @method createOption
+    */
     SasakiService.prototype.createOption = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -10855,8 +10888,8 @@ var SasakiService = /** @class */ (function () {
         });
     };
     /**
-     * @method authorize
-     */
+    * @method authorize
+    */
     SasakiService.prototype.authorize = function () {
         return __awaiter(this, void 0, void 0, function () {
             var user, memberType, url, body, result, option;
@@ -10886,6 +10919,25 @@ var SasakiService = /** @class */ (function () {
                         this.userName = result.userName;
                         this.endpoint = result.endpoint;
                         return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+    * @method getAPIVersion
+    * package.jsonから取得したバージョンを取得する
+    */
+    SasakiService.prototype.getAPIVersion = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        url = '/api/version';
+                        return [4 /*yield*/, this.http.get(url).toPromise()];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, result.version];
                 }
             });
         });
@@ -11106,9 +11158,6 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-// ユーザーのデータ構造が変更された際にここを１インクリメントする
-// 過去のデータを読み込んだ際に対応するため
-var USER_DATA_VERSION = 3;
 var MemberType;
 (function (MemberType) {
     MemberType["NotMember"] = "0";
@@ -11120,30 +11169,60 @@ var UserService = /** @class */ (function () {
         this.storage = storage;
         this.sasaki = sasaki;
         this.util = util;
-        this.load();
-        this.save();
+        this.init();
     }
+    UserService.prototype.init = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.load()];
+                    case 1:
+                        _a.sent();
+                        this.save();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     /**
      * 読み込み
      * @method load
      */
     UserService.prototype.load = function () {
-        var data = this.storage.load(STORAGE_KEY, _storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["SaveType"].Local);
-        if (data === null) {
-            this.data = {
-                version: USER_DATA_VERSION,
-                memberType: MemberType.NotMember,
-                creditCards: [],
-                accounts: [],
-                programMembershipOwnershipInfos: [],
-                prevUserName: ''
-            };
-            return;
-        }
-        this.data = data;
-        if (this.data.version === undefined || this.data.version < USER_DATA_VERSION) {
-            this.initMember();
-        }
+        return __awaiter(this, void 0, void 0, function () {
+            var data, _a, apiVersion;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        data = this.storage.load(STORAGE_KEY, _storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["SaveType"].Local);
+                        if (!(data === null)) return [3 /*break*/, 2];
+                        this.data = {
+                            memberType: MemberType.NotMember,
+                            creditCards: [],
+                            accounts: [],
+                            programMembershipOwnershipInfos: [],
+                            prevUserName: ''
+                        };
+                        _a = this.data;
+                        return [4 /*yield*/, this.sasaki.getAPIVersion()];
+                    case 1:
+                        _a.version = _b.sent();
+                        return [2 /*return*/];
+                    case 2:
+                        this.data = data;
+                        return [4 /*yield*/, this.sasaki.getAPIVersion()];
+                    case 3:
+                        apiVersion = _b.sent();
+                        if (!(typeof this.data.version !== 'string' || this.data.version !== apiVersion)) return [3 /*break*/, 5];
+                        return [4 /*yield*/, this.initMember()];
+                    case 4:
+                        _b.sent();
+                        location.reload();
+                        _b.label = 5;
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
     };
     /**
      * 保存
@@ -11157,20 +11236,32 @@ var UserService = /** @class */ (function () {
      * @method reset
      */
     UserService.prototype.reset = function () {
-        var prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
-            this.data.accounts.length > 0 &&
-                this.data.accounts[0].typeOfGood !== null &&
-                this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
-                this.data.prevUserName !== undefined ? this.data.prevUserName : '';
-        this.data = {
-            version: USER_DATA_VERSION,
-            memberType: MemberType.NotMember,
-            creditCards: [],
-            accounts: [],
-            programMembershipOwnershipInfos: [],
-            prevUserName: prevUserName
-        };
-        this.save();
+        return __awaiter(this, void 0, void 0, function () {
+            var prevUserName, apiVersion;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
+                            this.data.accounts.length > 0 &&
+                                this.data.accounts[0].typeOfGood !== null &&
+                                this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
+                                this.data.prevUserName !== undefined ? this.data.prevUserName : '';
+                        return [4 /*yield*/, this.sasaki.getAPIVersion()];
+                    case 1:
+                        apiVersion = _a.sent();
+                        this.data = {
+                            version: apiVersion,
+                            memberType: MemberType.NotMember,
+                            creditCards: [],
+                            accounts: [],
+                            programMembershipOwnershipInfos: [],
+                            prevUserName: prevUserName
+                        };
+                        this.save();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     /**
      * 会員初期化
@@ -11178,38 +11269,38 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.initMember = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var profile, creditCards, err_1, _a, programMembershipOwnershipInfos;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var profile, creditCards, err_1, _a, programMembershipOwnershipInfos, _b;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         this.data.memberType = MemberType.Member;
                         this.save();
                         return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
-                        _b.sent();
+                        _c.sent();
                         if (this.sasaki.userName === undefined) {
                             throw new Error('userName is undefined');
                         }
                         this.data.userName = this.sasaki.userName;
                         return [4 /*yield*/, this.sasaki.person.getProfile({ id: 'me' })];
                     case 2:
-                        profile = _b.sent();
+                        profile = _c.sent();
                         if (profile === undefined) {
                             throw new Error('profile is undefined');
                         }
                         this.data.profile = profile;
-                        _b.label = 3;
+                        _c.label = 3;
                     case 3:
-                        _b.trys.push([3, 5, , 6]);
+                        _c.trys.push([3, 5, , 6]);
                         return [4 /*yield*/, this.sasaki.ownerShip.searchCreditCards({
                                 personId: 'me'
                             })];
                     case 4:
-                        creditCards = _b.sent();
+                        creditCards = _c.sent();
                         this.data.creditCards = creditCards;
                         return [3 /*break*/, 6];
                     case 5:
-                        err_1 = _b.sent();
+                        err_1 = _c.sent();
                         console.log(err_1);
                         this.data.creditCards = [];
                         return [3 /*break*/, 6];
@@ -11219,7 +11310,7 @@ var UserService = /** @class */ (function () {
                         return [4 /*yield*/, this.openPointAccountIfNotExists()];
                     case 7:
                         // 口座検索または作成
-                        _a.accounts = _b.sent();
+                        _a.accounts = _c.sent();
                         return [4 /*yield*/, this.sasaki.ownerShip.search({
                                 id: 'me',
                                 typeOfGood: {
@@ -11227,9 +11318,12 @@ var UserService = /** @class */ (function () {
                                 }
                             })];
                     case 8:
-                        programMembershipOwnershipInfos = _b.sent();
+                        programMembershipOwnershipInfos = _c.sent();
                         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
-                        this.data.version = USER_DATA_VERSION;
+                        _b = this.data;
+                        return [4 /*yield*/, this.sasaki.getAPIVersion()];
+                    case 9:
+                        _b.version = _c.sent();
                         this.save();
                         return [2 /*return*/];
                 }
@@ -11335,9 +11429,9 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-     * ポイントアカウントを検索する
-     * @method searchPointAccount
-     */
+    * ポイントアカウントを検索する
+    * @method searchPointAccount
+    */
     UserService.prototype.searchPointAccount = function () {
         return __awaiter(this, void 0, void 0, function () {
             var accountSearchResult, accounts;
@@ -11368,16 +11462,16 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-     * 会員判定
-     * @method isMember
-     */
+    * 会員判定
+    * @method isMember
+    */
     UserService.prototype.isMember = function () {
         return (this.data.memberType === MemberType.Member);
     };
     /**
-     * 名前取得
-     * @method getName
-     */
+    * 名前取得
+    * @method getName
+    */
     UserService.prototype.getName = function () {
         if (this.data.profile === undefined) {
             return '';
@@ -11385,9 +11479,9 @@ var UserService = /** @class */ (function () {
         return this.data.profile.familyName + " " + this.data.profile.givenName;
     };
     /**
-     * 電話番号取得（ハイフンなし）
-     * @method getTelephone
-     */
+    * 電話番号取得（ハイフンなし）
+    * @method getTelephone
+    */
     UserService.prototype.getTelephone = function () {
         if (this.data.profile === undefined || this.data.profile.telephone === undefined) {
             return '';
@@ -11396,9 +11490,9 @@ var UserService = /** @class */ (function () {
         return no.replace(/^\+81/g, '0');
     };
     /**
-     * よく行く劇場名取得
-     * @method getTheaterName
-     */
+    * よく行く劇場名取得
+    * @method getTheaterName
+    */
     UserService.prototype.getTheaterName = function (index) {
         var programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
         if (this.data.programMembershipOwnershipInfos.length === 0
@@ -11410,10 +11504,10 @@ var UserService = /** @class */ (function () {
         return programMembershipOwnershipInfo.acquiredFrom.name.ja;
     };
     /**
-     * よく行く劇場コード取得
-     * @method getTheaterCode
+    * よく行く劇場コード取得
+    * @method getTheaterCode
 
-     */
+    */
     UserService.prototype.getTheaterCode = function (index) {
         var programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
         if (this.data.programMembershipOwnershipInfos.length === 0
@@ -11426,9 +11520,9 @@ var UserService = /** @class */ (function () {
         return programMembershipOwnershipInfo.typeOfGood.hostingOrganization.location.branchCode;
     };
     /**
-     * 口座情報取得
-     * @method getAccount
-     */
+    * 口座情報取得
+    * @method getAccount
+    */
     UserService.prototype.getAccount = function (index) {
         if (this.data.accounts.length === 0) {
             return undefined;
@@ -11436,9 +11530,9 @@ var UserService = /** @class */ (function () {
         return this.data.accounts[index];
     };
     /**
-     * クレジットカード情報取得（表示用）
-     * @method getCreditCard
-     */
+    * クレジットカード情報取得（表示用）
+    * @method getCreditCard
+    */
     UserService.prototype.getCreditCard = function (index) {
         if (this.data.creditCards.length === 0) {
             return undefined;
@@ -11449,9 +11543,9 @@ var UserService = /** @class */ (function () {
         };
     };
     /**
-     * GMOトークン取得
-     * @method getGmoObject
-     */
+    * GMOトークン取得
+    * @method getGmoObject
+    */
     UserService.prototype.getGmoObject = function (args) {
         return __awaiter(this, void 0, void 0, function () {
             var sendParam, branchCode, result, movieTheater;
@@ -11497,9 +11591,9 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-     * クレジットカード登録
-     * @method registerCreditCard
-     */
+    * クレジットカード登録
+    * @method registerCreditCard
+    */
     UserService.prototype.registerCreditCard = function (gmoTokenObject) {
         return __awaiter(this, void 0, void 0, function () {
             var _a, _b;
@@ -11543,8 +11637,8 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-     * クレジットカード削除
-     */
+    * クレジットカード削除
+    */
     UserService.prototype.deleteCreditCard = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -11567,9 +11661,9 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-     * 基本情報変更
-     * @method updateProfile
-     */
+    * 基本情報変更
+    * @method updateProfile
+    */
     UserService.prototype.updateProfile = function (args) {
         return __awaiter(this, void 0, void 0, function () {
             var tel, profile;
@@ -11608,8 +11702,8 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-     * ユーザーネーム設定
-     */
+    * ユーザーネーム設定
+    */
     UserService.prototype.setUserName = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -11625,8 +11719,8 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-     * よく行く劇場コードを取得する
-     */
+    * よく行く劇場コードを取得する
+    */
     UserService.prototype.getWellGoTheaterCode = function () {
         if (this.data.profile !== undefined && this.data.profile.additionalProperty !== undefined) {
             var code = this.data.profile.additionalProperty.find(function (prop) {

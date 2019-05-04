@@ -53,7 +53,7 @@ import { ModalComponent } from './components/parts/modal/modal.component';
 import { NavigationComponent } from './components/parts/navigation/navigation.component';
 import { PageComponent } from './components/parts/page/page.component';
 import { PointHistoryListComponent } from './components/parts/point-history-list/point-history-list.component';
-import { TicketHistoryDetailComponent } from './components/parts/tiket-history-detail/ticket-history-detail.component';
+import { TicketHistoryDetailComponent } from './components/parts/ticket-history-detail/ticket-history-detail.component';
 import { PointSliderComponent } from './components/parts/point-slider/point-slider.component';
 import { PointStampsComponent } from './components/parts/point-stamps/point-stamps.component';
 import { PurchasePerformanceFilmComponent } from './components/parts/purchase-performance-film/purchase-performance-film.component';

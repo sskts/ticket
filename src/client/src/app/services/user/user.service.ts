@@ -9,12 +9,8 @@ import { UtilService } from '../util/util.service';
 type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>;
 type programMembershipType = factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<'ProgramMembership'>>;
 
-// ユーザーのデータ構造が変更された際にここを１インクリメントする
-// 過去のデータを読み込んだ際に対応するため
-const USER_DATA_VERSION = 3;
-
 export interface IData {
-    version: Number;
+    version?: string;
     userName?: string;
     memberType: MemberType;
     profile?: factory.person.IProfile;
@@ -26,7 +22,7 @@ export interface IData {
 
 export enum MemberType {
     NotMember = '0',
-    Member = '1'
+        Member = '1'
 }
 
 export interface IGmoTokenObject {
@@ -52,7 +48,11 @@ export class UserService {
         private sasaki: SasakiService,
         private util: UtilService
     ) {
-        this.load();
+        this.init();
+    }
+
+    async init() {
+        await this.load();
         this.save();
     }
 
@@ -60,23 +60,24 @@ export class UserService {
      * 読み込み
      * @method load
      */
-    public load() {
+    public async load() {
         const data: IData | null = this.storage.load(STORAGE_KEY, SaveType.Local);
         if (data === null) {
             this.data = {
-                version: USER_DATA_VERSION,
                 memberType: MemberType.NotMember,
                 creditCards: [],
                 accounts: [],
                 programMembershipOwnershipInfos: [],
                 prevUserName: ''
             };
-
+            this.data.version = await this.sasaki.getAPIVersion();
             return;
         }
         this.data = data;
-        if (this.data.version === undefined || this.data.version < USER_DATA_VERSION) {
-            this.initMember();
+        const apiVersion = await this.sasaki.getAPIVersion();
+        if (typeof this.data.version !== 'string' || this.data.version !== apiVersion) {
+            await this.initMember();
+            location.reload();
         }
     }
 
@@ -92,15 +93,16 @@ export class UserService {
      * リセット
      * @method reset
      */
-    public reset() {
+    public async reset() {
         const prevUserName =
             this.sasaki.userName !== undefined ? this.sasaki.userName :
             this.data.accounts.length > 0 &&
             this.data.accounts[0].typeOfGood !== null &&
             this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
             this.data.prevUserName !== undefined ? this.data.prevUserName : '';
+        const apiVersion = await this.sasaki.getAPIVersion();
         this.data = {
-            version: USER_DATA_VERSION,
+            version: apiVersion,
             memberType: MemberType.NotMember,
             creditCards: [],
             accounts: [],
@@ -150,7 +152,7 @@ export class UserService {
             }
         });
         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
-        this.data.version = USER_DATA_VERSION;
+        this.data.version = await this.sasaki.getAPIVersion();
         this.save();
     }
 
@@ -204,13 +206,13 @@ export class UserService {
             id: 'me',
             accountType: factory.accountType.Point,
             name: (<string>this.sasaki.userName)
-        });
+            });
     }
 
     /**
-     * ポイントアカウントを検索する
-     * @method searchPointAccount
-     */
+    * ポイントアカウントを検索する
+    * @method searchPointAccount
+    */
     private async searchPointAccount() {
         // 口座検索
         const accountSearchResult = await this.sasaki.ownerShip.search({
@@ -220,31 +222,31 @@ export class UserService {
                 accountType: factory.accountType.Point
             }
         });
-        const accounts = <accountType[]>accountSearchResult.data.filter((account) => {
-            return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
-                && account.typeOfGood.accountType === factory.accountType.Point
-                && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
-        });
-        // 口座開設についてあとに作ったものが先にくるようにソートする
-        accounts.sort((a: accountType, b: accountType) => {
-            return (a.typeOfGood.openDate > b.typeOfGood.openDate) ? -1 :
-                (a.typeOfGood.openDate < b.typeOfGood.openDate) ? 1 : 0;
-        });
-        return accounts;
+    const accounts = <accountType[]>accountSearchResult.data.filter((account) => {
+        return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
+            && account.typeOfGood.accountType === factory.accountType.Point
+            && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
+    });
+    // 口座開設についてあとに作ったものが先にくるようにソートする
+    accounts.sort((a: accountType, b: accountType) => {
+        return (a.typeOfGood.openDate > b.typeOfGood.openDate) ? -1 :
+            (a.typeOfGood.openDate < b.typeOfGood.openDate) ? 1 : 0;
+    });
+    return accounts;
     }
 
     /**
-     * 会員判定
-     * @method isMember
-     */
+    * 会員判定
+    * @method isMember
+    */
     public isMember() {
         return (this.data.memberType === MemberType.Member);
     }
 
     /**
-     * 名前取得
-     * @method getName
-     */
+    * 名前取得
+    * @method getName
+    */
     public getName() {
         if (this.data.profile === undefined) {
             return '';
@@ -253,9 +255,9 @@ export class UserService {
     }
 
     /**
-     * 電話番号取得（ハイフンなし）
-     * @method getTelephone
-     */
+    * 電話番号取得（ハイフンなし）
+    * @method getTelephone
+    */
     public getTelephone() {
         if (this.data.profile === undefined || this.data.profile.telephone === undefined) {
             return '';
@@ -265,9 +267,9 @@ export class UserService {
     }
 
     /**
-     * よく行く劇場名取得
-     * @method getTheaterName
-     */
+    * よく行く劇場名取得
+    * @method getTheaterName
+    */
     public getTheaterName(index: number) {
         const programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
         if (this.data.programMembershipOwnershipInfos.length === 0
@@ -275,16 +277,16 @@ export class UserService {
             || programMembershipOwnershipInfo.acquiredFrom === undefined
             || programMembershipOwnershipInfo.acquiredFrom.typeOf !== factory.organizationType.MovieTheater) {
             return '';
-        }
+            }
 
         return programMembershipOwnershipInfo.acquiredFrom.name.ja;
     }
 
     /**
-     * よく行く劇場コード取得
-     * @method getTheaterCode
+    * よく行く劇場コード取得
+    * @method getTheaterCode
 
-     */
+    */
     public getTheaterCode(index: number) {
         const programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
         if (this.data.programMembershipOwnershipInfos.length === 0
@@ -293,15 +295,15 @@ export class UserService {
             || programMembershipOwnershipInfo.typeOfGood.hostingOrganization === undefined
             || programMembershipOwnershipInfo.typeOfGood.hostingOrganization.location === undefined) {
             return '';
-        }
+            }
 
         return programMembershipOwnershipInfo.typeOfGood.hostingOrganization.location.branchCode;
     }
 
     /**
-     * 口座情報取得
-     * @method getAccount
-     */
+    * 口座情報取得
+    * @method getAccount
+    */
     public getAccount(index: number) {
         if (this.data.accounts.length === 0) {
             return undefined;
@@ -310,9 +312,9 @@ export class UserService {
     }
 
     /**
-     * クレジットカード情報取得（表示用）
-     * @method getCreditCard
-     */
+    * クレジットカード情報取得（表示用）
+    * @method getCreditCard
+    */
     public getCreditCard(index: number) {
         if (this.data.creditCards.length === 0) {
             return undefined;
@@ -324,9 +326,9 @@ export class UserService {
     }
 
     /**
-     * GMOトークン取得
-     * @method getGmoObject
-     */
+    * GMOトークン取得
+    * @method getGmoObject
+    */
     public async getGmoObject(args: {
         cardno: string;
         expire: string;
@@ -345,31 +347,31 @@ export class UserService {
         const movieTheater = result.data[0];
 
         return new Promise<IGmoTokenObject>((resolve, reject) => {
-            (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
-                if (response.resultCode === '000') {
-                    resolve(response.tokenObject);
-                } else {
-                    reject(new Error(response.resultCode));
-                }
-            };
-            const Multipayment = (<any>window).Multipayment;
-            // shopId
-            if (movieTheater.paymentAccepted === undefined) {
-                return reject(new Error('The settlement method does not correspond'));
+        (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
+            if (response.resultCode === '000') {
+                resolve(response.tokenObject);
+            } else {
+                reject(new Error(response.resultCode));
             }
-            const paymentAccepted = movieTheater.paymentAccepted.find(p => p.paymentMethodType === factory.paymentMethodType.CreditCard);
-            if (paymentAccepted === undefined || paymentAccepted.paymentMethodType !== factory.paymentMethodType.CreditCard) {
-                return reject(new Error('The settlement method does not correspond'));
-            }
-            Multipayment.init((<factory.seller.ICreditCardPaymentAccepted>paymentAccepted).gmoInfo.shopId);
-            Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
+        };
+        const Multipayment = (<any>window).Multipayment;
+        // shopId
+        if (movieTheater.paymentAccepted === undefined) {
+            return reject(new Error('The settlement method does not correspond'));
+        }
+        const paymentAccepted = movieTheater.paymentAccepted.find(p => p.paymentMethodType === factory.paymentMethodType.CreditCard);
+        if (paymentAccepted === undefined || paymentAccepted.paymentMethodType !== factory.paymentMethodType.CreditCard) {
+            return reject(new Error('The settlement method does not correspond'));
+        }
+        Multipayment.init((<factory.seller.ICreditCardPaymentAccepted>paymentAccepted).gmoInfo.shopId);
+        Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
         });
     }
 
     /**
-     * クレジットカード登録
-     * @method registerCreditCard
-     */
+    * クレジットカード登録
+    * @method registerCreditCard
+    */
     public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
         await this.sasaki.getServices();
         // 登録
@@ -393,8 +395,8 @@ export class UserService {
     }
 
     /**
-     * クレジットカード削除
-     */
+    * クレジットカード削除
+    */
     public async deleteCreditCard() {
         await this.sasaki.getServices();
         if (this.data.creditCards.length === 0) {
@@ -407,9 +409,9 @@ export class UserService {
     }
 
     /**
-     * 基本情報変更
-     * @method updateProfile
-     */
+    * 基本情報変更
+    * @method updateProfile
+    */
     public async updateProfile(args: {
         familyName: string;
         givenName: string;
@@ -427,8 +429,8 @@ export class UserService {
             email: args.email,
             telephone: tel,
             additionalProperty: [
-                { name: 'custom:theaterCode', value: args.theaterCode }
-            ]
+            { name: 'custom:theaterCode', value: args.theaterCode }
+        ]
         });
         const profile = await this.sasaki.person.getProfile({
             id: 'me'
@@ -442,8 +444,8 @@ export class UserService {
     }
 
     /**
-     * ユーザーネーム設定
-     */
+    * ユーザーネーム設定
+    */
     public async setUserName() {
         await this.sasaki.getServices();
         this.data.userName = this.sasaki.userName;
@@ -451,8 +453,8 @@ export class UserService {
     }
 
     /**
-     * よく行く劇場コードを取得する
-     */
+    * よく行く劇場コードを取得する
+    */
     public getWellGoTheaterCode() {
         if (this.data.profile !== undefined && this.data.profile.additionalProperty !== undefined) {
             const code = this.data.profile.additionalProperty.find((prop) => {

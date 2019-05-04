@@ -110,27 +110,11 @@ MIT
 MIT
 MIT
 
-@chevre/factory@1.0.0-alpha.72
+@cinerino/api-javascript-client@1.0.0-alpha.32
 ISC
 ISC
 
-@cinerino/api-abstract-client@1.0.0-alpha.90
-ISC
-ISC
-
-@cinerino/api-javascript-client@2.0.0-alpha.2
-ISC
-ISC
-
-@cinerino/factory@1.0.0-alpha.124
-ISC
-ISC
-
-@motionpicture/sskts-api-abstract-client@7.0.0-alpha.3
-ISC
-ISC
-
-@motionpicture/sskts-api-javascript-client@7.0.0-alpha.1
+@motionpicture/sskts-api-javascript-client@6.1.0
 ISC
 ISC
 
