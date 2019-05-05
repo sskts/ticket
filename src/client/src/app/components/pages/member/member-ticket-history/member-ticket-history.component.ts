@@ -21,7 +21,7 @@ import * as moment from 'moment';
  */
 export class MemberTicketHistoryComponent implements OnInit {
     public isLoading: boolean;
-		public reservations: factory.ownershipInfo.IOwnershipInfo<factory.chevre.reservation.IReservation<factory.chevre.priceSpecification.IPriceSpecification<factory.chevre.priceSpecificationType>>>[];
+		public reservations: factory.ownershipInfo.IOwnershipInfo<factory.chevre.reservation.IReservation<factory.chevre.reservationType.EventReservation>>[];
     public touch: boolean;
 
     constructor(

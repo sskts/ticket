@@ -13,7 +13,7 @@ import { SasakiService } from '../../../services/sasaki/sasaki.service';
     styleUrls: ['./ticket-history-detail.component.scss']
 })
 export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked {
-    @Input() public reservation: factory.ownershipInfo.IOwnershipInfo<factory.chevre.reservation.IReservation<factory.chevre.priceSpecification.IPriceSpecification<factory.chevre.priceSpecificationType>>>;
+    @Input() public reservation: factory.ownershipInfo.IOwnershipInfo<factory.chevre.reservation.IReservation<factory.chevre.reservationType.EventReservation>>;
     @ViewChild('main') mainElement: ElementRef;
     @ViewChild('topimage') topImageElement: ElementRef;
     @ViewChild('centerimage') centerImageElement: ElementRef;
