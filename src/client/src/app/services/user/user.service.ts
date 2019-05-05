@@ -51,7 +51,7 @@ export class UserService {
         this.init();
     }
 
-    async init() {
+    private async init() {
         await this.load();
         this.save();
     }

@@ -4,10 +4,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
+import * as moment from 'moment';
 import { ReservationService } from '../../../../services/reservation/reservation.service';
 import { SasakiService } from '../../../../services/sasaki/sasaki.service';
 import { UserService } from '../../../../services/user/user.service';
-import * as moment from 'moment';
 
 @Component({
     selector: 'app-member-ticket-history',
@@ -21,7 +21,9 @@ import * as moment from 'moment';
  */
 export class MemberTicketHistoryComponent implements OnInit {
     public isLoading: boolean;
-		public reservations: factory.ownershipInfo.IOwnershipInfo<factory.chevre.reservation.IReservation<factory.chevre.reservationType.EventReservation>>[];
+    public reservations: factory.ownershipInfo.IOwnershipInfo<
+        factory.chevre.reservation.IReservation<
+            factory.chevre.reservationType.EventReservation>>[];
     public touch: boolean;
 
     constructor(

@@ -38,7 +38,7 @@ export const route = {
                 { path: 'profile', component: MemberEditProfileComponent }
             ]
         },
-        { 
+        {
             path: 'ticket',
             children: [
                 { path: 'history', component: MemberTicketHistoryComponent }

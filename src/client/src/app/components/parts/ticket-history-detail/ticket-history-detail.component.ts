@@ -13,10 +13,11 @@ import { SasakiService } from '../../../services/sasaki/sasaki.service';
     styleUrls: ['./ticket-history-detail.component.scss']
 })
 export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked {
-    @Input() public reservation: factory.ownershipInfo.IOwnershipInfo<factory.chevre.reservation.IReservation<factory.chevre.reservationType.EventReservation>>;
-    @ViewChild('main') mainElement: ElementRef;
-    @ViewChild('topimage') topImageElement: ElementRef;
-    @ViewChild('centerimage') centerImageElement: ElementRef;
+    @Input() public reservation: factory.ownershipInfo.IOwnershipInfo<
+        factory.chevre.reservation.IReservation<
+            factory.chevre.reservationType.EventReservation>>;
+    @ViewChild('main') private mainElement: ElementRef;
+    @ViewChild('topimage') private topImageElement: ElementRef;
     public confirmationNumber: string;
     public totalPrice: string;
     public startDate: string;
@@ -38,7 +39,8 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
         this.centerHeight = 0;
         this.topHeight = 0;
         this.totalPrice = '';
-        const total = this.reservation.typeOfGood.reservedTicket.coaTicketInfo === undefined ? undefined : this.reservation.typeOfGood.reservedTicket.coaTicketInfo.salePrice;
+        const total = this.reservation.typeOfGood.reservedTicket.coaTicketInfo === undefined ? undefined :
+            this.reservation.typeOfGood.reservedTicket.coaTicketInfo.salePrice;
 
         if (typeof total === 'number') {
             this.totalPrice = total.toLocaleString();
@@ -49,7 +51,8 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
         if (this.reservation.typeOfGood.reservationFor.endDate !== undefined) {
             this.endTime = moment(this.reservation.typeOfGood.reservationFor.endDate).format('HH:mm');
         }
-        if (this.reservation.typeOfGood.reservationFor.coaInfo !== undefined && typeof this.reservation.typeOfGood.reservationFor.coaInfo.theaterCode === 'string') {
+        if (this.reservation.typeOfGood.reservationFor.coaInfo !== undefined &&
+                typeof this.reservation.typeOfGood.reservationFor.coaInfo.theaterCode === 'string') {
             this.theaterName = await this.getTheaterName(this.reservation.typeOfGood.reservationFor.coaInfo.theaterCode);
         }
     }
@@ -72,9 +75,9 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
         if (this.theaterName !== '') {
             this.centerHeight = this.mainElement.nativeElement.offsetHeight - this.topImageElement.nativeElement.offsetHeight;
             this.topHeight = Math.floor(this.topImageElement.nativeElement.offsetHeight);
-            if (this.topHeight % 2 == 1) {
+            if (this.topHeight % 2 === 1) {
                 this.topHeight++;
-            } 
-        };
+            }
+        }
     }
 }
