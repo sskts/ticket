@@ -15,10 +15,9 @@ const debug = require("debug");
 const fs = require("fs");
 const path = require("path");
 const authorize = require("../controllers/authorize/authorize.controller");
-const base_controller_1 = require("../controllers/base/base.controller");
 const maintenance = require("../controllers/maintenance/maintenance.controller");
 const log = debug('sskts-ticket:maintenance');
-const apiVersion = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+//const apiVersion = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
 exports.default = (app) => {
     app.use((_req, res, next) => {
         res.locals.NODE_ENV = process.env.NODE_ENV;
@@ -49,10 +48,11 @@ function version(_req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('version');
         try {
+            const apiVersion = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
             res.json({ version: apiVersion });
         }
         catch (err) {
-            base_controller_1.errorProsess(res, err);
+            res.json({ version: '9.9.9' });
         }
     });
 }
