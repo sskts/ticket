@@ -3,10 +3,8 @@
  * Module dependencies.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs");
 const http = require("http");
 const app = require("./app/app");
-process.env.VERSION = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
 /**
  * Get port from environment and store in Express.
  */
