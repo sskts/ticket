@@ -133,10 +133,27 @@ export class SasakiService {
     }
 
     /**
+     * 必要が
+     */
+    public async needReload() {
+        const version = await this.getAPIVersion();
+        const server = this.storage.load('server');
+        if (server === null) {
+            this.storage.save('server', { version: version });
+            return true;
+        }
+        if (server.version !== version) {
+            this.storage.save('server', { version: version });
+            return true;
+        }
+        return false;
+    }
+
+    /**
     * @method getAPIVersion
     * package.jsonから取得したバージョンを取得する
     */
-    public async getAPIVersion() {
+    private async getAPIVersion() {
         const url = '/api/version';
         const result = await this.http.get<{
             version: string;

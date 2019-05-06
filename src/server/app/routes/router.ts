@@ -40,5 +40,5 @@ export default (app: express.Application) => {
  */
 async function version(_req: express.Request, res: express.Response) {
     log('version');
-    res.json({ version: process.env.VERSION, hello: 'world' });
+    res.json({ version: process.env.VERSION });
 }

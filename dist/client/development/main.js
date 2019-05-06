@@ -10923,6 +10923,31 @@ var SasakiService = /** @class */ (function () {
         });
     };
     /**
+     * 必要が
+     */
+    SasakiService.prototype.needReload = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var version, server;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getAPIVersion()];
+                    case 1:
+                        version = _a.sent();
+                        server = this.storage.load('server');
+                        if (server === null) {
+                            this.storage.save('server', { version: version });
+                            return [2 /*return*/, true];
+                        }
+                        if (server.version !== version) {
+                            this.storage.save('server', { version: version });
+                            return [2 /*return*/, true];
+                        }
+                        return [2 /*return*/, false];
+                }
+            });
+        });
+    };
+    /**
     * @method getAPIVersion
     * package.jsonから取得したバージョンを取得する
     */
@@ -11168,29 +11193,51 @@ var UserService = /** @class */ (function () {
         this.storage = storage;
         this.sasaki = sasaki;
         this.util = util;
-        this.load();
-        this.save();
+        this.init();
     }
+    UserService.prototype.init = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                this.load();
+                this.save();
+                return [2 /*return*/];
+            });
+        });
+    };
     /**
      * 読み込み
      * @method load
      */
     UserService.prototype.load = function () {
-        var data = this.storage.load(STORAGE_KEY, _storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["SaveType"].Local);
-        if (data === null) {
-            this.data = {
-                memberType: MemberType.NotMember,
-                creditCards: [],
-                accounts: [],
-                programMembershipOwnershipInfos: [],
-                prevUserName: ''
-            };
-            return;
-        }
-        this.data = data;
-        if (typeof this.data.version !== 'string') {
-            this.initMember();
-        }
+        return __awaiter(this, void 0, void 0, function () {
+            var data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        data = this.storage.load(STORAGE_KEY, _storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["SaveType"].Local);
+                        if (data === null) {
+                            this.data = {
+                                memberType: MemberType.NotMember,
+                                creditCards: [],
+                                accounts: [],
+                                programMembershipOwnershipInfos: [],
+                                prevUserName: ''
+                            };
+                            return [2 /*return*/];
+                        }
+                        this.data = data;
+                        return [4 /*yield*/, this.sasaki.needReload()];
+                    case 1:
+                        if (!_a.sent()) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.initMember()];
+                    case 2:
+                        _a.sent();
+                        location.reload();
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
     };
     /**
      * 保存
@@ -11224,38 +11271,38 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.initMember = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var profile, creditCards, err_1, _a, programMembershipOwnershipInfos, _b;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            var profile, creditCards, err_1, _a, programMembershipOwnershipInfos;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
                         this.data.memberType = MemberType.Member;
                         this.save();
                         return [4 /*yield*/, this.sasaki.getServices()];
                     case 1:
-                        _c.sent();
+                        _b.sent();
                         if (this.sasaki.userName === undefined) {
                             throw new Error('userName is undefined');
                         }
                         this.data.userName = this.sasaki.userName;
                         return [4 /*yield*/, this.sasaki.person.getProfile({ id: 'me' })];
                     case 2:
-                        profile = _c.sent();
+                        profile = _b.sent();
                         if (profile === undefined) {
                             throw new Error('profile is undefined');
                         }
                         this.data.profile = profile;
-                        _c.label = 3;
+                        _b.label = 3;
                     case 3:
-                        _c.trys.push([3, 5, , 6]);
+                        _b.trys.push([3, 5, , 6]);
                         return [4 /*yield*/, this.sasaki.ownerShip.searchCreditCards({
                                 personId: 'me'
                             })];
                     case 4:
-                        creditCards = _c.sent();
+                        creditCards = _b.sent();
                         this.data.creditCards = creditCards;
                         return [3 /*break*/, 6];
                     case 5:
-                        err_1 = _c.sent();
+                        err_1 = _b.sent();
                         console.log(err_1);
                         this.data.creditCards = [];
                         return [3 /*break*/, 6];
@@ -11265,7 +11312,7 @@ var UserService = /** @class */ (function () {
                         return [4 /*yield*/, this.openPointAccountIfNotExists()];
                     case 7:
                         // 口座検索または作成
-                        _a.accounts = _c.sent();
+                        _a.accounts = _b.sent();
                         return [4 /*yield*/, this.sasaki.ownerShip.search({
                                 id: 'me',
                                 typeOfGood: {
@@ -11273,12 +11320,8 @@ var UserService = /** @class */ (function () {
                                 }
                             })];
                     case 8:
-                        programMembershipOwnershipInfos = _c.sent();
+                        programMembershipOwnershipInfos = _b.sent();
                         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
-                        _b = this.data;
-                        return [4 /*yield*/, this.sasaki.getAPIVersion()];
-                    case 9:
-                        _b.version = _c.sent();
                         this.save();
                         return [2 /*return*/];
                 }

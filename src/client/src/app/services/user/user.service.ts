@@ -47,6 +47,10 @@ export class UserService {
         private sasaki: SasakiService,
         private util: UtilService
     ) {
+        this.init();
+    }
+
+    private async init() {
         this.load();
         this.save();
     }
@@ -55,7 +59,7 @@ export class UserService {
      * 読み込み
      * @method load
      */
-    public load() {
+    public async load() {
         const data: IData | null = this.storage.load(STORAGE_KEY, SaveType.Local);
         if (data === null) {
             this.data = {
@@ -68,7 +72,10 @@ export class UserService {
             return;
         }
         this.data = data;
-        this.initMember();
+        if (await this.sasaki.needReload()) {
+            await this.initMember();
+            location.reload();
+        }
     }
 
     /**

@@ -45,6 +45,6 @@ exports.default = (app) => {
 function version(_req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('version');
-        res.json({ version: process.env.VERSION, hello: 'world' });
+        res.json({ version: process.env.VERSION });
     });
 }
