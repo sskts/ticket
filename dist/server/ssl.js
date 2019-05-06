@@ -7,6 +7,7 @@ const fs = require("fs");
 const https = require("https");
 const app = require("./app/app");
 process.env.VERSION = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+console.log(process.env.VERSION);
 /**
  * Get port from environment and store in Express.
  */
