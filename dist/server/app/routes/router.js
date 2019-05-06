@@ -12,12 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * ルーティング
  */
 const debug = require("debug");
-const fs = require("fs");
 const path = require("path");
 const authorize = require("../controllers/authorize/authorize.controller");
 const maintenance = require("../controllers/maintenance/maintenance.controller");
 const log = debug('sskts-ticket:maintenance');
-//const apiVersion = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
 exports.default = (app) => {
     app.use((_req, res, next) => {
         res.locals.NODE_ENV = process.env.NODE_ENV;
@@ -47,12 +45,6 @@ exports.default = (app) => {
 function version(_req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('version');
-        try {
-            const apiVersion = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
-            res.json({ version: apiVersion });
-        }
-        catch (err) {
-            res.json({ version: '9.9.9' });
-        }
+        res.json({ version: process.env.VERSION });
     });
 }

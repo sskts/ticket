@@ -3,12 +3,10 @@
  */
 import * as debug from 'debug';
 import * as express from 'express';
-import * as fs from 'fs';
 import * as path from 'path';
 import * as authorize from '../controllers/authorize/authorize.controller';
 import * as maintenance from '../controllers/maintenance/maintenance.controller';
 const log = debug('sskts-ticket:maintenance');
-//const apiVersion = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
 
 export default (app: express.Application) => {
     app.use((_req, res, next) => {
@@ -42,10 +40,5 @@ export default (app: express.Application) => {
  */
 async function version(_req: express.Request, res: express.Response) {
     log('version');
-    try {
-        const apiVersion = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
-        res.json({ version: apiVersion });
-    } catch (err) {
-        res.json({ version: '9.9.9' });
-    }
+    res.json({ version: process.env.VERSION });
 }
