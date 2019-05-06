@@ -11168,60 +11168,29 @@ var UserService = /** @class */ (function () {
         this.storage = storage;
         this.sasaki = sasaki;
         this.util = util;
-        this.init();
+        this.load();
+        this.save();
     }
-    UserService.prototype.init = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.load()];
-                    case 1:
-                        _a.sent();
-                        this.save();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
     /**
      * 読み込み
      * @method load
      */
     UserService.prototype.load = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var data, _a, apiVersion;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        data = this.storage.load(STORAGE_KEY, _storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["SaveType"].Local);
-                        if (!(data === null)) return [3 /*break*/, 2];
-                        this.data = {
-                            memberType: MemberType.NotMember,
-                            creditCards: [],
-                            accounts: [],
-                            programMembershipOwnershipInfos: [],
-                            prevUserName: ''
-                        };
-                        _a = this.data;
-                        return [4 /*yield*/, this.sasaki.getAPIVersion()];
-                    case 1:
-                        _a.version = _b.sent();
-                        return [2 /*return*/];
-                    case 2:
-                        this.data = data;
-                        return [4 /*yield*/, this.sasaki.getAPIVersion()];
-                    case 3:
-                        apiVersion = _b.sent();
-                        if (!(typeof this.data.version !== 'string' || this.data.version !== apiVersion)) return [3 /*break*/, 5];
-                        return [4 /*yield*/, this.initMember()];
-                    case 4:
-                        _b.sent();
-                        location.reload();
-                        _b.label = 5;
-                    case 5: return [2 /*return*/];
-                }
-            });
-        });
+        var data = this.storage.load(STORAGE_KEY, _storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["SaveType"].Local);
+        if (data === null) {
+            this.data = {
+                memberType: MemberType.NotMember,
+                creditCards: [],
+                accounts: [],
+                programMembershipOwnershipInfos: [],
+                prevUserName: ''
+            };
+            return;
+        }
+        this.data = data;
+        if (typeof this.data.version !== 'string') {
+            this.initMember();
+        }
     };
     /**
      * 保存
@@ -11235,32 +11204,19 @@ var UserService = /** @class */ (function () {
      * @method reset
      */
     UserService.prototype.reset = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var prevUserName, apiVersion;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
-                            this.data.accounts.length > 0 &&
-                                this.data.accounts[0].typeOfGood !== null &&
-                                this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
-                                this.data.prevUserName !== undefined ? this.data.prevUserName : '';
-                        return [4 /*yield*/, this.sasaki.getAPIVersion()];
-                    case 1:
-                        apiVersion = _a.sent();
-                        this.data = {
-                            version: apiVersion,
-                            memberType: MemberType.NotMember,
-                            creditCards: [],
-                            accounts: [],
-                            programMembershipOwnershipInfos: [],
-                            prevUserName: prevUserName
-                        };
-                        this.save();
-                        return [2 /*return*/];
-                }
-            });
-        });
+        var prevUserName = this.sasaki.userName !== undefined ? this.sasaki.userName :
+            this.data.accounts.length > 0 &&
+                this.data.accounts[0].typeOfGood !== null &&
+                this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
+                this.data.prevUserName !== undefined ? this.data.prevUserName : '';
+        this.data = {
+            memberType: MemberType.NotMember,
+            creditCards: [],
+            accounts: [],
+            programMembershipOwnershipInfos: [],
+            prevUserName: prevUserName
+        };
+        this.save();
     };
     /**
      * 会員初期化

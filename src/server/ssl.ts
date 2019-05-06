@@ -6,7 +6,7 @@ import * as fs from 'fs';
 import * as https from 'https';
 import * as app from './app/app';
 
-process.env.VERSION = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+process.env.VERSION = JSON.parse(fs.readFileSync('../package.json', 'utf8')).version;
 console.error(process.env.VERSION);
 /**
  * Get port from environment and store in Express.
