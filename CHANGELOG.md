@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.7.1 - 2019-05-08
+### Fixed
+- 履歴情報の文言をシートからスクリーンに修正
+
 ## 2.7.0 - 2019-05-06
 ### Added
  - チケット購入履歴を追加
