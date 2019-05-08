@@ -10923,7 +10923,7 @@ var SasakiService = /** @class */ (function () {
         });
     };
     /**
-     * 必要が
+     * サーバーのバージョンをチェックし、
      */
     SasakiService.prototype.needReload = function () {
         return __awaiter(this, void 0, void 0, function () {

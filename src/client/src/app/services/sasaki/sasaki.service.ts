@@ -133,7 +133,7 @@ export class SasakiService {
     }
 
     /**
-     * 必要が
+     * サーバーのバージョンをチェックし、
      */
     public async needReload() {
         const version = await this.getAPIVersion();
