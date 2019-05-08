@@ -1,0 +1,67 @@
+.inner {
+		margin: auto;
+    padding: 0;
+    position: relative;
+    max-width: 352px;
+    .background {
+        img {
+            width: 100%;
+        }
+        .center {
+            width: 100%;
+            background-image: url('/assets/images/ticket-history/center.png');
+            background-repeat: repeat-y;
+            background-size: contain;
+        }
+    }
+    .details {
+        top: 0px;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        color: #010101;
+        .main {
+            padding: 30px 30px 10px 30px;
+           .date-time {
+                text-align: center;
+                line-height: 18px;
+                vertical-align: middle;
+                padding-bottom: 12px;
+                .time {
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+            }
+            .title {
+                font-weight: bold;
+                font-size: 24px;
+                padding-bottom: 12px;
+            }
+            .location {
+                display: flex;
+                .info {
+                    flex: 1;
+                    .title {
+                        font-size: 12px;
+                        padding-bottom: 8px;
+                    }
+                    .name {
+                        font-weight: bold;
+                        font-size: 16px;
+                    }
+                }
+                .separator {
+                    width: 2px;
+                    background-color: #D2D3D5;
+                    margin: 0 20px;
+                }
+            }
+        }
+        .bottom {
+            position: absolute;
+            text-align: center;
+            bottom: 10px;
+            width: 100%;
+        }
+    }
+}

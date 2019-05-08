@@ -13,7 +13,7 @@ import { IPurchaseConditions, PurchaseSort, SelectService } from '../../../servi
 import { MemberType, UserService } from '../../../services/user/user.service';
 
 type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
-type IEvent = factory.event.screeningEvent.IEvent;
+type IEvent = factory.chevre.event.screeningEvent.IEvent;
 type ICOAInfo = factory.event.screeningEvent.ICOAInfo;
 type ITimeOrder = IEvent;
 
@@ -176,7 +176,7 @@ export class PurchaseComponent implements OnInit {
      * @method performanceSelect
      */
     public async performanceSelect(performance: IEvent) {
-        if (performance.offers.availability === 0) {
+        if (performance.offers === undefined || performance.offers.availability === 0) {
             return;
         }
         let params;
@@ -251,8 +251,8 @@ export class PurchaseComponent implements OnInit {
             return [];
         }
         const screeningEvents = await this.sasaki.event.searchScreeningEvents({
-            typeOf: factory.eventType.ScreeningEvent,
-            eventStatuses: [factory.eventStatusType.EventScheduled],
+            typeOf: factory.chevre.eventType.ScreeningEvent,
+            eventStatuses: [factory.chevre.eventStatusType.EventScheduled],
             startFrom: moment().toDate(),
             startThrough: moment().add(5, 'week').toDate(),
             sort: { startDate: factory.sortType.Ascending },

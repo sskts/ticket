@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.7.0 - 2019-05-06
+### Added
+ - チケット購入履歴を追加
+ - サーバーのソースコードバージョンが変更された際、リロードする機能追加
+
 ## 2.6.4 - 2019-04-10
 ### Changed
  - 「特定商取引法に基づく表記」の文言変更

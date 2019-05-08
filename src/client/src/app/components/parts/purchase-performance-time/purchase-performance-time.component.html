@@ -17,7 +17,8 @@
     </div>
     <div class="info">
         <div class="screen small-x-text mb-xx-small">{{ performance.location.name.ja }}</div>
-        <div class="duration small-x-text">{{ performance.workPerformed.duration | duration: 'minutes' }}分</div>
+        <div *ngIf="performance.workPerformed !== undefined" class="duration small-x-text">{{ performance.workPerformed.duration | duration: 'minutes' }}分</div>
+        <div *ngIf="performance.workPerformed === undefined" class="duration small-x-text"></div>
         <p class="title">{{ performance.name.ja }}</p>
     </div>
     <div *ngIf="performance.coaInfo?.kbnService?.kubunCode === '001'" class="service">

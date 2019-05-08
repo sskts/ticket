@@ -9,12 +9,7 @@ import { UtilService } from '../util/util.service';
 type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>;
 type programMembershipType = factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<'ProgramMembership'>>;
 
-// ユーザーのデータ構造が変更された際にここを１インクリメントする
-// 過去のデータを読み込んだ際に対応するため
-const USER_DATA_VERSION = 3;
-
 export interface IData {
-    version: Number;
     userName?: string;
     memberType: MemberType;
     profile?: factory.person.IProfile;
@@ -52,6 +47,10 @@ export class UserService {
         private sasaki: SasakiService,
         private util: UtilService
     ) {
+        this.init();
+    }
+
+    private async init() {
         this.load();
         this.save();
     }
@@ -60,23 +59,22 @@ export class UserService {
      * 読み込み
      * @method load
      */
-    public load() {
+    public async load() {
         const data: IData | null = this.storage.load(STORAGE_KEY, SaveType.Local);
         if (data === null) {
             this.data = {
-                version: USER_DATA_VERSION,
                 memberType: MemberType.NotMember,
                 creditCards: [],
                 accounts: [],
                 programMembershipOwnershipInfos: [],
                 prevUserName: ''
             };
-
             return;
         }
         this.data = data;
-        if (this.data.version === undefined || this.data.version < USER_DATA_VERSION) {
-            this.initMember();
+        if (await this.sasaki.needReload()) {
+            await this.initMember();
+            location.reload();
         }
     }
 
@@ -95,12 +93,11 @@ export class UserService {
     public reset() {
         const prevUserName =
             this.sasaki.userName !== undefined ? this.sasaki.userName :
-            this.data.accounts.length > 0 &&
-            this.data.accounts[0].typeOfGood !== null &&
-            this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
-            this.data.prevUserName !== undefined ? this.data.prevUserName : '';
+                this.data.accounts.length > 0 &&
+                    this.data.accounts[0].typeOfGood !== null &&
+                    this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
+                    this.data.prevUserName !== undefined ? this.data.prevUserName : '';
         this.data = {
-            version: USER_DATA_VERSION,
             memberType: MemberType.NotMember,
             creditCards: [],
             accounts: [],
@@ -123,7 +120,7 @@ export class UserService {
         }
         this.data.userName = this.sasaki.userName;
         // 連絡先取得
-        const profile = await this.sasaki.person.getProfile({id: 'me' });
+        const profile = await this.sasaki.person.getProfile({ id: 'me' });
         if (profile === undefined) {
             throw new Error('profile is undefined');
         }
@@ -150,7 +147,6 @@ export class UserService {
             }
         });
         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
-        this.data.version = USER_DATA_VERSION;
         this.save();
     }
 
@@ -208,9 +204,9 @@ export class UserService {
     }
 
     /**
-     * ポイントアカウントを検索する
-     * @method searchPointAccount
-     */
+    * ポイントアカウントを検索する
+    * @method searchPointAccount
+    */
     private async searchPointAccount() {
         // 口座検索
         const accountSearchResult = await this.sasaki.ownerShip.search({
@@ -234,17 +230,17 @@ export class UserService {
     }
 
     /**
-     * 会員判定
-     * @method isMember
-     */
+    * 会員判定
+    * @method isMember
+    */
     public isMember() {
         return (this.data.memberType === MemberType.Member);
     }
 
     /**
-     * 名前取得
-     * @method getName
-     */
+    * 名前取得
+    * @method getName
+    */
     public getName() {
         if (this.data.profile === undefined) {
             return '';
@@ -253,11 +249,11 @@ export class UserService {
     }
 
     /**
-     * 電話番号取得（ハイフンなし）
-     * @method getTelephone
-     */
+    * 電話番号取得（ハイフンなし）
+    * @method getTelephone
+    */
     public getTelephone() {
-        if (this.data.profile === undefined) {
+        if (this.data.profile === undefined || this.data.profile.telephone === undefined) {
             return '';
         }
         const no = this.data.profile.telephone.replace(/\-/g, '');
@@ -265,9 +261,9 @@ export class UserService {
     }
 
     /**
-     * よく行く劇場名取得
-     * @method getTheaterName
-     */
+    * よく行く劇場名取得
+    * @method getTheaterName
+    */
     public getTheaterName(index: number) {
         const programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
         if (this.data.programMembershipOwnershipInfos.length === 0
@@ -281,10 +277,10 @@ export class UserService {
     }
 
     /**
-     * よく行く劇場コード取得
-     * @method getTheaterCode
+    * よく行く劇場コード取得
+    * @method getTheaterCode
 
-     */
+    */
     public getTheaterCode(index: number) {
         const programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
         if (this.data.programMembershipOwnershipInfos.length === 0
@@ -299,9 +295,9 @@ export class UserService {
     }
 
     /**
-     * 口座情報取得
-     * @method getAccount
-     */
+    * 口座情報取得
+    * @method getAccount
+    */
     public getAccount(index: number) {
         if (this.data.accounts.length === 0) {
             return undefined;
@@ -310,9 +306,9 @@ export class UserService {
     }
 
     /**
-     * クレジットカード情報取得（表示用）
-     * @method getCreditCard
-     */
+    * クレジットカード情報取得（表示用）
+    * @method getCreditCard
+    */
     public getCreditCard(index: number) {
         if (this.data.creditCards.length === 0) {
             return undefined;
@@ -324,9 +320,9 @@ export class UserService {
     }
 
     /**
-     * GMOトークン取得
-     * @method getGmoObject
-     */
+    * GMOトークン取得
+    * @method getGmoObject
+    */
     public async getGmoObject(args: {
         cardno: string;
         expire: string;
@@ -339,7 +335,7 @@ export class UserService {
         // 池袋
         const branchCode = (environment.production) ? '001' : '101';
         const result = await this.sasaki.seller.search({
-            location: {branchCodes: [branchCode]},
+            location: { branchCodes: [branchCode] },
             typeOfs: [factory.organizationType.MovieTheater]
         });
         const movieTheater = result.data[0];
@@ -367,9 +363,9 @@ export class UserService {
     }
 
     /**
-     * クレジットカード登録
-     * @method registerCreditCard
-     */
+    * クレジットカード登録
+    * @method registerCreditCard
+    */
     public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
         await this.sasaki.getServices();
         // 登録
@@ -393,8 +389,8 @@ export class UserService {
     }
 
     /**
-     * クレジットカード削除
-     */
+    * クレジットカード削除
+    */
     public async deleteCreditCard() {
         await this.sasaki.getServices();
         if (this.data.creditCards.length === 0) {
@@ -407,9 +403,9 @@ export class UserService {
     }
 
     /**
-     * 基本情報変更
-     * @method updateProfile
-     */
+    * 基本情報変更
+    * @method updateProfile
+    */
     public async updateProfile(args: {
         familyName: string;
         givenName: string;
@@ -442,8 +438,8 @@ export class UserService {
     }
 
     /**
-     * ユーザーネーム設定
-     */
+    * ユーザーネーム設定
+    */
     public async setUserName() {
         await this.sasaki.getServices();
         this.data.userName = this.sasaki.userName;
@@ -451,8 +447,8 @@ export class UserService {
     }
 
     /**
-     * よく行く劇場コードを取得する
-     */
+    * よく行く劇場コードを取得する
+    */
     public getWellGoTheaterCode() {
         if (this.data.profile !== undefined && this.data.profile.additionalProperty !== undefined) {
             const code = this.data.profile.additionalProperty.find((prop) => {

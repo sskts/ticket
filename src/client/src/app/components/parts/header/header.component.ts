@@ -24,6 +24,7 @@ const pages = [
     { url: '/member/point', title: '会員ポイント' },
     { url: '/member/point/history', title: 'ポイント使用履歴' },
     { url: '/member/point/benefits', title: '会員特典' },
+    { url: '/member/ticket/history', title: '鑑賞履歴' },
     { url: '/member/edit', title: '会員情報変更' },
     { url: '/member/edit/credit', title: '会員情報変更' },
     { url: '/member/edit/profile', title: '会員情報変更' },
