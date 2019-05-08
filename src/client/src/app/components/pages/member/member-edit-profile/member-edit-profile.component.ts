@@ -109,11 +109,11 @@ export class MemberEditProfileComponent implements OnInit {
         if (contact === undefined) {
             throw new Error('contact is undefined');
         }
-        profile.givenName.value = contact.givenName;
-        profile.familyName.value = contact.familyName;
+        profile.givenName.value = contact.givenName === undefined ? '' : contact.givenName;
+        profile.familyName.value = contact.familyName === undefined ? '' : contact.familyName;
         profile.telephone.value = this.user.getTelephone();
         this.staticProfile = {
-            email: contact.email
+            email: contact.email === undefined ? '' : contact.email
         };
         const theaterCode = this.user.getWellGoTheaterCode();
         profile.theaterCode.value = theaterCode === undefined ? '' : theaterCode;

@@ -7,8 +7,8 @@ import * as moment from 'moment';
 import { AwsCognitoService } from '../aws-cognito/aws-cognito.service';
 import { SasakiService } from '../sasaki/sasaki.service';
 import { StorageService } from '../storage/storage.service';
-type ITicket = factory.reservation.ITicket<factory.reservation.event.IPriceSpecification>;
-type IReservationFor = factory.reservation.event.IReservationFor;
+type ITicket = factory.chevre.reservation.ITicket<factory.chevre.reservationType.EventReservation>;
+type IReservationFor = factory.chevre.reservation.IReservationFor<factory.chevre.reservationType.EventReservation>;
 
 export interface IReservation {
     confirmationNumber: string;
@@ -81,14 +81,14 @@ export class ReservationService {
             reservationRecord.orders.forEach((order) => {
                 const reservationsFor: IReservationFor[] = [];
                 order.acceptedOffers.forEach((offer) => {
-                    if (offer.itemOffered.typeOf !== factory.reservationType.EventReservation) {
+                    if (offer.itemOffered.typeOf !== factory.chevre.reservationType.EventReservation) {
                         return;
                     }
                     reservationsFor.push(offer.itemOffered.reservationFor);
                 });
                 const reservedTickets: ITicket[] = [];
                 order.acceptedOffers.forEach((offer) => {
-                    if (offer.itemOffered.typeOf !== factory.reservationType.EventReservation) {
+                    if (offer.itemOffered.typeOf !== factory.chevre.reservationType.EventReservation) {
                         return;
                     }
                     reservedTickets.push(offer.itemOffered.reservedTicket);
@@ -114,10 +114,10 @@ export class ReservationService {
      */
     private async fitchReservation(): Promise<IReservationData> {
         await this.sasaki.getServices();
-        const reservationOwnerships = await this.sasaki.ownerShip.search<factory.reservationType.EventReservation>({
+        const reservationOwnerships = await this.sasaki.ownerShip.search<factory.chevre.reservationType.EventReservation>({
             id: 'me',
             typeOfGood: {
-                typeOf: factory.reservationType.EventReservation
+                typeOf: factory.chevre.reservationType.EventReservation
             }
         });
         console.log(reservationOwnerships);

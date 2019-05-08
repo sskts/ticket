@@ -16,15 +16,15 @@
             <app-point-slider [point]="user.data.accounts[0].typeOfGood.availableBalance"></app-point-slider>
         </div>
         <ul class="menu">
-            <li (click)="redirectToPurchaseTime()">
-                <div class="text-center caption">今スグ観る</div>
-            </li>
-            <li (click)="redirectToPurchaseFilm()">
+           <li (click)="redirectToPurchaseFilm()">
                 <div class="text-center caption">チケット購入</div>
             </li>
             <li routerLink="/member/edit">
                 <div class="text-center caption">登録情報確認・変更</div>
             </li>
+            <li routerLink="/member/ticket/history">
+                <div class="text-center caption">鑑賞履歴</div>
+ 
             <li routerLink="/member/point/benefits">
                 <div class="text-center caption">会員特典一覧</div>
             </li>

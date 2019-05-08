@@ -110,39 +110,35 @@ MIT
 MIT
 MIT
 
-@chevre/factory@1.0.0-alpha.61
+@chevre/factory@1.0.0-alpha.72
 ISC
 ISC
 
-@cinerino/api-abstract-client@1.0.0-alpha.82
+@cinerino/api-abstract-client@1.0.0-alpha.90
 ISC
 ISC
 
-@cinerino/api-javascript-client@1.0.0-alpha.31
+@cinerino/api-javascript-client@2.0.0-alpha.2
 ISC
 ISC
 
-@cinerino/factory@1.0.0-alpha.102
+@cinerino/factory@1.0.0-alpha.124
 ISC
 ISC
 
-@motionpicture/sskts-api-abstract-client@6.0.1
+@motionpicture/sskts-api-abstract-client@8.0.0
 ISC
 ISC
 
-@motionpicture/sskts-api-javascript-client@6.0.0
+@motionpicture/sskts-api-javascript-client@8.0.0
 ISC
 ISC
 
-@motionpicture/sskts-factory@9.0.1
+@pecorino/factory@2.0.1
 ISC
 ISC
 
-@pecorino/factory@2.0.0
-ISC
-ISC
-
-@waiter/factory@2.0.0
+@waiter/factory@2.1.0
 ISC
 ISC
 

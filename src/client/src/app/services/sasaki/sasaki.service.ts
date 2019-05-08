@@ -80,8 +80,8 @@ export class SasakiService {
     }
 
     /**
-     * サインアウト
-     */
+    * サインアウト
+    */
     public async signOut() {
         const url = '/api/authorize/signOut';
         const result = await this.http.get<any>(url, {}).toPromise();
@@ -90,8 +90,8 @@ export class SasakiService {
     }
 
     /**
-     * @method createOption
-     */
+    * @method createOption
+    */
     public async createOption() {
         await this.authorize();
 
@@ -102,8 +102,8 @@ export class SasakiService {
     }
 
     /**
-     * @method authorize
-     */
+    * @method authorize
+    */
     public async authorize() {
         const user = this.storage.load('user');
         const memberType = user.memberType;
@@ -130,5 +130,34 @@ export class SasakiService {
         this.auth.setCredentials(result.credentials);
         this.userName = result.userName;
         this.endpoint = result.endpoint;
+    }
+
+    /**
+     * サーバーのバージョンをチェックし、
+     */
+    public async needReload() {
+        const version = await this.getAPIVersion();
+        const server = this.storage.load('server');
+        if (server === null) {
+            this.storage.save('server', { version: version });
+            return true;
+        }
+        if (server.version !== version) {
+            this.storage.save('server', { version: version });
+            return true;
+        }
+        return false;
+    }
+
+    /**
+    * @method getAPIVersion
+    * package.jsonから取得したバージョンを取得する
+    */
+    private async getAPIVersion() {
+        const url = '/api/version';
+        const result = await this.http.get<{
+            version: string;
+        }>(url).toPromise();
+        return result.version;
     }
 }

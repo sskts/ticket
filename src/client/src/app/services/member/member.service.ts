@@ -53,7 +53,7 @@ export class MemberService {
 
         // 会員プログラム登録
         const registerProgramMembership = await this.sasaki.person.registerProgramMembership({
-            personId: 'me',
+            id: 'me',
             programMembershipId: programMembership.id,
             offerIdentifier: offer.identifier,
             sellerType: seller.typeOf,
@@ -106,7 +106,7 @@ export class MemberService {
     }) {
         await this.sasaki.getServices();
         await this.sasaki.person.unRegisterProgramMembership({
-            personId: 'me',
+            id: 'me',
             ownershipInfoIdentifier: args.ownershipInfoIdentifier
         });
     }
