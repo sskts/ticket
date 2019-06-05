@@ -16,6 +16,7 @@ const pages = [
     { url: '/about', title: 'このアプリについて' },
     { url: '/policy', title: '利用規約' },
     { url: '/law', title: '特定商取引法に基づく表記' },
+    { url: '/prize', title: '内覧会招待キャンペーン' },
     { url: '/privacy', title: 'プライバシーポリシー' },
     { url: '/law', title: '特定商取引法に基づく表記' },
     { url: '/benefits', title: '会員特典 / 会員登録' },

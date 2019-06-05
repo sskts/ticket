@@ -14,6 +14,11 @@
                 無料鑑賞券を使用できます
             </div>
             <app-point-slider [point]="user.data.accounts[0].typeOfGood.availableBalance"></app-point-slider>
+            <div class="prize" routerLink="/prize">
+                <span>アプリ会員限定</span>
+                <br><span>内覧会招待キャンペーン</span>
+                <br><span>ご応募はこちら</span>
+            </div>
         </div>
         <ul class="menu">
            <li (click)="redirectToPurchaseFilm()">

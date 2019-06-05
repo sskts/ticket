@@ -3,6 +3,7 @@ import { BaseComponent } from '../components/pages/base/base.component';
 import { BenefitsComponent } from '../components/pages/benefits/benefits.component';
 import { LawComponent } from '../components/pages/law/law.component';
 import { PolicyComponent } from '../components/pages/policy/policy.component';
+import { PrizeComponent } from '../components/pages/prize/prize.component';
 import { PrivacyComponent } from '../components/pages/privacy/privacy.component';
 import { PurchaseComponent } from '../components/pages/purchase/purchase.component';
 import { RootComponent } from '../components/pages/root/root.component';
@@ -24,7 +25,8 @@ export const route = {
         { path: 'policy', component: PolicyComponent },
         { path: 'law', component: LawComponent },
         { path: 'privacy', component: PrivacyComponent },
-        { path: 'benefits', component: BenefitsComponent }
+        { path: 'benefits', component: BenefitsComponent },
+        { path: 'prize', component: PrizeComponent }
     ]
 };
 

@@ -36,6 +36,7 @@ import { MemberWithdrawComponent } from './components/pages/member/member-withdr
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { PolicyComponent } from './components/pages/policy/policy.component';
 import { PrivacyComponent } from './components/pages/privacy/privacy.component';
+import { PrizeComponent } from './components/pages/prize/prize.component';
 import { PurchaseComponent } from './components/pages/purchase/purchase.component';
 import { RootComponent } from './components/pages/root/root.component';
 import { TicketComponent } from './components/pages/ticket/ticket.component';
@@ -136,7 +137,8 @@ import { UtilService } from './services/util/util.service';
         PageComponent,
         PointHistoryListComponent,
         TicketHistoryDetailComponent,
-        MaintenanceComponent
+        MaintenanceComponent,
+        PrizeComponent
     ],
     imports: [
         BrowserModule,
