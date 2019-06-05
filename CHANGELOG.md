@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.7.2 - 2019-06-06
+### Fixed
+- 鑑賞履歴の描画のずれを修正
+
 ## 2.7.1 - 2019-05-08
 ### Fixed
 - 履歴情報の文言をシートからスクリーンに修正
