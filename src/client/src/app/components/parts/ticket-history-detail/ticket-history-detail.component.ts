@@ -16,7 +16,6 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
     @Input() public reservation: factory.ownershipInfo.IOwnershipInfo<
         factory.chevre.reservation.IReservation<
             factory.chevre.reservationType.EventReservation>>;
-    @ViewChild('main') private mainElement: ElementRef;
     @ViewChild('topimage') private topImageElement: ElementRef;
     public confirmationNumber: string;
     public totalPrice: string;
@@ -73,7 +72,6 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
 
     public ngAfterContentChecked() {
         if (this.theaterName !== '') {
-            this.centerHeight = this.mainElement.nativeElement.offsetHeight - this.topImageElement.nativeElement.offsetHeight;
             this.topHeight = Math.floor(this.topImageElement.nativeElement.offsetHeight);
             if (this.topHeight % 2 === 1) {
                 this.topHeight++;
