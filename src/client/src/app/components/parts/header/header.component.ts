@@ -17,7 +17,6 @@ const pages = [
     { url: '/policy', title: '利用規約' },
     { url: '/law', title: '特定商取引法に基づく表記' },
     { url: '/privacy', title: 'プライバシーポリシー' },
-    { url: '/law', title: '特定商取引法に基づく表記' },
     { url: '/benefits', title: '会員特典 / 会員登録' },
     { url: '/auth/logout', title: 'ログアウト' },
     { url: '/member/mypage', title: 'TOP' },
