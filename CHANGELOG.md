@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.7.3 - 2019-07-01
+### Fixed
+- 特定商取引法ページ更新
+
 ## 2.7.2 - 2019-06-06
 ### Fixed
 - 鑑賞履歴の描画のずれを修正
