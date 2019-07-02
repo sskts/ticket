@@ -1,11 +1,15 @@
 <div *ngIf="reservation.reservedTickets.length > 0" class="inner">
     <div class="info">
         <dl class="film">
-            <dt><app-icon iconName="film-name-gray" width="15" height="15"></app-icon></dt>
+            <dt>
+                <app-icon iconName="film-name-gray" width="15" height="15"></app-icon>
+            </dt>
             <dd>{{ reservation.reservationsFor[0].name.ja }}</dd>
         </dl>
         <dl class="date">
-            <dt><app-icon iconName="date-gray" width="15" height="15"></app-icon></dt>
+            <dt>
+                <app-icon iconName="date-gray" width="15" height="15"></app-icon>
+            </dt>
             <dd>
                 {{ reservation.reservationsFor[0].coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{
                 reservation.reservationsFor[0].startDate | timeFormat: reservation.reservationsFor[0].coaInfo.dateJouei
@@ -14,7 +18,9 @@
             </dd>
         </dl>
         <dl class="theater">
-            <dt><app-icon iconName="location-gray" width="15" height="15"></app-icon></dt>
+            <dt>
+                <app-icon iconName="location-gray" width="15" height="15"></app-icon>
+            </dt>
             <dd>
                 {{ reservation.reservationsFor[0].superEvent.location.name.ja }} / {{ reservation.reservationsFor[0].location.name.ja
                 }}
@@ -23,22 +29,44 @@
     </div>
     <div class="details">
         <div *ngFor="let reservedTicket of reservation.reservedTickets; let index = index;" class="detail">
-            <div class="ticket-info">
-                <div class="index small-text">{{ (index + 1) }}/{{ reservation.reservedTickets.length }}</div>
-                <div class="mb-x-small small-text">{{ confirmationNumber }}</div>
-                <div class="large-x-text mb-x-small">{{ reservedTicket.ticketedSeat.seatNumber }}</div>
-                <div class="small-text">{{ reservedTicket.coaTicketInfo.ticketName }}</div>
+            <div class="detail-inner">
+                <div class="ticket-info">
+                    <div class="index small-text">{{ (index + 1) }}/{{ reservation.reservedTickets.length }}</div>
+                    <div class="mb-x-small small-text">{{ confirmationNumber }}</div>
+                    <div class="large-x-text mb-x-small">{{ reservedTicket.ticketedSeat.seatNumber }}</div>
+                    <div class="small-text">{{ reservedTicket.coaTicketInfo.ticketName }}</div>
+                </div>
+                <div *ngIf="!showQrCodeList[index]" class="not-qr">
+                    <p class="inner small-text text-center">
+                        鑑賞日前日から
+                        <br>QRコードが
+                        <br>表示されます。
+                    </p>
+                </div>
+                <div *ngIf="showQrCodeList[index]" class="qr">
+                    <img [src]="qrCodeList[index]">
+                </div>
             </div>
-            <div *ngIf="!showQrCodeList[index]" class="not-qr">
-                <p class="inner small-text text-center">
-                    鑑賞日前日から
-                    <br>QRコードが
-                    <br>表示されます。
-                </p>
-            </div>
-            <div *ngIf="showQrCodeList[index]" class="qr">
-                <img [src]="qrCodeList[index]">
-            </div>
+            <p *ngIf="(reservation.reservationsFor[0].location.branchCode | slice : -2) === '20' 
+                && reservedTicket.coaTicketInfo.spseatKbn === '003'
+                && reservedTicket.coaTicketInfo.spseatAdd2 > 0" class="text-left special-seat-info">
+                【グランドクラス】<br>
+                <span
+                    class="text-red">本チケットには、ミールクーポン{{ reservedTicket.coaTicketInfo.spseatAdd2 }}円分が含まれています。</span><br>
+                4F・コンセッション、5F・クラッパーズダイナー、12F・バール パノーラマのいずれかでご提示の上、ご利用願います。<br>
+                ※お釣りのお返しは致しかねます。<br>
+                ※ご鑑賞日当日のみ有効
+            </p>
+            <p *ngIf="(reservation.reservationsFor[0].location.branchCode | slice : -2) === '20' 
+                && reservedTicket.coaTicketInfo.spseatKbn === '002'
+                && reservedTicket.coaTicketInfo.spseatAdd2 > 0" class="text-left special-seat-info">
+                【プレミアムクラス】<br>
+                <span
+                    class="text-red">本チケットには、ミールクーポン{{ reservedTicket.coaTicketInfo.spseatAdd2 }}円分が含まれています。</span><br>
+                4F・コンセッション、5F・クラッパーズダイナー、12F・バール パノーラマのいずれかでご提示の上、ご利用願います。<br>
+                ※お釣りのお返しは致しかねます。<br>
+                ※ご鑑賞日当日のみ有効
+            </p>
         </div>
     </div>
 </div>
