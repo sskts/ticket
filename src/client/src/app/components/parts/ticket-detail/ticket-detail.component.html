@@ -47,7 +47,7 @@
                     <img [src]="qrCodeList[index]">
                 </div>
             </div>
-            <p *ngIf="(reservation.reservationsFor[0].location.branchCode | slice : -2) === '20' 
+            <p *ngIf="(reservation.reservationsFor[0].superEvent.location.branchCode | slice : -2) === '20' 
                 && reservedTicket.coaTicketInfo.spseatKbn === '003'
                 && reservedTicket.coaTicketInfo.spseatAdd2 > 0" class="text-left special-seat-info">
                 【グランドクラス】<br>
@@ -57,7 +57,7 @@
                 ※お釣りのお返しは致しかねます。<br>
                 ※ご鑑賞日当日のみ有効
             </p>
-            <p *ngIf="(reservation.reservationsFor[0].location.branchCode | slice : -2) === '20' 
+            <p *ngIf="(reservation.reservationsFor[0].superEvent.location.branchCode | slice : -2) === '20' 
                 && reservedTicket.coaTicketInfo.spseatKbn === '002'
                 && reservedTicket.coaTicketInfo.spseatAdd2 > 0" class="text-left special-seat-info">
                 【プレミアムクラス】<br>
