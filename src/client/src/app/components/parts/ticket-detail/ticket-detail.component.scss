@@ -26,13 +26,15 @@
 .details {
     .detail {
         background-color: #FFF;
-        display: flex;
-        align-items: center;
         border-bottom: 1px solid #AAA;
         position: relative;
         &:last-child {
             border-bottom: none;
         }
+    }
+    .detail-inner {
+        display: flex;
+        align-items: center;
     }
     .ticket-info {
         text-align: center;
@@ -45,6 +47,7 @@
         }
     }
     .qr, .not-qr {
+        height: 100%;
         padding: 20px;
         background-color: #EEE;
         .inner {
@@ -61,6 +64,9 @@
             padding: 10px;
             background-color: #FFF;
         }
+    }
+    .special-seat-info {
+        padding: 1rem;
     }
 }
 
