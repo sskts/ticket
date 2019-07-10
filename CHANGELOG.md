@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.8.0 - 2019-07-10
+### Added
+- ミールクーポン付きチケットへ説明文追加
+
 ## 2.7.3 - 2019-07-01
 ### Fixed
 - 特定商取引法ページ更新
