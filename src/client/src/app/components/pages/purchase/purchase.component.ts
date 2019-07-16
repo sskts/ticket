@@ -221,7 +221,8 @@ export class PurchaseComponent implements OnInit {
         const theaters = sellerSearchResult.data.filter((s) => {
             return (s.location !== undefined
                 && s.location.branchCode !== undefined
-                && s.location.branchCode !== '');
+                && s.location.branchCode !== ''
+                && environment.CLOSE_THEATERS.find(t => t === (<any>s.location).branchCode) === undefined);
         });
         // 除外劇場処理
         const excludeTheatersResult = await this.maintenance.excludeTheaters();

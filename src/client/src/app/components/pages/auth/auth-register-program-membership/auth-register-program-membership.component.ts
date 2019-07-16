@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { environment } from '../../../../../environments/environment';
 import { MaintenanceService } from '../../../../services/maintenance/maintenance.service';
 import { MemberService } from '../../../../services/member/member.service';
 import { SasakiService } from '../../../../services/sasaki/sasaki.service';
@@ -45,7 +46,8 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             const searchMovieTheatersResult = sellerSearchResult.data.filter((s) => {
                 return (s.location !== undefined
                     && s.location.branchCode !== undefined
-                    && s.location.branchCode !== '');
+                    && s.location.branchCode !== ''
+                    && environment.CLOSE_THEATERS.find(t => t === (<any>s.location).branchCode) === undefined);
             });
             // 除外劇場処理
             const excludeTheatersResult = await this.maintenance.excludeTheaters();

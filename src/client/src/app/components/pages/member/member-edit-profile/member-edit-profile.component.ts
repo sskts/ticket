@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 import { Router } from '@angular/router';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
 import * as libphonenumber from 'libphonenumber-js';
+import { environment } from '../../../../../environments/environment';
 import { MaintenanceService } from '../../../../services/maintenance/maintenance.service';
 import { SasakiService } from '../../../../services/sasaki/sasaki.service';
 import { UserService } from '../../../../services/user/user.service';
@@ -97,7 +98,7 @@ export class MemberEditProfileComponent implements OnInit {
             },
             theaterCode: {
                 value: '',
-                validators: []
+                validators: [Validators.required]
             },
             postalCode: {
                 value: '',
@@ -116,7 +117,9 @@ export class MemberEditProfileComponent implements OnInit {
             email: contact.email === undefined ? '' : contact.email
         };
         const theaterCode = this.user.getWellGoTheaterCode();
-        profile.theaterCode.value = theaterCode === undefined ? '' : theaterCode;
+        profile.theaterCode.value =
+            (theaterCode === undefined || environment.CLOSE_THEATERS.find(t => t === theaterCode) !== undefined)
+                ? '' : theaterCode;
 
         return this.formBuilder.group({
             familyName: [profile.familyName.value, profile.familyName.validators],
@@ -174,16 +177,17 @@ export class MemberEditProfileComponent implements OnInit {
         }
     }
 
-        /**
-     * 劇場一覧取得
-     */
+    /**
+ * 劇場一覧取得
+ */
     private async getTheaters() {
         await this.sasaki.getServices();
         const result = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
         const theaters = result.data.filter((s) => {
             return (s.location !== undefined
                 && s.location.branchCode !== undefined
-                && s.location.branchCode !== '');
+                && s.location.branchCode !== ''
+                && environment.CLOSE_THEATERS.find(t => t === (<any>s.location).branchCode) === undefined);
         });
         // 除外劇場処理
         const excludeTheatersResult = await this.maintenance.excludeTheaters();
