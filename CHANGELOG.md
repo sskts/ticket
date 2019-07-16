@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.9.0 - 2019-07-16
+### Added
+- 閉館劇場設定を追加
+
 ## 2.8.0 - 2019-07-10
 ### Added
 - ミールクーポン付きチケットへ説明文追加
