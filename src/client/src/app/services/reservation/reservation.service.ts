@@ -103,7 +103,7 @@ export class ReservationService {
 
         return {
             reservations: orders,
-            expired: moment().add(expired, 'milliseconds').unix()
+            expired: moment().add(expired, 'second').unix()
         };
     }
 
@@ -118,9 +118,9 @@ export class ReservationService {
             id: 'me',
             typeOfGood: {
                 typeOf: factory.chevre.reservationType.EventReservation
-            }
+            },
+            limit: 100
         });
-        console.log(reservationOwnerships);
         const orders: IReservation[] = [];
         for (const reservationOwnership of reservationOwnerships.data) {
             const confirmationNumber = reservationOwnership.typeOfGood.reservationNumber.split('-')[0];
@@ -147,7 +147,7 @@ export class ReservationService {
 
         return {
             reservations: orders,
-            expired: moment().add(expired, 'milliseconds').unix()
+            expired: moment().add(expired, 'second').unix()
         };
     }
 
@@ -179,8 +179,8 @@ export class ReservationService {
                 return false;
             }
             const endDate = moment(reservation.reservationsFor[0].endDate);
-
-            return (endDate.unix() > moment().unix());
+            // 上映終了12時間後まで表示
+            return (endDate.unix() > moment().add(-12, 'hour').unix());
         });
 
         order.sort((a, b) => {
