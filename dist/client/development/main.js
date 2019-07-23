@@ -10576,7 +10576,7 @@ var ReservationService = /** @class */ (function () {
                         }
                         return [2 /*return*/, {
                                 reservations: orders,
-                                expired: moment__WEBPACK_IMPORTED_MODULE_1__().add(expired, 'milliseconds').unix()
+                                expired: moment__WEBPACK_IMPORTED_MODULE_1__().add(expired, 'second').unix()
                             }];
                 }
             });
@@ -10599,11 +10599,11 @@ var ReservationService = /** @class */ (function () {
                                 id: 'me',
                                 typeOfGood: {
                                     typeOf: _motionpicture_sskts_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.reservationType.EventReservation
-                                }
+                                },
+                                limit: 100
                             })];
                     case 2:
                         reservationOwnerships = _b.sent();
-                        console.log(reservationOwnerships);
                         orders = [];
                         _loop_1 = function (reservationOwnership) {
                             var confirmationNumber = reservationOwnership.typeOfGood.reservationNumber.split('-')[0];
@@ -10634,7 +10634,7 @@ var ReservationService = /** @class */ (function () {
                         expired = 10;
                         return [2 /*return*/, {
                                 reservations: orders,
-                                expired: moment__WEBPACK_IMPORTED_MODULE_1__().add(expired, 'milliseconds').unix()
+                                expired: moment__WEBPACK_IMPORTED_MODULE_1__().add(expired, 'second').unix()
                             }];
                 }
             });
@@ -10679,7 +10679,8 @@ var ReservationService = /** @class */ (function () {
                                 return false;
                             }
                             var endDate = moment__WEBPACK_IMPORTED_MODULE_1__(reservation.reservationsFor[0].endDate);
-                            return (endDate.unix() > moment__WEBPACK_IMPORTED_MODULE_1__().unix());
+                            // 上映終了12時間後まで表示
+                            return (endDate.unix() > moment__WEBPACK_IMPORTED_MODULE_1__().add(-12, 'hour').unix());
                         });
                         order.sort(function (a, b) {
                             var startDateA = moment__WEBPACK_IMPORTED_MODULE_1__(a.reservationsFor[0].startDate).unix();
