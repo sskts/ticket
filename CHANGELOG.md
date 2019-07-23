@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.10.0 - 2019-07-23
+### Chenged
+- チケットホルダー保持期間を上映終了12時間後に変更
+
 ## 2.9.0 - 2019-07-16
 ### Added
 - 閉館劇場設定を追加
