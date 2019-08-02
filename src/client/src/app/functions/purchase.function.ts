@@ -1,17 +1,12 @@
 import { factory } from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
-import { environment } from '../../environments/environment';
-
 
 /**
- * 窓口判定
+ * 窓口判定（上映開始10分前から上映開始10分後）
  */
 export function isWindow(screeningEvent: factory.chevre.event.screeningEvent.IEvent) {
-    const window = {
-        value: Number(environment.WINDOW_TIME_VALUE),
-        unit: <moment.DurationInputArg2>environment.WINDOW_TIME_UNIT
-    };
-    return moment(screeningEvent.startDate).add(window.value, window.unit).unix() < moment().unix();
+    return (moment(screeningEvent.startDate).add(-10, 'minutes').unix() < moment().unix()
+        && moment(screeningEvent.startDate).add(10, 'minutes').unix() > moment().unix());
 }
 
 /**
@@ -23,11 +18,11 @@ export function isBeforePeriod(screeningEvent: factory.chevre.event.screeningEve
 }
 
 /**
- * 予約期間後判定
+ * 予約期間後判定（上映開始10分以降）
  */
 export function isAfterPeriod(screeningEvent: factory.chevre.event.screeningEvent.IEvent) {
     return screeningEvent.coaInfo === undefined
-        || moment(screeningEvent.endDate).unix() < moment().unix();
+        || moment(screeningEvent.startDate).add(10, 'minutes').unix() < moment().unix();
 }
 
 /**

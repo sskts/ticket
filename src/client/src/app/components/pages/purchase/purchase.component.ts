@@ -339,7 +339,7 @@ export class PurchaseComponent implements OnInit {
             .filter((screeningEvent) => {
                 return (screeningEvent.coaInfo !== undefined
                     && screeningEvent.coaInfo.dateJouei === searchDate
-                    && moment(screeningEvent.endDate).unix() < moment(now).unix());
+                    && moment(screeningEvent.endDate).unix() > moment(now).unix());
             });
 
         this.timeOrder = selectFilterResult;

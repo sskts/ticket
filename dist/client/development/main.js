@@ -6032,7 +6032,7 @@ var PurchaseComponent = /** @class */ (function () {
             .filter(function (screeningEvent) {
             return (screeningEvent.coaInfo !== undefined
                 && screeningEvent.coaInfo.dateJouei === searchDate
-                && moment__WEBPACK_IMPORTED_MODULE_3__(screeningEvent.endDate).unix() < moment__WEBPACK_IMPORTED_MODULE_3__(now).unix());
+                && moment__WEBPACK_IMPORTED_MODULE_3__(screeningEvent.endDate).unix() > moment__WEBPACK_IMPORTED_MODULE_3__(now).unix());
         });
         this.timeOrder = selectFilterResult;
         selectFilterResult.forEach(function (screeningEvent) {
@@ -9108,18 +9108,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isSalse", function() { return isSalse; });
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
-
 
 /**
- * 窓口判定
+ * 窓口判定（上映開始10分前から上映開始10分後）
  */
 function isWindow(screeningEvent) {
-    var window = {
-        value: Number(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].WINDOW_TIME_VALUE),
-        unit: _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].WINDOW_TIME_UNIT
-    };
-    return moment__WEBPACK_IMPORTED_MODULE_0__(screeningEvent.startDate).add(window.value, window.unit).unix() < moment__WEBPACK_IMPORTED_MODULE_0__().unix();
+    return (moment__WEBPACK_IMPORTED_MODULE_0__(screeningEvent.startDate).add(-10, 'minutes').unix() < moment__WEBPACK_IMPORTED_MODULE_0__().unix()
+        && moment__WEBPACK_IMPORTED_MODULE_0__(screeningEvent.startDate).add(10, 'minutes').unix() > moment__WEBPACK_IMPORTED_MODULE_0__().unix());
 }
 /**
  * 予約期間前判定
@@ -9129,11 +9124,11 @@ function isBeforePeriod(screeningEvent) {
         || moment__WEBPACK_IMPORTED_MODULE_0__(screeningEvent.coaInfo.rsvStartDate).unix() > moment__WEBPACK_IMPORTED_MODULE_0__().unix();
 }
 /**
- * 予約期間後判定
+ * 予約期間後判定（上映開始10分以降）
  */
 function isAfterPeriod(screeningEvent) {
     return screeningEvent.coaInfo === undefined
-        || moment__WEBPACK_IMPORTED_MODULE_0__(screeningEvent.endDate).unix() < moment__WEBPACK_IMPORTED_MODULE_0__().unix();
+        || moment__WEBPACK_IMPORTED_MODULE_0__(screeningEvent.startDate).add(10, 'minutes').unix() < moment__WEBPACK_IMPORTED_MODULE_0__().unix();
 }
 /**
  * 販売可能判定
@@ -12002,8 +11997,6 @@ var environment = {
     PORTAL_SITE: 'http://devssktsportal.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d2n1h4enbzumbc.cloudfront.net',
     CLOSE_THEATERS: ['101'],
-    WINDOW_TIME_VALUE: '-10',
-    WINDOW_TIME_UNIT: 'minutes',
     ANALYTICS_ID: 'UA-99018492-4'
 };
 
