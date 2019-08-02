@@ -21,6 +21,8 @@ export const environment = {
     ENTRANCE_SERVER_URL: 'https://d2n1h4enbzumbc.cloudfront.net',
 
     CLOSE_THEATERS: ['101'],
+    WINDOW_TIME_VALUE: '-10',
+    WINDOW_TIME_UNIT: 'minutes',
 
     ANALYTICS_ID: 'UA-99018492-4'
 

@@ -22,6 +22,8 @@ export const environment = {
     ENTRANCE_SERVER_URL: 'https://entrance.ticket-cinemasunshine.com',
 
     CLOSE_THEATERS: ['001'],
+    WINDOW_TIME_VALUE: '-10',
+    WINDOW_TIME_UNIT: 'minutes',
 
     ANALYTICS_ID: 'UA-99018492-6'
 

@@ -1,4 +1,4 @@
-<div class="performance" [ngClass]="(salseFlg) ? (performance.offers.availability | availability).className : ''">
+<div class="performance" [ngClass]="(isSalse(performance)) ? (performance.offers?.availability | availability).className : ''">
     <div class="date">
         <div class="mb-xx-small text-center">
             <strong class="large-text">{{ performance.startDate | timeFormat: performance.coaInfo?.dateJouei }}</strong>
@@ -8,12 +8,13 @@
         </div>
     </div>
     <div class="screen small-x-text">{{ performance.location.name.ja }}</div>
-    <div class="button text-center" (click)="(salseFlg) ? select.emit() : null;">
-        <div *ngIf="salseFlg" class="status">
+    <div class="button text-center" (click)="(isSalse(performance)) ? select.emit() : null;">
+        <div *ngIf="isSalse(performance)" class="status">
                 <app-icon [iconName]="(performance.offer.availability | availability).icon" width="15" height="15"></app-icon>購入
         </div>
-        <div *ngIf="isNotAccepted" class="status window">予約不可</div>
-        <div *ngIf="isWindow" class="status window">窓口</div>
+        <div *ngIf="!isSalse(performance) && isBeforePeriod(performance)" class="status">予約不可</div>
+        <div *ngIf="!isSalse(performance) && isAfterPeriod(performance)" class="status">予約不可</div>
+        <div *ngIf="!isSalse(performance) && !isBeforePeriod(performance) && !isAfterPeriod(performance) && isWindow(performance)" class="status">窓口</div>
     </div>
     <div *ngIf="performance.coaInfo?.kbnService?.kubunCode === '001'" class="service">
         <app-icon iconName="first-show-black" width="10" height="10"></app-icon>

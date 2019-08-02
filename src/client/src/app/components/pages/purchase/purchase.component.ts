@@ -6,11 +6,13 @@ import { Router } from '@angular/router';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
 import * as moment from 'moment';
 import { environment } from '../../../../environments/environment';
+import { object2query } from '../../../functions';
 import { AwsCognitoService } from '../../../services/aws-cognito/aws-cognito.service';
 import { IConfirm, MaintenanceService } from '../../../services/maintenance/maintenance.service';
 import { SasakiService } from '../../../services/sasaki/sasaki.service';
 import { IPurchaseConditions, PurchaseSort, SelectService } from '../../../services/select/select.service';
 import { MemberType, UserService } from '../../../services/user/user.service';
+import { UtilService } from '../../../services/util/util.service';
 
 type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
 type IEvent = factory.chevre.event.screeningEvent.IEvent;
@@ -59,11 +61,12 @@ export class PurchaseComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private sasaki: SasakiService,
-        private select: SelectService,
-        private user: UserService,
-        private maintenance: MaintenanceService,
-        private awsCognito: AwsCognitoService
+        private sasakiService: SasakiService,
+        private selectService: SelectService,
+        private userService: UserService,
+        private utilService: UtilService,
+        private maintenanceService: MaintenanceService,
+        private awsCognitoService: AwsCognitoService
     ) {
         this.purchaseSort = PurchaseSort;
     }
@@ -75,16 +78,16 @@ export class PurchaseComponent implements OnInit {
     public async ngOnInit() {
         this.isLoading = true;
         try {
-            this.maintenanceInfo = await this.maintenance.confirm();
+            this.maintenanceInfo = await this.maintenanceService.confirm();
             if (this.maintenanceInfo.isMaintenance) {
                 this.isLoading = false;
 
                 return;
             }
-            this.conditions = this.select.data.purchase;
-            if (this.user.isMember() && this.conditions.theater === '') {
+            this.conditions = this.selectService.data.purchase;
+            if (this.userService.isMember() && this.conditions.theater === '') {
                 // 会員
-                const theater = this.user.getWellGoTheaterCode();
+                const theater = this.userService.getWellGoTheaterCode();
                 this.conditions.theater = theater !== undefined ? theater : '';
             }
             await this.initialize();
@@ -123,10 +126,10 @@ export class PurchaseComponent implements OnInit {
      */
     public async changeTheater() {
         this.isLoading = true;
-        this.select.data.purchase.theater = this.conditions.theater;
-        this.select.save();
+        this.selectService.data.purchase.theater = this.conditions.theater;
+        this.selectService.save();
         try {
-            await this.sasaki.getServices();
+            await this.sasakiService.getServices();
             this.screeningEvents = await this.getScreeningEvents();
             this.createDateList();
             this.createSchedule();
@@ -142,8 +145,8 @@ export class PurchaseComponent implements OnInit {
      * @method changeSort
      */
     public async changeSort(sort: PurchaseSort) {
-        this.select.data.purchase.sort = sort;
-        this.select.save();
+        this.selectService.data.purchase.sort = sort;
+        this.selectService.save();
     }
 
     /**
@@ -152,8 +155,8 @@ export class PurchaseComponent implements OnInit {
      */
     public async selectDate(date: IDate) {
         this.conditions.date = date.value;
-        this.select.data.purchase.date = this.conditions.date;
-        this.select.save();
+        this.selectService.data.purchase.date = this.conditions.date;
+        this.selectService.save();
         this.createSchedule();
     }
 
@@ -180,35 +183,26 @@ export class PurchaseComponent implements OnInit {
             return;
         }
         let params;
-        if (this.user.isMember()) {
+        if (this.userService.isMember()) {
             params = {
                 id: performance.identifier,
                 native: '1',
                 member: MemberType.Member,
-                clientId: this.sasaki.auth.options.clientId
+                clientId: this.sasakiService.auth.options.clientId
             };
         } else {
-            if (this.awsCognito.credentials === undefined) {
+            if (this.awsCognitoService.credentials === undefined) {
                 throw new Error('awsCognito.credentials is undefined');
             }
             params = {
                 id: performance.identifier,
-                identityId: this.awsCognito.credentials.identityId,
+                identityId: this.awsCognitoService.credentials.identityId,
                 native: '1',
                 member: MemberType.NotMember,
-                clientId: this.sasaki.auth.options.clientId
+                clientId: this.sasakiService.auth.options.clientId
             };
         }
-        let query = '';
-        for (let i = 0; i < Object.keys(params).length; i++) {
-            const key = Object.keys(params)[i];
-            const value = (<any>params)[key];
-            if (i > 0) {
-                query += '&';
-            }
-            query += `${key}=${value}`;
-        }
-        const url = `${environment.ENTRANCE_SERVER_URL}/ticket/index.html?${query}`;
+        const url = `${environment.ENTRANCE_SERVER_URL}/ticket/index.html?${object2query(params)}`;
         location.href = url;
     }
 
@@ -216,8 +210,8 @@ export class PurchaseComponent implements OnInit {
      * 劇場一覧取得
      */
     private async getTheaters() {
-        await this.sasaki.getServices();
-        const sellerSearchResult = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
+        await this.sasakiService.getServices();
+        const sellerSearchResult = await this.sasakiService.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
         const theaters = sellerSearchResult.data.filter((s) => {
             return (s.location !== undefined
                 && s.location.branchCode !== undefined
@@ -225,7 +219,7 @@ export class PurchaseComponent implements OnInit {
                 && environment.CLOSE_THEATERS.find(t => t === (<any>s.location).branchCode) === undefined);
         });
         // 除外劇場処理
-        const excludeTheatersResult = await this.maintenance.excludeTheaters();
+        const excludeTheatersResult = await this.maintenanceService.excludeTheaters();
         if (!excludeTheatersResult.isExclude) {
             return theaters;
         }
@@ -245,22 +239,35 @@ export class PurchaseComponent implements OnInit {
      * スケジュール取得
      */
     private async getScreeningEvents() {
-        await this.sasaki.getServices();
+        await this.sasakiService.getServices();
         const branchCode = this.conditions.theater;
         const findResult = this.theaters.find(theater => theater.location !== undefined && theater.location.branchCode === branchCode);
         if (findResult === undefined) {
             return [];
         }
-        const screeningEvents = await this.sasaki.event.searchScreeningEvents({
+        const now = (await this.utilService.getServerTime()).date;
+        const today = moment(moment(now).format('YYYYMMDD')).toDate();
+        let screeningEvents: factory.chevre.event.screeningEvent.IEvent[] = [];
+        const screeningEventsResult = await this.sasakiService.event.searchScreeningEvents({
             typeOf: factory.chevre.eventType.ScreeningEvent,
             eventStatuses: [factory.chevre.eventStatusType.EventScheduled],
-            startFrom: moment().toDate(),
-            startThrough: moment().add(5, 'week').toDate(),
+            startFrom: moment(now).add(-24, 'hour').toDate(),
+            startThrough: moment(now).add(5, 'week').toDate(),
             sort: { startDate: factory.sortType.Ascending },
             superEvent: { locationBranchCodes: [branchCode] }
         });
+        screeningEvents = screeningEventsResult.data.filter((screeningEvent) => {
+            const coaInfo = screeningEvent.coaInfo;
+            if (coaInfo === undefined) {
+                return false;
+            }
+            if (moment(coaInfo.dateJouei).unix() >= moment(today).unix()) {
+                return true;
+            }
+            return moment(screeningEvent.endDate).unix() > moment(now).unix();
+        });
 
-        return screeningEvents.data;
+        return screeningEvents;
     }
 
     /**
@@ -323,20 +330,20 @@ export class PurchaseComponent implements OnInit {
         this.filmOrder = [];
         this.timeOrder = [];
         const today = moment().format('YYYYMMDD');
-        const limitDate = moment().add(7, 'days').format('YYYYMMDD');
-        const searchDate = this.conditions.date < today ? today : this.conditions.date;
+        const now = moment();
+        const searchDate = (this.dateList.find(d => d.value === this.conditions.date) === undefined)
+            ? today : this.conditions.date;
         this.conditions.date = searchDate;
-        const dateFilterResult = this.screeningEvents
-            .filter(screeningEvent => screeningEvent.coaInfo !== undefined && screeningEvent.coaInfo.dateJouei === searchDate);
+        // 選択したスケジュールを抽出　上映終了は除外
+        const selectFilterResult = this.screeningEvents
+            .filter((screeningEvent) => {
+                return (screeningEvent.coaInfo !== undefined
+                    && screeningEvent.coaInfo.dateJouei === searchDate
+                    && moment(screeningEvent.endDate).unix() < moment(now).unix());
+            });
 
-        const displayFilterResult = dateFilterResult
-            .filter(screeningEvent => (screeningEvent.coaInfo !== undefined
-                && (screeningEvent.coaInfo.rsvStartDate <= today
-                    || this.checkEventPreSale(screeningEvent)
-                    || screeningEvent.coaInfo.dateJouei <= limitDate)));
-
-        this.timeOrder = displayFilterResult;
-        displayFilterResult.forEach((screeningEvent) => {
+        this.timeOrder = selectFilterResult;
+        selectFilterResult.forEach((screeningEvent) => {
             if (screeningEvent.coaInfo === undefined) {
                 return;
             }
@@ -353,6 +360,13 @@ export class PurchaseComponent implements OnInit {
                 film.films.push(screeningEvent);
             }
         });
+        // 作品名昇順へソート
+        this.filmOrder.sort(function (a, b) {
+            if (a.films[0].name.ja > b.films[0].name.ja) {
+                return 1;
+            } else {
+                return -1;
+            }
+        });
     }
-
 }
