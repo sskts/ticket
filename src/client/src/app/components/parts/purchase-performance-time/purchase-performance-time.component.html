@@ -15,6 +15,7 @@
         <div *ngIf="!isSalse(performance) && isBeforePeriod(performance)" class="status small-x-text">予約<br>不可</div>
         <div *ngIf="!isSalse(performance) && isAfterPeriod(performance)" class="status small-x-text">予約<br>不可</div>
         <div *ngIf="!isSalse(performance) && !isBeforePeriod(performance) && !isAfterPeriod(performance) && isWindow(performance)" class="status small-x-text">窓口</div>
+        <div *ngIf="!isSalse(performance) && !isBeforePeriod(performance) && !isAfterPeriod(performance) && !isWindow(performance)" class="status small-x-text">予約<br>不可</div>
     </div>
     <div class="info">
         <div class="screen small-x-text mb-xx-small">{{ performance.location.name.ja }}</div>

@@ -34,5 +34,5 @@ export function isSalse(screeningEvent: factory.chevre.event.screeningEvent.IEve
         && !isAfterPeriod(screeningEvent)
         && !isWindow(screeningEvent)
         && screeningEvent.remainingAttendeeCapacity !== undefined
-        && screeningEvent.remainingAttendeeCapacity > 0;
+        && screeningEvent.remainingAttendeeCapacity >= 0;
 }

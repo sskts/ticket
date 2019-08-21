@@ -15,6 +15,7 @@
         <div *ngIf="!isSalse(performance) && isBeforePeriod(performance)" class="status">予約不可</div>
         <div *ngIf="!isSalse(performance) && isAfterPeriod(performance)" class="status">予約不可</div>
         <div *ngIf="!isSalse(performance) && !isBeforePeriod(performance) && !isAfterPeriod(performance) && isWindow(performance)" class="status">窓口</div>
+        <div *ngIf="!isSalse(performance) && !isBeforePeriod(performance) && !isAfterPeriod(performance) && !isWindow(performance)" class="status">予約不可</div>
     </div>
     <div *ngIf="performance.coaInfo?.kbnService?.kubunCode === '001'" class="service">
         <app-icon iconName="first-show-black" width="10" height="10"></app-icon>
