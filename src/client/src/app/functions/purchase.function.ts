@@ -5,7 +5,9 @@ import * as moment from 'moment';
  * 窓口判定（上映開始10分前から上映開始10分後）
  */
 export function isWindow(screeningEvent: factory.chevre.event.screeningEvent.IEvent) {
-    return (moment(screeningEvent.startDate).add(-10, 'minutes').unix() < moment().unix()
+    return (screeningEvent.remainingAttendeeCapacity !== undefined
+        && screeningEvent.remainingAttendeeCapacity > 0
+        && moment(screeningEvent.startDate).add(-10, 'minutes').unix() < moment().unix()
         && moment(screeningEvent.startDate).add(10, 'minutes').unix() > moment().unix());
 }
 

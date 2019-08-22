@@ -329,8 +329,8 @@ export class PurchaseComponent implements OnInit {
     private createSchedule() {
         this.filmOrder = [];
         this.timeOrder = [];
-        const today = moment().format('YYYYMMDD');
         const now = moment();
+        const today = moment(now).format('YYYYMMDD');
         const searchDate = (this.dateList.find(d => d.value === this.conditions.date) === undefined)
             ? today : this.conditions.date;
         this.conditions.date = searchDate;

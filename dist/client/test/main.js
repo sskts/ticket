@@ -6022,8 +6022,8 @@ var PurchaseComponent = /** @class */ (function () {
         var _this = this;
         this.filmOrder = [];
         this.timeOrder = [];
-        var today = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
         var now = moment__WEBPACK_IMPORTED_MODULE_3__();
+        var today = moment__WEBPACK_IMPORTED_MODULE_3__(now).format('YYYYMMDD');
         var searchDate = (this.dateList.find(function (d) { return d.value === _this.conditions.date; }) === undefined)
             ? today : this.conditions.date;
         this.conditions.date = searchDate;
@@ -9115,7 +9115,9 @@ __webpack_require__.r(__webpack_exports__);
  * 窓口判定（上映開始10分前から上映開始10分後）
  */
 function isWindow(screeningEvent) {
-    return (moment__WEBPACK_IMPORTED_MODULE_0__(screeningEvent.startDate).add(-10, 'minutes').unix() < moment__WEBPACK_IMPORTED_MODULE_0__().unix()
+    return (screeningEvent.remainingAttendeeCapacity !== undefined
+        && screeningEvent.remainingAttendeeCapacity > 0
+        && moment__WEBPACK_IMPORTED_MODULE_0__(screeningEvent.startDate).add(-10, 'minutes').unix() < moment__WEBPACK_IMPORTED_MODULE_0__().unix()
         && moment__WEBPACK_IMPORTED_MODULE_0__(screeningEvent.startDate).add(10, 'minutes').unix() > moment__WEBPACK_IMPORTED_MODULE_0__().unix());
 }
 /**
