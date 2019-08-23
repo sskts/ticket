@@ -1,5 +1,5 @@
-<div class="performance mb-x-small" [ngClass]="(salseFlg) ? (performance.offers.availability | availability).className : ''"
-    (click)="(salseFlg) ? select.emit() : null;">
+<div class="performance mb-x-small" [ngClass]="(isSalse(performance)) ? (performance.offers?.availability | availability).className : ''"
+    (click)="(isSalse(performance)) ? select.emit() : null;">
     <div class="date">
         <div class="mb-xx-small text-center">
             <strong class="large-text">{{ performance.startDate | timeFormat: performance.coaInfo?.dateJouei }}</strong>
@@ -9,11 +9,13 @@
         </div>
     </div>
     <div class="status-cover">
-        <div *ngIf="salseFlg" class="status">
+        <div *ngIf="isSalse(performance)" class="status">
             <app-icon [iconName]="(performance.offer.availability | availability).icon" width="15" height="15"></app-icon>
         </div>
-        <div *ngIf="isNotAccepted" class="status window small-x-text">予約<br>不可</div>
-        <div *ngIf="isWindow" class="status window small-x-text">窓口</div>
+        <div *ngIf="!isSalse(performance) && isBeforePeriod(performance)" class="status small-x-text">予約<br>不可</div>
+        <div *ngIf="!isSalse(performance) && isAfterPeriod(performance)" class="status small-x-text">予約<br>不可</div>
+        <div *ngIf="!isSalse(performance) && !isBeforePeriod(performance) && !isAfterPeriod(performance) && isWindow(performance)" class="status small-x-text">窓口</div>
+        <div *ngIf="!isSalse(performance) && !isBeforePeriod(performance) && !isAfterPeriod(performance) && !isWindow(performance)" class="status small-x-text">予約<br>不可</div>
     </div>
     <div class="info">
         <div class="screen small-x-text mb-xx-small">{{ performance.location.name.ja }}</div>
