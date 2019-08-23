@@ -3,6 +3,7 @@
  */
 import * as debug from 'debug';
 import * as express from 'express';
+import * as moment from 'moment';
 import * as path from 'path';
 import * as authorize from '../controllers/authorize/authorize.controller';
 import * as maintenance from '../controllers/maintenance/maintenance.controller';
@@ -24,10 +25,10 @@ export default (app: express.Application) => {
     app.get('/api/maintenance/excludeTheaters', maintenance.excludeTheaters);
     app.get('/api/maintenance/confirm', maintenance.confirm);
     app.get('/api/version', version);
+    app.get('/api/serverTime', (_req, res) => { res.json({ date: moment().toISOString() }); });
 
     app.get('*', (_req, res, _next) => {
-        const fileName = (process.env.NODE_ENV === 'production') ? 'production.html' : 'index.html';
-        res.sendFile(path.resolve(`${__dirname}/../../../client/${process.env.NODE_ENV}/${fileName}`));
+        res.sendFile(path.resolve(`${__dirname}/../../../client/${process.env.NODE_ENV}/index.html`));
     });
 };
 

@@ -7,9 +7,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 
-### Changed
-
+###  Changed
+- スケジュール並び順を作品名昇順へ変更
 ### Fixed
+- 窓口表示不具合修正
+- 前日24時以降のスケジュールを表示へ修正
 
 ### Security
 
