@@ -25,17 +25,20 @@ export class AvailabilityPipe implements PipeTransform {
             {
                 symbolText: '×',
                 icon: 'vacancy-full-white',
-                className: 'vacancy-full'
+                className: 'vacancy-full',
+                text: '満席'
             },
             {
                 symbolText: '△',
                 icon: 'vacancy-little-white',
-                className: 'vacancy-little'
+                className: 'vacancy-little',
+                text: '購入'
             },
             {
                 symbolText: '○',
                 icon: 'vacancy-large-white',
-                className: 'vacancy-large'
+                className: 'vacancy-large',
+                text: '購入'
             }
         ];
 

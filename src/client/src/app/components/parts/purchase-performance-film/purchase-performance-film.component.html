@@ -10,17 +10,17 @@
     <div class="screen small-x-text">{{ performance.location.name.ja }}</div>
     <div class="button text-center" (click)="(isSalse(performance)) ? select.emit() : null;">
         <div *ngIf="isSalse(performance)" class="status">
-                <app-icon [iconName]="(performance.offer.availability | availability).icon" width="15" height="15"></app-icon>購入
+                <app-icon [iconName]="(performance.offer.availability | availability).icon" width="15" height="15"></app-icon>{{ (performance.offer.availability | availability).text }}
         </div>
-        <div *ngIf="!isSalse(performance) && isBeforePeriod(performance)" class="status">予約不可</div>
-        <div *ngIf="!isSalse(performance) && isAfterPeriod(performance)" class="status">予約不可</div>
+        <div *ngIf="!isSalse(performance) && isBeforePeriod(performance)" class="status">販売期間外</div>
+        <div *ngIf="!isSalse(performance) && isAfterPeriod(performance)" class="status">販売期間外</div>
         <div *ngIf="!isSalse(performance) && !isBeforePeriod(performance) && !isAfterPeriod(performance) && isWindow(performance)" class="status">窓口</div>
         <div *ngIf="!isSalse(performance) && !isBeforePeriod(performance) && !isAfterPeriod(performance) && !isWindow(performance)" class="status">予約不可</div>
     </div>
-    <div *ngIf="performance.coaInfo?.kbnService?.kubunCode === '001'" class="service">
+    <div *ngIf="isScreeningServiceType(performance, 'first')" class="service">
         <app-icon iconName="first-show-black" width="10" height="10"></app-icon>
     </div>
-    <div *ngIf="performance.coaInfo?.kbnService?.kubunCode === '002'" class="service">
+    <div *ngIf="isScreeningServiceType(performance, 'late')" class="service">
         <app-icon iconName="late-show-black" width="10" height="10"></app-icon>
     </div>
 </div>
