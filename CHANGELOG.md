@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.11.1 - 2019-09-12
+### Changed
+ - 会員特典文言変更
+
 ## 2.11.0 - 2019-08-23
 ###  Changed
 - スケジュール並び順を作品名昇順へ変更
