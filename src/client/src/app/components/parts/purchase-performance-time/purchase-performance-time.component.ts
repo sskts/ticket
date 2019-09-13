@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { factory } from '@motionpicture/sskts-api-javascript-client';
-import { isAfterPeriod, isBeforePeriod, isSalse, isWindow } from '../../../functions';
+import { isAfterPeriod, isBeforePeriod, isSalse, isScreeningServiceType, isWindow } from '../../../functions';
 
 type IEvent = factory.chevre.event.screeningEvent.IEvent;
 
@@ -16,6 +16,7 @@ export class PurchasePerformanceTimeComponent implements OnInit {
     public isWindow = isWindow;
     public isBeforePeriod = isBeforePeriod;
     public isAfterPeriod = isAfterPeriod;
+    public isScreeningServiceType = isScreeningServiceType;
 
     constructor() { }
 
