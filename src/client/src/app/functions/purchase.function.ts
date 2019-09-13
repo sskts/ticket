@@ -38,3 +38,25 @@ export function isSalse(screeningEvent: factory.chevre.event.screeningEvent.IEve
         && screeningEvent.remainingAttendeeCapacity !== undefined
         && screeningEvent.remainingAttendeeCapacity >= 0;
 }
+
+/**
+ * サービス区分判定
+ */
+export function isScreeningServiceType(
+    screeningEvent: factory.chevre.event.screeningEvent.IEvent,
+    serviceType: 'first' | 'late'
+) {
+    if (screeningEvent.coaInfo === undefined
+        || screeningEvent.coaInfo.kbnService === undefined
+        || screeningEvent.coaInfo.kbnService.kubunCode === undefined) {
+        return false;
+    }
+    const kubunCode = screeningEvent.coaInfo.kbnService.kubunCode;
+    if (serviceType === 'first') {
+        return (kubunCode === '001');
+    } else if (serviceType === 'late') {
+        return (kubunCode === '002' && screeningEvent.coaInfo.theaterCode.slice(-2) !== '20');
+    } else {
+        return false;
+    }
+}
