@@ -13,6 +13,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 2.12.0 - 2019-09-13
+### Changed
+ - レイトショーアイコンを非表示へ変更
+ - 満席表示変更
+ - 「予約不可」文言変更
+
 ## 2.11.1 - 2019-09-12
 ### Changed
  - 会員特典文言変更
