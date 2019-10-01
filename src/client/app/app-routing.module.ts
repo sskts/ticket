@@ -3,6 +3,7 @@
  */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { environment } from '../environments/environment';
 import {
     AuthGuardService,
     MemberGuardService,
@@ -18,7 +19,6 @@ import { PolicyComponent } from './modules/shared/components/pages/policy/policy
 import { PrivacyComponent } from './modules/shared/components/pages/privacy/privacy.component';
 import { RootComponent } from './modules/shared/components/pages/root/root.component';
 import { TutorialComponent } from './modules/shared/components/pages/tutorial/tutorial.component';
-import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/root', pathMatch: 'full' },

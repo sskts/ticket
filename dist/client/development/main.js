@@ -600,7 +600,7 @@ var AppComponent = /** @class */ (function () {
                     ga('send', 'pageview');
                 }
                 catch (err) {
-                    console.error(err);
+                    console.warn(err);
                 }
             }
         });
@@ -947,9 +947,13 @@ var MemberGuardService = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProgramMembershipGuardService", function() { return ProgramMembershipGuardService; });
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_sasaki_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/sasaki.service */ "./app/services/sasaki.service.ts");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/user.service */ "./app/services/user.service.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services */ "./app/services/index.ts");
+/* harmony import */ var _services_sasaki_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/sasaki.service */ "./app/services/sasaki.service.ts");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/user.service */ "./app/services/user.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_util_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/util.service */ "./app/services/util.service.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -993,11 +997,15 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
+
 var ProgramMembershipGuardService = /** @class */ (function () {
-    function ProgramMembershipGuardService(router, sasaki, user) {
+    function ProgramMembershipGuardService(router, sasaki, user, util) {
         this.router = router;
         this.sasaki = sasaki;
         this.user = user;
+        this.util = util;
     }
     /**
    * 認証
@@ -1005,18 +1013,22 @@ var ProgramMembershipGuardService = /** @class */ (function () {
    */
     ProgramMembershipGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var result, programMembershipOwnershipInfos;
+            var now, programMembershipOwnershipInfos, result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         if (this.user.data.programMembershipOwnershipInfos === undefined) {
                             this.user.data.programMembershipOwnershipInfos = [];
                         }
-                        if (this.user.data.programMembershipOwnershipInfos.length > 0) {
+                        return [4 /*yield*/, this.util.getServerTime()];
+                    case 1:
+                        now = (_a.sent()).date;
+                        programMembershipOwnershipInfos = this.user.data.programMembershipOwnershipInfos.filter(function (p) { return moment__WEBPACK_IMPORTED_MODULE_1__(p.ownedThrough).unix() > moment__WEBPACK_IMPORTED_MODULE_1__(now).unix(); });
+                        if (programMembershipOwnershipInfos.length > 0) {
                             return [2 /*return*/, true];
                         }
                         return [4 /*yield*/, this.sasaki.getServices()];
-                    case 1:
+                    case 2:
                         _a.sent();
                         return [4 /*yield*/, this.sasaki.ownerShip.search({
                                 id: 'me',
@@ -1024,20 +1036,22 @@ var ProgramMembershipGuardService = /** @class */ (function () {
                                     typeOf: 'ProgramMembership'
                                 }
                             })];
-                    case 2:
+                    case 3:
                         result = _a.sent();
-                        programMembershipOwnershipInfos = result.data;
+                        programMembershipOwnershipInfos =
+                            result.data.filter(function (p) { return moment__WEBPACK_IMPORTED_MODULE_1__(p.ownedThrough).unix() > moment__WEBPACK_IMPORTED_MODULE_1__(now).unix(); });
                         if (programMembershipOwnershipInfos.length === 0) {
                             this.router.navigate(['/auth/register/credit']);
                             return [2 /*return*/, false];
                         }
                         this.user.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos;
+                        this.user.save();
                         return [2 /*return*/, true];
                 }
             });
         });
     };
-    ProgramMembershipGuardService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({ factory: function ProgramMembershipGuardService_Factory() { return new ProgramMembershipGuardService(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_0__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_services_sasaki_service__WEBPACK_IMPORTED_MODULE_1__["SasakiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_services_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"])); }, token: ProgramMembershipGuardService, providedIn: "root" });
+    ProgramMembershipGuardService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineInjectable"]({ factory: function ProgramMembershipGuardService_Factory() { return new ProgramMembershipGuardService(_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_0__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_services_sasaki_service__WEBPACK_IMPORTED_MODULE_3__["SasakiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_services_util_service__WEBPACK_IMPORTED_MODULE_6__["UtilService"])); }, token: ProgramMembershipGuardService, providedIn: "root" });
     return ProgramMembershipGuardService;
 }());
 

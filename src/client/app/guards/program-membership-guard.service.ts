@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import * as moment from 'moment';
+import { UtilService } from '../services';
 import { SasakiService } from '../services/sasaki.service';
 import { UserService } from '../services/user.service';
 
@@ -11,7 +13,8 @@ export class ProgramMembershipGuardService implements CanActivate {
     constructor(
         private router: Router,
         private sasaki: SasakiService,
-        private user: UserService
+        private user: UserService,
+        private util: UtilService
     ) { }
 
     /**
@@ -22,7 +25,10 @@ export class ProgramMembershipGuardService implements CanActivate {
         if (this.user.data.programMembershipOwnershipInfos === undefined) {
             this.user.data.programMembershipOwnershipInfos = [];
         }
-        if (this.user.data.programMembershipOwnershipInfos.length > 0) {
+        const now = (await this.util.getServerTime()).date;
+        let programMembershipOwnershipInfos =
+            this.user.data.programMembershipOwnershipInfos.filter(p => moment(p.ownedThrough).unix() > moment(now).unix());
+        if (programMembershipOwnershipInfos.length > 0) {
             return true;
         }
         await this.sasaki.getServices();
@@ -33,7 +39,8 @@ export class ProgramMembershipGuardService implements CanActivate {
                     typeOf: 'ProgramMembership'
                 }
             });
-        const programMembershipOwnershipInfos = result.data;
+        programMembershipOwnershipInfos =
+            result.data.filter(p => moment(p.ownedThrough).unix() > moment(now).unix());
         if (programMembershipOwnershipInfos.length === 0) {
             this.router.navigate(['/auth/register/credit']);
 
@@ -41,6 +48,7 @@ export class ProgramMembershipGuardService implements CanActivate {
         }
 
         this.user.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos;
+        this.user.save();
 
         return true;
     }

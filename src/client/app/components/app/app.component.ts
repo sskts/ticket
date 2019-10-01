@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
                     ga('set', 'page', event.urlAfterRedirects);
                     ga('send', 'pageview');
                 } catch (err) {
-                    console.error(err);
+                    console.warn(err);
                 }
             }
         });
