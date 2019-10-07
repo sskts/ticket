@@ -10,7 +10,8 @@ import {
     ProgramMembershipGuardService,
     TutorialGuardService
 } from './guards';
-import { ErrorModule } from './modules/error/error.module';
+import { ErrorComponent } from './modules/error/pages/error/error.component';
+import { NotFoundComponent } from './modules/error/pages/not-found/not-found.component';
 import { AboutComponent } from './modules/shared/components/pages/about/about.component';
 import { BaseComponent } from './modules/shared/components/pages/base/base.component';
 import { BenefitsComponent } from './modules/shared/components/pages/benefits/benefits.component';
@@ -64,7 +65,11 @@ const appRoutes: Routes = [
     },
     {
         path: '',
-        loadChildren: () => ErrorModule
+        children: [
+            { path: 'error/:redirect', component: ErrorComponent },
+            { path: 'error', component: ErrorComponent },
+            { path: '**', component: NotFoundComponent }
+          ]
     }
 ];
 
