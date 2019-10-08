@@ -25,8 +25,12 @@ const appRoutes: Routes = [
     { path: '', redirectTo: '/root', pathMatch: 'full' },
     {
         path: 'root',
-        canActivate: [TutorialGuardService, AuthGuardService],
-        component: RootComponent
+        canActivate: [TutorialGuardService],
+        children: [{
+            path: '',
+            canActivate: [AuthGuardService],
+            component: RootComponent
+        }]
     },
     {
         path: '',
@@ -69,7 +73,7 @@ const appRoutes: Routes = [
             { path: 'error/:redirect', component: ErrorComponent },
             { path: 'error', component: ErrorComponent },
             { path: '**', component: NotFoundComponent }
-          ]
+        ]
     }
 ];
 

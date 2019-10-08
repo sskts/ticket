@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import { ErrorRoutingModule } from './error-routing.module';
 import { ErrorComponent } from './pages/error/error.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
@@ -13,8 +12,12 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
   ],
   imports: [
     CommonModule,
-    ErrorRoutingModule,
+    // ErrorRoutingModule,
     SharedModule,
+  ],
+  exports: [
+    ErrorComponent,
+    NotFoundComponent
   ]
 })
 export class ErrorModule { }
