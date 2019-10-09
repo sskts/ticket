@@ -8,13 +8,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 ### Changed
+
+### Fixed
+
+### Security
+
+## 3.0.0 - 2019-10-09
+### Changed
  - angular8へバージョンアップ
  - モジュール分割
  - モジュールごとの遅延ロード対応
 ### Fixed
  - サーバータイム取得修正
-
-### Security
 
 ## 2.12.0 - 2019-09-13
 ### Changed
