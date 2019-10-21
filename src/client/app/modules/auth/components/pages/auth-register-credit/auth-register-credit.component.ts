@@ -19,7 +19,6 @@ export class AuthRegisterCreditComponent implements OnInit {
     public isLoading: boolean;
     public securityCodeModal: boolean;
     public creditCardAlertModal: boolean;
-    public disable: boolean;
 
     constructor(
         private router: Router,
@@ -40,7 +39,6 @@ export class AuthRegisterCreditComponent implements OnInit {
             month: []
         };
         this.creditForm = this.createForm();
-        this.disable = false;
         this.creditCardAlertModal = false;
         this.isLoading = false;
     }
@@ -80,9 +78,7 @@ export class AuthRegisterCreditComponent implements OnInit {
      * @method onSubmit
      */
     public async onSubmit() {
-        if (this.disable) {
-            return;
-        }
+        this.isLoading = true;
         if (this.creditForm.invalid) {
             // フォームのステータス変更
             this.creditForm.controls.cardNumber.markAsTouched();
@@ -102,11 +98,10 @@ export class AuthRegisterCreditComponent implements OnInit {
                 const top = rect.top + scrollTop - 80;
                 contents.scrollTo(0, top);
             }, 0);
+            this.isLoading = false;
 
             return;
         }
-        this.disable = true;
-        this.isLoading = true;
 
         try {
             await this.sasaki.getServices();
@@ -124,12 +119,11 @@ export class AuthRegisterCreditComponent implements OnInit {
         } catch (err) {
             console.error(err);
             // クレジットカード処理失敗
-            this.isLoading = false;
             this.creditCardAlertModal = true;
             this.creditForm.controls.cardNumber.setValue('');
             this.creditForm.controls.securityCode.setValue('');
             this.creditForm.controls.holderName.setValue('');
-            this.disable = false;
+            this.isLoading = false;
         }
     }
 

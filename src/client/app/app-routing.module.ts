@@ -77,7 +77,7 @@ const appRoutes: Routes = [
     }
 ];
 
-// tslint:disable-next-line:no-stateless-class
+
 @NgModule({
     imports: [
         RouterModule.forRoot(

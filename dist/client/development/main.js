@@ -403,7 +403,6 @@ var appRoutes = [
         ]
     }
 ];
-// tslint:disable-next-line:no-stateless-class
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
@@ -536,7 +535,6 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * NgModule
  */
-// tslint:disable-next-line:no-stateless-class
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }

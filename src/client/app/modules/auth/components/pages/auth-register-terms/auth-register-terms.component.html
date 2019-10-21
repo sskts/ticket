@@ -132,7 +132,7 @@
                 <div *ngIf="termsForm.controls['terms'].invalid && (termsForm.controls['terms'].dirty || termsForm.controls['terms'].touched)"
                     class="validation-text">利用規約に同意してください</div>
             </div>
-            <button type="submit" class="button button-primary button-block center mb-small">次へ</button>
+            <button type="submit" [disabled]="isLoading" class="button button-primary button-block center mb-small">次へ</button>
             <div class="text-center">
                 <a (click)="prev()" class="prev-link">
                     <app-icon iconName="prev-circle-white" width="15" height="15"></app-icon>戻る</a>

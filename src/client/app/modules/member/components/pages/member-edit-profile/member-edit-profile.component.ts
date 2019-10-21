@@ -16,7 +16,6 @@ type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<fac
 export class MemberEditProfileComponent implements OnInit {
     public profileForm: FormGroup;
     public isLoading: boolean;
-    public disable: boolean;
     public theaters: IMovieTheater[];
     public staticProfile: {
         email: string
@@ -38,7 +37,6 @@ export class MemberEditProfileComponent implements OnInit {
         try {
             this.profileForm = this.createForm();
             this.isLoading = false;
-            this.disable = false;
             this.theaters = await this.getTheaters();
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/member/edit/profile' }]);
@@ -133,9 +131,7 @@ export class MemberEditProfileComponent implements OnInit {
      * @method onSubmit
      */
     public async onSubmit() {
-        if (this.disable) {
-            return;
-        }
+        this.isLoading = true;
         if (this.profileForm.invalid) {
             // フォームのステータス変更
             this.profileForm.controls.familyName.markAsTouched();
@@ -154,11 +150,9 @@ export class MemberEditProfileComponent implements OnInit {
                 const top = rect.top + scrollTop - 80;
                 contents.scrollTo(0, top);
             }, 0);
-
+            this.isLoading = false;
             return;
         }
-        this.disable = true;
-        this.isLoading = true;
 
         try {
             await this.user.updateProfile({

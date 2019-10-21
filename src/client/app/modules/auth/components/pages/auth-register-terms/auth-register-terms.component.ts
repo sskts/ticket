@@ -11,7 +11,6 @@ export class AuthRegisterTermsComponent implements OnInit {
 
     public isLoading: boolean;
     public termsForm: FormGroup;
-    public disable: boolean;
 
     constructor(
         private sasaki: SasakiService,
@@ -23,11 +22,10 @@ export class AuthRegisterTermsComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
+        this.isLoading = false;
         this.termsForm = this.formBuilder.group({
             terms: [false, [Validators.requiredTrue]]
         });
-        // console.log(this.termsForm);
-        this.disable = false;
     }
 
     /**
@@ -35,20 +33,17 @@ export class AuthRegisterTermsComponent implements OnInit {
      * @method onSubmit
      */
     public async onSubmit() {
-        if (this.disable) {
-            return;
-        }
+        this.isLoading = true;
         if (this.termsForm.invalid) {
             this.termsForm.controls.terms.markAsDirty();
-
+            this.isLoading = false;
             return;
         }
-        this.disable = true;
         try {
             await this.sasaki.signUp();
         } catch (error) {
+            this.isLoading = false;
             console.error(error);
-            this.disable = false;
         }
     }
 
