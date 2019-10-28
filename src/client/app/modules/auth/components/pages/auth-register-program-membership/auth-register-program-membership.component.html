@@ -19,7 +19,7 @@
                     </dd>
                 </dl>
 
-                <button type="submit" class="button button-primary center button-block mb-middle">登録</button>
+                <button type="submit" [disabled]="isLoading" class="button button-primary center button-block mb-middle">登録</button>
                 <div class="text-center">
                     <a routerLink="/auth/register/credit" class="prev-link"><app-icon iconName="prev-circle-white" width="15" height="15"></app-icon>戻る</a>
                 </div>

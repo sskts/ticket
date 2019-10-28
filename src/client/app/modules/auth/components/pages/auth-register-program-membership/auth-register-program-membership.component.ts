@@ -14,7 +14,6 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
     public programMemberships: factory.programMembership.IProgramMembership[];
     public isLoading: boolean;
     public alertModal: boolean;
-    public disable: boolean;
     public optionsForm: FormGroup;
     public theaters: factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>[];
 
@@ -31,7 +30,6 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        this.disable = false;
         this.alertModal = false;
         this.isLoading = true;
         this.optionsForm = this.createForm();
@@ -89,17 +87,13 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
      * @method onSubmit
      */
     public async onSubmit() {
-        if (this.disable) {
-            return;
-        }
+        this.isLoading = true;
         if (this.optionsForm.invalid) {
             // フォームのステータス変更
             this.optionsForm.controls.theater.markAsTouched();
-
+            this.isLoading = false;
             return;
         }
-        this.disable = true;
-        this.isLoading = true;
         try {
             const accounts = await this.searchPointAccount();
             if (accounts.length > 1) {
@@ -134,7 +128,6 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             console.error(err);
             // 会員プログラム登録失敗
             this.isLoading = false;
-            this.disable = false;
             this.alertModal = true;
         }
     }

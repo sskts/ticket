@@ -147,7 +147,7 @@
                             formControlName="postalCode" autocomplete="zip" placeholder="電話番号を入力してください">
                     </dd>
                 </dl> -->
-                <button type="submit" class="button button-primary center button-block mb-middle"
+                <button type="submit" [disabled]="isLoading" class="button button-primary center button-block mb-middle"
                     [class.invalid]="profileForm.invalid">変更する</button>
                 <div class="text-center">
                     <a routerLink="/member/edit" class="prev-link">

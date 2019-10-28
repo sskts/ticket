@@ -13,6 +13,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.0.1 - 2019-10-28
+### Added
+ - クレジットカード注意文言追加
+### Changed
+ - disabled属性をローディングと同期
+
 ## 3.0.0 - 2019-10-09
 ### Changed
  - angular8へバージョンアップ
