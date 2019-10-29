@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { factory } from '@cinerino/api-javascript-client';
 import * as moment from 'moment';
 import { UtilService } from '../services';
-import { SasakiService } from '../services/sasaki.service';
+import { CinerinoService } from '../services/cinerino.service';
 import { UserService } from '../services/user.service';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class ProgramMembershipGuardService implements CanActivate {
 
     constructor(
         private router: Router,
-        private sasaki: SasakiService,
+        private cinerino: CinerinoService,
         private user: UserService,
         private util: UtilService
     ) { }
@@ -31,12 +32,11 @@ export class ProgramMembershipGuardService implements CanActivate {
         if (programMembershipOwnershipInfos.length > 0) {
             return true;
         }
-        await this.sasaki.getServices();
+        await this.cinerino.getServices();
         const result =
-            await this.sasaki.ownerShip.search<'ProgramMembership'>({
-                id: 'me',
+            await this.cinerino.ownerShipInfo.search<factory.programMembership.ProgramMembershipType.ProgramMembership>({
                 typeOfGood: {
-                    typeOf: 'ProgramMembership'
+                    typeOf: factory.programMembership.ProgramMembershipType.ProgramMembership
                 }
             });
         programMembershipOwnershipInfos =

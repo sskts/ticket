@@ -2,9 +2,9 @@
  * TicketDetailComponent
  */
 import { AfterContentChecked , Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { factory } from '@cinerino/api-javascript-client';
 import * as moment from 'moment';
-import { SasakiService } from '../../../../../services';
+import { CinerinoService } from '../../../../../services';
 
 @Component({
     selector: 'app-ticket-history-detail',
@@ -26,7 +26,7 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
     public theaterName: string;
 
     constructor(
-        private sasaki: SasakiService
+        private cinerino: CinerinoService
     ) {}
 
     /**
@@ -58,8 +58,8 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
      * 劇場一覧取得
      */
     private async getTheaterName(code: string) {
-        await this.sasaki.getServices();
-        const result = await this.sasaki.seller.search({
+        await this.cinerino.getServices();
+        const result = await this.cinerino.seller.search({
             typeOfs: [factory.organizationType.MovieTheater],
             location: { branchCodes: [code] }
         });

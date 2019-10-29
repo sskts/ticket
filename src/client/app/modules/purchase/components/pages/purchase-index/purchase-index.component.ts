@@ -3,31 +3,29 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { factory } from '@cinerino/api-javascript-client';
 import * as moment from 'moment';
 import { environment } from '../../../../../../environments/environment';
 import { object2query } from '../../../../../functions';
 import {
     AwsCognitoService,
+    CinerinoService,
     IConfirm,
     IPurchaseConditions,
     MaintenanceService,
     MemberType,
     PurchaseSort,
-    SasakiService,
     SelectService,
     UserService,
     UtilService
 } from '../../../../../services';
 
 type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
-type IEvent = factory.chevre.event.screeningEvent.IEvent;
 type ICOAInfo = factory.event.screeningEvent.ICOAInfo;
-type ITimeOrder = IEvent;
 
 interface IFilmOrder {
     id: string;
-    films: IEvent[];
+    films: factory.chevre.event.screeningEvent.IEvent[];
 }
 
 interface IDate {
@@ -57,8 +55,8 @@ export class PurchaseIndexComponent implements OnInit {
     public theaters: IMovieTheater[];
     public dateList: IDate[];
     public filmOrder: IFilmOrder[];
-    public timeOrder: ITimeOrder[];
-    public screeningEvents: IEvent[];
+    public timeOrder: factory.chevre.event.screeningEvent.IEvent[];
+    public screeningEvents: factory.chevre.event.screeningEvent.IEvent[];
     public conditions: IPurchaseConditions;
     public error: string;
     public purchaseSort: typeof PurchaseSort;
@@ -67,7 +65,7 @@ export class PurchaseIndexComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private sasakiService: SasakiService,
+        private cinerinoService: CinerinoService,
         private selectService: SelectService,
         private userService: UserService,
         private utilService: UtilService,
@@ -135,7 +133,7 @@ export class PurchaseIndexComponent implements OnInit {
         this.selectService.data.purchase.theater = this.conditions.theater;
         this.selectService.save();
         try {
-            await this.sasakiService.getServices();
+            await this.cinerinoService.getServices();
             this.screeningEvents = await this.getScreeningEvents();
             this.createDateList();
             this.createSchedule();
@@ -184,7 +182,7 @@ export class PurchaseIndexComponent implements OnInit {
      * パフォーマンス選択
      * @method performanceSelect
      */
-    public async performanceSelect(performance: IEvent) {
+    public async performanceSelect(performance: factory.chevre.event.screeningEvent.IEvent) {
         if (performance.offers === undefined || performance.offers.availability === 0) {
             return;
         }
@@ -194,7 +192,7 @@ export class PurchaseIndexComponent implements OnInit {
                 id: performance.identifier,
                 native: '1',
                 member: MemberType.Member,
-                clientId: this.sasakiService.auth.options.clientId
+                clientId: this.cinerinoService.auth.options.clientId
             };
         } else {
             if (this.awsCognitoService.credentials === undefined) {
@@ -205,7 +203,7 @@ export class PurchaseIndexComponent implements OnInit {
                 identityId: this.awsCognitoService.credentials.identityId,
                 native: '1',
                 member: MemberType.NotMember,
-                clientId: this.sasakiService.auth.options.clientId
+                clientId: this.cinerinoService.auth.options.clientId
             };
         }
         const url = `${environment.ENTRANCE_SERVER_URL}/ticket/index.html?${object2query(params)}`;
@@ -216,8 +214,8 @@ export class PurchaseIndexComponent implements OnInit {
      * 劇場一覧取得
      */
     private async getTheaters() {
-        await this.sasakiService.getServices();
-        const sellerSearchResult = await this.sasakiService.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
+        await this.cinerinoService.getServices();
+        const sellerSearchResult = await this.cinerinoService.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
         const theaters = sellerSearchResult.data.filter((s) => {
             return (s.location !== undefined
                 && s.location.branchCode !== undefined
@@ -245,7 +243,7 @@ export class PurchaseIndexComponent implements OnInit {
      * スケジュール取得
      */
     private async getScreeningEvents() {
-        await this.sasakiService.getServices();
+        await this.cinerinoService.getServices();
         const branchCode = this.conditions.theater;
         const findResult = this.theaters.find(theater => theater.location !== undefined && theater.location.branchCode === branchCode);
         if (findResult === undefined) {
@@ -254,7 +252,7 @@ export class PurchaseIndexComponent implements OnInit {
         const now = (await this.utilService.getServerTime()).date;
         const today = moment(moment(now).format('YYYYMMDD')).toDate();
         let screeningEvents: factory.chevre.event.screeningEvent.IEvent[] = [];
-        const screeningEventsResult = await this.sasakiService.event.searchScreeningEvents({
+        const screeningEventsResult = await this.cinerinoService.event.search({
             typeOf: factory.chevre.eventType.ScreeningEvent,
             eventStatuses: [factory.chevre.eventStatusType.EventScheduled],
             startFrom: moment(now).add(-24, 'hour').toDate(),
@@ -279,7 +277,7 @@ export class PurchaseIndexComponent implements OnInit {
     /**
      * 先行販売かどうかをチェックする
      */
-    private checkEventPreSale(event: IEvent): boolean {
+    private checkEventPreSale(event: factory.chevre.event.screeningEvent.IEvent): boolean {
         const salesDate = moment().add(2, 'days').format('YYYYMMDD');
         const startDate = moment(event.startDate).format('YYYYMMDD');
         const today = moment().format('YYYYMMDD');

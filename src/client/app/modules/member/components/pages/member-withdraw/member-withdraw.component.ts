@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MemberService, SasakiService, UserService } from '../../../../../services';
+import { CinerinoService, MemberService, UserService } from '../../../../../services';
 
 @Component({
     selector: 'app-member-withdraw',
@@ -10,7 +10,7 @@ export class MemberWithdrawComponent implements OnInit {
     public isLoading: boolean;
     public confirmModal: boolean;
     constructor(
-        private sasaki: SasakiService,
+        private cinerino: CinerinoService,
         private user: UserService,
         private member: MemberService
     ) { }
@@ -41,7 +41,7 @@ export class MemberWithdrawComponent implements OnInit {
             await this.user.deleteCreditCard().catch((err) => {
                 console.error(err);
             });
-            await this.sasaki.signOut();
+            await this.cinerino.signOut();
         } catch (err) {
             console.error(err);
             this.isLoading = false;

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { factory } from '@cinerino/api-javascript-client';
 import * as moment from 'moment';
 import { environment } from '../../environments/environment';
-import { SasakiService } from './sasaki.service';
+import { CinerinoService } from './cinerino.service';
 import { SaveType, StorageService } from './storage.service';
 import { UtilService } from './util.service';
 
 type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>;
-type programMembershipType = factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<'ProgramMembership'>>;
+type programMembershipType =
+    factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<factory.programMembership.ProgramMembershipType.ProgramMembership>>;
 
 export interface IUserData {
     userName?: string;
@@ -46,7 +47,7 @@ export class UserService {
 
     constructor(
         private storage: StorageService,
-        private sasaki: SasakiService,
+        private cinerino: CinerinoService,
         private util: UtilService
     ) {
         this.init();
@@ -74,7 +75,7 @@ export class UserService {
             return;
         }
         this.data = data;
-        if (await this.sasaki.needReload()) {
+        if (await this.cinerino.needReload()) {
             await this.initMember();
             location.reload();
         }
@@ -94,7 +95,7 @@ export class UserService {
      */
     public reset() {
         const prevUserName =
-            this.sasaki.userName !== undefined ? this.sasaki.userName :
+            this.cinerino.userName !== undefined ? this.cinerino.userName :
                 this.data.accounts.length > 0 &&
                     this.data.accounts[0].typeOfGood !== null &&
                     this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
@@ -116,13 +117,13 @@ export class UserService {
     public async initMember() {
         this.data.memberType = MemberType.Member;
         this.save();
-        await this.sasaki.getServices();
-        if (this.sasaki.userName === undefined) {
+        await this.cinerino.getServices();
+        if (this.cinerino.userName === undefined) {
             throw new Error('userName is undefined');
         }
-        this.data.userName = this.sasaki.userName;
+        this.data.userName = this.cinerino.userName;
         // 連絡先取得
-        const profile = await this.sasaki.person.getProfile({ id: 'me' });
+        const profile = await this.cinerino.person.getProfile({ id: 'me' });
         if (profile === undefined) {
             throw new Error('profile is undefined');
         }
@@ -130,9 +131,7 @@ export class UserService {
 
         try {
             // クレジットカード検索
-            const creditCards = await this.sasaki.ownerShip.searchCreditCards({
-                personId: 'me'
-            });
+            const creditCards = await this.cinerino.ownerShipInfo.searchCreditCards({});
             this.data.creditCards = creditCards;
         } catch (err) {
             console.log(err);
@@ -142,12 +141,12 @@ export class UserService {
         // 口座検索または作成
         this.data.accounts = await this.openPointAccountIfNotExists();
 
-        const programMembershipOwnershipInfos = await this.sasaki.ownerShip.search<'ProgramMembership'>({
-            id: 'me',
-            typeOfGood: {
-                typeOf: 'ProgramMembership'
-            }
-        });
+        const programMembershipOwnershipInfos =
+            await this.cinerino.ownerShipInfo.search<factory.programMembership.ProgramMembershipType.ProgramMembership>({
+                typeOfGood: {
+                    typeOf: factory.programMembership.ProgramMembershipType.ProgramMembership
+                }
+            });
         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
         this.save();
     }
@@ -157,7 +156,7 @@ export class UserService {
      * @method updateAccount
      */
     public async updateAccount() {
-        await this.sasaki.getServices();
+        await this.cinerino.getServices();
         // 口座検索または作成
         this.data.accounts = await this.openPointAccountIfNotExists();
         this.save();
@@ -198,10 +197,10 @@ export class UserService {
     }
 
     private async openPointAccount() {
-        await this.sasaki.ownerShip.openAccount({
+        await this.cinerino.ownerShipInfo.openAccount({
             id: 'me',
             accountType: factory.accountType.Point,
-            name: (<string>this.sasaki.userName)
+            name: (<string>this.cinerino.userName)
         });
     }
 
@@ -211,7 +210,7 @@ export class UserService {
     */
     private async searchPointAccount() {
         // 口座検索
-        const accountSearchResult = await this.sasaki.ownerShip.search({
+        const accountSearchResult = await this.cinerino.ownerShipInfo.search({
             id: 'me',
             typeOfGood: {
                 typeOf: factory.ownershipInfo.AccountGoodType.Account,
@@ -333,10 +332,10 @@ export class UserService {
     }) {
         const sendParam = args;
         console.log(sendParam);
-        await this.sasaki.getServices();
+        await this.cinerino.getServices();
         // 池袋
         const branchCode = (environment.production) ? '001' : '101';
-        const result = await this.sasaki.seller.search({
+        const result = await this.cinerino.seller.search({
             location: { branchCodes: [branchCode] },
             typeOfs: [factory.organizationType.MovieTheater]
         });
@@ -369,22 +368,15 @@ export class UserService {
     * @method registerCreditCard
     */
     public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
-        await this.sasaki.getServices();
+        await this.cinerino.getServices();
         // 登録
-        await this.sasaki.ownerShip.addCreditCard({
-            personId: 'me',
-            creditCard: {
-                token: gmoTokenObject.token
-            }
+        await this.cinerino.ownerShipInfo.addCreditCard({
+            creditCard: { token: gmoTokenObject.token }
         });
-        this.data.creditCards = await this.sasaki.ownerShip.searchCreditCards({
-            personId: 'me'
-        });
+        this.data.creditCards = await this.cinerino.ownerShipInfo.searchCreditCards({});
         if (this.data.creditCards.length > 1) {
             await this.deleteCreditCard();
-            this.data.creditCards = await this.sasaki.ownerShip.searchCreditCards({
-                personId: 'me'
-            });
+            this.data.creditCards = await this.cinerino.ownerShipInfo.searchCreditCards({});
         }
 
         this.save();
@@ -394,12 +386,11 @@ export class UserService {
     * クレジットカード削除
     */
     public async deleteCreditCard() {
-        await this.sasaki.getServices();
+        await this.cinerino.getServices();
         if (this.data.creditCards.length === 0) {
             return;
         }
-        await this.sasaki.ownerShip.deleteCreditCard({
-            personId: 'me',
+        await this.cinerino.ownerShipInfo.deleteCreditCard({
             cardSeq: this.data.creditCards[0].cardSeq
         });
     }
@@ -417,8 +408,8 @@ export class UserService {
         theaterCode: string;
     }) {
         const tel = args.telephone.replace(/^0/, '+81');
-        await this.sasaki.getServices();
-        await this.sasaki.person.updateProfile({
+        await this.cinerino.getServices();
+        await this.cinerino.person.updateProfile({
             id: 'me',
             familyName: args.familyName,
             givenName: args.givenName,
@@ -428,7 +419,7 @@ export class UserService {
                 { name: 'custom:theaterCode', value: args.theaterCode }
             ]
         });
-        const profile = await this.sasaki.person.getProfile({
+        const profile = await this.cinerino.person.getProfile({
             id: 'me'
         });
         if (profile === undefined) {
@@ -443,8 +434,8 @@ export class UserService {
     * ユーザーネーム設定
     */
     public async setUserName() {
-        await this.sasaki.getServices();
-        this.data.userName = this.sasaki.userName;
+        await this.cinerino.getServices();
+        this.data.userName = this.cinerino.userName;
         this.save();
     }
 

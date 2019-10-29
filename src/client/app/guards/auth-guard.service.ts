@@ -4,7 +4,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AwsCognitoService } from '../services/aws-cognito.service';
-import { SasakiService } from '../services/sasaki.service';
+import { CinerinoService } from '../services/cinerino.service';
 import { UserService } from '../services/user.service';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class AuthGuardService implements CanActivate {
 
     constructor(
         private router: Router,
-        private sasaki: SasakiService,
+        private cinerino: CinerinoService,
         private user: UserService,
         private awsCognito: AwsCognitoService
     ) { }
@@ -26,7 +26,7 @@ export class AuthGuardService implements CanActivate {
      */
     public async canActivate(): Promise<boolean> {
         try {
-            await this.sasaki.authorize();
+            await this.cinerino.authorize();
 
             if (!this.user.isMember()) {
                 const deviceId = localStorage.getItem('deviceId');
@@ -39,7 +39,7 @@ export class AuthGuardService implements CanActivate {
             return true;
         } catch (_) {
             try {
-                await this.sasaki.signIn(true);
+                await this.cinerino.signIn(true);
             } catch (e) {
                 console.error(e);
                 this.router.navigate(['/auth/select']);

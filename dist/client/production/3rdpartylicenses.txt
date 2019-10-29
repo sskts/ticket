@@ -53,12 +53,6 @@ ISC
 @cinerino/factory
 ISC
 
-@motionpicture/sskts-api-abstract-client
-ISC
-
-@motionpicture/sskts-api-javascript-client
-ISC
-
 @pecorino/factory
 ISC
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AwsCognitoService, MemberType, SasakiService, UserService } from '../../../../../services';
+import { AwsCognitoService, CinerinoService, MemberType, UserService } from '../../../../../services';
 
 @Component({
     selector: 'app-auth-select',
@@ -12,7 +12,7 @@ export class AuthSelectComponent implements OnInit {
     public isLoading: boolean;
 
     constructor(
-        private sasaki: SasakiService,
+        private cinerino: CinerinoService,
         private router: Router,
         private user: UserService,
         private awsCognito: AwsCognitoService
@@ -42,7 +42,7 @@ export class AuthSelectComponent implements OnInit {
                 this.user.data.accounts[0].typeOfGood !== undefined) ?
                 this.user.data.accounts[0].typeOfGood.name :
                 this.user.data.prevUserName !== undefined ? this.user.data.prevUserName : '';
-            await this.sasaki.signInWithUserName(false, userName);
+            await this.cinerino.signInWithUserName(false, userName);
             this.user.data.memberType = MemberType.Member;
             this.user.save();
         } catch (error) {

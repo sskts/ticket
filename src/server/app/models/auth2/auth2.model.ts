@@ -1,4 +1,4 @@
-import * as sasaki from '@motionpicture/sskts-api-nodejs-client';
+import * as cinerino from '@cinerino/api-nodejs-client';
 import debug = require('debug');
 const log = debug('sskts-ticket:Auth2Model');
 /**
@@ -88,10 +88,10 @@ export class Auth2Model {
      * 認証クラス作成
      * @memberof Auth2Model
      * @method create
-     * @returns {sasaki.auth.OAuth2}
+     * @returns {cinerino.auth.OAuth2}
      */
-    public create(): sasaki.auth.OAuth2 {
-        const auth = new sasaki.auth.OAuth2({
+    public create(): cinerino.auth.OAuth2 {
+        const auth = new cinerino.auth.OAuth2({
             domain: (<string>process.env.OAUTH2_SERVER_DOMAIN),
             clientId: (<string>process.env.CLIENT_ID_OAUTH2),
             clientSecret: (<string>process.env.CLIENT_SECRET_OAUTH2),

@@ -3,9 +3,9 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { factory } from '@cinerino/api-javascript-client';
 import * as moment from 'moment';
-import { ReservationService, SasakiService, UserService } from '../../../../../services';
+import { CinerinoService, ReservationService, UserService } from '../../../../../services';
 
 @Component({
     selector: 'app-member-ticket-history',
@@ -27,7 +27,7 @@ export class MemberTicketHistoryComponent implements OnInit {
         private router: Router,
         private reservation: ReservationService,
         public user: UserService,
-        private sasaki: SasakiService
+        private cinerino: CinerinoService
     ) { }
 
     /**
@@ -40,8 +40,8 @@ export class MemberTicketHistoryComponent implements OnInit {
         this.reservations = [];
         this.reservation.isMember = this.user.isMember();
         try {
-            await this.sasaki.getServices();
-            const result = await this.sasaki.ownerShip.search<factory.chevre.reservationType.EventReservation>({
+            await this.cinerino.getServices();
+            const result = await this.cinerino.ownerShipInfo.search<factory.chevre.reservationType.EventReservation>({
                 id: 'me',
                 typeOfGood: {
                     typeOf: factory.chevre.reservationType.EventReservation

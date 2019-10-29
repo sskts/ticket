@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { factory } from '@cinerino/api-javascript-client';
 import * as libphonenumber from 'libphonenumber-js';
 import { environment } from '../../../../../../environments/environment';
-import { MaintenanceService, SasakiService, UserService } from '../../../../../services';
+import { CinerinoService, MaintenanceService, UserService } from '../../../../../services';
 
 type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
 
@@ -26,7 +26,7 @@ export class MemberEditProfileComponent implements OnInit {
         private router: Router,
         private user: UserService,
         private maintenance: MaintenanceService,
-        private sasaki: SasakiService,
+        private cinerino: CinerinoService,
     ) { }
 
     /**
@@ -173,8 +173,8 @@ export class MemberEditProfileComponent implements OnInit {
  * 劇場一覧取得
  */
     private async getTheaters() {
-        await this.sasaki.getServices();
-        const result = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
+        await this.cinerino.getServices();
+        const result = await this.cinerino.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
         const theaters = result.data.filter((s) => {
             return (s.location !== undefined
                 && s.location.branchCode !== undefined

@@ -82,9 +82,7 @@ function signIn(req, res) {
             codeVerifier: authModel.codeVerifier
         });
         delete req.session.auth;
-        res.json({
-            url: authUrl
-        });
+        res.json({ url: authUrl });
     });
 }
 exports.signIn = signIn;

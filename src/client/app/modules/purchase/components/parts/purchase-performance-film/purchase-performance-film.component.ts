@@ -2,7 +2,7 @@
  * PurchasePerformanceFilmComponent
  */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { factory } from '@motionpicture/sskts-api-abstract-client';
+import { factory } from '@cinerino/api-javascript-client';
 import {
     isAfterPeriod,
     isBeforePeriod,
@@ -11,15 +11,13 @@ import {
     isWindow
 } from '../../../../../functions';
 
-type IEvent = factory.chevre.event.screeningEvent.IEvent;
-
 @Component({
     selector: 'app-purchase-performance-film',
     templateUrl: './purchase-performance-film.component.html',
     styleUrls: ['./purchase-performance-film.component.scss']
 })
 export class PurchasePerformanceFilmComponent implements OnInit {
-    @Input() public performance: IEvent;
+    @Input() public performance: factory.chevre.event.screeningEvent.IEvent;
     @Output() public select: EventEmitter<{}> = new EventEmitter();
     public isSalse = isSalse;
     public isWindow = isWindow;

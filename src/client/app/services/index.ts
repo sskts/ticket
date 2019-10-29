@@ -3,7 +3,7 @@ export * from './call-native.service';
 export * from './maintenance.service';
 export * from './member.service';
 export * from './reservation.service';
-export * from './sasaki.service';
+export * from './cinerino.service';
 export * from './select.service';
 export * from './storage.service';
 export * from './user.service';
