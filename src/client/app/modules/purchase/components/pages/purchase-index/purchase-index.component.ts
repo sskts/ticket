@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { factory } from '@cinerino/api-javascript-client';
 import * as moment from 'moment';
+import { xml2js } from 'xml-js';
 import { environment } from '../../../../../../environments/environment';
 import { object2query } from '../../../../../functions';
 import {
@@ -270,22 +271,101 @@ export class PurchaseIndexComponent implements OnInit {
             }
             return moment(screeningEvent.endDate).unix() > moment(now).unix();
         });
-
-        return screeningEvents;
+        /**
+         * TODO
+         * JSONへ移行する
+         * xml2jsと合わせて依存関係も削除（timers,stream）
+         */
+        const theatreTable =
+            await this.utilService.getJson<{ code: string; name: string }[]>('/json/table/theaters.json');
+        const prefix = (environment.production) ? '0' : '1';
+        const theatreTableFindResult = theatreTable.find(t => branchCode === `${prefix}${t.code}`);
+        if (theatreTableFindResult === undefined) {
+            throw new Error('劇場が見つかりません');
+        }
+        const url = `${environment.SCHEDULE_API_URL}/${theatreTableFindResult.name}/schedule/xml/schedule.xml?date=${now}`;
+        const xml = await this.utilService.getText(url);
+        if (!(/\<rsv_start_day\>/.test(xml)
+            && /\<\/rsv_start_day\>/.test(xml)
+            && /\<rsv_start_time\>/.test(xml)
+            && /\<\/rsv_start_time\>/.test(xml))) {
+            return screeningEvents;
+        }
+        const updateScreeningEvents: factory.chevre.event.screeningEvent.IEvent[] = [];
+        const scheduleResult = <any>xml2js(xml, { compact: true });
+        screeningEvents.forEach((screeningEvent) => {
+            const coaInfo = screeningEvent.coaInfo;
+            if (coaInfo === undefined) {
+                return;
+            }
+            // console.log('scheduleResult', scheduleResult);
+            // console.log('coaInfo', coaInfo);
+            const schedule: any[] = (Array.isArray(scheduleResult.schedules.schedule))
+                ? scheduleResult.schedules.schedule : [scheduleResult.schedules.schedule];
+            const scheduleFindResult = schedule.find((s: any) => s.date._text === coaInfo.dateJouei);
+            if (scheduleFindResult === undefined) {
+                return;
+            }
+            // console.log('scheduleFindResult', scheduleFindResult);
+            const movie: any[] = (Array.isArray(scheduleFindResult.movie))
+                ? scheduleFindResult.movie : [scheduleFindResult.movie];
+            const movieFindResult = movie.find((m: any) => {
+                return (m.movie_short_code._cdata === coaInfo.titleCode
+                    && m.movie_branch_code._cdata === coaInfo.titleBranchNum);
+            });
+            if (movieFindResult === undefined) {
+                return;
+            }
+            // console.log('movieFindResult', movieFindResult);
+            const screen: any[] = (Array.isArray(movieFindResult.screen))
+                ? movieFindResult.screen : [movieFindResult.screen];
+            const screenFindResult = screen.find((s: any) => s.screen_code._cdata === coaInfo.screenCode);
+            if (screenFindResult === undefined) {
+                return;
+            }
+            // console.log('screenFindResult', screenFindResult);
+            const time: any[] = (Array.isArray(screenFindResult.time))
+                ? screenFindResult.time : [screenFindResult.time];
+            const timeFindResult =
+                time.find((t: any) => (t.start_time._text === coaInfo.timeBegin));
+            if (timeFindResult === undefined) {
+                return;
+            }
+            // console.log('timeFindResult', timeFindResult);
+            if (timeFindResult.rsv_start_day === undefined
+                || timeFindResult.rsv_start_time === undefined) {
+                return;
+            }
+            const reservation = {
+                year: timeFindResult.rsv_start_day._cdata.slice(0, 4),
+                month: timeFindResult.rsv_start_day._cdata.slice(4, 6),
+                day: timeFindResult.rsv_start_day._cdata.slice(6, 8),
+                hour: timeFindResult.rsv_start_time._cdata.slice(0, 2),
+                minute: timeFindResult.rsv_start_time._cdata.slice(2, 4),
+            };
+            const date =
+                moment(`${reservation.year}-${reservation.month}-${reservation.day} ${reservation.hour}:${reservation.minute}`)
+                    .toISOString();
+            updateScreeningEvents.push({
+                ...screeningEvent,
+                coaInfo: { ...coaInfo, rsvStartDate: date }
+            });
+        });
+        return updateScreeningEvents;
     }
 
     /**
      * 先行販売かどうかをチェックする
      */
-    private checkEventPreSale(event: factory.chevre.event.screeningEvent.IEvent): boolean {
-        const salesDate = moment().add(2, 'days').format('YYYYMMDD');
-        const startDate = moment(event.startDate).format('YYYYMMDD');
-        const today = moment().format('YYYYMMDD');
+    private checkEventPreSale(screeningEvent: factory.chevre.event.screeningEvent.IEvent): boolean {
+        if (screeningEvent.coaInfo === undefined) {
+            return false;
+        }
         const PRE_SALE = '1'; // 先行販売
-        return event.coaInfo !== undefined &&
-            event.coaInfo.rsvStartDate <= today &&
-            event.coaInfo.flgEarlyBooking === PRE_SALE &&
-            salesDate < startDate;
+        const coaInfo = screeningEvent.coaInfo;
+        const differenceDay = Number(environment.PRE_SALE_DIFFERENCE_DAY);
+        return (coaInfo.flgEarlyBooking === PRE_SALE
+            || moment(coaInfo.dateJouei).diff(moment(coaInfo.rsvStartDate), 'day') > differenceDay);
     }
 
     /**

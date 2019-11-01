@@ -23,6 +23,10 @@ export const environment = {
 
     CLOSE_THEATERS: ['001'],
 
-    ANALYTICS_ID: 'UA-99018492-6'
+    ANALYTICS_ID: 'UA-99018492-6',
+
+    PRE_SALE_DIFFERENCE_DAY: '2',
+
+    SCHEDULE_API_URL: 'https://sskts-xmlcontroller-production.azurewebsites.net'
 
 };
