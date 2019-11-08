@@ -13,6 +13,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.1.0 - 2019-11-08
+### Added
+ - スケジュール取得時にXMLによる販売可能フィルター追加
+### Changed
+ - Cinerino SDKへ変更
+
 ## 3.0.1 - 2019-10-28
 ### Added
  - クレジットカード注意文言追加
