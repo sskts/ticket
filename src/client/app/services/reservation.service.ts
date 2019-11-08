@@ -2,10 +2,10 @@
  * ReservationService
  */
 import { Injectable } from '@angular/core';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { factory } from '@cinerino/api-javascript-client';
 import * as moment from 'moment';
 import { AwsCognitoService } from './aws-cognito.service';
-import { SasakiService } from './sasaki.service';
+import { CinerinoService } from './cinerino.service';
 import { StorageService } from './storage.service';
 type ITicket = factory.chevre.reservation.ITicket<factory.chevre.reservationType.EventReservation>;
 type IReservationFor = factory.chevre.reservation.IReservationFor<factory.chevre.reservationType.EventReservation>;
@@ -31,7 +31,7 @@ export class ReservationService {
     constructor(
         private awsCognito: AwsCognitoService,
         private storage: StorageService,
-        private sasaki: SasakiService
+        private cinerino: CinerinoService
     ) { }
 
     /**
@@ -115,8 +115,8 @@ export class ReservationService {
      * @returns {Promise<IReservationData>}
      */
     private async fitchReservation(): Promise<IReservationData> {
-        await this.sasaki.getServices();
-        const reservationOwnerships = await this.sasaki.ownerShip.search<factory.chevre.reservationType.EventReservation>({
+        await this.cinerino.getServices();
+        const reservationOwnerships = await this.cinerino.ownerShipInfo.search<factory.chevre.reservationType.EventReservation>({
             id: 'me',
             typeOfGood: {
                 typeOf: factory.chevre.reservationType.EventReservation

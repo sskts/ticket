@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
-import { SasakiService, UserService } from '../../../../../services';
+import { CinerinoService, UserService } from '../../../../../services';
 
 @Component({
     selector: 'app-auth-register-credit',
@@ -25,7 +25,7 @@ export class AuthRegisterCreditComponent implements OnInit {
         private elementRef: ElementRef,
         private formBuilder: FormBuilder,
         private user: UserService,
-        private sasaki: SasakiService
+        private cinerino: CinerinoService
     ) { }
 
     /**
@@ -104,7 +104,7 @@ export class AuthRegisterCreditComponent implements OnInit {
         }
 
         try {
-            await this.sasaki.getServices();
+            await this.cinerino.getServices();
             // GMOトークン取得
             const gmoTokenObject = await this.user.getGmoObject({
                 cardno: this.creditForm.controls.cardNumber.value,
@@ -132,8 +132,8 @@ export class AuthRegisterCreditComponent implements OnInit {
      * @method signOut
      */
     public async signOut() {
-        await this.sasaki.getServices();
-        await this.sasaki.signOut();
+        await this.cinerino.getServices();
+        await this.cinerino.signOut();
     }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SasakiService } from '../../../../../services';
+import { CinerinoService } from '../../../../../services';
 
 @Component({
     selector: 'app-auth-register-terms',
@@ -13,7 +13,7 @@ export class AuthRegisterTermsComponent implements OnInit {
     public termsForm: FormGroup;
 
     constructor(
-        private sasaki: SasakiService,
+        private cinerino: CinerinoService,
         private formBuilder: FormBuilder
     ) { }
 
@@ -40,7 +40,7 @@ export class AuthRegisterTermsComponent implements OnInit {
             return;
         }
         try {
-            await this.sasaki.signUp();
+            await this.cinerino.signUp();
         } catch (error) {
             this.isLoading = false;
             console.error(error);

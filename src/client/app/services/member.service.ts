@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
-import { SasakiService } from './sasaki.service';
+import { factory } from '@cinerino/api-javascript-client';
+import { CinerinoService } from './cinerino.service';
 
 @Injectable({
     providedIn: 'root'
@@ -8,18 +8,18 @@ import { SasakiService } from './sasaki.service';
 export class MemberService {
 
     constructor(
-        private sasaki: SasakiService
+        private cinerino: CinerinoService
     ) { }
 
     /**
      * 会員プログラム一覧取得
      */
     public async getProgramMemberships() {
-        await this.sasaki.getServices();
+        await this.cinerino.getServices();
         // 会員プログラム検索
-        const programMemberships = await this.sasaki.programMembership.search({});
+        const programMemberships = await this.cinerino.programMembership.search({});
 
-        return programMemberships;
+        return programMemberships.data;
     }
 
     /**
@@ -30,11 +30,11 @@ export class MemberService {
         theaterCode: string;
         programMembership: factory.programMembership.IProgramMembership
     }) {
-        await this.sasaki.getServices();
+        await this.cinerino.getServices();
 
         const branchCode = args.theaterCode;
         // 販売劇場検索
-        const result = await this.sasaki.seller.search({
+        const result = await this.cinerino.seller.search({
             location: {branchCodes: [branchCode]},
             typeOfs: [factory.organizationType.MovieTheater]
         });
@@ -54,7 +54,7 @@ export class MemberService {
         }
 
         // 会員プログラム登録
-        const registerProgramMembership = await this.sasaki.person.registerProgramMembership({
+        const registerProgramMembership = await this.cinerino.person.registerProgramMembership({
             id: 'me',
             programMembershipId: programMembership.id,
             offerIdentifier: offer.identifier,
@@ -69,7 +69,7 @@ export class MemberService {
      * 登録判定
      */
     public async isRegister() {
-        await this.sasaki.getServices();
+        await this.cinerino.getServices();
         const time = 3000;
         const limit = 20;
         let count = 0;
@@ -77,10 +77,9 @@ export class MemberService {
             const timer = setInterval(async () => {
                 try {
                     const result =
-                        await this.sasaki.ownerShip.search({
-                            id: 'me',
+                        await this.cinerino.ownerShipInfo.search<factory.programMembership.ProgramMembershipType.ProgramMembership>({
                             typeOfGood: {
-                                typeOf: 'ProgramMembership'
+                                typeOf: factory.programMembership.ProgramMembershipType.ProgramMembership
                             }
                         });
                     const programMembershipOwnershipInfos = result.data;
@@ -106,8 +105,8 @@ export class MemberService {
     public async unRegister(args: {
         ownershipInfoIdentifier: string;
     }) {
-        await this.sasaki.getServices();
-        await this.sasaki.person.unRegisterProgramMembership({
+        await this.cinerino.getServices();
+        await this.cinerino.person.unRegisterProgramMembership({
             id: 'me',
             ownershipInfoIdentifier: args.ownershipInfoIdentifier
         });

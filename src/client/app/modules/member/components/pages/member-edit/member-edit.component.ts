@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
-import { SasakiService, UserService } from '../../../../../services';
+import { factory } from '@cinerino/api-javascript-client';
+import { CinerinoService, UserService } from '../../../../../services';
 
 @Component({
     selector: 'app-member-edit',
@@ -12,7 +12,7 @@ export class MemberEditComponent implements OnInit {
 
     constructor(
         public user: UserService,
-        private sasaki: SasakiService
+        private cinerino: CinerinoService
     ) {
         this.theaterName = '';
     }
@@ -31,8 +31,8 @@ export class MemberEditComponent implements OnInit {
     private async getTheaterName() {
         const code = this.user.getWellGoTheaterCode();
         if (code !== undefined) {
-            await this.sasaki.getServices();
-            const result = await this.sasaki.seller.search({
+            await this.cinerino.getServices();
+            const result = await this.cinerino.seller.search({
                 typeOfs: [factory.organizationType.MovieTheater],
                 location: { branchCodes: [code] }
             });

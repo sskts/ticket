@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SasakiService } from '../../../../../services';
+import { CinerinoService } from '../../../../../services';
 
 @Component({
     selector: 'app-auth-logout',
@@ -10,7 +10,7 @@ export class AuthLogoutComponent implements OnInit {
     public isLoading: boolean;
 
     constructor(
-        private sasaki: SasakiService
+        private cinerino: CinerinoService
     ) { }
 
     /**
@@ -28,7 +28,7 @@ export class AuthLogoutComponent implements OnInit {
     public async signOut() {
         this.isLoading = true;
         try {
-            await this.sasaki.signOut();
+            await this.cinerino.signOut();
         } catch {
             this.isLoading = false;
         }

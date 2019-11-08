@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { factory } from '@cinerino/api-javascript-client';
 import {
     isAfterPeriod,
     isBeforePeriod,
@@ -8,15 +8,13 @@ import {
     isWindow
 } from '../../../../../functions';
 
-type IEvent = factory.chevre.event.screeningEvent.IEvent;
-
 @Component({
     selector: 'app-purchase-performance-time',
     templateUrl: './purchase-performance-time.component.html',
     styleUrls: ['./purchase-performance-time.component.scss']
 })
 export class PurchasePerformanceTimeComponent implements OnInit {
-    @Input() public performance: IEvent;
+    @Input() public performance: factory.chevre.event.screeningEvent.IEvent;
     @Output() public select: EventEmitter<{}> = new EventEmitter();
     public isSalse = isSalse;
     public isWindow = isWindow;

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
+import { factory } from '@cinerino/api-javascript-client';
 import { environment } from '../../../../../../environments/environment';
-import { MaintenanceService, MemberService, SasakiService } from '../../../../../services';
+import { CinerinoService, MaintenanceService, MemberService } from '../../../../../services';
 
 @Component({
     selector: 'app-auth-register-program-membership',
@@ -20,7 +20,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
     constructor(
         private router: Router,
         private formBuilder: FormBuilder,
-        private sasaki: SasakiService,
+        private cinerino: CinerinoService,
         private member: MemberService,
         private maintenance: MaintenanceService
     ) { }
@@ -34,9 +34,9 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         this.isLoading = true;
         this.optionsForm = this.createForm();
         try {
-            await this.sasaki.getServices();
+            await this.cinerino.getServices();
             // 劇場一覧取得
-            const sellerSearchResult = await this.sasaki.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
+            const sellerSearchResult = await this.cinerino.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
             const searchMovieTheatersResult = sellerSearchResult.data.filter((s) => {
                 return (s.location !== undefined
                     && s.location.branchCode !== undefined
@@ -99,7 +99,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             if (accounts.length > 1) {
                 // ポイントアカウントが複数存在する場合、最初の一件を残してクローズする
                 for (let i = 1; i < accounts.length; i++) {
-                    await this.sasaki.ownerShip.closeAccount({
+                    await this.cinerino.ownerShipInfo.closeAccount({
                         id: 'me',
                         accountType: factory.accountType.Point,
                         accountNumber: accounts[i].typeOfGood.accountNumber
@@ -138,7 +138,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
      */
     private async searchPointAccount() {
         // 口座検索
-        const accountSearchResult = await this.sasaki.ownerShip.search({
+        const accountSearchResult = await this.cinerino.ownerShipInfo.search({
             id: 'me',
             typeOfGood: {
                 typeOf: factory.ownershipInfo.AccountGoodType.Account,

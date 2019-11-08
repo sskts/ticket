@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { factory } from '@motionpicture/sskts-api-javascript-client';
-import { SasakiService, UserService } from '../../../../../services';
+import { factory } from '@cinerino/api-javascript-client';
+import { CinerinoService, UserService } from '../../../../../services';
 
 @Component({
     selector: 'app-member-point-history',
@@ -15,7 +15,7 @@ export class MemberPointHistoryComponent implements OnInit {
     constructor(
         public user: UserService,
         private router: Router,
-        private sasaki: SasakiService
+        private cinerino: CinerinoService
     ) { }
 
     /**
@@ -25,12 +25,12 @@ export class MemberPointHistoryComponent implements OnInit {
     public async ngOnInit() {
         this.isLoading = true;
         try {
-            this.sasaki.getServices();
+            this.cinerino.getServices();
             await this.user.updateAccount();
             if (this.user.data.accounts.length === 0) {
                 throw new Error('account is not found');
             }
-            const result = await this.sasaki.ownerShip.searchAccountMoneyTransferActions<factory.accountType.Point>({
+            const result = await this.cinerino.ownerShipInfo.searchAccountMoneyTransferActions<factory.accountType.Point>({
                 id: 'me',
                 accountType: factory.accountType.Point,
                 accountNumber: this.user.data.accounts[0].typeOfGood.accountNumber

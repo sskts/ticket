@@ -68,9 +68,7 @@ export async function signIn(req: Request, res: Response) {
         codeVerifier: authModel.codeVerifier
     });
     delete req.session.auth;
-    res.json({
-        url: authUrl
-    });
+    res.json({ url: authUrl });
 }
 
 /**
