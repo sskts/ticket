@@ -1,0 +1,13 @@
+<div [class.d-none]="data.length === 0" class="position-relative schedule-slider">
+    <div class="swiper-container" #swiper [swiper]="swiperConfig" (resize)="resize()">
+        <div class="swiper-wrapper">
+            <div *ngFor="let campaign of data" class="swiper-slide">
+                <a class="text-center d-block" (click)="openBlowser(campaign.url)">
+                    <img class="w-100" [src]="campaign.image" [alt]="campaign.title">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-button-next d-none"></div>
+    <div class="swiper-button-prev d-none"></div>
+</div>
