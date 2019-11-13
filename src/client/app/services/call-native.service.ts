@@ -106,6 +106,10 @@ export class CallNativeService {
      * @param args {IinAppBrowserArgs}
      */
     public inAppBrowser(args: IinAppBrowserArgs) {
+        if ((<any>window).wizViewMessenger === undefined) {
+            window.open(args.url, '_blank');
+            return;
+        }
         try {
             const data = {
                 method: 'inAppBrowser',

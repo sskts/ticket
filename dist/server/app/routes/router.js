@@ -23,6 +23,10 @@ exports.default = (app) => {
         res.locals.NODE_ENV = process.env.NODE_ENV;
         next();
     });
+    app.use('/storage', (req, res) => {
+        const url = req.originalUrl.replace('/storage', process.env.STORAGE_URL);
+        res.redirect(url);
+    });
     app.get('/api/authorize/getCredentials', authorize.getCredentials);
     app.post('/api/authorize/getCredentials', authorize.getCredentials);
     app.get('/api/authorize/signIn', authorize.signIn);

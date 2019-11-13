@@ -2351,6 +2351,110 @@ var TutorialComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./app/modules/shared/components/parts/campaign/campaign.component.ts":
+/*!****************************************************************************!*\
+  !*** ./app/modules/shared/components/parts/campaign/campaign.component.ts ***!
+  \****************************************************************************/
+/*! exports provided: CampaignComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CampaignComponent", function() { return CampaignComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ngx_swiper_wrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-swiper-wrapper */ "../../node_modules/ngx-swiper-wrapper/dist/ngx-swiper-wrapper.es5.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+var CampaignComponent = /** @class */ (function () {
+    function CampaignComponent(campaignService, callNativeService) {
+        this.campaignService = campaignService;
+        this.callNativeService = callNativeService;
+        this.data = [];
+    }
+    CampaignComponent.prototype.ngOnInit = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, error_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _b.trys.push([0, 2, , 3]);
+                        _a = this;
+                        return [4 /*yield*/, this.campaignService.getAvailabilityData(this.url)];
+                    case 1:
+                        _a.data = _b.sent();
+                        this.swiperConfig = {
+                            loop: true,
+                            effect: (this.data.length > 1) ? 'slide' : 'fade',
+                            navigation: {
+                                nextEl: '.schedule-slider .swiper-button-next',
+                                prevEl: '.schedule-slider .swiper-button-prev',
+                            },
+                        };
+                        this.directiveRef.update();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_1 = _b.sent();
+                        console.error(error_1);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    CampaignComponent.prototype.openBlowser = function (url) {
+        this.callNativeService.inAppBrowser({ url: url, target: _services__WEBPACK_IMPORTED_MODULE_2__["InAppBrowserTarget"].System });
+    };
+    /**
+     * リサイズ
+     */
+    CampaignComponent.prototype.resize = function () {
+        this.directiveRef.update();
+    };
+    return CampaignComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./app/modules/shared/components/parts/header-menu-member/header-menu-member.component.ngfactory.js":
 /*!**********************************************************************************************************!*\
   !*** ./app/modules/shared/components/parts/header-menu-member/header-menu-member.component.ngfactory.js ***!
@@ -3876,20 +3980,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pages_privacy_privacy_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/privacy/privacy.component */ "./app/modules/shared/components/pages/privacy/privacy.component.ts");
 /* harmony import */ var _components_pages_root_root_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/root/root.component */ "./app/modules/shared/components/pages/root/root.component.ts");
 /* harmony import */ var _components_pages_tutorial_tutorial_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/tutorial/tutorial.component */ "./app/modules/shared/components/pages/tutorial/tutorial.component.ts");
-/* harmony import */ var _components_parts_header_menu_member_header_menu_member_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/parts/header-menu-member/header-menu-member.component */ "./app/modules/shared/components/parts/header-menu-member/header-menu-member.component.ts");
-/* harmony import */ var _components_parts_header_menu_not_member_header_menu_not_member_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/parts/header-menu-not-member/header-menu-not-member.component */ "./app/modules/shared/components/parts/header-menu-not-member/header-menu-not-member.component.ts");
-/* harmony import */ var _components_parts_header_menu_header_menu_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/parts/header-menu/header-menu.component */ "./app/modules/shared/components/parts/header-menu/header-menu.component.ts");
-/* harmony import */ var _components_parts_header_header_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/parts/header/header.component */ "./app/modules/shared/components/parts/header/header.component.ts");
-/* harmony import */ var _components_parts_icon_icon_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/parts/icon/icon.component */ "./app/modules/shared/components/parts/icon/icon.component.ts");
-/* harmony import */ var _components_parts_information_information_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/parts/information/information.component */ "./app/modules/shared/components/parts/information/information.component.ts");
-/* harmony import */ var _components_parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/parts/loading/loading.component */ "./app/modules/shared/components/parts/loading/loading.component.ts");
-/* harmony import */ var _components_parts_maintenance_maintenance_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/parts/maintenance/maintenance.component */ "./app/modules/shared/components/parts/maintenance/maintenance.component.ts");
-/* harmony import */ var _components_parts_membership_benefits_membership_benefits_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/parts/membership-benefits/membership-benefits.component */ "./app/modules/shared/components/parts/membership-benefits/membership-benefits.component.ts");
-/* harmony import */ var _components_parts_modal_modal_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/parts/modal/modal.component */ "./app/modules/shared/components/parts/modal/modal.component.ts");
-/* harmony import */ var _components_parts_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/parts/navigation/navigation.component */ "./app/modules/shared/components/parts/navigation/navigation.component.ts");
-/* harmony import */ var _components_parts_page_page_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/parts/page/page.component */ "./app/modules/shared/components/parts/page/page.component.ts");
-/* harmony import */ var _components_parts_ticket_not_found_ticket_not_found_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/parts/ticket-not-found/ticket-not-found.component */ "./app/modules/shared/components/parts/ticket-not-found/ticket-not-found.component.ts");
-/* harmony import */ var _pipes__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pipes */ "./app/modules/shared/pipes/index.ts");
+/* harmony import */ var _components_parts_campaign_campaign_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/parts/campaign/campaign.component */ "./app/modules/shared/components/parts/campaign/campaign.component.ts");
+/* harmony import */ var _components_parts_header_menu_member_header_menu_member_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/parts/header-menu-member/header-menu-member.component */ "./app/modules/shared/components/parts/header-menu-member/header-menu-member.component.ts");
+/* harmony import */ var _components_parts_header_menu_not_member_header_menu_not_member_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/parts/header-menu-not-member/header-menu-not-member.component */ "./app/modules/shared/components/parts/header-menu-not-member/header-menu-not-member.component.ts");
+/* harmony import */ var _components_parts_header_menu_header_menu_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/parts/header-menu/header-menu.component */ "./app/modules/shared/components/parts/header-menu/header-menu.component.ts");
+/* harmony import */ var _components_parts_header_header_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/parts/header/header.component */ "./app/modules/shared/components/parts/header/header.component.ts");
+/* harmony import */ var _components_parts_icon_icon_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/parts/icon/icon.component */ "./app/modules/shared/components/parts/icon/icon.component.ts");
+/* harmony import */ var _components_parts_information_information_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/parts/information/information.component */ "./app/modules/shared/components/parts/information/information.component.ts");
+/* harmony import */ var _components_parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/parts/loading/loading.component */ "./app/modules/shared/components/parts/loading/loading.component.ts");
+/* harmony import */ var _components_parts_maintenance_maintenance_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/parts/maintenance/maintenance.component */ "./app/modules/shared/components/parts/maintenance/maintenance.component.ts");
+/* harmony import */ var _components_parts_membership_benefits_membership_benefits_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/parts/membership-benefits/membership-benefits.component */ "./app/modules/shared/components/parts/membership-benefits/membership-benefits.component.ts");
+/* harmony import */ var _components_parts_modal_modal_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/parts/modal/modal.component */ "./app/modules/shared/components/parts/modal/modal.component.ts");
+/* harmony import */ var _components_parts_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/parts/navigation/navigation.component */ "./app/modules/shared/components/parts/navigation/navigation.component.ts");
+/* harmony import */ var _components_parts_page_page_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/parts/page/page.component */ "./app/modules/shared/components/parts/page/page.component.ts");
+/* harmony import */ var _components_parts_ticket_not_found_ticket_not_found_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/parts/ticket-not-found/ticket-not-found.component */ "./app/modules/shared/components/parts/ticket-not-found/ticket-not-found.component.ts");
+/* harmony import */ var _pipes__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pipes */ "./app/modules/shared/pipes/index.ts");
+
 
 
 
@@ -3921,25 +4027,26 @@ var components = [
     _components_pages_privacy_privacy_component__WEBPACK_IMPORTED_MODULE_5__["PrivacyComponent"],
     _components_pages_root_root_component__WEBPACK_IMPORTED_MODULE_6__["RootComponent"],
     _components_pages_tutorial_tutorial_component__WEBPACK_IMPORTED_MODULE_7__["TutorialComponent"],
-    _components_parts_header_header_component__WEBPACK_IMPORTED_MODULE_11__["HeaderComponent"],
-    _components_parts_header_menu_header_menu_component__WEBPACK_IMPORTED_MODULE_10__["HeaderMenuComponent"],
-    _components_parts_header_menu_member_header_menu_member_component__WEBPACK_IMPORTED_MODULE_8__["HeaderMenuMemberComponent"],
-    _components_parts_header_menu_not_member_header_menu_not_member_component__WEBPACK_IMPORTED_MODULE_9__["HeaderMenuNotMemberComponent"],
-    _components_parts_icon_icon_component__WEBPACK_IMPORTED_MODULE_12__["IconComponent"],
-    _components_parts_information_information_component__WEBPACK_IMPORTED_MODULE_13__["InformationComponent"],
-    _components_parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_14__["LoadingComponent"],
-    _components_parts_maintenance_maintenance_component__WEBPACK_IMPORTED_MODULE_15__["MaintenanceComponent"],
-    _components_parts_membership_benefits_membership_benefits_component__WEBPACK_IMPORTED_MODULE_16__["MembershipBenefitsComponent"],
-    _components_parts_modal_modal_component__WEBPACK_IMPORTED_MODULE_17__["ModalComponent"],
-    _components_parts_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_18__["NavigationComponent"],
-    _components_parts_page_page_component__WEBPACK_IMPORTED_MODULE_19__["PageComponent"],
-    _components_parts_ticket_not_found_ticket_not_found_component__WEBPACK_IMPORTED_MODULE_20__["TicketNotFoundComponent"]
+    _components_parts_header_header_component__WEBPACK_IMPORTED_MODULE_12__["HeaderComponent"],
+    _components_parts_header_menu_header_menu_component__WEBPACK_IMPORTED_MODULE_11__["HeaderMenuComponent"],
+    _components_parts_header_menu_member_header_menu_member_component__WEBPACK_IMPORTED_MODULE_9__["HeaderMenuMemberComponent"],
+    _components_parts_header_menu_not_member_header_menu_not_member_component__WEBPACK_IMPORTED_MODULE_10__["HeaderMenuNotMemberComponent"],
+    _components_parts_icon_icon_component__WEBPACK_IMPORTED_MODULE_13__["IconComponent"],
+    _components_parts_information_information_component__WEBPACK_IMPORTED_MODULE_14__["InformationComponent"],
+    _components_parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_15__["LoadingComponent"],
+    _components_parts_maintenance_maintenance_component__WEBPACK_IMPORTED_MODULE_16__["MaintenanceComponent"],
+    _components_parts_membership_benefits_membership_benefits_component__WEBPACK_IMPORTED_MODULE_17__["MembershipBenefitsComponent"],
+    _components_parts_modal_modal_component__WEBPACK_IMPORTED_MODULE_18__["ModalComponent"],
+    _components_parts_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_19__["NavigationComponent"],
+    _components_parts_page_page_component__WEBPACK_IMPORTED_MODULE_20__["PageComponent"],
+    _components_parts_ticket_not_found_ticket_not_found_component__WEBPACK_IMPORTED_MODULE_21__["TicketNotFoundComponent"],
+    _components_parts_campaign_campaign_component__WEBPACK_IMPORTED_MODULE_8__["CampaignComponent"]
 ];
 var pipes = [
-    _pipes__WEBPACK_IMPORTED_MODULE_21__["AvailabilityPipe"],
-    _pipes__WEBPACK_IMPORTED_MODULE_21__["DateFormatPipe"],
-    _pipes__WEBPACK_IMPORTED_MODULE_21__["DurationPipe"],
-    _pipes__WEBPACK_IMPORTED_MODULE_21__["TimeFormatPipe"]
+    _pipes__WEBPACK_IMPORTED_MODULE_22__["AvailabilityPipe"],
+    _pipes__WEBPACK_IMPORTED_MODULE_22__["DateFormatPipe"],
+    _pipes__WEBPACK_IMPORTED_MODULE_22__["DurationPipe"],
+    _pipes__WEBPACK_IMPORTED_MODULE_22__["TimeFormatPipe"]
 ];
 var SharedModule = /** @class */ (function () {
     function SharedModule() {
@@ -4250,6 +4357,10 @@ var CallNativeService = /** @class */ (function () {
      * @param args {IinAppBrowserArgs}
      */
     CallNativeService.prototype.inAppBrowser = function (args) {
+        if (window.wizViewMessenger === undefined) {
+            window.open(args.url, '_blank');
+            return;
+        }
         try {
             var data = {
                 method: 'inAppBrowser',
@@ -4280,6 +4391,135 @@ var CallNativeService = /** @class */ (function () {
     };
     CallNativeService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ factory: function CallNativeService_Factory() { return new CallNativeService(); }, token: CallNativeService, providedIn: "root" });
     return CallNativeService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./app/services/campaign.service.ts":
+/*!******************************************!*\
+  !*** ./app/services/campaign.service.ts ***!
+  \******************************************/
+/*! exports provided: CampaignService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CampaignService", function() { return CampaignService; });
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var rxjs_add_operator_toPromise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/add/operator/toPromise */ "../../node_modules/rxjs-compat/_esm5/add/operator/toPromise.js");
+/* harmony import */ var rxjs_add_operator_toPromise__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(rxjs_add_operator_toPromise__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util.service */ "./app/services/util.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+var CampaignService = /** @class */ (function () {
+    function CampaignService(utilService) {
+        this.utilService = utilService;
+        this.data = [];
+    }
+    /**
+     * キャンペンデータ取得
+     */
+    CampaignService.prototype.getCampaign = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, json, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.data = [];
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        url = "/storage/json/campaign.json?date=" + moment__WEBPACK_IMPORTED_MODULE_0__().format('YYYYMMDDHHmm');
+                        return [4 /*yield*/, this.utilService.getJson(url)];
+                    case 2:
+                        json = _a.sent();
+                        this.data = json.data.sort(function (a, b) {
+                            if (a.index > b.index) {
+                                return 1;
+                            }
+                            else {
+                                return -1;
+                            }
+                        });
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_1 = _a.sent();
+                        console.error(error_1);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * 有効なデータ取得
+     */
+    CampaignService.prototype.getAvailabilityData = function (place) {
+        return __awaiter(this, void 0, void 0, function () {
+            var now, filterResult;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getCampaign()];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.utilService.getServerTime()];
+                    case 2:
+                        now = (_a.sent()).date;
+                        filterResult = this.data.filter(function (data) {
+                            return (moment__WEBPACK_IMPORTED_MODULE_0__(data.from).unix() < moment__WEBPACK_IMPORTED_MODULE_0__(now).unix()
+                                && moment__WEBPACK_IMPORTED_MODULE_0__(data.through).unix() > moment__WEBPACK_IMPORTED_MODULE_0__(now).unix()
+                                && data.place.find(function (p) { return p === place; }) !== undefined);
+                        });
+                        return [2 /*return*/, filterResult];
+                }
+            });
+        });
+    };
+    CampaignService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({ factory: function CampaignService_Factory() { return new CampaignService(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_util_service__WEBPACK_IMPORTED_MODULE_2__["UtilService"])); }, token: CampaignService, providedIn: "root" });
+    return CampaignService;
 }());
 
 
@@ -4576,7 +4816,7 @@ var CinerinoService = /** @class */ (function () {
 /*!*******************************!*\
   !*** ./app/services/index.ts ***!
   \*******************************/
-/*! exports provided: AwsCognitoService, CinerinoService, SaveType, StorageService, MemberType, UserService, UtilService, InAppBrowserTarget, CallNativeService, MaintenanceService, MemberService, ReservationService, PurchaseSort, SelectService */
+/*! exports provided: AwsCognitoService, CinerinoService, SaveType, StorageService, MemberType, UserService, UtilService, InAppBrowserTarget, CallNativeService, MaintenanceService, MemberService, ReservationService, CampaignService, PurchaseSort, SelectService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4601,23 +4841,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cinerino_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cinerino.service */ "./app/services/cinerino.service.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CinerinoService", function() { return _cinerino_service__WEBPACK_IMPORTED_MODULE_5__["CinerinoService"]; });
 
-/* harmony import */ var _select_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./select.service */ "./app/services/select.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PurchaseSort", function() { return _select_service__WEBPACK_IMPORTED_MODULE_6__["PurchaseSort"]; });
+/* harmony import */ var _campaign_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./campaign.service */ "./app/services/campaign.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CampaignService", function() { return _campaign_service__WEBPACK_IMPORTED_MODULE_6__["CampaignService"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SelectService", function() { return _select_service__WEBPACK_IMPORTED_MODULE_6__["SelectService"]; });
+/* harmony import */ var _select_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./select.service */ "./app/services/select.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PurchaseSort", function() { return _select_service__WEBPACK_IMPORTED_MODULE_7__["PurchaseSort"]; });
 
-/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./storage.service */ "./app/services/storage.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SaveType", function() { return _storage_service__WEBPACK_IMPORTED_MODULE_7__["SaveType"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SelectService", function() { return _select_service__WEBPACK_IMPORTED_MODULE_7__["SelectService"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StorageService", function() { return _storage_service__WEBPACK_IMPORTED_MODULE_7__["StorageService"]; });
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./storage.service */ "./app/services/storage.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SaveType", function() { return _storage_service__WEBPACK_IMPORTED_MODULE_8__["SaveType"]; });
 
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./user.service */ "./app/services/user.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MemberType", function() { return _user_service__WEBPACK_IMPORTED_MODULE_8__["MemberType"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StorageService", function() { return _storage_service__WEBPACK_IMPORTED_MODULE_8__["StorageService"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return _user_service__WEBPACK_IMPORTED_MODULE_8__["UserService"]; });
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./user.service */ "./app/services/user.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MemberType", function() { return _user_service__WEBPACK_IMPORTED_MODULE_9__["MemberType"]; });
 
-/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./util.service */ "./app/services/util.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UtilService", function() { return _util_service__WEBPACK_IMPORTED_MODULE_9__["UtilService"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return _user_service__WEBPACK_IMPORTED_MODULE_9__["UserService"]; });
+
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./util.service */ "./app/services/util.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UtilService", function() { return _util_service__WEBPACK_IMPORTED_MODULE_10__["UtilService"]; });
+
 
 
 

@@ -11,6 +11,7 @@ import { PolicyComponent } from './components/pages/policy/policy.component';
 import { PrivacyComponent } from './components/pages/privacy/privacy.component';
 import { RootComponent } from './components/pages/root/root.component';
 import { TutorialComponent } from './components/pages/tutorial/tutorial.component';
+import { CampaignComponent } from './components/parts/campaign/campaign.component';
 import { HeaderMenuMemberComponent } from './components/parts/header-menu-member/header-menu-member.component';
 import { HeaderMenuNotMemberComponent } from './components/parts/header-menu-not-member/header-menu-not-member.component';
 import { HeaderMenuComponent } from './components/parts/header-menu/header-menu.component';
@@ -47,7 +48,8 @@ const components = [
   ModalComponent,
   NavigationComponent,
   PageComponent,
-  TicketNotFoundComponent
+  TicketNotFoundComponent,
+  CampaignComponent
 ];
 
 const pipes = [
