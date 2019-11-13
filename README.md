@@ -30,6 +30,7 @@
 | `EXCLUDE_THEATERS_TIME`             | false    |                  | 除外劇場設定期間(カンマ区切り)                      |
 | `EXCLUDE_THEATERS`                  | false    |                  | 除外劇場コード(カンマ区切り)                       |
 | `DEBUG`                             | false    | sskts-ticket:*   | デバッグ                                |
+| `STORAGE_URL`                       | true     |                  | 外部ストレージURL                                |
 
 ## Azure Environment variables
 
