@@ -3502,6 +3502,7 @@ var PurchaseIndexComponent = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         this.isLoading = true;
+                        this.isCOASchedule = false;
                         _b.label = 1;
                     case 1:
                         _b.trys.push([1, 4, , 5]);
@@ -3746,7 +3747,7 @@ var PurchaseIndexComponent = /** @class */ (function () {
      */
     PurchaseIndexComponent.prototype.getScreeningEvents = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var branchCode, findResult, now, today, screeningEvents, screeningEventsResult, theatreTable, prefix, theatreTableFindResult, url, xml, updateScreeningEvents, scheduleResult;
+            var branchCode, findResult, now, today, screeningEvents, screeningEventsResult, theatreTable, prefix, theatreTableFindResult, url, xml, customScreeningEvents_1, differenceDay_1, updateScreeningEvents, scheduleResult;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
@@ -3798,8 +3799,21 @@ var PurchaseIndexComponent = /** @class */ (function () {
                             && /\<\/rsv_start_day\>/.test(xml)
                             && /\<rsv_start_time\>/.test(xml)
                             && /\<\/rsv_start_time\>/.test(xml))) {
-                            return [2 /*return*/, screeningEvents];
+                            // COA版通常販売で3日以上先のイベントを販売不可へ変更
+                            this.isCOASchedule = true;
+                            customScreeningEvents_1 = [];
+                            differenceDay_1 = Number(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].PRE_SALE_DIFFERENCE_DAY);
+                            screeningEvents.forEach(function (evant) {
+                                if (evant.coaInfo !== undefined
+                                    && evant.coaInfo.flgEarlyBooking === '0'
+                                    && moment__WEBPACK_IMPORTED_MODULE_3__(evant.coaInfo.dateJouei).diff(moment__WEBPACK_IMPORTED_MODULE_3__(today), 'day') > differenceDay_1) {
+                                    evant.coaInfo.rsvStartDate = moment__WEBPACK_IMPORTED_MODULE_3__(today).add(1, 'day').format('YYYYMMDD');
+                                }
+                                customScreeningEvents_1.push(evant);
+                            });
+                            return [2 /*return*/, customScreeningEvents_1];
                         }
+                        this.isCOASchedule = false;
                         updateScreeningEvents = [];
                         scheduleResult = Object(xml_js__WEBPACK_IMPORTED_MODULE_4__["xml2js"])(xml, { compact: true });
                         screeningEvents.forEach(function (screeningEvent) {
@@ -3870,6 +3884,9 @@ var PurchaseIndexComponent = /** @class */ (function () {
         var PRE_SALE = '1'; // 先行販売
         var coaInfo = screeningEvent.coaInfo;
         var differenceDay = Number(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].PRE_SALE_DIFFERENCE_DAY);
+        if (this.isCOASchedule) {
+            return (coaInfo.flgEarlyBooking === PRE_SALE);
+        }
         return (coaInfo.flgEarlyBooking === PRE_SALE
             || moment__WEBPACK_IMPORTED_MODULE_3__(coaInfo.dateJouei).diff(moment__WEBPACK_IMPORTED_MODULE_3__(coaInfo.rsvStartDate), 'day') > differenceDay);
     };

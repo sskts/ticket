@@ -63,6 +63,7 @@ export class PurchaseIndexComponent implements OnInit {
     public purchaseSort: typeof PurchaseSort;
     public isPreSale: boolean;
     public maintenanceInfo: IConfirm;
+    public isCOASchedule: boolean;
 
     constructor(
         private router: Router,
@@ -82,6 +83,7 @@ export class PurchaseIndexComponent implements OnInit {
      */
     public async ngOnInit() {
         this.isLoading = true;
+        this.isCOASchedule = false;
         try {
             this.maintenanceInfo = await this.maintenanceService.confirm();
             if (this.maintenanceInfo.isMaintenance) {
@@ -289,8 +291,22 @@ export class PurchaseIndexComponent implements OnInit {
             && /\<\/rsv_start_day\>/.test(xml)
             && /\<rsv_start_time\>/.test(xml)
             && /\<\/rsv_start_time\>/.test(xml))) {
-            return screeningEvents;
+            // COA版通常販売で3日以上先のイベントを販売不可へ変更
+            this.isCOASchedule = true;
+            const customScreeningEvents: factory.chevre.event.screeningEvent.IEvent[] = [];
+            const differenceDay = Number(environment.PRE_SALE_DIFFERENCE_DAY);
+            screeningEvents.forEach((evant) => {
+                if (evant.coaInfo !== undefined
+                    && evant.coaInfo.flgEarlyBooking === '0'
+                    && moment(evant.coaInfo.dateJouei).diff(moment(today), 'day') > differenceDay) {
+                    evant.coaInfo.rsvStartDate = moment(today).add(1, 'day').format('YYYYMMDD');
+                }
+                customScreeningEvents.push(evant);
+            });
+
+            return customScreeningEvents;
         }
+        this.isCOASchedule = false;
         const updateScreeningEvents: factory.chevre.event.screeningEvent.IEvent[] = [];
         const scheduleResult = <any>xml2js(xml, { compact: true });
         screeningEvents.forEach((screeningEvent) => {
@@ -364,6 +380,9 @@ export class PurchaseIndexComponent implements OnInit {
         const PRE_SALE = '1'; // 先行販売
         const coaInfo = screeningEvent.coaInfo;
         const differenceDay = Number(environment.PRE_SALE_DIFFERENCE_DAY);
+        if (this.isCOASchedule) {
+            return (coaInfo.flgEarlyBooking === PRE_SALE);
+        }
         return (coaInfo.flgEarlyBooking === PRE_SALE
             || moment(coaInfo.dateJouei).diff(moment(coaInfo.rsvStartDate), 'day') > differenceDay);
     }
