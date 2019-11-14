@@ -3546,6 +3546,7 @@ var PurchaseIndexComponent = /** @class */ (function () {
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
+                        this.scheduleApiEndpoint = undefined;
                         this.theaters = [];
                         this.dateList = [];
                         this.filmOrder = [];
@@ -3747,12 +3748,12 @@ var PurchaseIndexComponent = /** @class */ (function () {
      */
     PurchaseIndexComponent.prototype.getScreeningEvents = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var branchCode, findResult, now, today, screeningEvents, screeningEventsResult, theatreTable, prefix, theatreTableFindResult, url, xml, customScreeningEvents_1, differenceDay_1, updateScreeningEvents, scheduleResult;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var branchCode, findResult, now, today, screeningEvents, screeningEventsResult, theatreTable, prefix, theatreTableFindResult, _a, url, xml, customScreeningEvents_1, differenceDay_1, updateScreeningEvents, scheduleResult;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
-                        _a.sent();
+                        _b.sent();
                         branchCode = this.conditions.theater;
                         findResult = this.theaters.find(function (theater) { return theater.location !== undefined && theater.location.branchCode === branchCode; });
                         if (findResult === undefined) {
@@ -3760,7 +3761,7 @@ var PurchaseIndexComponent = /** @class */ (function () {
                         }
                         return [4 /*yield*/, this.utilService.getServerTime()];
                     case 2:
-                        now = (_a.sent()).date;
+                        now = (_b.sent()).date;
                         today = moment__WEBPACK_IMPORTED_MODULE_3__(moment__WEBPACK_IMPORTED_MODULE_3__(now).format('YYYYMMDD')).toDate();
                         screeningEvents = [];
                         return [4 /*yield*/, this.cinerinoService.event.search({
@@ -3772,7 +3773,7 @@ var PurchaseIndexComponent = /** @class */ (function () {
                                 superEvent: { locationBranchCodes: [branchCode] }
                             })];
                     case 3:
-                        screeningEventsResult = _a.sent();
+                        screeningEventsResult = _b.sent();
                         screeningEvents = screeningEventsResult.data.filter(function (screeningEvent) {
                             var coaInfo = screeningEvent.coaInfo;
                             if (coaInfo === undefined) {
@@ -3785,16 +3786,23 @@ var PurchaseIndexComponent = /** @class */ (function () {
                         });
                         return [4 /*yield*/, this.utilService.getJson('/json/table/theaters.json')];
                     case 4:
-                        theatreTable = _a.sent();
+                        theatreTable = _b.sent();
                         prefix = (_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].production) ? '0' : '1';
                         theatreTableFindResult = theatreTable.find(function (t) { return branchCode === "" + prefix + t.code; });
                         if (theatreTableFindResult === undefined) {
                             throw new Error('劇場が見つかりません');
                         }
-                        url = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].SCHEDULE_API_URL + "/" + theatreTableFindResult.name + "/schedule/xml/schedule.xml?date=" + now;
-                        return [4 /*yield*/, this.utilService.getText(url)];
+                        if (!(this.scheduleApiEndpoint === undefined)) return [3 /*break*/, 6];
+                        _a = this;
+                        return [4 /*yield*/, this.utilService.getJson("/api/config?date" + moment__WEBPACK_IMPORTED_MODULE_3__().toISOString())];
                     case 5:
-                        xml = _a.sent();
+                        _a.scheduleApiEndpoint = (_b.sent()).scheduleApiEndpoint;
+                        _b.label = 6;
+                    case 6:
+                        url = this.scheduleApiEndpoint + "/" + theatreTableFindResult.name + "/schedule/xml/schedule.xml?date=" + now;
+                        return [4 /*yield*/, this.utilService.getText(url)];
+                    case 7:
+                        xml = _b.sent();
                         if (!(/\<rsv_start_day\>/.test(xml)
                             && /\<\/rsv_start_day\>/.test(xml)
                             && /\<rsv_start_time\>/.test(xml)

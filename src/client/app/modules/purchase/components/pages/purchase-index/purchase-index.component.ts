@@ -64,6 +64,7 @@ export class PurchaseIndexComponent implements OnInit {
     public isPreSale: boolean;
     public maintenanceInfo: IConfirm;
     public isCOASchedule: boolean;
+    public scheduleApiEndpoint?: string;
 
     constructor(
         private router: Router,
@@ -111,6 +112,7 @@ export class PurchaseIndexComponent implements OnInit {
      * 初期化
      */
     private async initialize() {
+        this.scheduleApiEndpoint = undefined;
         this.theaters = [];
         this.dateList = [];
         this.filmOrder = [];
@@ -285,7 +287,12 @@ export class PurchaseIndexComponent implements OnInit {
         if (theatreTableFindResult === undefined) {
             throw new Error('劇場が見つかりません');
         }
-        const url = `${environment.SCHEDULE_API_URL}/${theatreTableFindResult.name}/schedule/xml/schedule.xml?date=${now}`;
+        if (this.scheduleApiEndpoint === undefined) {
+            this.scheduleApiEndpoint = (await this.utilService.getJson<{
+                scheduleApiEndpoint: string
+            }>(`/api/config?date${moment().toISOString()}`)).scheduleApiEndpoint;
+        }
+        const url = `${this.scheduleApiEndpoint}/${theatreTableFindResult.name}/schedule/xml/schedule.xml?date=${now}`;
         const xml = await this.utilService.getText(url);
         if (!(/\<rsv_start_day\>/.test(xml)
             && /\<\/rsv_start_day\>/.test(xml)
