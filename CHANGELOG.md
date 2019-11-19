@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.3.0 - 2019-11-19
+### Changed
+ - COAXML販売可能開始日99日前対応
+
 ## 3.2.0 - 2019-11-13
 ### Added
  - アプリ内限定キャンペーンの実装 
