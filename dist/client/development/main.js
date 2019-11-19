@@ -6372,8 +6372,7 @@ var environment = {
     ENTRANCE_SERVER_URL: 'https://d2n1h4enbzumbc.cloudfront.net',
     CLOSE_THEATERS: ['101'],
     ANALYTICS_ID: 'UA-99018492-4',
-    PRE_SALE_DIFFERENCE_DAY: '2',
-    SCHEDULE_API_URL: 'https://sskts-xmlcontroller-test.azurewebsites.net'
+    PRE_SALE_DIFFERENCE_DAY: '2'
 };
 
 

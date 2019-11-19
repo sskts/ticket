@@ -36,6 +36,7 @@ exports.default = (app) => {
     app.get('/api/maintenance/excludeTheaters', maintenance.excludeTheaters);
     app.get('/api/maintenance/confirm', maintenance.confirm);
     app.get('/api/version', version);
+    app.get('/api/config', (_req, res) => { res.json({ scheduleApiEndpoint: process.env.SCHEDULE_API_ENDPOINT }); });
     app.get('/api/serverTime', (_req, res) => { res.json({ date: moment().toISOString() }); });
     app.get('*', (_req, res, _next) => {
         res.sendFile(path.resolve(`${__dirname}/../../../client/${process.env.NODE_ENV}/index.html`));

@@ -24,8 +24,6 @@ export const environment = {
 
     ANALYTICS_ID: 'UA-99018492-4',
 
-    PRE_SALE_DIFFERENCE_DAY: '2',
-
-    SCHEDULE_API_URL: 'https://sskts-xmlcontroller-test.azurewebsites.net'
+    PRE_SALE_DIFFERENCE_DAY: '2'
 
 };
