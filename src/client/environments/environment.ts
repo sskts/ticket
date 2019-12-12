@@ -11,18 +11,14 @@ export const environment = {
     USER_POOL_ID: '',
     CLIENT_ID: '',
 
-    REKOGNITION_BUCKET: 'rekognition-pics',
-    ALBUM_NAME: 'usercontent',
-    BUCKET_REGION: 'us-east-1',
-    DDB_TABLE_NAME: 'LoginTrail',
-    TOKEN_ISSUER: '',
-
     PORTAL_SITE: 'http://devssktsportal.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d2n1h4enbzumbc.cloudfront.net',
 
     CLOSE_THEATERS: ['101'],
 
     ANALYTICS_ID: 'UA-99018492-4',
+
+    MAIN_SHOP_BRUNCH_CODE: '101',
 
     PRE_SALE_DIFFERENCE_DAY: '2'
 

@@ -4816,7 +4816,7 @@ var CinerinoService = /** @class */ (function () {
 /*!*******************************!*\
   !*** ./app/services/index.ts ***!
   \*******************************/
-/*! exports provided: AwsCognitoService, CinerinoService, SaveType, StorageService, MemberType, UserService, UtilService, InAppBrowserTarget, CallNativeService, MaintenanceService, MemberService, ReservationService, CampaignService, PurchaseSort, SelectService */
+/*! exports provided: AwsCognitoService, CinerinoService, SaveType, StorageService, MemberType, UserService, UtilService, InAppBrowserTarget, CallNativeService, MaintenanceService, MemberService, MasterService, ReservationService, CampaignService, PurchaseSort, SelectService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4835,32 +4835,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _member_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./member.service */ "./app/services/member.service.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MemberService", function() { return _member_service__WEBPACK_IMPORTED_MODULE_3__["MemberService"]; });
 
-/* harmony import */ var _reservation_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reservation.service */ "./app/services/reservation.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ReservationService", function() { return _reservation_service__WEBPACK_IMPORTED_MODULE_4__["ReservationService"]; });
+/* harmony import */ var _master_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./master.service */ "./app/services/master.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MasterService", function() { return _master_service__WEBPACK_IMPORTED_MODULE_4__["MasterService"]; });
 
-/* harmony import */ var _cinerino_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cinerino.service */ "./app/services/cinerino.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CinerinoService", function() { return _cinerino_service__WEBPACK_IMPORTED_MODULE_5__["CinerinoService"]; });
+/* harmony import */ var _reservation_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./reservation.service */ "./app/services/reservation.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ReservationService", function() { return _reservation_service__WEBPACK_IMPORTED_MODULE_5__["ReservationService"]; });
 
-/* harmony import */ var _campaign_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./campaign.service */ "./app/services/campaign.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CampaignService", function() { return _campaign_service__WEBPACK_IMPORTED_MODULE_6__["CampaignService"]; });
+/* harmony import */ var _cinerino_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./cinerino.service */ "./app/services/cinerino.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CinerinoService", function() { return _cinerino_service__WEBPACK_IMPORTED_MODULE_6__["CinerinoService"]; });
 
-/* harmony import */ var _select_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./select.service */ "./app/services/select.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PurchaseSort", function() { return _select_service__WEBPACK_IMPORTED_MODULE_7__["PurchaseSort"]; });
+/* harmony import */ var _campaign_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./campaign.service */ "./app/services/campaign.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CampaignService", function() { return _campaign_service__WEBPACK_IMPORTED_MODULE_7__["CampaignService"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SelectService", function() { return _select_service__WEBPACK_IMPORTED_MODULE_7__["SelectService"]; });
+/* harmony import */ var _select_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./select.service */ "./app/services/select.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PurchaseSort", function() { return _select_service__WEBPACK_IMPORTED_MODULE_8__["PurchaseSort"]; });
 
-/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./storage.service */ "./app/services/storage.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SaveType", function() { return _storage_service__WEBPACK_IMPORTED_MODULE_8__["SaveType"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SelectService", function() { return _select_service__WEBPACK_IMPORTED_MODULE_8__["SelectService"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StorageService", function() { return _storage_service__WEBPACK_IMPORTED_MODULE_8__["StorageService"]; });
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./storage.service */ "./app/services/storage.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SaveType", function() { return _storage_service__WEBPACK_IMPORTED_MODULE_9__["SaveType"]; });
 
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./user.service */ "./app/services/user.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MemberType", function() { return _user_service__WEBPACK_IMPORTED_MODULE_9__["MemberType"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StorageService", function() { return _storage_service__WEBPACK_IMPORTED_MODULE_9__["StorageService"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return _user_service__WEBPACK_IMPORTED_MODULE_9__["UserService"]; });
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./user.service */ "./app/services/user.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MemberType", function() { return _user_service__WEBPACK_IMPORTED_MODULE_10__["MemberType"]; });
 
-/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./util.service */ "./app/services/util.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UtilService", function() { return _util_service__WEBPACK_IMPORTED_MODULE_10__["UtilService"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return _user_service__WEBPACK_IMPORTED_MODULE_10__["UserService"]; });
+
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./util.service */ "./app/services/util.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UtilService", function() { return _util_service__WEBPACK_IMPORTED_MODULE_11__["UtilService"]; });
+
 
 
 
@@ -4951,24 +4955,168 @@ var MaintenanceService = /** @class */ (function () {
             });
         });
     };
-    MaintenanceService.prototype.excludeTheaters = function () {
+    MaintenanceService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ factory: function MaintenanceService_Factory() { return new MaintenanceService(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"])); }, token: MaintenanceService, providedIn: "root" });
+    return MaintenanceService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./app/services/master.service.ts":
+/*!****************************************!*\
+  !*** ./app/services/master.service.ts ***!
+  \****************************************/
+/*! exports provided: MasterService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MasterService", function() { return MasterService; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./environments/environment.ts");
+/* harmony import */ var _cinerino_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cinerino.service */ "./app/services/cinerino.service.ts");
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util.service */ "./app/services/util.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+var MasterService = /** @class */ (function () {
+    function MasterService(cinerinoService, utilService) {
+        this.cinerinoService = cinerinoService;
+        this.utilService = utilService;
+    }
+    /**
+     * 販売者検索
+     */
+    MasterService.prototype.searchSeller = function (params, oprions) {
         return __awaiter(this, void 0, void 0, function () {
-            var options, url, result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        options = {};
-                        url = '/api/maintenance/excludeTheaters';
-                        return [4 /*yield*/, this.http.get(url, options).toPromise()];
+            var searchResult, filterResult, exclude, excludeResult, _a, sortSeller, sortResult, _b;
+            var _this = this;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
+                        _c.sent();
+                        return [4 /*yield*/, this.cinerinoService.seller.search(params)];
+                    case 2:
+                        searchResult = _c.sent();
+                        filterResult = searchResult.data.filter(function (s) {
+                            return (s.location !== undefined
+                                && s.location.branchCode !== undefined
+                                && s.location.branchCode !== ''
+                                && _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].CLOSE_THEATERS.find(function (t) { return t === s.location.branchCode; }) === undefined);
+                        });
+                        exclude = function (sellers) { return __awaiter(_this, void 0, void 0, function () {
+                            var url, excludeTheatersResult;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        url = '/api/maintenance/excludeTheaters';
+                                        return [4 /*yield*/, this.utilService.getJson(url)];
+                                    case 1:
+                                        excludeTheatersResult = _a.sent();
+                                        if (!excludeTheatersResult.isExclude) {
+                                            return [2 /*return*/, sellers];
+                                        }
+                                        return [2 /*return*/, sellers.filter(function (s) {
+                                                var excludeTheater = excludeTheatersResult.theaters.find(function (excludeCode) {
+                                                    return (s.location === undefined
+                                                        || s.location.branchCode === undefined
+                                                        || excludeCode === s.location.branchCode);
+                                                });
+                                                return (excludeTheater === undefined);
+                                            })];
+                                }
+                            });
+                        }); };
+                        if (!(oprions !== undefined && oprions.exclude)) return [3 /*break*/, 4];
+                        return [4 /*yield*/, exclude(filterResult)];
+                    case 3:
+                        _a = _c.sent();
+                        return [3 /*break*/, 5];
+                    case 4:
+                        _a = filterResult;
+                        _c.label = 5;
+                    case 5:
+                        excludeResult = _a;
+                        sortSeller = function (sellers) { return __awaiter(_this, void 0, void 0, function () {
+                            var url, table;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        url = '/json/table/theaters.json';
+                                        return [4 /*yield*/, this.utilService.getJson(url)];
+                                    case 1:
+                                        table = _a.sent();
+                                        return [2 /*return*/, sellers.sort(function (a, b) {
+                                                var indexA = table.findIndex(function (t) { return t.code === a.location.branchCode.slice(-2); });
+                                                var indexB = table.findIndex(function (t) { return t.code === b.location.branchCode.slice(-2); });
+                                                if (indexA > indexB) {
+                                                    return 1;
+                                                }
+                                                else {
+                                                    return -1;
+                                                }
+                                            })];
+                                }
+                            });
+                        }); };
+                        if (!(oprions !== undefined && oprions.sort)) return [3 /*break*/, 7];
+                        return [4 /*yield*/, sortSeller(excludeResult)];
+                    case 6:
+                        _b = _c.sent();
+                        return [3 /*break*/, 8];
+                    case 7:
+                        _b = excludeResult;
+                        _c.label = 8;
+                    case 8:
+                        sortResult = _b;
+                        return [2 /*return*/, sortResult];
                 }
             });
         });
     };
-    MaintenanceService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ factory: function MaintenanceService_Factory() { return new MaintenanceService(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"])); }, token: MaintenanceService, providedIn: "root" });
-    return MaintenanceService;
+    MasterService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({ factory: function MasterService_Factory() { return new MasterService(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_cinerino_service__WEBPACK_IMPORTED_MODULE_1__["CinerinoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_util_service__WEBPACK_IMPORTED_MODULE_2__["UtilService"])); }, token: MasterService, providedIn: "root" });
+    return MasterService;
 }());
 
 
@@ -6017,18 +6165,15 @@ var UserService = /** @class */ (function () {
     * GMOトークン取得
     * @method getGmoObject
     */
-    UserService.prototype.getGmoObject = function (args) {
+    UserService.prototype.getGmoObject = function (sendParam) {
         return __awaiter(this, void 0, void 0, function () {
-            var sendParam, branchCode, result, movieTheater;
+            var branchCode, result, movieTheater;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        sendParam = args;
-                        console.log(sendParam);
-                        return [4 /*yield*/, this.cinerino.getServices()];
+                    case 0: return [4 /*yield*/, this.cinerino.getServices()];
                     case 1:
                         _a.sent();
-                        branchCode = (_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].production) ? '001' : '101';
+                        branchCode = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].MAIN_SHOP_BRUNCH_CODE;
                         return [4 /*yield*/, this.cinerino.seller.search({
                                 location: { branchCodes: [branchCode] },
                                 typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater]
@@ -6372,6 +6517,7 @@ var environment = {
     ENTRANCE_SERVER_URL: 'https://d24x7394fq3aqi.cloudfront.net',
     CLOSE_THEATERS: ['101'],
     ANALYTICS_ID: 'UA-99018492-5',
+    MAIN_SHOP_BRUNCH_CODE: '101',
     PRE_SALE_DIFFERENCE_DAY: '2'
 };
 

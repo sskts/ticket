@@ -14,6 +14,7 @@ import {
     IConfirm,
     IPurchaseConditions,
     MaintenanceService,
+    MasterService,
     MemberType,
     PurchaseSort,
     SelectService,
@@ -73,7 +74,8 @@ export class PurchaseIndexComponent implements OnInit {
         private userService: UserService,
         private utilService: UtilService,
         private maintenanceService: MaintenanceService,
-        private awsCognitoService: AwsCognitoService
+        private awsCognitoService: AwsCognitoService,
+        private masterService: MasterService
     ) {
         this.purchaseSort = PurchaseSort;
     }
@@ -117,7 +119,10 @@ export class PurchaseIndexComponent implements OnInit {
         this.dateList = [];
         this.filmOrder = [];
         this.timeOrder = [];
-        this.theaters = await this.getTheaters();
+        this.theaters = await this.masterService.searchSeller(
+            { typeOfs: [factory.organizationType.MovieTheater] },
+            {exclude: true, sort: true}
+        );
         const findResult = this.theaters.find(theater =>
             theater.location !== undefined && theater.location.branchCode === this.conditions.theater);
         if (findResult === undefined) {
@@ -213,35 +218,6 @@ export class PurchaseIndexComponent implements OnInit {
         }
         const url = `${environment.ENTRANCE_SERVER_URL}/ticket/index.html?${object2query(params)}`;
         location.href = url;
-    }
-
-    /**
-     * 劇場一覧取得
-     */
-    private async getTheaters() {
-        await this.cinerinoService.getServices();
-        const sellerSearchResult = await this.cinerinoService.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
-        const theaters = sellerSearchResult.data.filter((s) => {
-            return (s.location !== undefined
-                && s.location.branchCode !== undefined
-                && s.location.branchCode !== ''
-                && environment.CLOSE_THEATERS.find(t => t === (<any>s.location).branchCode) === undefined);
-        });
-        // 除外劇場処理
-        const excludeTheatersResult = await this.maintenanceService.excludeTheaters();
-        if (!excludeTheatersResult.isExclude) {
-            return theaters;
-        }
-
-        return theaters.filter((theater) => {
-            const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
-                return (theater.location === undefined
-                    || theater.location.branchCode === undefined
-                    || excludeCode === theater.location.branchCode);
-            });
-
-            return (excludeTheater === undefined);
-        });
     }
 
     /**

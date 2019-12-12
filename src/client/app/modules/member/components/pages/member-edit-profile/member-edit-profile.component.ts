@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { factory } from '@cinerino/api-javascript-client';
 import * as libphonenumber from 'libphonenumber-js';
 import { environment } from '../../../../../../environments/environment';
-import { CinerinoService, MaintenanceService, UserService } from '../../../../../services';
+import { MasterService, UserService } from '../../../../../services';
 
 type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
 
@@ -25,8 +25,7 @@ export class MemberEditProfileComponent implements OnInit {
         private elementRef: ElementRef,
         private router: Router,
         private user: UserService,
-        private maintenance: MaintenanceService,
-        private cinerino: CinerinoService,
+        private masterService: MasterService
     ) { }
 
     /**
@@ -37,7 +36,10 @@ export class MemberEditProfileComponent implements OnInit {
         try {
             this.profileForm = this.createForm();
             this.isLoading = false;
-            this.theaters = await this.getTheaters();
+            this.theaters = await this.masterService.searchSeller(
+                { typeOfs: [factory.organizationType.MovieTheater] },
+                {exclude: true, sort: true}
+            );
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/member/edit/profile' }]);
         }
@@ -169,34 +171,4 @@ export class MemberEditProfileComponent implements OnInit {
         }
     }
 
-    /**
- * 劇場一覧取得
- */
-    private async getTheaters() {
-        await this.cinerino.getServices();
-        const result = await this.cinerino.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
-        const theaters = result.data.filter((s) => {
-            return (s.location !== undefined
-                && s.location.branchCode !== undefined
-                && s.location.branchCode !== ''
-                && environment.CLOSE_THEATERS.find(t => t === (<any>s.location).branchCode) === undefined);
-        });
-        // 除外劇場処理
-        const excludeTheatersResult = await this.maintenance.excludeTheaters();
-
-        if (!excludeTheatersResult.isExclude) {
-            return theaters;
-        }
-
-        return theaters.filter((theater) => {
-            const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
-                return (theater.location === undefined
-                    || theater.location.branchCode === undefined
-                    || theater.location.branchCode === ''
-                    || excludeCode === theater.location.branchCode);
-            });
-
-            return (excludeTheater === undefined);
-        });
-    }
 }

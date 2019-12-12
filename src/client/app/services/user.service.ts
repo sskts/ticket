@@ -324,17 +324,14 @@ export class UserService {
     * GMOトークン取得
     * @method getGmoObject
     */
-    public async getGmoObject(args: {
+    public async getGmoObject(sendParam: {
         cardno: string;
         expire: string;
         securitycode: string;
         holdername: string;
     }) {
-        const sendParam = args;
-        console.log(sendParam);
         await this.cinerino.getServices();
-        // 池袋
-        const branchCode = (environment.production) ? '001' : '101';
+        const branchCode = environment.MAIN_SHOP_BRUNCH_CODE;
         const result = await this.cinerino.seller.search({
             location: { branchCodes: [branchCode] },
             typeOfs: [factory.organizationType.MovieTheater]
