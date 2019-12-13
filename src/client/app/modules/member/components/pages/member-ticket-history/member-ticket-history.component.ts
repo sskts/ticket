@@ -41,7 +41,7 @@ export class MemberTicketHistoryComponent implements OnInit {
         this.reservation.isMember = this.user.isMember();
         try {
             await this.cinerino.getServices();
-            const result = await this.cinerino.ownerShipInfo.search<factory.chevre.reservationType.EventReservation>({
+            const result = await this.cinerino.ownerShipInfo.search({
                 id: 'me',
                 typeOfGood: {
                     typeOf: factory.chevre.reservationType.EventReservation

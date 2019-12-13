@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.3.1 - 2019-12-13
+### Fixed
+ - 会員プログラム確認修正
+
 ## 3.3.0 - 2019-11-19
 ### Changed
  - COAXML販売可能開始日99日前対応

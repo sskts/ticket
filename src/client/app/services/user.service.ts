@@ -141,12 +141,11 @@ export class UserService {
         // 口座検索または作成
         this.data.accounts = await this.openPointAccountIfNotExists();
 
-        const programMembershipOwnershipInfos =
-            await this.cinerino.ownerShipInfo.search<factory.programMembership.ProgramMembershipType.ProgramMembership>({
-                typeOfGood: {
-                    typeOf: factory.programMembership.ProgramMembershipType.ProgramMembership
-                }
-            });
+        const programMembershipOwnershipInfos = await this.cinerino.ownerShipInfo.search({
+            typeOfGood: {
+                typeOf: factory.programMembership.ProgramMembershipType.ProgramMembership
+            }
+        });
         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
         this.save();
     }
