@@ -33,14 +33,13 @@ export class ProgramMembershipGuardService implements CanActivate {
             return true;
         }
         await this.cinerino.getServices();
-        const result =
-            await this.cinerino.ownerShipInfo.search<factory.programMembership.ProgramMembershipType.ProgramMembership>({
-                typeOfGood: {
-                    typeOf: factory.programMembership.ProgramMembershipType.ProgramMembership
-                }
-            });
+        const searchResult = await this.cinerino.ownerShipInfo.search({
+            typeOfGood: {
+                typeOf: factory.programMembership.ProgramMembershipType.ProgramMembership
+            }
+        });
         programMembershipOwnershipInfos =
-            result.data.filter(p => moment(p.ownedThrough).unix() > moment(now).unix());
+            searchResult.data.filter(p => moment(p.ownedThrough).unix() > moment(now).unix());
         if (programMembershipOwnershipInfos.length === 0) {
             this.router.navigate(['/auth/register/credit']);
 

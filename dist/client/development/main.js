@@ -1033,7 +1033,7 @@ var ProgramMembershipGuardService = /** @class */ (function () {
    */
     ProgramMembershipGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var now, programMembershipOwnershipInfos, result;
+            var now, programMembershipOwnershipInfos, searchResult;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1056,9 +1056,9 @@ var ProgramMembershipGuardService = /** @class */ (function () {
                                 }
                             })];
                     case 3:
-                        result = _a.sent();
+                        searchResult = _a.sent();
                         programMembershipOwnershipInfos =
-                            result.data.filter(function (p) { return moment__WEBPACK_IMPORTED_MODULE_2__(p.ownedThrough).unix() > moment__WEBPACK_IMPORTED_MODULE_2__(now).unix(); });
+                            searchResult.data.filter(function (p) { return moment__WEBPACK_IMPORTED_MODULE_2__(p.ownedThrough).unix() > moment__WEBPACK_IMPORTED_MODULE_2__(now).unix(); });
                         if (programMembershipOwnershipInfos.length === 0) {
                             this.router.navigate(['/auth/register/credit']);
                             return [2 /*return*/, false];
@@ -5135,8 +5135,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberService", function() { return MemberService; });
 /* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @cinerino/api-javascript-client */ "../../node_modules/@cinerino/api-javascript-client/lib/index.js");
 /* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _cinerino_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cinerino.service */ "./app/services/cinerino.service.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _cinerino_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cinerino.service */ "./app/services/cinerino.service.ts");
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util.service */ "./app/services/util.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -5177,9 +5180,13 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
+
 var MemberService = /** @class */ (function () {
-    function MemberService(cinerino) {
-        this.cinerino = cinerino;
+    function MemberService(cinerinoService, utilService) {
+        this.cinerinoService = cinerinoService;
+        this.utilService = utilService;
     }
     /**
      * 会員プログラム一覧取得
@@ -5189,10 +5196,10 @@ var MemberService = /** @class */ (function () {
             var programMemberships;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.cinerino.getServices()];
+                    case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.cinerino.programMembership.search({})];
+                        return [4 /*yield*/, this.cinerinoService.programMembership.search({})];
                     case 2:
                         programMemberships = _a.sent();
                         return [2 /*return*/, programMemberships.data];
@@ -5209,11 +5216,11 @@ var MemberService = /** @class */ (function () {
             var branchCode, result, seller, programMembership, offer, registerProgramMembership;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.cinerino.getServices()];
+                    case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
                         _a.sent();
                         branchCode = args.theaterCode;
-                        return [4 /*yield*/, this.cinerino.seller.search({
+                        return [4 /*yield*/, this.cinerinoService.seller.search({
                                 location: { branchCodes: [branchCode] },
                                 typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater]
                             })];
@@ -5229,7 +5236,7 @@ var MemberService = /** @class */ (function () {
                         if (offer.identifier === undefined) {
                             throw new Error('programMemberships is Injustice');
                         }
-                        return [4 /*yield*/, this.cinerino.person.registerProgramMembership({
+                        return [4 /*yield*/, this.cinerinoService.person.registerProgramMembership({
                                 id: 'me',
                                 programMembershipId: programMembership.id,
                                 offerIdentifier: offer.identifier,
@@ -5253,7 +5260,7 @@ var MemberService = /** @class */ (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.cinerino.getServices()];
+                    case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
                         _a.sent();
                         time = 3000;
@@ -5261,19 +5268,22 @@ var MemberService = /** @class */ (function () {
                         count = 0;
                         return [2 /*return*/, new Promise(function (resolve, reject) {
                                 var timer = setInterval(function () { return __awaiter(_this, void 0, void 0, function () {
-                                    var result, programMembershipOwnershipInfos, err_1;
+                                    var searchResult, now_1, programMembershipOwnershipInfos, err_1;
                                     return __generator(this, function (_a) {
                                         switch (_a.label) {
                                             case 0:
-                                                _a.trys.push([0, 2, , 3]);
-                                                return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
+                                                _a.trys.push([0, 3, , 4]);
+                                                return [4 /*yield*/, this.cinerinoService.ownerShipInfo.search({
                                                         typeOfGood: {
                                                             typeOf: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].programMembership.ProgramMembershipType.ProgramMembership
                                                         }
                                                     })];
                                             case 1:
-                                                result = _a.sent();
-                                                programMembershipOwnershipInfos = result.data;
+                                                searchResult = _a.sent();
+                                                return [4 /*yield*/, this.utilService.getServerTime()];
+                                            case 2:
+                                                now_1 = (_a.sent()).date;
+                                                programMembershipOwnershipInfos = searchResult.data.filter(function (p) { return moment__WEBPACK_IMPORTED_MODULE_1__(p.ownedThrough).unix() > moment__WEBPACK_IMPORTED_MODULE_1__(now_1).unix(); });
                                                 if (programMembershipOwnershipInfos.length > 0) {
                                                     clearInterval(timer);
                                                     resolve(true);
@@ -5283,12 +5293,12 @@ var MemberService = /** @class */ (function () {
                                                     resolve(false);
                                                 }
                                                 count++;
-                                                return [3 /*break*/, 3];
-                                            case 2:
+                                                return [3 /*break*/, 4];
+                                            case 3:
                                                 err_1 = _a.sent();
                                                 reject(err_1);
-                                                return [3 /*break*/, 3];
-                                            case 3: return [2 /*return*/];
+                                                return [3 /*break*/, 4];
+                                            case 4: return [2 /*return*/];
                                         }
                                     });
                                 }); }, time);
@@ -5305,10 +5315,10 @@ var MemberService = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.cinerino.getServices()];
+                    case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.cinerino.person.unRegisterProgramMembership({
+                        return [4 /*yield*/, this.cinerinoService.person.unRegisterProgramMembership({
                                 id: 'me',
                                 ownershipInfoIdentifier: args.ownershipInfoIdentifier
                             })];
@@ -5319,7 +5329,7 @@ var MemberService = /** @class */ (function () {
             });
         });
     };
-    MemberService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ factory: function MemberService_Factory() { return new MemberService(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_cinerino_service__WEBPACK_IMPORTED_MODULE_1__["CinerinoService"])); }, token: MemberService, providedIn: "root" });
+    MemberService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjectable"]({ factory: function MemberService_Factory() { return new MemberService(_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵinject"](_cinerino_service__WEBPACK_IMPORTED_MODULE_2__["CinerinoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵinject"](_util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"])); }, token: MemberService, providedIn: "root" });
     return MemberService;
 }());
 

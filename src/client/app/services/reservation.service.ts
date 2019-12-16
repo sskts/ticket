@@ -116,7 +116,7 @@ export class ReservationService {
      */
     private async fitchReservation(): Promise<IReservationData> {
         await this.cinerino.getServices();
-        const reservationOwnerships = await this.cinerino.ownerShipInfo.search<factory.chevre.reservationType.EventReservation>({
+        const reservationOwnerships = await this.cinerino.ownerShipInfo.search({
             id: 'me',
             typeOfGood: {
                 typeOf: factory.chevre.reservationType.EventReservation
