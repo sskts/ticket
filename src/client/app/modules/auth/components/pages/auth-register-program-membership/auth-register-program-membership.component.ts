@@ -35,7 +35,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         try {
             this.theaters = await this.masterService.searchSeller(
                 { typeOfs: [factory.organizationType.MovieTheater] },
-                {exclude: true, sort: true}
+                { exclude: true, sort: false }
             );
 
             // 会員プログラム取得

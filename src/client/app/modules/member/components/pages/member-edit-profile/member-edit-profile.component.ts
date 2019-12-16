@@ -38,7 +38,7 @@ export class MemberEditProfileComponent implements OnInit {
             this.isLoading = false;
             this.theaters = await this.masterService.searchSeller(
                 { typeOfs: [factory.organizationType.MovieTheater] },
-                {exclude: true, sort: true}
+                { exclude: true, sort: false }
             );
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/member/edit/profile' }]);
