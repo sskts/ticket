@@ -6177,7 +6177,7 @@ var UserService = /** @class */ (function () {
     */
     UserService.prototype.getGmoObject = function (sendParam) {
         return __awaiter(this, void 0, void 0, function () {
-            var branchCode, result, movieTheater;
+            var branchCode, searchResult, findResult, movieTheater;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerino.getServices()];
@@ -6185,12 +6185,12 @@ var UserService = /** @class */ (function () {
                         _a.sent();
                         branchCode = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].MAIN_SHOP_BRUNCH_CODE;
                         return [4 /*yield*/, this.cinerino.seller.search({
-                                location: { branchCodes: [branchCode] },
                                 typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater]
                             })];
                     case 2:
-                        result = _a.sent();
-                        movieTheater = result.data[0];
+                        searchResult = _a.sent();
+                        findResult = searchResult.data.find(function (s) { return s.location !== undefined && s.location.branchCode === branchCode; });
+                        movieTheater = (findResult === undefined) ? searchResult.data[0] : findResult;
                         return [2 /*return*/, new Promise(function (resolve, reject) {
                                 window.someCallbackFunction = function someCallbackFunction(response) {
                                     if (response.resultCode === '000') {

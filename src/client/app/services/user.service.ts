@@ -331,11 +331,11 @@ export class UserService {
     }) {
         await this.cinerino.getServices();
         const branchCode = environment.MAIN_SHOP_BRUNCH_CODE;
-        const result = await this.cinerino.seller.search({
-            location: { branchCodes: [branchCode] },
+        const searchResult = await this.cinerino.seller.search({
             typeOfs: [factory.organizationType.MovieTheater]
         });
-        const movieTheater = result.data[0];
+        const findResult = searchResult.data.find(s => s.location !== undefined && s.location.branchCode === branchCode);
+        const movieTheater = (findResult === undefined) ? searchResult.data[0] : findResult;
 
         return new Promise<IGmoTokenObject>((resolve, reject) => {
             (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
