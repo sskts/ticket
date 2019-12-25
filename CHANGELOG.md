@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.3.2 - 2019-12-25
+### Added
+ - 劇場の並び順設定追加
+
 ## 3.3.1 - 2019-12-13
 ### Fixed
  - 会員プログラム確認修正
