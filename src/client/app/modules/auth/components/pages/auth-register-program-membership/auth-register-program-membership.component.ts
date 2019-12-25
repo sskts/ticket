@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { factory } from '@cinerino/api-javascript-client';
-import { environment } from '../../../../../../environments/environment';
-import { CinerinoService, MaintenanceService, MemberService } from '../../../../../services';
+import { CinerinoService, MasterService, MemberService } from '../../../../../services';
 
 @Component({
     selector: 'app-auth-register-program-membership',
@@ -22,7 +21,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         private formBuilder: FormBuilder,
         private cinerino: CinerinoService,
         private member: MemberService,
-        private maintenance: MaintenanceService
+        private masterService: MasterService,
     ) { }
 
     /**
@@ -34,30 +33,10 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         this.isLoading = true;
         this.optionsForm = this.createForm();
         try {
-            await this.cinerino.getServices();
-            // 劇場一覧取得
-            const sellerSearchResult = await this.cinerino.seller.search({ typeOfs: [factory.organizationType.MovieTheater] });
-            const searchMovieTheatersResult = sellerSearchResult.data.filter((s) => {
-                return (s.location !== undefined
-                    && s.location.branchCode !== undefined
-                    && s.location.branchCode !== ''
-                    && environment.CLOSE_THEATERS.find(t => t === (<any>s.location).branchCode) === undefined);
-            });
-            // 除外劇場処理
-            const excludeTheatersResult = await this.maintenance.excludeTheaters();
-            if (excludeTheatersResult.isExclude) {
-                this.theaters = searchMovieTheatersResult.filter((theater) => {
-                    const excludeTheater = excludeTheatersResult.theaters.find((excludeCode) => {
-                        return (theater.location === undefined
-                            || theater.location.branchCode === undefined
-                            || excludeCode === theater.location.branchCode);
-                    });
-
-                    return (excludeTheater === undefined);
-                });
-            } else {
-                this.theaters = searchMovieTheatersResult;
-            }
+            this.theaters = await this.masterService.searchSeller(
+                { typeOfs: [factory.organizationType.MovieTheater] },
+                { exclude: true, sort: false }
+            );
 
             // 会員プログラム取得
             this.programMemberships = await this.member.getProgramMemberships();

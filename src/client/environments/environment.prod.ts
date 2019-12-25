@@ -11,19 +11,14 @@ export const environment = {
     USER_POOL_ID: '',
     CLIENT_ID: '',
 
-    REKOGNITION_BUCKET: 'rekognition-pics',
-    ALBUM_NAME: 'usercontent',
-    BUCKET_REGION: 'us-east-1',
-
-    DDB_TABLE_NAME: 'LoginTrail',
-    TOKEN_ISSUER: '',
-
     PORTAL_SITE: 'http://www.cinemasunshine.co.jp',
     ENTRANCE_SERVER_URL: 'https://entrance.ticket-cinemasunshine.com',
 
     CLOSE_THEATERS: ['001'],
 
     ANALYTICS_ID: 'UA-99018492-6',
+
+    MAIN_SHOP_BRUNCH_CODE: '001',
 
     PRE_SALE_DIFFERENCE_DAY: '2'
 
