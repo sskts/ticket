@@ -17,22 +17,7 @@ class Auth2Model {
         if (session === undefined) {
             session = {};
         }
-        const resourceServerUrl = process.env.RESOURCE_SERVER_URL;
-        this.scopes = [
-            'phone',
-            'openid',
-            'email',
-            'aws.cognito.signin.user.admin',
-            'profile',
-            `${resourceServerUrl}/transactions`,
-            `${resourceServerUrl}/events.read-only`,
-            `${resourceServerUrl}/organizations.read-only`,
-            `${resourceServerUrl}/orders.read-only`,
-            `${resourceServerUrl}/places.read-only`,
-            `${resourceServerUrl}/people.contacts`,
-            `${resourceServerUrl}/people.creditCards`,
-            `${resourceServerUrl}/people.ownershipInfos.read-only`
-        ];
+        this.scopes = [];
         this.credentials = session.credentials;
         this.state = Auth2Model.STATE;
         this.codeVerifier = Auth2Model.CODE_VERIFIER;
