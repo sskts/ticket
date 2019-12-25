@@ -9,11 +9,6 @@ export interface IConfirm {
     endDate: string;
 }
 
-export interface IExcludeTheaters {
-    isExclude: boolean;
-    theaters: string[];
-}
-
 @Injectable({
     providedIn: 'root'
 })
@@ -27,14 +22,6 @@ export class MaintenanceService {
         const options = {};
         const url = '/api/maintenance/confirm';
         const result = await this.http.get<IConfirm>(url, options).toPromise();
-
-        return result;
-    }
-
-    public async excludeTheaters() {
-        const options = {};
-        const url = '/api/maintenance/excludeTheaters';
-        const result = await this.http.get<IExcludeTheaters>(url, options).toPromise();
 
         return result;
     }

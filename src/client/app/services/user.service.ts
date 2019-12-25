@@ -323,22 +323,19 @@ export class UserService {
     * GMOトークン取得
     * @method getGmoObject
     */
-    public async getGmoObject(args: {
+    public async getGmoObject(sendParam: {
         cardno: string;
         expire: string;
         securitycode: string;
         holdername: string;
     }) {
-        const sendParam = args;
-        console.log(sendParam);
         await this.cinerino.getServices();
-        // 池袋
-        const branchCode = (environment.production) ? '001' : '101';
-        const result = await this.cinerino.seller.search({
-            location: { branchCodes: [branchCode] },
+        const branchCode = environment.MAIN_SHOP_BRUNCH_CODE;
+        const searchResult = await this.cinerino.seller.search({
             typeOfs: [factory.organizationType.MovieTheater]
         });
-        const movieTheater = result.data[0];
+        const findResult = searchResult.data.find(s => s.location !== undefined && s.location.branchCode === branchCode);
+        const movieTheater = (findResult === undefined) ? searchResult.data[0] : findResult;
 
         return new Promise<IGmoTokenObject>((resolve, reject) => {
             (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {

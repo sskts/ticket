@@ -25,6 +25,8 @@ export const environment = {
 
     ANALYTICS_ID: 'UA-99018492-5',
 
+    MAIN_SHOP_BRUNCH_CODE: '101',
+
     PRE_SALE_DIFFERENCE_DAY: '2'
 
 };
