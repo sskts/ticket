@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.3.3 - 2019-12-26
+### Changed
+ - scope指定削除
+
 ## 3.3.2 - 2019-12-25
 ### Added
  - 劇場の並び順設定追加
