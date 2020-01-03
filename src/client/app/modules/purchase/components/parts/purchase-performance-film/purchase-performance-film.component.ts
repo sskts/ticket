@@ -2,14 +2,9 @@
  * PurchasePerformanceFilmComponent
  */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { factory } from '@cinerino/api-javascript-client';
-import {
-    isAfterPeriod,
-    isBeforePeriod,
-    isSalse,
-    isScreeningServiceType,
-    isWindow
-} from '../../../../../functions';
+import { filterPerformancebyMovie, schedule2Performance } from '../../../../../functions';
+import { Performance } from '../../../../../models/performance';
+import { ISchedule } from '../../../../../models/schedule';
 
 @Component({
     selector: 'app-purchase-performance-film',
@@ -17,13 +12,11 @@ import {
     styleUrls: ['./purchase-performance-film.component.scss']
 })
 export class PurchasePerformanceFilmComponent implements OnInit {
-    @Input() public performance: factory.chevre.event.screeningEvent.IEvent;
-    @Output() public select: EventEmitter<{}> = new EventEmitter();
-    public isSalse = isSalse;
-    public isWindow = isWindow;
-    public isBeforePeriod = isBeforePeriod;
-    public isAfterPeriod = isAfterPeriod;
-    public isScreeningServiceType = isScreeningServiceType;
+    @Input() public schedule: ISchedule;
+    @Input() public member: boolean;
+    @Output() public select: EventEmitter<{ id: string }> = new EventEmitter();
+    public filterPerformancebyMovie = filterPerformancebyMovie;
+    public performances: Performance[];
 
     constructor() { }
 
@@ -31,7 +24,9 @@ export class PurchasePerformanceFilmComponent implements OnInit {
      * 初期化
      * @method ngOnInit
      */
-    public ngOnInit() { }
+    public ngOnInit() {
+        this.performances = schedule2Performance(this.schedule, this.member);
+    }
 
 }
 

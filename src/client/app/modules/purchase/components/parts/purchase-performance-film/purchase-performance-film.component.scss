@@ -1,6 +1,30 @@
 :host:last-child .performance {
     border-bottom: none;
 }
+
+:host {
+    display: block;
+    background-color: #FFF;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+.info {
+    padding: 10px;
+    color: #333;
+    background-color: #E3E3E3;
+    p {
+        word-break: break-all;
+    }
+    .date {
+        &:before {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+    }
+}
+
 .performance {
     position: relative;
     display: grid;

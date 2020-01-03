@@ -1,32 +1,32 @@
-<div class="performance mb-x-small" [ngClass]="(isSalse(performance)) ? (performance.offers?.availability | availability).className : ''"
-    (click)="(isSalse(performance)) ? select.emit() : null;">
+<div *ngFor="let performance of performances" class="performance mb-x-small" [ngClass]="(performance.isSalse()) ? performance.getAvailability().className : ''"
+    (click)="(performance.isSalse()) ? select.emit({id: performance.createId()}) : null;">
     <div class="date">
         <div class="mb-xx-small text-center">
-            <strong class="large-text">{{ performance.startDate | timeFormat: performance.coaInfo?.dateJouei }}</strong>
+            <strong class="large-text">{{ performance.getTime('start') }}</strong>
         </div>
         <div class="text-center">
-            <span>～ {{ performance.endDate | timeFormat: performance.coaInfo?.dateJouei }}</span>
+            <span>～ {{ performance.getTime('end') }}</span>
         </div>
     </div>
     <div class="status-cover">
-        <div *ngIf="isSalse(performance)" class="status">
-            <app-icon [iconName]="(performance.offer.availability | availability).icon" width="15" height="15"></app-icon>
+        <div *ngIf="performance.isSalse()" class="status">
+            <app-icon [iconName]="performance.getAvailability().icon" width="15" height="15"></app-icon>
         </div>
-        <div *ngIf="!isSalse(performance) && isBeforePeriod(performance)" class="status small-x-text">販売<br>期間外</div>
-        <div *ngIf="!isSalse(performance) && isAfterPeriod(performance)" class="status small-x-text">販売<br>期間外</div>
-        <div *ngIf="!isSalse(performance) && !isBeforePeriod(performance) && !isAfterPeriod(performance) && isWindow(performance)" class="status small-x-text">窓口</div>
-        <div *ngIf="!isSalse(performance) && !isBeforePeriod(performance) && !isAfterPeriod(performance) && !isWindow(performance)" class="status small-x-text">予約<br>不可</div>
+        <div *ngIf="!performance.isSalse() && performance.isBeforePeriod()" class="status small-x-text">販売<br>期間外</div>
+        <div *ngIf="!performance.isSalse() && performance.isAfterPeriod()" class="status small-x-text">販売<br>期間外</div>
+        <div *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()" class="status small-x-text">窓口</div>
+        <div *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && !performance.isWindow()" class="status small-x-text">予約<br>不可</div>
     </div>
     <div class="info">
-        <div class="screen small-x-text mb-xx-small">{{ performance.location.name.ja }}</div>
-        <div *ngIf="performance.workPerformed !== undefined" class="duration small-x-text">{{ performance.workPerformed.duration | duration: 'minutes' }}分</div>
+        <div class="screen small-x-text mb-xx-small">{{ performance.screen.name }}</div>
+        <div *ngIf="performance.workPerformed !== undefined" class="duration small-x-text">{{ movie.running_time }}分</div>
         <div *ngIf="performance.workPerformed === undefined" class="duration small-x-text"></div>
-        <p class="title">{{ performance.name.ja }}</p>
+        <p class="title">{{ performance.movie.name }}</p>
     </div>
-    <div *ngIf="isScreeningServiceType(performance, 'first')" class="service">
+    <div *ngIf="performance.time.late === 1" class="service">
         <app-icon iconName="first-show-white" width="10" height="10"></app-icon>
     </div>
-    <div *ngIf="isScreeningServiceType(performance, 'late')" class="service">
+    <div *ngIf="performance.time.late === 2" class="service">
         <app-icon iconName="late-show-white" width="10" height="10"></app-icon>
     </div>
 </div>

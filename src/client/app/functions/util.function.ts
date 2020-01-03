@@ -13,3 +13,12 @@ export function object2query(params: Object) {
     }
     return query;
 }
+
+/**
+ * N秒待つ
+ */
+export async function sleep(time = 3000) {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(), time);
+    });
+}
