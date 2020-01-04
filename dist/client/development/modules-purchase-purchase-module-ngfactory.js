@@ -235,7 +235,7 @@ var Performance = /** @class */ (function () {
      * 予約期間後判定（上映開始10分以降）
      */
     Performance.prototype.isAfterPeriod = function () {
-        var startDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.date + " " + this.time.start_time + "}", 'YYYYMMDD HHmm');
+        var startDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.date + " " + this.time.start_time, 'YYYYMMDD HHmm');
         return moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(10, 'minutes') < moment__WEBPACK_IMPORTED_MODULE_0__();
     };
     /**

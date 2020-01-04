@@ -67,7 +67,7 @@ export class Performance {
      */
     public isAfterPeriod() {
         const startDate =
-            moment(`${this.date} ${this.time.start_time}}`, 'YYYYMMDD HHmm');
+            moment(`${this.date} ${this.time.start_time}`, 'YYYYMMDD HHmm');
         return moment(startDate).add(10, 'minutes') < moment();
     }
 
