@@ -296,15 +296,13 @@ export class PurchaseIndexComponent implements OnInit {
      * スケジュール作成
      */
     private async createSchedule() {
+        this.schedule = undefined;
+        await sleep(0);
         const now = moment();
         const today = moment(now).format('YYYYMMDD');
         const searchDate = (this.dateList.find(d => d.value === this.conditions.date) === undefined)
             ? today : this.conditions.date;
         this.conditions.date = searchDate;
-        // 選択したスケジュールを抽出　上映終了は除外
         this.schedule = this.schedules.find(s => String(s.date) === this.conditions.date);
-        this.isLoading = true;
-        await sleep(300);
-        this.isLoading = false;
     }
 }

@@ -84,6 +84,16 @@ export class Performance {
     }
 
     /**
+     * 表示判定
+     */
+    public isDisplay() {
+        const now = moment();
+        const displayStartDate = moment(this.time.online_display_start_day, 'YYYYMMDD');
+        const endDate = moment(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm');
+        return (displayStartDate < now && endDate > now);
+    }
+
+    /**
      * 上映時間取得
      */
     public getTime(type: 'start' | 'end') {
@@ -96,7 +106,7 @@ export class Performance {
      * id生成
      */
     public createId() {
-        const id = `${this.movie.movie_code}${this.movie.movie_branch_code}${this.date}${this.screen.screen_code}${this.time.start_time}`;
+        const id = `${this.movie.movie_short_code}${this.movie.movie_branch_code}${this.date}${this.screen.screen_code}${this.time.start_time}`;
         return id;
     }
 

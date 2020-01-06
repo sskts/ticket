@@ -48,7 +48,10 @@ export function filterPerformancebyMovie(
     performances: Performance[],
     movie: IMovie) {
     const filterResult =
-        performances.filter(p => p.movie.movie_code === movie.movie_code && p.movie.movie_branch_code === movie.movie_branch_code);
+        performances.filter(p => {
+            return (p.movie.movie_short_code === movie.movie_short_code
+                && p.movie.movie_branch_code === movie.movie_branch_code);
+        });
     const sortResult = filterResult.sort((a, b) => {
         if (a.time.start_time < b.time.start_time) {
             return -1;

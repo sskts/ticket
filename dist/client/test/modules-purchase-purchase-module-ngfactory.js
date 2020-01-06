@@ -80,7 +80,10 @@ function schedule2Performance(schedule, member) {
  * パフォーマンスを作品で絞り込み
  */
 function filterPerformancebyMovie(performances, movie) {
-    var filterResult = performances.filter(function (p) { return p.movie.movie_code === movie.movie_code && p.movie.movie_branch_code === movie.movie_branch_code; });
+    var filterResult = performances.filter(function (p) {
+        return (p.movie.movie_short_code === movie.movie_short_code
+            && p.movie.movie_branch_code === movie.movie_branch_code);
+    });
     var sortResult = filterResult.sort(function (a, b) {
         if (a.time.start_time < b.time.start_time) {
             return -1;
@@ -249,6 +252,15 @@ var Performance = /** @class */ (function () {
             && moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(10, 'minutes') > now);
     };
     /**
+     * 表示判定
+     */
+    Performance.prototype.isDisplay = function () {
+        var now = moment__WEBPACK_IMPORTED_MODULE_0__();
+        var displayStartDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.time.online_display_start_day, 'YYYYMMDD');
+        var endDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm');
+        return (displayStartDate < now && endDate > now);
+    };
+    /**
      * 上映時間取得
      */
     Performance.prototype.getTime = function (type) {
@@ -260,7 +272,7 @@ var Performance = /** @class */ (function () {
      * id生成
      */
     Performance.prototype.createId = function () {
-        var id = "" + this.movie.movie_code + this.movie.movie_branch_code + this.date + this.screen.screen_code + this.time.start_time;
+        var id = "" + this.movie.movie_short_code + this.movie.movie_branch_code + this.date + this.screen.screen_code + this.time.start_time;
         return id;
     };
     return Performance;
@@ -848,18 +860,16 @@ var PurchaseIndexComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        this.schedule = undefined;
+                        return [4 /*yield*/, Object(_functions__WEBPACK_IMPORTED_MODULE_5__["sleep"])(0)];
+                    case 1:
+                        _a.sent();
                         now = moment__WEBPACK_IMPORTED_MODULE_3__();
                         today = moment__WEBPACK_IMPORTED_MODULE_3__(now).format('YYYYMMDD');
                         searchDate = (this.dateList.find(function (d) { return d.value === _this.conditions.date; }) === undefined)
                             ? today : this.conditions.date;
                         this.conditions.date = searchDate;
-                        // 選択したスケジュールを抽出　上映終了は除外
                         this.schedule = this.schedules.find(function (s) { return String(s.date) === _this.conditions.date; });
-                        this.isLoading = true;
-                        return [4 /*yield*/, Object(_functions__WEBPACK_IMPORTED_MODULE_5__["sleep"])(300)];
-                    case 1:
-                        _a.sent();
-                        this.isLoading = false;
                         return [2 /*return*/];
                 }
             });
@@ -975,7 +985,8 @@ var PurchasePerformanceFilmComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PurchasePerformanceFilmComponent.prototype.ngOnInit = function () {
-        this.performances = Object(_functions__WEBPACK_IMPORTED_MODULE_1__["schedule2Performance"])(this.schedule, this.member);
+        this.performances = Object(_functions__WEBPACK_IMPORTED_MODULE_1__["schedule2Performance"])(this.schedule, this.member)
+            .filter(function (p) { return p.isDisplay(); });
     };
     return PurchasePerformanceFilmComponent;
 }());
@@ -1023,7 +1034,7 @@ function View_PurchasePerformanceTimeComponent_3(_l) { return _angular_core__WEB
 function View_PurchasePerformanceTimeComponent_4(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 3, "div", [["class", "status small-x-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u8CA9\u58F2"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u671F\u9593\u5916"]))], null, null); }
 function View_PurchasePerformanceTimeComponent_5(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "div", [["class", "status small-x-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u7A93\u53E3"]))], null, null); }
 function View_PurchasePerformanceTimeComponent_6(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 3, "div", [["class", "status small-x-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u4E88\u7D04"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u4E0D\u53EF"]))], null, null); }
-function View_PurchasePerformanceTimeComponent_7(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "div", [["class", "duration small-x-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](1, null, ["", "\u5206"]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.movie.running_time; _ck(_v, 1, 0, currVal_0); }); }
+function View_PurchasePerformanceTimeComponent_7(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "div", [["class", "duration small-x-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](1, null, ["", "\u5206"]))], null, function (_ck, _v) { var currVal_0 = _v.parent.context.$implicit.movie.running_time; _ck(_v, 1, 0, currVal_0); }); }
 function View_PurchasePerformanceTimeComponent_8(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 0, "div", [["class", "duration small-x-text"]], null, null, null, null, null))], null, null); }
 function View_PurchasePerformanceTimeComponent_9(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [["class", "service"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "app-icon", [["height", "10"], ["iconName", "first-show-white"], ["width", "10"]], null, null, null, _shared_components_parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_IconComponent_0"], _shared_components_parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_IconComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 114688, null, 0, _shared_components_parts_icon_icon_component__WEBPACK_IMPORTED_MODULE_3__["IconComponent"], [], { iconName: [0, "iconName"], width: [1, "width"], height: [2, "height"] }, null)], function (_ck, _v) { var currVal_0 = "first-show-white"; var currVal_1 = "10"; var currVal_2 = "10"; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2); }, null); }
 function View_PurchasePerformanceTimeComponent_10(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [["class", "service"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "app-icon", [["height", "10"], ["iconName", "late-show-white"], ["width", "10"]], null, null, null, _shared_components_parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_IconComponent_0"], _shared_components_parts_icon_icon_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_IconComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 114688, null, 0, _shared_components_parts_icon_icon_component__WEBPACK_IMPORTED_MODULE_3__["IconComponent"], [], { iconName: [0, "iconName"], width: [1, "width"], height: [2, "height"] }, null)], function (_ck, _v) { var currVal_0 = "late-show-white"; var currVal_1 = "10"; var currVal_2 = "10"; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2); }, null); }
@@ -1085,7 +1096,8 @@ var PurchasePerformanceTimeComponent = /** @class */ (function () {
      * @method ngOnInit
      */
     PurchasePerformanceTimeComponent.prototype.ngOnInit = function () {
-        this.performances = Object(_functions__WEBPACK_IMPORTED_MODULE_1__["schedule2Performance"])(this.schedule, this.member);
+        this.performances = Object(_functions__WEBPACK_IMPORTED_MODULE_1__["schedule2Performance"])(this.schedule, this.member)
+            .filter(function (p) { return p.isDisplay(); });
     };
     return PurchasePerformanceTimeComponent;
 }());

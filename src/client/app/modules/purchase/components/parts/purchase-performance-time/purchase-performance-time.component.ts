@@ -22,7 +22,8 @@ export class PurchasePerformanceTimeComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        this.performances = schedule2Performance(this.schedule, this.member);
+        this.performances = schedule2Performance(this.schedule, this.member)
+            .filter(p => p.isDisplay());
     }
 
 }
