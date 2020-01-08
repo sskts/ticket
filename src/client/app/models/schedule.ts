@@ -1,5 +1,5 @@
 export interface ISchedule {
-    date: number;
+    date: string;
     movie: IMovie[];
 }
 
@@ -41,6 +41,6 @@ export interface ITime {
 }
 
 export interface ISeatCount {
-    countAllSeat: number;
-    cntReserveMax: number;
+    cnt_reserve_max: number;
+    cnt_reserve_free: number;
 }

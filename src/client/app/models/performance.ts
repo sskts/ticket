@@ -29,7 +29,7 @@ export class Performance {
      * 予約ステータス情報取得
      */
     public getAvailability() {
-        const value = this.time.seat_count.cntReserveMax / this.time.seat_count.countAllSeat * 100;
+        const value = this.time.seat_count.cnt_reserve_free / this.time.seat_count.cnt_reserve_max * 100;
         const availability = [
             { symbolText: '×', icon: 'vacancy-full-white', className: 'vacancy-full', text: '満席' },
             { symbolText: '△', icon: 'vacancy-little-white', className: 'vacancy-little', text: '購入' },
@@ -49,7 +49,7 @@ export class Performance {
         return !this.isBeforePeriod()
             && !this.isAfterPeriod()
             && !this.isWindow()
-            && this.time.seat_count.cntReserveMax > 0;
+            && this.time.seat_count.cnt_reserve_free > 0;
     }
 
     /**
@@ -78,7 +78,7 @@ export class Performance {
         const startDate =
             moment(`${this.date} ${this.time.start_time}`, 'YYYYMMDD HHmm');
         const now = moment();
-        return (this.time.seat_count.cntReserveMax > 0
+        return (this.time.seat_count.cnt_reserve_free > 0
             && moment(startDate).add(-10, 'minutes') < now
             && moment(startDate).add(10, 'minutes') > now);
     }

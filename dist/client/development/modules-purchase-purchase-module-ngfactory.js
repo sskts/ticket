@@ -66,7 +66,7 @@ function isScreeningServiceType(screeningEvent, serviceType) {
  */
 function schedule2Performance(schedule, member) {
     var performances = [];
-    var date = String(schedule.date);
+    var date = schedule.date;
     schedule.movie.forEach(function (movie) {
         movie.screen.forEach(function (screen) {
             screen.time.forEach(function (time) {
@@ -205,7 +205,7 @@ var Performance = /** @class */ (function () {
      * 予約ステータス情報取得
      */
     Performance.prototype.getAvailability = function () {
-        var value = this.time.seat_count.cntReserveMax / this.time.seat_count.countAllSeat * 100;
+        var value = this.time.seat_count.cnt_reserve_free / this.time.seat_count.cnt_reserve_max * 100;
         var availability = [
             { symbolText: '×', icon: 'vacancy-full-white', className: 'vacancy-full', text: '満席' },
             { symbolText: '△', icon: 'vacancy-little-white', className: 'vacancy-little', text: '購入' },
@@ -223,7 +223,7 @@ var Performance = /** @class */ (function () {
         return !this.isBeforePeriod()
             && !this.isAfterPeriod()
             && !this.isWindow()
-            && this.time.seat_count.cntReserveMax > 0;
+            && this.time.seat_count.cnt_reserve_free > 0;
     };
     /**
      * 予約期間前判定
@@ -247,7 +247,7 @@ var Performance = /** @class */ (function () {
     Performance.prototype.isWindow = function () {
         var startDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.date + " " + this.time.start_time, 'YYYYMMDD HHmm');
         var now = moment__WEBPACK_IMPORTED_MODULE_0__();
-        return (this.time.seat_count.cntReserveMax > 0
+        return (this.time.seat_count.cnt_reserve_free > 0
             && moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(-10, 'minutes') < now
             && moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(10, 'minutes') > now);
     };
@@ -829,9 +829,9 @@ var PurchaseIndexComponent = /** @class */ (function () {
                                 return;
                             }
                             else {
-                                var date = moment__WEBPACK_IMPORTED_MODULE_3__(String(schedule.date));
+                                var date = moment__WEBPACK_IMPORTED_MODULE_3__(schedule.date);
                                 result.push({
-                                    value: String(schedule.date),
+                                    value: schedule.date,
                                     display: {
                                         month: date.format('MM'),
                                         week: date.format('ddd'),
@@ -869,7 +869,7 @@ var PurchaseIndexComponent = /** @class */ (function () {
                         searchDate = (this.dateList.find(function (d) { return d.value === _this.conditions.date; }) === undefined)
                             ? today : this.conditions.date;
                         this.conditions.date = searchDate;
-                        this.schedule = this.schedules.find(function (s) { return String(s.date) === _this.conditions.date; });
+                        this.schedule = this.schedules.find(function (s) { return s.date === _this.conditions.date; });
                         return [2 /*return*/];
                 }
             });

@@ -274,9 +274,9 @@ export class PurchaseIndexComponent implements OnInit {
             if (findResult === undefined) {
                 return;
             } else {
-                const date = moment(String(schedule.date));
+                const date = moment(schedule.date);
                 result.push({
-                    value: String(schedule.date),
+                    value: schedule.date,
                     display: {
                         month: date.format('MM'),
                         week: date.format('ddd'),
@@ -303,6 +303,6 @@ export class PurchaseIndexComponent implements OnInit {
         const searchDate = (this.dateList.find(d => d.value === this.conditions.date) === undefined)
             ? today : this.conditions.date;
         this.conditions.date = searchDate;
-        this.schedule = this.schedules.find(s => String(s.date) === this.conditions.date);
+        this.schedule = this.schedules.find(s => s.date === this.conditions.date);
     }
 }
