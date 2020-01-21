@@ -117,18 +117,19 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
      */
     private async searchPointAccount() {
         // 口座検索
-        const accountSearchResult = await this.cinerino.ownerShipInfo.search({
-            id: 'me',
+        const searchResult = await this.cinerino.ownerShipInfo.search({
+            sort: {
+                ownedFrom: factory.sortType.Ascending
+            },
             typeOfGood: {
                 typeOf: factory.ownershipInfo.AccountGoodType.Account,
                 accountType: factory.accountType.Point
             }
         });
-        const accounts = accountSearchResult.data.filter((account) => {
-            return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
-                && account.typeOfGood.accountType === factory.accountType.Point
-                && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
-        });
+        const accounts =
+            searchResult.data.filter((a) => {
+                return (a.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
+            });
         return <factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>[]>accounts;
     }
 
