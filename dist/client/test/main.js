@@ -6063,27 +6063,22 @@ var UserService = /** @class */ (function () {
     */
     UserService.prototype.searchPointAccount = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var accountSearchResult, accounts;
+            var searchResult, accounts;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
-                            id: 'me',
+                            sort: {
+                                ownedFrom: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].sortType.Ascending
+                            },
                             typeOfGood: {
                                 typeOf: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].ownershipInfo.AccountGoodType.Account,
                                 accountType: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].accountType.Point
                             }
                         })];
                     case 1:
-                        accountSearchResult = _a.sent();
-                        accounts = accountSearchResult.data.filter(function (account) {
-                            return (account.typeOfGood.typeOf === _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.account.TypeOf.Account
-                                && account.typeOfGood.accountType === _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].accountType.Point
-                                && account.typeOfGood.status === _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.accountStatusType.Opened);
-                        });
-                        // 口座開設についてあとに作ったものが先にくるようにソートする
-                        accounts.sort(function (a, b) {
-                            return (a.typeOfGood.openDate > b.typeOfGood.openDate) ? -1 :
-                                (a.typeOfGood.openDate < b.typeOfGood.openDate) ? 1 : 0;
+                        searchResult = _a.sent();
+                        accounts = searchResult.data.filter(function (a) {
+                            return (a.typeOfGood.status === _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.accountStatusType.Opened);
                         });
                         return [2 /*return*/, accounts];
                 }
