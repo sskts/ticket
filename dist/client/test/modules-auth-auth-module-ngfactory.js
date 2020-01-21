@@ -996,22 +996,22 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
      */
     AuthRegisterProgramMembershipComponent.prototype.searchPointAccount = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var accountSearchResult, accounts;
+            var searchResult, accounts;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
-                            id: 'me',
+                            sort: {
+                                ownedFrom: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].sortType.Ascending
+                            },
                             typeOfGood: {
                                 typeOf: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].ownershipInfo.AccountGoodType.Account,
                                 accountType: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].accountType.Point
                             }
                         })];
                     case 1:
-                        accountSearchResult = _a.sent();
-                        accounts = accountSearchResult.data.filter(function (account) {
-                            return (account.typeOfGood.typeOf === _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].pecorino.account.TypeOf.Account
-                                && account.typeOfGood.accountType === _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].accountType.Point
-                                && account.typeOfGood.status === _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].pecorino.accountStatusType.Opened);
+                        searchResult = _a.sent();
+                        accounts = searchResult.data.filter(function (a) {
+                            return (a.typeOfGood.status === _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].pecorino.accountStatusType.Opened);
                         });
                         return [2 /*return*/, accounts];
                 }
