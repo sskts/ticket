@@ -10,7 +10,7 @@
     <div class="screen small-x-text">{{ performance.location.name.ja }}</div>
     <div class="button text-center" (click)="(isSalse(performance)) ? select.emit() : null;">
         <div *ngIf="isSalse(performance)" class="status">
-                <app-icon [iconName]="(performance.offer.availability | availability).icon" width="15" height="15"></app-icon>{{ (performance.offer.availability | availability).text }}
+                <app-icon *ngIf="performance.remainingAttendeeCapacity" [iconName]="(performance.offer.availability | availability).icon" width="15" height="15"></app-icon>{{ (performance.offer.availability | availability).text }}
         </div>
         <div *ngIf="!isSalse(performance) && isBeforePeriod(performance)" class="status">販売期間外</div>
         <div *ngIf="!isSalse(performance) && isAfterPeriod(performance)" class="status">販売期間外</div>
