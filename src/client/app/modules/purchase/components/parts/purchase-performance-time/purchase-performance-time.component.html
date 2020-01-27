@@ -10,7 +10,7 @@
     </div>
     <div class="status-cover">
         <div *ngIf="isSalse(performance)" class="status">
-            <app-icon [iconName]="(performance.offer.availability | availability).icon" width="15" height="15"></app-icon>
+            <app-icon *ngIf="performance.remainingAttendeeCapacity" [iconName]="(performance.offer.availability | availability).icon" width="15" height="15"></app-icon>
         </div>
         <div *ngIf="!isSalse(performance) && isBeforePeriod(performance)" class="status small-x-text">販売<br>期間外</div>
         <div *ngIf="!isSalse(performance) && isAfterPeriod(performance)" class="status small-x-text">販売<br>期間外</div>
