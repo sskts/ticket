@@ -35,8 +35,8 @@ export function isSalse(screeningEvent: factory.chevre.event.screeningEvent.IEve
         && !isBeforePeriod(screeningEvent)
         && !isAfterPeriod(screeningEvent)
         && !isWindow(screeningEvent)
-        && screeningEvent.remainingAttendeeCapacity !== undefined
-        && screeningEvent.remainingAttendeeCapacity >= 0;
+        && (screeningEvent.remainingAttendeeCapacity === undefined
+            || screeningEvent.remainingAttendeeCapacity > 0);
 }
 
 /**
