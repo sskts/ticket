@@ -1,5 +1,6 @@
 export interface ISchedule {
     date: string;
+    name_service_day: string;
     movie: IMovie[];
 }
 

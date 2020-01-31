@@ -839,7 +839,7 @@ var PurchaseIndexComponent = /** @class */ (function () {
                                         year: date.format('YYYY')
                                     },
                                     preSale: preSale !== undefined,
-                                    serviceDay: ''
+                                    serviceDay: schedule.name_service_day
                                 });
                             }
                         });

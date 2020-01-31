@@ -284,7 +284,7 @@ export class PurchaseIndexComponent implements OnInit {
                         year: date.format('YYYY')
                     },
                     preSale: preSale !== undefined,
-                    serviceDay: ''
+                    serviceDay: schedule.name_service_day
                 });
             }
         });
