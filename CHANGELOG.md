@@ -13,6 +13,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+
+## 3.3.5 - 2020-01-27
+### Changed
+ - 空席情報が不明の際に購入可能へ変更
+
+## 3.3.4 - 2020-01-21
+### Changed
+ - 口座検索ソート変更
+
 ## 3.3.3 - 2019-12-26
 ### Changed
  - scope指定削除

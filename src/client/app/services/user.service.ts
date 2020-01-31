@@ -6,7 +6,7 @@ import { CinerinoService } from './cinerino.service';
 import { SaveType, StorageService } from './storage.service';
 import { UtilService } from './util.service';
 
-type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>;
+type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType>>;
 type programMembershipType =
     factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<factory.programMembership.ProgramMembershipType.ProgramMembership>>;
 
@@ -209,23 +209,19 @@ export class UserService {
     */
     private async searchPointAccount() {
         // 口座検索
-        const accountSearchResult = await this.cinerino.ownerShipInfo.search({
-            id: 'me',
+        const searchResult = await this.cinerino.ownerShipInfo.search({
+            sort: {
+                ownedFrom: factory.sortType.Ascending
+            },
             typeOfGood: {
                 typeOf: factory.ownershipInfo.AccountGoodType.Account,
                 accountType: factory.accountType.Point
             }
         });
-        const accounts = <accountType[]>accountSearchResult.data.filter((account) => {
-            return (account.typeOfGood.typeOf === factory.pecorino.account.TypeOf.Account
-                && account.typeOfGood.accountType === factory.accountType.Point
-                && account.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
-        });
-        // 口座開設についてあとに作ったものが先にくるようにソートする
-        accounts.sort((a: accountType, b: accountType) => {
-            return (a.typeOfGood.openDate > b.typeOfGood.openDate) ? -1 :
-                (a.typeOfGood.openDate < b.typeOfGood.openDate) ? 1 : 0;
-        });
+        const accounts =
+            searchResult.data.filter((a) => {
+                return (a.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
+            });
         return accounts;
     }
 
