@@ -38,7 +38,14 @@ export function schedule2Performance(schedule: ISchedule, member: boolean) {
             });
         });
     });
-    return performances;
+    const sortResult = performances.sort((a, b) => {
+        if (a.time.start_time < b.time.start_time) {
+            return -1;
+        } else {
+            return 1;
+        }
+    });
+    return sortResult;
 }
 
 /**

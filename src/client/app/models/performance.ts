@@ -89,7 +89,9 @@ export class Performance {
     public isDisplay() {
         const now = moment();
         const displayStartDate = moment(this.time.online_display_start_day, 'YYYYMMDD');
-        const endDate = moment(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm');
+        const endDate = (this.time.start_time < this.time.end_time)
+            ? moment(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm')
+            : moment(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm').add(1, 'days');
         return (displayStartDate < now && endDate > now);
     }
 

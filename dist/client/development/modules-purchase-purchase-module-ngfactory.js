@@ -74,7 +74,15 @@ function schedule2Performance(schedule, member) {
             });
         });
     });
-    return performances;
+    var sortResult = performances.sort(function (a, b) {
+        if (a.time.start_time < b.time.start_time) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
+    });
+    return sortResult;
 }
 /**
  * パフォーマンスを作品で絞り込み
@@ -257,7 +265,9 @@ var Performance = /** @class */ (function () {
     Performance.prototype.isDisplay = function () {
         var now = moment__WEBPACK_IMPORTED_MODULE_0__();
         var displayStartDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.time.online_display_start_day, 'YYYYMMDD');
-        var endDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm');
+        var endDate = (this.time.start_time < this.time.end_time)
+            ? moment__WEBPACK_IMPORTED_MODULE_0__(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm')
+            : moment__WEBPACK_IMPORTED_MODULE_0__(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm').add(1, 'days');
         return (displayStartDate < now && endDate > now);
     };
     /**
