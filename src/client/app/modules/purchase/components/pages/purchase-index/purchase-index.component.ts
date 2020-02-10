@@ -304,5 +304,16 @@ export class PurchaseIndexComponent implements OnInit {
             ? today : this.conditions.date;
         this.conditions.date = searchDate;
         this.schedule = this.schedules.find(s => s.date === this.conditions.date);
+        if (this.schedule === undefined) {
+            return;
+        }
+        // 作品順ソート
+        this.schedule.movie.sort((a, b) => {
+            if (a.sort_no < b.sort_no) {
+                return -1;
+            } else {
+                return 1;
+            }
+        });
     }
 }
