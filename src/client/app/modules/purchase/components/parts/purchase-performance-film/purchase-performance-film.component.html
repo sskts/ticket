@@ -1,4 +1,4 @@
-<div *ngFor="let movie of schedule.movie">
+<div class="mb-small" *ngFor="let movie of schedule.movie">
     <div class="info">
         <p class="title mb-xx-small">{{ movie.name }}</p>
         <div class="date small-x-text text-light-gray">
@@ -6,31 +6,37 @@
             {{ movie.running_time }}分
         </div>
     </div>
-    <div class="performance" *ngFor="let performance of filterPerformancebyMovie(performances, movie)" 
-    [ngClass]="(performance.isSalse()) ? performance.getAvailability().className : ''">
-        <div class="date">
-            <div class="mb-xx-small text-center">
-                <strong class="large-text">{{ performance.getTime('start') }}</strong>
+    <div class="performances">
+        <div class="performance" *ngFor="let performance of filterPerformancebyMovie(performances, movie)"
+            [ngClass]="(performance.isSalse()) ? performance.getAvailability().className : ''">
+            <div class="date">
+                <div class="mb-xx-small text-center">
+                    <strong class="large-text">{{ performance.getTime('start') }}</strong>
+                </div>
+                <div class="text-center">
+                    <span>～ {{ performance.getTime('end') }}</span>
+                </div>
             </div>
-            <div class="text-center">
-                <span>～ {{ performance.getTime('end') }}</span>
+            <div class="screen small-x-text">{{ performance.screen.name }}</div>
+            <div class="button text-center"
+                (click)="(performance.isSalse()) ? select.emit({id: performance.createId()}) : null;">
+                <div *ngIf="performance.isSalse()" class="status">
+                    <app-icon [iconName]="performance.getAvailability().icon" width="15" height="15"></app-icon>
+                    {{ performance.getAvailability().text }}
+                </div>
+                <div *ngIf="!performance.isSalse() && performance.isBeforePeriod()" class="status">販売期間外</div>
+                <div *ngIf="!performance.isSalse() && performance.isAfterPeriod()" class="status">販売期間外</div>
+                <div *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()"
+                    class="status">窓口</div>
+                <div *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && !performance.isWindow()"
+                    class="status">予約不可</div>
             </div>
-        </div>
-        <div class="screen small-x-text">{{ performance.screen.name }}</div>
-        <div class="button text-center" (click)="(performance.isSalse()) ? select.emit({id: performance.createId()}) : null;">
-            <div *ngIf="performance.isSalse()" class="status">
-                    <app-icon [iconName]="performance.getAvailability().icon" width="15" height="15"></app-icon>{{ performance.getAvailability().text }}
+            <div *ngIf="performance.time.late === 1" class="service">
+                <app-icon iconName="first-show-black" width="10" height="10"></app-icon>
             </div>
-            <div *ngIf="!performance.isSalse() && performance.isBeforePeriod()" class="status">販売期間外</div>
-            <div *ngIf="!performance.isSalse() && performance.isAfterPeriod()" class="status">販売期間外</div>
-            <div *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()" class="status">窓口</div>
-            <div *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && !performance.isWindow()" class="status">予約不可</div>
-        </div>
-        <div *ngIf="performance.time.late === 1" class="service">
-            <app-icon iconName="first-show-black" width="10" height="10"></app-icon>
-        </div>
-        <div *ngIf="performance.time.late === 2" class="service">
-            <app-icon iconName="late-show-black" width="10" height="10"></app-icon>
+            <div *ngIf="performance.time.late === 2" class="service">
+                <app-icon iconName="late-show-black" width="10" height="10"></app-icon>
+            </div>
         </div>
     </div>
 </div>
