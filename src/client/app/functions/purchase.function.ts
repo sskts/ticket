@@ -68,3 +68,15 @@ export function filterPerformancebyMovie(
     });
     return sortResult;
 }
+
+
+/**
+ * 表示可能パフォーマンス判定
+ */
+export function hasDisplayPerformance(
+    performances: Performance[],
+    movie: IMovie) {
+    const target = filterPerformancebyMovie(performances, movie);
+    const filterResult = target.filter(p => p.isDisplay());
+    return filterResult.length > 0;
+}

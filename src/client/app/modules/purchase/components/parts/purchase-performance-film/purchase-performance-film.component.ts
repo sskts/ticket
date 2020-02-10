@@ -2,7 +2,7 @@
  * PurchasePerformanceFilmComponent
  */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { filterPerformancebyMovie, schedule2Performance } from '../../../../../functions';
+import { filterPerformancebyMovie, hasDisplayPerformance, schedule2Performance } from '../../../../../functions';
 import { Performance } from '../../../../../models/performance';
 import { ISchedule } from '../../../../../models/schedule';
 
@@ -17,6 +17,7 @@ export class PurchasePerformanceFilmComponent implements OnInit {
     @Output() public select: EventEmitter<{ id: string }> = new EventEmitter();
     public filterPerformancebyMovie = filterPerformancebyMovie;
     public performances: Performance[];
+    public hasDisplayPerformance = hasDisplayPerformance;
 
     constructor() { }
 

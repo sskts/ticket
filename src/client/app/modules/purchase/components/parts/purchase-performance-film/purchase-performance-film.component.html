@@ -1,4 +1,4 @@
-<div class="mb-small" *ngFor="let movie of schedule.movie">
+<div class="mb-small" *ngFor="let movie of schedule.movie" [class.d-none]="!hasDisplayPerformance(performances, movie)">
     <div class="info">
         <p class="font-weight-bold" [innerHtml]="movie.name"></p>
         <p class="small-x-text"><span *ngIf="movie.comment" [innerHtml]="movie.comment"></span><span *ngIf="movie.comment && movie.ename">&nbsp;/&nbsp;</span><span *ngIf="movie.ename" [innerHtml]="movie.ename"></span></p>
