@@ -59,6 +59,7 @@ export class PurchaseIndexComponent implements OnInit {
     public maintenanceInfo: IConfirm;
     public isCOASchedule: boolean;
     public scheduleApiEndpoint?: string;
+    public theatreName: string;
 
     constructor(
         public userService: UserService,
@@ -136,9 +137,12 @@ export class PurchaseIndexComponent implements OnInit {
      * 劇場変更
      */
     public async changeTheater() {
-        this.isLoading = true;
         this.selectService.data.purchase.theater = this.conditions.theater;
         this.selectService.save();
+        if (this.conditions.theater === '') {
+            return;
+        }
+        this.isLoading = true;
         try {
             await this.cinerinoService.getServices();
             this.schedules = await this.getSchedule();
@@ -238,6 +242,7 @@ export class PurchaseIndexComponent implements OnInit {
                 scheduleApiEndpoint: string
             }>(`/api/config?date${moment().toISOString()}`)).scheduleApiEndpoint;
         }
+        this.theatreName = theatreTableFindResult.name;
         const url = `${this.scheduleApiEndpoint}/${theatreTableFindResult.name}/schedule/json/schedule.json?date=${now}`;
         const json = await this.utilService.getJson<ISchedule[]>(url);
         return json;
