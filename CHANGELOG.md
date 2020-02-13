@@ -13,6 +13,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.4.0 - 2020-02-13
+### Changed
+ - スケジュール一覧をblobから取得へ変更
 
 ## 3.3.5 - 2020-01-27
 ### Changed
