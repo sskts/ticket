@@ -49,26 +49,6 @@
     right: 0;
 }
 
-.film-order {
-    display: block;
-    background-color: #FFF;
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
-.info {
-    padding: 10px;
-    color: #333;
-    background-color: #E3E3E3;
-    .date {
-        &:before {
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 10px;
-        }
-    }
-}
-
 .sort {
     display: grid;
     grid-template-columns: 1fr 1fr;
