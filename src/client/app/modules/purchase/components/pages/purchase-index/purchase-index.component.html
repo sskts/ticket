@@ -1,5 +1,5 @@
 <app-page class="bg-02">
-    <div *ngIf="!isLoading && !maintenanceInfo.isMaintenance">
+    <div *ngIf="!isLoading && !maintenanceInfo.isMaintenance" [class]="theatreName">
         <div class="inner">
             <p class="read mb-middle small-text">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>
             <ul class="conditions">
@@ -49,28 +49,13 @@
                     <li [class.active]="conditions.sort === purchaseSort.Film" class="small-text text-center" (click)="changeSort(purchaseSort.Film)">作品順</li>
                     <li [class.active]="conditions.sort === purchaseSort.Time" class="small-text text-center" (click)="changeSort(purchaseSort.Time)">上映時間順</li>
                 </ul>
-
-                <div *ngIf="!isLoading && filmOrder.length > 0 && conditions.sort === purchaseSort.Film">
-                    <div *ngFor="let filmData of filmOrder" class="film-order mb-x-small">
-                        <div class="info">
-                            <p class="title mb-xx-small">{{ filmData.films[0].name.ja }}</p>
-                            <div class="date small-x-text text-light-gray">
-                                <app-icon iconName="time-gray" width="15" height="15"></app-icon>
-                                {{ filmData.films[0].workPerformed.duration | duration: 'minutes' }}分
-                            </div>
-                        </div>
-                        <app-purchase-performance-film *ngFor="let performance of filmData.films" [performance]="performance"
-                            (select)="performanceSelect(performance)"></app-purchase-performance-film>
-                    </div>
-                </div>
-
-                <div *ngIf="!isLoading && timeOrder.length > 0 && conditions.sort === purchaseSort.Time">
-                    <app-purchase-performance-time *ngFor="let performance of timeOrder" [performance]="performance"
-                        (select)="performanceSelect(performance)"></app-purchase-performance-time>
+                <div *ngIf="!isLoading && schedule">
+                    <app-purchase-performance-film *ngIf="conditions.sort === purchaseSort.Film" [schedule]="schedule" [member]="userService.isMember()" (select)="performanceSelect($event)"></app-purchase-performance-film>
+                    <app-purchase-performance-time *ngIf="conditions.sort === purchaseSort.Time" [schedule]="schedule" [member]="userService.isMember()" (select)="performanceSelect($event)"></app-purchase-performance-time>
                 </div>
             </div>
 
-            <div class="no-schedule" *ngIf="!isLoading && filmOrder.length === 0">
+            <div class="no-schedule" *ngIf="!isLoading && !schedule">
                 <div class="mb-x-small" *ngIf="conditions.theater === ''">鑑賞劇場が選択されていません。</div>
                 <div class="mb-x-small" *ngIf="conditions.date === '' && conditions.theater !== '' && dateList.length === 0">上映作品がありません。</div>
                 <div class="mb-x-small" *ngIf="conditions.date === '' && conditions.theater !== '' && dateList.length > 0">鑑賞日時が選択されていません。</div>

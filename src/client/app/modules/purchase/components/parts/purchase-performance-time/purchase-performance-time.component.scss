@@ -1,9 +1,8 @@
 .performance {
     position: relative;
-    display: grid;
-    grid-template-columns: auto 30px 1fr;
-    grid-column-gap: 15px;
-    padding: 10px 10px 10px 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
     background-color: #B2B2B2;
 }
 
@@ -16,16 +15,15 @@
 }
 
 .date {
-    align-self: center;
+    width: 80px;
 }
 
 .status-cover {
-    align-self: center;
-    text-align: center;
+    width: 25px;
 }
 
 .info {
-    align-self: center;
+    width: calc(100% - 105px);
     .screen {
         padding: 4px;
         border: 1px solid #FFF;
@@ -34,6 +32,9 @@
     }
     .duration {
         display: inline-block;
+    }
+    p {
+        word-break: break-all;
     }
 }
 
