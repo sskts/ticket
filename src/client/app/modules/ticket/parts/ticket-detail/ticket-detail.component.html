@@ -32,13 +32,6 @@
             </div>
 
         </div>
-        <p class="p-2 text-small">
-            【グランドクラス】<br>
-            <span class="text-danger">本チケットには、ミールクーポン{{ reservedTicket.coaTicketInfo.spseatAdd2 }}円分が含まれています。</span><br>
-            4F・コンセッション、5F・クラッパーズダイナー、12F・バール パノーラマのいずれかでご提示の上、ご利用願います。<br>
-            ※お釣りのお返しは致しかねます。<br>
-            ※ご鑑賞日当日のみ有効
-        </p>
         <p *ngIf="(reservation.reservationsFor[0].superEvent.location.branchCode | slice : -2) === '20' 
             && reservedTicket.coaTicketInfo.spseatKbn === '003'
             && reservedTicket.coaTicketInfo.spseatAdd2 > 0" class="p-2 text-small">
