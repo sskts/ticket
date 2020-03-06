@@ -1,29 +1,20 @@
-<app-page class="bg-02">
-    <div class="inner position-center">
-        <p class="read text-center mb-middle">
-            退会を行います。
-            <br> 下記注意文言をご確認のうえ
-            <br> 問題なければ退会ボタンを押してください。
-        </p>
+<div class="py-4 px-3">
+    <h2 class="text-center mb-3 text-large font-weight-bold">退会</h2>
+    <p class="mb-3">
+        退会を行います。
+        <br> 下記注意文言をご確認のうえ
+        <br> 問題なければ退会ボタンを押してください。
+    </p>
 
-        <p class="mb-middle">
-            退会した場合は保有していた全てのポイントが無効となり、本アプリに登録されていた会員情報は全て消去されます
-        </p>
-
-        <div>
-            <button type="button" class="button button-primary button-block center" (click)="confirmModal = true">退会</button>
-        </div>
-    </div>
-</app-page>
-
-<app-modal class="confirm-modal" [open]="confirmModal" [layout]="true" (close)="confirmModal = false">
-    <div class="mb-x-small text-center">
-        <strong>本当に退会しますか？</strong>
-    </div>
-    <p class="small-text mb-small">
+    <p class="mb-4">
         退会した場合は保有していた全てのポイントが無効となり、本アプリに登録されていた会員情報は全て消去されます
     </p>
-    <button type="button" class="button button-danger button-block center" (click)="withdraw()">退会する</button>
-</app-modal>
+
+    <div class="buttons mx-auto text-center">
+        <button type="submit" [disabled]="isLoading" (click)="confirmWithdraw()"
+            class="btn btn-danger btn-block py-3 mb-3">退会</button>
+    </div>
+</div>
+
 
 <app-loading [show]="isLoading"></app-loading>

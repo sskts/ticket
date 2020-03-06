@@ -1,0 +1,20 @@
+<div class="p-3 scroll-vertical">
+    <div *ngIf="title !== undefined" class="modal-ttl text-large text-center mb-3">
+        <strong>{{ title }}</strong>
+    </div>
+    <p *ngIf="description !== undefined" class="mb-3 text-center" [innerHtml]="description"></p>
+    <div class="mb-3" *ngFor="let image of images">
+        <img [src]="image">
+    </div>
+    <div class="mb-3 text-center">
+        <div class="checkbox">
+            <input type="checkbox" id="notWatch" [(ngModel)]="notWatch">
+            <label for="notWatch" class="agree-label">今後このメッセージを表示しない</label>
+        </div>
+    </div>
+   
+    <div class="buttons mx-auto text-center">
+        <button *ngIf="button !== undefined" type="button" class="btn btn-primary btn-block py-3 mb-3" [routerLink]="button.link">{{ button.label }}</button>
+        <button type="button" class="btn btn-outline-secondary btn-block py-3" (click)="close()">閉じる</button>
+    </div>
+</div>

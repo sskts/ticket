@@ -1,60 +1,24 @@
+@import '../../../../../../assets/scss//theme';
+
 :host {
     display: block;
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
-.info {
-    padding: 10px;
-    color: #333;
-    background-color: #E3E3E3;
-    p {
-        word-break: break-all;
-    }
-    .date {
-        &:before {
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 10px;
-        }
-    }
-}
-
-.performances {
-    background-color: #FFF;
 }
 
 .performance {
-    position: relative;
-    display: grid;
-    grid-template-columns: auto 1fr 100px;
-    grid-column-gap: 15px;
-    align-items: center;
-    padding: 10px 0;
-    margin: 0 10px;
-    color: #333;
-    border-bottom: 1px dotted #B2B2B2;
     &:last-child {
-        border: none;
-    }
-}
-.date {
-    align-self: center;
-}
-
-.button {
-    background-color: #B2B2B2;
-    color: #FFF;
-    app-icon {
-        margin-right: 10px;
+        border-bottom: none !important;
     }
 }
 
-.vacancy-large .button {
+.btn {
+    background-color: $dark-gray;
+}
+
+.vacancy-large .btn {
     background-color: #0563C1;
 }
 
-.vacancy-little .button {
+.vacancy-little .btn {
     background-color: #F2C300;
 }
 

@@ -45,7 +45,6 @@ export class TicketIndexComponent implements OnInit {
         };
         this.config = {
             pagination: pagination,
-            autoHeight: true
         };
         this.reservation.isMember = this.user.isMember();
         try {

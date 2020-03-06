@@ -1,17 +1,14 @@
-<app-page [touch]="touch" class="bg-02">
-    <div class="inner">
-        <p class="mb-small text-center small-text">
-            鑑賞履歴の確認ができます。
-        </p>
-        <div *ngIf="!isLoading">
-            <div *ngIf="reservations.length > 0;">
-                <div *ngFor="let reservation of reservations" class="detail">
-                    <app-ticket-history-detail [reservation]="reservation"></app-ticket-history-detail>
-                </div>
+<div class="inner">
+    <p class="mb-2 text-center text-small">
+        鑑賞履歴の確認ができます。
+    </p>
+    <div *ngIf="!isLoading">
+        <div *ngIf="reservations.length > 0;">
+            <div *ngFor="let reservation of reservations" class="detail">
+                <app-ticket-history-detail [reservation]="reservation"></app-ticket-history-detail>
             </div>
-            <app-ticket-not-found *ngIf="reservations.length === 0;" [isMember]="user.isMember()"></app-ticket-not-found>
         </div>
     </div>
-</app-page>
+</div>
 <app-loading [show]="isLoading"></app-loading>
 <app-information *ngIf="!user.isMember()" [isMember]="false"></app-information>

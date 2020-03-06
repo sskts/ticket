@@ -1,33 +1,36 @@
-<div *ngFor="let performance of performances" class="performance mb-x-small" [ngClass]="(performance.isSalse()) ? performance.getAvailability().className : ''"
+<div *ngFor="let performance of performances" class="performance position-relative mb-2 py-2 px-3 text-white"
+    [ngClass]="(performance.isSalse()) ? performance.getAvailability().className : ''"
     (click)="(performance.isSalse()) ? select.emit({id: performance.createId()}) : null;">
-    <div class="date">
-        <div class="mb-xx-small text-center">
-            <strong class="large-text">{{ performance.getTime('start') }}</strong>
+    <div class="d-flex align-items-center">
+        <div class="w-50">
+            <div class="mb-1">
+                <span class="font-weight-bold text-large">{{ performance.getTime('start') }}</span> ～
+                {{ performance.getTime('end') }}
+            </div>
+            <p class="text-small">{{ performance.screen.name }}</p>
+            <div class="text-small">
+                <p *ngIf="performance.isSalse()">{{ performance.getAvailability().text }}</p>
+                <p *ngIf="!performance.isSalse() && performance.isBeforePeriod()">販売期間外</p>
+                <p *ngIf="!performance.isSalse() && performance.isAfterPeriod()">販売期間外</p>
+                <p *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()">窓口</p>
+                <p *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && !performance.isWindow()">予約不可</p>
+            </div>
         </div>
-        <div class="text-center">
-            <span>～ {{ performance.getTime('end') }}</span>
+        <div class="w-50">
+            <p class="font-weight-bold" [innerHtml]="performance.movie.name"></p>
+            <p class="text-x-small d-flex align-items-center">
+                {{ performance.movie.running_time }}分
+            </p>
+            <p class="text-x-small"><span *ngIf="performance.movie.comment"
+                    [innerHtml]="performance.movie.comment"></span><span
+                    *ngIf="performance.movie.comment && performance.movie.ename">&nbsp;/&nbsp;</span><span
+                    *ngIf="performance.movie.ename" [innerHtml]="performance.movie.ename"></span></p>
         </div>
     </div>
-    <div class="status-cover">
-        <div *ngIf="performance.isSalse()" class="status">
-            <app-icon [iconName]="performance.getAvailability().icon" width="15" height="15"></app-icon>
-        </div>
-        <div *ngIf="!performance.isSalse() && performance.isBeforePeriod()" class="status small-x-text">販売<br>期間外</div>
-        <div *ngIf="!performance.isSalse() && performance.isAfterPeriod()" class="status small-x-text">販売<br>期間外</div>
-        <div *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()" class="status small-x-text">窓口</div>
-        <div *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && !performance.isWindow()" class="status small-x-text">予約<br>不可</div>
+    <div *ngIf="performance.time.late === 1" class="service first">
+        <img src="/assets/images/icon/first_show_black.svg" width="10" height="10">
     </div>
-    <div class="info">
-        <div class="screen small-x-text mb-xx-small">{{ performance.screen.name }}</div>
-        <div *ngIf="performance.workPerformed !== undefined" class="duration small-x-text">{{ performance.movie.running_time }}分</div>
-        <div *ngIf="performance.workPerformed === undefined" class="duration small-x-text"></div>
-        <p class="font-weight-bold" [innerHtml]="performance.movie.name"></p>
-        <p class="small-x-text"><span *ngIf="performance.movie.comment" [innerHtml]="performance.movie.comment"></span><span *ngIf="performance.movie.comment && performance.movie.ename">&nbsp;/&nbsp;</span><span *ngIf="performance.movie.ename" [innerHtml]="performance.movie.ename"></span></p>
-    </div>
-    <div *ngIf="performance.time.late === 1" class="service">
-        <app-icon iconName="first-show-white" width="10" height="10"></app-icon>
-    </div>
-    <div *ngIf="performance.time.late === 2" class="service">
-        <app-icon iconName="late-show-white" width="10" height="10"></app-icon>
+    <div *ngIf="performance.time.late === 2" class="service late">
+        <img src="/assets/images/icon/late_show_black.svg" width="10" height="10">
     </div>
 </div>

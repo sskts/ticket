@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ModalModule, RatingModule } from 'ngx-bootstrap';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { AboutComponent } from './components/pages/about/about.component';
 import { BaseComponent } from './components/pages/base/base.component';
@@ -11,26 +12,27 @@ import { PolicyComponent } from './components/pages/policy/policy.component';
 import { PrivacyComponent } from './components/pages/privacy/privacy.component';
 import { RootComponent } from './components/pages/root/root.component';
 import { TutorialComponent } from './components/pages/tutorial/tutorial.component';
+import { AlertModalComponent } from './components/parts/alert-modal/alert-modal.component';
 import { CampaignComponent } from './components/parts/campaign/campaign.component';
-import { HeaderMenuMemberComponent } from './components/parts/header-menu-member/header-menu-member.component';
-import { HeaderMenuNotMemberComponent } from './components/parts/header-menu-not-member/header-menu-not-member.component';
+import { ConfirmModalComponent } from './components/parts/confirm-modal/confirm-modal.component';
+import { ContentsComponent } from './components/parts/contents/contents.component';
 import { HeaderMenuComponent } from './components/parts/header-menu/header-menu.component';
 import { HeaderComponent } from './components/parts/header/header.component';
 import { IconComponent } from './components/parts/icon/icon.component';
+import { InformationModalComponent } from './components/parts/information-modal/information-modal.component';
 import { InformationComponent } from './components/parts/information/information.component';
 import { LoadingComponent } from './components/parts/loading/loading.component';
 import { MaintenanceComponent } from './components/parts/maintenance/maintenance.component';
 import { MembershipBenefitsComponent } from './components/parts/membership-benefits/membership-benefits.component';
-import { ModalComponent } from './components/parts/modal/modal.component';
 import { NavigationComponent } from './components/parts/navigation/navigation.component';
-import { PageComponent } from './components/parts/page/page.component';
-import { TicketNotFoundComponent } from './components/parts/ticket-not-found/ticket-not-found.component';
+import { CreditcardSecurityCodeModalComponent } from './components/parts/security-code-modal/security-code-modal.component';
 import { AvailabilityPipe, DateFormatPipe, DurationPipe, TimeFormatPipe } from './pipes';
 
 const components = [
   AboutComponent,
   BaseComponent,
   BenefitsComponent,
+  ContentsComponent,
   LawComponent,
   PolicyComponent,
   PrivacyComponent,
@@ -38,18 +40,20 @@ const components = [
   TutorialComponent,
   HeaderComponent,
   HeaderMenuComponent,
-  HeaderMenuMemberComponent,
-  HeaderMenuNotMemberComponent,
   IconComponent,
   InformationComponent,
   LoadingComponent,
   MaintenanceComponent,
   MembershipBenefitsComponent,
-  ModalComponent,
   NavigationComponent,
-  PageComponent,
-  TicketNotFoundComponent,
   CampaignComponent
+];
+
+const entryComponents = [
+  AlertModalComponent,
+  ConfirmModalComponent,
+  CreditcardSecurityCodeModalComponent,
+  InformationModalComponent
 ];
 
 const pipes = [
@@ -62,21 +66,28 @@ const pipes = [
 @NgModule({
   declarations: [
     ...components,
+    ...entryComponents,
     ...pipes
   ],
+  entryComponents,
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
     SwiperModule,
+    ModalModule,
+    RatingModule
   ],
   exports: [
     ...components,
+    ...entryComponents,
     ...pipes,
     ReactiveFormsModule,
     FormsModule,
     SwiperModule,
+    ModalModule,
+    RatingModule
   ],
   providers: []
 })

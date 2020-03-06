@@ -1,46 +1,46 @@
-<app-page class="bg-02">
-    <div class="inner">
-        <p class="read mb-small small-text">
-            会員情報の変更ができます
-        </p>
-        <div class="profile mb-middle">
-            <h2 class="text-center">基本情報</h2>
-            <ul class="mb-small">
-                <li>
-                    <app-icon iconName="about-white" width="15" height="15"></app-icon>{{ user.data.userName }}
-                </li>
-                <li>
-                    <app-icon iconName="user-white" width="15" height="15"></app-icon>{{ user.getName() }}
-                </li>
-                <li>
-                    <app-icon iconName="email-white" width="15" height="15"></app-icon>{{ user.data.profile?.email }}
-                </li>
-                <li>
-                    <app-icon iconName="telephone-white" width="15" height="15"></app-icon>{{ user.getTelephone() }}
-                </li>
-                <li>
-                    <app-icon iconName="my-theater-white" width="15" height="15"></app-icon>{{ theaterName }}
-                </li>
-                <li>
-                    <app-icon iconName="account-white" width="15" height="15"></app-icon>{{
-                    user.getAccount(0)?.typeOfGood.accountNumber }}
-                </li>
-            </ul>
-            <button type="button" class="button button-primary button-block center" routerLink="/member/edit/profile">基本情報変更</button>
-        </div>
-        <div class="credit">
-            <h2 class="text-center">カード情報</h2>
-            <ul class="mb-small">
-                <li>
-                    <app-icon iconName="credit-no-white" width="15" height="15"></app-icon>{{
-                    user.getCreditCard(0)?.cardNo }}
-                </li>
-                <li>
-                    <app-icon iconName="credit-expire-white" width="15" height="15"></app-icon>{{
-                    user.getCreditCard(0)?.expire }}
-                </li>
-            </ul>
-            <button type="button" class="button button-primary button-block center mb-middle" routerLink="/member/edit/credit">クレジットカード変更</button>
+<div class="py-4 px-3">
+    <p class="mb-3">会員情報の変更ができます</p>
+    <div class="profile mb-4">
+        <h2 class="text-center mb-3 text-large font-weight-bold">基本情報</h2>
+        <ul class="mb-3 bg-white">
+            <li class="p-3 border-bottom border-gray">
+                <app-icon class="mr-3" iconName="about-white" width="15" height="15"></app-icon>{{ user.data.userName }}
+            </li>
+            <li class="p-3 border-bottom border-gray">
+                <app-icon class="mr-3" iconName="user-white" width="15" height="15"></app-icon>{{ user.getName() }}
+            </li>
+            <li class="p-3 border-bottom border-gray">
+                <app-icon class="mr-3" iconName="email-white" width="15" height="15"></app-icon>{{ user.data.profile?.email }}
+            </li>
+            <li class="p-3 border-bottom border-gray">
+                <app-icon class="mr-3" iconName="telephone-white" width="15" height="15"></app-icon>{{ user.getTelephone() }}
+            </li>
+            <li class="p-3 border-bottom border-gray">
+                <app-icon class="mr-3" iconName="my-theater-white" width="15" height="15"></app-icon>{{ theaterName }}
+            </li>
+            <li class="p-3">
+                <app-icon class="mr-3" iconName="account-white" width="15" height="15"></app-icon>{{
+                user.getAccount(0)?.typeOfGood.accountNumber }}
+            </li>
+        </ul>
+        <div class="buttons mx-auto text-center">
+            <button type="button" class="btn btn-primary btn-block py-3" routerLink="/member/edit/profile">基本情報変更</button>
         </div>
     </div>
-</app-page>
+    <div class="credit">
+        <h2 class="text-center mb-3 text-large font-weight-bold">カード情報</h2>
+        <ul class="mb-3 bg-white">
+            <li class="p-3 border-bottom border-gray">
+                <app-icon class="mr-3" iconName="credit-no-white" width="15" height="15"></app-icon>{{
+                user.getCreditCard(0)?.cardNo }}
+            </li>
+            <li class="p-3">
+                <app-icon class="mr-3" iconName="credit-expire-white" width="15" height="15"></app-icon>{{
+                user.getCreditCard(0)?.expire }}
+            </li>
+        </ul>
+        <div class="buttons mx-auto text-center">
+            <button type="button" class="btn btn-primary btn-block py-3" routerLink="/member/edit/credit">クレジットカード変更</button>
+        </div>
+    </div>
+</div>

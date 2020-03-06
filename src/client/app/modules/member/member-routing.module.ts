@@ -6,7 +6,6 @@ import { MemberEditProfileComponent } from './components/pages/member-edit-profi
 import { MemberEditComponent } from './components/pages/member-edit/member-edit.component';
 import { MemberMypageComponent } from './components/pages/member-mypage/member-mypage.component';
 import { MemberPointHistoryComponent } from './components/pages/member-point-history/member-point-history.component';
-import { MemberPointComponent } from './components/pages/member-point/member-point.component';
 import { MemberTicketHistoryComponent } from './components/pages/member-ticket-history/member-ticket-history.component';
 import { MemberWithdrawComponent } from './components/pages/member-withdraw/member-withdraw.component';
 
@@ -16,7 +15,6 @@ const routes: Routes = [
     {
         path: 'point',
         children: [
-            { path: '', component: MemberPointComponent },
             { path: 'benefits', component: MemberBenefitsComponent },
             { path: 'history', component: MemberPointHistoryComponent }
         ]

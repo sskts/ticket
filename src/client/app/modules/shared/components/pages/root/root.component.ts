@@ -17,12 +17,15 @@ export class RootComponent implements OnInit {
      * 初期化
      * @method ngOnInit
      */
-    public ngOnInit() {
-        if (this.user.isMember()) {
-            this.router.navigate(['/member/mypage']);
-        } else {
-            this.router.navigate(['/ticket']);
+    public async ngOnInit() {
+        try {
+            if (this.user.isMember()) {
+                await this.user.updateAccount();
+            }
+        } catch (error) {
+            console.error(error);
         }
+        this.router.navigate(['/purchase']);
     }
 
 }

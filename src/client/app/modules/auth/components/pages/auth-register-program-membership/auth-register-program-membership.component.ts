@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { factory } from '@cinerino/api-javascript-client';
-import { CinerinoService, MasterService, MemberService } from '../../../../../services';
+import { CinerinoService, MasterService, MemberService, UtilService } from '../../../../../services';
 
 @Component({
     selector: 'app-auth-register-program-membership',
@@ -12,7 +12,6 @@ import { CinerinoService, MasterService, MemberService } from '../../../../../se
 export class AuthRegisterProgramMembershipComponent implements OnInit {
     public programMemberships: factory.programMembership.IProgramMembership[];
     public isLoading: boolean;
-    public alertModal: boolean;
     public optionsForm: FormGroup;
     public theaters: factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>[];
 
@@ -22,6 +21,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         private cinerino: CinerinoService,
         private member: MemberService,
         private masterService: MasterService,
+        private utilService: UtilService
     ) { }
 
     /**
@@ -29,7 +29,6 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        this.alertModal = false;
         this.isLoading = true;
         this.optionsForm = this.createForm();
         try {
@@ -107,7 +106,10 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             console.error(err);
             // 会員プログラム登録失敗
             this.isLoading = false;
-            this.alertModal = true;
+            this.utilService.openAlert({
+                title: 'エラーが発生しました',
+                body: `再度ご登録してください。`
+            });
         }
     }
 

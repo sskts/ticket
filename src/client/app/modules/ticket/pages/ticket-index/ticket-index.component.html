@@ -1,26 +1,23 @@
-<app-page [touch]="touch">
-    <app-campaign url="ticket"></app-campaign>
-    <div class="inner">
-        <p class="mb-small text-center small-text">
-            購入した鑑賞作品の下記チケットのQRコードを
-            <br>入場口スタッフに提示してください。
-        </p>
-        <div *ngIf="!isLoading">
-            <div *ngIf="reservations.length > 0;">
-                <div class="swiper-container" #swiper [swiper]="config" (slideChangeTransitionStart)="slideChangeTransitionStart()" (slideChangeTransitionEnd)="slideChangeTransitionEnd()">
-                    <div class="swiper-wrapper">
-                        <div *ngFor="let reservation of reservations" class="swiper-slide">
-                            <app-ticket-detail [reservation]="reservation"></app-ticket-detail>
-                        </div>
+<app-campaign url="ticket"></app-campaign>
+<div class="pt-4 pb-5 px-3">
+    <div *ngIf="!isLoading">
+        <div *ngIf="reservations.length > 0;">
+            <p class="mb-3 text-small text-center">
+                QRコードを入場口スタッフに提示してください。
+            </p>
+            <div class="swiper-container" #swiper [swiper]="config">
+                <div class="swiper-wrapper">
+                    <div *ngFor="let reservation of reservations" class="swiper-slide">
+                        <app-ticket-detail [reservation]="reservation"></app-ticket-detail>
                     </div>
                 </div>
-                <div class="pagination-wrapper">
-                    <div class="swiper-pagination"></div>
-                </div>
             </div>
-            <app-ticket-not-found *ngIf="reservations.length === 0;" [isMember]="user.isMember()"></app-ticket-not-found>
+            <div class="pagination-wrapper">
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
+        <app-ticket-not-found *ngIf="reservations.length === 0;" [isMember]="user.isMember()"></app-ticket-not-found>
     </div>
-</app-page>
+</div>
 <app-loading [show]="isLoading"></app-loading>
 <app-information *ngIf="!user.isMember()" [isMember]="false"></app-information>
