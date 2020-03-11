@@ -6,6 +6,9 @@ import { UtilService } from '../services';
 import { CinerinoService } from '../services/cinerino.service';
 import { UserService } from '../services/user.service';
 
+type programMembershipType =
+    factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<factory.programMembership.ProgramMembershipType.ProgramMembership>>;
+
 @Injectable({
     providedIn: 'root'
 })
@@ -23,13 +26,10 @@ export class ProgramMembershipGuardService implements CanActivate {
    * @method canActivate
    */
     public async canActivate() {
-        if (this.user.data.programMembershipOwnershipInfos === undefined) {
-            this.user.data.programMembershipOwnershipInfos = [];
+        if (!this.user.isMember()) {
+            return true;
         }
-        const now = (await this.util.getServerTime()).date;
-        let programMembershipOwnershipInfos =
-            this.user.data.programMembershipOwnershipInfos.filter(p => moment(p.ownedThrough).unix() > moment(now).unix());
-        if (programMembershipOwnershipInfos.length > 0) {
+        if (await this.hasAvailability(this.user.data.programMembershipOwnershipInfos)) {
             return true;
         }
         await this.cinerino.getServices();
@@ -38,18 +38,25 @@ export class ProgramMembershipGuardService implements CanActivate {
                 typeOf: factory.programMembership.ProgramMembershipType.ProgramMembership
             }
         });
-        programMembershipOwnershipInfos =
-            searchResult.data.filter(p => moment(p.ownedThrough).unix() > moment(now).unix());
-        if (programMembershipOwnershipInfos.length === 0) {
+        if (!await this.hasAvailability(searchResult.data)) {
             this.router.navigate(['/auth/register/credit']);
-
             return false;
         }
 
-        this.user.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos;
+        this.user.data.programMembershipOwnershipInfos = searchResult.data;
         this.user.save();
 
         return true;
+    }
+
+    /**
+     * 有効判定
+     */
+    private async hasAvailability(programMembershipOwnershipInfos: programMembershipType[]) {
+        const now = (await this.util.getServerTime()).date;
+        const filterResult = programMembershipOwnershipInfos
+            .filter(p => moment(p.ownedThrough).unix() > moment(now).unix());
+        return (filterResult.length > 0);
     }
 
 }

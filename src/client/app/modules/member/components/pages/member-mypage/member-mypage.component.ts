@@ -34,7 +34,7 @@ export class MemberMypageComponent implements OnInit {
             }
             await this.userService.updateAccount();
             this.account = this.userService.data.accounts[0];
-            this.availableBalance = this.account.typeOfGood.availableBalance;
+            this.availableBalance = this.userService.getAvailableBalance();
         } catch (error) {
             console.error(error);
             this.router.navigate(['/error', { redirect: '/member/mypage' }]);

@@ -7515,7 +7515,7 @@ var MemberMypageComponent = /** @class */ (function () {
                     case 2:
                         _a.sent();
                         this.account = this.userService.data.accounts[0];
-                        this.availableBalance = this.account.typeOfGood.availableBalance;
+                        this.availableBalance = this.userService.getAvailableBalance();
                         return [3 /*break*/, 4];
                     case 3:
                         error_1 = _a.sent();

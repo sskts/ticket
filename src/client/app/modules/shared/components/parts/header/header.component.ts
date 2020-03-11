@@ -17,7 +17,6 @@ import { UserService } from '../../../../../services';
 export class HeaderComponent implements OnInit {
 
     public isMenuOpen: boolean;
-    public availableBalance: number;
 
     constructor(
         public userService: UserService
@@ -28,10 +27,6 @@ export class HeaderComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        if (this.userService.isMember()) {
-            this.availableBalance = this.userService.data.accounts[0].typeOfGood.availableBalance;
-        }
-
         this.isMenuOpen = false;
     }
 
