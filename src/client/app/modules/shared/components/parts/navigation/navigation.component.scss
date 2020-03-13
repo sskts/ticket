@@ -11,11 +11,28 @@
     right: 0;
 }
 
+ul.border-top {
+    border-width: 3px !important;
+}
+
 li {
     width: 33.3%;
-}
-.active {
-    p {
-        color: #FFF !important;
+    img {
+        &.on {
+            display: none;
+        }
+    }
+    &.active {
+        p {
+            color: #FFF !important;
+        }
+        img {
+            &.off {
+                display: none;
+            }
+            &.on {
+                display: inline-block;
+            }
+        }
     }
 }

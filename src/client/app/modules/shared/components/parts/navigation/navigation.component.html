@@ -1,26 +1,30 @@
-<ul class="d-flex h-100 border-top">
+<ul class="d-flex h-100 border-top border-gray">
     <li class="d-flex justify-content-center align-items-center" routerLink="/purchase" routerLinkActive="active bg-success">
         <div class="text-center">
-            <img class="mb-1" src="" width="24" height="24">
+            <img class="mb-1 off" src="/assets/images/icon/purchase_gray.svg" width="24" height="24">
+            <img class="mb-1 on" src="/assets/images/icon/purchase_white.svg" width="24" height="24">
             <p class="text-x-small text-dark-gray">チケット購入</p>
         </div>
     </li>
     <li class="d-flex justify-content-center align-items-center" routerLink="/ticket" routerLinkActive="active bg-success">
         <div class="text-center">
-            <img class="mb-1" src="" width="24" height="24">
+            <img class="mb-1 off" src="/assets/images/icon/holder_gray.svg" width="24" height="24">
+            <img class="mb-1 on" src="/assets/images/icon/holder_white.svg" width="24" height="24">
             <p class="text-x-small text-dark-gray">チケットホルダー</p>
         </div>
     </li>
     <li class="d-flex justify-content-center align-items-center" *ngIf="user.isMember()" routerLink="/member/mypage"
         routerLinkActive="active bg-success">
         <div class="text-center">
-            <img class="mb-1" src="" width="24" height="24">
+            <img class="mb-1 off" src="/assets/images/icon/mypage_gray.svg" width="24" height="24">
+            <img class="mb-1 on" src="/assets/images/icon/mypage_white.svg" width="24" height="24">
             <p class="text-x-small text-dark-gray">マイページ</p>
         </div>
     </li>
     <li class="d-flex justify-content-center align-items-center" *ngIf="!user.isMember()" routerLink="/auth/select">
         <div class="text-center">
-            <img class="mb-1" src="" width="24" height="24">
+            <img class="mb-1 off" src="/assets/images/icon/purchase_gray.svg" width="24" height="24">
+            <img class="mb-1 on" src="/assets/images/icon/purchase_white.svg" width="24" height="24">
             <p class="text-x-small text-dark-gray">ログイン</p>
         </div>
     </li>

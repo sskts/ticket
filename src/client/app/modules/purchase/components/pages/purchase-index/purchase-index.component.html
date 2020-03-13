@@ -1,19 +1,20 @@
 <div *ngIf="!isLoading && !maintenanceInfo.isMaintenance" [class]="theatreName">
-    <div class="p-3 input-group">
+    <div class="p-3 input-group align-items-center">
         <select class="form-control" name="theater" [(ngModel)]="conditions.theater" (change)="changeTheater()">
             <option value="">選択してください</option>
             <option *ngFor="let theater of theaters" value="{{ theater.location.branchCode }}">
                 {{ theater.name.ja }}</option>
         </select>
         <div class="input-group-append">
-            <button class="btn btn-block p-2 ml-3 border border-gray" (click)="update()"><img src="" width="24"
-                    height="24"></button>
+            <button class="btn btn-block p-2 ml-3 border border-gray" (click)="update()">
+                <img class="" src="/assets/images/icon/reload_gray.svg" width="24" height="24">
+            </button>
         </div>
     </div>
     <div *ngIf="dateList.length > 0">
         <div class="mb-3">
             <div *ngIf="isPreSale" class="text-right">
-                <div class="d-inline-block text-small bg-danger text-white p-2">先行販売あり</div>
+                <div class="d-inline-block text-small bg-danger text-white p-2">先行販売あり<img class="ml-1 align-middle" src="/assets/images/icon/pre_arrows_white.svg" height="10"></div>
             </div>
             <ul class="schedule bg-dark-gray">
                 <li *ngFor="let date of dateList" class="text-center"
