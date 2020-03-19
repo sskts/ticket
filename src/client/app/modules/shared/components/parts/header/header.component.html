@@ -6,6 +6,9 @@
         <div *ngIf="userService.isMember()" class="ml-3 balance py-1 px-4 text-center text-white d-flex align-items-center">
             <span class="text-large font-weight-bold">{{ userService.getAvailableBalance() }}</span><span class="ml-2">pt</span>
         </div>
+        <div *ngIf="!userService.isMember()" class="ml-3 py-1 px-4 text-center bg-gray text-white d-flex align-items-center">
+            <span class="">非会員</span>
+        </div>
         <div class="menu-button ml-auto" [class.active]="isMenuOpen" (click)="(isMenuOpen) ? menuClose() : menuOpen()">
             <div></div>
             <div></div>

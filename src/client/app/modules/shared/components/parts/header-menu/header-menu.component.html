@@ -11,9 +11,9 @@
         <li class="p-3 border-bottom border-white" routerLink="/member/point/benefits" (click)="close.emit()">
             <app-icon class="mr-3" iconName="benefits-white" width="15" height="15"></app-icon>会員特典
         </li>
-        <li class="p-3 border-bottom border-white" routerLink="/member/edit" (click)="close.emit()">
+        <!-- <li class="p-3 border-bottom border-white" routerLink="/member/edit" (click)="close.emit()">
             <app-icon class="mr-3" iconName="user-white" width="15" height="15"></app-icon>会員情報変更
-        </li>
+        </li> -->
         <li class="p-3 border-bottom border-white" routerLink="/policy" routerLinkActive="active" (click)="close.emit()">
             <app-icon class="mr-3" iconName="text-white" width="15" height="15"></app-icon>利用規約
         </li>
@@ -25,12 +25,6 @@
         </li>
         <li class="p-3 border-bottom border-white" (click)="openWebBrowse(environment.PORTAL_SITE)">
             <app-icon class="mr-3" iconName="external-link-white" width="15" height="15"></app-icon>シネマサンシャインポータルサイト
-        </li>
-        <li class="p-3 border-bottom border-white" routerLink="/auth/logout" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="logout-white" width="15" height="15"></app-icon>ログアウト
-        </li>
-        <li class="p-3 border-bottom border-white" routerLink="/member/withdraw" routerLinkActive="active" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="text-white" width="15" height="15"></app-icon>退会
         </li>
     </ul>
     <ul *ngIf="!isMember">

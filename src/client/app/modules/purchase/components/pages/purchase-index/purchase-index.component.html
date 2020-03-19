@@ -1,6 +1,6 @@
 <div *ngIf="!isLoading && !maintenanceInfo.isMaintenance" [class]="theatreName">
     <div class="p-3 input-group align-items-center">
-        <select class="form-control" name="theater" [(ngModel)]="conditions.theater" (change)="changeTheater()">
+        <select class="form-control rounded" name="theater" [(ngModel)]="conditions.theater" (change)="changeTheater()">
             <option value="">選択してください</option>
             <option *ngFor="let theater of theaters" value="{{ theater.location.branchCode }}">
                 {{ theater.name.ja }}</option>

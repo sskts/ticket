@@ -1,31 +1,31 @@
 <ul class="d-flex h-100 border-top border-gray bg-white text-dark-gray">
     <li class="d-flex justify-content-center align-items-center" routerLink="/purchase" routerLinkActive="active bg-success text-white">
         <div class="text-center">
-            <img class="mb-1 off" src="/assets/images/icon/purchase_gray.svg" width="24" height="24">
-            <img class="mb-1 on" src="/assets/images/icon/purchase_white.svg" width="24" height="24">
-            <p class="text-x-small">チケット購入</p>
+            <img class="mb-1 off" src="/assets/images/icon/purchase_gray.svg" width="20" height="20">
+            <img class="mb-1 on" src="/assets/images/icon/purchase_white.svg" width="20" height="20">
+            <p class="text-small">購入</p>
         </div>
     </li>
     <li class="d-flex justify-content-center align-items-center" routerLink="/ticket" routerLinkActive="active bg-success text-white">
         <div class="text-center">
-            <img class="mb-1 off" src="/assets/images/icon/holder_gray.svg" width="24" height="24">
-            <img class="mb-1 on" src="/assets/images/icon/holder_white.svg" width="24" height="24">
-            <p class="text-x-small">チケットホルダー</p>
+            <img class="mb-1 off" src="/assets/images/icon/holder_gray.svg" width="20" height="20">
+            <img class="mb-1 on" src="/assets/images/icon/holder_white.svg" width="20" height="20">
+            <p class="text-small">チケット</p>
         </div>
     </li>
     <li class="d-flex justify-content-center align-items-center" *ngIf="user.isMember()" routerLink="/member/mypage"
         routerLinkActive="active bg-success text-white">
         <div class="text-center">
-            <img class="mb-1 off" src="/assets/images/icon/mypage_gray.svg" width="24" height="24">
-            <img class="mb-1 on" src="/assets/images/icon/mypage_white.svg" width="24" height="24">
-            <p class="text-x-small">マイページ</p>
+            <img class="mb-1 off" src="/assets/images/icon/mypage_gray.svg" width="20" height="20">
+            <img class="mb-1 on" src="/assets/images/icon/mypage_white.svg" width="20" height="20">
+            <p class="text-small">マイページ</p>
         </div>
     </li>
     <li class="d-flex justify-content-center align-items-center" *ngIf="!user.isMember()" routerLink="/auth/select">
         <div class="text-center">
-            <img class="mb-1 off" src="/assets/images/icon/purchase_gray.svg" width="24" height="24">
-            <img class="mb-1 on" src="/assets/images/icon/purchase_white.svg" width="24" height="24">
-            <p class="text-x-small">ログイン</p>
+            <img class="mb-1 off" src="/assets/images/icon/purchase_gray.svg" width="20" height="20">
+            <img class="mb-1 on" src="/assets/images/icon/purchase_white.svg" width="20" height="20">
+            <p class="text-small">ログイン</p>
         </div>
     </li>
 </ul>
