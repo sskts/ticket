@@ -1,6 +1,6 @@
 <div class="py-4 px-3">
     <h2 class="text-center mb-3 text-large font-weight-bold">カード情報入力</h2>
-    <p class="text-center bg-gray py-2">
+    <p class="text-center text-white bg-dark-gray py-2">
         ご利用金額（年会費）
         <span class="font-weight-bold">￥500</span>
     </p>
@@ -17,12 +17,12 @@
                     <div class="row align-items-center">
                         <p class="col-md-4 py-2 text-md-right">カード番号</p>
                         <div class="col-md-8">
-                            <p class="text-small mb-2 text-dark-gray">※半角数字、ハイフン「-」なしで入力してください</p>
+                            <p class="text-small mb-2">※半角数字、ハイフン「-」なしで入力してください</p>
                             <input class="form-control"
                                 [class.validation]="creditForm.controls['cardNumber'].invalid && creditForm.controls['cardNumber'].touched"
                                 type="text" pattern="\d*" formControlName="cardNumber" id="cardNumber"
                                 autocomplete="off" placeholder="(例)1234567890" maxlength="16">
-                            <div class="text-small"
+                            <div class="mt-1"
                                 *ngIf="creditForm.controls['cardNumber'].invalid && creditForm.controls['cardNumber'].touched">
                                 <p *ngIf="creditForm.controls['cardNumber'].errors.required" class="text-danger">
                                     カード番号が未入力です</p>
@@ -57,12 +57,12 @@
                     <div class="row align-items-center">
                         <p class="col-md-4 py-2 text-md-right">セキュリティーコード</p>
                         <div class="col-md-8">
-                            <p class="text-small mb-2 text-dark-gray">※半角数字で入力してください</p>
+                            <p class="text-small mb-2">※半角数字で入力してください</p>
                             <input class="form-control"
                                 [class.validation]="creditForm.controls['securityCode'].invalid && creditForm.controls['securityCode'].touched"
                                 type="text" pattern="\d*" formControlName="securityCode" autocomplete="off"
                                 placeholder="(例)123" maxlength="4">
-                            <div class="text-small"
+                            <div class="mt-1"
                                 *ngIf="creditForm.controls['securityCode'].invalid && creditForm.controls['securityCode'].touched">
                                 <p *ngIf="creditForm.controls['securityCode'].errors.required" class="text-danger">
                                     セキュリティーコードが未入力です</p>
@@ -79,7 +79,7 @@
                                 [class.validation]="creditForm.controls['holderName'].invalid && creditForm.controls['holderName'].touched"
                                 type="text" formControlName="holderName" autocomplete="off"
                                 placeholder="(例)TARO CINEMA">
-                            <div class="text-small"
+                            <div class="mt-1"
                                 *ngIf="creditForm.controls['holderName'].invalid && creditForm.controls['holderName'].touched">
                                 <p *ngIf="creditForm.controls['holderName'].errors.required" class="text-danger">
                                     カード名義人が未入力です</p>

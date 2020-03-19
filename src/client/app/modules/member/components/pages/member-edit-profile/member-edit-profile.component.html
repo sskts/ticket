@@ -15,7 +15,7 @@
             <div class="row align-items-center">
                 <p class="col-md-4 py-2 text-md-right">セイ<span class="ml-2 text-danger">必須</span></p>
                 <div class="col-md-8">
-                    <p class="text-small mb-2 text-dark-gray">※全角カタカナで入力してください</p>
+                    <p class="text-small mb-2">※全角カタカナで入力してください</p>
                     <input class="form-control"
                         [class.validation]="profileForm.controls['familyName'].invalid && profileForm.controls['familyName'].touched"
                         type="text" formControlName="familyName" autocomplete="family-name"
@@ -38,7 +38,7 @@
             <div class="row align-items-center">
                 <p class="col-md-4 py-2 text-md-right">メイ<span class="ml-2 text-danger">必須</span></p>
                 <div class="col-md-8">
-                    <p class="text-small mb-2 text-dark-gray">※全角カタカナで入力してください</p>
+                    <p class="text-small mb-2">※全角カタカナで入力してください</p>
                     <input class="form-control"
                         [class.validation]="profileForm.controls['givenName'].invalid && profileForm.controls['givenName'].touched"
                         type="text" formControlName="givenName" autocomplete="given-name"
@@ -72,7 +72,7 @@
             <div class="row align-items-center">
                 <p class="col-md-4 py-2 text-md-right">電話番号<span class="ml-2 text-danger">必須</span></p>
                 <div class="col-md-8">
-                    <p class="text-small mb-2 text-dark-gray">※半角数字、ハイフン「-」なしで入力してください</p>
+                    <p class="text-small mb-2">※半角数字、ハイフン「-」なしで入力してください</p>
                     <input class="form-control"
                         [class.validation]="profileForm.controls['telephone'].invalid && profileForm.controls['telephone'].touched"
                         type="tel" formControlName="telephone" autocomplete="tel" placeholder="電話番号を入力してください">

@@ -6,7 +6,7 @@
                 {{ theater.name.ja }}</option>
         </select>
         <div class="input-group-append">
-            <button class="btn btn-block p-2 ml-3 border border-gray" (click)="update()">
+            <button class="btn btn-block p-2 ml-3 bg-white border border-gray" (click)="update()">
                 <img class="" src="/assets/images/icon/reload_gray.svg" width="24" height="24">
             </button>
         </div>
@@ -14,12 +14,14 @@
     <div *ngIf="dateList.length > 0">
         <div class="mb-3">
             <div *ngIf="isPreSale" class="text-right">
-                <div class="d-inline-block text-small bg-danger text-white p-2">先行販売あり<img class="ml-1 align-middle" src="/assets/images/icon/pre_arrows_white.svg" height="10"></div>
+                <div class="d-inline-block text-small bg-danger text-white p-2">先行販売あり<img class="ml-1 align-middle"
+                        src="/assets/images/icon/pre_arrows_white.svg" height="10"></div>
             </div>
-            <ul class="schedule bg-dark-gray">
+            <ul class="schedule bg-white text-dark-gray">
                 <li *ngFor="let date of dateList" class="text-center"
-                    [class.bg-success]="conditions.date === date.value" (click)="selectDate(date)">
-                    <div class="date p-2 text-white">
+                    [ngClass]="{ 'bg-success text-white': conditions.date === date.value }" 
+                    (click)="selectDate(date)">
+                    <div class="date p-2">
                         <p><span class="text-large">{{ date.display.month }}/{{ date.display.day }}</span><span
                                 class="text-x-small">({{ date.display.week }})</span></p>
                         <p class="text-small">{{ date.serviceDay }}</p>
@@ -30,10 +32,10 @@
             <input type="hidden" name="date" [(ngModel)]="conditions.date">
         </div>
         <div class="px-3">
-            <ul *ngIf="conditions.theater !==''" class="sort bg-dark-gray text-white d-flex align-items-center mb-3">
-                <li [class.bg-success]="conditions.sort === purchaseSort.Film" class="py-3 text-center"
+            <ul *ngIf="conditions.theater !==''" class="sort bg-white text-dark-gray d-flex align-items-center mb-3">
+                <li [ngClass]="{ 'bg-success text-white': conditions.sort === purchaseSort.Film }" class="py-3 text-center"
                     (click)="changeSort(purchaseSort.Film)">作品順</li>
-                <li [class.bg-success]="conditions.sort === purchaseSort.Time" class="py-3 text-center"
+                <li [ngClass]="{ 'bg-success text-white': conditions.sort === purchaseSort.Time }" class="py-3 text-center"
                     (click)="changeSort(purchaseSort.Time)">上映時間順</li>
             </ul>
             <div *ngIf="!isLoading && schedule">

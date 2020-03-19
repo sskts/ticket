@@ -15,7 +15,7 @@
                     <div class="row align-items-center">
                         <p class="col-md-4 py-2 text-md-right">カード番号</p>
                         <div class="col-md-8">
-                            <p class="text-small mb-2 text-dark-gray">※半角数字、ハイフン「-」なしで入力してください</p>
+                            <p class="text-small mb-2">※半角数字、ハイフン「-」なしで入力してください</p>
                             <input class="form-control"
                                 [class.validation]="creditForm.controls['cardNumber'].invalid && creditForm.controls['cardNumber'].touched"
                                 type="text" pattern="\d*" formControlName="cardNumber" id="cardNumber"
@@ -55,7 +55,7 @@
                     <div class="row align-items-center">
                         <p class="col-md-4 py-2 text-md-right">セキュリティーコード</p>
                         <div class="col-md-8">
-                            <p class="text-small mb-2 text-dark-gray">※半角数字で入力してください</p>
+                            <p class="text-small mb-2">※半角数字で入力してください</p>
                             <input class="form-control"
                                 [class.validation]="creditForm.controls['securityCode'].invalid && creditForm.controls['securityCode'].touched"
                                 type="text" pattern="\d*" formControlName="securityCode" autocomplete="off"

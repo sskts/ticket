@@ -1,5 +1,5 @@
 <div class="bg-white mb-3" *ngFor="let movie of schedule.movie" [class.d-none]="!hasDisplayPerformance(performances, movie)">
-    <div class="py-2 px-3">
+    <div class="py-2 px-3 bg-dark-gray text-white">
         <p class="font-weight-bold" [innerHtml]="movie.name"></p>        
         <p class="text-x-small d-flex align-items-center">
             <img class="mr-2" src="/assets/images/icon/time_gray.svg" width="12" height="12">{{ movie.running_time }}分
