@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.4.1 - 2020-03-21
+### Fixed
+ - 満席表示修正
+
 ## 3.4.0 - 2020-02-13
 ### Changed
  - スケジュール一覧をblobから取得へ変更
