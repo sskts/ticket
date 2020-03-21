@@ -25,12 +25,12 @@
                     <app-icon [iconName]="performance.getAvailability().icon" width="15" height="15"></app-icon>
                     {{ performance.getAvailability().text }}
                 </div>
-                <div *ngIf="!performance.isSalse() && performance.isBeforePeriod()" class="status">販売期間外</div>
-                <div *ngIf="!performance.isSalse() && performance.isAfterPeriod()" class="status">販売期間外</div>
-                <div *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()"
+                <div *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isBeforePeriod()" class="status">販売期間外</div>
+                <div *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isAfterPeriod()" class="status">販売期間外</div>
+                <div *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()"
                     class="status">窓口</div>
-                <div *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && !performance.isWindow()"
-                    class="status">予約不可</div>
+                <div *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free === 0"
+                    class="status">満席</div>
             </div>
             <div *ngIf="performance.time.late === 1" class="service">
                 <app-icon iconName="first-show-black" width="10" height="10"></app-icon>
