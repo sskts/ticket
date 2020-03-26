@@ -115,7 +115,7 @@ export class PurchaseIndexComponent implements OnInit {
             this.schedules = [];
             this.theaters = await this.masterService.searchSeller(
                 { typeOfs: [factory.organizationType.MovieTheater] },
-                { exclude: true, sort: false }
+                { exclude: true, sort: true }
             );
             const findResult = this.theaters.find(theater =>
                 theater.location !== undefined && theater.location.branchCode === this.conditions.theater);

@@ -4816,7 +4816,7 @@ var CinerinoService = /** @class */ (function () {
 /*!*******************************!*\
   !*** ./app/services/index.ts ***!
   \*******************************/
-/*! exports provided: AwsCognitoService, InAppBrowserTarget, CallNativeService, MaintenanceService, MemberService, MasterService, ReservationService, CinerinoService, CampaignService, PurchaseSort, SelectService, SaveType, StorageService, MemberType, UserService, UtilService */
+/*! exports provided: AwsCognitoService, CinerinoService, SaveType, StorageService, MemberType, UserService, UtilService, InAppBrowserTarget, CallNativeService, MaintenanceService, MemberService, MasterService, ReservationService, CampaignService, PurchaseSort, SelectService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
