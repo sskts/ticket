@@ -1042,7 +1042,7 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                     case 1:
                         _c.trys.push([1, 4, , 5]);
                         _a = this;
-                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: false })];
+                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: true })];
                     case 2:
                         _a.theaters = _c.sent();
                         // 会員プログラム取得

@@ -10,10 +10,10 @@
             <p class="text-small">{{ performance.screen.name }}</p>
             <div class="text-small">
                 <p *ngIf="performance.isSalse()">{{ performance.getAvailability().text }}</p>
-                <p *ngIf="!performance.isSalse() && performance.isBeforePeriod()">販売期間外</p>
-                <p *ngIf="!performance.isSalse() && performance.isAfterPeriod()">販売期間外</p>
-                <p *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()">窓口</p>
-                <p *ngIf="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && !performance.isWindow()">予約不可</p>
+                <p *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isBeforePeriod()">販売期間外</p>
+                <p *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isAfterPeriod()">販売期間外</p>
+                <p *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()">窓口</p>
+                <p *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free === 0">満席</p>
             </div>
         </div>
         <div class="w-50">
@@ -29,6 +29,7 @@
     </div>
     <div *ngIf="performance.time.late === 1" class="service first">
         <img src="/assets/images/icon/first_show_black.svg" width="10" height="10">
+    
     </div>
     <div *ngIf="performance.time.late === 2" class="service late">
         <img src="/assets/images/icon/late_show_black.svg" width="10" height="10">
