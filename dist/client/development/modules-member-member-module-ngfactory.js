@@ -6929,7 +6929,7 @@ var MemberEditProfileComponent = /** @class */ (function () {
                         this.profileForm = this.createForm();
                         this.isLoading = false;
                         _a = this;
-                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: false })];
+                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: true })];
                     case 1:
                         _a.theaters = _b.sent();
                         return [3 /*break*/, 3];

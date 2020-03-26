@@ -608,7 +608,7 @@ var PurchaseIndexComponent = /** @class */ (function () {
                         this.dateList = [];
                         this.schedules = [];
                         _a = this;
-                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: false })];
+                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: true })];
                     case 1:
                         _a.theaters = _c.sent();
                         findResult = this.theaters.find(function (theater) {
