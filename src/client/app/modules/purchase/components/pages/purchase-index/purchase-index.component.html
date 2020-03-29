@@ -1,14 +1,20 @@
 <div *ngIf="!isLoading && !maintenanceInfo.isMaintenance" [class]="theatreName">
-    <div class="p-3 input-group align-items-center">
-        <select class="form-control rounded" name="theater" [(ngModel)]="conditions.theater" (change)="changeTheater()">
-            <option value="">選択してください</option>
-            <option *ngFor="let theater of theaters" value="{{ theater.location.branchCode }}">
-                {{ theater.name.ja }}</option>
-        </select>
-        <div class="input-group-append">
-            <button class="btn btn-block p-2 ml-3 bg-white border border-gray" (click)="update()">
-                <img class="" src="/assets/images/icon/reload_gray.svg" width="24" height="24">
-            </button>
+    <div class="p-3">
+        <p class="text-small bg-danger text-white p-2 mb-3">
+            ※現在、新型コロナウイルス感染症の発生状況を踏まえ、座席指定チケットは、原則1席ずつ間隔を空けて、上映日前日の21時00分から販売させていただいております。
+        </p>
+        <div class="input-group align-items-center">
+            <select class="form-control rounded" name="theater" [(ngModel)]="conditions.theater"
+                (change)="changeTheater()">
+                <option value="">選択してください</option>
+                <option *ngFor="let theater of theaters" value="{{ theater.location.branchCode }}">
+                    {{ theater.name.ja }}</option>
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-block p-2 ml-3 bg-white border border-gray" (click)="update()">
+                    <img class="" src="/assets/images/icon/reload_gray.svg" width="24" height="24">
+                </button>
+            </div>
         </div>
     </div>
     <div *ngIf="dateList.length > 0">
@@ -19,8 +25,7 @@
             </div>
             <ul class="schedule bg-white text-dark-gray">
                 <li *ngFor="let date of dateList" class="text-center"
-                    [ngClass]="{ 'bg-success text-white': conditions.date === date.value }" 
-                    (click)="selectDate(date)">
+                    [ngClass]="{ 'bg-success text-white': conditions.date === date.value }" (click)="selectDate(date)">
                     <div class="date p-2">
                         <p><span class="text-large">{{ date.display.month }}/{{ date.display.day }}</span><span
                                 class="text-x-small">({{ date.display.week }})</span></p>
@@ -33,10 +38,10 @@
         </div>
         <div class="px-3">
             <ul *ngIf="conditions.theater !==''" class="sort bg-white text-dark-gray d-flex align-items-center mb-3">
-                <li [ngClass]="{ 'bg-success text-white': conditions.sort === purchaseSort.Film }" class="py-3 text-center"
-                    (click)="changeSort(purchaseSort.Film)">作品順</li>
-                <li [ngClass]="{ 'bg-success text-white': conditions.sort === purchaseSort.Time }" class="py-3 text-center"
-                    (click)="changeSort(purchaseSort.Time)">上映時間順</li>
+                <li [ngClass]="{ 'bg-success text-white': conditions.sort === purchaseSort.Film }"
+                    class="py-3 text-center" (click)="changeSort(purchaseSort.Film)">作品順</li>
+                <li [ngClass]="{ 'bg-success text-white': conditions.sort === purchaseSort.Time }"
+                    class="py-3 text-center" (click)="changeSort(purchaseSort.Time)">上映時間順</li>
             </ul>
             <div *ngIf="!isLoading && schedule">
                 <app-purchase-performance-film *ngIf="conditions.sort === purchaseSort.Film" [schedule]="schedule"

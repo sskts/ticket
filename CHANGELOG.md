@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.4.3 - 2020-03-27
+### Added
+ - スマホアプリコロナ対策文言追加
+
 ## 3.4.2 - 2020-03-26
 ### Changed
  - 劇場順変更
