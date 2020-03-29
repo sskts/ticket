@@ -128,8 +128,11 @@ export class PurchaseIndexComponent implements OnInit {
                 await this.createSchedule();
             }
         } catch (error) {
-            this.router.navigate(['/error', { redirect: '/purchase' }]);
             console.error(error);
+            this.utilService.openAlert({
+                title: 'エラー',
+                body: 'スケジュールの取得に失敗しました。'
+            });
         }
     }
 

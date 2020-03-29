@@ -1,25 +1,21 @@
 <div *ngIf="reservation.reservedTickets.length > 0" class="">
-    <ul class="bg-dark-gray text-white">
-        <li class="d-flex align-items-center p-2 border-bottom border-white">
-            <img class="mr-2" src="" width="18" height="18">
-            <p>
-                {{ reservation.reservationsFor[0].name.ja }}
-            </p>
+    
+    <ul class="bg-dark-gray text-white text-small container mw-100">
+        <li class="row align-items-center border-bottom border-white py-2">
+            <p class="col-md-4 text-md-right">作品名</p>
+            <p class="col-md-8">{{ reservation.reservationsFor[0].name.ja }}</p>
         </li>
-        <li class="d-flex align-items-center p-2 border-bottom border-white">
-            <img class="mr-2" src="" width="18" height="18">
-            <p>{{ moment(reservation.reservationsFor[0].coaInfo.dateJouei).format('YYYY/MM/DD') }} {{
+        <li class="row align-items-center border-bottom border-white py-2">
+            <p class="col-md-4 text-md-right">上映日時</p>
+            <p class="col-md-8">{{ moment(reservation.reservationsFor[0].coaInfo.dateJouei).format('YYYY/MM/DD (ddd)') }} {{
                 reservation.reservationsFor[0].startDate | timeFormat: reservation.reservationsFor[0].coaInfo.dateJouei
                 }}-{{ reservation.reservationsFor[0].endDate | timeFormat: reservation.reservationsFor[0].coaInfo.dateJouei
-                }}
-            </p>
+                }}</p>
         </li>
-        <li class="d-flex align-items-center p-2">
-            <img class="mr-2" src="" width="18" height="18">
-            <p>
-                {{ reservation.reservationsFor[0].superEvent.location.name.ja }} / {{ reservation.reservationsFor[0].location.name.ja
-            }}
-            </p>
+        <li class="row align-items-center py-2">
+            <p class="col-md-4 text-md-right">劇場 / スクリーン</p>
+            <p class="col-md-8">{{ reservation.reservationsFor[0].superEvent.location.name.ja }} / {{ reservation.reservationsFor[0].location.name.ja
+            }}</p>
         </li>
     </ul>
 

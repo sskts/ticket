@@ -16,9 +16,14 @@ import { AuthSignoutComponent } from './components/pages/auth-signout/auth-signo
 const routes: Routes = [
   {
     path: '',
+    children: [
+      { path: 'select', component: AuthSelectComponent }
+    ]
+  },
+  {
+    path: '',
     component: AuthBaseComponent,
     children: [
-      { path: 'select', component: AuthSelectComponent },
       { path: 'signin', component: AuthSigninComponent },
       { path: 'signout', component: AuthSignoutComponent },
       {

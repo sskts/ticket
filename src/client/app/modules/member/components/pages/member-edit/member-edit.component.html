@@ -2,25 +2,26 @@
     <p class="mb-3">会員情報の変更ができます</p>
     <div class="profile mb-4">
         <h2 class="text-center mb-3 text-large font-weight-bold">基本情報</h2>
-        <ul class="mb-3 bg-white">
-            <li class="p-3 border-bottom border-gray">
-                <app-icon class="mr-3" iconName="about-white" width="15" height="15"></app-icon>{{ user.data.userName }}
+        <ul class="mb-3 bg-white container mw-100">
+            <li class="row align-items-center py-2 border-bottom border-gray">
+                <p class="col-md-4 text-md-right text-small">ユーザーネーム</p>
+                <p class="col-md-8">{{ user.data.userName }}</p>
             </li>
-            <li class="p-3 border-bottom border-gray">
-                <app-icon class="mr-3" iconName="user-white" width="15" height="15"></app-icon>{{ user.getName() }}
+            <li class="row align-items-center py-2 border-bottom border-gray">
+                <p class="col-md-4 text-md-right text-small">お名前</p>
+                <p class="col-md-8">{{ user.getName() }}</p>
             </li>
-            <li class="p-3 border-bottom border-gray">
-                <app-icon class="mr-3" iconName="email-white" width="15" height="15"></app-icon>{{ user.data.profile?.email }}
+            <li class="row align-items-center py-2 border-bottom border-gray">
+                <p class="col-md-4 text-md-right text-small">メールアドレス</p>
+                <p class="col-md-8">{{ user.data.profile?.email }}</p>
             </li>
-            <li class="p-3 border-bottom border-gray">
-                <app-icon class="mr-3" iconName="telephone-white" width="15" height="15"></app-icon>{{ user.getTelephone() }}
+            <li class="row align-items-center py-2 border-bottom border-gray">
+                <p class="col-md-4 text-md-right text-small">電話番号</p>
+                <p class="col-md-8">{{ user.getTelephone() }}</p>
             </li>
-            <li class="p-3 border-bottom border-gray">
-                <app-icon class="mr-3" iconName="my-theater-white" width="15" height="15"></app-icon>{{ theaterName }}
-            </li>
-            <li class="p-3">
-                <app-icon class="mr-3" iconName="account-white" width="15" height="15"></app-icon>{{
-                user.getAccount(0)?.typeOfGood.accountNumber }}
+            <li class="row align-items-center py-2">
+                <p class="col-md-4 text-md-right text-small">よく行く劇場</p>
+                <p class="col-md-8">{{ theaterName }}</p>
             </li>
         </ul>
         <div class="buttons mx-auto text-center">
@@ -29,14 +30,14 @@
     </div>
     <div class="credit">
         <h2 class="text-center mb-3 text-large font-weight-bold">カード情報</h2>
-        <ul class="mb-3 bg-white">
-            <li class="p-3 border-bottom border-gray">
-                <app-icon class="mr-3" iconName="credit-no-white" width="15" height="15"></app-icon>{{
-                user.getCreditCard(0)?.cardNo }}
+        <ul class="mb-3 bg-white container mw-100">
+            <li class="row align-items-center py-2 border-bottom border-gray">
+                <p class="col-md-4 text-md-right text-small">カード番号</p>
+                <p class="col-md-8">{{ user.getCreditCard(0)?.cardNo }}</p>
             </li>
-            <li class="p-3">
-                <app-icon class="mr-3" iconName="credit-expire-white" width="15" height="15"></app-icon>{{
-                user.getCreditCard(0)?.expire }}
+            <li class="row align-items-center py-2">
+                <p class="col-md-4 text-md-right text-small">カード有効期限</p>
+                <p class="col-md-8">{{ user.getCreditCard(0)?.expire }}</p>
             </li>
         </ul>
         <div class="buttons mx-auto text-center">

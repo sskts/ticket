@@ -2,55 +2,46 @@
 
 <div class="menu w-100 bg-black text-white" [class.active]="isOpen">
     <ul *ngIf="isMember">
-        <li class="p-3 border-bottom border-white" routerLink="/" routerLinkActive="active" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="home-white" width="15" height="15"></app-icon>HOME画面
-        </li>
         <li class="p-3 border-bottom border-white" routerLink="/about" routerLinkActive="active" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="about-white" width="15" height="15"></app-icon>このアプリについて
+            <img class="mr-3" src="/assets/images/icon/about_white.svg" width="15" height="15">このアプリについて
         </li>
         <li class="p-3 border-bottom border-white" routerLink="/member/point/benefits" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="benefits-white" width="15" height="15"></app-icon>会員特典
+            <img class="mr-3" src="/assets/images/icon/benefits_white.svg" width="15" height="15">会員特典
         </li>
-        <!-- <li class="p-3 border-bottom border-white" routerLink="/member/edit" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="user-white" width="15" height="15"></app-icon>会員情報変更
-        </li> -->
         <li class="p-3 border-bottom border-white" routerLink="/policy" routerLinkActive="active" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="text-white" width="15" height="15"></app-icon>利用規約
+            <img class="mr-3" src="/assets/images/icon/text_white.svg" width="15" height="15">利用規約
         </li>
         <li class="p-3 border-bottom border-white" routerLink="/law" routerLinkActive="active" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="text-white" width="15" height="15"></app-icon>特定商取引法に基づく表記
+            <img class="mr-3" src="/assets/images/icon/text_white.svg" width="15" height="15">特定商取引法に基づく表記
         </li>
         <li class="p-3 border-bottom border-white" routerLink="/privacy" routerLinkActive="active" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="text-white" width="15" height="15"></app-icon>プライバシーポリシー
+            <img class="mr-3" src="/assets/images/icon/text_white.svg" width="15" height="15">プライバシーポリシー
         </li>
         <li class="p-3 border-bottom border-white" (click)="openWebBrowse(environment.PORTAL_SITE)">
-            <app-icon class="mr-3" iconName="external-link-white" width="15" height="15"></app-icon>シネマサンシャインポータルサイト
+            <img class="mr-3" src="/assets/images/icon/external_link_white.svg" width="15" height="15">シネマサンシャインポータルサイト
         </li>
     </ul>
     <ul *ngIf="!isMember">
-        <li class="p-3 border-bottom border-white" routerLink="/" routerLinkActive="active" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="home-white" width="15" height="15"></app-icon>HOME画面
-        </li>
         <li class="p-3 border-bottom border-white" routerLink="/about" routerLinkActive="active" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="about-white" width="15" height="15"></app-icon>このアプリについて
+            <img class="mr-3" src="/assets/images/icon/about_white.svg" width="15" height="15">このアプリについて
         </li>
         <li class="p-3 border-bottom border-white" routerLink="/policy" routerLinkActive="active" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="text-white" width="15" height="15"></app-icon>利用規約
+            <img class="mr-3" src="/assets/images/icon/text_white.svg" width="15" height="15">利用規約
         </li>
         <li class="p-3 border-bottom border-white" routerLink="/law" routerLinkActive="active" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="text-white" width="15" height="15"></app-icon>特定商取引法に基づく表記
+            <img class="mr-3" src="/assets/images/icon/text_white.svg" width="15" height="15">特定商取引法に基づく表記
         </li>
         <li class="p-3 border-bottom border-white" routerLink="/privacy" routerLinkActive="active" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="text-white" width="15" height="15"></app-icon>プライバシーポリシー
+            <img class="mr-3" src="/assets/images/icon/text_white.svg" width="15" height="15">プライバシーポリシー
         </li>
         <li class="p-3 border-bottom border-white" (click)="openWebBrowse(environment.PORTAL_SITE)">
-            <app-icon class="mr-3" iconName="external-link-white" width="15" height="15"></app-icon>シネマサンシャインポータルサイト
+            <img class="mr-3" src="/assets/images/icon/external_link_white.svg" width="15" height="15">シネマサンシャインポータルサイト
         </li>
         <li class="p-3 border-bottom border-white" routerLink="/benefits" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="benefits-white" width="15" height="15"></app-icon>会員特典 / 会員登録
+            <img class="mr-3" src="/assets/images/icon/benefits_white.svg" width="15" height="15">会員特典 / 会員登録
         </li>
         <li class="p-3 border-bottom border-white" routerLink="/auth/select" (click)="close.emit()">
-            <app-icon class="mr-3" iconName="login-white" width="15" height="15"></app-icon>ログイン
+            <img class="mr-3" src="/assets/images/icon/login_white.svg" width="15" height="15">ログイン
         </li>
     </ul>
 </div>

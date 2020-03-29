@@ -18,7 +18,6 @@ import { ConfirmModalComponent } from './components/parts/confirm-modal/confirm-
 import { ContentsComponent } from './components/parts/contents/contents.component';
 import { HeaderMenuComponent } from './components/parts/header-menu/header-menu.component';
 import { HeaderComponent } from './components/parts/header/header.component';
-import { IconComponent } from './components/parts/icon/icon.component';
 import { InformationModalComponent } from './components/parts/information-modal/information-modal.component';
 import { InformationComponent } from './components/parts/information/information.component';
 import { LoadingComponent } from './components/parts/loading/loading.component';
@@ -40,7 +39,6 @@ const components = [
   TutorialComponent,
   HeaderComponent,
   HeaderMenuComponent,
-  IconComponent,
   InformationComponent,
   LoadingComponent,
   MaintenanceComponent,
