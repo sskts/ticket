@@ -1,3 +1,8 @@
+export interface IScheduleData {
+    schedule: ISchedule[];
+    maintenance: { message?: string };
+}
+
 export interface ISchedule {
     date: string;
     name_service_day: string;
@@ -6,14 +11,14 @@ export interface ISchedule {
 
 export interface IMovie {
     sort_no: number;
-    movie_code: number;
+    movie_code: string;
     movie_short_code: string;
     movie_branch_code: string;
     name: string;
     ename: string;
     cname: string;
     joueihousiki: string;
-    comment: Comment;
+    comment: string;
     running_time: number;
     cm_time: number;
     official_site: string;
@@ -30,6 +35,7 @@ export interface IScreen {
 export interface ITime {
     start_time: string;
     end_time: string;
+    only_window_sale_start_time: string;
     online_display_start_day: string;
     rsv_start_day: string;
     rsv_start_time: string;
