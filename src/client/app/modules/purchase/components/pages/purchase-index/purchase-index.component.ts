@@ -1,13 +1,13 @@
 /**
  * PurchaseComponent
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { factory } from '@cinerino/api-javascript-client';
 import * as moment from 'moment';
 import { environment } from '../../../../../../environments/environment';
 import { object2query, sleep } from '../../../../../functions';
-import { ISchedule } from '../../../../../models/schedule';
+import { ISchedule, IScheduleData } from '../../../../../models/schedule';
 import {
     AwsCognitoService,
     CinerinoService,
@@ -46,7 +46,7 @@ interface IDate {
  * @class PurchaseIndexComponent
  * @implements OnInit
  */
-export class PurchaseIndexComponent implements OnInit {
+export class PurchaseIndexComponent implements OnInit, OnDestroy {
     public isLoading: boolean;
     public theaters: IMovieTheater[];
     public dateList: IDate[];
@@ -56,10 +56,14 @@ export class PurchaseIndexComponent implements OnInit {
     public error: string;
     public purchaseSort: typeof PurchaseSort;
     public isPreSale: boolean;
-    public maintenanceInfo: IConfirm;
     public isCOASchedule: boolean;
     public scheduleApiEndpoint?: string;
     public theatreName: string;
+    public maintenance: {
+        confirm?: IConfirm;
+        schedule?: { message?: string };
+    };
+    public scheduleTimer: any;
 
     constructor(
         public userService: UserService,
@@ -81,9 +85,10 @@ export class PurchaseIndexComponent implements OnInit {
     public async ngOnInit() {
         this.isLoading = true;
         this.isCOASchedule = false;
+        this.maintenance = {};
         try {
-            this.maintenanceInfo = await this.maintenanceService.confirm();
-            if (this.maintenanceInfo.isMaintenance) {
+            this.maintenance.confirm = await this.maintenanceService.confirm();
+            if (this.maintenance.confirm.isMaintenance) {
                 this.isLoading = false;
 
                 return;
@@ -105,6 +110,15 @@ export class PurchaseIndexComponent implements OnInit {
     }
 
     /**
+     * 破棄
+     */
+    public ngOnDestroy() {
+        if (this.scheduleTimer !== undefined) {
+            clearTimeout(this.scheduleTimer);
+        }
+    }
+
+    /**
      * 初期化
      */
     private async initialize() {
@@ -123,12 +137,18 @@ export class PurchaseIndexComponent implements OnInit {
                 this.conditions.theater = '';
             }
             if (this.conditions.theater !== '') {
-                this.schedules = await this.getSchedule();
+                const scheduleData = await this.getSchedule();
+                this.schedules = scheduleData.schedule;
+                this.maintenance.schedule = scheduleData.maintenance;
                 await this.createDateList();
                 await this.createSchedule();
             }
+            const time = 1000 * 60 * 10;
+            this.scheduleTimer = setTimeout(async () => {
+                await this.update();
+            }, time);
         } catch (error) {
-            this.router.navigate(['/error', { redirect: '/purchase' }]);
+            alert('スケジュールの取得に失敗しました');
             console.error(error);
         }
     }
@@ -144,10 +164,7 @@ export class PurchaseIndexComponent implements OnInit {
         }
         this.isLoading = true;
         try {
-            await this.cinerinoService.getServices();
-            this.schedules = await this.getSchedule();
-            await this.createDateList();
-            await this.createSchedule();
+            await this.initialize();
         } catch (error) {
             this.router.navigate(['/error', { redirect: '/purchase' }]);
             console.error(error);
@@ -185,6 +202,9 @@ export class PurchaseIndexComponent implements OnInit {
      */
     public async update() {
         this.isLoading = true;
+        if (this.scheduleTimer !== undefined) {
+            clearTimeout(this.scheduleTimer);
+        }
         try {
             await this.initialize();
         } catch (error) {
@@ -227,7 +247,7 @@ export class PurchaseIndexComponent implements OnInit {
     /**
      * スケジュール取得
      */
-    private async getSchedule() {
+    private async getSchedule(): Promise<IScheduleData> {
         const now = (await this.utilService.getServerTime()).date;
         const branchCode = this.conditions.theater;
         const theatreTable =
@@ -243,8 +263,8 @@ export class PurchaseIndexComponent implements OnInit {
             }>(`/api/config?date${moment().toISOString()}`)).scheduleApiEndpoint;
         }
         this.theatreName = theatreTableFindResult.name;
-        const url = `${this.scheduleApiEndpoint}/${theatreTableFindResult.name}/schedule/json/schedule.json?date=${now}`;
-        const json = await this.utilService.getJson<ISchedule[]>(url);
+        const url = `${this.scheduleApiEndpoint}/${theatreTableFindResult.name}/schedule.json?date=${now}`;
+        const json = await this.utilService.getJson<IScheduleData>(url);
         return json;
     }
 
@@ -320,5 +340,19 @@ export class PurchaseIndexComponent implements OnInit {
                 return 1;
             }
         });
+    }
+
+    /**
+     * メンテナンス判定
+     */
+    public isMaintenance(maintenanceType?: 'confirm' | 'schedule') {
+        const confirm = (this.maintenance.confirm && this.maintenance.confirm.isMaintenance);
+        const schedule = (this.maintenance.schedule && this.maintenance.schedule.message !== undefined);
+        if (maintenanceType === 'confirm') {
+            return confirm;
+        } else if (maintenanceType === 'schedule') {
+            return schedule;
+        }
+        return (confirm || schedule);
     }
 }
