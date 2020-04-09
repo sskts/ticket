@@ -1,10 +1,10 @@
 <app-page class="bg-02">
-    <div *ngIf="!isLoading && !isMaintenance()" [class]="theatreName">
+    <div *ngIf="!isLoading && !isMaintenance('confirm')" [class]="theatreName">
         <div class="inner">
             <p class="mb-x-small small-text" style="background-color: red; padding: 10px;">※現在、新型コロナウイルス感染症の発生状況を踏まえ、座席指定チケットは、原則1席ずつ間隔を空けて、上映日前日の21時00分から販売させていただいております。</p>
             <p class="read mb-middle small-text">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>
-            <ul class="conditions">
-                <li class="mb-small position-relative">
+            <div class="conditions">
+                <div class="mb-small position-relative">
                     <div class="control-label mb-x-small small-x-text text-light-gray">鑑賞劇場</div>
                     <select class="form-control" name="theater" [(ngModel)]="conditions.theater" (change)="changeTheater()">
                         <option value="">選択してください</option>
@@ -14,8 +14,12 @@
                     <div class="button-secondary small-button update-button small-text" (click)="update()">
                         <app-icon iconName="update-white" width="12" height="12"></app-icon> 更新
                     </div>
-                </li>
-                <li *ngIf="dateList.length > 0">
+                </div>
+                <div *ngIf="!isLoading && isMaintenance('schedule')">
+                    <h3 class="large-text mb-small">メンテナンスのお知らせ</h3>
+                    <p class="large-text" style="white-space:pre-wrap;" [innerHtml]="maintenance.schedule.message"></p>
+                </div>
+                <div *ngIf="dateList.length > 0 && !isMaintenance('schedule')">
                     <div class="control-label mb-x-small">
                         <span class="text-light-gray small-x-text">鑑賞日時</span>
                         <div *ngIf="isPreSale" class="preSale small-text text-red">先行販売 <app-icon iconName="arrow-red"
@@ -39,10 +43,10 @@
                         </ul>
                     </div>
                     <input type="hidden" name="date" [(ngModel)]="conditions.date">
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
-        <div class="inner">
+        <div *ngIf="!isMaintenance('schedule')" class="inner">
             <div *ngIf="dateList.length > 0">
                 <p *ngIf="conditions.date !== '' && conditions.theater !==''" class="text-center mb-x-small">{{
                     conditions.date | dateFormat:'YYYY年MM月DD日(ddd)' }}</p>
@@ -67,8 +71,6 @@
     <div *ngIf="!isLoading && isMaintenance('confirm')" class="inner">
         <app-maintenance [maintenanceInfo]="maintenance.confirm"></app-maintenance>
     </div>
-    <div *ngIf="!isLoading && isMaintenance('schedule')" class="inner">
-        <p class="large-text" style="white-space:pre-wrap;" [innerHtml]="maintenance.schedule.message"></p>
-    </div>
+
 </app-page>
 <app-loading [show]="isLoading"></app-loading>
