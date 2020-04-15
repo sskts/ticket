@@ -1,4 +1,4 @@
-<div *ngIf="!isLoading && !maintenanceInfo.isMaintenance" [class]="theatreName">
+<div *ngIf="!isLoading && !isMaintenance('confirm')" [class]="theatreName">
     <div class="p-3">
         <p class="text-small bg-danger text-white p-2 mb-3">
             ※現在、新型コロナウイルス感染症の発生状況を踏まえ、座席指定チケットは、原則1席ずつ間隔を空けて、上映日前日の21時00分から販売させていただいております。
@@ -17,7 +17,13 @@
             </div>
         </div>
     </div>
-    <div *ngIf="dateList.length > 0">
+    <div *ngIf="!isLoading && isMaintenance('schedule')" class="px-3">
+        <div class="bg-white p-3">
+            <h3 class="text-large mb-2">メンテナンスのお知らせ</h3>
+            <p style="white-space:pre-wrap;" [innerHtml]="maintenance.schedule.message"></p>
+        </div>
+    </div>
+    <div *ngIf="dateList.length > 0 && !isMaintenance('schedule')">
         <div class="mb-3">
             <div *ngIf="isPreSale" class="text-right">
                 <div class="d-inline-block text-small bg-danger text-white p-2">先行販売あり<img class="ml-1 align-middle"
@@ -53,7 +59,7 @@
             </div>
         </div>
     </div>
-    <div class="p-3" *ngIf="!isLoading && !schedule">
+    <div class="p-3" *ngIf="!isLoading && !schedule && !isMaintenance('schedule')">
         <div class="mb-2" *ngIf="conditions.theater === ''">鑑賞劇場が選択されていません。</div>
         <div class="mb-2" *ngIf="conditions.date === '' && conditions.theater !== '' && dateList.length === 0">
             上映作品がありません。</div>
@@ -62,7 +68,7 @@
         <div class="mb-2" *ngIf="conditions.theater !== '' && conditions.date !== ''">上映作品がありません。</div>
     </div>
 </div>
-<div *ngIf="!isLoading && maintenanceInfo.isMaintenance" class="py-4 px-3">
+<div *ngIf="!isLoading && isMaintenance('confirm')" class="py-4 px-3">
     <app-maintenance [maintenanceInfo]="maintenanceInfo"></app-maintenance>
 </div>
 

@@ -13,6 +13,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.4.5 - 2020-04-09
+### Fixed
+ - メンテナンス中も劇場選択を表示
+
+## 3.4.4 - 2020-04-03
+### Added
+ - スケジュールへメンテナンス追加
+
 ## 3.4.3 - 2020-03-27
 ### Added
  - スマホアプリコロナ対策文言追加
