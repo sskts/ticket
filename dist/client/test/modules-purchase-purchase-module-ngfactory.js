@@ -859,8 +859,13 @@ var PurchaseIndexComponent = /** @class */ (function () {
                         result = [];
                         today = moment__WEBPACK_IMPORTED_MODULE_3__(now).format('YYYYMMDD');
                         this.schedules.forEach(function (schedule) {
-                            var findResult = schedule.movie.find(function (m) { return m.screen.find(function (s) { return s.time.find(function (t) { return (moment__WEBPACK_IMPORTED_MODULE_3__(t.online_display_start_day) <= moment__WEBPACK_IMPORTED_MODULE_3__(today)
-                                && moment__WEBPACK_IMPORTED_MODULE_3__(schedule.date + " " + t.end_time, 'YYYYMMDD HHmm') > now); }) !== undefined; }) !== undefined; });
+                            var findResult = schedule.movie.find(function (m) { return m.screen.find(function (s) { return s.time.find(function (t) {
+                                var endDate = (t.start_time < t.end_time)
+                                    ? moment__WEBPACK_IMPORTED_MODULE_3__(schedule.date + " " + t.end_time, 'YYYYMMDD HHmm')
+                                    : moment__WEBPACK_IMPORTED_MODULE_3__(schedule.date + " " + t.end_time, 'YYYYMMDD HHmm').add(1, 'days');
+                                return (moment__WEBPACK_IMPORTED_MODULE_3__(t.online_display_start_day) <= moment__WEBPACK_IMPORTED_MODULE_3__(today)
+                                    && endDate > now);
+                            }) !== undefined; }) !== undefined; });
                             var preSale = schedule.movie.find(function (m) { return m.screen.find(function (s) { return s.time.find(function (t) {
                                 var rsvStartDate = moment__WEBPACK_IMPORTED_MODULE_3__(t.rsv_start_day + " " + t.rsv_start_time, 'YYYYMMDD HHmm');
                                 var startDate = moment__WEBPACK_IMPORTED_MODULE_3__(schedule.date + " " + t.start_time, 'YYYYMMDD HHmm');
