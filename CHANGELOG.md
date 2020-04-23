@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.4.6 - 2020-04-23
+### Changed
+ - 24時以降スケジュール対応
+
 ## 3.4.5 - 2020-04-09
 ### Fixed
  - メンテナンス中も劇場選択を表示
