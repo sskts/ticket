@@ -281,10 +281,13 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
         this.schedules.forEach((schedule) => {
             const findResult = schedule.movie.find(
                 m => m.screen.find(
-                    s => s.time.find(
-                        t => (moment(t.online_display_start_day) <= moment(today)
-                            && moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm') > now)
-                    ) !== undefined
+                    s => s.time.find(t => {
+                        const endDate = (t.start_time < t.end_time)
+                        ? moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm')
+                        : moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm').add(1, 'days');
+                        return (moment(t.online_display_start_day) <= moment(today)
+                            && endDate > now);
+                    }) !== undefined
                 ) !== undefined
             );
             const preSale = schedule.movie.find(
