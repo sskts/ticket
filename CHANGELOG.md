@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.4.7 - 2020-05-13
+### Changed
+ - コロナ対策文言変更
+
 ## 3.4.6 - 2020-04-23
 ### Changed
  - 24時以降スケジュール対応
