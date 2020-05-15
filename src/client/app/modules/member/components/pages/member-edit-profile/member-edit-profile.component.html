@@ -19,7 +19,7 @@
                     <input class="form-control"
                         [class.validation]="profileForm.controls['familyName'].invalid && profileForm.controls['familyName'].touched"
                         type="text" formControlName="familyName" autocomplete="family-name"
-                        placeholder="全角カタカナで入力してください">
+                        placeholder="（例）セイ">
 
                     <div
                         *ngIf="profileForm.controls['familyName'].invalid && profileForm.controls['familyName'].touched">
@@ -42,7 +42,7 @@
                     <input class="form-control"
                         [class.validation]="profileForm.controls['givenName'].invalid && profileForm.controls['givenName'].touched"
                         type="text" formControlName="givenName" autocomplete="given-name"
-                        placeholder="全角カタカナで入力してください">
+                        placeholder="（例）メイ">
 
                     <div
                         *ngIf="profileForm.controls['givenName'].invalid && profileForm.controls['givenName'].touched">
@@ -75,7 +75,7 @@
                     <p class="text-small mb-2">※半角数字、ハイフン「-」なしで入力してください</p>
                     <input class="form-control"
                         [class.validation]="profileForm.controls['telephone'].invalid && profileForm.controls['telephone'].touched"
-                        type="tel" formControlName="telephone" autocomplete="tel" placeholder="電話番号を入力してください">
+                        type="tel" formControlName="telephone" autocomplete="tel" placeholder="（例）電話番号">
                     <div class="mb-2"
                         *ngIf="profileForm.controls['telephone'].invalid && profileForm.controls['telephone'].touched">
                         <p *ngIf="profileForm.controls['telephone'].errors.required" class="text-danger mb-2">

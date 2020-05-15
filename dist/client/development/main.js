@@ -347,7 +347,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ɵ0 = function () { return __webpack_require__.e(/*! import() | modules-auth-auth-module-ngfactory */ "modules-auth-auth-module-ngfactory").then(__webpack_require__.bind(null, /*! ./modules/auth/auth.module.ngfactory */ "./app/modules/auth/auth.module.ngfactory.js")).then(function (m) { return m.AuthModuleNgFactory; }); }, ɵ1 = function () { return __webpack_require__.e(/*! import() | modules-purchase-purchase-module-ngfactory */ "modules-purchase-purchase-module-ngfactory").then(__webpack_require__.bind(null, /*! ./modules/purchase/purchase.module.ngfactory */ "./app/modules/purchase/purchase.module.ngfactory.js")).then(function (m) { return m.PurchaseModuleNgFactory; }); }, ɵ2 = function () { return Promise.all(/*! import() | modules-ticket-ticket-module-ngfactory */[__webpack_require__.e("common"), __webpack_require__.e("modules-ticket-ticket-module-ngfactory")]).then(__webpack_require__.bind(null, /*! ./modules/ticket/ticket.module.ngfactory */ "./app/modules/ticket/ticket.module.ngfactory.js")).then(function (m) { return m.TicketModuleNgFactory; }); }, ɵ3 = function () { return Promise.all(/*! import() | modules-member-member-module-ngfactory */[__webpack_require__.e("common"), __webpack_require__.e("modules-member-member-module-ngfactory")]).then(__webpack_require__.bind(null, /*! ./modules/member/member.module.ngfactory */ "./app/modules/member/member.module.ngfactory.js")).then(function (m) { return m.MemberModuleNgFactory; }); };
+var ɵ0 = function () { return __webpack_require__.e(/*! import() | modules-auth-auth-module-ngfactory */ "modules-auth-auth-module-ngfactory").then(__webpack_require__.bind(null, /*! ./modules/auth/auth.module.ngfactory */ "./app/modules/auth/auth.module.ngfactory.js")).then(function (m) { return m.AuthModuleNgFactory; }); }, ɵ1 = function () { return Promise.all(/*! import() | modules-purchase-purchase-module-ngfactory */[__webpack_require__.e("common"), __webpack_require__.e("modules-purchase-purchase-module-ngfactory")]).then(__webpack_require__.bind(null, /*! ./modules/purchase/purchase.module.ngfactory */ "./app/modules/purchase/purchase.module.ngfactory.js")).then(function (m) { return m.PurchaseModuleNgFactory; }); }, ɵ2 = function () { return Promise.all(/*! import() | modules-ticket-ticket-module-ngfactory */[__webpack_require__.e("common"), __webpack_require__.e("modules-ticket-ticket-module-ngfactory")]).then(__webpack_require__.bind(null, /*! ./modules/ticket/ticket.module.ngfactory */ "./app/modules/ticket/ticket.module.ngfactory.js")).then(function (m) { return m.TicketModuleNgFactory; }); }, ɵ3 = function () { return Promise.all(/*! import() | modules-member-member-module-ngfactory */[__webpack_require__.e("common"), __webpack_require__.e("modules-member-member-module-ngfactory")]).then(__webpack_require__.bind(null, /*! ./modules/member/member.module.ngfactory */ "./app/modules/member/member.module.ngfactory.js")).then(function (m) { return m.MemberModuleNgFactory; }); };
 var appRoutes = [
     { path: '', redirectTo: '/root', pathMatch: 'full' },
     {
@@ -3317,12 +3317,12 @@ var InformationComponent = /** @class */ (function () {
      */
     InformationComponent.prototype.getInformation = function () {
         return [
-            {
-                id: '2018071700',
-                description: 'シネマサンシャインアプリがパワーアップ!<br>会員登録をしてお得に映画鑑賞しよう。',
-                images: [],
-                button: { label: '会員登録はこちらから', link: '/benefits' }
-            }
+        // {
+        //     id: '2018071700',
+        //     description: 'シネマサンシャインアプリがパワーアップ!<br>会員登録をしてお得に映画鑑賞しよう。',
+        //     images: [],
+        //     button: { label: '会員登録はこちらから', link: '/benefits' }
+        // }
         ];
     };
     /**
