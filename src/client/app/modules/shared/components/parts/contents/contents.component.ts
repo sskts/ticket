@@ -49,7 +49,6 @@ export class ContentsComponent implements OnInit, OnDestroy {
                 || type === 'email'
                 || type === 'tel') {
                 this.isFocus = true;
-                console.log('キーボードが表示', event);
             }
         };
         this.onDOMFocusOut = (_event: Event) => {
