@@ -2,6 +2,7 @@
  * HeaderMenuComponent
  */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { environment } from '../../../../../../environments/environment';
 import { CallNativeService, InAppBrowserTarget } from '../../../../../services';
 
 @Component({
@@ -13,6 +14,7 @@ export class HeaderMenuComponent implements OnInit {
     @Input() public isMember: boolean;
     @Input() public isOpen: boolean;
     @Output() public close: EventEmitter<{}> = new EventEmitter();
+    public environment = environment;
 
     constructor(
         private callNative: CallNativeService
