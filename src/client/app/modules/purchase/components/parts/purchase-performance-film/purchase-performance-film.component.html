@@ -2,7 +2,7 @@
     <div class="py-2 px-3 bg-dark-gray text-white">
         <p class="font-weight-bold" [innerHtml]="movie.name"></p>        
         <p class="text-x-small d-flex align-items-center">
-            <img class="mr-2" src="/assets/images/icon/time_gray.svg" width="12" height="12">{{ movie.running_time }}分
+            <img class="mr-2" src="/assets/images/icon/time_white.svg" width="12" height="12">{{ movie.running_time }}分
         </p>
         <p class="text-x-small"><span *ngIf="movie.comment" [innerHtml]="movie.comment"></span><span *ngIf="movie.comment && movie.ename">&nbsp;/&nbsp;</span><span *ngIf="movie.ename" [innerHtml]="movie.ename"></span></p>
     </div>
