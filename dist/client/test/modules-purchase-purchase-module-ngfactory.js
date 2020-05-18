@@ -622,6 +622,7 @@ var PurchaseIndexComponent = /** @class */ (function () {
                         });
                         if (findResult === undefined) {
                             this.conditions.theater = '';
+                            this.maintenance.schedule = undefined;
                         }
                         if (!(this.conditions.theater !== '')) return [3 /*break*/, 5];
                         return [4 /*yield*/, this.getSchedule()];
@@ -673,9 +674,6 @@ var PurchaseIndexComponent = /** @class */ (function () {
                     case 0:
                         this.selectService.data.purchase.theater = this.conditions.theater;
                         this.selectService.save();
-                        if (this.conditions.theater === '') {
-                            return [2 /*return*/];
-                        }
                         this.isLoading = true;
                         _a.label = 1;
                     case 1:

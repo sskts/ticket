@@ -135,6 +135,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 theater.location !== undefined && theater.location.branchCode === this.conditions.theater);
             if (findResult === undefined) {
                 this.conditions.theater = '';
+                this.maintenance.schedule = undefined;
             }
             if (this.conditions.theater !== '') {
                 const scheduleData = await this.getSchedule();
@@ -162,9 +163,6 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
     public async changeTheater() {
         this.selectService.data.purchase.theater = this.conditions.theater;
         this.selectService.save();
-        if (this.conditions.theater === '') {
-            return;
-        }
         this.isLoading = true;
         try {
             await this.initialize();

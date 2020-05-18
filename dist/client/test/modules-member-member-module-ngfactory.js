@@ -8222,29 +8222,27 @@ var PointHistoryListComponent = /** @class */ (function () {
     function PointHistoryListComponent() {
     }
     PointHistoryListComponent.prototype.ngOnInit = function () {
+        console.log(this.action);
         var transactionType = _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["factory"].pecorino.transactionType;
         this.date = moment__WEBPACK_IMPORTED_MODULE_2__(this.action.endDate).format('YYYY年MM月DD日 HH:mm');
         this.description = (this.action.description !== undefined)
             ? this.action.description.replace(/\,/g, '<br>')
             : '';
-        if (this.action.purpose.typeOf === transactionType.Deposit
-            && this.action.amount < 0) {
-            this.circle = 'blue';
-            this.amount = String(this.action.amount);
+        if (this.action.purpose.typeOf === transactionType.Deposit) {
+            this.circle = (this.action.amount < 0) ? 'blue' : '';
+            this.amount = (this.action.amount < 0) ? String(this.action.amount) : "+" + this.action.amount;
+            return;
         }
-        else if (this.action.purpose.typeOf === transactionType.Deposit
-            && this.action.amount > 0) {
-            this.amount = "+" + this.action.amount;
-        }
-        else if (this.action.purpose.typeOf === transactionType.Transfer
-            && this.action.fromLocation.accountNumber === this.accountNumber) {
+        if (this.action.purpose.typeOf === transactionType.Transfer) {
+            var isMySelf = this.action.fromLocation.accountNumber === this.accountNumber;
             this.circle = 'blue';
-            this.amount = String(this.action.amount * -1);
+            this.amount = (isMySelf) ? String(this.action.amount * -1) : String(this.action.amount);
+            return;
         }
-        else if (this.action.purpose.typeOf === transactionType.Transfer
-            && this.action.fromLocation.accountNumber !== this.accountNumber) {
-            this.circle = 'blue';
-            this.amount = String(this.action.amount);
+        if (this.action.purpose.typeOf === transactionType.Withdraw) {
+            this.circle = (this.action.amount > 0) ? 'blue' : '';
+            this.amount = (this.action.amount > 0) ? String(this.action.amount * -1) : String(this.action.amount);
+            return;
         }
     };
     return PointHistoryListComponent;
