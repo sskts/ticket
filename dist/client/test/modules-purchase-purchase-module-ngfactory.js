@@ -559,7 +559,7 @@ var PurchaseIndexComponent = /** @class */ (function () {
                         this.maintenance = {};
                         _b.label = 1;
                     case 1:
-                        _b.trys.push([1, 4, , 5]);
+                        _b.trys.push([1, 6, , 7]);
                         _a = this.maintenance;
                         return [4 /*yield*/, this.maintenanceService.confirm()];
                     case 2:
@@ -569,21 +569,28 @@ var PurchaseIndexComponent = /** @class */ (function () {
                             return [2 /*return*/];
                         }
                         this.conditions = this.selectService.data.purchase;
-                        if (this.userService.isMember() && this.conditions.theater === '') {
+                        if (!this.userService.isMember()) return [3 /*break*/, 4];
+                        // 会員
+                        return [4 /*yield*/, this.userService.updateAccount()];
+                    case 3:
+                        // 会員
+                        _b.sent();
+                        if (this.conditions.theater === '') {
                             theater = this.userService.getWellGoTheaterCode();
                             this.conditions.theater = theater !== undefined ? theater : '';
                         }
-                        return [4 /*yield*/, this.initialize()];
-                    case 3:
+                        _b.label = 4;
+                    case 4: return [4 /*yield*/, this.initialize()];
+                    case 5:
                         _b.sent();
                         localStorage.removeItem('schedule');
-                        return [3 /*break*/, 5];
-                    case 4:
+                        return [3 /*break*/, 7];
+                    case 6:
                         error_1 = _b.sent();
                         this.router.navigate(['/error', { redirect: '/purchase' }]);
                         console.error('PurchaseComponent.ngOnInit', error_1);
-                        return [3 /*break*/, 5];
-                    case 5:
+                        return [3 /*break*/, 7];
+                    case 7:
                         this.isLoading = false;
                         return [2 /*return*/];
                 }

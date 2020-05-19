@@ -94,10 +94,13 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 return;
             }
             this.conditions = this.selectService.data.purchase;
-            if (this.userService.isMember() && this.conditions.theater === '') {
+            if (this.userService.isMember()) {
                 // 会員
-                const theater = this.userService.getWellGoTheaterCode();
-                this.conditions.theater = theater !== undefined ? theater : '';
+                await this.userService.updateAccount();
+                if (this.conditions.theater === '') {
+                    const theater = this.userService.getWellGoTheaterCode();
+                    this.conditions.theater = theater !== undefined ? theater : '';
+                }
             }
             await this.initialize();
             localStorage.removeItem('schedule');
@@ -281,8 +284,8 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 m => m.screen.find(
                     s => s.time.find(t => {
                         const endDate = (t.start_time < t.end_time)
-                        ? moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm')
-                        : moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm').add(1, 'days');
+                            ? moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm')
+                            : moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm').add(1, 'days');
                         return (moment(t.online_display_start_day) <= moment(today)
                             && endDate > now);
                     }) !== undefined

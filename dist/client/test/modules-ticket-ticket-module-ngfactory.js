@@ -3832,18 +3832,26 @@ var TicketIndexComponent = /** @class */ (function () {
                         this.reservation.isMember = this.user.isMember();
                         _b.label = 1;
                     case 1:
-                        _b.trys.push([1, 3, , 4]);
+                        _b.trys.push([1, 5, , 6]);
+                        if (!this.user.isMember()) return [3 /*break*/, 3];
+                        // 会員
+                        return [4 /*yield*/, this.user.updateAccount()];
+                    case 2:
+                        // 会員
+                        _b.sent();
+                        _b.label = 3;
+                    case 3:
                         _a = this;
                         return [4 /*yield*/, this.reservation.getReservationByAppreciationDayOrder()];
-                    case 2:
+                    case 4:
                         _a.reservations = _b.sent();
-                        return [3 /*break*/, 4];
-                    case 3:
+                        return [3 /*break*/, 6];
+                    case 5:
                         err_1 = _b.sent();
                         this.router.navigate(['/error', { redirect: '/ticket' }]);
                         console.log(err_1);
-                        return [3 /*break*/, 4];
-                    case 4:
+                        return [3 /*break*/, 6];
+                    case 6:
                         this.isLoading = false;
                         return [2 /*return*/];
                 }
