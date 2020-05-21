@@ -1,13 +1,13 @@
-<app-page class="bg-02">
-    <div class="inner position-center">
-        <p class="read text-center mb-middle">
-            ログアウトします。
-            <br>再びログインする際にユーザーネームとパスワードをご入力いただきます。
-        </p>
+<div class="py-4 px-3">
+    <h2 class="text-center mb-3 text-large font-weight-bold">ログアウト</h2>
+    <p class="mb-4">
+        ログアウトします。
+        <br>再びログインする際にユーザーネームとパスワードをご入力いただきます。
+    </p>
 
-        <div>
-            <button type="button" class="button button-primary button-block center" (click)="signOut()">ログアウト</button>
-        </div>
+    <div class="buttons mx-auto text-center">
+        <button type="submit" [disabled]="isLoading" (click)="signOut()"
+            class="btn btn-primary btn-block py-3 mb-3">ログアウト</button>
     </div>
-</app-page>
+</div>
 <app-loading [show]="isLoading"></app-loading>

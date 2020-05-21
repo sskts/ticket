@@ -2,7 +2,11 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
-import { CinerinoService, UserService } from '../../../../../services';
+import { BsModalService } from 'ngx-bootstrap';
+import { CinerinoService, UserService, UtilService } from '../../../../../services';
+import {
+    CreditcardSecurityCodeModalComponent
+ } from '../../../../shared/components/parts/security-code-modal/security-code-modal.component';
 
 @Component({
     selector: 'app-auth-register-credit',
@@ -18,14 +22,15 @@ export class AuthRegisterCreditComponent implements OnInit {
     public creditForm: FormGroup;
     public isLoading: boolean;
     public securityCodeModal: boolean;
-    public creditCardAlertModal: boolean;
 
     constructor(
+        private modal: BsModalService,
         private router: Router,
         private elementRef: ElementRef,
         private formBuilder: FormBuilder,
         private user: UserService,
-        private cinerino: CinerinoService
+        private cinerino: CinerinoService,
+        private utilService: UtilService
     ) { }
 
     /**
@@ -39,7 +44,6 @@ export class AuthRegisterCreditComponent implements OnInit {
             month: []
         };
         this.creditForm = this.createForm();
-        this.creditCardAlertModal = false;
         this.isLoading = false;
     }
 
@@ -119,7 +123,10 @@ export class AuthRegisterCreditComponent implements OnInit {
         } catch (err) {
             console.error(err);
             // クレジットカード処理失敗
-            this.creditCardAlertModal = true;
+            this.utilService.openAlert({
+                title: 'エラーが発生しました',
+                body: `入力内容をご確認ください。`
+            });
             this.creditForm.controls.cardNumber.setValue('');
             this.creditForm.controls.securityCode.setValue('');
             this.creditForm.controls.holderName.setValue('');
@@ -134,6 +141,16 @@ export class AuthRegisterCreditComponent implements OnInit {
     public async signOut() {
         await this.cinerino.getServices();
         await this.cinerino.signOut();
+    }
+
+    /**
+     * セキュリティコード詳細表示
+     */
+    public openSecurityCode(event: Event) {
+        event.preventDefault();
+        this.modal.show(CreditcardSecurityCodeModalComponent, {
+            class: 'modal-dialog-centered'
+        });
     }
 
 }

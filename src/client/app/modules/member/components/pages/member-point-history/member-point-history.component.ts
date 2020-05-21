@@ -36,10 +36,9 @@ export class MemberPointHistoryComponent implements OnInit {
                 accountNumber: this.user.data.accounts[0].typeOfGood.accountNumber
             });
             this.accountMoneyTransferActions = result.data;
-            console.log(this.accountMoneyTransferActions);
-        } catch (err) {
+        } catch (error) {
+            console.error(error);
             this.router.navigate(['/error', { redirect: '/member/point/history' }]);
-            console.log('MemberPointHistoryComponent.ngOnInit', err);
         }
         this.isLoading = false;
     }

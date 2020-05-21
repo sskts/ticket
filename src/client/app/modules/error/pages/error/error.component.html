@@ -1,11 +1,11 @@
-<app-page>
-    <div class="inner position-center">
-        <div class="text-center mb-middle">
-            <img src="/assets/images/error/off_line.svg" width="100" height="75">
-        </div>
-        <p class="large-text text-center mb-small">読み込みができません。</p>
-        <p class="text-center mb-middle">回線の状態を確認して
-            <br>再度読み込みを行ってください</p>
-        <button type="button" class="button button-primary button-block center" (click)="connect()">再度読み込み</button>
+<div class="py-5 px-3">
+    <div class="text-center mb-3">
+        <img src="/assets/images/error/off_line.svg" width="100" height="75">
     </div>
-</app-page>
+    <p class="text-large text-center mb-3">エラーが発生しました</p>
+    <p class="text-center mb-4">回線の状態を確認して
+        <br>再度読み込みを行ってください</p>
+    <div class="buttons mx-auto text-center">
+        <button type="button" class="btn btn-primary btn-block py-3" (click)="connect()">再度読み込み</button>
+    </div>
+</div>

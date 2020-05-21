@@ -2,7 +2,11 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
-import { UserService } from '../../../../../services';
+import { BsModalService } from 'ngx-bootstrap';
+import { UserService, UtilService } from '../../../../../services';
+import {
+    CreditcardSecurityCodeModalComponent
+} from '../../../../shared/components/parts/security-code-modal/security-code-modal.component';
 
 @Component({
     selector: 'app-member-edit-credit',
@@ -15,16 +19,16 @@ export class MemberEditCreditComponent implements OnInit {
         year: string[];
         month: string[];
     };
-    public paymentForm: FormGroup;
+    public creditForm: FormGroup;
     public isLoading: boolean;
-    public securityCodeModal: boolean;
-    public creditCardAlertModal: boolean;
 
     constructor(
+        private modal: BsModalService,
         private router: Router,
         private elementRef: ElementRef,
         private formBuilder: FormBuilder,
-        private user: UserService
+        private user: UserService,
+        private utilService: UtilService
     ) { }
 
     /**
@@ -37,7 +41,7 @@ export class MemberEditCreditComponent implements OnInit {
             year: [],
             month: []
         };
-        this.paymentForm = this.createForm();
+        this.creditForm = this.createForm();
     }
 
     /**
@@ -76,13 +80,13 @@ export class MemberEditCreditComponent implements OnInit {
      */
     public async onSubmit() {
         this.isLoading = true;
-        if (this.paymentForm.invalid) {
+        if (this.creditForm.invalid) {
             // フォームのステータス変更
-            this.paymentForm.controls.cardNumber.markAsTouched();
-            this.paymentForm.controls.cardExpirationMonth.markAsTouched();
-            this.paymentForm.controls.cardExpirationYear.markAsTouched();
-            this.paymentForm.controls.securityCode.markAsTouched();
-            this.paymentForm.controls.holderName.markAsTouched();
+            this.creditForm.controls.cardNumber.markAsTouched();
+            this.creditForm.controls.cardExpirationMonth.markAsTouched();
+            this.creditForm.controls.cardExpirationYear.markAsTouched();
+            this.creditForm.controls.securityCode.markAsTouched();
+            this.creditForm.controls.holderName.markAsTouched();
             setTimeout(() => {
                 const element: HTMLElement = this.elementRef.nativeElement;
                 const validation = <HTMLElement>element.querySelector('.validation');
@@ -102,10 +106,10 @@ export class MemberEditCreditComponent implements OnInit {
         try {
             // GMOトークン取得
             const gmoTokenObject = await this.user.getGmoObject({
-                cardno: this.paymentForm.controls.cardNumber.value,
-                expire: this.paymentForm.controls.cardExpirationYear.value + this.paymentForm.controls.cardExpirationMonth.value,
-                securitycode: this.paymentForm.controls.securityCode.value,
-                holdername: this.paymentForm.controls.holderName.value
+                cardno: this.creditForm.controls.cardNumber.value,
+                expire: this.creditForm.controls.cardExpirationYear.value + this.creditForm.controls.cardExpirationMonth.value,
+                securitycode: this.creditForm.controls.securityCode.value,
+                holdername: this.creditForm.controls.holderName.value
             });
 
             // 会員 クレジットカード情報保存
@@ -115,11 +119,24 @@ export class MemberEditCreditComponent implements OnInit {
             console.error(err);
             // クレジットカード処理失敗
             this.isLoading = false;
-            this.creditCardAlertModal = true;
-            this.paymentForm.controls.cardNumber.setValue('');
-            this.paymentForm.controls.securityCode.setValue('');
-            this.paymentForm.controls.holderName.setValue('');
+            this.creditForm.controls.cardNumber.setValue('');
+            this.creditForm.controls.securityCode.setValue('');
+            this.creditForm.controls.holderName.setValue('');
+            this.utilService.openAlert({
+                title: 'エラーが発生しました',
+                body: '入力内容をご確認ください。'
+            });
         }
+    }
+
+    /**
+     * セキュリティコード詳細表示
+     */
+    public openSecurityCode(event: Event) {
+        event.preventDefault();
+        this.modal.show(CreditcardSecurityCodeModalComponent, {
+            class: 'modal-dialog-centered'
+        });
     }
 
 }

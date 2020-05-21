@@ -1,26 +1,21 @@
-<app-page>
-    <div class="inner center">
-        <div class="logo text-center mb-x-large">
-            <img src="/assets/images/common/logo_text.svg">
+<div id="contents" class="scroll bg">
+    <div class="h-100">
+        <div class="px-3 d-flex justify-content-center align-items-center h-100">
+            <div class="w-100">
+                <div class="logo text-center mb-4">
+                    <img src="/assets/images/common/logo_text.svg">
+                </div>
+                <p class="text-center text-white mb-4">
+                    アプリの始め方を選択してください。
+                </p>
+                <div class="buttons mx-auto text-center">
+                    <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="signIn()">ログイン</button>
+                    <button type="button" class="btn btn-primary btn-block py-3 mb-3" routerLink="/auth/register">新規登録</button>
+                    <button type="button" class="btn btn-primary btn-block py-3" (click)="start()">会員登録せずにチケット購入する</button>
+                </div>
+            </div>
         </div>
-        <p class="read text-center mb-large">
-            アプリの始め方を選択してください。
-        </p>
-
-        <div class="mb-xx-large">
-            <button type="button" class="button button-primary button-block center" routerLink="/auth/register">
-                新規会員（年会費500円）
-            </button>
-        </div>
-        <div class="buttons">
-            <p class="mb-small text-center">
-                <a (click)="signIn()">ログイン</a>
-            </p>
-
-            <p class="text-center">
-                <a (click)="start()">一部機能を無料で使う</a>
-            </p>
-        </div>
+        <app-loading [show]="isLoading"></app-loading>
     </div>
-</app-page>
-<app-loading [show]="isLoading"></app-loading>
+</div>
+

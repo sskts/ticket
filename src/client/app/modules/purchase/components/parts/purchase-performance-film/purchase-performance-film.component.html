@@ -1,28 +1,26 @@
-<div class="mb-small" *ngFor="let movie of schedule.movie" [class.d-none]="!hasDisplayPerformance(performances, movie)">
-    <div class="info">
+<div class="bg-white mb-3" *ngFor="let movie of schedule.movie" [class.d-none]="!hasDisplayPerformance(performances, movie)">
+    <div class="py-2 px-3 bg-dark-gray text-white">
         <p class="font-weight-bold" [innerHtml]="movie.name"></p>        
-        <p class="date small-x-text text-light-gray">
-            <app-icon iconName="time-gray" width="15" height="15"></app-icon>
-            {{ movie.running_time }}分
+        <p class="text-x-small d-flex align-items-center">
+            <img class="mr-2" src="/assets/images/icon/time_white.svg" width="12" height="12">{{ movie.running_time }}分
         </p>
-        <p class="small-x-text"><span *ngIf="movie.comment" [innerHtml]="movie.comment"></span><span *ngIf="movie.comment && movie.ename">&nbsp;/&nbsp;</span><span *ngIf="movie.ename" [innerHtml]="movie.ename"></span></p>
+        <p class="text-x-small"><span *ngIf="movie.comment" [innerHtml]="movie.comment"></span><span *ngIf="movie.comment && movie.ename">&nbsp;/&nbsp;</span><span *ngIf="movie.ename" [innerHtml]="movie.ename"></span></p>
     </div>
-    <div class="performances">
-        <div class="performance" *ngFor="let performance of filterPerformancebyMovie(performances, movie)"
+    <div class="performances border-top border-light-gray px-2">
+        <div *ngFor="let performance of filterPerformancebyMovie(performances, movie)"
+        class="performance position-relative p-2 border-bottom border-light-gray d-flex align-items-center"
             [ngClass]="(performance.isSalse()) ? performance.getAvailability().className : ''">
-            <div class="date">
-                <div class="mb-xx-small text-center">
-                    <strong class="large-text">{{ performance.getTime('start') }}</strong>
+            <div class="w-60">
+                <div class="mb-2">
+                    <span class="font-weight-bold text-large">{{ performance.getTime('start') }}</span> ～ {{ performance.getTime('end') }}
                 </div>
-                <div class="text-center">
-                    <span>～ {{ performance.getTime('end') }}</span>
-                </div>
+                <div class="text-small">{{ performance.screen.name }}</div>
             </div>
-            <div class="screen small-x-text">{{ performance.screen.name }}</div>
-            <div class="button text-center"
+            
+            <div class="w-40 btn btn-block py-3 text-white"
                 (click)="(performance.isSalse()) ? select.emit({id: performance.createId()}) : null;">
                 <div *ngIf="performance.isSalse()" class="status">
-                    <app-icon [iconName]="performance.getAvailability().icon" width="15" height="15"></app-icon>
+                    <img [src]="performance.getAvailability().image" width="15" height="15" class="mr-2">
                     {{ performance.getAvailability().text }}
                 </div>
                 <div *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isBeforePeriod()" class="status">販売期間外</div>
@@ -32,11 +30,11 @@
                 <div *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free === 0"
                     class="status">満席</div>
             </div>
-            <div *ngIf="performance.time.late === 1" class="service">
-                <app-icon iconName="first-show-black" width="10" height="10"></app-icon>
+            <div *ngIf="performance.time.late === 1" class="service first">
+                <img src="/assets/images/icon/first_show_black.svg" width="10" height="10">
             </div>
-            <div *ngIf="performance.time.late === 2" class="service">
-                <app-icon iconName="late-show-black" width="10" height="10"></app-icon>
+            <div *ngIf="performance.time.late === 2" class="service late">
+                <img src="/assets/images/icon/late_show_black.svg" width="10" height="10">
             </div>
         </div>
     </div>

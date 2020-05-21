@@ -445,4 +445,11 @@ export class UserService {
         }
         return this.getTheaterCode(0);
     }
+
+    /**
+     * 利用可能ポイント取得
+     */
+    public getAvailableBalance() {
+        return this.data.accounts[0].typeOfGood.availableBalance;
+    }
 }

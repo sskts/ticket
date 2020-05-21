@@ -1,0 +1,7 @@
+<div class="p-3 scroll-vertical">
+    <div *ngIf="title" class="mb-3 text-large text-center">{{ title }}</div>
+    <div class="mb-4 text-md-center content" [innerHTML]="body"></div>
+    <div class="buttons mx-auto text-center">
+        <button type="button" class="btn btn-outline-secondary btn-block py-3" (click)="modal.hide()">閉じる</button>
+    </div>
+</div>

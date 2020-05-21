@@ -1,13 +1,18 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
+import { BsModalService } from 'ngx-bootstrap';
+import { AlertModalComponent } from '../modules/shared/components/parts/alert-modal/alert-modal.component';
+import { ConfirmModalComponent } from '../modules/shared/components/parts/confirm-modal/confirm-modal.component';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UtilService {
 
-    constructor(private http: HttpClient) { }
+    constructor(
+        private modal: BsModalService,
+        private http: HttpClient) { }
 
     /**
      * スリープ
@@ -67,6 +72,39 @@ export class UtilService {
         const result = await this.http.get<string>(url, { ...options, responseType: (<any>'text') }).toPromise();
 
         return result;
+    }
+
+    /**
+     * 警告モーダル表示
+     */
+    public openAlert(args: {
+        title?: string;
+        body?: string;
+    }) {
+        const title = args.title;
+        const body = args.body;
+        const modalRef = this.modal.show(AlertModalComponent, {
+            initialState: { title, body },
+            class: 'modal-dialog-centered'
+        });
+        modalRef.content.modal = modalRef;
+    }
+
+    /**
+     * 確認モーダル表示
+     */
+    public openConfirm(args: {
+        title: string;
+        body: string;
+        cb: Function
+    }) {
+        const title = args.title;
+        const body = args.body;
+        const cb = args.cb;
+        this.modal.show(ConfirmModalComponent, {
+            initialState: { title, body, cb },
+            class: 'modal-dialog-centered'
+        });
     }
 
 }

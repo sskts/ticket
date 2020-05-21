@@ -45,10 +45,13 @@ export class TicketIndexComponent implements OnInit {
         };
         this.config = {
             pagination: pagination,
-            autoHeight: true
         };
         this.reservation.isMember = this.user.isMember();
         try {
+            if (this.user.isMember()) {
+                // 会員
+                await this.user.updateAccount();
+            }
             this.reservations = await this.reservation.getReservationByAppreciationDayOrder();
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/ticket' }]);

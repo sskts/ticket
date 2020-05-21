@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap';
 import { SaveType, StorageService } from '../../../../../services';
+import { InformationModalComponent } from '../information-modal/information-modal.component';
 
 interface IInformation {
     modal: boolean;
@@ -35,7 +37,8 @@ export class InformationComponent implements OnInit {
     public informations: IInformation[];
 
     constructor(
-        private storage: StorageService
+        private storage: StorageService,
+        private modal: BsModalService,
     ) { }
 
     public ngOnInit() {
@@ -83,14 +86,41 @@ export class InformationComponent implements OnInit {
         });
         if (this.informations.length > 0) {
             this.informations[0].modal = true;
+            const information = this.informations[0];
+            this.openModal(information, 0);
         }
         this.storage.save(STORAGE_KEY, { show: false }, SaveType.Session);
     }
 
     /**
+     * モーダル表示
+     */
+    public openModal(information: IInformation, index: number) {
+        this.modal.show(InformationModalComponent, {
+            class: 'modal-dialog-centered',
+            initialState: {
+                index: 0,
+                id: information.id,
+                title: information.title,
+                description: information.description,
+                images: information.images,
+                button: information.button,
+                cb: (params: { notWatch: boolean, index: number, id: string }) => {
+                    this.informationNotWatch(params);
+                    const next = index + 1;
+                    const nextInformations = this.informations[next];
+                    if (nextInformations !== undefined) {
+                        this.openModal(nextInformations, next);
+                    }
+                }
+            }
+        });
+    }
+
+    /**
      * お知らせモーダル今後非表示
      */
-    public informationNotWatch(information: IInformation) {
+    public informationNotWatch(params: { notWatch: boolean, index: number, id: string }) {
         const STORAGE_KEY = 'information';
         let informationLocal = this.storage.load(STORAGE_KEY, SaveType.Local);
         if (informationLocal === null) {
@@ -98,11 +128,11 @@ export class InformationComponent implements OnInit {
                 notWatch: []
             };
         }
-        if (information.notWatch) {
-            informationLocal.notWatch.push(information.id);
+        if (params.notWatch) {
+            informationLocal.notWatch.push(params.id);
         } else {
             informationLocal.notWatch = informationLocal.notWatch.filter((id: string) => {
-                return information.id !== id;
+                return params.id !== id;
             });
         }
         this.storage.save(STORAGE_KEY, informationLocal, SaveType.Local);
@@ -123,12 +153,12 @@ export class InformationComponent implements OnInit {
      */
     private getInformation() {
         return [
-            {
-                id: '2018071700',
-                description: 'シネマサンシャインアプリがパワーアップ!<br>会員登録をしてお得に映画鑑賞しよう。',
-                images: [],
-                button: { label: '会員登録はこちらから', link: '/benefits' }
-            }
+            // {
+            //     id: '2018071700',
+            //     description: 'シネマサンシャインアプリがパワーアップ!<br>会員登録をしてお得に映画鑑賞しよう。',
+            //     images: [],
+            //     button: { label: '会員登録はこちらから', link: '/benefits' }
+            // }
         ];
     }
 
