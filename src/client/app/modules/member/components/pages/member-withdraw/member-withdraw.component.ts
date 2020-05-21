@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CinerinoService, MemberService, UserService } from '../../../../../services';
+import { CinerinoService, MemberService, UserService, UtilService } from '../../../../../services';
 
 @Component({
     selector: 'app-member-withdraw',
@@ -8,11 +8,11 @@ import { CinerinoService, MemberService, UserService } from '../../../../../serv
 })
 export class MemberWithdrawComponent implements OnInit {
     public isLoading: boolean;
-    public confirmModal: boolean;
     constructor(
         private cinerino: CinerinoService,
         private user: UserService,
-        private member: MemberService
+        private member: MemberService,
+        private utilService: UtilService
     ) { }
 
     /**
@@ -21,7 +21,19 @@ export class MemberWithdrawComponent implements OnInit {
      */
     public ngOnInit() {
         this.isLoading = false;
-        this.confirmModal = false;
+    }
+
+    /**
+     * 退会確認
+     */
+    public confirmWithdraw() {
+        this.utilService.openConfirm({
+            title: '本当に退会しますか？',
+            body: '退会した場合は保有していた全てのポイントが無効となり、本アプリに登録されていた会員情報は全て消去されます。',
+            cb: () => {
+                this.withdraw();
+            }
+        });
     }
 
     /**

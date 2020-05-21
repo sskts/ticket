@@ -1,9 +1,9 @@
 <div *ngIf="maintenanceInfo.isMaintenance">
-    <h2 class="mb-small large-text text-center">メンテナンスのお知らせ</h2>
-    <p class="read mb-small">
+    <h2 class="mb-2 text-large text-center">メンテナンスのお知らせ</h2>
+    <p class="mb-2">
         {{ maintenanceInfo.maintenanceText }}
     </p>
-    <p class="large-text">
+    <p class="text-large">
         メンテナンス期間
         <br> {{ maintenanceInfo.startDate | date: 'MM/dd HH:mm' }} - {{ maintenanceInfo.endDate | date: 'MM/dd HH:mm' }}
     </p>

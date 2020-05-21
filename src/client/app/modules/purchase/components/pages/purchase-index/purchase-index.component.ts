@@ -94,10 +94,13 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 return;
             }
             this.conditions = this.selectService.data.purchase;
-            if (this.userService.isMember() && this.conditions.theater === '') {
+            if (this.userService.isMember()) {
                 // 会員
-                const theater = this.userService.getWellGoTheaterCode();
-                this.conditions.theater = theater !== undefined ? theater : '';
+                await this.userService.updateAccount();
+                if (this.conditions.theater === '') {
+                    const theater = this.userService.getWellGoTheaterCode();
+                    this.conditions.theater = theater !== undefined ? theater : '';
+                }
             }
             await this.initialize();
             localStorage.removeItem('schedule');
@@ -135,6 +138,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 theater.location !== undefined && theater.location.branchCode === this.conditions.theater);
             if (findResult === undefined) {
                 this.conditions.theater = '';
+                this.maintenance.schedule = undefined;
             }
             if (this.conditions.theater !== '') {
                 const scheduleData = await this.getSchedule();
@@ -148,8 +152,11 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 await this.update();
             }, time);
         } catch (error) {
-            alert('スケジュールの取得に失敗しました');
             console.error(error);
+            this.utilService.openAlert({
+                title: 'エラー',
+                body: 'スケジュールの取得に失敗しました。'
+            });
         }
     }
 
@@ -159,9 +166,6 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
     public async changeTheater() {
         this.selectService.data.purchase.theater = this.conditions.theater;
         this.selectService.save();
-        if (this.conditions.theater === '') {
-            return;
-        }
         this.isLoading = true;
         try {
             await this.initialize();
@@ -280,8 +284,8 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 m => m.screen.find(
                     s => s.time.find(t => {
                         const endDate = (t.start_time < t.end_time)
-                        ? moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm')
-                        : moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm').add(1, 'days');
+                            ? moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm')
+                            : moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm').add(1, 'days');
                         return (moment(t.online_display_start_day) <= moment(today)
                             && endDate > now);
                     }) !== undefined

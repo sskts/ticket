@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { TicketIndexComponent } from './pages/ticket-index/ticket-index.component';
 import { TicketDetailComponent } from './parts/ticket-detail/ticket-detail.component';
+import { TicketNotFoundComponent } from './parts/ticket-not-found/ticket-not-found.component';
 import { TicketRoutingModule } from './ticket-routing.module';
 
 
 @NgModule({
   declarations: [
     TicketIndexComponent,
-    TicketDetailComponent
+    TicketDetailComponent,
+    TicketNotFoundComponent,
   ],
   imports: [
     CommonModule,

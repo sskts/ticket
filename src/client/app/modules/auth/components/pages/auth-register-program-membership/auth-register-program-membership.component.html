@@ -1,38 +1,41 @@
-<app-page class="bg-02">
-    <div class="inner">
-        <p class="read mb-small">
-            よく行く劇場を選択して登録してください
-        </p>
-        
-        <div *ngIf="!isLoading" class="options">
-            <form [formGroup]="optionsForm" (ngSubmit)="onSubmit()">
-                <dl class="mb-middle">
-                    <dt class="mb-x-small">よく行く劇場</dt>
-                    <dd>
-                        <select formControlName="theater" class="mb-x-small" id="theater">
-                            <option value="">選択してください</option>
-                            <option *ngFor="let theater of theaters" [value]="theater.location.branchCode">{{ theater.location.name.ja }}</option>
-                        </select>
-                        <div class="small-text mb-x-small" *ngIf="optionsForm.controls['theater'].invalid && optionsForm.controls['theater'].touched">
-                            <div *ngIf="optionsForm.controls['theater'].errors.required" class="validation-text mb-x-small">よく行く劇場が未入力です</div>
+<div class="py-4 px-3">
+    <h2 class="text-center mb-3 text-large font-weight-bold">劇場選択</h2>
+    <p class="mb-3">
+        よく行く劇場を選択して登録してください
+    </p>
+
+
+    <div *ngIf="!isLoading" class="options">
+        <form [formGroup]="optionsForm" (ngSubmit)="onSubmit()">
+            <div class="mb-4">
+                <div class="form-group">
+                    <div class="row align-items-center">
+                        <p class="col-md-4 py-2 text-md-right">劇場</p>
+                        <div class="col-md-8">
+                            <select formControlName="theater" class="form-control" id="theater">
+                                <option value="">選択してください</option>
+                                <option *ngFor="let theater of theaters" [value]="theater.location.branchCode">
+                                    {{ theater.location.name.ja }}</option>
+                            </select>
+                            <div class="text-small mb-2"
+                                *ngIf="optionsForm.controls['theater'].invalid && optionsForm.controls['theater'].touched">
+                                <p *ngIf="optionsForm.controls['theater'].errors.required" class="text-danger mb-2">
+                                    よく行く劇場が未入力です</p>
+                            </div>
                         </div>
-                    </dd>
-                </dl>
-
-                <button type="submit" [disabled]="isLoading" class="button button-primary center button-block mb-middle">登録</button>
-                <div class="text-center">
-                    <a routerLink="/auth/register/credit" class="prev-link"><app-icon iconName="prev-circle-white" width="15" height="15"></app-icon>戻る</a>
+                    </div>
                 </div>
-            </form>
-        </div>
-    </div>
-</app-page>
+            </div>
 
-<app-modal [open]="alertModal" [layout]="true" (close)="alertModal = false">
-    <div class="modal-ttl large-text text-center mb-small">
-        <strong>エラーが発生しました</strong>
+            <div class="buttons mx-auto text-center">
+                <button type="submit" [disabled]="isLoading"
+                    class="btn btn-primary btn-block py-3 mb-3">登録</button>
+                <button type="button" class="btn btn-outline-secondary btn-block py-3"
+                    routerLink="/auth/register/credit">戻る</button>
+            </div>
+        </form>
     </div>
-    <p>再度ご登録してください。</p>
-</app-modal>
+</div>
+
 
 <app-loading [show]="isLoading"></app-loading>

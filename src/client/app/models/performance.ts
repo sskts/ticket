@@ -31,9 +31,9 @@ export class Performance {
     public getAvailability() {
         const value = this.time.seat_count.cnt_reserve_free / this.time.seat_count.cnt_reserve_max * 100;
         const availability = [
-            { symbolText: '×', icon: 'vacancy-full-white', className: 'vacancy-full', text: '満席' },
-            { symbolText: '△', icon: 'vacancy-little-white', className: 'vacancy-little', text: '購入' },
-            { symbolText: '○', icon: 'vacancy-large-white', className: 'vacancy-large', text: '購入' }
+            { symbolText: '×', image: '/assets/images/icon/vacancy_full_white.svg', className: 'vacancy-full', text: '満席' },
+            { symbolText: '△', image: '/assets/images/icon/vacancy_little_white.svg', className: 'vacancy-little', text: '購入' },
+            { symbolText: '○', image: '/assets/images/icon/vacancy_large_white.svg', className: 'vacancy-large', text: '購入' }
         ];
         const threshold = 10;
 

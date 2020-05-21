@@ -7,7 +7,6 @@ import { MemberEditProfileComponent } from './components/pages/member-edit-profi
 import { MemberEditComponent } from './components/pages/member-edit/member-edit.component';
 import { MemberMypageComponent } from './components/pages/member-mypage/member-mypage.component';
 import { MemberPointHistoryComponent } from './components/pages/member-point-history/member-point-history.component';
-import { MemberPointComponent } from './components/pages/member-point/member-point.component';
 import { MemberTicketHistoryComponent } from './components/pages/member-ticket-history/member-ticket-history.component';
 import { MemberWithdrawComponent } from './components/pages/member-withdraw/member-withdraw.component';
 import { PointHistoryListComponent } from './components/parts/point-history-list/point-history-list.component';
@@ -23,7 +22,6 @@ import { MemberRoutingModule } from './member-routing.module';
     MemberEditCreditComponent,
     MemberEditProfileComponent,
     MemberMypageComponent,
-    MemberPointComponent,
     MemberPointHistoryComponent,
     MemberTicketHistoryComponent,
     MemberWithdrawComponent,

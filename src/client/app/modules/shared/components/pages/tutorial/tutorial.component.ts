@@ -32,18 +32,11 @@ export class TutorialComponent implements OnInit {
         };
         this.config = {
             pagination: pagination,
-            spaceBetween: 30
+            spaceBetween: 0
             // onSlideChangeEnd: (swiper) => {
             //     this.step = swiper.activeIndex;
             // }
         };
-    }
-
-    /**
-     * スライド後イベント
-     */
-    public indexChange(index: number) {
-        this.step = index;
     }
 
     /**

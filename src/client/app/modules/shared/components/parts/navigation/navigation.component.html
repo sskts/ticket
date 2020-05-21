@@ -1,49 +1,31 @@
-<ul *ngIf="user.isMember()">
-    <li routerLink="/member/mypage" routerLinkActive="active">
-        <div class="mb-xx-small">
-            <app-icon iconName="home-white" width="15" height="15"></app-icon>
+<ul class="d-flex h-100 border-top border-gray bg-white text-dark-gray">
+    <li class="d-flex justify-content-center align-items-center" routerLink="/purchase" routerLinkActive="active bg-success text-white">
+        <div class="text-center">
+            <img class="mb-1 off" src="/assets/images/icon/purchase_gray.svg" width="20" height="20">
+            <img class="mb-1 on" src="/assets/images/icon/purchase_white.svg" width="20" height="20">
+            <p class="text-small">購入</p>
         </div>
-        <div>TOP</div>
     </li>
-    <li routerLink="/ticket" routerLinkActive="active">
-        <div class="mb-xx-small">
-            <app-icon iconName="ticket-holder-white" width="15" height="15"></app-icon>
+    <li class="d-flex justify-content-center align-items-center" routerLink="/ticket" routerLinkActive="active bg-success text-white">
+        <div class="text-center">
+            <img class="mb-1 off" src="/assets/images/icon/holder_gray.svg" width="20" height="20">
+            <img class="mb-1 on" src="/assets/images/icon/holder_white.svg" width="20" height="20">
+            <p class="text-small">チケット</p>
         </div>
-        <div>購入済み
-            <br>チケットホルダー</div>
     </li>
-    <li routerLink="/member/point" routerLinkActive="active">
-        <div class="mb-xx-small">
-            <app-icon iconName="point-white" width="15" height="15"></app-icon>
+    <li class="d-flex justify-content-center align-items-center" *ngIf="user.isMember()" routerLink="/member/mypage"
+        routerLinkActive="active bg-success text-white">
+        <div class="text-center">
+            <img class="mb-1 off" src="/assets/images/icon/mypage_gray.svg" width="20" height="20">
+            <img class="mb-1 on" src="/assets/images/icon/mypage_white.svg" width="20" height="20">
+            <p class="text-small">マイページ</p>
         </div>
-        <div>会員ポイント</div>
     </li>
-    <li routerLink="/purchase" routerLinkActive="active">
-        <div class="mb-xx-small">
-            <app-icon iconName="purchase-white" width="15" height="15"></app-icon>
+    <li class="d-flex justify-content-center align-items-center" *ngIf="!user.isMember()" routerLink="/auth/select">
+        <div class="text-center">
+            <img class="mb-1 off" src="/assets/images/icon/login_gray.svg" width="20" height="20">
+            <img class="mb-1 on" src="/assets/images/icon/login_white.svg" width="20" height="20">
+            <p class="text-small">ログイン</p>
         </div>
-        <div>チケット購入</div>
-    </li>
-</ul>
-
-<ul *ngIf="!user.isMember()">
-    <li routerLink="/ticket" routerLinkActive="active">
-        <div class="mb-xx-small">
-            <app-icon iconName="ticket-holder-white" width="15" height="15"></app-icon>
-        </div>
-        <div>購入済み
-            <br>チケットホルダー</div>
-    </li>
-    <li routerLink="/purchase" routerLinkActive="active">
-        <div class="mb-xx-small">
-            <app-icon iconName="purchase-white" width="15" height="15"></app-icon>
-        </div>
-        <div>チケット購入</div>
-    </li>
-    <li routerLink="/auth/select">
-        <div class="mb-xx-small">
-            <app-icon iconName="login-white" width="15" height="15"></app-icon>
-        </div>
-        <div>ログイン</div>
     </li>
 </ul>

@@ -52,13 +52,13 @@ const appRoutes: Routes = [
     {
         path: 'purchase',
         component: BaseComponent,
-        canActivate: [AuthGuardService],
+        canActivate: [AuthGuardService, ProgramMembershipGuardService],
         loadChildren: () => import('./modules/purchase/purchase.module').then(m => m.PurchaseModule)
     },
     {
         path: 'ticket',
         component: BaseComponent,
-        canActivate: [AuthGuardService],
+        canActivate: [AuthGuardService, ProgramMembershipGuardService],
         loadChildren: () => import('./modules/ticket/ticket.module').then(m => m.TicketModule)
     },
     {

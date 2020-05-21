@@ -1,9 +1,7 @@
+@import '../../../../../../assets/scss//theme';
+
 .performance {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #B2B2B2;
+    background-color: $gray;
 }
 
 .vacancy-large {
@@ -12,30 +10,6 @@
 
 .vacancy-little {
     background-color: #F2C300;
-}
-
-.date {
-    width: 80px;
-}
-
-.status-cover {
-    width: 25px;
-}
-
-.info {
-    width: calc(100% - 105px);
-    .screen {
-        padding: 4px;
-        border: 1px solid #FFF;
-        display: inline-block;
-        margin-right: 5px;
-    }
-    .duration {
-        display: inline-block;
-    }
-    p {
-        word-break: break-all;
-    }
 }
 
 .service {
