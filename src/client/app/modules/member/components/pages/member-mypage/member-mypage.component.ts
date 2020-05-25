@@ -14,6 +14,12 @@ export class MemberMypageComponent implements OnInit {
     public moment = moment;
     public account: factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType>>;
     public availableBalance: number;
+    public programMembershipOwnershipInfo: factory.ownershipInfo.IOwnershipInfo<
+        factory.ownershipInfo.IGood<
+            factory.programMembership.ProgramMembershipType.ProgramMembership
+        >
+    >;
+
 
     constructor(
         public userService: UserService,
@@ -35,6 +41,7 @@ export class MemberMypageComponent implements OnInit {
             await this.userService.updateAccount();
             this.account = this.userService.data.accounts[0];
             this.availableBalance = this.userService.getAvailableBalance();
+            this.programMembershipOwnershipInfo = this.userService.data.programMembershipOwnershipInfos[0];
         } catch (error) {
             console.error(error);
             this.router.navigate(['/error', { redirect: '/member/mypage' }]);
