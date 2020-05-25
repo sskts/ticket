@@ -7,8 +7,10 @@
         </div>
         <div class="w-50 pl-2">
             <div class="text-small mb-2">会員更新予定日</div>
-            <div *ngIf="account" class="p-2 bg-white">{{ moment(account.typeOfGood.ownedThrough).format('YYYY/MM/DD') }}
+            <div *ngIf="programMembershipOwnershipInfo?.ownedThrough" class="p-2 bg-white">
+                {{ moment(programMembershipOwnershipInfo.ownedThrough).format('YYYY/MM/DD') }}
             </div>
+            <div *ngIf="!programMembershipOwnershipInfo?.ownedThrough" class="p-2 bg-white">-</div>
         </div>
     </div>
 
