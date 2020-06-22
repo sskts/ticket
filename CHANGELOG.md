@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.5.3 - 2020-6-22
+### Changed
+ - ポイント付与文言削除
+
 ## 3.5.2 - 2020-6-03
 ### Added
  - ポイント付与文言追加
