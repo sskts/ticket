@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.5.4 - 2020-6-23
+### Changed
+ - スマホアプリコロナ対策文言変更
+
 ## 3.5.3 - 2020-6-22
 ### Changed
  - ポイント付与文言削除
