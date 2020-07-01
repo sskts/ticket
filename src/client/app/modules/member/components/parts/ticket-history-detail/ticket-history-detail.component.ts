@@ -16,7 +16,6 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
         factory.chevre.reservation.IReservation<
             factory.chevre.reservationType.EventReservation>>;
     @ViewChild('topimage', { static: true }) private topImageElement: ElementRef;
-    public confirmationNumber: string;
     public totalPrice: string;
     public startDate: string;
     public startTime: string;

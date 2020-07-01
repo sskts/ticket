@@ -21,6 +21,7 @@ export class CinerinoService {
     };
     public programMembership: cinerino.service.ProgramMembership;
     private endpoint: string;
+    private projectId: string;
 
     constructor(
         private http: HttpClient,
@@ -99,7 +100,8 @@ export class CinerinoService {
 
         return {
             endpoint: this.endpoint,
-            auth: this.auth
+            auth: this.auth,
+            project: { id: this.projectId }
         };
     }
 
@@ -116,6 +118,7 @@ export class CinerinoService {
             userName?: string;
             clientId: string;
             endpoint: string;
+            projectId: string;
         }>(url, body).toPromise();
         const option = {
             domain: '',
@@ -132,6 +135,7 @@ export class CinerinoService {
         this.auth.setCredentials(result.credentials);
         this.userName = result.userName;
         this.endpoint = result.endpoint;
+        this.projectId = result.projectId;
     }
 
     /**
