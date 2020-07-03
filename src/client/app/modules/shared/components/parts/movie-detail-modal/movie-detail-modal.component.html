@@ -9,8 +9,8 @@
         <div *ngIf="data.title.rating" class="d-inline-block bg-dark-gray text-white px-3 py-1 text-x-small mb-2">
             {{ data.title.rating }}
         </div>
-        <p *ngIf="data.title.catchcopy" class="text-small font-weight-bold mb-2">{{ data.title.catchcopy }}</p>
-        <p *ngIf="data.title.introduction" class="text-x-small mb-2">{{ data.title.introduction }}</p>
+        <p *ngIf="data.title.catchcopy" class="text-small font-weight-bold mb-2 white-space-pre-wrap">{{ data.title.catchcopy }}</p>
+        <p *ngIf="data.title.introduction" class="text-x-small mb-2 white-space-pre-wrap">{{ data.title.introduction }}</p>
         <div *ngIf="data.title.director" class="mb-2">
             <div class="d-inline-block bg-dark-gray text-white px-3 py-1 mb-1 text-x-small">監督</div>
             <p class="text-small">{{ data.title.director }}</p>
@@ -47,6 +47,7 @@
                 </tbody>
             </table>
         </div>
+        <p *ngIf="schedule.remark" class="text-x-small white-space-pre-wrap">{{ schedule.remark }}</p>
     </div>
 
 
