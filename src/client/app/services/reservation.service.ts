@@ -95,8 +95,12 @@ export class ReservationService {
                     }
                     reservedTickets.push(offer.itemOffered.reservedTicket);
                 });
+                const itemOffered = order.acceptedOffers[0].itemOffered;
+                if (itemOffered.typeOf !== factory.chevre.reservationType.EventReservation) {
+                    return;
+                }
                 orders.push({
-                    confirmationNumber: String(order.confirmationNumber),
+                    confirmationNumber: itemOffered.reservationNumber,
                     reservationsFor: reservationsFor,
                     reservedTickets: reservedTickets
                 });

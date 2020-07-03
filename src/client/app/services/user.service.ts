@@ -396,7 +396,6 @@ export class UserService {
         givenName: string;
         email: string;
         telephone: string;
-        postalCode: string;
         theaterCode: string;
     }) {
         const tel = args.telephone.replace(/^0/, '+81');

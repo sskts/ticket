@@ -50,11 +50,12 @@ function getCredentials(req, res) {
             const accessToken = yield options.auth.getAccessToken();
             const credentials = { accessToken };
             const clientId = options.auth.options.clientId;
+            const projectId = process.env.PROJECT_ID;
             log('getCredentials MemberType', body.member);
             const userName = (body.member === MemberType.Member)
                 ? options.auth.verifyIdToken({}).getUsername()
                 : undefined;
-            res.json({ credentials, userName, clientId, endpoint });
+            res.json({ credentials, userName, clientId, endpoint, projectId });
         }
         catch (err) {
             base_controller_1.errorProsess(res, err);

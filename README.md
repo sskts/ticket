@@ -31,7 +31,8 @@
 | `EXCLUDE_THEATERS`                  | false    |                  | 除外劇場コード(カンマ区切り)                       |
 | `DEBUG`                             | false    | sskts-ticket:*   | デバッグ                                |
 | `STORAGE_URL`                       | true     |                  | 外部ストレージURL                                |
-| `SCHEDULE_API_ENDPOINT`             | true     |                  | スケジュールAPIエンドポイント                                |
+| `SCHEDULE_API_ENDPOINT`             | true     |                  | スケジュールAPIエンドポイント
+| `PROJECT_ID`                        | true     |                  | プロジェクトID                                 |
 
 ## Azure Environment variables
 

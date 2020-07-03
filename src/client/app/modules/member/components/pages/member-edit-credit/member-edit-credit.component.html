@@ -17,14 +17,14 @@
                         <div class="col-md-8">
                             <p class="text-small mb-2">※半角数字、ハイフン「-」なしで入力してください</p>
                             <input class="form-control"
-                                [class.validation]="creditForm.controls['cardNumber'].invalid && creditForm.controls['cardNumber'].touched"
+                                [class.validation]="creditForm.controls.cardNumber.invalid && creditForm.controls.cardNumber.touched"
                                 type="text" pattern="\d*" formControlName="cardNumber" id="cardNumber"
                                 autocomplete="off" placeholder="(例)1234567890" maxlength="16">
                             <div class="text-small"
-                                *ngIf="creditForm.controls['cardNumber'].invalid && creditForm.controls['cardNumber'].touched">
-                                <p *ngIf="creditForm.controls['cardNumber'].errors.required" class="text-danger">
+                                *ngIf="creditForm.controls.cardNumber.invalid && creditForm.controls.cardNumber.touched">
+                                <p *ngIf="creditForm.controls.cardNumber.errors.required" class="text-danger">
                                     カード番号が未入力です</p>
-                                <p *ngIf="creditForm.controls['cardNumber'].errors.pattern" class="text-danger">
+                                <p *ngIf="creditForm.controls.cardNumber.errors.pattern" class="text-danger">
                                     カード番号は数字で入力してください</p>
                             </div>
                         </div>
@@ -57,12 +57,12 @@
                         <div class="col-md-8">
                             <p class="text-small mb-2">※半角数字で入力してください</p>
                             <input class="form-control"
-                                [class.validation]="creditForm.controls['securityCode'].invalid && creditForm.controls['securityCode'].touched"
-                                type="text" pattern="\d*" formControlName="securityCode" autocomplete="off"
+                                [class.validation]="creditForm.controls.securityCode.invalid && creditForm.controls.securityCode.touched"
+                                type="text" pattern="\d*" formControlName="securityCode" id="securityCode" autocomplete="off"
                                 placeholder="(例)123" maxlength="4">
                             <div class="text-small"
-                                *ngIf="creditForm.controls['securityCode'].invalid && creditForm.controls['securityCode'].touched">
-                                <p *ngIf="creditForm.controls['securityCode'].errors.required" class="text-danger">
+                                *ngIf="creditForm.controls.securityCode.invalid && creditForm.controls.securityCode.touched">
+                                <p *ngIf="creditForm.controls.securityCode.errors.required" class="text-danger">
                                     セキュリティーコードが未入力です</p>
                             </div>
                             <p class="mt-2"><a href="#" (click)="openSecurityCode($event)"><img class="mr-1 align-middle" src="/assets/images/icon/help_blue.svg" width="16" height="16">セキュリティーコードについて</a></p>
@@ -74,12 +74,12 @@
                         <p class="col-md-4 py-2 text-md-right">カード名義人</p>
                         <div class="col-md-8">
                             <input class="form-control"
-                                [class.validation]="creditForm.controls['holderName'].invalid && creditForm.controls['holderName'].touched"
-                                type="text" formControlName="holderName" autocomplete="off"
+                                [class.validation]="creditForm.controls.holderName.invalid && creditForm.controls.holderName.touched"
+                                type="text" formControlName="holderName" id="holderName" autocomplete="off"
                                 placeholder="(例)TARO CINEMA">
                             <div class="text-small"
-                                *ngIf="creditForm.controls['holderName'].invalid && creditForm.controls['holderName'].touched">
-                                <p *ngIf="creditForm.controls['holderName'].errors.required" class="text-danger">
+                                *ngIf="creditForm.controls.holderName.invalid && creditForm.controls.holderName.touched">
+                                <p *ngIf="creditForm.controls.holderName.errors.required" class="text-danger">
                                     カード名義人が未入力です</p>
                             </div>
                         </div>

@@ -17,18 +17,18 @@
                 <div class="col-md-8">
                     <p class="text-small mb-2">※全角カタカナで入力してください</p>
                     <input class="form-control"
-                        [class.validation]="profileForm.controls['familyName'].invalid && profileForm.controls['familyName'].touched"
-                        type="text" formControlName="familyName" autocomplete="family-name"
+                        [class.validation]="profileForm.controls.familyName.invalid && profileForm.controls.familyName.touched"
+                        type="text" formControlName="familyName" id="familyName" autocomplete="family-name"
                         placeholder="（例）セイ">
 
                     <div
-                        *ngIf="profileForm.controls['familyName'].invalid && profileForm.controls['familyName'].touched">
-                        <p *ngIf="profileForm.controls['familyName'].errors.required" class="text-danger mb-2">
+                        *ngIf="profileForm.controls.familyName.invalid && profileForm.controls.familyName.touched">
+                        <p *ngIf="profileForm.controls.familyName.errors.required" class="text-danger mb-2">
                             セイが未入力です</p>
-                        <p *ngIf="profileForm.controls['familyName'].errors.maxlength" class="text-danger mb-2">セイは{{
-                            profileForm.controls['familyName'].errors.maxlength.requiredLength }}文字以下で入力してください
+                        <p *ngIf="profileForm.controls.familyName.errors.maxlength" class="text-danger mb-2">セイは{{
+                            profileForm.controls.familyName.errors.maxlength.requiredLength }}文字以下で入力してください
                         </p>
-                        <p *ngIf="profileForm.controls['familyName'].errors.pattern" class="text-danger mb-2">
+                        <p *ngIf="profileForm.controls.familyName.errors.pattern" class="text-danger mb-2">
                             セイは全角カタカナで入力してください</p>
                     </div>
                 </div>
@@ -40,19 +40,19 @@
                 <div class="col-md-8">
                     <p class="text-small mb-2">※全角カタカナで入力してください</p>
                     <input class="form-control"
-                        [class.validation]="profileForm.controls['givenName'].invalid && profileForm.controls['givenName'].touched"
-                        type="text" formControlName="givenName" autocomplete="given-name"
+                        [class.validation]="profileForm.controls.givenName.invalid && profileForm.controls.givenName.touched"
+                        type="text" formControlName="givenName" id="givenName" autocomplete="given-name"
                         placeholder="（例）メイ">
 
                     <div
-                        *ngIf="profileForm.controls['givenName'].invalid && profileForm.controls['givenName'].touched">
-                        <p *ngIf="profileForm.controls['givenName'].errors.required" class="text-danger mb-2">
+                        *ngIf="profileForm.controls.givenName.invalid && profileForm.controls.givenName.touched">
+                        <p *ngIf="profileForm.controls.givenName.errors.required" class="text-danger mb-2">
                             メイが未入力です
                         </p>
-                        <p *ngIf="profileForm.controls['givenName'].errors.maxlength" class="text-danger mb-2">メイは{{
-                                profileForm.controls['givenName'].errors.maxlength.requiredLength }}文字以下で入力してください
+                        <p *ngIf="profileForm.controls.givenName.errors.maxlength" class="text-danger mb-2">メイは{{
+                                profileForm.controls.givenName.errors.maxlength.requiredLength }}文字以下で入力してください
                         </p>
-                        <p *ngIf="profileForm.controls['givenName'].errors.pattern" class="text-danger mb-2">
+                        <p *ngIf="profileForm.controls.givenName.errors.pattern" class="text-danger mb-2">
                             メイは全角カタカナで入力してください</p>
                     </div>
                 </div>
@@ -74,19 +74,19 @@
                 <div class="col-md-8">
                     <p class="text-small mb-2">※半角数字、ハイフン「-」なしで入力してください</p>
                     <input class="form-control"
-                        [class.validation]="profileForm.controls['telephone'].invalid && profileForm.controls['telephone'].touched"
-                        type="tel" formControlName="telephone" autocomplete="tel" placeholder="（例）電話番号">
+                        [class.validation]="profileForm.controls.telephone.invalid && profileForm.controls.telephone.touched"
+                        type="tel" formControlName="telephone" id="telephone" autocomplete="tel" placeholder="（例）電話番号">
                     <div class="mb-2"
-                        *ngIf="profileForm.controls['telephone'].invalid && profileForm.controls['telephone'].touched">
-                        <p *ngIf="profileForm.controls['telephone'].errors.required" class="text-danger mb-2">
+                        *ngIf="profileForm.controls.telephone.invalid && profileForm.controls.telephone.touched">
+                        <p *ngIf="profileForm.controls.telephone.errors.required" class="text-danger mb-2">
                             電話番号が未入力です</p>
-                        <p *ngIf="profileForm.controls['telephone'].errors.minlength" class="text-danger mb-2">電話番号は{{
-                            profileForm.controls['telephone'].errors.minlength.requiredLength }}文字以上で入力してください</p>
-                        <p *ngIf="profileForm.controls['telephone'].errors.maxlength" class="text-danger mb-2">電話番号は{{
-                            profileForm.controls['telephone'].errors.maxlength.requiredLength }}文字以下で入力してください</p>
-                        <p *ngIf="profileForm.controls['telephone'].errors.pattern" class="text-danger mb-2">
+                        <p *ngIf="profileForm.controls.telephone.errors.minlength" class="text-danger mb-2">電話番号は{{
+                            profileForm.controls.telephone.errors.minlength.requiredLength }}文字以上で入力してください</p>
+                        <p *ngIf="profileForm.controls.telephone.errors.maxlength" class="text-danger mb-2">電話番号は{{
+                            profileForm.controls.telephone.errors.maxlength.requiredLength }}文字以下で入力してください</p>
+                        <p *ngIf="profileForm.controls.telephone.errors.pattern" class="text-danger mb-2">
                             電話番号は数字で入力してください</p>
-                        <p *ngIf="profileForm.controls['telephone'].errors.telephone" class="text-danger mb-2">
+                        <p *ngIf="profileForm.controls.telephone.errors.telephone" class="text-danger mb-2">
                             電話番号が正しくありません</p>
                     </div>
                 </div>
@@ -97,15 +97,15 @@
             <div class="row align-items-center">
                 <p class="col-md-4 py-2 text-md-right">よく行く劇場<span class="ml-2 text-danger">必須</span></p>
                 <div class="col-md-8">
-                    <select class="form-control" formControlName="theaterCode">
+                    <select class="form-control" formControlName="theaterCode" id="theaterCode">
                         <option value="">選択してください</option>
                         <option *ngFor="let theater of theaters" [value]="theater.location.branchCode"
-                            [selected]="theater.location.branchCode === profileForm.controls['theaterCode'].value">
+                            [selected]="theater.location.branchCode === profileForm.controls.theaterCode.value">
                             {{ theater.name.ja }}
                         </option>
                     </select>
-                    <div class="mb-2" *ngIf="profileForm.controls['theaterCode'].invalid">
-                        <p *ngIf="profileForm.controls['theaterCode'].errors.required" class="text-danger mb-2">
+                    <div class="mb-2" *ngIf="profileForm.controls.theaterCode.invalid">
+                        <p *ngIf="profileForm.controls.theaterCode.errors.required" class="text-danger mb-2">
                             よく行く劇場が未選択です</p>
                     </div>
                 </div>
