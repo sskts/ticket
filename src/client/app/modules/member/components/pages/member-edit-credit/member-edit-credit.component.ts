@@ -80,13 +80,12 @@ export class MemberEditCreditComponent implements OnInit {
      */
     public async onSubmit() {
         this.isLoading = true;
+        Object.keys(this.creditForm.controls).forEach((key) => {
+            this.creditForm.controls[key].markAsTouched();
+            this.creditForm.controls[key].setValue((<HTMLInputElement>document.getElementById(key)).value);
+        });
         if (this.creditForm.invalid) {
             // フォームのステータス変更
-            this.creditForm.controls.cardNumber.markAsTouched();
-            this.creditForm.controls.cardExpirationMonth.markAsTouched();
-            this.creditForm.controls.cardExpirationYear.markAsTouched();
-            this.creditForm.controls.securityCode.markAsTouched();
-            this.creditForm.controls.holderName.markAsTouched();
             setTimeout(() => {
                 const element: HTMLElement = this.elementRef.nativeElement;
                 const validation = <HTMLElement>element.querySelector('.validation');

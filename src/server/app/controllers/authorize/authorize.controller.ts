@@ -38,12 +38,13 @@ export async function getCredentials(req: Request, res: Response) {
         const accessToken = await options.auth.getAccessToken();
         const credentials = { accessToken };
         const clientId = options.auth.options.clientId;
+        const projectId = <string>process.env.PROJECT_ID;
 
         log('getCredentials MemberType', body.member);
         const userName = (body.member === MemberType.Member)
             ? options.auth.verifyIdToken(<any>{}).getUsername()
             : undefined;
-        res.json({ credentials, userName, clientId, endpoint });
+        res.json({ credentials, userName, clientId, endpoint, projectId });
     } catch (err) {
         errorProsess(res, err);
     }
