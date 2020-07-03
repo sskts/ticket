@@ -13,6 +13,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.5.5 - 2020-7-03
+### Changed
+ - マイページでユーザー情報更新へ変更
+ - confirmationNumber参照を予約番号に変更
+ - Cinerino SDKでサービスインスタンス生成時にプロジェクト指定へ変更
+
 ## 3.5.4 - 2020-6-23
 ### Changed
  - スマホアプリコロナ対策文言変更
