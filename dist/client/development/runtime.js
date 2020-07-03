@@ -64,7 +64,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"common":"common","modules-member-member-module-ngfactory":"modules-member-member-module-ngfactory","modules-movie-movie-module-ngfactory":"modules-movie-movie-module-ngfactory","modules-purchase-purchase-module-ngfactory":"modules-purchase-purchase-module-ngfactory","modules-ticket-ticket-module-ngfactory":"modules-ticket-ticket-module-ngfactory","modules-auth-auth-module-ngfactory":"modules-auth-auth-module-ngfactory"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"common":"common","modules-member-member-module-ngfactory":"modules-member-member-module-ngfactory","modules-purchase-purchase-module-ngfactory":"modules-purchase-purchase-module-ngfactory","modules-ticket-ticket-module-ngfactory":"modules-ticket-ticket-module-ngfactory","modules-auth-auth-module-ngfactory":"modules-auth-auth-module-ngfactory","modules-movie-movie-module-ngfactory":"modules-movie-movie-module-ngfactory"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function

@@ -22,8 +22,6 @@ import {
     UtilService
 } from '../../../../../services';
 
-type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
-
 interface IDate {
     value: string;
     display: {
@@ -48,7 +46,7 @@ interface IDate {
  */
 export class PurchaseIndexComponent implements OnInit, OnDestroy {
     public isLoading: boolean;
-    public theaters: IMovieTheater[];
+    public theaters: factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>[];
     public dateList: IDate[];
     public schedules: ISchedule[];
     public schedule?: ISchedule;
