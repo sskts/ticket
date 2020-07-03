@@ -38,7 +38,7 @@ export class MemberMypageComponent implements OnInit {
             if (this.userService.data.userName === undefined) {
                 this.userService.setUserName();
             }
-            await this.userService.updateAccount();
+            await this.userService.initMember();
             this.account = this.userService.data.accounts[0];
             this.availableBalance = this.userService.getAvailableBalance();
             this.programMembershipOwnershipInfo = this.userService.data.programMembershipOwnershipInfos[0];

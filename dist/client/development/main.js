@@ -4757,7 +4757,8 @@ var CinerinoService = /** @class */ (function () {
                         _a.sent();
                         return [2 /*return*/, {
                                 endpoint: this.endpoint,
-                                auth: this.auth
+                                auth: this.auth,
+                                project: { id: this.projectId }
                             }];
                 }
             });
@@ -4794,6 +4795,7 @@ var CinerinoService = /** @class */ (function () {
                         this.auth.setCredentials(result.credentials);
                         this.userName = result.userName;
                         this.endpoint = result.endpoint;
+                        this.projectId = result.projectId;
                         return [2 /*return*/];
                 }
             });
@@ -5530,8 +5532,12 @@ var ReservationService = /** @class */ (function () {
                                     }
                                     reservedTickets.push(offer.itemOffered.reservedTicket);
                                 });
+                                var itemOffered = order.acceptedOffers[0].itemOffered;
+                                if (itemOffered.typeOf !== _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.reservationType.EventReservation) {
+                                    return;
+                                }
                                 orders.push({
-                                    confirmationNumber: String(order.confirmationNumber),
+                                    confirmationNumber: itemOffered.reservationNumber,
                                     reservationsFor: reservationsFor,
                                     reservedTickets: reservedTickets
                                 });

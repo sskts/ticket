@@ -97,11 +97,7 @@ export class MemberEditProfileComponent implements OnInit {
             theaterCode: {
                 value: '',
                 validators: [Validators.required]
-            },
-            postalCode: {
-                value: '',
-                validators: []
-            },
+            }
         };
 
         const contact = this.user.data.profile;
@@ -124,7 +120,6 @@ export class MemberEditProfileComponent implements OnInit {
             givenName: [profile.givenName.value, profile.givenName.validators],
             telephone: [profile.telephone.value, profile.telephone.validators],
             theaterCode: [profile.theaterCode.value, profile.theaterCode.validators],
-            postalCode: [profile.postalCode.value, profile.postalCode.validators]
         });
     }
 
@@ -134,12 +129,12 @@ export class MemberEditProfileComponent implements OnInit {
      */
     public async onSubmit() {
         this.isLoading = true;
+        Object.keys(this.profileForm.controls).forEach((key) => {
+            this.profileForm.controls[key].markAsTouched();
+            this.profileForm.controls[key].setValue((<HTMLInputElement>document.getElementById(key)).value);
+        });
         if (this.profileForm.invalid) {
             // フォームのステータス変更
-            this.profileForm.controls.familyName.markAsTouched();
-            this.profileForm.controls.givenName.markAsTouched();
-            this.profileForm.controls.telephone.markAsTouched();
-            this.profileForm.controls.postalCode.markAsTouched();
             setTimeout(() => {
                 const element: HTMLElement = this.elementRef.nativeElement;
                 const validation = <HTMLElement>element.querySelector('.validation');
@@ -162,7 +157,6 @@ export class MemberEditProfileComponent implements OnInit {
                 givenName: this.profileForm.controls.givenName.value,
                 email: this.staticProfile.email,
                 telephone: this.profileForm.controls.telephone.value,
-                postalCode: this.profileForm.controls.postalCode.value,
                 theaterCode: this.profileForm.controls.theaterCode.value,
             });
             this.router.navigate(['/member/edit']);
