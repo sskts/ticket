@@ -261,7 +261,8 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
         }
         if (this.scheduleApiEndpoint === undefined) {
             this.scheduleApiEndpoint = (await this.utilService.getJson<{
-                scheduleApiEndpoint: string
+                scheduleApiEndpoint: string;
+                cmsApiEndpoint: string;
             }>(`/api/config?date${moment().toISOString()}`)).scheduleApiEndpoint;
         }
         this.theatreName = theatreTableFindResult.name;

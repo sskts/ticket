@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { BsModalRef } from 'ngx-bootstrap';
 import { cms } from '../../../../../models';
@@ -16,6 +17,7 @@ export class MovieDetailModalComponent implements OnInit {
 
     constructor(
         public modal: BsModalRef,
+        public router: Router,
         public callNativeService: CallNativeService
     ) { }
 
@@ -33,6 +35,7 @@ export class MovieDetailModalComponent implements OnInit {
     }
 
     public close() {
+        this.router.navigate(['/purchase']);
         this.modal.hide();
     }
 }

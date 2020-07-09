@@ -1,5 +1,308 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["modules-purchase-purchase-module-ngfactory"],{
 
+/***/ "./app/functions/index.ts":
+/*!********************************!*\
+  !*** ./app/functions/index.ts ***!
+  \********************************/
+/*! exports provided: object2query, sleep, isScreeningServiceType, schedule2Performance, filterPerformancebyMovie, hasDisplayPerformance */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util.function */ "./app/functions/util.function.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "object2query", function() { return _util_function__WEBPACK_IMPORTED_MODULE_0__["object2query"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sleep", function() { return _util_function__WEBPACK_IMPORTED_MODULE_0__["sleep"]; });
+
+/* harmony import */ var _purchase_function__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./purchase.function */ "./app/functions/purchase.function.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isScreeningServiceType", function() { return _purchase_function__WEBPACK_IMPORTED_MODULE_1__["isScreeningServiceType"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "schedule2Performance", function() { return _purchase_function__WEBPACK_IMPORTED_MODULE_1__["schedule2Performance"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "filterPerformancebyMovie", function() { return _purchase_function__WEBPACK_IMPORTED_MODULE_1__["filterPerformancebyMovie"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "hasDisplayPerformance", function() { return _purchase_function__WEBPACK_IMPORTED_MODULE_1__["hasDisplayPerformance"]; });
+
+
+
+
+
+/***/ }),
+
+/***/ "./app/functions/purchase.function.ts":
+/*!********************************************!*\
+  !*** ./app/functions/purchase.function.ts ***!
+  \********************************************/
+/*! exports provided: isScreeningServiceType, schedule2Performance, filterPerformancebyMovie, hasDisplayPerformance */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isScreeningServiceType", function() { return isScreeningServiceType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "schedule2Performance", function() { return schedule2Performance; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filterPerformancebyMovie", function() { return filterPerformancebyMovie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasDisplayPerformance", function() { return hasDisplayPerformance; });
+/* harmony import */ var _models_performance__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/performance */ "./app/models/performance.ts");
+
+/**
+ * サービス区分判定
+ */
+function isScreeningServiceType(screeningEvent, serviceType) {
+    if (screeningEvent.coaInfo === undefined
+        || screeningEvent.coaInfo.kbnService === undefined
+        || screeningEvent.coaInfo.kbnService.kubunCode === undefined) {
+        return false;
+    }
+    var kubunCode = screeningEvent.coaInfo.kbnService.kubunCode;
+    if (serviceType === 'first') {
+        return (kubunCode === '001');
+    }
+    else if (serviceType === 'late') {
+        return (kubunCode === '002' && screeningEvent.coaInfo.theaterCode.slice(-2) !== '20');
+    }
+    else {
+        return false;
+    }
+}
+/**
+ * スケジュールからパフォーマンスへ変換
+ */
+function schedule2Performance(schedule, member) {
+    var performances = [];
+    var date = schedule.date;
+    schedule.movie.forEach(function (movie) {
+        movie.screen.forEach(function (screen) {
+            screen.time.forEach(function (time) {
+                performances.push(new _models_performance__WEBPACK_IMPORTED_MODULE_0__["Performance"]({ date: date, movie: movie, screen: screen, time: time, member: member }));
+            });
+        });
+    });
+    var sortResult = performances.sort(function (a, b) {
+        if (a.time.start_time < b.time.start_time) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
+    });
+    return sortResult;
+}
+/**
+ * パフォーマンスを作品で絞り込み
+ */
+function filterPerformancebyMovie(performances, movie) {
+    var filterResult = performances.filter(function (p) {
+        return (p.movie.movie_short_code === movie.movie_short_code
+            && p.movie.movie_branch_code === movie.movie_branch_code);
+    });
+    var sortResult = filterResult.sort(function (a, b) {
+        if (a.time.start_time < b.time.start_time) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
+    });
+    return sortResult;
+}
+/**
+ * 表示可能パフォーマンス判定
+ */
+function hasDisplayPerformance(performances, movie) {
+    var target = filterPerformancebyMovie(performances, movie);
+    var filterResult = target.filter(function (p) { return p.isDisplay(); });
+    return filterResult.length > 0;
+}
+
+
+/***/ }),
+
+/***/ "./app/functions/util.function.ts":
+/*!****************************************!*\
+  !*** ./app/functions/util.function.ts ***!
+  \****************************************/
+/*! exports provided: object2query, sleep */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "object2query", function() { return object2query; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sleep", function() { return sleep; });
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * オブジェクトをクエリストリングへ変換
+ */
+function object2query(params) {
+    var query = '';
+    for (var i = 0; i < Object.keys(params).length; i++) {
+        var key = Object.keys(params)[i];
+        var value = params[key];
+        if (i > 0) {
+            query += '&';
+        }
+        query += key + "=" + value;
+    }
+    return query;
+}
+/**
+ * N秒待つ
+ */
+function sleep(time) {
+    if (time === void 0) { time = 3000; }
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/, new Promise(function (resolve) {
+                    setTimeout(function () { return resolve(); }, time);
+                })];
+        });
+    });
+}
+
+
+/***/ }),
+
+/***/ "./app/models/performance.ts":
+/*!***********************************!*\
+  !*** ./app/models/performance.ts ***!
+  \***********************************/
+/*! exports provided: Performance */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Performance", function() { return Performance; });
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+
+/**
+ * パフォーマンス
+ */
+var Performance = /** @class */ (function () {
+    function Performance(params) {
+        this.date = params.date;
+        this.movie = params.movie;
+        this.screen = params.screen;
+        this.time = params.time;
+        this.member = (params.member === undefined) ? false : params.member;
+    }
+    /**
+     * 予約ステータス情報取得
+     */
+    Performance.prototype.getAvailability = function () {
+        var value = this.time.seat_count.cnt_reserve_free / this.time.seat_count.cnt_reserve_max * 100;
+        var availability = [
+            { symbolText: '×', image: '/assets/images/icon/vacancy_full_white.svg', className: 'vacancy-full', text: '満席' },
+            { symbolText: '△', image: '/assets/images/icon/vacancy_little_white.svg', className: 'vacancy-little', text: '購入' },
+            { symbolText: '○', image: '/assets/images/icon/vacancy_large_white.svg', className: 'vacancy-large', text: '購入' }
+        ];
+        var threshold = 10;
+        return (value === 0)
+            ? availability[0] : (value <= threshold)
+            ? availability[1] : availability[2];
+    };
+    /**
+     * 販売可能判定
+     */
+    Performance.prototype.isSalse = function () {
+        return !this.isBeforePeriod()
+            && !this.isAfterPeriod()
+            && !this.isWindow()
+            && this.time.seat_count.cnt_reserve_free > 0;
+    };
+    /**
+     * 予約期間前判定
+     */
+    Performance.prototype.isBeforePeriod = function () {
+        var rsvStartDate = (this.member)
+            ? moment__WEBPACK_IMPORTED_MODULE_0__(this.time.member_rsv_start_day + " " + this.time.member_rsv_start_time, 'YYYYMMDD HHmm')
+            : moment__WEBPACK_IMPORTED_MODULE_0__(this.time.rsv_start_day + " " + this.time.rsv_start_time, 'YYYYMMDD HHmm');
+        return rsvStartDate > moment__WEBPACK_IMPORTED_MODULE_0__();
+    };
+    /**
+     * 予約期間後判定（上映開始10分以降）
+     */
+    Performance.prototype.isAfterPeriod = function () {
+        var startDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.date + " " + this.time.start_time, 'YYYYMMDD HHmm');
+        return moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(10, 'minutes') < moment__WEBPACK_IMPORTED_MODULE_0__();
+    };
+    /**
+     * 窓口判定（上映開始10分前から上映開始10分後）
+     */
+    Performance.prototype.isWindow = function () {
+        var startDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.date + " " + this.time.start_time, 'YYYYMMDD HHmm');
+        var now = moment__WEBPACK_IMPORTED_MODULE_0__();
+        return (this.time.seat_count.cnt_reserve_free > 0
+            && moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(-10, 'minutes') < now
+            && moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(10, 'minutes') > now);
+    };
+    /**
+     * 表示判定
+     */
+    Performance.prototype.isDisplay = function () {
+        var now = moment__WEBPACK_IMPORTED_MODULE_0__();
+        var displayStartDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.time.online_display_start_day, 'YYYYMMDD');
+        var endDate = (this.time.start_time < this.time.end_time)
+            ? moment__WEBPACK_IMPORTED_MODULE_0__(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm')
+            : moment__WEBPACK_IMPORTED_MODULE_0__(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm').add(1, 'days');
+        return (displayStartDate < now && endDate > now);
+    };
+    /**
+     * 上映時間取得
+     */
+    Performance.prototype.getTime = function (type) {
+        return (type === 'start')
+            ? this.time.start_time.slice(0, 2) + ":" + this.time.start_time.slice(2, 4)
+            : this.time.end_time.slice(0, 2) + ":" + this.time.end_time.slice(2, 4);
+    };
+    /**
+     * id生成
+     */
+    Performance.prototype.createId = function () {
+        var id = "" + this.movie.movie_short_code + this.movie.movie_branch_code + this.date + this.screen.screen_code + this.time.start_time;
+        return id;
+    };
+    return Performance;
+}());
+
+
+
+/***/ }),
+
 /***/ "./app/modules/purchase/components/pages/purchase-index/purchase-index.component.ngfactory.js":
 /*!****************************************************************************************************!*\
   !*** ./app/modules/purchase/components/pages/purchase-index/purchase-index.component.ngfactory.js ***!

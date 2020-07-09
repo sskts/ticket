@@ -1,16 +1,20 @@
 <div class="p-3 scroll-vertical">
     <div class="mb-3">
         <div>
-            <img *ngIf="data.title.image" [src]="data.title.image" class="mx-auto d-block w-50 mb-2" [alt]="data.title.name">
-            <img *ngIf="!data.title.image" src="/assets/images/movie/no_image.png" class="mx-auto d-block w-50 mb-2" alt="">
+            <img *ngIf="data.title.image" [src]="data.title.image" class="mx-auto d-block w-50 mb-2"
+                [alt]="data.title.name">
+            <img *ngIf="!data.title.image" src="/assets/images/movie/no_image.png" class="mx-auto d-block w-50 mb-2"
+                alt="">
             <p *ngIf="data.title.credit" class="text-x-small text-dark-gray">{{ data.title.credit }}</p>
         </div>
         <p class="font-weight-bold mb-2">{{ data.title.name }}</p>
         <div *ngIf="data.title.rating" class="d-inline-block bg-dark-gray text-white px-3 py-1 text-x-small mb-2">
             {{ data.title.rating }}
         </div>
-        <p *ngIf="data.title.catchcopy" class="text-small font-weight-bold mb-2 white-space-pre-wrap">{{ data.title.catchcopy }}</p>
-        <p *ngIf="data.title.introduction" class="text-x-small mb-2 white-space-pre-wrap">{{ data.title.introduction }}</p>
+        <p *ngIf="data.title.catchcopy" class="text-small font-weight-bold mb-2 white-space-pre-wrap">
+            {{ data.title.catchcopy }}</p>
+        <p *ngIf="data.title.introduction" class="text-x-small mb-2 white-space-pre-wrap">{{ data.title.introduction }}
+        </p>
         <div *ngIf="data.title.director" class="mb-2">
             <div class="d-inline-block bg-dark-gray text-white px-3 py-1 mb-1 text-x-small">監督</div>
             <p class="text-small">{{ data.title.director }}</p>
@@ -23,38 +27,40 @@
             <a href="#" (click)="openWebBrowse(data.title.official_site)">公式サイト</a>
         </p>
     </div>
-    <div *ngFor="let schedule of data.schedule" class="mb-3">
-        <div class="mb-2">
-            <div class="d-inline-block bg-dark-gray text-white px-3 py-1 mb-1 text-x-small">公開</div>
-            <p class="text-small">{{ moment(schedule.start_date, 'YYYY-MM-DD').format('YYYY/MM/DD') }} -
-                {{ moment(schedule.end_date, 'YYYY-MM-DD').format('YYYY/MM/DD') }}</p>
+    <div class="mb-4">
+        <div *ngFor="let schedule of data.schedule" class="mb-3">
+            <div class="mb-2">
+                <div class="d-inline-block bg-dark-gray text-white px-3 py-1 mb-1 text-x-small">上映日</div>
+                <p class="text-small">
+                    {{ moment(schedule.start_date, 'YYYY-MM-DD').format('YYYY/MM/DD') }}
+                </p>
+            </div>
+            <div class="mb-2">
+                <table class="table table-striped table-bordered text-x-small text-center">
+                    <thead>
+                        <tr>
+                            <th class="p-2 font-weight-normal w-33" scope="col">方式</th>
+                            <th class="p-2 font-weight-normal w-33" scope="col">音響</th>
+                            <th class="p-2 font-weight-normal w-33" scope="col">音声</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let format of schedule.formats">
+                            <td class="p-2 align-middle">{{ format.system }}</td>
+                            <td class="p-2 align-middle">{{ format.sound }}</td>
+                            <td class="p-2 align-middle">{{ format.voice }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p *ngIf="schedule.remark" class="text-x-small white-space-pre-wrap">{{ schedule.remark }}</p>
         </div>
-        <div class="mb-2">
-            <table class="table table-striped border text-x-small text-center">
-                <thead>
-                    <tr>
-                        <th class="p-2 font-weight-normal" scope="col">方式</th>
-                        <th class="p-2 font-weight-normal" scope="col">音響</th>
-                        <th class="p-2 font-weight-normal" scope="col">音声</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let format of schedule.formats">
-                        <td class="p-2">{{ format.system }}</td>
-                        <td class="p-2">{{ format.sound }}</td>
-                        <td class="p-2">{{ format.voice }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <p *ngIf="schedule.remark" class="text-x-small white-space-pre-wrap">{{ schedule.remark }}</p>
     </div>
 
 
 
     <div class="buttons mx-auto text-center">
-        <button *ngIf="routerLink" type="button" class="btn btn-primary btn-block py-3 mb-3"
-            routerLink="/purchase">購入する</button>
-        <button type="button" class="btn btn-outline-secondary btn-block py-3" (click)="close()">閉じる</button>
+        <button *ngIf="routerLink" type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="close()">上映スケジュール</button>
+        <button type="button" class="btn btn-outline-secondary btn-block py-3" (click)="modal.hide()">閉じる</button>
     </div>
 </div>
