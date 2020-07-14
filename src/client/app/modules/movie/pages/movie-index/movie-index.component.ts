@@ -2,11 +2,10 @@
  * TicketComponent
  */
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { factory } from '@cinerino/api-javascript-client';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { cms } from '../../../../models';
-import { CmsService, IPurchaseConditions, MasterService, SelectService } from '../../../../services';
+import { CmsService, IPurchaseConditions, MasterService, SelectService, UtilService } from '../../../../services';
 import { MovieDetailModalComponent } from '../../../shared/components/parts/movie-detail-modal/movie-detail-modal.component';
 
 
@@ -28,10 +27,10 @@ export class MovieIndexComponent implements OnInit {
     public comingSoon: { title: cms.schedule.ITitle, schedule: cms.schedule.ISchedule[] }[];
 
     constructor(
-        private router: Router,
         private cmsService: CmsService,
         private masterService: MasterService,
         private selectService: SelectService,
+        private utilService: UtilService,
         private modal: BsModalService,
     ) { }
 
@@ -40,7 +39,6 @@ export class MovieIndexComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        console.log(this.router.url);
         this.isLoading = true;
         try {
             this.conditions = this.selectService.data.purchase;
@@ -50,6 +48,10 @@ export class MovieIndexComponent implements OnInit {
             );
             await this.getSchedule();
         } catch (error) {
+            this.utilService.openAlert({
+                title: 'エラー',
+                body: `上映情報が取得に失敗しました。`
+            });
             console.error(error);
         }
         this.isLoading = false;
@@ -105,6 +107,10 @@ export class MovieIndexComponent implements OnInit {
         try {
             await this.getSchedule();
         } catch (error) {
+            this.utilService.openAlert({
+                title: 'エラー',
+                body: `上映情報が取得に失敗しました。`
+            });
             console.error(error);
         }
         this.isLoading = false;
@@ -118,6 +124,10 @@ export class MovieIndexComponent implements OnInit {
         try {
             await this.getSchedule();
         } catch (error) {
+            this.utilService.openAlert({
+                title: 'エラー',
+                body: `上映情報が取得に失敗しました。`
+            });
             console.error(error);
         }
         this.isLoading = false;
