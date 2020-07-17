@@ -1077,6 +1077,207 @@ var TutorialGuardService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./app/models/cms/index.ts":
+/*!*********************************!*\
+  !*** ./app/models/cms/index.ts ***!
+  \*********************************/
+/*! exports provided: schedule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _schedule__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./schedule */ "./app/models/cms/schedule.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "schedule", function() { return _schedule__WEBPACK_IMPORTED_MODULE_0__; });
+
+
+
+
+/***/ }),
+
+/***/ "./app/models/cms/schedule.ts":
+/*!************************************!*\
+  !*** ./app/models/cms/schedule.ts ***!
+  \************************************/
+/*! exports provided: System, Sound, Voice */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "System", function() { return System; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sound", function() { return Sound; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Voice", function() { return Voice; });
+var System;
+(function (System) {
+    System[System["2D"] = 1] = "2D";
+    System[System["3D"] = 2] = "3D";
+    System[System["4DX"] = 3] = "4DX";
+    System[System["4DX3D"] = 4] = "4DX3D";
+    System[System["IMAX"] = 5] = "IMAX";
+    System[System["IMAX3D"] = 6] = "IMAX3D";
+    System[System["ScreenX"] = 7] = "ScreenX";
+    System[System["4DXSCREEN"] = 8] = "4DXSCREEN";
+    System[System["None"] = 99] = "None";
+})(System || (System = {}));
+var Sound;
+(function (Sound) {
+    Sound[Sound["BESTIA"] = 1] = "BESTIA";
+    Sound[Sound["Dts-X"] = 2] = "Dts-X";
+    Sound[Sound["Dolbyatmos"] = 3] = "Dolbyatmos";
+    Sound[Sound["GDC"] = 4] = "GDC";
+    Sound[Sound["None"] = 99] = "None";
+})(Sound || (Sound = {}));
+var Voice;
+(function (Voice) {
+    Voice[Voice["Subtitles"] = 1] = "Subtitles";
+    Voice[Voice["Dubbing"] = 2] = "Dubbing";
+    Voice[Voice["None"] = 3] = "None";
+})(Voice || (Voice = {}));
+
+
+/***/ }),
+
+/***/ "./app/models/index.ts":
+/*!*****************************!*\
+  !*** ./app/models/index.ts ***!
+  \*****************************/
+/*! exports provided: cms, performance, schedule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _cms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cms */ "./app/models/cms/index.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "cms", function() { return _cms__WEBPACK_IMPORTED_MODULE_0__; });
+/* harmony import */ var _performance__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./performance */ "./app/models/performance.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "performance", function() { return _performance__WEBPACK_IMPORTED_MODULE_1__; });
+/* harmony import */ var _schedule__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./schedule */ "./app/models/schedule.ts");
+/* harmony import */ var _schedule__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_schedule__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "schedule", function() { return _schedule__WEBPACK_IMPORTED_MODULE_2__; });
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./app/models/performance.ts":
+/*!***********************************!*\
+  !*** ./app/models/performance.ts ***!
+  \***********************************/
+/*! exports provided: Performance */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Performance", function() { return Performance; });
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+
+/**
+ * パフォーマンス
+ */
+var Performance = /** @class */ (function () {
+    function Performance(params) {
+        this.date = params.date;
+        this.movie = params.movie;
+        this.screen = params.screen;
+        this.time = params.time;
+        this.member = (params.member === undefined) ? false : params.member;
+    }
+    /**
+     * 予約ステータス情報取得
+     */
+    Performance.prototype.getAvailability = function () {
+        var value = this.time.seat_count.cnt_reserve_free / this.time.seat_count.cnt_reserve_max * 100;
+        var availability = [
+            { symbolText: '×', image: '/assets/images/icon/vacancy_full_white.svg', className: 'vacancy-full', text: '満席' },
+            { symbolText: '△', image: '/assets/images/icon/vacancy_little_white.svg', className: 'vacancy-little', text: '購入' },
+            { symbolText: '○', image: '/assets/images/icon/vacancy_large_white.svg', className: 'vacancy-large', text: '購入' }
+        ];
+        var threshold = 10;
+        return (value === 0)
+            ? availability[0] : (value <= threshold)
+            ? availability[1] : availability[2];
+    };
+    /**
+     * 販売可能判定
+     */
+    Performance.prototype.isSalse = function () {
+        return !this.isBeforePeriod()
+            && !this.isAfterPeriod()
+            && !this.isWindow()
+            && this.time.seat_count.cnt_reserve_free > 0;
+    };
+    /**
+     * 予約期間前判定
+     */
+    Performance.prototype.isBeforePeriod = function () {
+        var rsvStartDate = (this.member)
+            ? moment__WEBPACK_IMPORTED_MODULE_0__(this.time.member_rsv_start_day + " " + this.time.member_rsv_start_time, 'YYYYMMDD HHmm')
+            : moment__WEBPACK_IMPORTED_MODULE_0__(this.time.rsv_start_day + " " + this.time.rsv_start_time, 'YYYYMMDD HHmm');
+        return rsvStartDate > moment__WEBPACK_IMPORTED_MODULE_0__();
+    };
+    /**
+     * 予約期間後判定（上映開始10分以降）
+     */
+    Performance.prototype.isAfterPeriod = function () {
+        var startDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.date + " " + this.time.start_time, 'YYYYMMDD HHmm');
+        return moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(10, 'minutes') < moment__WEBPACK_IMPORTED_MODULE_0__();
+    };
+    /**
+     * 窓口判定（上映開始10分前から上映開始10分後）
+     */
+    Performance.prototype.isWindow = function () {
+        var startDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.date + " " + this.time.start_time, 'YYYYMMDD HHmm');
+        var now = moment__WEBPACK_IMPORTED_MODULE_0__();
+        return (this.time.seat_count.cnt_reserve_free > 0
+            && moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(-10, 'minutes') < now
+            && moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(10, 'minutes') > now);
+    };
+    /**
+     * 表示判定
+     */
+    Performance.prototype.isDisplay = function () {
+        var now = moment__WEBPACK_IMPORTED_MODULE_0__();
+        var displayStartDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.time.online_display_start_day, 'YYYYMMDD');
+        var endDate = (this.time.start_time < this.time.end_time)
+            ? moment__WEBPACK_IMPORTED_MODULE_0__(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm')
+            : moment__WEBPACK_IMPORTED_MODULE_0__(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm').add(1, 'days');
+        return (displayStartDate < now && endDate > now);
+    };
+    /**
+     * 上映時間取得
+     */
+    Performance.prototype.getTime = function (type) {
+        return (type === 'start')
+            ? this.time.start_time.slice(0, 2) + ":" + this.time.start_time.slice(2, 4)
+            : this.time.end_time.slice(0, 2) + ":" + this.time.end_time.slice(2, 4);
+    };
+    /**
+     * id生成
+     */
+    Performance.prototype.createId = function () {
+        var id = "" + this.movie.movie_short_code + this.movie.movie_branch_code + this.date + this.screen.screen_code + this.time.start_time;
+        return id;
+    };
+    return Performance;
+}());
+
+
+
+/***/ }),
+
+/***/ "./app/models/schedule.ts":
+/*!********************************!*\
+  !*** ./app/models/schedule.ts ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./app/modules/core/core.module.ts":
 /*!*****************************************!*\
   !*** ./app/modules/core/core.module.ts ***!
@@ -3627,7 +3828,7 @@ function View_MovieDetailModalComponent_9(_l) { return _angular_core__WEBPACK_IM
         var pd_0 = (_co.openWebBrowse($event, _co.data.title.official_site) !== false);
         ad = (pd_0 && ad);
     } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u516C\u5F0F\u30B5\u30A4\u30C8"]))], null, null); }
-function View_MovieDetailModalComponent_11(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "td", [["class", "p-2 align-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "td", [["class", "p-2 align-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](4, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "td", [["class", "p-2 align-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](6, null, ["", ""]))], null, function (_ck, _v) { var currVal_0 = _v.context.$implicit.system_name; _ck(_v, 2, 0, currVal_0); var currVal_1 = _v.context.$implicit.sound_name; _ck(_v, 4, 0, currVal_1); var currVal_2 = _v.context.$implicit.voice_name; _ck(_v, 6, 0, currVal_2); }); }
+function View_MovieDetailModalComponent_11(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "td", [["class", "p-2 align-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "td", [["class", "p-2 align-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](4, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "td", [["class", "p-2 align-middle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](6, null, ["", ""]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = ((_v.context.$implicit.system_id === _co.Format.System.None) ? "-" : _v.context.$implicit.system_name); _ck(_v, 2, 0, currVal_0); var currVal_1 = ((_v.context.$implicit.sound_id === _co.Format.Sound.None) ? "-" : _v.context.$implicit.sound_name); _ck(_v, 4, 0, currVal_1); var currVal_2 = ((_v.context.$implicit.voice_id === _co.Format.Voice.None) ? "-" : _v.context.$implicit.voice_name); _ck(_v, 6, 0, currVal_2); }); }
 function View_MovieDetailModalComponent_12(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "p", [["class", "text-x-small white-space-pre-wrap"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](1, null, ["", ""]))], null, function (_ck, _v) { var currVal_0 = _v.parent.context.$implicit.remark; _ck(_v, 1, 0, currVal_0); }); }
 function View_MovieDetailModalComponent_10(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 20, "div", [["class", "mb-3"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 4, "div", [["class", "mb-2"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, null, 1, "div", [["class", "d-inline-block bg-dark-gray text-white px-3 py-1 mb-1 text-x-small"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u4E0A\u6620\u65E5"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 1, "p", [["class", "text-small"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](5, null, [" ", " "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 12, "div", [["class", "mb-2"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 11, "table", [["class", "table table-striped table-bordered text-x-small text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 7, "thead", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 6, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 1, "th", [["class", "p-2 font-weight-normal w-33"], ["scope", "col"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u65B9\u5F0F"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](12, 0, null, null, 1, "th", [["class", "p-2 font-weight-normal w-33"], ["scope", "col"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u97F3\u97FF"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](14, 0, null, null, 1, "th", [["class", "p-2 font-weight-normal w-33"], ["scope", "col"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u97F3\u58F0"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 2, "tbody", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MovieDetailModalComponent_11)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](18, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], { ngForOf: [0, "ngForOf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MovieDetailModalComponent_12)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](20, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var currVal_1 = _v.context.$implicit.formats; _ck(_v, 18, 0, currVal_1); var currVal_2 = _v.context.$implicit.remark; _ck(_v, 20, 0, currVal_2); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.moment(_v.context.$implicit.start_date, "YYYY-MM-DD").format("YYYY/MM/DD"); _ck(_v, 5, 0, currVal_0); }); }
 function View_MovieDetailModalComponent_13(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "button", [["class", "btn btn-primary btn-block py-3 mb-3"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
@@ -3682,7 +3883,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-bootstrap */ "../../node_modules/ngx-bootstrap/esm5/ngx-bootstrap.js");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
+/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../models */ "./app/models/index.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
+
 
 
 
@@ -3694,6 +3897,11 @@ var MovieDetailModalComponent = /** @class */ (function () {
         this.router = router;
         this.callNativeService = callNativeService;
         this.moment = moment__WEBPACK_IMPORTED_MODULE_2__;
+        this.Format = {
+            System: _models__WEBPACK_IMPORTED_MODULE_4__["cms"].schedule.System,
+            Sound: _models__WEBPACK_IMPORTED_MODULE_4__["cms"].schedule.Sound,
+            Voice: _models__WEBPACK_IMPORTED_MODULE_4__["cms"].schedule.Voice,
+        };
     }
     MovieDetailModalComponent.prototype.ngOnInit = function () {
     };
@@ -3704,7 +3912,7 @@ var MovieDetailModalComponent = /** @class */ (function () {
         event.preventDefault();
         this.callNativeService.inAppBrowser({
             url: url,
-            target: _services__WEBPACK_IMPORTED_MODULE_4__["InAppBrowserTarget"].System
+            target: _services__WEBPACK_IMPORTED_MODULE_5__["InAppBrowserTarget"].System
         });
     };
     MovieDetailModalComponent.prototype.close = function () {

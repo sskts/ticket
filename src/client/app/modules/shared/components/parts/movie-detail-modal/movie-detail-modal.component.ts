@@ -14,6 +14,12 @@ export class MovieDetailModalComponent implements OnInit {
     @Input() public routerLink: boolean;
     @Input() public data: { title: cms.schedule.ITitle, schedule: cms.schedule.ISchedule[] };
     public moment = moment;
+    public Format = {
+        System: cms.schedule.System,
+        Sound: cms.schedule.Sound,
+        Voice: cms.schedule.Voice,
+    };
+
 
     constructor(
         public modal: BsModalRef,
