@@ -1,0 +1,54 @@
+<div class="p-3">
+    <div class="input-group align-items-center">
+        <select class="form-control rounded" name="theater" [(ngModel)]="conditions.theater" (change)="changeTheater()">
+            <option value="">選択してください</option>
+            <option *ngFor="let theater of theaters" value="{{ theater.location.branchCode }}">
+                {{ theater.name.ja }}</option>
+        </select>
+        <div class="input-group-append">
+            <button class="btn btn-block p-2 ml-3 bg-white border border-gray" (click)="update()">
+                <img class="" src="/assets/images/icon/reload_gray.svg" width="24" height="24">
+            </button>
+        </div>
+    </div>
+</div>
+<div *ngIf="!isLoading && conditions.theater === ''">
+</div>
+<div *ngIf="!isLoading && conditions.theater !== ''">
+    <div class="">
+        <p class="py-2 px-3 bg-gray font-weight-bold">上映中</p>
+        <div class="bg-light-gray container">
+            <ul *ngIf="nowShowing.length > 0" class="row p-2">
+                <li *ngFor="let data of nowShowing" class="col-4 p-1">
+                    <div (click)="openDetail({data: data, routerLink: true})">
+                        <div class="mb-1">
+                            <img *ngIf="data.title.image" [src]="data.title.image" class="w-100" [alt]="data.title.name">
+                            <img *ngIf="!data.title.image" src="/assets/images/movie/no_image.png" class="w-100" alt="">
+                        </div>
+                        <p class="text-x-small">{{ data.title.name }}</p>
+                    </div>
+                </li>
+            </ul>
+            <p class="py-5 text-center" *ngIf="nowShowing.length === 0">上映中作品がありません</p>
+        </div>
+    </div>
+    <div class="future">
+        <p class="px-3 py-2 bg-gold font-weight-bold">上映予定</p>
+        <div class="bg-light-gold container">
+            <ul *ngIf="comingSoon.length > 0" class="row p-2">
+                <li *ngFor="let data of comingSoon" class="col-4 p-1">
+                    <div (click)="openDetail({data: data, routerLink: false})">
+                        <div class="mb-1">
+                            <img *ngIf="data.title.image" [src]="data.title.image" class="w-100" [alt]="data.title.name">
+                            <img *ngIf="!data.title.image" src="/assets/images/movie/no_image.png" class="w-100" alt="">
+                        </div>
+                        <p class="text-x-small">{{ data.title.name }}</p>
+                    </div>
+                </li>
+            </ul>
+            <p class="py-5 text-center" *ngIf="comingSoon.length === 0">上映予定作品がありません</p>
+        </div>
+    </div>
+</div>
+
+<app-loading [show]="isLoading"></app-loading>
