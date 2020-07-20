@@ -23,6 +23,7 @@ import { InformationComponent } from './components/parts/information/information
 import { LoadingComponent } from './components/parts/loading/loading.component';
 import { MaintenanceComponent } from './components/parts/maintenance/maintenance.component';
 import { MembershipBenefitsComponent } from './components/parts/membership-benefits/membership-benefits.component';
+import { MovieDetailModalComponent } from './components/parts/movie-detail-modal/movie-detail-modal.component';
 import { NavigationComponent } from './components/parts/navigation/navigation.component';
 import { CreditcardSecurityCodeModalComponent } from './components/parts/security-code-modal/security-code-modal.component';
 import { AvailabilityPipe, DateFormatPipe, DurationPipe, TimeFormatPipe } from './pipes';
@@ -51,7 +52,8 @@ const entryComponents = [
   AlertModalComponent,
   ConfirmModalComponent,
   CreditcardSecurityCodeModalComponent,
-  InformationModalComponent
+  InformationModalComponent,
+  MovieDetailModalComponent
 ];
 
 const pipes = [

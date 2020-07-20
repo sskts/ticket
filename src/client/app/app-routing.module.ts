@@ -62,6 +62,12 @@ const appRoutes: Routes = [
         loadChildren: () => import('./modules/ticket/ticket.module').then(m => m.TicketModule)
     },
     {
+        path: 'movie',
+        component: BaseComponent,
+        canActivate: [AuthGuardService, ProgramMembershipGuardService],
+        loadChildren: () => import('./modules/movie/movie.module').then(m => m.MovieModule)
+    },
+    {
         path: 'member',
         component: BaseComponent,
         canActivate: [AuthGuardService, MemberGuardService, ProgramMembershipGuardService],
