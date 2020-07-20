@@ -22,8 +22,10 @@
                 <li *ngFor="let data of nowShowing" class="col-4 p-1">
                     <div (click)="openDetail({data: data, routerLink: true})">
                         <div class="mb-1">
-                            <img *ngIf="data.title.image" [src]="data.title.image" class="w-100" [alt]="data.title.name">
-                            <img *ngIf="!data.title.image" src="/assets/images/movie/no_image.png" class="w-100" alt="">
+                            <div *ngIf="data.title.image" class="image" [style.backgroundImage]="'url('+ data.title.image +')'"></div>
+                            <div *ngIf="!data.title.image" class="image no-image"></div>
+                            <!-- <img *ngIf="data.title.image" [src]="data.title.image" class="w-100" [alt]="data.title.name">
+                            <img *ngIf="!data.title.image" src="/assets/images/movie/no_image.png" class="w-100" alt=""> -->
                         </div>
                         <p class="text-x-small">{{ data.title.name }}</p>
                     </div>

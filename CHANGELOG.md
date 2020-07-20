@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.5.8 - 2020-7-20
+### Fixed
+ - 作品紹介android表示改善
+
 ## 3.5.7 - 2020-7-20
 ### Added
  - 作品紹介追加
