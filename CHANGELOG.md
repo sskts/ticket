@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.5.7 - 2020-7-20
+### Added
+ - 作品紹介追加
+
 ## 3.5.6 - 2020-7-14
 ### Changed
  - ポイント履歴をCompletedActionStatusのみ表示へ変更
