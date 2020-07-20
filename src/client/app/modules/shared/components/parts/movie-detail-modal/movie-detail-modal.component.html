@@ -1,5 +1,5 @@
 <div class="p-3 scroll-vertical">
-    <div class="mb-3">
+    <div class="mb-4">
         <div>
             <img *ngIf="data.title.image" [src]="data.title.image" class="mx-auto d-block w-50 mb-2"
                 [alt]="data.title.name">
@@ -27,7 +27,7 @@
             <a href="#" (click)="openWebBrowse($event, data.title.official_site)">公式サイト</a>
         </p>
     </div>
-    <div class="mb-4">
+    <!-- <div class="mb-4">
         <div *ngFor="let schedule of data.schedule" class="mb-3">
             <div class="mb-2">
                 <div class="d-inline-block bg-dark-gray text-white px-3 py-1 mb-1 text-x-small">上映日</div>
@@ -55,12 +55,12 @@
             </div>
             <p *ngIf="schedule.remark" class="text-x-small white-space-pre-wrap">{{ schedule.remark }}</p>
         </div>
-    </div>
+    </div> -->
 
 
 
     <div class="buttons mx-auto text-center">
-        <button *ngIf="routerLink" type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="close()">上映スケジュール</button>
+        <!-- <button *ngIf="routerLink" type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="close()">上映スケジュール</button> -->
         <button type="button" class="btn btn-outline-secondary btn-block py-3" (click)="modal.hide()">閉じる</button>
     </div>
 </div>
