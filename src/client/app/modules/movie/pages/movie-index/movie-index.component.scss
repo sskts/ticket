@@ -5,3 +5,15 @@
 .bg-light-gold {
     background-color: #e3dec6;
 }
+
+.image {
+    padding-top: calc(100% * 1.41);
+    background-size: contain;
+    // background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center 0;
+}
+
+.no-image {
+    background-image: url(/assets/images/movie/no_image.png);
+}
