@@ -103,6 +103,10 @@ img[src=''] {
     width: 40% !important;
 }
 
+.w-33 {
+    width: 33.3% !important;
+}
+
 .select-text {
     -webkit-touch-callout: default;
     user-select: all;
@@ -111,6 +115,7 @@ img[src=''] {
 .scroll-vertical {
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
+    will-change: transform;
 }
 
 .scroll-horizontal {
@@ -275,16 +280,16 @@ app-purchase .gdcs .service {
     z-index: 1;
     width: 100%;
     text-align: center;
-  }
-  .pagination-wrapper .swiper-pagination {
+}
+.pagination-wrapper .swiper-pagination {
     position: static;
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 5px 20px;
     border-radius: 25px;
-  }
-  
-  .swiper-pagination-bullet {
+}
+
+.swiper-pagination-bullet {
     background-color: transparent !important;
     border: 1px solid #FFF !important;
     width: 10px !important;
@@ -292,10 +297,21 @@ app-purchase .gdcs .service {
     border-radius: 5px !important;
     margin: 0 5px !important;
     vertical-align: middle !important;
-  }
-  
-  .swiper-pagination-bullet-active {
+}
+
+.swiper-pagination-bullet-active {
     background-color: #00A0E9 !important;
     border: 1px solid #00A0E9 !important;
-  }
-  
+}
+
+.white-space-pre-wrap {
+    white-space: pre-wrap;
+}
+
+.container {
+    max-width: 100% !important;
+}
+
+.modal.fade .modal-dialog {
+    will-change: transform;
+}

@@ -22,8 +22,6 @@ import {
     UtilService
 } from '../../../../../services';
 
-type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
-
 interface IDate {
     value: string;
     display: {
@@ -48,7 +46,7 @@ interface IDate {
  */
 export class PurchaseIndexComponent implements OnInit, OnDestroy {
     public isLoading: boolean;
-    public theaters: IMovieTheater[];
+    public theaters: factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>[];
     public dateList: IDate[];
     public schedules: ISchedule[];
     public schedule?: ISchedule;
@@ -263,7 +261,8 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
         }
         if (this.scheduleApiEndpoint === undefined) {
             this.scheduleApiEndpoint = (await this.utilService.getJson<{
-                scheduleApiEndpoint: string
+                scheduleApiEndpoint: string;
+                cmsApiEndpoint: string;
             }>(`/api/config?date${moment().toISOString()}`)).scheduleApiEndpoint;
         }
         this.theatreName = theatreTableFindResult.name;
