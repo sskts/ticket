@@ -1172,6 +1172,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Performance", function() { return Performance; });
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../environments/environment */ "./environments/environment.ts");
+
 
 /**
  * パフォーマンス
@@ -1231,8 +1233,8 @@ var Performance = /** @class */ (function () {
         var startDate = moment__WEBPACK_IMPORTED_MODULE_0__(this.date + " " + this.time.start_time, 'YYYYMMDD HHmm');
         var now = moment__WEBPACK_IMPORTED_MODULE_0__();
         return (this.time.seat_count.cnt_reserve_free > 0
-            && moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(-10, 'minutes') < now
-            && moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(10, 'minutes') > now);
+            && moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(Number(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].WINDOW_TIME_FROM_VALUE), _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].WINDOW_TIME_FROM_UNIT) < now
+            && moment__WEBPACK_IMPORTED_MODULE_0__(startDate).add(Number(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].WINDOW_TIME_THROUGH_VALUE), _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].WINDOW_TIME_THROUGH_UNIT) > now);
     };
     /**
      * 表示判定
@@ -7075,7 +7077,11 @@ var environment = {
     CLOSE_THEATERS: ['101'],
     ANALYTICS_ID: 'UA-99018492-5',
     MAIN_SHOP_BRUNCH_CODE: '101',
-    PRE_SALE_DIFFERENCE_DAY: '2'
+    PRE_SALE_DIFFERENCE_DAY: '2',
+    WINDOW_TIME_FROM_VALUE: '0',
+    WINDOW_TIME_FROM_UNIT: 'minutes',
+    WINDOW_TIME_THROUGH_VALUE: '10',
+    WINDOW_TIME_THROUGH_UNIT: 'minutes' // 窓口表示終了の単位（上映開始時間から相対）
 };
 
 
