@@ -1,4 +1,5 @@
 import * as moment from 'moment';
+import { environment } from '../../environments/environment';
 import { IMovie, IScreen, ITime } from './schedule';
 
 /**
@@ -79,8 +80,14 @@ export class Performance {
             moment(`${this.date} ${this.time.start_time}`, 'YYYYMMDD HHmm');
         const now = moment();
         return (this.time.seat_count.cnt_reserve_free > 0
-            && moment(startDate).add(-10, 'minutes') < now
-            && moment(startDate).add(10, 'minutes') > now);
+            && moment(startDate).add(
+                Number(environment.WINDOW_TIME_FROM_VALUE),
+                (<moment.DurationInputArg2>environment.WINDOW_TIME_FROM_UNIT)
+            ) < now
+            && moment(startDate).add(
+                Number(environment.WINDOW_TIME_THROUGH_VALUE),
+                (<moment.DurationInputArg2>environment.WINDOW_TIME_THROUGH_UNIT)
+            ) > now);
     }
 
     /**
