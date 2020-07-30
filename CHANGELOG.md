@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.5.10 - 2020-7-30
+### Changed
+ - 窓口変更時間を上映開始時間へ変更
+
 ## 3.5.9 - 2020-7-22
 ### Changed
  - チケットホルダーページネーション非表示へ変更
