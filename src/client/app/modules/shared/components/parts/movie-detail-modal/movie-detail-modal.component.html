@@ -24,7 +24,7 @@
             <p class="text-small">{{ data.title.cast }}</p>
         </div>
         <p *ngIf="data.title.official_site" class="text-small">
-            <a href="#" (click)="openWebBrowse($event, data.title.official_site)">公式サイト</a>
+            <a href="#" (click)="openWebBrowser($event, data.title.official_site)">公式サイト</a>
         </p>
     </div>
     <!-- <div class="mb-4">
