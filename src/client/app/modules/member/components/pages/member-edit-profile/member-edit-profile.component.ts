@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import * as libphonenumber from 'libphonenumber-js';
 import { environment } from '../../../../../../environments/environment';
 import { MasterService, UserService } from '../../../../../services';
 
-type IMovieTheater = factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>;
+type IMovieTheater = factory.chevre.seller.ISeller;
 
 @Component({
     selector: 'app-member-edit-profile',

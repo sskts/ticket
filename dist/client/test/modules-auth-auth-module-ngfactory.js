@@ -980,8 +980,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "../../node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @cinerino/api-javascript-client */ "../../node_modules/@cinerino/api-javascript-client/lib/index.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @cinerino/sdk */ "../../node_modules/@cinerino/sdk/lib/browser.js");
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1049,7 +1049,7 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                     case 1:
                         _c.trys.push([1, 4, , 5]);
                         _a = this;
-                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: true })];
+                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: true })];
                     case 2:
                         _a.theaters = _c.sent();
                         // 会員プログラム取得
@@ -1113,7 +1113,7 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                         if (!(i < accounts.length)) return [3 /*break*/, 6];
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.closeAccount({
                                 id: 'me',
-                                accountType: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].accountType.Point,
+                                accountType: 'Point',
                                 accountNumber: accounts[i].typeOfGood.accountNumber
                             })];
                     case 4:
@@ -1168,17 +1168,17 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
                             sort: {
-                                ownedFrom: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].sortType.Ascending
+                                ownedFrom: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__["factory"].sortType.Ascending
                             },
                             typeOfGood: {
-                                typeOf: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].ownershipInfo.AccountGoodType.Account,
-                                accountType: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].accountType.Point
+                                typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__["factory"].ownershipInfo.AccountGoodType.Account,
+                                accountType: 'Point'
                             }
                         })];
                     case 1:
                         searchResult = _a.sent();
                         accounts = searchResult.data.filter(function (a) {
-                            return (a.typeOfGood.status === _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].pecorino.accountStatusType.Opened);
+                            return (a.typeOfGood.status === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__["factory"].pecorino.accountStatusType.Opened);
                         });
                         return [2 /*return*/, accounts];
                 }

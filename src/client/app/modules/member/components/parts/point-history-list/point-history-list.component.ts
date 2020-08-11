@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 
 @Component({
@@ -8,7 +8,7 @@ import * as moment from 'moment';
     styleUrls: ['./point-history-list.component.scss']
 })
 export class PointHistoryListComponent implements OnInit {
-    @Input() public action: factory.pecorino.action.transfer.moneyTransfer.IAction<factory.accountType.Point>;
+    @Input() public action: factory.pecorino.action.transfer.moneyTransfer.IAction;
     @Input() public accountNumber: string;
     public circle: string;
     public description: string;

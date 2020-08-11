@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { CinerinoService } from './cinerino.service';
 import { UtilService } from './util.service';
@@ -21,6 +21,8 @@ export class MemberService {
         await this.cinerinoService.getServices();
         // 会員プログラム検索
         const programMemberships = await this.cinerinoService.programMembership.search({});
+        // const m = programMemberships.data[0];
+        // console.log('会員プログラム検索', JSON.stringify(m));
 
         return programMemberships.data;
     }
@@ -43,29 +45,22 @@ export class MemberService {
         });
         const seller = result.data[0];
 
-        const programMembership = args.programMembership;
+        const programMembership: any = args.programMembership;
+
         if (programMembership.id === undefined
             || programMembership.offers === undefined
-        ) {
-            throw new Error('programMemberships is Injustice');
-        }
-
-        const offer = programMembership.offers[0];
-
-        if (offer.identifier === undefined) {
+            || programMembership.offers.identifier === undefined
+            || seller.id === undefined) {
             throw new Error('programMemberships is Injustice');
         }
 
         // 会員プログラム登録
-        const registerProgramMembership = await this.cinerinoService.person.registerProgramMembership({
-            id: 'me',
+        await this.cinerinoService.person.registerProgramMembership({
             programMembershipId: programMembership.id,
-            offerIdentifier: offer.identifier,
+            offerIdentifier: programMembership.offers.identifier,
             sellerType: seller.typeOf,
             sellerId: seller.id
         });
-
-        console.log('registerProgramMembership', registerProgramMembership);
     }
 
     /**
@@ -81,7 +76,7 @@ export class MemberService {
                 try {
                     const searchResult = await this.cinerinoService.ownerShipInfo.search({
                         typeOfGood: {
-                            typeOf: factory.programMembership.ProgramMembershipType.ProgramMembership
+                            typeOf: factory.chevre.programMembership.ProgramMembershipType.ProgramMembership
                         }
                     });
                     const now = (await this.utilService.getServerTime()).date;

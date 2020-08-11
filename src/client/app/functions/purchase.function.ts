@@ -1,4 +1,4 @@
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import { Performance } from '../models/performance';
 import { IMovie, ISchedule } from '../models/schedule';
 

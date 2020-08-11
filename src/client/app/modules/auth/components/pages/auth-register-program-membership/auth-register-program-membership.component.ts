@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import { CinerinoService, MasterService, MemberService, UtilService } from '../../../../../services';
 
 @Component({
@@ -13,7 +13,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
     public programMemberships: factory.programMembership.IProgramMembership[];
     public isLoading: boolean;
     public optionsForm: FormGroup;
-    public theaters: factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>[];
+    public theaters: factory.chevre.seller.ISeller[];
 
     constructor(
         private router: Router,
@@ -79,7 +79,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
                 for (let i = 1; i < accounts.length; i++) {
                     await this.cinerino.ownerShipInfo.closeAccount({
                         id: 'me',
-                        accountType: factory.accountType.Point,
+                        accountType: 'Point',
                         accountNumber: accounts[i].typeOfGood.accountNumber
                     });
                 }
@@ -125,14 +125,14 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             },
             typeOfGood: {
                 typeOf: factory.ownershipInfo.AccountGoodType.Account,
-                accountType: factory.accountType.Point
+                accountType: 'Point'
             }
         });
         const accounts =
             searchResult.data.filter((a) => {
                 return (a.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
             });
-        return <factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType.Point>>[]>accounts;
+        return <factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>[]>accounts;
     }
 
 
