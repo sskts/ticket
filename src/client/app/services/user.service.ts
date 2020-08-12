@@ -127,7 +127,7 @@ export class UserService {
         }
         this.data.userName = this.cinerino.userName;
         // 連絡先取得
-        const profile = await this.cinerino.person.getProfile({ id: 'me' });
+        const profile = await this.cinerino.person.getProfile({ });
         if (profile === undefined) {
             throw new Error('profile is undefined');
         }
@@ -141,10 +141,8 @@ export class UserService {
             console.log(err);
             this.data.creditCards = [];
         }
-
         // 口座検索または作成
         this.data.accounts = await this.openPointAccountIfNotExists();
-
         const programMembershipOwnershipInfos =
             await this.cinerino.ownerShipInfo.search<factory.chevre.programMembership.ProgramMembershipType.ProgramMembership>({
                 typeOfGood: {
@@ -212,35 +210,21 @@ export class UserService {
     * @method searchPointAccount
     */
     private async searchPointAccount() {
-        try {
-            // 口座検索
-            const s = await this.cinerino.ownerShipInfo.search({
-                sort: {
-                    ownedFrom: factory.sortType.Ascending
-                },
-            });
-            console.log(s);
-            const searchResult = await this.cinerino.ownerShipInfo.search<factory.ownershipInfo.AccountGoodType.Account>({
-                sort: {
-                    ownedFrom: factory.sortType.Ascending
-                },
-                typeOfGood: {
-                    typeOf: factory.ownershipInfo.AccountGoodType.Account,
-                    accountType: 'Point'
-                }
-            });
-            const accounts =
-                searchResult.data.filter((a) => {
-                    return (a.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
-                });
-            return accounts;
-        } catch (error) {
-            if (error.code !== undefined && error.code === 404) {
-                return [];
+        // 口座検索
+        const searchResult = await this.cinerino.ownerShipInfo.search<factory.ownershipInfo.AccountGoodType.Account>({
+            sort: {
+                ownedFrom: factory.sortType.Ascending
+            },
+            typeOfGood: {
+                typeOf: factory.ownershipInfo.AccountGoodType.Account,
+                accountType: 'Point'
             }
-            throw error;
-        }
-
+        });
+        const accounts =
+            searchResult.data.filter((a) => {
+                return (a.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
+            });
+        return accounts;
     }
 
     /**

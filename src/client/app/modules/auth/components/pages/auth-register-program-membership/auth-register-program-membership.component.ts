@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { factory } from '@cinerino/sdk';
-import { CinerinoService, MasterService, MemberService, UtilService } from '../../../../../services';
+import { CinerinoService, MasterService, MemberService, UserService, UtilService } from '../../../../../services';
 
 @Component({
     selector: 'app-auth-register-program-membership',
@@ -10,7 +10,6 @@ import { CinerinoService, MasterService, MemberService, UtilService } from '../.
     styleUrls: ['./auth-register-program-membership.component.scss']
 })
 export class AuthRegisterProgramMembershipComponent implements OnInit {
-    public programMemberships: factory.programMembership.IProgramMembership[];
     public isLoading: boolean;
     public optionsForm: FormGroup;
     public theaters: factory.chevre.seller.ISeller[];
@@ -21,7 +20,8 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         private cinerino: CinerinoService,
         private member: MemberService,
         private masterService: MasterService,
-        private utilService: UtilService
+        private utilService: UtilService,
+        private userService: UserService
     ) { }
 
     /**
@@ -36,13 +36,6 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
                 { typeOfs: [factory.organizationType.MovieTheater] },
                 { exclude: true, sort: true }
             );
-
-            // 会員プログラム取得
-            this.programMemberships = await this.member.getProgramMemberships();
-
-            if (this.programMemberships.length === 0) {
-                throw new Error('programMemberships is not found');
-            }
         } catch (err) {
             console.log(err);
             this.router.navigate(['/error', { redirect: '/auth/register/credit' }]);
@@ -73,12 +66,11 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             return;
         }
         try {
-            const accounts = await this.searchPointAccount();
+            const accounts = this.userService.data.accounts;
             if (accounts.length > 1) {
                 // ポイントアカウントが複数存在する場合、最初の一件を残してクローズする
                 for (let i = 1; i < accounts.length; i++) {
                     await this.cinerino.ownerShipInfo.closeAccount({
-                        id: 'me',
                         accountType: 'Point',
                         accountNumber: accounts[i].typeOfGood.accountNumber
                     });
@@ -86,11 +78,9 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             }
             // 販売劇場検索
             const theaterCode = this.optionsForm.controls.theater.value;
-            const programMembership = this.programMemberships[0];
             // 会員登録
             await this.member.register({
                 theaterCode: theaterCode,
-                programMembership: programMembership
             });
 
             // 会員登録確認
@@ -111,28 +101,6 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
                 body: `再度ご登録してください。`
             });
         }
-    }
-
-    /**
-     * ポイントアカウントを検索する
-     * @method searchPointAccount
-     */
-    private async searchPointAccount() {
-        // 口座検索
-        const searchResult = await this.cinerino.ownerShipInfo.search({
-            sort: {
-                ownedFrom: factory.sortType.Ascending
-            },
-            typeOfGood: {
-                typeOf: factory.ownershipInfo.AccountGoodType.Account,
-                accountType: 'Point'
-            }
-        });
-        const accounts =
-            searchResult.data.filter((a) => {
-                return (a.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
-            });
-        return <factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>[]>accounts;
     }
 
 

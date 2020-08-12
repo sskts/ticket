@@ -15,49 +15,29 @@ export class MemberService {
     ) { }
 
     /**
-     * 会員プログラム一覧取得
-     */
-    public async getProgramMemberships() {
-        await this.cinerinoService.getServices();
-        // 会員プログラム検索
-        const programMemberships = await this.cinerinoService.programMembership.search({});
-        // const m = programMemberships.data[0];
-        // console.log('会員プログラム検索', JSON.stringify(m));
-
-        return programMemberships.data;
-    }
-
-    /**
      * 登録
      * @method register
      */
-    public async register(args: {
+    public async register(params: {
         theaterCode: string;
-        programMembership: factory.programMembership.IProgramMembership
     }) {
         await this.cinerinoService.getServices();
 
-        const branchCode = args.theaterCode;
+        const branchCode = params.theaterCode;
         // 販売劇場検索
         const result = await this.cinerinoService.seller.search({
             location: { branchCodes: [branchCode] },
             typeOfs: [factory.organizationType.MovieTheater]
         });
         const seller = result.data[0];
-
-        const programMembership: any = args.programMembership;
-
-        if (programMembership.id === undefined
-            || programMembership.offers === undefined
-            || programMembership.offers.identifier === undefined
-            || seller.id === undefined) {
+        if (seller.id === undefined) {
             throw new Error('programMemberships is Injustice');
         }
 
         // 会員プログラム登録
         await this.cinerinoService.person.registerProgramMembership({
-            programMembershipId: programMembership.id,
-            offerIdentifier: programMembership.offers.identifier,
+            programMembershipId: '',
+            offerIdentifier: '',
             sellerType: seller.typeOf,
             sellerId: seller.id
         });

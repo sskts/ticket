@@ -5002,7 +5002,6 @@ var CinerinoService = /** @class */ (function () {
                         this.transaction = {
                             placeOrder: new _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["service"].transaction.PlaceOrder(option)
                         };
-                        this.programMembership = new _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["service"].ProgramMembership(option);
                         return [3 /*break*/, 3];
                     case 2:
                         err_1 = _a.sent();
@@ -5700,39 +5699,18 @@ var MemberService = /** @class */ (function () {
         this.utilService = utilService;
     }
     /**
-     * 会員プログラム一覧取得
-     */
-    MemberService.prototype.getProgramMemberships = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var programMemberships;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
-                    case 1:
-                        _a.sent();
-                        return [4 /*yield*/, this.cinerinoService.programMembership.search({})];
-                    case 2:
-                        programMemberships = _a.sent();
-                        // const m = programMemberships.data[0];
-                        // console.log('会員プログラム検索', JSON.stringify(m));
-                        return [2 /*return*/, programMemberships.data];
-                }
-            });
-        });
-    };
-    /**
      * 登録
      * @method register
      */
-    MemberService.prototype.register = function (args) {
+    MemberService.prototype.register = function (params) {
         return __awaiter(this, void 0, void 0, function () {
-            var branchCode, result, seller, programMembership;
+            var branchCode, result, seller;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
                         _a.sent();
-                        branchCode = args.theaterCode;
+                        branchCode = params.theaterCode;
                         return [4 /*yield*/, this.cinerinoService.seller.search({
                                 location: { branchCodes: [branchCode] },
                                 typeOfs: [_cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater]
@@ -5740,17 +5718,13 @@ var MemberService = /** @class */ (function () {
                     case 2:
                         result = _a.sent();
                         seller = result.data[0];
-                        programMembership = args.programMembership;
-                        if (programMembership.id === undefined
-                            || programMembership.offers === undefined
-                            || programMembership.offers.identifier === undefined
-                            || seller.id === undefined) {
+                        if (seller.id === undefined) {
                             throw new Error('programMemberships is Injustice');
                         }
                         // 会員プログラム登録
                         return [4 /*yield*/, this.cinerinoService.person.registerProgramMembership({
-                                programMembershipId: programMembership.id,
-                                offerIdentifier: programMembership.offers.identifier,
+                                programMembershipId: '',
+                                offerIdentifier: '',
                                 sellerType: seller.typeOf,
                                 sellerId: seller.id
                             })];
@@ -6429,7 +6403,7 @@ var UserService = /** @class */ (function () {
                             throw new Error('userName is undefined');
                         }
                         this.data.userName = this.cinerino.userName;
-                        return [4 /*yield*/, this.cinerino.person.getProfile({ id: 'me' })];
+                        return [4 /*yield*/, this.cinerino.person.getProfile({})];
                     case 2:
                         profile = _b.sent();
                         if (profile === undefined) {
@@ -6573,41 +6547,24 @@ var UserService = /** @class */ (function () {
     */
     UserService.prototype.searchPointAccount = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var s, searchResult, accounts, error_2;
+            var searchResult, accounts;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
-                                sort: {
-                                    ownedFrom: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].sortType.Ascending
-                                },
-                            })];
+                    case 0: return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
+                            sort: {
+                                ownedFrom: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].sortType.Ascending
+                            },
+                            typeOfGood: {
+                                typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].ownershipInfo.AccountGoodType.Account,
+                                accountType: 'Point'
+                            }
+                        })];
                     case 1:
-                        s = _a.sent();
-                        console.log(s);
-                        return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
-                                sort: {
-                                    ownedFrom: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].sortType.Ascending
-                                },
-                                typeOfGood: {
-                                    typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].ownershipInfo.AccountGoodType.Account,
-                                    accountType: 'Point'
-                                }
-                            })];
-                    case 2:
                         searchResult = _a.sent();
                         accounts = searchResult.data.filter(function (a) {
                             return (a.typeOfGood.status === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.accountStatusType.Opened);
                         });
                         return [2 /*return*/, accounts];
-                    case 3:
-                        error_2 = _a.sent();
-                        if (error_2.code !== undefined && error_2.code === 404) {
-                            return [2 /*return*/, []];
-                        }
-                        throw error_2;
-                    case 4: return [2 /*return*/];
                 }
             });
         });

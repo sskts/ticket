@@ -42,7 +42,6 @@ export class CinerinoService {
             this.transaction = {
                 placeOrder: new cinerino.service.transaction.PlaceOrder(option)
             };
-            this.programMembership = new cinerino.service.ProgramMembership(option);
         } catch (err) {
             console.log(err);
 
