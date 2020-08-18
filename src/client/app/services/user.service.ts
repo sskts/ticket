@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { environment } from '../../environments/environment';
 import { CinerinoService } from './cinerino.service';
 import { SaveType, StorageService } from './storage.service';
 import { UtilService } from './util.service';
 
-type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType>>;
+type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>;
 type programMembershipType =
-    factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<factory.programMembership.ProgramMembershipType.ProgramMembership>>;
+    factory.ownershipInfo.IOwnershipInfo<
+        factory.ownershipInfo.IGood<
+            factory.chevre.programMembership.ProgramMembershipType.ProgramMembership
+        >
+    >;
 
 export interface IUserData {
     userName?: string;
     memberType: MemberType;
     profile?: factory.person.IProfile;
-    creditCards: factory.paymentMethod.paymentCard.creditCard.ICheckedCard[];
+    creditCards: factory.chevre.paymentMethod.paymentCard.creditCard.ICheckedCard[];
     accounts: accountType[];
     programMembershipOwnershipInfos: programMembershipType[];
     prevUserName?: string;
@@ -123,7 +127,7 @@ export class UserService {
         }
         this.data.userName = this.cinerino.userName;
         // 連絡先取得
-        const profile = await this.cinerino.person.getProfile({ id: 'me' });
+        const profile = await this.cinerino.person.getProfile({ });
         if (profile === undefined) {
             throw new Error('profile is undefined');
         }
@@ -137,15 +141,14 @@ export class UserService {
             console.log(err);
             this.data.creditCards = [];
         }
-
         // 口座検索または作成
         this.data.accounts = await this.openPointAccountIfNotExists();
-
-        const programMembershipOwnershipInfos = await this.cinerino.ownerShipInfo.search({
-            typeOfGood: {
-                typeOf: factory.programMembership.ProgramMembershipType.ProgramMembership
-            }
-        });
+        const programMembershipOwnershipInfos =
+            await this.cinerino.ownerShipInfo.search<factory.chevre.programMembership.ProgramMembershipType.ProgramMembership>({
+                typeOfGood: {
+                    typeOf: factory.chevre.programMembership.ProgramMembershipType.ProgramMembership
+                }
+            });
         this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
         this.save();
     }
@@ -197,8 +200,7 @@ export class UserService {
 
     private async openPointAccount() {
         await this.cinerino.ownerShipInfo.openAccount({
-            id: 'me',
-            accountType: factory.accountType.Point,
+            accountType: 'Point',
             name: (<string>this.cinerino.userName)
         });
     }
@@ -209,13 +211,13 @@ export class UserService {
     */
     private async searchPointAccount() {
         // 口座検索
-        const searchResult = await this.cinerino.ownerShipInfo.search({
+        const searchResult = await this.cinerino.ownerShipInfo.search<factory.ownershipInfo.AccountGoodType.Account>({
             sort: {
                 ownedFrom: factory.sortType.Ascending
             },
             typeOfGood: {
                 typeOf: factory.ownershipInfo.AccountGoodType.Account,
-                accountType: factory.accountType.Point
+                accountType: 'Point'
             }
         });
         const accounts =
@@ -268,8 +270,12 @@ export class UserService {
             || programMembershipOwnershipInfo.acquiredFrom.typeOf !== factory.organizationType.MovieTheater) {
             return '';
         }
+        const name = programMembershipOwnershipInfo.acquiredFrom.name;
 
-        return programMembershipOwnershipInfo.acquiredFrom.name.ja;
+        return (name === undefined) ? ''
+            : (typeof name === 'string') ? name
+                : (name.ja === undefined) ? ''
+                    : name.ja;
     }
 
     /**

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import { environment } from '../../environments/environment';
 import { CinerinoService } from './cinerino.service';
 import { UtilService } from './util.service';
@@ -22,7 +22,7 @@ export class MasterService {
         oprions: { exclude: boolean; sort: boolean; }
     ) {
         await this.cinerinoService.getServices();
-        // let sellers: factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>[] = [];
+        // let sellers: factory.chevre.seller.ISeller[] = [];
         const searchResult = await this.cinerinoService.seller.search(params);
         const filterResult = searchResult.data.filter((s) => {
             return (s.location !== undefined
@@ -31,7 +31,7 @@ export class MasterService {
                 && environment.CLOSE_THEATERS.find(t => t === (<any>s.location).branchCode) === undefined);
         });
         // 除外劇場処理
-        const exclude = async (sellers: factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>[]) => {
+        const exclude = async (sellers: factory.chevre.seller.ISeller[]) => {
             const url = '/api/maintenance/excludeTheaters';
             const excludeTheatersResult =
                 await this.utilService.getJson<{ isExclude: boolean; theaters: string[]; }>(url);
@@ -50,7 +50,7 @@ export class MasterService {
         const excludeResult = (oprions !== undefined && oprions.exclude)
             ? await exclude(filterResult) : filterResult;
         // 並び順変更
-        const sortSeller = async (sellers: factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>[]) => {
+        const sortSeller = async (sellers: factory.chevre.seller.ISeller[]) => {
             const url = '/json/table/theaters.json';
             const table =
                 await this.utilService.getJson<{ code: string; name: string }[]>(url);

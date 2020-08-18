@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.6.0 - 2020-08-18
+### Changed
+ - @cinerino/sdkへ変更
+
 ## 3.5.12 - 2020-8-15
 ### Changed
  - 「特定商取引法に基づく表記」文言変更

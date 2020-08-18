@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as cinerino from '@cinerino/api-javascript-client';
+import * as cinerino from '@cinerino/sdk';
 import 'rxjs/add/operator/toPromise';
 import { StorageService } from './storage.service';
 
@@ -9,7 +9,7 @@ import { StorageService } from './storage.service';
 })
 export class CinerinoService {
 
-    public auth: cinerino.IImplicitGrantClient;
+    public auth: cinerino.auth.ClientCredentials | cinerino.auth.OAuth2;
     public userName?: string;
     public event: cinerino.service.Event;
     public order: cinerino.service.Order;
@@ -42,7 +42,6 @@ export class CinerinoService {
             this.transaction = {
                 placeOrder: new cinerino.service.transaction.PlaceOrder(option)
             };
-            this.programMembership = new cinerino.service.ProgramMembership(option);
         } catch (err) {
             console.log(err);
 

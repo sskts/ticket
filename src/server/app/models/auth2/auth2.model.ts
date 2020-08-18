@@ -1,4 +1,4 @@
-import * as cinerino from '@cinerino/api-nodejs-client';
+import * as cinerino from '@cinerino/sdk';
 import debug = require('debug');
 const log = debug('sskts-ticket:Auth2Model');
 /**

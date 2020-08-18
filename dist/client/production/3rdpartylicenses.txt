@@ -47,10 +47,10 @@ ISC
 @cinerino/api-abstract-client
 ISC
 
-@cinerino/api-javascript-client
+@cinerino/factory
 ISC
 
-@cinerino/factory
+@cinerino/sdk
 ISC
 
 @pecorino/factory

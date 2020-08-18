@@ -2,7 +2,7 @@
  * TicketComponent
  */
 import { Component, OnInit } from '@angular/core';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { cms } from '../../../../models';
 import { CmsService, IPurchaseConditions, MasterService, SelectService, UtilService } from '../../../../services';
@@ -21,7 +21,7 @@ import { MovieDetailModalComponent } from '../../../shared/components/parts/movi
  */
 export class MovieIndexComponent implements OnInit {
     public isLoading: boolean;
-    public theaters: factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>[];
+    public theaters: factory.chevre.seller.ISeller[];
     public conditions: IPurchaseConditions;
     public nowShowing: { title: cms.schedule.ITitle, schedule: cms.schedule.ISchedule[] }[];
     public comingSoon: { title: cms.schedule.ITitle, schedule: cms.schedule.ISchedule[] }[];

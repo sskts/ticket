@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { CinerinoService } from './cinerino.service';
 import { UtilService } from './util.service';
@@ -15,57 +15,32 @@ export class MemberService {
     ) { }
 
     /**
-     * 会員プログラム一覧取得
-     */
-    public async getProgramMemberships() {
-        await this.cinerinoService.getServices();
-        // 会員プログラム検索
-        const programMemberships = await this.cinerinoService.programMembership.search({});
-
-        return programMemberships.data;
-    }
-
-    /**
      * 登録
      * @method register
      */
-    public async register(args: {
+    public async register(params: {
         theaterCode: string;
-        programMembership: factory.programMembership.IProgramMembership
     }) {
         await this.cinerinoService.getServices();
 
-        const branchCode = args.theaterCode;
+        const branchCode = params.theaterCode;
         // 販売劇場検索
         const result = await this.cinerinoService.seller.search({
             location: { branchCodes: [branchCode] },
             typeOfs: [factory.organizationType.MovieTheater]
         });
         const seller = result.data[0];
-
-        const programMembership = args.programMembership;
-        if (programMembership.id === undefined
-            || programMembership.offers === undefined
-        ) {
-            throw new Error('programMemberships is Injustice');
-        }
-
-        const offer = programMembership.offers[0];
-
-        if (offer.identifier === undefined) {
+        if (seller.id === undefined) {
             throw new Error('programMemberships is Injustice');
         }
 
         // 会員プログラム登録
-        const registerProgramMembership = await this.cinerinoService.person.registerProgramMembership({
-            id: 'me',
-            programMembershipId: programMembership.id,
-            offerIdentifier: offer.identifier,
+        await this.cinerinoService.person.registerProgramMembership({
+            programMembershipId: '',
+            offerIdentifier: '',
             sellerType: seller.typeOf,
             sellerId: seller.id
         });
-
-        console.log('registerProgramMembership', registerProgramMembership);
     }
 
     /**
@@ -81,7 +56,7 @@ export class MemberService {
                 try {
                     const searchResult = await this.cinerinoService.ownerShipInfo.search({
                         typeOfGood: {
-                            typeOf: factory.programMembership.ProgramMembershipType.ProgramMembership
+                            typeOf: factory.chevre.programMembership.ProgramMembershipType.ProgramMembership
                         }
                     });
                     const now = (await this.utilService.getServerTime()).date;

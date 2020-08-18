@@ -3,7 +3,7 @@
  */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { environment } from '../../../../../../environments/environment';
 import { object2query, sleep } from '../../../../../functions';
@@ -46,7 +46,7 @@ interface IDate {
  */
 export class PurchaseIndexComponent implements OnInit, OnDestroy {
     public isLoading: boolean;
-    public theaters: factory.seller.IOrganization<factory.seller.IAttributes<factory.organizationType>>[];
+    public theaters: factory.chevre.seller.ISeller[];
     public dateList: IDate[];
     public schedules: ISchedule[];
     public schedule?: ISchedule;

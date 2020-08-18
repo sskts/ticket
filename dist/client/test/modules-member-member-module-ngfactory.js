@@ -6898,8 +6898,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "../../node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @cinerino/api-javascript-client */ "../../node_modules/@cinerino/api-javascript-client/lib/index.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @cinerino/sdk */ "../../node_modules/@cinerino/sdk/lib/browser.js");
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var libphonenumber_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! libphonenumber-js */ "../../node_modules/libphonenumber-js/index.es6.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../environments/environment */ "./environments/environment.ts");
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
@@ -6968,7 +6968,7 @@ var MemberEditProfileComponent = /** @class */ (function () {
                         this.profileForm = this.createForm();
                         this.isLoading = false;
                         _a = this;
-                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_3__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: true })];
+                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: true })];
                     case 1:
                         _a.theaters = _b.sent();
                         return [3 /*break*/, 3];
@@ -7198,8 +7198,8 @@ var styles = ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uI
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberEditComponent", function() { return MemberEditComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cinerino/api-javascript-client */ "../../node_modules/@cinerino/api-javascript-client/lib/index.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cinerino/sdk */ "../../node_modules/@cinerino/sdk/lib/browser.js");
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -7270,7 +7270,7 @@ var MemberEditComponent = /** @class */ (function () {
       */
     MemberEditComponent.prototype.getTheaterName = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var code, result;
+            var code, result, seller;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -7280,15 +7280,16 @@ var MemberEditComponent = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, this.cinerino.seller.search({
-                                typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["factory"].organizationType.MovieTheater],
+                                typeOfs: [_cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["factory"].organizationType.MovieTheater],
                                 location: { branchCodes: [code] }
                             })];
                     case 2:
                         result = _a.sent();
-                        if (result.data.length > 0) {
-                            return [2 /*return*/, result.data[0].name.ja];
-                        }
-                        _a.label = 3;
+                        seller = result.data[0];
+                        return [2 /*return*/, (seller.name === undefined) ? ''
+                                : (typeof seller.name === 'string') ? seller.name
+                                    : (seller.name.ja === undefined) ? ''
+                                        : seller.name.ja];
                     case 3: return [2 /*return*/, this.user.getTheaterName(0)];
                 }
             });
@@ -7633,8 +7634,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberPointHistoryComponent", function() { return MemberPointHistoryComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @cinerino/api-javascript-client */ "../../node_modules/@cinerino/api-javascript-client/lib/index.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @cinerino/sdk */ "../../node_modules/@cinerino/sdk/lib/browser.js");
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -7704,15 +7705,14 @@ var MemberPointHistoryComponent = /** @class */ (function () {
                             throw new Error('account is not found');
                         }
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.searchAccountMoneyTransferActions({
-                                id: 'me',
-                                accountType: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__["factory"].accountType.Point,
+                                accountType: 'Point',
                                 accountNumber: this.user.data.accounts[0].typeOfGood.accountNumber,
                                 limit: 100
                             })];
                     case 3:
                         result = _a.sent();
                         this.accountMoneyTransferActions =
-                            result.data.filter(function (a) { return a.actionStatus === _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__["factory"].pecorino.actionStatusType.CompletedActionStatus; });
+                            result.data.filter(function (a) { return a.actionStatus === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_2__["factory"].pecorino.actionStatusType.CompletedActionStatus; });
                         return [3 /*break*/, 5];
                     case 4:
                         error_1 = _a.sent();
@@ -7833,8 +7833,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberTicketHistoryComponent", function() { return MemberTicketHistoryComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @cinerino/api-javascript-client */ "../../node_modules/@cinerino/api-javascript-client/lib/index.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @cinerino/sdk */ "../../node_modules/@cinerino/sdk/lib/browser.js");
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
@@ -7912,7 +7912,7 @@ var MemberTicketHistoryComponent = /** @class */ (function () {
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
                                 id: 'me',
                                 typeOfGood: {
-                                    typeOf: _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_2__["factory"].chevre.reservationType.EventReservation
+                                    typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_2__["factory"].chevre.reservationType.EventReservation
                                 }
                             })];
                     case 3:
@@ -8208,8 +8208,8 @@ var styles = [".circle[_ngcontent-%COMP%] {\n  width: 12px;\n  height: 12px;\n  
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PointHistoryListComponent", function() { return PointHistoryListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cinerino/api-javascript-client */ "../../node_modules/@cinerino/api-javascript-client/lib/index.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cinerino/sdk */ "../../node_modules/@cinerino/sdk/lib/browser.js");
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 
@@ -8219,7 +8219,7 @@ var PointHistoryListComponent = /** @class */ (function () {
     function PointHistoryListComponent() {
     }
     PointHistoryListComponent.prototype.ngOnInit = function () {
-        var transactionType = _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["factory"].pecorino.transactionType;
+        var transactionType = _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["factory"].pecorino.transactionType;
         this.date = moment__WEBPACK_IMPORTED_MODULE_2__(this.action.endDate).format('YYYY年MM月DD日 HH:mm');
         this.description = (this.action.description !== undefined)
             ? this.action.description.replace(/\,/g, '<br>')
@@ -8319,8 +8319,8 @@ var styles = [".inner[_ngcontent-%COMP%] {\n  margin: auto;\n  padding: 0;\n  po
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TicketHistoryDetailComponent", function() { return TicketHistoryDetailComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cinerino/api-javascript-client */ "../../node_modules/@cinerino/api-javascript-client/lib/index.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cinerino/sdk */ "../../node_modules/@cinerino/sdk/lib/browser.js");
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
@@ -8412,22 +8412,23 @@ var TicketHistoryDetailComponent = /** @class */ (function () {
      */
     TicketHistoryDetailComponent.prototype.getTheaterName = function (code) {
         return __awaiter(this, void 0, void 0, function () {
-            var result;
+            var result, seller;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerino.getServices()];
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, this.cinerino.seller.search({
-                                typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["factory"].organizationType.MovieTheater],
+                                typeOfs: [_cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["factory"].organizationType.MovieTheater],
                                 location: { branchCodes: [code] }
                             })];
                     case 2:
                         result = _a.sent();
-                        if (result.data.length > 0) {
-                            return [2 /*return*/, result.data[0].name.ja];
-                        }
-                        return [2 /*return*/, ''];
+                        seller = result.data[0];
+                        return [2 /*return*/, (seller.name === undefined) ? ''
+                                : (typeof seller.name === 'string') ? seller.name
+                                    : (seller.name.ja === undefined) ? ''
+                                        : seller.name.ja];
                 }
             });
         });
