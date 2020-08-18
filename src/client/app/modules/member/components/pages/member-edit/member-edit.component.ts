@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import { CinerinoService, UserService } from '../../../../../services';
 
 @Component({
@@ -36,9 +36,11 @@ export class MemberEditComponent implements OnInit {
                 typeOfs: [factory.organizationType.MovieTheater],
                 location: { branchCodes: [code] }
             });
-            if (result.data.length > 0) {
-                return result.data[0].name.ja;
-            }
+            const seller = result.data[0];
+            return (seller.name === undefined) ? ''
+                : (typeof seller.name === 'string') ? seller.name
+                    : (seller.name.ja === undefined) ? ''
+                        : seller.name.ja;
         }
         return this.user.getTheaterName(0);
     }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import { CinerinoService, UserService } from '../../../../../services';
 
 @Component({
@@ -10,7 +10,7 @@ import { CinerinoService, UserService } from '../../../../../services';
 })
 export class MemberPointHistoryComponent implements OnInit {
     public isLoading: boolean;
-    public accountMoneyTransferActions: factory.pecorino.action.transfer.moneyTransfer.IAction<factory.accountType.Point>[];
+    public accountMoneyTransferActions: factory.pecorino.action.transfer.moneyTransfer.IAction[];
 
     constructor(
         public user: UserService,
@@ -30,9 +30,8 @@ export class MemberPointHistoryComponent implements OnInit {
             if (this.user.data.accounts.length === 0) {
                 throw new Error('account is not found');
             }
-            const result = await this.cinerino.ownerShipInfo.searchAccountMoneyTransferActions<factory.accountType.Point>({
-                id: 'me',
-                accountType: factory.accountType.Point,
+            const result = await this.cinerino.ownerShipInfo.searchAccountMoneyTransferActions({
+                accountType: 'Point',
                 accountNumber: this.user.data.accounts[0].typeOfGood.accountNumber,
                 limit: 100
             });

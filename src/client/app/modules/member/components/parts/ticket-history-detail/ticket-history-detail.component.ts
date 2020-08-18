@@ -1,8 +1,8 @@
 /**
  * TicketDetailComponent
  */
-import { AfterContentChecked , Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { factory } from '@cinerino/api-javascript-client';
+import { AfterContentChecked, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { CinerinoService } from '../../../../../services';
 
@@ -26,7 +26,7 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
 
     constructor(
         private cinerino: CinerinoService
-    ) {}
+    ) { }
 
     /**
      * 初期化
@@ -49,7 +49,7 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
             this.endTime = moment(this.reservation.typeOfGood.reservationFor.endDate).format('HH:mm');
         }
         if (this.reservation.typeOfGood.reservationFor.coaInfo !== undefined &&
-                typeof this.reservation.typeOfGood.reservationFor.coaInfo.theaterCode === 'string') {
+            typeof this.reservation.typeOfGood.reservationFor.coaInfo.theaterCode === 'string') {
             this.theaterName = await this.getTheaterName(this.reservation.typeOfGood.reservationFor.coaInfo.theaterCode);
         }
     }
@@ -62,10 +62,11 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
             typeOfs: [factory.organizationType.MovieTheater],
             location: { branchCodes: [code] }
         });
-        if (result.data.length > 0) {
-            return result.data[0].name.ja;
-        }
-        return '';
+        const seller = result.data[0];
+        return (seller.name === undefined) ? ''
+            : (typeof seller.name === 'string') ? seller.name
+                : (seller.name.ja === undefined) ? ''
+                    : seller.name.ja;
     }
 
     public ngAfterContentChecked() {

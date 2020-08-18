@@ -228,8 +228,8 @@ var styles = [".bg-gold[_ngcontent-%COMP%] {\n  background-color: #d3ceb8; }\n\n
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MovieIndexComponent", function() { return MovieIndexComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cinerino/api-javascript-client */ "../../node_modules/@cinerino/api-javascript-client/lib/index.js");
-/* harmony import */ var _cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cinerino/sdk */ "../../node_modules/@cinerino/sdk/lib/browser.js");
+/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-bootstrap/modal */ "../../node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../services */ "./app/services/index.ts");
 /* harmony import */ var _shared_components_parts_movie_detail_modal_movie_detail_modal_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../shared/components/parts/movie-detail-modal/movie-detail-modal.component */ "./app/modules/shared/components/parts/movie-detail-modal/movie-detail-modal.component.ts");
@@ -301,7 +301,7 @@ var MovieIndexComponent = /** @class */ (function () {
                         _b.trys.push([1, 4, , 5]);
                         this.conditions = this.selectService.data.purchase;
                         _a = this;
-                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_api_javascript_client__WEBPACK_IMPORTED_MODULE_1__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: true })];
+                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: true })];
                     case 2:
                         _a.theaters = _b.sent();
                         return [4 /*yield*/, this.getSchedule()];
