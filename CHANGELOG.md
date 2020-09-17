@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.6.2 - 2020-09-17
+### Changed
+ - △の閾値を20％以下へ変更
+
 ## 3.6.1 - 2020-09-09
 ### Changed
  - GMOトークン決済用のjs変更
