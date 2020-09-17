@@ -36,7 +36,7 @@ export class Performance {
             { symbolText: '△', image: '/assets/images/icon/vacancy_little_white.svg', className: 'vacancy-little', text: '購入' },
             { symbolText: '○', image: '/assets/images/icon/vacancy_large_white.svg', className: 'vacancy-large', text: '購入' }
         ];
-        const threshold = 10;
+        const threshold = Number(environment.SCHEDULE_STATUS_THRESHOLD_VALUE);
 
         return (value === 0)
             ? availability[0] : (value <= threshold)

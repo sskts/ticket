@@ -1196,7 +1196,7 @@ var Performance = /** @class */ (function () {
             { symbolText: '△', image: '/assets/images/icon/vacancy_little_white.svg', className: 'vacancy-little', text: '購入' },
             { symbolText: '○', image: '/assets/images/icon/vacancy_large_white.svg', className: 'vacancy-large', text: '購入' }
         ];
-        var threshold = 10;
+        var threshold = Number(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].SCHEDULE_STATUS_THRESHOLD_VALUE);
         return (value === 0)
             ? availability[0] : (value <= threshold)
             ? availability[1] : availability[2];
@@ -7045,6 +7045,7 @@ var environment = {
     CLOSE_THEATERS: ['101'],
     ANALYTICS_ID: 'UA-99018492-4',
     MAIN_SHOP_BRUNCH_CODE: '101',
+    SCHEDULE_STATUS_THRESHOLD_VALUE: '20',
     PRE_SALE_DIFFERENCE_DAY: '2',
     WINDOW_TIME_FROM_VALUE: '0',
     WINDOW_TIME_FROM_UNIT: 'minutes',

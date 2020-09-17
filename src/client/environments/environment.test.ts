@@ -27,6 +27,7 @@ export const environment = {
 
     MAIN_SHOP_BRUNCH_CODE: '101',
 
+    SCHEDULE_STATUS_THRESHOLD_VALUE: '20',
     PRE_SALE_DIFFERENCE_DAY: '2',
     WINDOW_TIME_FROM_VALUE: '0', // 窓口表示開始の値（上映開始時間から相対）
     WINDOW_TIME_FROM_UNIT: 'minutes', // 窓口表示開始の単位（上映開始時間から相対）
