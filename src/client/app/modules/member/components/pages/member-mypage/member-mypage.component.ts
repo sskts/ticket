@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { UserService, UtilService } from '../../../../../services';
 
@@ -12,11 +12,11 @@ import { UserService, UtilService } from '../../../../../services';
 export class MemberMypageComponent implements OnInit {
     public isLoading: boolean;
     public moment = moment;
-    public account: factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount<factory.accountType>>;
+    public account: factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>;
     public availableBalance: number;
     public programMembershipOwnershipInfo: factory.ownershipInfo.IOwnershipInfo<
         factory.ownershipInfo.IGood<
-            factory.programMembership.ProgramMembershipType.ProgramMembership
+            factory.chevre.programMembership.ProgramMembershipType.ProgramMembership
         >
     >;
 

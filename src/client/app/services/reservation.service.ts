@@ -2,7 +2,7 @@
  * ReservationService
  */
 import { Injectable } from '@angular/core';
-import { factory } from '@cinerino/api-javascript-client';
+import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { AwsCognitoService } from './aws-cognito.service';
 import { CinerinoService } from './cinerino.service';
@@ -82,25 +82,26 @@ export class ReservationService {
         if (Array.isArray(reservationRecord.orders)) {
             reservationRecord.orders.forEach((order) => {
                 const reservationsFor: IReservationFor[] = [];
-                order.acceptedOffers.forEach((offer) => {
-                    if (offer.itemOffered.typeOf !== factory.chevre.reservationType.EventReservation) {
-                        return;
-                    }
-                    reservationsFor.push(offer.itemOffered.reservationFor);
-                });
                 const reservedTickets: ITicket[] = [];
-                order.acceptedOffers.forEach((offer) => {
-                    if (offer.itemOffered.typeOf !== factory.chevre.reservationType.EventReservation) {
+                order.acceptedOffers.forEach(o => {
+                    if (o.itemOffered.typeOf !== factory.chevre.reservationType.EventReservation) {
                         return;
                     }
-                    reservedTickets.push(offer.itemOffered.reservedTicket);
+                    const itemOffered = <factory.chevre.reservation.IReservation<
+                        factory.chevre.reservationType.EventReservation
+                    >>o.itemOffered;
+                    reservationsFor.push(itemOffered.reservationFor);
+                    reservedTickets.push(itemOffered.reservedTicket);
                 });
-                const itemOffered = order.acceptedOffers[0].itemOffered;
-                if (itemOffered.typeOf !== factory.chevre.reservationType.EventReservation) {
+
+                if (order.acceptedOffers[0].itemOffered.typeOf !== factory.chevre.reservationType.EventReservation) {
                     return;
                 }
+                const confirmationNumber = (<factory.chevre.reservation.IReservation<
+                    factory.chevre.reservationType.EventReservation
+                >>order.acceptedOffers[0].itemOffered).reservationNumber;
                 orders.push({
-                    confirmationNumber: itemOffered.reservationNumber,
+                    confirmationNumber,
                     reservationsFor: reservationsFor,
                     reservedTickets: reservedTickets
                 });
