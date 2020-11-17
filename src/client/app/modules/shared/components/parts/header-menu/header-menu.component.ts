@@ -29,9 +29,9 @@ export class HeaderMenuComponent implements OnInit {
 
     /**
      * webブラウザで開く
-     * @method openWebBrowse
+     * @method openWebBrowser
      */
-    public openWebBrowse(url: string) {
+    public openWebBrowser(url: string) {
         this.callNative.inAppBrowser({
             url: url,
             target: InAppBrowserTarget.System

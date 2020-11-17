@@ -33,7 +33,7 @@ export class MovieDetailModalComponent implements OnInit {
     /**
      * webブラウザで開く
      */
-    public openWebBrowse(event: Event, url: string) {
+    public openWebBrowser(event: Event, url: string) {
         event.preventDefault();
         this.callNativeService.inAppBrowser({
             url: url,

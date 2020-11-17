@@ -18,7 +18,7 @@ export const environment = {
     DDB_TABLE_NAME: 'LoginTrail',
     TOKEN_ISSUER: '',
 
-    PORTAL_SITE: 'http://ssk-portal2018-frontend-win-test.azurewebsites.net',
+    PORTAL_SITE: 'https://ssk-portal2018-frontend-win-test.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d24x7394fq3aqi.cloudfront.net',
 
     CLOSE_THEATERS: ['101'],
