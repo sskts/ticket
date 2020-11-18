@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.6.5 - 2020-11-17
+### Added
+ - 問い合わせフォームリンク追加
+
 ## 3.6.4 - 2020-09-30
 ### Changed
  - チケット購入ページの座席に関する文言変更

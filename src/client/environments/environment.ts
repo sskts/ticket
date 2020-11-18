@@ -11,7 +11,7 @@ export const environment = {
     USER_POOL_ID: '',
     CLIENT_ID: '',
 
-    PORTAL_SITE: 'http://devssktsportal.azurewebsites.net',
+    PORTAL_SITE: 'https://devssktsportal.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d2n1h4enbzumbc.cloudfront.net',
 
     CLOSE_THEATERS: ['101'],
