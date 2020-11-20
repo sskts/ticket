@@ -13,8 +13,8 @@ import { CinerinoService } from '../../../../../services';
 })
 export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked {
     @Input() public reservation: factory.ownershipInfo.IOwnershipInfo<
-        factory.chevre.reservation.IReservation<
-            factory.chevre.reservationType.EventReservation>>;
+        factory.chevre.reservation.IReservation<factory.chevre.reservationType.EventReservation>
+    >;
     @ViewChild('topimage', { static: true }) private topImageElement: ElementRef;
     public totalPrice: string;
     public startDate: string;
@@ -56,11 +56,10 @@ export class TicketHistoryDetailComponent implements OnInit, AfterContentChecked
     /**
      * 劇場一覧取得
      */
-    private async getTheaterName(code: string) {
+    private async getTheaterName(branchCode: string) {
         await this.cinerino.getServices();
         const result = await this.cinerino.seller.search({
-            typeOfs: [factory.organizationType.MovieTheater],
-            location: { branchCodes: [code] }
+            branchCode: { $eq: branchCode }
         });
         const seller = result.data[0];
         return (seller.name === undefined) ? ''

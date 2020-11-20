@@ -43,7 +43,7 @@ export class MovieIndexComponent implements OnInit {
         try {
             this.conditions = this.selectService.data.purchase;
             this.theaters = await this.masterService.searchSeller(
-                { typeOfs: [factory.organizationType.MovieTheater] },
+                {},
                 { exclude: true, sort: true }
             );
             await this.getSchedule();
@@ -140,8 +140,8 @@ export class MovieIndexComponent implements OnInit {
         this.modal.show(MovieDetailModalComponent, {
             class: 'modal-dialog-centered',
             initialState: {
-               data: params.data,
-               routerLink: params.routerLink
+                data: params.data,
+                routerLink: params.routerLink
             }
         });
     }

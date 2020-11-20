@@ -1001,7 +1001,8 @@ var ProgramMembershipGuardService = /** @class */ (function () {
                             this.router.navigate(['/auth/register/credit']);
                             return [2 /*return*/, false];
                         }
-                        this.user.data.programMembershipOwnershipInfos = searchResult.data;
+                        this.user.data.programMembershipOwnershipInfos =
+                            searchResult.data;
                         this.user.save();
                         return [2 /*return*/, true];
                 }
@@ -5710,7 +5711,7 @@ var MemberService = /** @class */ (function () {
      */
     MemberService.prototype.register = function (params) {
         return __awaiter(this, void 0, void 0, function () {
-            var branchCode, result, seller;
+            var branchCode, searchResult, seller;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
@@ -5718,20 +5719,16 @@ var MemberService = /** @class */ (function () {
                         _a.sent();
                         branchCode = params.theaterCode;
                         return [4 /*yield*/, this.cinerinoService.seller.search({
-                                location: { branchCodes: [branchCode] },
-                                typeOfs: [_cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater]
+                                branchCode: { $eq: branchCode },
                             })];
                     case 2:
-                        result = _a.sent();
-                        seller = result.data[0];
+                        searchResult = _a.sent();
+                        seller = searchResult.data[0];
                         if (seller.id === undefined) {
                             throw new Error('programMemberships is Injustice');
                         }
                         // 会員プログラム登録
                         return [4 /*yield*/, this.cinerinoService.person.registerProgramMembership({
-                                programMembershipId: '',
-                                offerIdentifier: '',
-                                sellerType: seller.typeOf,
                                 sellerId: seller.id
                             })];
                     case 3:
@@ -6004,26 +6001,26 @@ var ReservationService = /** @class */ (function () {
      */
     ReservationService.prototype.fitchReservation = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var reservationOwnerships, orders, _loop_1, _i, _a, reservationOwnership, expired;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var searchResult, eventReservations, orders, _loop_1, _i, eventReservations_1, eventReservation, expired;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerino.getServices()];
                     case 1:
-                        _b.sent();
+                        _a.sent();
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
-                                id: 'me',
                                 typeOfGood: {
                                     typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.reservationType.EventReservation
                                 },
                                 limit: 100
                             })];
                     case 2:
-                        reservationOwnerships = _b.sent();
+                        searchResult = _a.sent();
+                        eventReservations = searchResult.data;
                         orders = [];
-                        _loop_1 = function (reservationOwnership) {
-                            var confirmationNumber = reservationOwnership.typeOfGood.reservationNumber.split('-')[0];
-                            var reservationFor = reservationOwnership.typeOfGood.reservationFor;
-                            var reservedTicket = reservationOwnership.typeOfGood.reservedTicket;
+                        _loop_1 = function (eventReservation) {
+                            var confirmationNumber = eventReservation.typeOfGood.reservationNumber.split('-')[0];
+                            var reservationFor = eventReservation.typeOfGood.reservationFor;
+                            var reservedTicket = eventReservation.typeOfGood.reservedTicket;
                             var target = orders.find(function (order) {
                                 return (order.confirmationNumber === confirmationNumber);
                             });
@@ -6042,9 +6039,9 @@ var ReservationService = /** @class */ (function () {
                                 target.reservedTickets.push(reservedTicket);
                             }
                         };
-                        for (_i = 0, _a = reservationOwnerships.data; _i < _a.length; _i++) {
-                            reservationOwnership = _a[_i];
-                            _loop_1(reservationOwnership);
+                        for (_i = 0, eventReservations_1 = eventReservations; _i < eventReservations_1.length; _i++) {
+                            eventReservation = eventReservations_1[_i];
+                            _loop_1(eventReservation);
                         }
                         expired = 10;
                         return [2 /*return*/, {
@@ -6396,7 +6393,7 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.initMember = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var profile, creditCards, err_1, _a, programMembershipOwnershipInfos;
+            var profile, creditCards, err_1, _a, searchResult;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -6442,8 +6439,9 @@ var UserService = /** @class */ (function () {
                                 }
                             })];
                     case 8:
-                        programMembershipOwnershipInfos = _b.sent();
-                        this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
+                        searchResult = _b.sent();
+                        this.data.programMembershipOwnershipInfos =
+                            searchResult.data;
                         this.save();
                         return [2 /*return*/];
                 }
@@ -6561,14 +6559,15 @@ var UserService = /** @class */ (function () {
                                 ownedFrom: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].sortType.Ascending
                             },
                             typeOfGood: {
-                                typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].ownershipInfo.AccountGoodType.Account,
+                                typeOf: 'Account',
                                 accountType: 'Point'
                             }
                         })];
                     case 1:
                         searchResult = _a.sent();
                         accounts = searchResult.data.filter(function (a) {
-                            return (a.typeOfGood.status === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.accountStatusType.Opened);
+                            return (a.typeOfGood.typeOf === 'Account'
+                                && a.typeOfGood.status === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].pecorino.accountStatusType.Opened);
                         });
                         return [2 /*return*/, accounts];
                 }
@@ -6612,7 +6611,7 @@ var UserService = /** @class */ (function () {
         if (this.data.programMembershipOwnershipInfos.length === 0
             || programMembershipOwnershipInfo === undefined
             || programMembershipOwnershipInfo.acquiredFrom === undefined
-            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater) {
+            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.organizationType.MovieTheater) {
             return '';
         }
         var name = programMembershipOwnershipInfo.acquiredFrom.name;
@@ -6666,20 +6665,18 @@ var UserService = /** @class */ (function () {
     */
     UserService.prototype.getGmoObject = function (sendParam) {
         return __awaiter(this, void 0, void 0, function () {
-            var branchCode, searchResult, findResult, movieTheater;
+            var branchCode, searchResult, findResult, seller;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerino.getServices()];
                     case 1:
                         _a.sent();
                         branchCode = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].MAIN_SHOP_BRUNCH_CODE;
-                        return [4 /*yield*/, this.cinerino.seller.search({
-                                typeOfs: [_cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].organizationType.MovieTheater]
-                            })];
+                        return [4 /*yield*/, this.cinerino.seller.search({})];
                     case 2:
                         searchResult = _a.sent();
                         findResult = searchResult.data.find(function (s) { return s.location !== undefined && s.location.branchCode === branchCode; });
-                        movieTheater = (findResult === undefined) ? searchResult.data[0] : findResult;
+                        seller = (findResult === undefined) ? searchResult.data[0] : findResult;
                         return [2 /*return*/, new Promise(function (resolve, reject) {
                                 window.someCallbackFunction = function someCallbackFunction(response) {
                                     if (response.resultCode === '000') {
@@ -6691,14 +6688,16 @@ var UserService = /** @class */ (function () {
                                 };
                                 var Multipayment = window.Multipayment;
                                 // shopId
-                                if (movieTheater.paymentAccepted === undefined) {
+                                if (seller.paymentAccepted === undefined) {
                                     return reject(new Error('The settlement method does not correspond'));
                                 }
-                                var paymentAccepted = movieTheater.paymentAccepted.find(function (p) { return p.paymentMethodType === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].paymentMethodType.CreditCard; });
-                                if (paymentAccepted === undefined || paymentAccepted.paymentMethodType !== _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].paymentMethodType.CreditCard) {
+                                var findPaymentAcceptedResult = seller.paymentAccepted.find(function (p) { return p.paymentMethodType === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].paymentMethodType.CreditCard; });
+                                if (findPaymentAcceptedResult === undefined
+                                    || findPaymentAcceptedResult.paymentMethodType !== _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].paymentMethodType.CreditCard
+                                    || findPaymentAcceptedResult.gmoInfo === undefined) {
                                     return reject(new Error('The settlement method does not correspond'));
                                 }
-                                Multipayment.init(paymentAccepted.gmoInfo.shopId);
+                                Multipayment.init(findPaymentAcceptedResult.gmoInfo.shopId);
                                 Multipayment.getToken(sendParam, window.someCallbackFunction);
                             })];
                 }

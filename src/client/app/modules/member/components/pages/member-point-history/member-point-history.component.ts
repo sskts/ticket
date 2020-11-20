@@ -30,13 +30,12 @@ export class MemberPointHistoryComponent implements OnInit {
             if (this.user.data.accounts.length === 0) {
                 throw new Error('account is not found');
             }
-            const result = await this.cinerino.ownerShipInfo.searchAccountMoneyTransferActions({
-                accountType: 'Point',
+            const searchResult = await this.cinerino.ownerShipInfo.searchAccountMoneyTransferActions({
                 accountNumber: this.user.data.accounts[0].typeOfGood.accountNumber,
                 limit: 100
             });
             this.accountMoneyTransferActions =
-                result.data.filter(a => a.actionStatus === factory.pecorino.actionStatusType.CompletedActionStatus);
+                searchResult.data.filter(a => a.actionStatus === factory.pecorino.actionStatusType.CompletedActionStatus);
         } catch (error) {
             console.error(error);
             this.router.navigate(['/error', { redirect: '/member/point/history' }]);

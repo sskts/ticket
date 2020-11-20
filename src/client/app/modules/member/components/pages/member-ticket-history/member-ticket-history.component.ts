@@ -41,14 +41,16 @@ export class MemberTicketHistoryComponent implements OnInit {
         this.reservation.isMember = this.user.isMember();
         try {
             await this.cinerino.getServices();
-            const result = await this.cinerino.ownerShipInfo.search({
-                id: 'me',
+            const searchResult = await this.cinerino.ownerShipInfo.search({
                 typeOfGood: {
                     typeOf: factory.chevre.reservationType.EventReservation
                 }
             });
             const now = moment();
-            this.reservations = result.data.filter((reservation) => {
+            const reservations = <factory.ownershipInfo.IOwnershipInfo<
+                factory.chevre.reservation.IReservation<factory.chevre.reservationType.EventReservation>
+            >[]>searchResult.data;
+            this.reservations = reservations.filter((reservation) => {
                 return moment(reservation.typeOfGood.reservationFor.endDate).unix() < now.unix();
             });
         } catch (err) {

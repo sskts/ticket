@@ -25,20 +25,16 @@ export class MemberService {
 
         const branchCode = params.theaterCode;
         // 販売劇場検索
-        const result = await this.cinerinoService.seller.search({
-            location: { branchCodes: [branchCode] },
-            typeOfs: [factory.organizationType.MovieTheater]
+        const searchResult = await this.cinerinoService.seller.search({
+            branchCode: { $eq: branchCode },
         });
-        const seller = result.data[0];
+        const seller = searchResult.data[0];
         if (seller.id === undefined) {
             throw new Error('programMemberships is Injustice');
         }
 
         // 会員プログラム登録
         await this.cinerinoService.person.registerProgramMembership({
-            programMembershipId: '',
-            offerIdentifier: '',
-            sellerType: seller.typeOf,
             sellerId: seller.id
         });
     }

@@ -129,7 +129,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
             this.dateList = [];
             this.schedules = [];
             this.theaters = await this.masterService.searchSeller(
-                { typeOfs: [factory.organizationType.MovieTheater] },
+                {},
                 { exclude: true, sort: true }
             );
             const findResult = this.theaters.find(theater =>

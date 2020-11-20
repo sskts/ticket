@@ -14,11 +14,7 @@ export class MemberMypageComponent implements OnInit {
     public moment = moment;
     public account: factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>;
     public availableBalance: number;
-    public programMembershipOwnershipInfo: factory.ownershipInfo.IOwnershipInfo<
-        factory.ownershipInfo.IGood<
-            factory.chevre.programMembership.ProgramMembershipType.ProgramMembership
-        >
-    >;
+    public programMembershipOwnershipInfo: factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>;
 
 
     constructor(

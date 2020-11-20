@@ -6,11 +6,6 @@ import { UtilService } from '../services';
 import { CinerinoService } from '../services/cinerino.service';
 import { UserService } from '../services/user.service';
 
-type programMembershipType =
-    factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGood<
-        factory.chevre.programMembership.ProgramMembershipType.ProgramMembership>
-    >;
-
 @Injectable({
     providedIn: 'root'
 })
@@ -40,12 +35,14 @@ export class ProgramMembershipGuardService implements CanActivate {
                 typeOf: factory.chevre.programMembership.ProgramMembershipType.ProgramMembership
             }
         });
-        if (!await this.hasAvailability(searchResult.data)) {
+        if (!await this.hasAvailability(
+            <factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>[]>searchResult.data)) {
             this.router.navigate(['/auth/register/credit']);
             return false;
         }
 
-        this.user.data.programMembershipOwnershipInfos = searchResult.data;
+        this.user.data.programMembershipOwnershipInfos =
+            <factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>[]>searchResult.data;
         this.user.save();
 
         return true;
@@ -54,7 +51,8 @@ export class ProgramMembershipGuardService implements CanActivate {
     /**
      * 有効判定
      */
-    private async hasAvailability(programMembershipOwnershipInfos: programMembershipType[]) {
+    private async hasAvailability(programMembershipOwnershipInfos:
+        factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>[]) {
         const now = (await this.util.getServerTime()).date;
         const filterResult = programMembershipOwnershipInfos
             .filter(p => moment(p.ownedThrough).unix() > moment(now).unix());
