@@ -19,7 +19,6 @@ export class CinerinoService {
     public transaction: {
         placeOrder: cinerino.service.transaction.PlaceOrder
     };
-    public programMembership: cinerino.service.ProgramMembership;
     private endpoint: string;
     private projectId: string;
 

@@ -121,18 +121,21 @@ export class ReservationService {
      */
     private async fitchReservation(): Promise<IReservationData> {
         await this.cinerino.getServices();
-        const reservationOwnerships = await this.cinerino.ownerShipInfo.search({
-            id: 'me',
+        const searchResult = await this.cinerino.ownerShipInfo.search({
             typeOfGood: {
                 typeOf: factory.chevre.reservationType.EventReservation
             },
             limit: 100
         });
+        const eventReservations =
+            <factory.ownershipInfo.IOwnershipInfo<
+                factory.chevre.reservation.IReservation<factory.chevre.reservationType.EventReservation>
+            >[]>searchResult.data;
         const orders: IReservation[] = [];
-        for (const reservationOwnership of reservationOwnerships.data) {
-            const confirmationNumber = reservationOwnership.typeOfGood.reservationNumber.split('-')[0];
-            const reservationFor = reservationOwnership.typeOfGood.reservationFor;
-            const reservedTicket = reservationOwnership.typeOfGood.reservedTicket;
+        for (const eventReservation of eventReservations) {
+            const confirmationNumber =  eventReservation.typeOfGood.reservationNumber.split('-')[0];
+            const reservationFor = eventReservation.typeOfGood.reservationFor;
+            const reservedTicket = eventReservation.typeOfGood.reservedTicket;
             const target = orders.find((order) => {
                 return (order.confirmationNumber === confirmationNumber);
             });

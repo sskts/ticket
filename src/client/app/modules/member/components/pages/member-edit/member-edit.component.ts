@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { factory } from '@cinerino/sdk';
 import { CinerinoService, UserService } from '../../../../../services';
 
 @Component({
@@ -29,12 +28,11 @@ export class MemberEditComponent implements OnInit {
       * 劇場一覧取得
       */
     private async getTheaterName() {
-        const code = this.user.getWellGoTheaterCode();
-        if (code !== undefined) {
+        const branchCode = this.user.getWellGoTheaterCode();
+        if (branchCode !== undefined) {
             await this.cinerino.getServices();
             const result = await this.cinerino.seller.search({
-                typeOfs: [factory.organizationType.MovieTheater],
-                location: { branchCodes: [code] }
+                branchCode: { $eq: branchCode }
             });
             const seller = result.data[0];
             return (seller.name === undefined) ? ''

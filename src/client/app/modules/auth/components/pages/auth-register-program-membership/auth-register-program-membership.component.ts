@@ -33,7 +33,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         this.optionsForm = this.createForm();
         try {
             this.theaters = await this.masterService.searchSeller(
-                { typeOfs: [factory.organizationType.MovieTheater] },
+                {},
                 { exclude: true, sort: true }
             );
         } catch (err) {
@@ -71,7 +71,6 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
                 // ポイントアカウントが複数存在する場合、最初の一件を残してクローズする
                 for (let i = 1; i < accounts.length; i++) {
                     await this.cinerino.ownerShipInfo.closeAccount({
-                        accountType: 'Point',
                         accountNumber: accounts[i].typeOfGood.accountNumber
                     });
                 }

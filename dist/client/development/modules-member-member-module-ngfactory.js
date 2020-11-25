@@ -6898,11 +6898,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "../../node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @cinerino/sdk */ "../../node_modules/@cinerino/sdk/lib/browser.js");
-/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var libphonenumber_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! libphonenumber-js */ "../../node_modules/libphonenumber-js/index.es6.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../environments/environment */ "./environments/environment.ts");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
+/* harmony import */ var libphonenumber_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! libphonenumber-js */ "../../node_modules/libphonenumber-js/index.es6.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../environments/environment */ "./environments/environment.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -6945,7 +6943,6 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-
 var MemberEditProfileComponent = /** @class */ (function () {
     function MemberEditProfileComponent(formBuilder, elementRef, router, user, masterService) {
         this.formBuilder = formBuilder;
@@ -6968,7 +6965,7 @@ var MemberEditProfileComponent = /** @class */ (function () {
                         this.profileForm = this.createForm();
                         this.isLoading = false;
                         _a = this;
-                        return [4 /*yield*/, this.masterService.searchSeller({ typeOfs: [_cinerino_sdk__WEBPACK_IMPORTED_MODULE_3__["factory"].organizationType.MovieTheater] }, { exclude: true, sort: true })];
+                        return [4 /*yield*/, this.masterService.searchSeller({}, { exclude: true, sort: true })];
                     case 1:
                         _a.theaters = _b.sent();
                         return [3 /*break*/, 3];
@@ -7015,11 +7012,11 @@ var MemberEditProfileComponent = /** @class */ (function () {
                     function (control) {
                         var field = control.root.get('telephone');
                         if (field !== null) {
-                            var parsedNumber = libphonenumber_js__WEBPACK_IMPORTED_MODULE_4__["parse"](field.value, 'JP');
+                            var parsedNumber = libphonenumber_js__WEBPACK_IMPORTED_MODULE_3__["parse"](field.value, 'JP');
                             if (parsedNumber.phone === undefined) {
                                 return { telephone: true };
                             }
-                            var isValid = libphonenumber_js__WEBPACK_IMPORTED_MODULE_4__["isValidNumber"](parsedNumber);
+                            var isValid = libphonenumber_js__WEBPACK_IMPORTED_MODULE_3__["isValidNumber"](parsedNumber);
                             if (!isValid) {
                                 return { telephone: true };
                             }
@@ -7045,7 +7042,7 @@ var MemberEditProfileComponent = /** @class */ (function () {
         };
         var theaterCode = this.user.getWellGoTheaterCode();
         profile.theaterCode.value =
-            (theaterCode === undefined || _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].CLOSE_THEATERS.find(function (t) { return t === theaterCode; }) !== undefined)
+            (theaterCode === undefined || _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].CLOSE_THEATERS.find(function (t) { return t === theaterCode; }) !== undefined)
                 ? '' : theaterCode;
         return this.formBuilder.group({
             familyName: [profile.familyName.value, profile.familyName.validators],
@@ -7198,9 +7195,7 @@ var styles = ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uI
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemberEditComponent", function() { return MemberEditComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cinerino/sdk */ "../../node_modules/@cinerino/sdk/lib/browser.js");
-/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7239,7 +7234,6 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 };
 
 
-
 var MemberEditComponent = /** @class */ (function () {
     function MemberEditComponent(user, cinerino) {
         this.user = user;
@@ -7270,18 +7264,17 @@ var MemberEditComponent = /** @class */ (function () {
       */
     MemberEditComponent.prototype.getTheaterName = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var code, result, seller;
+            var branchCode, result, seller;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        code = this.user.getWellGoTheaterCode();
-                        if (!(code !== undefined)) return [3 /*break*/, 3];
+                        branchCode = this.user.getWellGoTheaterCode();
+                        if (!(branchCode !== undefined)) return [3 /*break*/, 3];
                         return [4 /*yield*/, this.cinerino.getServices()];
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, this.cinerino.seller.search({
-                                typeOfs: [_cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["factory"].organizationType.MovieTheater],
-                                location: { branchCodes: [code] }
+                                branchCode: { $eq: branchCode }
                             })];
                     case 2:
                         result = _a.sent();
@@ -7689,7 +7682,7 @@ var MemberPointHistoryComponent = /** @class */ (function () {
      */
     MemberPointHistoryComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var result, error_1;
+            var searchResult, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -7705,14 +7698,13 @@ var MemberPointHistoryComponent = /** @class */ (function () {
                             throw new Error('account is not found');
                         }
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.searchAccountMoneyTransferActions({
-                                accountType: 'Point',
                                 accountNumber: this.user.data.accounts[0].typeOfGood.accountNumber,
                                 limit: 100
                             })];
                     case 3:
-                        result = _a.sent();
+                        searchResult = _a.sent();
                         this.accountMoneyTransferActions =
-                            result.data.filter(function (a) { return a.actionStatus === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_2__["factory"].pecorino.actionStatusType.CompletedActionStatus; });
+                            searchResult.data.filter(function (a) { return a.actionStatus === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_2__["factory"].pecorino.actionStatusType.CompletedActionStatus; });
                         return [3 /*break*/, 5];
                     case 4:
                         error_1 = _a.sent();
@@ -7895,7 +7887,7 @@ var MemberTicketHistoryComponent = /** @class */ (function () {
      */
     MemberTicketHistoryComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var result, now_1, err_1;
+            var searchResult, now_1, reservations, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -7910,15 +7902,15 @@ var MemberTicketHistoryComponent = /** @class */ (function () {
                     case 2:
                         _a.sent();
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
-                                id: 'me',
                                 typeOfGood: {
                                     typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_2__["factory"].chevre.reservationType.EventReservation
                                 }
                             })];
                     case 3:
-                        result = _a.sent();
+                        searchResult = _a.sent();
                         now_1 = moment__WEBPACK_IMPORTED_MODULE_3__();
-                        this.reservations = result.data.filter(function (reservation) {
+                        reservations = searchResult.data;
+                        this.reservations = reservations.filter(function (reservation) {
                             return moment__WEBPACK_IMPORTED_MODULE_3__(reservation.typeOfGood.reservationFor.endDate).unix() < now_1.unix();
                         });
                         return [3 /*break*/, 5];
@@ -8224,20 +8216,23 @@ var PointHistoryListComponent = /** @class */ (function () {
         this.description = (this.action.description !== undefined)
             ? this.action.description.replace(/\,/g, '<br>')
             : '';
+        var amount = (typeof this.action.amount === 'number')
+            ? this.action.amount
+            : (this.action.amount.value === undefined) ? 0 : this.action.amount.value;
         if (this.action.purpose.typeOf === transactionType.Deposit) {
-            this.circle = (this.action.amount < 0) ? 'blue' : '';
-            this.amount = (this.action.amount < 0) ? String(this.action.amount) : "+" + this.action.amount;
+            this.circle = (amount < 0) ? 'blue' : '';
+            this.amount = (amount < 0) ? String(amount) : "+" + amount;
             return;
         }
         if (this.action.purpose.typeOf === transactionType.Transfer) {
             var isMySelf = this.action.fromLocation.accountNumber === this.accountNumber;
             this.circle = 'blue';
-            this.amount = (isMySelf) ? String(this.action.amount * -1) : String(this.action.amount);
+            this.amount = (isMySelf) ? String((amount * -1)) : String(amount);
             return;
         }
         if (this.action.purpose.typeOf === transactionType.Withdraw) {
-            this.circle = (this.action.amount > 0) ? 'blue' : '';
-            this.amount = (this.action.amount > 0) ? String(this.action.amount * -1) : String(this.action.amount);
+            this.circle = (amount > 0) ? 'blue' : '';
+            this.amount = (amount > 0) ? String((amount * -1)) : String(amount);
             return;
         }
     };
@@ -8410,7 +8405,7 @@ var TicketHistoryDetailComponent = /** @class */ (function () {
     /**
      * 劇場一覧取得
      */
-    TicketHistoryDetailComponent.prototype.getTheaterName = function (code) {
+    TicketHistoryDetailComponent.prototype.getTheaterName = function (branchCode) {
         return __awaiter(this, void 0, void 0, function () {
             var result, seller;
             return __generator(this, function (_a) {
@@ -8419,8 +8414,7 @@ var TicketHistoryDetailComponent = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, this.cinerino.seller.search({
-                                typeOfs: [_cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["factory"].organizationType.MovieTheater],
-                                location: { branchCodes: [code] }
+                                branchCode: { $eq: branchCode }
                             })];
                     case 2:
                         result = _a.sent();

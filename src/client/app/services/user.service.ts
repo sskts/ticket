@@ -6,21 +6,14 @@ import { CinerinoService } from './cinerino.service';
 import { SaveType, StorageService } from './storage.service';
 import { UtilService } from './util.service';
 
-type accountType = factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>;
-type programMembershipType =
-    factory.ownershipInfo.IOwnershipInfo<
-        factory.ownershipInfo.IGood<
-            factory.chevre.programMembership.ProgramMembershipType.ProgramMembership
-        >
-    >;
 
 export interface IUserData {
     userName?: string;
     memberType: MemberType;
     profile?: factory.person.IProfile;
     creditCards: factory.chevre.paymentMethod.paymentCard.creditCard.ICheckedCard[];
-    accounts: accountType[];
-    programMembershipOwnershipInfos: programMembershipType[];
+    accounts: factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>[];
+    programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>[];
     prevUserName?: string;
 }
 
@@ -127,7 +120,7 @@ export class UserService {
         }
         this.data.userName = this.cinerino.userName;
         // 連絡先取得
-        const profile = await this.cinerino.person.getProfile({ });
+        const profile = await this.cinerino.person.getProfile({});
         if (profile === undefined) {
             throw new Error('profile is undefined');
         }
@@ -143,13 +136,14 @@ export class UserService {
         }
         // 口座検索または作成
         this.data.accounts = await this.openPointAccountIfNotExists();
-        const programMembershipOwnershipInfos =
-            await this.cinerino.ownerShipInfo.search<factory.chevre.programMembership.ProgramMembershipType.ProgramMembership>({
+        const searchResult =
+            await this.cinerino.ownerShipInfo.search({
                 typeOfGood: {
                     typeOf: factory.chevre.programMembership.ProgramMembershipType.ProgramMembership
                 }
             });
-        this.data.programMembershipOwnershipInfos = programMembershipOwnershipInfos.data;
+        this.data.programMembershipOwnershipInfos =
+            <factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>[]>searchResult.data;
         this.save();
     }
 
@@ -211,20 +205,21 @@ export class UserService {
     */
     private async searchPointAccount() {
         // 口座検索
-        const searchResult = await this.cinerino.ownerShipInfo.search<factory.ownershipInfo.AccountGoodType.Account>({
+        const searchResult = await this.cinerino.ownerShipInfo.search({
             sort: {
                 ownedFrom: factory.sortType.Ascending
             },
             typeOfGood: {
-                typeOf: factory.ownershipInfo.AccountGoodType.Account,
+                typeOf: 'Account',
                 accountType: 'Point'
             }
         });
         const accounts =
             searchResult.data.filter((a) => {
-                return (a.typeOfGood.status === factory.pecorino.accountStatusType.Opened);
+                return (a.typeOfGood.typeOf === 'Account'
+                    && (<factory.pecorino.account.IAccount>a.typeOfGood).status === factory.pecorino.accountStatusType.Opened);
             });
-        return accounts;
+        return <factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>[]>accounts;
     }
 
     /**
@@ -267,7 +262,7 @@ export class UserService {
         if (this.data.programMembershipOwnershipInfos.length === 0
             || programMembershipOwnershipInfo === undefined
             || programMembershipOwnershipInfo.acquiredFrom === undefined
-            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== factory.organizationType.MovieTheater) {
+            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== factory.chevre.organizationType.MovieTheater) {
             return '';
         }
         const name = programMembershipOwnershipInfo.acquiredFrom.name;
@@ -333,11 +328,9 @@ export class UserService {
     }) {
         await this.cinerino.getServices();
         const branchCode = environment.MAIN_SHOP_BRUNCH_CODE;
-        const searchResult = await this.cinerino.seller.search({
-            typeOfs: [factory.organizationType.MovieTheater]
-        });
+        const searchResult = await this.cinerino.seller.search({});
         const findResult = searchResult.data.find(s => s.location !== undefined && s.location.branchCode === branchCode);
-        const movieTheater = (findResult === undefined) ? searchResult.data[0] : findResult;
+        const seller = (findResult === undefined) ? searchResult.data[0] : findResult;
 
         return new Promise<IGmoTokenObject>((resolve, reject) => {
             (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
@@ -349,14 +342,17 @@ export class UserService {
             };
             const Multipayment = (<any>window).Multipayment;
             // shopId
-            if (movieTheater.paymentAccepted === undefined) {
+            if (seller.paymentAccepted === undefined) {
                 return reject(new Error('The settlement method does not correspond'));
             }
-            const paymentAccepted = movieTheater.paymentAccepted.find(p => p.paymentMethodType === factory.paymentMethodType.CreditCard);
-            if (paymentAccepted === undefined || paymentAccepted.paymentMethodType !== factory.paymentMethodType.CreditCard) {
+            const findPaymentAcceptedResult =
+            seller.paymentAccepted.find(p => p.paymentMethodType === factory.paymentMethodType.CreditCard);
+            if (findPaymentAcceptedResult === undefined
+                || findPaymentAcceptedResult.paymentMethodType !== factory.paymentMethodType.CreditCard
+                || findPaymentAcceptedResult.gmoInfo === undefined) {
                 return reject(new Error('The settlement method does not correspond'));
             }
-            Multipayment.init((<factory.seller.ICreditCardPaymentAccepted>paymentAccepted).gmoInfo.shopId);
+            Multipayment.init(findPaymentAcceptedResult.gmoInfo.shopId);
             Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
         });
     }

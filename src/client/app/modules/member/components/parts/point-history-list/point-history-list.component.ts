@@ -23,22 +23,25 @@ export class PointHistoryListComponent implements OnInit {
         this.description = (this.action.description !== undefined)
             ? this.action.description.replace(/\,/g, '<br>')
             : '';
+        const amount = (typeof this.action.amount === 'number')
+            ? this.action.amount
+            : (this.action.amount.value === undefined) ? 0 : this.action.amount.value;
         if (this.action.purpose.typeOf === transactionType.Deposit) {
-            this.circle = (this.action.amount < 0) ? 'blue' : '';
-            this.amount = (this.action.amount < 0) ? String(this.action.amount) : `+${this.action.amount}`;
+            this.circle = (amount < 0) ? 'blue' : '';
+            this.amount = (amount < 0) ? String(amount) : `+${amount}`;
             return;
         }
 
         if (this.action.purpose.typeOf === transactionType.Transfer) {
             const isMySelf = (<any>this.action.fromLocation).accountNumber === this.accountNumber;
             this.circle = 'blue';
-            this.amount = (isMySelf) ? String(this.action.amount * -1) : String(this.action.amount);
+            this.amount = (isMySelf) ? String((amount * -1)) : String(amount);
             return;
         }
 
         if (this.action.purpose.typeOf === transactionType.Withdraw) {
-            this.circle = (this.action.amount > 0) ? 'blue' : '';
-            this.amount = (this.action.amount > 0) ? String(this.action.amount * -1) : String(this.action.amount);
+            this.circle = (amount > 0) ? 'blue' : '';
+            this.amount = (amount > 0) ? String((amount * -1)) : String(amount);
             return;
         }
     }

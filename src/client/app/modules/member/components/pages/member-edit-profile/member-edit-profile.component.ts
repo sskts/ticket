@@ -37,7 +37,7 @@ export class MemberEditProfileComponent implements OnInit {
             this.profileForm = this.createForm();
             this.isLoading = false;
             this.theaters = await this.masterService.searchSeller(
-                { typeOfs: [factory.organizationType.MovieTheater] },
+                {},
                 { exclude: true, sort: true }
             );
         } catch (err) {
