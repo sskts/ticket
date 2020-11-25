@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.6.6 - 2020-11-25
+### Changed
+ - 口座の出入金履歴検索を新しい型に対応
+
 ## 3.6.5 - 2020-11-17
 ### Added
  - 問い合わせフォームリンク追加
