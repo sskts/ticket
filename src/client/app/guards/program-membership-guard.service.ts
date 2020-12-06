@@ -24,9 +24,20 @@ export class ProgramMembershipGuardService implements CanActivate {
    */
     public async canActivate() {
         if (!this.user.isMember()) {
+            // 非会員
             return true;
         }
+        if (this.user.data.userName !== undefined
+            && this.user.data.userName !== '') {
+            // ユーザーネーム保存
+            this.user.data.prevUserName = this.user.data.userName;
+        }
+        this.user.save();
         if (await this.hasAvailability(this.user.data.programMembershipOwnershipInfos)) {
+            // 期限内会員
+            // プログラムメンバーシップ登録済み判定を保存
+            this.user.data.programMembershipRegistered = true;
+            this.user.save();
             return true;
         }
         await this.cinerino.getServices();
@@ -35,14 +46,21 @@ export class ProgramMembershipGuardService implements CanActivate {
                 typeOf: factory.chevre.programMembership.ProgramMembershipType.ProgramMembership
             }
         });
-        if (!await this.hasAvailability(
-            <factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>[]>searchResult.data)) {
+        if (searchResult.data.length > 0) {
+            // プログラムメンバーシップ登録済み判定を保存
+            this.user.data.programMembershipRegistered = true;
+            this.user.save();
+        }
+        if (!await this.hasAvailability(<factory.ownershipInfo.IOwnershipInfo<
+            factory.chevre.programMembership.IProgramMembership>[]
+            >searchResult.data)) {
+            // 期限切れ会員
             this.router.navigate(['/auth/register/credit']);
             return false;
         }
-
-        this.user.data.programMembershipOwnershipInfos =
-            <factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>[]>searchResult.data;
+        // プログラムメンバーシップを保存
+        this.user.data.programMembershipOwnershipInfos = <factory.ownershipInfo.IOwnershipInfo<
+            factory.chevre.programMembership.IProgramMembership>[]>searchResult.data;
         this.user.save();
 
         return true;

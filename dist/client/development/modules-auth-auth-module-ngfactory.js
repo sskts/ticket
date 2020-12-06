@@ -1113,7 +1113,8 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                         theaterCode = this.optionsForm.controls.theater.value;
                         // 会員登録
                         return [4 /*yield*/, this.member.register({
-                                theaterCode: theaterCode,
+                                programMembershipRegistered: this.userService.data.programMembershipRegistered,
+                                theaterBranchCode: theaterCode,
                             })];
                     case 6:
                         // 会員登録

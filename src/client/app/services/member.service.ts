@@ -19,14 +19,15 @@ export class MemberService {
      * @method register
      */
     public async register(params: {
-        theaterCode: string;
+        programMembershipRegistered: boolean;
+        theaterBranchCode: string;
     }) {
         await this.cinerinoService.getServices();
 
-        const branchCode = params.theaterCode;
+        const { theaterBranchCode, programMembershipRegistered } = params;
         // 販売劇場検索
         const searchResult = await this.cinerinoService.seller.search({
-            branchCode: { $eq: branchCode },
+            branchCode: { $eq: theaterBranchCode },
         });
         const seller = searchResult.data[0];
         if (seller.id === undefined) {
@@ -35,7 +36,12 @@ export class MemberService {
 
         // 会員プログラム登録
         await this.cinerinoService.person.registerProgramMembership({
-            sellerId: seller.id
+            sellerId: seller.id,
+            agent: {
+                additionalProperty: (programMembershipRegistered)
+                    ? undefined
+                    : [{ name: 'firstMembership', value: '1' }]
+            }
         });
     }
 
