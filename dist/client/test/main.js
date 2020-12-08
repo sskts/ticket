@@ -978,11 +978,22 @@ var ProgramMembershipGuardService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         if (!this.user.isMember()) {
+                            // 非会員
                             return [2 /*return*/, true];
                         }
+                        if (this.user.data.userName !== undefined
+                            && this.user.data.userName !== '') {
+                            // ユーザーネーム保存
+                            this.user.data.prevUserName = this.user.data.userName;
+                        }
+                        this.user.save();
                         return [4 /*yield*/, this.hasAvailability(this.user.data.programMembershipOwnershipInfos)];
                     case 1:
                         if (_a.sent()) {
+                            // 期限内会員
+                            // プログラムメンバーシップ登録済み判定を保存
+                            this.user.data.programMembershipRegistered = true;
+                            this.user.save();
                             return [2 /*return*/, true];
                         }
                         return [4 /*yield*/, this.cinerino.getServices()];
@@ -995,14 +1006,20 @@ var ProgramMembershipGuardService = /** @class */ (function () {
                             })];
                     case 3:
                         searchResult = _a.sent();
+                        if (searchResult.data.length > 0) {
+                            // プログラムメンバーシップ登録済み判定を保存
+                            this.user.data.programMembershipRegistered = true;
+                            this.user.save();
+                        }
                         return [4 /*yield*/, this.hasAvailability(searchResult.data)];
                     case 4:
                         if (!(_a.sent())) {
+                            // 期限切れ会員
                             this.router.navigate(['/auth/register/credit']);
                             return [2 /*return*/, false];
                         }
-                        this.user.data.programMembershipOwnershipInfos =
-                            searchResult.data;
+                        // プログラムメンバーシップを保存
+                        this.user.data.programMembershipOwnershipInfos = searchResult.data;
                         this.user.save();
                         return [2 /*return*/, true];
                 }
@@ -5711,15 +5728,15 @@ var MemberService = /** @class */ (function () {
      */
     MemberService.prototype.register = function (params) {
         return __awaiter(this, void 0, void 0, function () {
-            var branchCode, searchResult, seller;
+            var theaterBranchCode, programMembershipRegistered, searchResult, seller;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
                         _a.sent();
-                        branchCode = params.theaterCode;
+                        theaterBranchCode = params.theaterBranchCode, programMembershipRegistered = params.programMembershipRegistered;
                         return [4 /*yield*/, this.cinerinoService.seller.search({
-                                branchCode: { $eq: branchCode },
+                                branchCode: { $eq: theaterBranchCode },
                             })];
                     case 2:
                         searchResult = _a.sent();
@@ -5729,7 +5746,12 @@ var MemberService = /** @class */ (function () {
                         }
                         // 会員プログラム登録
                         return [4 /*yield*/, this.cinerinoService.person.registerProgramMembership({
-                                sellerId: seller.id
+                                sellerId: seller.id,
+                                agent: {
+                                    additionalProperty: (programMembershipRegistered)
+                                        ? undefined
+                                        : [{ name: 'firstMembership', value: '1' }]
+                                }
                             })];
                     case 3:
                         // 会員プログラム登録
@@ -6343,11 +6365,15 @@ var UserService = /** @class */ (function () {
                                 creditCards: [],
                                 accounts: [],
                                 programMembershipOwnershipInfos: [],
+                                programMembershipRegistered: false,
                                 prevUserName: ''
                             };
                             return [2 /*return*/];
                         }
                         this.data = data;
+                        if (data.programMembershipRegistered === undefined) {
+                            this.data.programMembershipRegistered = false;
+                        }
                         return [4 /*yield*/, this.cinerino.needReload()];
                     case 1:
                         if (!_a.sent()) return [3 /*break*/, 3];
@@ -6383,6 +6409,7 @@ var UserService = /** @class */ (function () {
             creditCards: [],
             accounts: [],
             programMembershipOwnershipInfos: [],
+            programMembershipRegistered: false,
             prevUserName: prevUserName
         };
         this.save();

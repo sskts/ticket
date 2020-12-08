@@ -8,12 +8,39 @@ import { UtilService } from './util.service';
 
 
 export interface IUserData {
+    /**
+     * ユーザーネーム
+     */
     userName?: string;
+    /**
+     * メンバータイプ
+     * （0: 非会員, 1:会員）
+     */
     memberType: MemberType;
+    /**
+     * 登録済みプロフィール
+     */
     profile?: factory.person.IProfile;
+    /**
+     * 登録済みクレジットカード
+     */
     creditCards: factory.chevre.paymentMethod.paymentCard.creditCard.ICheckedCard[];
+    /**
+     * ポイント口座
+     */
     accounts: factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>[];
+    /**
+     * プログラムメンバーシップ
+     */
     programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>[];
+    /**
+     * プログラムメンバーシップ登録判定
+     */
+    programMembershipRegistered: boolean;
+    /**
+     * ログイン済みユーザーネーム
+     * （ログイン画面ユーザーネーム忘れ対応）
+     */
     prevUserName?: string;
 }
 
@@ -67,11 +94,15 @@ export class UserService {
                 creditCards: [],
                 accounts: [],
                 programMembershipOwnershipInfos: [],
+                programMembershipRegistered: false,
                 prevUserName: ''
             };
             return;
         }
         this.data = data;
+        if (data.programMembershipRegistered === undefined) {
+            this.data.programMembershipRegistered = false;
+        }
         if (await this.cinerino.needReload()) {
             await this.initMember();
             location.reload();
@@ -102,6 +133,7 @@ export class UserService {
             creditCards: [],
             accounts: [],
             programMembershipOwnershipInfos: [],
+            programMembershipRegistered: false,
             prevUserName: prevUserName
         };
         this.save();

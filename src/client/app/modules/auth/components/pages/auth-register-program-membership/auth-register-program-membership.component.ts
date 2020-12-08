@@ -79,7 +79,8 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             const theaterCode = this.optionsForm.controls.theater.value;
             // 会員登録
             await this.member.register({
-                theaterCode: theaterCode,
+                programMembershipRegistered: this.userService.data.programMembershipRegistered,
+                theaterBranchCode: theaterCode,
             });
 
             // 会員登録確認

@@ -13,6 +13,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.6.7 - 2020-12-08
+### Added
+ - メンバーシップ登録時に、初回登録判定追加
+### Fixed
+ - ユーザーネーム保存を修正
+
 ## 3.6.6 - 2020-11-25
 ### Changed
  - 口座の出入金履歴検索を新しい型に対応
