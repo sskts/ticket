@@ -1,30 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap';
-import { SaveType, StorageService } from '../../../../../services';
+import { IInformationData, InformationService, SaveType, StorageService } from '../../../../../services';
 import { InformationModalComponent } from '../information-modal/information-modal.component';
 
-interface IInformation {
+interface IInformation extends IInformationData {
     modal: boolean;
-    id: string;
-    title?: string;
-    description?: string;
-    images: string[];
-    button?: {
-        label: string;
-        link: string;
-    };
     notWatch: boolean;
-}
-
-interface IInformationData {
-    id: string;
-    title?: string;
-    description?: string;
-    images: string[];
-    button?: {
-        label: string;
-        link: string;
-    };
 }
 
 @Component({
@@ -33,29 +14,32 @@ interface IInformationData {
     styleUrls: ['./information.component.scss']
 })
 export class InformationComponent implements OnInit {
-    @Input() public isMember: boolean;
+    @Input() public url: string;
+    public data: IInformationData[] = [];
+
     public informations: IInformation[];
 
     constructor(
         private storage: StorageService,
         private modal: BsModalService,
+        private informationService: InformationService
     ) { }
 
-    public ngOnInit() {
+    public async ngOnInit() {
         this.informations = [];
-        this.showInformation();
+        this.data = [];
+        try {
+            this.data = await this.informationService.getAvailabilityData(this.url);
+            await this.showInformation();
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     /**
      * お知らせ表示
      */
-    public showInformation() {
-        let data: IInformationData[];
-        if (this.isMember) {
-            data = this.getMemberInformation();
-        } else {
-            data = this.getInformation();
-        }
+    public async showInformation() {
         const STORAGE_KEY = 'information';
         const informationSession = this.storage.load(STORAGE_KEY, SaveType.Session);
         let informationLocal = this.storage.load(STORAGE_KEY, SaveType.Local);
@@ -67,20 +51,16 @@ export class InformationComponent implements OnInit {
                 notWatch: []
             };
         }
-        const filter = data.filter((information) => {
+        const filterResult = this.data.filter(d => {
             const notWatch = informationLocal.notWatch.find((id: string) => {
-                return (id === information.id);
+                return (id === d.id);
             });
             return (notWatch === undefined);
         });
-        this.informations = filter.map((information) => {
+        this.informations = filterResult.map(d => {
             return {
+                ...d,
                 modal: false,
-                id: information.id,
-                title: information.title,
-                description: information.description,
-                images: information.images,
-                button: information.button,
                 notWatch: false
             };
         });
@@ -103,8 +83,8 @@ export class InformationComponent implements OnInit {
                 id: information.id,
                 title: information.title,
                 description: information.description,
-                images: information.images,
-                button: information.button,
+                image: information.image,
+                url: information.url,
                 cb: (params: { notWatch: boolean, index: number, id: string }) => {
                     this.informationNotWatch(params);
                     const next = index + 1;
@@ -148,24 +128,4 @@ export class InformationComponent implements OnInit {
         }
     }
 
-    /**
-     * 非会員お知らせ取得
-     */
-    private getInformation() {
-        return [
-            // {
-            //     id: '2018071700',
-            //     description: 'シネマサンシャインアプリがパワーアップ!<br>会員登録をしてお得に映画鑑賞しよう。',
-            //     images: [],
-            //     button: { label: '会員登録はこちらから', link: '/benefits' }
-            // }
-        ];
-    }
-
-    /**
-     * 会員お知らせ取得
-     */
-    private getMemberInformation() {
-        return [];
-    }
 }

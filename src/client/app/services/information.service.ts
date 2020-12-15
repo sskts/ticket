@@ -3,10 +3,11 @@ import * as moment from 'moment';
 import 'rxjs/add/operator/toPromise';
 import { UtilService } from './util.service';
 
-export interface ICampaignData {
+export interface IInformationData {
     id: string;
     index: number;
     title: string;
+    description: string;
     from: Date;
     through: Date;
     image: string;
@@ -17,27 +18,27 @@ export interface ICampaignData {
 @Injectable({
     providedIn: 'root'
 })
-export class CampaignService {
-    private data: ICampaignData[] = [];
+export class InformationService {
+    private data: IInformationData[] = [];
 
     constructor(
         private utilService: UtilService
     ) { }
 
     /**
-     * キャンペンデータ取得
+     * お知らせ取得
      */
-    public async getCampaign() {
+    public async getInformation() {
         this.data = [];
         try {
-            const url = `/storage/json/campaign.json?date=${moment().format('YYYYMMDDHHmm')}`;
-            const json = await this.utilService.getJson<{ typeof: 'campaign'; data: ICampaignData[]; }>(url);
+            const url = `/storage/json/information.json?date=${moment().format('YYYYMMDDHHmm')}`;
+            const json = await this.utilService.getJson<{ typeof: 'information'; data: IInformationData[]; }>(url);
             this.data = json.data.sort((a, b) => {
                 if (a.index > b.index) {
                     return 1;
-                  } else {
+                } else {
                     return -1;
-                  }
+                }
             });
         } catch (error) {
             console.error(error);
@@ -48,7 +49,7 @@ export class CampaignService {
      * 有効なデータ取得
      */
     public async getAvailabilityData(place: string) {
-        await this.getCampaign();
+        await this.getInformation();
         const now = (await this.utilService.getServerTime()).date;
         const filterResult = this.data.filter((data) => {
             return (moment(data.from).unix() < moment(now).unix()

@@ -1,16 +1,41 @@
 <app-campaign class="d-block" url="member/mypage"></app-campaign>
 <div class="py-4 px-3">
-    <div class="d-flex mb-3">
-        <div class="w-50 pr-2">
+    <div class="mb-3">
+        <div class="mb-3">
             <div class="text-small mb-2">会員コード</div>
-            <div *ngIf="account" class="p-2 bg-white">{{ account.typeOfGood.accountNumber }}</div>
-        </div>
-        <div class="w-50 pl-2">
-            <div class="text-small mb-2">会員更新予定日</div>
-            <div *ngIf="programMembershipOwnershipInfo?.ownedThrough" class="p-2 bg-white">
-                {{ moment(programMembershipOwnershipInfo.ownedThrough).format('YYYY/MM/DD') }}
+            <div class="p-2 bg-white mb-2">
+                <span *ngIf="account">
+                    {{ account.typeOfGood.accountNumber }}
+                </span>
+                <span *ngIf="!account">-</span>
             </div>
-            <div *ngIf="!programMembershipOwnershipInfo?.ownedThrough" class="p-2 bg-white">-</div>
+            <div class="container px-0">
+                <div class="row">
+                    <div class="col-6 pr-2">
+                        <button *ngIf="account" type="button" class="btn btn-block btn-primary center" (click)="copy({ 
+                            value: account.typeOfGood.accountNumber, 
+                            title: '', 
+                            body: '会員コードをコピーしました'
+                        })">コードをコピー</button>
+                    </div>
+                    <!-- <div class="col-6 pl-2">
+                        <button *ngIf="account" type="button" class="btn btn-block btn-primary center"
+                            (click)="openQR(account.typeOfGood.accountNumber)">
+                            QRを表示
+                        </button>
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+        <div class="">
+            <div class="text-small mb-2">会員更新予定日</div>
+            <div class="p-2 bg-white">
+                <span *ngIf="programMembershipOwnershipInfo?.ownedThrough">
+                    {{ moment(programMembershipOwnershipInfo.ownedThrough).format('YYYY/MM/DD') }}
+                </span>
+                <span *ngIf="!programMembershipOwnershipInfo?.ownedThrough">-</span>
+            </div>
         </div>
     </div>
 
@@ -48,4 +73,4 @@
 </div>
 
 <app-loading [show]="isLoading"></app-loading>
-<app-information [isMember]="true"></app-information>
+<app-information url="mypage"></app-information>

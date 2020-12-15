@@ -11,3 +11,4 @@ export * from './storage.service';
 export * from './user.service';
 export * from './util.service';
 export * from './cms.service';
+export * from './information.service';
