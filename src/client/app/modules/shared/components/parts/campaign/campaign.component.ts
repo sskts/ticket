@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { SwiperComponent, SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
-import { CallNativeService, CampaignService, InAppBrowserTarget } from '../../../../../services';
+import { CallNativeService, CampaignService, ICampaignData, InAppBrowserTarget } from '../../../../../services';
+
 
 @Component({
     selector: 'app-campaign',
@@ -9,15 +10,7 @@ import { CallNativeService, CampaignService, InAppBrowserTarget } from '../../..
 })
 export class CampaignComponent implements OnInit {
     @Input() public url: string;
-    public data: {
-        index: number;
-        title: string;
-        from: Date;
-        through: Date;
-        image: string;
-        url: string;
-        place: string[];
-    }[] = [];
+    public data: ICampaignData[] = [];
     public swiperConfig: SwiperConfigInterface;
     @ViewChild(SwiperComponent, { static: false }) public componentRef: SwiperComponent;
     @ViewChild(SwiperDirective, { static: true }) public directiveRef: SwiperDirective;

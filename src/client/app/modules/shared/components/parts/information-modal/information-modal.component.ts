@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
+import { CallNativeService, InAppBrowserTarget } from '../../../../../services';
 
 @Component({
     selector: 'app-information-modal',
@@ -11,15 +12,15 @@ export class InformationModalComponent implements OnInit {
     @Input() public id: string;
     @Input() public title?: string;
     @Input() public description?: string;
-    @Input() public images: string[];
-    @Input() public button?: {
-        label: string;
-        link: string;
-    };
+    @Input() public image: string;
+    @Input() public url?: string;
     @Input() public cb?: Function;
     public notWatch: boolean;
 
-    constructor(public modal: BsModalRef) { }
+    constructor(
+        public modal: BsModalRef,
+        private callNative: CallNativeService
+    ) { }
 
     public ngOnInit() {
         this.notWatch = false;
@@ -31,5 +32,16 @@ export class InformationModalComponent implements OnInit {
             return;
         }
         this.cb({ notWatch: this.notWatch, index: this.index, id: this.id });
+    }
+
+    /**
+     * webブラウザで開く
+     * @method openWebBrowser
+     */
+    public openWebBrowser(url: string) {
+        this.callNative.inAppBrowser({
+            url: url,
+            target: InAppBrowserTarget.System
+        });
     }
 }
