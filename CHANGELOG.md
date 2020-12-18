@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.6.8 - 2020-12-18
+### Added
+ - 会員コードコピーボタン追加
+ - お知らせモーダル機能追加
+
 ## 3.6.7 - 2020-12-08
 ### Added
  - メンバーシップ登録時に、初回登録判定追加
