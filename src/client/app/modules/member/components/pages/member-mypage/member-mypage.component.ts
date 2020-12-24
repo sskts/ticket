@@ -90,7 +90,7 @@ export class MemberMypageComponent implements OnInit {
         const url = await qrcode.toDataURL(value, option);
         this.utilService.openAlert({
             title: '会員コード',
-            body: `<div class="text-center"><img class="" src="${url}"></div>`
+            body: `<div class="text-center"><img src="${url}"></div>`
         });
     }
 
