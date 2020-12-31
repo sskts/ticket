@@ -18,12 +18,12 @@
                             body: '会員コードをコピーしました'
                         })">コードをコピー</button>
                     </div>
-                    <!-- <div class="col-6 pl-2">
+                    <div class="col-6 pl-2">
                         <button *ngIf="account" type="button" class="btn btn-block btn-primary center"
                             (click)="openQR(account.typeOfGood.accountNumber)">
                             QRを表示
                         </button>
-                    </div> -->
+                    </div>
                 </div>
             </div>
 
@@ -60,6 +60,8 @@
     </div>
 
     <div class="buttons mx-auto text-center mb-4">
+        <button type="button" class="btn btn-primary btn-block center py-3 mb-3"
+            (click)="openWebBrowser(environment.PORTAL_SITE + '/point-transfer')">ポイント振替</button>
         <button type="button" class="btn btn-primary btn-block center py-3 mb-3"
             routerLink="/member/point/history">ポイント使用・獲得履歴</button>
         <button type="button" class="btn btn-primary btn-block center py-3 mb-3"

@@ -7262,7 +7262,7 @@ var environment = {
     IDENTITY_POOL_ID: 'ap-northeast-1:6a67f523-93c3-4766-b96f-6552f21abd8d',
     USER_POOL_ID: '',
     CLIENT_ID: '',
-    PORTAL_SITE: 'https://devssktsportal.azurewebsites.net',
+    PORTAL_SITE: 'https://ssk-portal2018-frontend-win-dev.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d2n1h4enbzumbc.cloudfront.net',
     CLOSE_THEATERS: ['101'],
     ANALYTICS_ID: 'UA-99018492-4',

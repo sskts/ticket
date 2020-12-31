@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import * as qrcode from 'qrcode';
-import { UserService, UtilService } from '../../../../../services';
+import { environment } from '../../../../../../environments/environment';
+import { CallNativeService, InAppBrowserTarget, UserService, UtilService } from '../../../../../services';
 
 @Component({
     selector: 'app-member-mypage',
@@ -15,13 +16,15 @@ export class MemberMypageComponent implements OnInit {
     public moment = moment;
     public account: factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>;
     public availableBalance: number;
+    public environment = environment;
     public programMembershipOwnershipInfo: factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>;
 
 
     constructor(
         public userService: UserService,
         public utilService: UtilService,
-        private router: Router
+        private router: Router,
+        private callNativeService: CallNativeService
     ) { }
 
     /**
@@ -90,7 +93,17 @@ export class MemberMypageComponent implements OnInit {
         const url = await qrcode.toDataURL(value, option);
         this.utilService.openAlert({
             title: '会員コード',
-            body: `<div class="text-center"><img class="" src="${url}"></div>`
+            body: `<div class="text-center"><img src="${url}"></div>`
+        });
+    }
+
+    /**
+     * webブラウザで開く
+     */
+    public openWebBrowser(url: string) {
+        this.callNativeService.inAppBrowser({
+            url: url,
+            target: InAppBrowserTarget.System
         });
     }
 
