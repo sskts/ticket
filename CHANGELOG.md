@@ -13,6 +13,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.6.9 - 2020-12-31
+### Added
+ - ポイント振替ボタン追加
+ - 会員コードQR追加
+### Fixed
+ - ポイント履歴修正
+
 ## 3.6.8 - 2020-12-18
 ### Added
  - 会員コードコピーボタン追加
