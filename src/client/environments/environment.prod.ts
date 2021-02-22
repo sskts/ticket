@@ -14,7 +14,7 @@ export const environment = {
     PORTAL_SITE: 'https://www.cinemasunshine.co.jp',
     ENTRANCE_SERVER_URL: 'https://entrance.ticket-cinemasunshine.com',
 
-    CLOSE_THEATERS: ['001'],
+    CLOSE_THEATERS: ['001', '007'],
 
     ANALYTICS_ID: 'UA-99018492-6',
 
