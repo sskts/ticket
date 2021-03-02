@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.6.10 - 2021-03-02
+### Changed
+ - 閉館劇場登録
+
 ## 3.6.9 - 2020-12-31
 ### Added
  - ポイント振替ボタン追加

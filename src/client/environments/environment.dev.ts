@@ -14,7 +14,7 @@ export const environment = {
     PORTAL_SITE: 'https://ssk-portal2018-frontend-win-dev.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d2n1h4enbzumbc.cloudfront.net',
 
-    CLOSE_THEATERS: ['101'],
+    CLOSE_THEATERS: ['101', '107'],
 
     ANALYTICS_ID: 'UA-99018492-4',
 

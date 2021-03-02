@@ -7269,7 +7269,7 @@ var environment = {
     TOKEN_ISSUER: '',
     PORTAL_SITE: 'https://ssk-portal2018-frontend-win-test.azurewebsites.net',
     ENTRANCE_SERVER_URL: 'https://d24x7394fq3aqi.cloudfront.net',
-    CLOSE_THEATERS: ['101'],
+    CLOSE_THEATERS: ['101', '107'],
     ANALYTICS_ID: 'UA-99018492-5',
     MAIN_SHOP_BRUNCH_CODE: '101',
     SCHEDULE_STATUS_THRESHOLD_VALUE: '20',
