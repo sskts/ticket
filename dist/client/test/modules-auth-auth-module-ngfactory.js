@@ -1080,7 +1080,7 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
      */
     AuthRegisterProgramMembershipComponent.prototype.onSubmit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var accounts, i, theaterCode, isRegister, err_2;
+            var accounts, i, theaterBranchCode, programMembershipRegistered, pointAwardAccount, creditCard, isRegister, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1093,7 +1093,7 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                         }
                         _a.label = 1;
                     case 1:
-                        _a.trys.push([1, 8, , 9]);
+                        _a.trys.push([1, 10, , 11]);
                         accounts = this.userService.data.accounts;
                         if (!(accounts.length > 1)) return [3 /*break*/, 5];
                         i = 1;
@@ -1110,25 +1110,41 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                         i++;
                         return [3 /*break*/, 2];
                     case 5:
-                        theaterCode = this.optionsForm.controls.theater.value;
-                        // 会員登録
-                        return [4 /*yield*/, this.member.register({
-                                programMembershipRegistered: this.userService.data.programMembershipRegistered,
-                                theaterBranchCode: theaterCode,
-                            })];
+                        theaterBranchCode = this.optionsForm.controls.theater.value;
+                        programMembershipRegistered = this.userService.data.programMembershipRegistered;
+                        pointAwardAccount = {
+                            accountNumber: accounts[0].typeOfGood.accountNumber
+                        };
+                        creditCard = {
+                            memberId: 'me',
+                            cardSeq: Number(this.userService.data.creditCards[0].cardSeq)
+                        };
+                        return [4 /*yield*/, this.member.isRegister({ interval: 0, limit: 0 })];
                     case 6:
+                        isRegister = _a.sent();
+                        if (!!isRegister) return [3 /*break*/, 8];
+                        // 会員登録
+                        return [4 /*yield*/, this.member.registerProgramMembership({
+                                programMembershipRegistered: programMembershipRegistered,
+                                theaterBranchCode: theaterBranchCode,
+                                pointAwardAccount: pointAwardAccount,
+                                creditCard: creditCard
+                            })];
+                    case 7:
                         // 会員登録
                         _a.sent();
-                        return [4 /*yield*/, this.member.isRegister()];
-                    case 7:
+                        _a.label = 8;
+                    case 8: return [4 /*yield*/, this.member.isRegister({ interval: 3000, limit: 20 })];
+                    case 9:
+                        // 会員登録確認
                         isRegister = _a.sent();
                         if (!isRegister) {
                             this.router.navigate(['/error', { redirect: '/auth/select' }]);
                             return [2 /*return*/];
                         }
                         this.router.navigate(['/']);
-                        return [3 /*break*/, 9];
-                    case 8:
+                        return [3 /*break*/, 11];
+                    case 10:
                         err_2 = _a.sent();
                         console.error(err_2);
                         // 会員プログラム登録失敗
@@ -1137,8 +1153,8 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                             title: 'エラーが発生しました',
                             body: "\u518D\u5EA6\u3054\u767B\u9332\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
                         });
-                        return [3 /*break*/, 9];
-                    case 9: return [2 /*return*/];
+                        return [3 /*break*/, 11];
+                    case 11: return [2 /*return*/];
                 }
             });
         });
