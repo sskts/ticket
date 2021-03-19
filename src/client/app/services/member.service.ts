@@ -134,22 +134,22 @@ export class MemberService {
                         : [{ name: 'firstMembership', value: '1' }]
                 }
             });
-            const email = undefined;
             await this.cinerinoService.transaction.placeOrder.confirm({
                 id: transaction.id,
-                potentialActions: {
-                    order: {
-                        potentialActions: {
-                            sendOrder: {
-                                potentialActions: {
-                                    sendEmailMessage: [
-                                        { object: email }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
+                sendEmailMessage: false,
+                // potentialActions: {
+                //     order: {
+                //         potentialActions: {
+                //             sendOrder: {
+                //                 potentialActions: {
+                //                     sendEmailMessage: [
+                //                         { object: email }
+                //                     ]
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
             });
         } catch (error) {
             this.cinerinoService.transaction.placeOrder.cancel({ id: transaction.id })

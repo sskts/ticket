@@ -5944,7 +5944,7 @@ var MemberService = /** @class */ (function () {
      */
     MemberService.prototype.registerProgramMembership = function (params) {
         return __awaiter(this, void 0, void 0, function () {
-            var pointAwardAccount, creditCard, theaterBranchCode, programMembershipRegistered, profile, searchSellersResult, seller, data, product, availableOffers, acceptedOffer, passport, date, transaction, accessCode, amount, email, error_1;
+            var pointAwardAccount, creditCard, theaterBranchCode, programMembershipRegistered, profile, searchSellersResult, seller, data, product, availableOffers, acceptedOffer, passport, date, transaction, accessCode, amount, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -6066,22 +6066,9 @@ var MemberService = /** @class */ (function () {
                             })];
                     case 12:
                         _a.sent();
-                        email = undefined;
                         return [4 /*yield*/, this.cinerinoService.transaction.placeOrder.confirm({
                                 id: transaction.id,
-                                potentialActions: {
-                                    order: {
-                                        potentialActions: {
-                                            sendOrder: {
-                                                potentialActions: {
-                                                    sendEmailMessage: [
-                                                        { object: email }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                sendEmailMessage: false,
                             })];
                     case 13:
                         _a.sent();
