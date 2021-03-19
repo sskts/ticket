@@ -5991,7 +5991,7 @@ var MemberService = /** @class */ (function () {
                             throw new Error('no available offers');
                         }
                         acceptedOffer = availableOffers[0];
-                        return [4 /*yield*/, this.cinerinoService.getPassport({ scope: "Transaction:PlaceOrder:" + seller.id })];
+                        return [4 /*yield*/, this.cinerinoService.getPassport({ scope: "placeOrderTransaction.MovieTheater-" + theaterBranchCode })];
                     case 6:
                         passport = _a.sent();
                         return [4 /*yield*/, this.utilService.getServerTime()];

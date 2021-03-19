@@ -69,7 +69,7 @@ export class MemberService {
             throw new Error('no available offers');
         }
         const acceptedOffer = availableOffers[0];
-        const passport = await this.cinerinoService.getPassport({ scope: `Transaction:PlaceOrder:${seller.id}` });
+        const passport = await this.cinerinoService.getPassport({ scope: `placeOrderTransaction.MovieTheater-${theaterBranchCode}` });
         const { date } = await this.utilService.getServerTime();
         const transaction = await this.cinerinoService.transaction.placeOrder.start({
             expires: moment(date)
