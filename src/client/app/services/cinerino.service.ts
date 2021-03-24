@@ -12,14 +12,18 @@ export class CinerinoService {
     public auth: cinerino.auth.ClientCredentials | cinerino.auth.OAuth2;
     public userName?: string;
     public event: cinerino.service.Event;
+    public offer: cinerino.service.Offer;
     public order: cinerino.service.Order;
     public seller: cinerino.service.Seller;
+    public payment: cinerino.service.Payment;
     public person: cinerino.service.Person;
+    public product: cinerino.service.Product;
     public ownerShipInfo: cinerino.service.person.OwnershipInfo;
     public transaction: {
         placeOrder: cinerino.service.transaction.PlaceOrder
     };
     private endpoint: string;
+    private waiterServerUrl: string;
     private projectId: string;
 
     constructor(
@@ -35,8 +39,11 @@ export class CinerinoService {
             const option = await this.createOption();
             this.event = new cinerino.service.Event(option);
             this.order = new cinerino.service.Order(option);
+            this.offer = new cinerino.service.Offer(option);
             this.seller = new cinerino.service.Seller(option);
+            this.payment = new cinerino.service.Payment(option);
             this.person = new cinerino.service.Person(option);
+            this.product = new cinerino.service.Product(option);
             this.ownerShipInfo = new cinerino.service.person.OwnershipInfo(option);
             this.transaction = {
                 placeOrder: new cinerino.service.transaction.PlaceOrder(option)
@@ -117,6 +124,7 @@ export class CinerinoService {
             clientId: string;
             endpoint: string;
             projectId: string;
+            waiterServerUrl: string;
         }>(url, body).toPromise();
         const option = {
             domain: '',
@@ -133,6 +141,7 @@ export class CinerinoService {
         this.auth.setCredentials(result.credentials);
         this.userName = result.userName;
         this.endpoint = result.endpoint;
+        this.waiterServerUrl = result.waiterServerUrl;
         this.projectId = result.projectId;
     }
 
@@ -163,5 +172,22 @@ export class CinerinoService {
             version: string;
         }>(url).toPromise();
         return result.version;
+    }
+
+    /**
+     * パスポート取得
+     */
+     public async getPassport(params: {
+        scope: string;
+    }) {
+        if (this.waiterServerUrl === undefined
+            || this.waiterServerUrl === '') {
+            return { token: '' };
+        }
+        const url = `${this.waiterServerUrl}/projects/${this.projectId}/passports`;
+        const body = { scope: params.scope };
+        const result = await this.http.post<{ token: string; }>(url, body).toPromise();
+
+        return result;
     }
 }

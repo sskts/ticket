@@ -381,10 +381,10 @@ export class UserService {
             seller.paymentAccepted.find(p => p.paymentMethodType === factory.paymentMethodType.CreditCard);
             if (findPaymentAcceptedResult === undefined
                 || findPaymentAcceptedResult.paymentMethodType !== factory.paymentMethodType.CreditCard
-                || findPaymentAcceptedResult.gmoInfo === undefined) {
+                || (<any>findPaymentAcceptedResult).gmoInfo === undefined) {
                 return reject(new Error('The settlement method does not correspond'));
             }
-            Multipayment.init(findPaymentAcceptedResult.gmoInfo.shopId);
+            Multipayment.init((<any>findPaymentAcceptedResult).gmoInfo.shopId);
             Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
         });
     }

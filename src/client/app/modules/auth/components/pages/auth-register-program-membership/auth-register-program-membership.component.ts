@@ -75,16 +75,28 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
                     });
                 }
             }
-            // 販売劇場検索
-            const theaterCode = this.optionsForm.controls.theater.value;
-            // 会員登録
-            await this.member.register({
-                programMembershipRegistered: this.userService.data.programMembershipRegistered,
-                theaterBranchCode: theaterCode,
-            });
+            const theaterBranchCode = this.optionsForm.controls.theater.value;
+            const programMembershipRegistered = this.userService.data.programMembershipRegistered;
+            const pointAwardAccount = {
+                accountNumber: accounts[0].typeOfGood.accountNumber
+            };
+            const creditCard = {
+                memberId: 'me',
+                cardSeq: Number(this.userService.data.creditCards[0].cardSeq)
+            };
+            let isRegister = await this.member.isRegister({ interval: 0, limit: 0 });
+            if (!isRegister) {
+                // 会員登録
+                await this.member.registerProgramMembership({
+                    programMembershipRegistered,
+                    theaterBranchCode,
+                    pointAwardAccount,
+                    creditCard
+                });
+            }
 
             // 会員登録確認
-            const isRegister = await this.member.isRegister();
+            isRegister = await this.member.isRegister({ interval: 3000, limit: 20 });
             if (!isRegister) {
                 this.router.navigate(['/error', { redirect: '/auth/select' }]);
 

@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.7.0 - 2021-03-24
+### Changed
+ - メンバーシップ登録を注文取引として実装
+
 ## 3.6.10 - 2021-03-02
 ### Changed
  - 閉館劇場登録
