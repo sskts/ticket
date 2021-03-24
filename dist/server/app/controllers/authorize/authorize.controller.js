@@ -51,11 +51,12 @@ function getCredentials(req, res) {
             const credentials = { accessToken };
             const clientId = options.auth.options.clientId;
             const projectId = process.env.PROJECT_ID;
+            const waiterServerUrl = process.env.WAITER_SERVER_URL;
             log('getCredentials MemberType', body.member);
             const userName = (body.member === MemberType.Member)
                 ? options.auth.verifyIdToken({}).getUsername()
                 : undefined;
-            res.json({ credentials, userName, clientId, endpoint, projectId });
+            res.json({ credentials, userName, clientId, endpoint, projectId, waiterServerUrl });
         }
         catch (err) {
             base_controller_1.errorProsess(res, err);

@@ -20,6 +20,15 @@ export default (app: express.Application) => {
         res.redirect(url);
     });
 
+    app.use((req, res, next) => {
+        if ((/\.(css|js|svg|jpg|png|gif|ico|json|html|txt)/).test(req.path)) {
+            res.status(404);
+            res.end();
+            return;
+        }
+        next();
+    });
+
     app.get('/api/authorize/getCredentials', authorize.getCredentials);
     app.post('/api/authorize/getCredentials', authorize.getCredentials);
     app.get('/api/authorize/signIn', authorize.signIn);
