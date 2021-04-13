@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../../environments/environment';
+import { getConfig } from '../../../../../functions';
 import {
     AwsCognitoService,
     CallNativeService,
@@ -19,6 +20,7 @@ export class AuthSelectComponent implements OnInit {
 
     public isLoading: boolean;
     public environment = environment;
+    public portalSiteUrl: string;
 
     constructor(
         private cinerino: CinerinoService,
@@ -34,6 +36,7 @@ export class AuthSelectComponent implements OnInit {
      */
     public ngOnInit() {
         this.isLoading = false;
+        this.portalSiteUrl = getConfig().portalSiteUrl;
     }
 
     /**

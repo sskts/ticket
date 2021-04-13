@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { environment } from '../../../../../../environments/environment';
-import { object2query, sleep } from '../../../../../functions';
+import { getConfig, object2query, sleep } from '../../../../../functions';
 import { ISchedule, IScheduleData } from '../../../../../models/schedule';
 import {
     AwsCognitoService,
@@ -55,13 +55,18 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
     public purchaseSort: typeof PurchaseSort;
     public isPreSale: boolean;
     public isCOASchedule: boolean;
-    public scheduleApiEndpoint?: string;
     public theatreName: string;
     public maintenance: {
         confirm?: IConfirm;
         schedule?: { message?: string };
     };
     public scheduleTimer: any;
+    public sellers: {
+        branchCode: string;
+        id: string;
+        name: string;
+        alias: string;
+    }[];
 
     constructor(
         public userService: UserService,
@@ -88,9 +93,15 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
             this.maintenance.confirm = await this.maintenanceService.confirm();
             if (this.maintenance.confirm.isMaintenance) {
                 this.isLoading = false;
-
                 return;
             }
+            this.sellers =
+                await this.utilService.getJson<{
+                    branchCode: string;
+                    id: string;
+                    name: string;
+                    alias: string;
+                }[]>(`${getConfig().scheduleApiEndpoint}/seller/seller.json`);
             this.conditions = this.selectService.data.purchase;
             if (this.userService.isMember()) {
                 // 会員
@@ -124,7 +135,6 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
      */
     private async initialize() {
         try {
-            this.scheduleApiEndpoint = undefined;
             this.theaters = [];
             this.dateList = [];
             this.schedules = [];
@@ -221,12 +231,21 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
      * @method performanceSelect
      */
     public async performanceSelect(event: { id: string }) {
+        const findResult = this.sellers.find(s => s.alias === this.theatreName);
+        if (findResult === undefined) {
+            return;
+        }
         const id = `${this.conditions.theater}${event.id}`;
+        const common = {
+            id,
+            sellerId: findResult.id,
+            redirectUrl: getConfig().ticketSiteUrl,
+            native: '1',
+        };
         let params;
         if (this.userService.isMember()) {
             params = {
-                id,
-                native: '1',
+                ...common,
                 member: MemberType.Member,
                 clientId: this.cinerinoService.auth.options.clientId
             };
@@ -235,14 +254,13 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 throw new Error('awsCognito.credentials is undefined');
             }
             params = {
-                id,
+                ...common,
                 identityId: this.awsCognitoService.credentials.identityId,
-                native: '1',
                 member: MemberType.NotMember,
                 clientId: this.cinerinoService.auth.options.clientId
             };
         }
-        const url = `${environment.ENTRANCE_SERVER_URL}/ticket/index.html?${object2query(params)}`;
+        const url = `${getConfig().entranceServerUrl}/ticket/index.html?${object2query(params)}`;
         location.href = url;
     }
 
@@ -252,21 +270,12 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
     private async getSchedule(): Promise<IScheduleData> {
         const now = (await this.utilService.getServerTime()).date;
         const branchCode = this.conditions.theater;
-        const theatreTable =
-            await this.utilService.getJson<{ code: string; name: string }[]>('/json/table/theaters.json');
-        const prefix = (environment.production) ? '0' : '1';
-        const theatreTableFindResult = theatreTable.find(t => branchCode === `${prefix}${t.code}`);
-        if (theatreTableFindResult === undefined) {
+        const findResult = this.sellers.find(s => branchCode === s.branchCode);
+        if (findResult === undefined) {
             throw new Error('劇場が見つかりません');
         }
-        if (this.scheduleApiEndpoint === undefined) {
-            this.scheduleApiEndpoint = (await this.utilService.getJson<{
-                scheduleApiEndpoint: string;
-                cmsApiEndpoint: string;
-            }>(`/api/config?date${moment().toISOString()}`)).scheduleApiEndpoint;
-        }
-        this.theatreName = theatreTableFindResult.name;
-        const url = `${this.scheduleApiEndpoint}/${theatreTableFindResult.name}/schedule.json?date=${now}`;
+        this.theatreName = findResult.alias;
+        const url = `${getConfig().scheduleApiEndpoint}/${findResult.alias}/schedule.json?date=${now}`;
         const json = await this.utilService.getJson<IScheduleData>(url);
         return json;
     }

@@ -25,14 +25,17 @@
 | `SSKTS_ALLOWED_IPS`                 | false    |                  | IP制限IPリスト(カンマ区切り)              |
 | `SSKTS_BASIC_AUTH_NAME`             | false    |                  | ベーシック認証ID                         |
 | `SSKTS_BASIC_AUTH_PASS`             | false    |                  | ベーシック認証PASS                       |
-| `MAINTENANCE_TIME`                  | false    |                  | メンテナンス期間(カンマ区切り)                      |
-| `MAINTENANCE_TEXT`                  | false    |                  | メンテナンス文言(BASE64エンコード)                       |
-| `EXCLUDE_THEATERS_TIME`             | false    |                  | 除外劇場設定期間(カンマ区切り)                      |
-| `EXCLUDE_THEATERS`                  | false    |                  | 除外劇場コード(カンマ区切り)                       |
+| `MAINTENANCE_TIME`                  | false    |                  | メンテナンス期間(カンマ区切り)             |
+| `MAINTENANCE_TEXT`                  | false    |                  | メンテナンス文言(BASE64エンコード)          |
+| `EXCLUDE_THEATERS_TIME`             | false    |                  | 除外劇場設定期間(カンマ区切り)              |
+| `EXCLUDE_THEATERS`                  | false    |                  | 除外劇場コード(カンマ区切り)                |
 | `DEBUG`                             | false    | sskts-ticket:*   | デバッグ                                |
-| `STORAGE_URL`                       | true     |                  | 外部ストレージURL                                |
-| `SCHEDULE_API_ENDPOINT`             | true     |                  | スケジュールAPIエンドポイント
+| `STORAGE_URL`                       | true     |                  | 外部ストレージURL                          |
+| `SCHEDULE_API_ENDPOINT`             | true     |                  | スケジュールAPIエンドポイント              |
 | `PROJECT_ID`                        | true     |                  | プロジェクトID                                 |
+| `ENTRANCE_SERVER_URL`               | true     |                  | ENTRANCE SERVER URL                             |
+| `PORTAL_SITE_URL`                   | true     |                  | PORTAL SITE URL                                 |
+| `TICKET_SITE_URL`                   | true     |                  | TICKET SITE URL                                 |
 
 ## Azure Environment variables
 

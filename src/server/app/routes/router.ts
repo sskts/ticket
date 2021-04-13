@@ -42,7 +42,10 @@ export default (app: express.Application) => {
     app.get('/api/config', (_req, res) => {
         res.json({
             scheduleApiEndpoint: process.env.SCHEDULE_API_ENDPOINT,
-            cmsApiEndpoint: process.env.CMS_API_ENDPOINT
+            cmsApiEndpoint: process.env.CMS_API_ENDPOINT,
+            portalSiteUrl: process.env.PORTAL_SITE_URL,
+            entranceServerUrl: process.env.ENTRANCE_SERVER_URL,
+            ticketSiteUrl: process.env.TICKET_SITE_URL,
         });
     });
     app.get('/api/serverTime', (_req, res) => { res.json({ date: moment().toISOString() }); });
