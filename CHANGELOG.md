@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.7.1 - 2021-04-15
+### Changed
+ - チケットサイトへのリクエスト時クエリーパラメーター変更
+ - 施設コード変換をseller.json参照へ変更
+
 ## 3.7.0 - 2021-03-24
 ### Changed
  - メンバーシップ登録を注文取引として実装

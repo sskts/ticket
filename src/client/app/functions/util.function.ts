@@ -18,7 +18,29 @@ export function object2query(params: Object) {
  * N秒待つ
  */
 export async function sleep(time = 3000) {
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
         setTimeout(() => resolve(), time);
     });
+}
+
+/**
+ * 設定取得
+ */
+export function getConfig(): {
+    scheduleApiEndpoint: string;
+    cmsApiEndpoint: string;
+    portalSiteUrl: string;
+    entranceServerUrl: string;
+    ticketSiteUrl: string;
+} {
+    const json = sessionStorage.getItem('CONFIG');
+    return (json === null)
+        ? {
+            scheduleApiEndpoint: '',
+            cmsApiEndpoint: '',
+            portalSiteUrl: '',
+            entranceServerUrl: '',
+            ticketSiteUrl: '',
+        }
+        : JSON.parse(json);
 }

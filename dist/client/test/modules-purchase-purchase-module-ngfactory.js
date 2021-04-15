@@ -1,201 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["modules-purchase-purchase-module-ngfactory"],{
 
-/***/ "./app/functions/index.ts":
-/*!********************************!*\
-  !*** ./app/functions/index.ts ***!
-  \********************************/
-/*! exports provided: object2query, sleep, isScreeningServiceType, schedule2Performance, filterPerformancebyMovie, hasDisplayPerformance */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util.function */ "./app/functions/util.function.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "object2query", function() { return _util_function__WEBPACK_IMPORTED_MODULE_0__["object2query"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sleep", function() { return _util_function__WEBPACK_IMPORTED_MODULE_0__["sleep"]; });
-
-/* harmony import */ var _purchase_function__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./purchase.function */ "./app/functions/purchase.function.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isScreeningServiceType", function() { return _purchase_function__WEBPACK_IMPORTED_MODULE_1__["isScreeningServiceType"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "schedule2Performance", function() { return _purchase_function__WEBPACK_IMPORTED_MODULE_1__["schedule2Performance"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "filterPerformancebyMovie", function() { return _purchase_function__WEBPACK_IMPORTED_MODULE_1__["filterPerformancebyMovie"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "hasDisplayPerformance", function() { return _purchase_function__WEBPACK_IMPORTED_MODULE_1__["hasDisplayPerformance"]; });
-
-
-
-
-
-/***/ }),
-
-/***/ "./app/functions/purchase.function.ts":
-/*!********************************************!*\
-  !*** ./app/functions/purchase.function.ts ***!
-  \********************************************/
-/*! exports provided: isScreeningServiceType, schedule2Performance, filterPerformancebyMovie, hasDisplayPerformance */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isScreeningServiceType", function() { return isScreeningServiceType; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "schedule2Performance", function() { return schedule2Performance; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filterPerformancebyMovie", function() { return filterPerformancebyMovie; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasDisplayPerformance", function() { return hasDisplayPerformance; });
-/* harmony import */ var _models_performance__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/performance */ "./app/models/performance.ts");
-
-/**
- * サービス区分判定
- */
-function isScreeningServiceType(screeningEvent, serviceType) {
-    if (screeningEvent.coaInfo === undefined
-        || screeningEvent.coaInfo.kbnService === undefined
-        || screeningEvent.coaInfo.kbnService.kubunCode === undefined) {
-        return false;
-    }
-    var kubunCode = screeningEvent.coaInfo.kbnService.kubunCode;
-    if (serviceType === 'first') {
-        return (kubunCode === '001');
-    }
-    else if (serviceType === 'late') {
-        return (kubunCode === '002' && screeningEvent.coaInfo.theaterCode.slice(-2) !== '20');
-    }
-    else {
-        return false;
-    }
-}
-/**
- * スケジュールからパフォーマンスへ変換
- */
-function schedule2Performance(schedule, member) {
-    var performances = [];
-    var date = schedule.date;
-    schedule.movie.forEach(function (movie) {
-        movie.screen.forEach(function (screen) {
-            screen.time.forEach(function (time) {
-                performances.push(new _models_performance__WEBPACK_IMPORTED_MODULE_0__["Performance"]({ date: date, movie: movie, screen: screen, time: time, member: member }));
-            });
-        });
-    });
-    var sortResult = performances.sort(function (a, b) {
-        if (a.time.start_time < b.time.start_time) {
-            return -1;
-        }
-        else {
-            return 1;
-        }
-    });
-    return sortResult;
-}
-/**
- * パフォーマンスを作品で絞り込み
- */
-function filterPerformancebyMovie(performances, movie) {
-    var filterResult = performances.filter(function (p) {
-        return (p.movie.movie_short_code === movie.movie_short_code
-            && p.movie.movie_branch_code === movie.movie_branch_code);
-    });
-    var sortResult = filterResult.sort(function (a, b) {
-        if (a.time.start_time < b.time.start_time) {
-            return -1;
-        }
-        else {
-            return 1;
-        }
-    });
-    return sortResult;
-}
-/**
- * 表示可能パフォーマンス判定
- */
-function hasDisplayPerformance(performances, movie) {
-    var target = filterPerformancebyMovie(performances, movie);
-    var filterResult = target.filter(function (p) { return p.isDisplay(); });
-    return filterResult.length > 0;
-}
-
-
-/***/ }),
-
-/***/ "./app/functions/util.function.ts":
-/*!****************************************!*\
-  !*** ./app/functions/util.function.ts ***!
-  \****************************************/
-/*! exports provided: object2query, sleep */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "object2query", function() { return object2query; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sleep", function() { return sleep; });
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-/**
- * オブジェクトをクエリストリングへ変換
- */
-function object2query(params) {
-    var query = '';
-    for (var i = 0; i < Object.keys(params).length; i++) {
-        var key = Object.keys(params)[i];
-        var value = params[key];
-        if (i > 0) {
-            query += '&';
-        }
-        query += key + "=" + value;
-    }
-    return query;
-}
-/**
- * N秒待つ
- */
-function sleep(time) {
-    if (time === void 0) { time = 3000; }
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            return [2 /*return*/, new Promise(function (resolve) {
-                    setTimeout(function () { return resolve(); }, time);
-                })];
-        });
-    });
-}
-
-
-/***/ }),
-
 /***/ "./app/modules/purchase/components/pages/purchase-index/purchase-index.component.ngfactory.js":
 /*!****************************************************************************************************!*\
   !*** ./app/modules/purchase/components/pages/purchase-index/purchase-index.component.ngfactory.js ***!
@@ -387,6 +191,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../environments/environment */ "./environments/environment.ts");
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../functions */ "./app/functions/index.ts");
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -450,47 +265,52 @@ var PurchaseIndexComponent = /** @class */ (function () {
      */
     PurchaseIndexComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, theater, error_1;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var _a, _b, theater, error_1;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         this.isLoading = true;
                         this.isCOASchedule = false;
                         this.maintenance = {};
-                        _b.label = 1;
+                        _c.label = 1;
                     case 1:
-                        _b.trys.push([1, 6, , 7]);
+                        _c.trys.push([1, 7, , 8]);
                         _a = this.maintenance;
                         return [4 /*yield*/, this.maintenanceService.confirm()];
                     case 2:
-                        _a.confirm = _b.sent();
+                        _a.confirm = _c.sent();
                         if (this.maintenance.confirm.isMaintenance) {
                             this.isLoading = false;
                             return [2 /*return*/];
                         }
+                        _b = this;
+                        return [4 /*yield*/, this.utilService.getJson(Object(_functions__WEBPACK_IMPORTED_MODULE_4__["getConfig"])().scheduleApiEndpoint + "/seller/seller.json")];
+                    case 3:
+                        _b.sellers =
+                            _c.sent();
                         this.conditions = this.selectService.data.purchase;
-                        if (!this.userService.isMember()) return [3 /*break*/, 4];
+                        if (!this.userService.isMember()) return [3 /*break*/, 5];
                         // 会員
                         return [4 /*yield*/, this.userService.updateAccount()];
-                    case 3:
+                    case 4:
                         // 会員
-                        _b.sent();
+                        _c.sent();
                         if (this.conditions.theater === '') {
                             theater = this.userService.getWellGoTheaterCode();
                             this.conditions.theater = theater !== undefined ? theater : '';
                         }
-                        _b.label = 4;
-                    case 4: return [4 /*yield*/, this.initialize()];
-                    case 5:
-                        _b.sent();
-                        localStorage.removeItem('schedule');
-                        return [3 /*break*/, 7];
+                        _c.label = 5;
+                    case 5: return [4 /*yield*/, this.initialize()];
                     case 6:
-                        error_1 = _b.sent();
+                        _c.sent();
+                        localStorage.removeItem('schedule');
+                        return [3 /*break*/, 8];
+                    case 7:
+                        error_1 = _c.sent();
                         this.router.navigate(['/error', { redirect: '/purchase' }]);
                         console.error('PurchaseComponent.ngOnInit', error_1);
-                        return [3 /*break*/, 7];
-                    case 7:
+                        return [3 /*break*/, 8];
+                    case 8:
                         this.isLoading = false;
                         return [2 /*return*/];
                 }
@@ -516,7 +336,6 @@ var PurchaseIndexComponent = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 6, , 7]);
-                        this.scheduleApiEndpoint = undefined;
                         this.theaters = [];
                         this.dateList = [];
                         this.schedules = [];
@@ -680,30 +499,30 @@ var PurchaseIndexComponent = /** @class */ (function () {
      */
     PurchaseIndexComponent.prototype.performanceSelect = function (event) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, params, url;
+            var findResult, id, common, params, url;
+            var _this = this;
             return __generator(this, function (_a) {
+                findResult = this.sellers.find(function (s) { return s.alias === _this.theatreName; });
+                if (findResult === undefined) {
+                    return [2 /*return*/];
+                }
                 id = "" + this.conditions.theater + event.id;
+                common = {
+                    id: id,
+                    sellerId: findResult.id,
+                    redirectUrl: Object(_functions__WEBPACK_IMPORTED_MODULE_4__["getConfig"])().ticketSiteUrl,
+                    native: '1',
+                };
                 if (this.userService.isMember()) {
-                    params = {
-                        id: id,
-                        native: '1',
-                        member: _services__WEBPACK_IMPORTED_MODULE_5__["MemberType"].Member,
-                        clientId: this.cinerinoService.auth.options.clientId
-                    };
+                    params = __assign(__assign({}, common), { member: _services__WEBPACK_IMPORTED_MODULE_5__["MemberType"].Member, clientId: this.cinerinoService.auth.options.clientId });
                 }
                 else {
                     if (this.awsCognitoService.credentials === undefined) {
                         throw new Error('awsCognito.credentials is undefined');
                     }
-                    params = {
-                        id: id,
-                        identityId: this.awsCognitoService.credentials.identityId,
-                        native: '1',
-                        member: _services__WEBPACK_IMPORTED_MODULE_5__["MemberType"].NotMember,
-                        clientId: this.cinerinoService.auth.options.clientId
-                    };
+                    params = __assign(__assign({}, common), { identityId: this.awsCognitoService.credentials.identityId, member: _services__WEBPACK_IMPORTED_MODULE_5__["MemberType"].NotMember, clientId: this.cinerinoService.auth.options.clientId });
                 }
-                url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].ENTRANCE_SERVER_URL + "/ticket/index.html?" + Object(_functions__WEBPACK_IMPORTED_MODULE_4__["object2query"])(params);
+                url = Object(_functions__WEBPACK_IMPORTED_MODULE_4__["getConfig"])().entranceServerUrl + "/ticket/index.html?" + Object(_functions__WEBPACK_IMPORTED_MODULE_4__["object2query"])(params);
                 location.href = url;
                 return [2 /*return*/];
             });
@@ -714,33 +533,22 @@ var PurchaseIndexComponent = /** @class */ (function () {
      */
     PurchaseIndexComponent.prototype.getSchedule = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var now, branchCode, theatreTable, prefix, theatreTableFindResult, _a, url, json;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var now, branchCode, findResult, url, json;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0: return [4 /*yield*/, this.utilService.getServerTime()];
                     case 1:
-                        now = (_b.sent()).date;
+                        now = (_a.sent()).date;
                         branchCode = this.conditions.theater;
-                        return [4 /*yield*/, this.utilService.getJson('/json/table/theaters.json')];
-                    case 2:
-                        theatreTable = _b.sent();
-                        prefix = (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].production) ? '0' : '1';
-                        theatreTableFindResult = theatreTable.find(function (t) { return branchCode === "" + prefix + t.code; });
-                        if (theatreTableFindResult === undefined) {
+                        findResult = this.sellers.find(function (s) { return branchCode === s.branchCode; });
+                        if (findResult === undefined) {
                             throw new Error('劇場が見つかりません');
                         }
-                        if (!(this.scheduleApiEndpoint === undefined)) return [3 /*break*/, 4];
-                        _a = this;
-                        return [4 /*yield*/, this.utilService.getJson("/api/config?date" + moment__WEBPACK_IMPORTED_MODULE_2__().toISOString())];
-                    case 3:
-                        _a.scheduleApiEndpoint = (_b.sent()).scheduleApiEndpoint;
-                        _b.label = 4;
-                    case 4:
-                        this.theatreName = theatreTableFindResult.name;
-                        url = this.scheduleApiEndpoint + "/" + theatreTableFindResult.name + "/schedule.json?date=" + now;
+                        this.theatreName = findResult.alias;
+                        url = Object(_functions__WEBPACK_IMPORTED_MODULE_4__["getConfig"])().scheduleApiEndpoint + "/" + findResult.alias + "/schedule.json?date=" + now;
                         return [4 /*yield*/, this.utilService.getJson(url)];
-                    case 5:
-                        json = _b.sent();
+                    case 2:
+                        json = _a.sent();
                         return [2 /*return*/, json];
                 }
             });

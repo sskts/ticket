@@ -1559,7 +1559,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../environments/environment */ "./environments/environment.ts");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
+/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../functions */ "./app/functions/index.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../services */ "./app/services/index.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -1600,6 +1601,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var AuthSelectComponent = /** @class */ (function () {
     function AuthSelectComponent(cinerino, router, user, awsCognito, callNative) {
         this.cinerino = cinerino;
@@ -1615,6 +1617,7 @@ var AuthSelectComponent = /** @class */ (function () {
      */
     AuthSelectComponent.prototype.ngOnInit = function () {
         this.isLoading = false;
+        this.portalSiteUrl = Object(_functions__WEBPACK_IMPORTED_MODULE_3__["getConfig"])().portalSiteUrl;
     };
     /**
      * サインイン
@@ -1641,7 +1644,7 @@ var AuthSelectComponent = /** @class */ (function () {
                         return [4 /*yield*/, this.cinerino.signInWithUserName(false, userName)];
                     case 2:
                         _a.sent();
-                        this.user.data.memberType = _services__WEBPACK_IMPORTED_MODULE_3__["MemberType"].Member;
+                        this.user.data.memberType = _services__WEBPACK_IMPORTED_MODULE_4__["MemberType"].Member;
                         this.user.save();
                         return [3 /*break*/, 4];
                     case 3:
@@ -1665,7 +1668,7 @@ var AuthSelectComponent = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         this.isLoading = true;
-                        this.user.data.memberType = _services__WEBPACK_IMPORTED_MODULE_3__["MemberType"].NotMember;
+                        this.user.data.memberType = _services__WEBPACK_IMPORTED_MODULE_4__["MemberType"].NotMember;
                         this.user.save();
                         _a.label = 1;
                     case 1:
@@ -1695,7 +1698,7 @@ var AuthSelectComponent = /** @class */ (function () {
     AuthSelectComponent.prototype.openWebBrowser = function (url) {
         this.callNative.inAppBrowser({
             url: url,
-            target: _services__WEBPACK_IMPORTED_MODULE_3__["InAppBrowserTarget"].System
+            target: _services__WEBPACK_IMPORTED_MODULE_4__["InAppBrowserTarget"].System
         });
     };
     return AuthSelectComponent;
