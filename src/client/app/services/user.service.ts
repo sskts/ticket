@@ -28,7 +28,7 @@ export interface IUserData {
     /**
      * ポイント口座
      */
-    accounts: factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>[];
+    accounts: factory.ownershipInfo.IOwnershipInfo<factory.account.IAccount>[];
     /**
      * プログラムメンバーシップ
      */
@@ -249,9 +249,9 @@ export class UserService {
         const accounts =
             searchResult.data.filter((a) => {
                 return (a.typeOfGood.typeOf === 'Account'
-                    && (<factory.pecorino.account.IAccount>a.typeOfGood).status === factory.pecorino.accountStatusType.Opened);
+                    && (<factory.account.IAccount>a.typeOfGood).status === factory.accountStatusType.Opened);
             });
-        return <factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>[]>accounts;
+        return <factory.ownershipInfo.IOwnershipInfo<factory.account.IAccount>[]>accounts;
     }
 
     /**

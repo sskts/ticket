@@ -14,7 +14,7 @@ import { CallNativeService, InAppBrowserTarget, UserService, UtilService } from 
 export class MemberMypageComponent implements OnInit {
     public isLoading: boolean;
     public moment = moment;
-    public account: factory.ownershipInfo.IOwnershipInfo<factory.pecorino.account.IAccount>;
+    public account: factory.ownershipInfo.IOwnershipInfo<factory.account.IAccount>;
     public availableBalance: number;
     public environment = environment;
     public programMembershipOwnershipInfo: factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>;

@@ -10,7 +10,7 @@ import { CinerinoService, UserService } from '../../../../../services';
 })
 export class MemberPointHistoryComponent implements OnInit {
     public isLoading: boolean;
-    public accountMoneyTransferActions: factory.pecorino.action.transfer.moneyTransfer.IAction[];
+    public accountMoneyTransferActions: factory.account.action.moneyTransfer.IAction[];
 
     constructor(
         public user: UserService,
@@ -35,7 +35,7 @@ export class MemberPointHistoryComponent implements OnInit {
                 limit: 100
             });
             this.accountMoneyTransferActions =
-                searchResult.data.filter(a => a.actionStatus === factory.pecorino.actionStatusType.CompletedActionStatus);
+                searchResult.data.filter(a => a.actionStatus === factory.actionStatusType.CompletedActionStatus);
         } catch (error) {
             console.error(error);
             this.router.navigate(['/error', { redirect: '/member/point/history' }]);
