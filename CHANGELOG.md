@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.8.0 - 2021-06-15
+### Changed
+ - cinerino/sdk>=3.2.0で再実装
+
 ## 3.7.1 - 2021-04-15
 ### Changed
  - チケットサイトへのリクエスト時クエリーパラメーター変更
