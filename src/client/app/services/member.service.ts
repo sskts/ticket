@@ -56,6 +56,7 @@ export class MemberService {
         }
         const product = data.shift();
         if (product === undefined
+            || product.typeOf !== factory.chevre.product.ProductType.MembershipService
             || product.id === undefined) {
             throw new Error('no product');
         }

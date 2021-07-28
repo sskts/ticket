@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { environment } from '../../environments/environment';
+import { getProviderCredentials } from '../functions/purchase.function';
 import { CinerinoService } from './cinerino.service';
+import { MasterService } from './master.service';
 import { SaveType, StorageService } from './storage.service';
 import { UtilService } from './util.service';
 
@@ -72,6 +74,7 @@ export class UserService {
     constructor(
         private storage: StorageService,
         private cinerino: CinerinoService,
+        private masterService: MasterService,
         private util: UtilService
     ) {
         this.init();
@@ -361,30 +364,54 @@ export class UserService {
         await this.cinerino.getServices();
         const branchCode = environment.MAIN_SHOP_BRUNCH_CODE;
         const searchResult = await this.cinerino.seller.search({});
-        const findResult = searchResult.data.find(s => s.location !== undefined && s.location.branchCode === branchCode);
-        const seller = (findResult === undefined) ? searchResult.data[0] : findResult;
+        const sellerFindResult = searchResult.data.find(s => s.location !== undefined && s.location.branchCode === branchCode);
+        const seller = (sellerFindResult === undefined) ? searchResult.data[0] : sellerFindResult;
+
+        const products = await this.masterService.searchProduct({
+            typeOf: {
+                $eq: factory.service.paymentService.PaymentServiceType
+                    .CreditCard,
+            },
+        });
+        const paymentServices: factory.service.paymentService.IService[] = [];
+        products.forEach((p) => {
+            if (
+                p.typeOf !==
+                    factory.service.paymentService.PaymentServiceType
+                        .CreditCard ||
+                p.provider === undefined
+            ) {
+                return;
+            }
+            const findResult = p.provider.find(
+                (provider) => provider.id === seller.id
+            );
+            if (findResult === undefined) {
+                return;
+            }
+            paymentServices.push(p);
+        });
+        const paymentService = paymentServices[0];
+        const providerCredentials =
+            await getProviderCredentials({
+                paymentService,
+                seller,
+            });
 
         return new Promise<IGmoTokenObject>((resolve, reject) => {
             (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
                 if (response.resultCode === '000') {
                     resolve(response.tokenObject);
-                } else {
-                    reject(new Error(response.resultCode));
+                    return;
                 }
+                reject(new Error(response.resultCode));
             };
+            if (providerCredentials === undefined || providerCredentials.shopId === undefined) {
+                reject(new Error('shopId undefined'));
+                return;
+            }
             const Multipayment = (<any>window).Multipayment;
-            // shopId
-            if (seller.paymentAccepted === undefined) {
-                return reject(new Error('The settlement method does not correspond'));
-            }
-            const findPaymentAcceptedResult =
-            seller.paymentAccepted.find(p => p.paymentMethodType === factory.paymentMethodType.CreditCard);
-            if (findPaymentAcceptedResult === undefined
-                || findPaymentAcceptedResult.paymentMethodType !== factory.paymentMethodType.CreditCard
-                || (<any>findPaymentAcceptedResult).gmoInfo === undefined) {
-                return reject(new Error('The settlement method does not correspond'));
-            }
-            Multipayment.init((<any>findPaymentAcceptedResult).gmoInfo.shopId);
+            Multipayment.init(providerCredentials.shopId);
             Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
         });
     }
