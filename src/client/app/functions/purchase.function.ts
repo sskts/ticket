@@ -80,3 +80,44 @@ export function hasDisplayPerformance(
     const filterResult = target.filter(p => p.isDisplay());
     return filterResult.length > 0;
 }
+
+/**
+ * プロバイダーの資格情報取得
+ */
+ export async function getProviderCredentials(params: {
+    paymentService: factory.service.paymentService.IService;
+    seller: factory.chevre.seller.ISeller;
+}) {
+    const { paymentService, seller } = params;
+    if (paymentService.provider === undefined) {
+        throw new Error('paymentService.provider undefined');
+    }
+    const findResult = paymentService.provider.find(
+        (provider) => provider.id === seller.id
+    );
+    if (findResult === undefined) {
+        throw new Error('findResult undefined');
+    }
+    const credentials = findResult.credentials;
+    let tokenizationCode;
+    let paymentUrl;
+    if (credentials !== undefined) {
+        tokenizationCode = credentials.tokenizationCode;
+        paymentUrl = credentials.paymentUrl;
+    }
+    return {
+        kgygishCd: credentials === undefined ? undefined : credentials.kgygishCd,
+        shopId: credentials === undefined ? undefined : credentials.shopId,
+        shopPass: credentials === undefined ? undefined : credentials.shopPass,
+        stCd: credentials === undefined ? undefined : credentials.stCd,
+        paymentUrl:
+            typeof paymentUrl === 'string' && paymentUrl.length > 0
+                ? paymentUrl
+                : undefined,
+        tokenizationCode:
+            typeof tokenizationCode === 'string' && tokenizationCode.length > 0
+                ? tokenizationCode
+                : undefined,
+    };
+}
+
