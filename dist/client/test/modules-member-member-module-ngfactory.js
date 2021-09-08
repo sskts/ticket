@@ -7359,14 +7359,14 @@ __webpack_require__.r(__webpack_exports__);
 var styles_MemberMypageComponent = [_member_mypage_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 var RenderType_MemberMypageComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_MemberMypageComponent, data: {} });
 
-function View_MemberMypageComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](1, null, [" ", " "]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.account.typeOfGood.accountNumber; _ck(_v, 1, 0, currVal_0); }); }
+function View_MemberMypageComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](1, null, [" ", " "]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.account.typeOfGood.identifier; _ck(_v, 1, 0, currVal_0); }); }
 function View_MemberMypageComponent_2(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["-"]))], null, null); }
 function View_MemberMypageComponent_3(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "button", [["class", "btn btn-block btn-primary center"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
-        var pd_0 = (_co.copy({ value: _co.account.typeOfGood.accountNumber, title: "", body: "\u4F1A\u54E1\u30B3\u30FC\u30C9\u3092\u30B3\u30D4\u30FC\u3057\u307E\u3057\u305F" }) !== false);
+        var pd_0 = (_co.copy({ value: _co.account.typeOfGood.identifier, title: "", body: "\u4F1A\u54E1\u30B3\u30FC\u30C9\u3092\u30B3\u30D4\u30FC\u3057\u307E\u3057\u305F" }) !== false);
         ad = (pd_0 && ad);
     } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\u30B3\u30FC\u30C9\u3092\u30B3\u30D4\u30FC"]))], null, null); }
 function View_MemberMypageComponent_4(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "button", [["class", "btn btn-block btn-primary center"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
-        var pd_0 = (_co.openQR(_co.account.typeOfGood.accountNumber) !== false);
+        var pd_0 = (_co.openQR(_co.account.typeOfGood.identifier) !== false);
         ad = (pd_0 && ad);
     } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" QR\u3092\u8868\u793A "]))], null, null); }
 function View_MemberMypageComponent_5(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](1, null, [" ", " "]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.moment(_co.programMembershipOwnershipInfo.ownedThrough).format("YYYY/MM/DD"); _ck(_v, 1, 0, currVal_0); }); }
@@ -7530,7 +7530,8 @@ var MemberMypageComponent = /** @class */ (function () {
                         _a.sent();
                         this.account = this.userService.data.accounts[0];
                         this.availableBalance = this.userService.getAvailableBalance();
-                        this.programMembershipOwnershipInfo = this.userService.data.programMembershipOwnershipInfos[0];
+                        this.programMembershipOwnershipInfo =
+                            this.userService.data.programMembershipOwnershipInfos[0];
                         return [3 /*break*/, 4];
                     case 3:
                         error_1 = _a.sent();
@@ -7551,7 +7552,7 @@ var MemberMypageComponent = /** @class */ (function () {
         event.preventDefault();
         this.utilService.openAlert({
             title: 'ポイント使用方法',
-            body: ' チケット購入ページで券種選択を選択する際に、会員ポイントを使用することができます。<br> そちらでポイントを使用してください。'
+            body: ' チケット購入ページで券種選択を選択する際に、会員ポイントを使用することができます。<br> そちらでポイントを使用してください。',
         });
     };
     /**
@@ -7571,7 +7572,7 @@ var MemberMypageComponent = /** @class */ (function () {
         document.body.removeChild(textarea);
         this.utilService.openAlert({
             title: title,
-            body: body
+            body: body,
         });
     };
     MemberMypageComponent.prototype.openQR = function (value) {
@@ -7589,7 +7590,7 @@ var MemberMypageComponent = /** @class */ (function () {
                         url = _a.sent();
                         this.utilService.openAlert({
                             title: '会員コード',
-                            body: "<div class=\"text-center\"><img src=\"" + url + "\"></div>"
+                            body: "<div class=\"text-center\"><img src=\"" + url + "\"></div>",
                         });
                         return [2 /*return*/];
                 }
@@ -7602,7 +7603,7 @@ var MemberMypageComponent = /** @class */ (function () {
     MemberMypageComponent.prototype.openWebBrowser = function (url) {
         this.callNativeService.inAppBrowser({
             url: url,
-            target: _services__WEBPACK_IMPORTED_MODULE_5__["InAppBrowserTarget"].System
+            target: _services__WEBPACK_IMPORTED_MODULE_5__["InAppBrowserTarget"].System,
         });
     };
     return MemberMypageComponent;
@@ -7656,7 +7657,7 @@ __webpack_require__.r(__webpack_exports__);
 var styles_MemberPointHistoryComponent = [_member_point_history_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 var RenderType_MemberPointHistoryComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_MemberPointHistoryComponent, data: {} });
 
-function View_MemberPointHistoryComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "li", [["class", "border-bottom border-gray"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "app-point-history-list", [], null, null, null, _parts_point_history_list_point_history_list_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_PointHistoryListComponent_0"], _parts_point_history_list_point_history_list_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_PointHistoryListComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 114688, null, 0, _parts_point_history_list_point_history_list_component__WEBPACK_IMPORTED_MODULE_3__["PointHistoryListComponent"], [], { action: [0, "action"], accountNumber: [1, "accountNumber"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _v.context.$implicit; var currVal_1 = _co.user.data.accounts[0].typeOfGood.accountNumber; _ck(_v, 2, 0, currVal_0, currVal_1); }, null); }
+function View_MemberPointHistoryComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "li", [["class", "border-bottom border-gray"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "app-point-history-list", [], null, null, null, _parts_point_history_list_point_history_list_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_PointHistoryListComponent_0"], _parts_point_history_list_point_history_list_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_PointHistoryListComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 114688, null, 0, _parts_point_history_list_point_history_list_component__WEBPACK_IMPORTED_MODULE_3__["PointHistoryListComponent"], [], { action: [0, "action"], accountNumber: [1, "accountNumber"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _v.context.$implicit; var currVal_1 = _co.user.data.accounts[0].typeOfGood.identifier; _ck(_v, 2, 0, currVal_0, currVal_1); }, null); }
 function View_MemberPointHistoryComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 5, "div", [["class", "py-4 px-3"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "p", [["class", "mb-3"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" \u8CAF\u307E\u3063\u305F\u30DD\u30A4\u30F3\u30C8\u306E\u78BA\u8A8D\u304C\u3067\u304D\u307E\u3059\u3002 "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 2, "ul", [["class", "mb-3"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MemberPointHistoryComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](5, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], { ngForOf: [0, "ngForOf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 1, "app-loading", [], null, null, null, _shared_components_parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["View_LoadingComponent_0"], _shared_components_parts_loading_loading_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RenderType_LoadingComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](7, 114688, null, 0, _shared_components_parts_loading_loading_component__WEBPACK_IMPORTED_MODULE_6__["LoadingComponent"], [], { show: [0, "show"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.accountMoneyTransferActions; _ck(_v, 5, 0, currVal_0); var currVal_1 = _co.isLoading; _ck(_v, 7, 0, currVal_1); }, null); }
 function View_MemberPointHistoryComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-member-point-history", [], null, null, null, View_MemberPointHistoryComponent_0, RenderType_MemberPointHistoryComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _member_point_history_component__WEBPACK_IMPORTED_MODULE_7__["MemberPointHistoryComponent"], [_services_user_service__WEBPACK_IMPORTED_MODULE_8__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_9__["Router"], _services_cinerino_service__WEBPACK_IMPORTED_MODULE_10__["CinerinoService"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var MemberPointHistoryComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-member-point-history", _member_point_history_component__WEBPACK_IMPORTED_MODULE_7__["MemberPointHistoryComponent"], View_MemberPointHistoryComponent_Host_0, {}, {}, []);
@@ -7754,7 +7755,7 @@ var MemberPointHistoryComponent = /** @class */ (function () {
      */
     MemberPointHistoryComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var searchResult, error_1;
+            var accountNumber, searchResult, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -7769,19 +7770,28 @@ var MemberPointHistoryComponent = /** @class */ (function () {
                         if (this.user.data.accounts.length === 0) {
                             throw new Error('account is not found');
                         }
+                        accountNumber = this.user.data.accounts[0].typeOfGood.identifier;
+                        if (typeof accountNumber !== 'string') {
+                            throw new Error('typeOfGood.identifier not string');
+                        }
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.searchAccountMoneyTransferActions({
-                                accountNumber: this.user.data.accounts[0].typeOfGood.accountNumber,
-                                limit: 100
+                                accountNumber: accountNumber,
+                                limit: 100,
                             })];
                     case 3:
                         searchResult = _a.sent();
-                        this.accountMoneyTransferActions =
-                            searchResult.data.filter(function (a) { return a.actionStatus === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_2__["factory"].actionStatusType.CompletedActionStatus; });
+                        this.accountMoneyTransferActions = searchResult.data.filter(function (a) {
+                            return a.actionStatus ===
+                                _cinerino_sdk__WEBPACK_IMPORTED_MODULE_2__["factory"].actionStatusType.CompletedActionStatus;
+                        });
                         return [3 /*break*/, 5];
                     case 4:
                         error_1 = _a.sent();
                         console.error(error_1);
-                        this.router.navigate(['/error', { redirect: '/member/point/history' }]);
+                        this.router.navigate([
+                            '/error',
+                            { redirect: '/member/point/history' },
+                        ]);
                         return [3 /*break*/, 5];
                     case 5:
                         this.isLoading = false;
@@ -8153,7 +8163,7 @@ var MemberWithdrawComponent = /** @class */ (function () {
             body: '退会した場合は保有していた全てのポイントが無効となり、本アプリに登録されていた会員情報は全て消去されます。',
             cb: function () {
                 _this.withdraw();
-            }
+            },
         });
     };
     /**
@@ -8162,7 +8172,7 @@ var MemberWithdrawComponent = /** @class */ (function () {
      */
     MemberWithdrawComponent.prototype.withdraw = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var ownershipInfoIdentifier, err_1;
+            var err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -8170,11 +8180,10 @@ var MemberWithdrawComponent = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 5, , 6]);
-                        ownershipInfoIdentifier = this.user.data.programMembershipOwnershipInfos[0].identifier;
-                        return [4 /*yield*/, this.member.unRegister({
-                                ownershipInfoIdentifier: ownershipInfoIdentifier
-                            })];
+                        // 会員プログラム削除
+                        return [4 /*yield*/, this.member.unRegister()];
                     case 2:
+                        // 会員プログラム削除
                         _a.sent();
                         // クレジットカード削除
                         return [4 /*yield*/, this.user.deleteCreditCard().catch(function (err) {

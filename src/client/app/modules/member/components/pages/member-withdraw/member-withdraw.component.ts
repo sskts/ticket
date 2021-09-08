@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { CinerinoService, MemberService, UserService, UtilService } from '../../../../../services';
+import {
+    CinerinoService,
+    MemberService,
+    UserService,
+    UtilService,
+} from '../../../../../services';
 
 @Component({
     selector: 'app-member-withdraw',
     templateUrl: './member-withdraw.component.html',
-    styleUrls: ['./member-withdraw.component.scss']
+    styleUrls: ['./member-withdraw.component.scss'],
 })
 export class MemberWithdrawComponent implements OnInit {
     public isLoading: boolean;
@@ -13,7 +18,7 @@ export class MemberWithdrawComponent implements OnInit {
         private user: UserService,
         private member: MemberService,
         private utilService: UtilService
-    ) { }
+    ) {}
 
     /**
      * 初期化
@@ -32,7 +37,7 @@ export class MemberWithdrawComponent implements OnInit {
             body: '退会した場合は保有していた全てのポイントが無効となり、本アプリに登録されていた会員情報は全て消去されます。',
             cb: () => {
                 this.withdraw();
-            }
+            },
         });
     }
 
@@ -44,10 +49,7 @@ export class MemberWithdrawComponent implements OnInit {
         this.isLoading = true;
         try {
             // 会員プログラム削除
-            const ownershipInfoIdentifier = this.user.data.programMembershipOwnershipInfos[0].identifier;
-            await this.member.unRegister({
-                ownershipInfoIdentifier: ownershipInfoIdentifier
-            });
+            await this.member.unRegister();
 
             // クレジットカード削除
             await this.user.deleteCreditCard().catch((err) => {
@@ -59,5 +61,4 @@ export class MemberWithdrawComponent implements OnInit {
             this.isLoading = false;
         }
     }
-
 }

@@ -753,17 +753,18 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
  * サービス区分判定
  */
 function isScreeningServiceType(screeningEvent, serviceType) {
-    if (screeningEvent.coaInfo === undefined
-        || screeningEvent.coaInfo.kbnService === undefined
-        || screeningEvent.coaInfo.kbnService.kubunCode === undefined) {
+    if (screeningEvent.coaInfo === undefined ||
+        screeningEvent.coaInfo.kbnService === undefined ||
+        screeningEvent.coaInfo.kbnService.kubunCode === undefined) {
         return false;
     }
     var kubunCode = screeningEvent.coaInfo.kbnService.kubunCode;
     if (serviceType === 'first') {
-        return (kubunCode === '001');
+        return kubunCode === '001';
     }
     else if (serviceType === 'late') {
-        return (kubunCode === '002' && screeningEvent.coaInfo.theaterCode.slice(-2) !== '20');
+        return (kubunCode === '002' &&
+            screeningEvent.coaInfo.theaterCode.slice(-2) !== '20');
     }
     else {
         return false;
@@ -797,8 +798,8 @@ function schedule2Performance(schedule, member) {
  */
 function filterPerformancebyMovie(performances, movie) {
     var filterResult = performances.filter(function (p) {
-        return (p.movie.movie_short_code === movie.movie_short_code
-            && p.movie.movie_branch_code === movie.movie_branch_code);
+        return (p.movie.movie_short_code === movie.movie_short_code &&
+            p.movie.movie_branch_code === movie.movie_branch_code);
     });
     var sortResult = filterResult.sort(function (a, b) {
         if (a.time.start_time < b.time.start_time) {
@@ -823,7 +824,7 @@ function hasDisplayPerformance(performances, movie) {
  */
 function getProviderCredentials(params) {
     return __awaiter(this, void 0, void 0, function () {
-        var paymentService, seller, findResult, credentials, tokenizationCode, paymentUrl;
+        var paymentService, seller, findResult, credentials, tokenizationCode;
         return __generator(this, function (_a) {
             paymentService = params.paymentService, seller = params.seller;
             if (paymentService.provider === undefined) {
@@ -836,16 +837,15 @@ function getProviderCredentials(params) {
             credentials = findResult.credentials;
             if (credentials !== undefined) {
                 tokenizationCode = credentials.tokenizationCode;
-                paymentUrl = credentials.paymentUrl;
             }
             return [2 /*return*/, {
                     kgygishCd: credentials === undefined ? undefined : credentials.kgygishCd,
                     shopId: credentials === undefined ? undefined : credentials.shopId,
                     shopPass: credentials === undefined ? undefined : credentials.shopPass,
                     stCd: credentials === undefined ? undefined : credentials.stCd,
-                    paymentUrl: typeof paymentUrl === 'string' && paymentUrl.length > 0
-                        ? paymentUrl
-                        : undefined,
+                    paymentUrlExpiresInSeconds: credentials === undefined
+                        ? undefined
+                        : credentials.paymentUrlExpiresInSeconds,
                     tokenizationCode: typeof tokenizationCode === 'string' && tokenizationCode.length > 0
                         ? tokenizationCode
                         : undefined,
@@ -1192,15 +1192,13 @@ var MemberGuardService = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProgramMembershipGuardService", function() { return ProgramMembershipGuardService; });
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @cinerino/sdk */ "../../node_modules/@cinerino/sdk/lib/browser.js");
-/* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services */ "./app/services/index.ts");
-/* harmony import */ var _services_cinerino_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/cinerino.service */ "./app/services/cinerino.service.ts");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/user.service */ "./app/services/user.service.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_util_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/util.service */ "./app/services/util.service.ts");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services */ "./app/services/index.ts");
+/* harmony import */ var _services_cinerino_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/cinerino.service */ "./app/services/cinerino.service.ts");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/user.service */ "./app/services/user.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_util_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/util.service */ "./app/services/util.service.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -1247,7 +1245,6 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-
 var ProgramMembershipGuardService = /** @class */ (function () {
     function ProgramMembershipGuardService(router, cinerino, user, util) {
         this.router = router;
@@ -1256,9 +1253,9 @@ var ProgramMembershipGuardService = /** @class */ (function () {
         this.util = util;
     }
     /**
-   * 認証
-   * @method canActivate
-   */
+     * 認証
+     * @method canActivate
+     */
     ProgramMembershipGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {
             var searchResult;
@@ -1269,8 +1266,8 @@ var ProgramMembershipGuardService = /** @class */ (function () {
                             // 非会員
                             return [2 /*return*/, true];
                         }
-                        if (this.user.data.userName !== undefined
-                            && this.user.data.userName !== '') {
+                        if (this.user.data.userName !== undefined &&
+                            this.user.data.userName !== '') {
                             // ユーザーネーム保存
                             this.user.data.prevUserName = this.user.data.userName;
                         }
@@ -1287,11 +1284,7 @@ var ProgramMembershipGuardService = /** @class */ (function () {
                         return [4 /*yield*/, this.cinerino.getServices()];
                     case 2:
                         _a.sent();
-                        return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
-                                typeOfGood: {
-                                    typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["factory"].chevre.programMembership.ProgramMembershipType.ProgramMembership
-                                }
-                            })];
+                        return [4 /*yield*/, this.cinerino.ownerShipInfo.searchMyMemberships({})];
                     case 3:
                         searchResult = _a.sent();
                         if (searchResult.data.length > 0) {
@@ -1325,14 +1318,13 @@ var ProgramMembershipGuardService = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.util.getServerTime()];
                     case 1:
                         now = (_a.sent()).date;
-                        filterResult = programMembershipOwnershipInfos
-                            .filter(function (p) { return moment__WEBPACK_IMPORTED_MODULE_2__(p.ownedThrough).unix() > moment__WEBPACK_IMPORTED_MODULE_2__(now).unix(); });
-                        return [2 /*return*/, (filterResult.length > 0)];
+                        filterResult = programMembershipOwnershipInfos.filter(function (p) { return moment__WEBPACK_IMPORTED_MODULE_1__(p.ownedThrough).unix() > moment__WEBPACK_IMPORTED_MODULE_1__(now).unix(); });
+                        return [2 /*return*/, filterResult.length > 0];
                 }
             });
         });
     };
-    ProgramMembershipGuardService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineInjectable"]({ factory: function ProgramMembershipGuardService_Factory() { return new ProgramMembershipGuardService(_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_0__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](_services_cinerino_service__WEBPACK_IMPORTED_MODULE_4__["CinerinoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](_services_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](_services_util_service__WEBPACK_IMPORTED_MODULE_7__["UtilService"])); }, token: ProgramMembershipGuardService, providedIn: "root" });
+    ProgramMembershipGuardService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineInjectable"]({ factory: function ProgramMembershipGuardService_Factory() { return new ProgramMembershipGuardService(_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_0__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_services_cinerino_service__WEBPACK_IMPORTED_MODULE_3__["CinerinoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_services_util_service__WEBPACK_IMPORTED_MODULE_6__["UtilService"])); }, token: ProgramMembershipGuardService, providedIn: "root" });
     return ProgramMembershipGuardService;
 }());
 
@@ -6270,7 +6262,7 @@ var MemberService = /** @class */ (function () {
      */
     MemberService.prototype.registerProgramMembership = function (params) {
         return __awaiter(this, void 0, void 0, function () {
-            var pointAwardAccount, creditCard, theaterBranchCode, programMembershipRegistered, profile, searchSellersResult, seller, data, product, availableOffers, acceptedOffer, passport, date, transaction, accessCode, amount, error_1;
+            var pointAwardAccount, creditCard, theaterBranchCode, programMembershipRegistered, profile, searchSellersResult, seller, data, product, availableOffers, acceptedOffer, passport, date, transaction, accessCode, amount, paymentServices_1, products, serviceType, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -6285,17 +6277,18 @@ var MemberService = /** @class */ (function () {
                             throw new Error('No telephone');
                         }
                         return [4 /*yield*/, this.cinerinoService.seller.search({
-                                branchCode: { $eq: theaterBranchCode }
+                                branchCode: { $eq: theaterBranchCode },
                             })];
                     case 3:
                         searchSellersResult = _a.sent();
                         seller = searchSellersResult.data[0];
-                        if (seller === undefined
-                            || seller.id === undefined) {
+                        if (seller === undefined || seller.id === undefined) {
                             throw new Error('No seller');
                         }
                         return [4 /*yield*/, this.cinerinoService.product.search({
-                                typeOf: { $eq: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.product.ProductType.MembershipService }
+                                typeOf: {
+                                    $eq: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.product.ProductType.MembershipService,
+                                },
                             })];
                     case 4:
                         data = (_a.sent()).data;
@@ -6303,14 +6296,15 @@ var MemberService = /** @class */ (function () {
                             throw new Error('no membership products');
                         }
                         product = data.shift();
-                        if (product === undefined
-                            || product.typeOf !== _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.product.ProductType.MembershipService
-                            || product.id === undefined) {
+                        if (product === undefined ||
+                            product.typeOf !==
+                                _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.product.ProductType.MembershipService ||
+                            product.id === undefined) {
                             throw new Error('no product');
                         }
                         return [4 /*yield*/, this.cinerinoService.product.searchOffers({
                                 itemOffered: { id: product.id },
-                                seller: { id: seller.id }
+                                seller: { id: seller.id },
                             })];
                     case 5:
                         availableOffers = _a.sent();
@@ -6318,24 +6312,24 @@ var MemberService = /** @class */ (function () {
                             throw new Error('no available offers');
                         }
                         acceptedOffer = availableOffers[0];
-                        return [4 /*yield*/, this.cinerinoService.getPassport({ scope: "placeOrderTransaction.MovieTheater-" + theaterBranchCode })];
+                        return [4 /*yield*/, this.cinerinoService.getPassport({
+                                scope: "placeOrderTransaction.MovieTheater-" + theaterBranchCode,
+                            })];
                     case 6:
                         passport = _a.sent();
                         return [4 /*yield*/, this.utilService.getServerTime()];
                     case 7:
                         date = (_a.sent()).date;
                         return [4 /*yield*/, this.cinerinoService.transaction.placeOrder.start({
-                                expires: moment__WEBPACK_IMPORTED_MODULE_1__(date)
-                                    .add(30, 'seconds')
-                                    .toDate(),
+                                expires: moment__WEBPACK_IMPORTED_MODULE_1__(date).add(30, 'seconds').toDate(),
                                 seller: { typeOf: seller.typeOf, id: seller.id },
-                                object: { passport: passport }
+                                object: { passport: passport },
                             })];
                     case 8:
                         transaction = _a.sent();
                         _a.label = 9;
                     case 9:
-                        _a.trys.push([9, 14, , 15]);
+                        _a.trys.push([9, 15, , 16]);
                         accessCode = profile.telephone.slice(-4);
                         return [4 /*yield*/, this.cinerinoService.offer.authorizeProduct({
                                 object: {
@@ -6346,38 +6340,68 @@ var MemberService = /** @class */ (function () {
                                         id: product.id,
                                         serviceOutput: {
                                             accessCode: accessCode,
-                                            name: (product.name === undefined
-                                                || typeof product.name === 'string') ? product.name : product.name.ja
-                                            // additionalProperty: [{ name: 'sampleName', value: 'sampleValue' }]
+                                            name: product.name === undefined ||
+                                                typeof product.name === 'string'
+                                                ? product.name
+                                                : product.name.ja,
                                         },
                                         // ポイント特典付与先を指定
                                         pointAward: {
                                             typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.actionType.MoneyTransfer,
-                                            toLocation: { identifier: pointAwardAccount.accountNumber },
+                                            toLocation: {
+                                                identifier: pointAwardAccount.accountNumber,
+                                            },
                                             recipient: {
                                                 id: transaction.agent.id,
                                                 name: profile.givenName + " " + profile.familyName,
-                                                typeOf: transaction.agent.typeOf
-                                            }
-                                        }
-                                    }
+                                                typeOf: transaction.agent.typeOf,
+                                            },
+                                        },
+                                    },
                                 },
-                                purpose: { typeOf: transaction.typeOf, id: transaction.id }
+                                purpose: { typeOf: transaction.typeOf, id: transaction.id },
                             })];
                     case 10:
                         _a.sent();
                         amount = acceptedOffer.priceSpecification.priceComponent[0].price;
+                        paymentServices_1 = [];
+                        return [4 /*yield*/, this.cinerinoService.product.search({
+                                typeOf: {
+                                    $eq: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].service.paymentService.PaymentServiceType
+                                        .CreditCard,
+                                },
+                            })];
+                    case 11:
+                        products = _a.sent();
+                        products.data.forEach(function (p) {
+                            if (p.typeOf !==
+                                _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].service.paymentService.PaymentServiceType
+                                    .CreditCard ||
+                                p.provider === undefined) {
+                                return;
+                            }
+                            var findResult = p.provider.find(function (provider) { return provider.id === seller.id; });
+                            if (findResult === undefined) {
+                                return;
+                            }
+                            paymentServices_1.push(p);
+                        });
+                        serviceType = paymentServices_1[0].serviceType;
+                        if (serviceType === undefined) {
+                            throw new Error('paymentService.serviceType undefined');
+                        }
                         return [4 /*yield*/, this.cinerinoService.payment.authorizeCreditCard({
                                 object: {
-                                    typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].action.authorize.paymentMethod.any.ResultType.Payment,
-                                    paymentMethod: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].paymentMethodType.CreditCard,
+                                    typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].action.authorize.paymentMethod.any
+                                        .ResultType.Payment,
+                                    paymentMethod: serviceType.codeValue,
                                     amount: amount,
                                     method: '1',
-                                    creditCard: creditCard
+                                    creditCard: creditCard,
                                 },
                                 purpose: { typeOf: transaction.typeOf, id: transaction.id },
                             })];
-                    case 11:
+                    case 12:
                         _a.sent();
                         return [4 /*yield*/, this.cinerinoService.transaction.placeOrder.setProfile({
                                 id: transaction.id,
@@ -6386,29 +6410,30 @@ var MemberService = /** @class */ (function () {
                                     givenName: profile.givenName,
                                     familyName: profile.familyName,
                                     telephone: profile.telephone,
-                                    additionalProperty: (programMembershipRegistered)
+                                    additionalProperty: programMembershipRegistered
                                         ? undefined
-                                        : [{ name: 'firstMembership', value: '1' }]
-                                }
+                                        : [{ name: 'firstMembership', value: '1' }],
+                                },
                             })];
-                    case 12:
+                    case 13:
                         _a.sent();
                         return [4 /*yield*/, this.cinerinoService.transaction.placeOrder.confirm({
                                 id: transaction.id,
                                 sendEmailMessage: false,
                             })];
-                    case 13:
-                        _a.sent();
-                        return [3 /*break*/, 15];
                     case 14:
+                        _a.sent();
+                        return [3 /*break*/, 16];
+                    case 15:
                         error_1 = _a.sent();
-                        this.cinerinoService.transaction.placeOrder.cancel({ id: transaction.id })
+                        this.cinerinoService.transaction.placeOrder
+                            .cancel({ id: transaction.id })
                             .then()
                             .catch(function (error2) {
                             console.error(error2);
                         });
                         throw error_1;
-                    case 15: return [2 /*return*/];
+                    case 16: return [2 /*return*/];
                 }
             });
         });
@@ -6436,18 +6461,21 @@ var MemberService = /** @class */ (function () {
                                 switch (_a.label) {
                                     case 0: return [4 /*yield*/, this_1.cinerinoService.ownerShipInfo.search({
                                             typeOfGood: {
-                                                typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.programMembership.ProgramMembershipType.ProgramMembership
-                                            }
+                                                typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.programMembership
+                                                    .ProgramMembershipType.ProgramMembership,
+                                            },
                                         })];
                                     case 1:
                                         searchResult = _a.sent();
                                         return [4 /*yield*/, this_1.utilService.getServerTime()];
                                     case 2:
                                         now = (_a.sent()).date;
-                                        programMembershipOwnershipInfos = searchResult.data.filter(function (p) { return moment__WEBPACK_IMPORTED_MODULE_1__(p.ownedThrough).unix() > moment__WEBPACK_IMPORTED_MODULE_1__(now).unix(); });
+                                        programMembershipOwnershipInfos = searchResult.data.filter(function (p) {
+                                            return moment__WEBPACK_IMPORTED_MODULE_1__(p.ownedThrough).unix() > moment__WEBPACK_IMPORTED_MODULE_1__(now).unix();
+                                        });
                                         result = programMembershipOwnershipInfos.length > 0;
                                         count++;
-                                        roop = (!result && count < limit);
+                                        roop = !result && count < limit;
                                         if (!roop) return [3 /*break*/, 4];
                                         return [4 /*yield*/, this_1.utilService.sleep(interval)];
                                     case 3:
@@ -6478,17 +6506,14 @@ var MemberService = /** @class */ (function () {
      * 退会
      * @method unRegister
      */
-    MemberService.prototype.unRegister = function (args) {
+    MemberService.prototype.unRegister = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.cinerinoService.person.unRegisterProgramMembership({
-                                id: 'me',
-                                ownershipInfoIdentifier: args.ownershipInfoIdentifier
-                            })];
+                        return [4 /*yield*/, this.cinerinoService.person.deleteById({})];
                     case 2:
                         _a.sent();
                         return [2 /*return*/];
@@ -7029,7 +7054,7 @@ var UserService = /** @class */ (function () {
                                 accounts: [],
                                 programMembershipOwnershipInfos: [],
                                 programMembershipRegistered: false,
-                                prevUserName: ''
+                                prevUserName: '',
                             };
                             return [2 /*return*/];
                         }
@@ -7062,18 +7087,28 @@ var UserService = /** @class */ (function () {
      * @method reset
      */
     UserService.prototype.reset = function () {
-        var prevUserName = this.cinerino.userName !== undefined ? this.cinerino.userName :
-            this.data.accounts.length > 0 &&
+        var prevUserName = this.cinerino.userName !== undefined
+            ? this.cinerino.userName
+            : this.data.accounts.length > 0 &&
                 this.data.accounts[0].typeOfGood !== null &&
-                this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
-                this.data.prevUserName !== undefined ? this.data.prevUserName : '';
+                this.data.accounts[0].typeOfGood !== undefined
+                ? typeof this.data.accounts[0].typeOfGood.name === 'string'
+                    ? this.data.accounts[0].typeOfGood.name
+                    : this.data.accounts[0].typeOfGood.name === undefined
+                        ? ''
+                        : this.data.accounts[0].typeOfGood.name.ja === undefined
+                            ? ''
+                            : this.data.accounts[0].typeOfGood.name.ja
+                : this.data.prevUserName !== undefined
+                    ? this.data.prevUserName
+                    : '';
         this.data = {
             memberType: MemberType.NotMember,
             creditCards: [],
             accounts: [],
             programMembershipOwnershipInfos: [],
             programMembershipRegistered: false,
-            prevUserName: prevUserName
+            prevUserName: prevUserName,
         };
         this.save();
     };
@@ -7123,15 +7158,10 @@ var UserService = /** @class */ (function () {
                     case 7:
                         // 口座検索または作成
                         _a.accounts = _b.sent();
-                        return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
-                                typeOfGood: {
-                                    typeOf: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.programMembership.ProgramMembershipType.ProgramMembership
-                                }
-                            })];
+                        return [4 /*yield*/, this.cinerino.ownerShipInfo.searchMyMemberships({})];
                     case 8:
                         searchResult = _b.sent();
-                        this.data.programMembershipOwnershipInfos =
-                            searchResult.data;
+                        this.data.programMembershipOwnershipInfos = searchResult.data;
                         this.save();
                         return [2 /*return*/];
                 }
@@ -7195,7 +7225,9 @@ var UserService = /** @class */ (function () {
                         i++;
                         return [3 /*break*/, 2];
                     case 5:
-                        mutex = { expire: moment__WEBPACK_IMPORTED_MODULE_1__().add(15, 'seconds').unix() };
+                        mutex = {
+                            expire: moment__WEBPACK_IMPORTED_MODULE_1__().add(15, 'seconds').unix(),
+                        };
                         this.storage.save(POINT_ACCOUNT_MUTEX_KEY, mutex, _storage_service__WEBPACK_IMPORTED_MODULE_6__["SaveType"].Local);
                         return [4 /*yield*/, this.searchPointAccount()];
                     case 6:
@@ -7226,7 +7258,7 @@ var UserService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerino.ownerShipInfo.openAccount({
                             accountType: 'Point',
-                            name: this.cinerino.userName
+                            name: this.cinerino.userName,
                         })];
                     case 1:
                         _a.sent();
@@ -7236,28 +7268,26 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-    * ポイントアカウントを検索する
-    * @method searchPointAccount
-    */
+     * ポイントアカウントを検索する
+     * @method searchPointAccount
+     */
     UserService.prototype.searchPointAccount = function () {
         return __awaiter(this, void 0, void 0, function () {
             var searchResult, accounts;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.cinerino.ownerShipInfo.search({
+                    case 0: return [4 /*yield*/, this.cinerino.ownerShipInfo.searchMyPaymentCards({
                             sort: {
-                                ownedFrom: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].sortType.Ascending
+                                ownedFrom: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].sortType.Ascending,
                             },
-                            typeOfGood: {
-                                typeOf: 'Account',
-                                accountType: 'Point'
-                            }
                         })];
                     case 1:
                         searchResult = _a.sent();
                         accounts = searchResult.data.filter(function (a) {
-                            return (a.typeOfGood.typeOf === 'Account'
-                                && a.typeOfGood.status === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].accountStatusType.Opened);
+                            var typeOfGood = a.typeOfGood;
+                            var paymentAccount = typeOfGood.paymentAccount;
+                            return (paymentAccount !== undefined &&
+                                paymentAccount.status === _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].accountStatusType.Opened);
                         });
                         return [2 /*return*/, accounts];
                 }
@@ -7265,16 +7295,16 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-    * 会員判定
-    * @method isMember
-    */
+     * 会員判定
+     * @method isMember
+     */
     UserService.prototype.isMember = function () {
-        return (this.data.memberType === MemberType.Member);
+        return this.data.memberType === MemberType.Member;
     };
     /**
-    * 名前取得
-    * @method getName
-    */
+     * 名前取得
+     * @method getName
+     */
     UserService.prototype.getName = function () {
         if (this.data.profile === undefined) {
             return '';
@@ -7282,54 +7312,43 @@ var UserService = /** @class */ (function () {
         return this.data.profile.familyName + " " + this.data.profile.givenName;
     };
     /**
-    * 電話番号取得（ハイフンなし）
-    * @method getTelephone
-    */
+     * 電話番号取得（ハイフンなし）
+     * @method getTelephone
+     */
     UserService.prototype.getTelephone = function () {
-        if (this.data.profile === undefined || this.data.profile.telephone === undefined) {
+        if (this.data.profile === undefined ||
+            this.data.profile.telephone === undefined) {
             return '';
         }
         var no = this.data.profile.telephone.replace(/\-/g, '');
         return no.replace(/^\+81/g, '0');
     };
     /**
-    * よく行く劇場名取得
-    * @method getTheaterName
-    */
+     * よく行く劇場名取得
+     * @method getTheaterName
+     */
     UserService.prototype.getTheaterName = function (index) {
         var programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
-        if (this.data.programMembershipOwnershipInfos.length === 0
-            || programMembershipOwnershipInfo === undefined
-            || programMembershipOwnershipInfo.acquiredFrom === undefined
-            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.organizationType.MovieTheater) {
+        if (this.data.programMembershipOwnershipInfos.length === 0 ||
+            programMembershipOwnershipInfo === undefined ||
+            programMembershipOwnershipInfo.acquiredFrom === undefined ||
+            programMembershipOwnershipInfo.acquiredFrom.typeOf !==
+                _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].chevre.organizationType.MovieTheater) {
             return '';
         }
         var name = programMembershipOwnershipInfo.acquiredFrom.name;
-        return (name === undefined) ? ''
-            : (typeof name === 'string') ? name
-                : (name.ja === undefined) ? ''
+        return name === undefined
+            ? ''
+            : typeof name === 'string'
+                ? name
+                : name.ja === undefined
+                    ? ''
                     : name.ja;
     };
     /**
-    * よく行く劇場コード取得
-    * @method getTheaterCode
-
-    */
-    UserService.prototype.getTheaterCode = function (index) {
-        var programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
-        if (this.data.programMembershipOwnershipInfos.length === 0
-            || programMembershipOwnershipInfo === undefined
-            || programMembershipOwnershipInfo.typeOfGood === undefined
-            || programMembershipOwnershipInfo.typeOfGood.hostingOrganization === undefined
-            || programMembershipOwnershipInfo.typeOfGood.hostingOrganization.location === undefined) {
-            return '';
-        }
-        return programMembershipOwnershipInfo.typeOfGood.hostingOrganization.location.branchCode;
-    };
-    /**
-    * 口座情報取得
-    * @method getAccount
-    */
+     * 口座情報取得
+     * @method getAccount
+     */
     UserService.prototype.getAccount = function (index) {
         if (this.data.accounts.length === 0) {
             return undefined;
@@ -7337,22 +7356,22 @@ var UserService = /** @class */ (function () {
         return this.data.accounts[index];
     };
     /**
-    * クレジットカード情報取得（表示用）
-    * @method getCreditCard
-    */
+     * クレジットカード情報取得（表示用）
+     * @method getCreditCard
+     */
     UserService.prototype.getCreditCard = function (index) {
         if (this.data.creditCards.length === 0) {
             return undefined;
         }
         return {
             cardNo: this.data.creditCards[index].cardNo,
-            expire: this.data.creditCards[index].expire.slice(0, 2) + "\u5E74 " + this.data.creditCards[index].expire.slice(2, 4) + "\u6708"
+            expire: this.data.creditCards[index].expire.slice(0, 2) + "\u5E74 " + this.data.creditCards[index].expire.slice(2, 4) + "\u6708",
         };
     };
     /**
-    * GMOトークン取得
-    * @method getGmoObject
-    */
+     * GMOトークン取得
+     * @method getGmoObject
+     */
     UserService.prototype.getGmoObject = function (sendParam) {
         return __awaiter(this, void 0, void 0, function () {
             var branchCode, searchResult, sellerFindResult, seller, products, paymentServices, paymentService, providerCredentials;
@@ -7365,8 +7384,12 @@ var UserService = /** @class */ (function () {
                         return [4 /*yield*/, this.cinerino.seller.search({})];
                     case 2:
                         searchResult = _a.sent();
-                        sellerFindResult = searchResult.data.find(function (s) { return s.location !== undefined && s.location.branchCode === branchCode; });
-                        seller = (sellerFindResult === undefined) ? searchResult.data[0] : sellerFindResult;
+                        sellerFindResult = searchResult.data.find(function (s) {
+                            return s.location !== undefined && s.location.branchCode === branchCode;
+                        });
+                        seller = sellerFindResult === undefined
+                            ? searchResult.data[0]
+                            : sellerFindResult;
                         return [4 /*yield*/, this.masterService.searchProduct({
                                 typeOf: {
                                     $eq: _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__["factory"].service.paymentService.PaymentServiceType
@@ -7404,7 +7427,8 @@ var UserService = /** @class */ (function () {
                                     }
                                     reject(new Error(response.resultCode));
                                 };
-                                if (providerCredentials === undefined || providerCredentials.shopId === undefined) {
+                                if (providerCredentials === undefined ||
+                                    providerCredentials.shopId === undefined) {
                                     reject(new Error('shopId undefined'));
                                     return;
                                 }
@@ -7417,9 +7441,9 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-    * クレジットカード登録
-    * @method registerCreditCard
-    */
+     * クレジットカード登録
+     * @method registerCreditCard
+     */
     UserService.prototype.registerCreditCard = function (gmoTokenObject) {
         return __awaiter(this, void 0, void 0, function () {
             var _a, _b;
@@ -7430,7 +7454,7 @@ var UserService = /** @class */ (function () {
                         _c.sent();
                         // 登録
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.addCreditCard({
-                                creditCard: { token: gmoTokenObject.token }
+                                creditCard: { token: gmoTokenObject.token },
                             })];
                     case 2:
                         // 登録
@@ -7438,7 +7462,8 @@ var UserService = /** @class */ (function () {
                         _a = this.data;
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.searchCreditCards({})];
                     case 3:
-                        _a.creditCards = _c.sent();
+                        _a.creditCards =
+                            _c.sent();
                         if (!(this.data.creditCards.length > 1)) return [3 /*break*/, 6];
                         return [4 /*yield*/, this.deleteCreditCard()];
                     case 4:
@@ -7446,7 +7471,8 @@ var UserService = /** @class */ (function () {
                         _b = this.data;
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.searchCreditCards({})];
                     case 5:
-                        _b.creditCards = _c.sent();
+                        _b.creditCards =
+                            _c.sent();
                         _c.label = 6;
                     case 6:
                         this.save();
@@ -7456,8 +7482,8 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-    * クレジットカード削除
-    */
+     * クレジットカード削除
+     */
     UserService.prototype.deleteCreditCard = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -7469,7 +7495,7 @@ var UserService = /** @class */ (function () {
                             return [2 /*return*/];
                         }
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.deleteCreditCard({
-                                cardSeq: this.data.creditCards[0].cardSeq
+                                cardSeq: this.data.creditCards[0].cardSeq,
                             })];
                     case 2:
                         _a.sent();
@@ -7479,9 +7505,9 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-    * 基本情報変更
-    * @method updateProfile
-    */
+     * 基本情報変更
+     * @method updateProfile
+     */
     UserService.prototype.updateProfile = function (args) {
         return __awaiter(this, void 0, void 0, function () {
             var tel, profile;
@@ -7499,13 +7525,13 @@ var UserService = /** @class */ (function () {
                                 email: args.email,
                                 telephone: tel,
                                 additionalProperty: [
-                                    { name: 'custom:theaterCode', value: args.theaterCode }
-                                ]
+                                    { name: 'custom:theaterCode', value: args.theaterCode },
+                                ],
                             })];
                     case 2:
                         _a.sent();
                         return [4 /*yield*/, this.cinerino.person.getProfile({
-                                id: 'me'
+                                id: 'me',
                             })];
                     case 3:
                         profile = _a.sent();
@@ -7520,8 +7546,8 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-    * ユーザーネーム設定
-    */
+     * ユーザーネーム設定
+     */
     UserService.prototype.setUserName = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -7537,10 +7563,11 @@ var UserService = /** @class */ (function () {
         });
     };
     /**
-    * よく行く劇場コードを取得する
-    */
+     * よく行く劇場コードを取得する
+     */
     UserService.prototype.getWellGoTheaterCode = function () {
-        if (this.data.profile !== undefined && this.data.profile.additionalProperty !== undefined) {
+        if (this.data.profile !== undefined &&
+            this.data.profile.additionalProperty !== undefined) {
             var code = this.data.profile.additionalProperty.find(function (prop) {
                 return prop.name === 'custom:theaterCode';
             });
@@ -7548,13 +7575,17 @@ var UserService = /** @class */ (function () {
                 return code.value;
             }
         }
-        return this.getTheaterCode(0);
+        return undefined;
     };
     /**
      * 利用可能ポイント取得
      */
     UserService.prototype.getAvailableBalance = function () {
-        return this.data.accounts[0].typeOfGood.availableBalance;
+        var paymentAccount = this.data.accounts[0].typeOfGood.paymentAccount;
+        return paymentAccount === undefined ||
+            paymentAccount.availableBalance === undefined
+            ? 0
+            : paymentAccount.availableBalance;
     };
     UserService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵdefineInjectable"]({ factory: function UserService_Factory() { return new UserService(_angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵinject"](_storage_service__WEBPACK_IMPORTED_MODULE_6__["StorageService"]), _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵinject"](_cinerino_service__WEBPACK_IMPORTED_MODULE_4__["CinerinoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵinject"](_master_service__WEBPACK_IMPORTED_MODULE_5__["MasterService"]), _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵinject"](_util_service__WEBPACK_IMPORTED_MODULE_7__["UtilService"])); }, token: UserService, providedIn: "root" });
     return UserService;

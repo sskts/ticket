@@ -8,16 +8,15 @@ import {
     CinerinoService,
     InAppBrowserTarget,
     MemberType,
-    UserService
+    UserService,
 } from '../../../../../services';
 
 @Component({
     selector: 'app-auth-select',
     templateUrl: './auth-select.component.html',
-    styleUrls: ['./auth-select.component.scss']
+    styleUrls: ['./auth-select.component.scss'],
 })
 export class AuthSelectComponent implements OnInit {
-
     public isLoading: boolean;
     public environment = environment;
     public portalSiteUrl: string;
@@ -28,7 +27,7 @@ export class AuthSelectComponent implements OnInit {
         private user: UserService,
         private awsCognito: AwsCognitoService,
         private callNative: CallNativeService
-    ) { }
+    ) {}
 
     /**
      * 初期化
@@ -47,14 +46,26 @@ export class AuthSelectComponent implements OnInit {
         this.isLoading = true;
         try {
             const userName =
-                (this.user === null || this.user === undefined ||
-                    this.user.data === null || this.user.data === undefined ||
-                    this.user.data.accounts === null || this.user.data.accounts === undefined) ? '' :
-                    this.user.data.accounts.length > 0 &&
-                        (this.user.data.accounts[0].typeOfGood !== null &&
-                            this.user.data.accounts[0].typeOfGood !== undefined) ?
-                        this.user.data.accounts[0].typeOfGood.name :
-                        this.user.data.prevUserName !== undefined ? this.user.data.prevUserName : '';
+                this.user === null ||
+                this.user === undefined ||
+                this.user.data === null ||
+                this.user.data === undefined ||
+                this.user.data.accounts === null ||
+                this.user.data.accounts === undefined
+                    ? ''
+                    : this.user.data.accounts.length > 0
+                    ? typeof this.user.data.accounts[0].typeOfGood.name ===
+                      'string'
+                        ? this.user.data.accounts[0].typeOfGood.name
+                        : this.user.data.accounts[0].typeOfGood.name !==
+                              undefined &&
+                          this.user.data.accounts[0].typeOfGood.name.ja !==
+                              undefined
+                        ? this.user.data.accounts[0].typeOfGood.name.ja
+                        : ''
+                    : this.user.data.prevUserName !== undefined
+                    ? this.user.data.prevUserName
+                    : '';
             await this.cinerino.signInWithUserName(false, userName);
             this.user.data.memberType = MemberType.Member;
             this.user.save();
@@ -91,8 +102,7 @@ export class AuthSelectComponent implements OnInit {
     public openWebBrowser(url: string) {
         this.callNative.inAppBrowser({
             url: url,
-            target: InAppBrowserTarget.System
+            target: InAppBrowserTarget.System,
         });
     }
-
 }

@@ -2,12 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { factory } from '@cinerino/sdk';
-import { CinerinoService, MasterService, MemberService, UserService, UtilService } from '../../../../../services';
+import {
+    CinerinoService,
+    MasterService,
+    MemberService,
+    UserService,
+    UtilService,
+} from '../../../../../services';
 
 @Component({
     selector: 'app-auth-register-program-membership',
     templateUrl: './auth-register-program-membership.component.html',
-    styleUrls: ['./auth-register-program-membership.component.scss']
+    styleUrls: ['./auth-register-program-membership.component.scss'],
 })
 export class AuthRegisterProgramMembershipComponent implements OnInit {
     public isLoading: boolean;
@@ -22,7 +28,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         private masterService: MasterService,
         private utilService: UtilService,
         private userService: UserService
-    ) { }
+    ) {}
 
     /**
      * 初期化
@@ -38,7 +44,10 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             );
         } catch (err) {
             console.log(err);
-            this.router.navigate(['/error', { redirect: '/auth/register/credit' }]);
+            this.router.navigate([
+                '/error',
+                { redirect: '/auth/register/credit' },
+            ]);
         }
         this.isLoading = false;
     }
@@ -49,7 +58,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
      */
     private createForm() {
         return this.formBuilder.group({
-            theater: ['', [Validators.required]]
+            theater: ['', [Validators.required]],
         });
     }
 
@@ -70,33 +79,49 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             if (accounts.length > 1) {
                 // ポイントアカウントが複数存在する場合、最初の一件を残してクローズする
                 for (let i = 1; i < accounts.length; i++) {
+                    const closeAccountNumber =
+                        accounts[i].typeOfGood.identifier;
+                    if (typeof closeAccountNumber !== 'string') {
+                        throw new Error('typeOfGood.identifier not string');
+                    }
                     await this.cinerino.ownerShipInfo.closeAccount({
-                        accountNumber: accounts[i].typeOfGood.accountNumber
+                        accountNumber: closeAccountNumber,
                     });
                 }
             }
             const theaterBranchCode = this.optionsForm.controls.theater.value;
-            const programMembershipRegistered = this.userService.data.programMembershipRegistered;
+            const programMembershipRegistered =
+                this.userService.data.programMembershipRegistered;
+            const accountNumber = accounts[0].typeOfGood.identifier;
+            if (typeof accountNumber !== 'string') {
+                throw new Error('typeOfGood.identifier not string');
+            }
             const pointAwardAccount = {
-                accountNumber: accounts[0].typeOfGood.accountNumber
+                accountNumber,
             };
             const creditCard = {
                 memberId: 'me',
-                cardSeq: Number(this.userService.data.creditCards[0].cardSeq)
+                cardSeq: Number(this.userService.data.creditCards[0].cardSeq),
             };
-            let isRegister = await this.member.isRegister({ interval: 0, limit: 0 });
+            let isRegister = await this.member.isRegister({
+                interval: 0,
+                limit: 0,
+            });
             if (!isRegister) {
                 // 会員登録
                 await this.member.registerProgramMembership({
                     programMembershipRegistered,
                     theaterBranchCode,
                     pointAwardAccount,
-                    creditCard
+                    creditCard,
                 });
             }
 
             // 会員登録確認
-            isRegister = await this.member.isRegister({ interval: 3000, limit: 20 });
+            isRegister = await this.member.isRegister({
+                interval: 3000,
+                limit: 20,
+            });
             if (!isRegister) {
                 this.router.navigate(['/error', { redirect: '/auth/select' }]);
 
@@ -110,11 +135,8 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             this.isLoading = false;
             this.utilService.openAlert({
                 title: 'エラーが発生しました',
-                body: `再度ご登録してください。`
+                body: `再度ご登録してください。`,
             });
         }
     }
-
-
-
 }
