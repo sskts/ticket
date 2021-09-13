@@ -4,7 +4,8 @@
     </p>
     <ul class="mb-3">
         <li *ngFor="let action of accountMoneyTransferActions" class="border-bottom border-gray">
-            <app-point-history-list [action]="action" [accountNumber]="user.data.accounts[0].typeOfGood.accountNumber"></app-point-history-list>
+            <app-point-history-list [action]="action" [accountNumber]="user.data.accounts[0].typeOfGood.identifier">
+            </app-point-history-list>
         </li>
     </ul>
 </div>

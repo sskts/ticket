@@ -8,7 +8,6 @@ import { MasterService } from './master.service';
 import { SaveType, StorageService } from './storage.service';
 import { UtilService } from './util.service';
 
-
 export interface IUserData {
     /**
      * ユーザーネーム
@@ -30,11 +29,11 @@ export interface IUserData {
     /**
      * ポイント口座
      */
-    accounts: factory.ownershipInfo.IOwnershipInfo<factory.account.IAccount>[];
+    accounts: factory.ownershipInfo.IOwnershipInfo<factory.permit.IPermit>[];
     /**
      * プログラムメンバーシップ
      */
-    programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>[];
+    programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<factory.permit.IPermit>[];
     /**
      * プログラムメンバーシップ登録判定
      */
@@ -48,7 +47,7 @@ export interface IUserData {
 
 export enum MemberType {
     NotMember = '0',
-    Member = '1'
+    Member = '1',
 }
 
 export interface IGmoTokenObject {
@@ -65,10 +64,9 @@ interface PointAccountMutex {
 const STORAGE_KEY = 'user';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class UserService {
-
     public data: IUserData;
 
     constructor(
@@ -90,7 +88,10 @@ export class UserService {
      * @method load
      */
     public async load() {
-        const data: IUserData | null = this.storage.load(STORAGE_KEY, SaveType.Local);
+        const data: IUserData | null = this.storage.load(
+            STORAGE_KEY,
+            SaveType.Local
+        );
         if (data === null) {
             this.data = {
                 memberType: MemberType.NotMember,
@@ -98,7 +99,7 @@ export class UserService {
                 accounts: [],
                 programMembershipOwnershipInfos: [],
                 programMembershipRegistered: false,
-                prevUserName: ''
+                prevUserName: '',
             };
             return;
         }
@@ -126,18 +127,28 @@ export class UserService {
      */
     public reset() {
         const prevUserName =
-            this.cinerino.userName !== undefined ? this.cinerino.userName :
-                this.data.accounts.length > 0 &&
-                    this.data.accounts[0].typeOfGood !== null &&
-                    this.data.accounts[0].typeOfGood !== undefined ? this.data.accounts[0].typeOfGood.name :
-                    this.data.prevUserName !== undefined ? this.data.prevUserName : '';
+            this.cinerino.userName !== undefined
+                ? this.cinerino.userName
+                : this.data.accounts.length > 0 &&
+                  this.data.accounts[0].typeOfGood !== null &&
+                  this.data.accounts[0].typeOfGood !== undefined
+                ? typeof this.data.accounts[0].typeOfGood.name === 'string'
+                    ? this.data.accounts[0].typeOfGood.name
+                    : this.data.accounts[0].typeOfGood.name === undefined
+                    ? ''
+                    : this.data.accounts[0].typeOfGood.name.ja === undefined
+                    ? ''
+                    : this.data.accounts[0].typeOfGood.name.ja
+                : this.data.prevUserName !== undefined
+                ? this.data.prevUserName
+                : '';
         this.data = {
             memberType: MemberType.NotMember,
             creditCards: [],
             accounts: [],
             programMembershipOwnershipInfos: [],
             programMembershipRegistered: false,
-            prevUserName: prevUserName
+            prevUserName: prevUserName,
         };
         this.save();
     }
@@ -163,7 +174,8 @@ export class UserService {
 
         try {
             // クレジットカード検索
-            const creditCards = await this.cinerino.ownerShipInfo.searchCreditCards({});
+            const creditCards =
+                await this.cinerino.ownerShipInfo.searchCreditCards({});
             this.data.creditCards = creditCards;
         } catch (err) {
             console.log(err);
@@ -172,13 +184,8 @@ export class UserService {
         // 口座検索または作成
         this.data.accounts = await this.openPointAccountIfNotExists();
         const searchResult =
-            await this.cinerino.ownerShipInfo.search({
-                typeOfGood: {
-                    typeOf: factory.chevre.programMembership.ProgramMembershipType.ProgramMembership
-                }
-            });
-        this.data.programMembershipOwnershipInfos =
-            <factory.ownershipInfo.IOwnershipInfo<factory.chevre.programMembership.IProgramMembership>[]>searchResult.data;
+            await this.cinerino.ownerShipInfo.searchMyMemberships({});
+        this.data.programMembershipOwnershipInfos = searchResult.data;
         this.save();
     }
 
@@ -205,13 +212,16 @@ export class UserService {
             const limit = 50;
             for (let i = 0; i < limit; i++) {
                 const now = moment().unix();
-                const accountMutex: PointAccountMutex | null = this.storage.load(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
+                const accountMutex: PointAccountMutex | null =
+                    this.storage.load(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
                 if (accountMutex === null || accountMutex.expire < now) {
                     break;
                 }
                 await this.util.sleep(300);
             }
-            const mutex: PointAccountMutex = { expire: moment().add(15, 'seconds').unix() };
+            const mutex: PointAccountMutex = {
+                expire: moment().add(15, 'seconds').unix(),
+            };
             this.storage.save(POINT_ACCOUNT_MUTEX_KEY, mutex, SaveType.Local);
 
             let accounts = await this.searchPointAccount();
@@ -230,45 +240,45 @@ export class UserService {
     private async openPointAccount() {
         await this.cinerino.ownerShipInfo.openAccount({
             accountType: 'Point',
-            name: (<string>this.cinerino.userName)
+            name: <string>this.cinerino.userName,
         });
     }
 
     /**
-    * ポイントアカウントを検索する
-    * @method searchPointAccount
-    */
+     * ポイントアカウントを検索する
+     * @method searchPointAccount
+     */
     private async searchPointAccount() {
         // 口座検索
-        const searchResult = await this.cinerino.ownerShipInfo.search({
-            sort: {
-                ownedFrom: factory.sortType.Ascending
-            },
-            typeOfGood: {
-                typeOf: 'Account',
-                accountType: 'Point'
-            }
-        });
-        const accounts =
-            searchResult.data.filter((a) => {
-                return (a.typeOfGood.typeOf === 'Account'
-                    && (<factory.account.IAccount>a.typeOfGood).status === factory.accountStatusType.Opened);
+        const searchResult =
+            await this.cinerino.ownerShipInfo.searchMyPaymentCards({
+                sort: {
+                    ownedFrom: factory.sortType.Ascending,
+                },
             });
-        return <factory.ownershipInfo.IOwnershipInfo<factory.account.IAccount>[]>accounts;
+        const accounts = searchResult.data.filter((a) => {
+            const typeOfGood = <factory.permit.IPermit>a.typeOfGood;
+            const paymentAccount = typeOfGood.paymentAccount;
+            return (
+                paymentAccount !== undefined &&
+                paymentAccount.status === factory.accountStatusType.Opened
+            );
+        });
+        return accounts;
     }
 
     /**
-    * 会員判定
-    * @method isMember
-    */
+     * 会員判定
+     * @method isMember
+     */
     public isMember() {
-        return (this.data.memberType === MemberType.Member);
+        return this.data.memberType === MemberType.Member;
     }
 
     /**
-    * 名前取得
-    * @method getName
-    */
+     * 名前取得
+     * @method getName
+     */
     public getName() {
         if (this.data.profile === undefined) {
             return '';
@@ -277,11 +287,14 @@ export class UserService {
     }
 
     /**
-    * 電話番号取得（ハイフンなし）
-    * @method getTelephone
-    */
+     * 電話番号取得（ハイフンなし）
+     * @method getTelephone
+     */
     public getTelephone() {
-        if (this.data.profile === undefined || this.data.profile.telephone === undefined) {
+        if (
+            this.data.profile === undefined ||
+            this.data.profile.telephone === undefined
+        ) {
             return '';
         }
         const no = this.data.profile.telephone.replace(/\-/g, '');
@@ -289,47 +302,36 @@ export class UserService {
     }
 
     /**
-    * よく行く劇場名取得
-    * @method getTheaterName
-    */
+     * よく行く劇場名取得
+     * @method getTheaterName
+     */
     public getTheaterName(index: number) {
-        const programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
-        if (this.data.programMembershipOwnershipInfos.length === 0
-            || programMembershipOwnershipInfo === undefined
-            || programMembershipOwnershipInfo.acquiredFrom === undefined
-            || programMembershipOwnershipInfo.acquiredFrom.typeOf !== factory.chevre.organizationType.MovieTheater) {
+        const programMembershipOwnershipInfo =
+            this.data.programMembershipOwnershipInfos[index];
+        if (
+            this.data.programMembershipOwnershipInfos.length === 0 ||
+            programMembershipOwnershipInfo === undefined ||
+            programMembershipOwnershipInfo.acquiredFrom === undefined ||
+            programMembershipOwnershipInfo.acquiredFrom.typeOf !==
+                factory.chevre.organizationType.MovieTheater
+        ) {
             return '';
         }
         const name = programMembershipOwnershipInfo.acquiredFrom.name;
 
-        return (name === undefined) ? ''
-            : (typeof name === 'string') ? name
-                : (name.ja === undefined) ? ''
-                    : name.ja;
+        return name === undefined
+            ? ''
+            : typeof name === 'string'
+            ? name
+            : name.ja === undefined
+            ? ''
+            : name.ja;
     }
 
     /**
-    * よく行く劇場コード取得
-    * @method getTheaterCode
-
-    */
-    public getTheaterCode(index: number) {
-        const programMembershipOwnershipInfo = this.data.programMembershipOwnershipInfos[index];
-        if (this.data.programMembershipOwnershipInfos.length === 0
-            || programMembershipOwnershipInfo === undefined
-            || programMembershipOwnershipInfo.typeOfGood === undefined
-            || programMembershipOwnershipInfo.typeOfGood.hostingOrganization === undefined
-            || programMembershipOwnershipInfo.typeOfGood.hostingOrganization.location === undefined) {
-            return '';
-        }
-
-        return programMembershipOwnershipInfo.typeOfGood.hostingOrganization.location.branchCode;
-    }
-
-    /**
-    * 口座情報取得
-    * @method getAccount
-    */
+     * 口座情報取得
+     * @method getAccount
+     */
     public getAccount(index: number) {
         if (this.data.accounts.length === 0) {
             return undefined;
@@ -338,23 +340,26 @@ export class UserService {
     }
 
     /**
-    * クレジットカード情報取得（表示用）
-    * @method getCreditCard
-    */
+     * クレジットカード情報取得（表示用）
+     * @method getCreditCard
+     */
     public getCreditCard(index: number) {
         if (this.data.creditCards.length === 0) {
             return undefined;
         }
         return {
             cardNo: this.data.creditCards[index].cardNo,
-            expire: `${this.data.creditCards[index].expire.slice(0, 2)}年 ${this.data.creditCards[index].expire.slice(2, 4)}月`
+            expire: `${this.data.creditCards[index].expire.slice(
+                0,
+                2
+            )}年 ${this.data.creditCards[index].expire.slice(2, 4)}月`,
         };
     }
 
     /**
-    * GMOトークン取得
-    * @method getGmoObject
-    */
+     * GMOトークン取得
+     * @method getGmoObject
+     */
     public async getGmoObject(sendParam: {
         cardno: string;
         expire: string;
@@ -364,8 +369,14 @@ export class UserService {
         await this.cinerino.getServices();
         const branchCode = environment.MAIN_SHOP_BRUNCH_CODE;
         const searchResult = await this.cinerino.seller.search({});
-        const sellerFindResult = searchResult.data.find(s => s.location !== undefined && s.location.branchCode === branchCode);
-        const seller = (sellerFindResult === undefined) ? searchResult.data[0] : sellerFindResult;
+        const sellerFindResult = searchResult.data.find(
+            (s) =>
+                s.location !== undefined && s.location.branchCode === branchCode
+        );
+        const seller =
+            sellerFindResult === undefined
+                ? searchResult.data[0]
+                : sellerFindResult;
 
         const products = await this.masterService.searchProduct({
             typeOf: {
@@ -392,66 +403,75 @@ export class UserService {
             paymentServices.push(p);
         });
         const paymentService = paymentServices[0];
-        const providerCredentials =
-            await getProviderCredentials({
-                paymentService,
-                seller,
-            });
+        const providerCredentials = await getProviderCredentials({
+            paymentService,
+            seller,
+        });
 
         return new Promise<IGmoTokenObject>((resolve, reject) => {
-            (<any>window).someCallbackFunction = function someCallbackFunction(response: any) {
+            (<any>window).someCallbackFunction = function someCallbackFunction(
+                response: any
+            ) {
                 if (response.resultCode === '000') {
                     resolve(response.tokenObject);
                     return;
                 }
                 reject(new Error(response.resultCode));
             };
-            if (providerCredentials === undefined || providerCredentials.shopId === undefined) {
+            if (
+                providerCredentials === undefined ||
+                providerCredentials.shopId === undefined
+            ) {
                 reject(new Error('shopId undefined'));
                 return;
             }
             const Multipayment = (<any>window).Multipayment;
             Multipayment.init(providerCredentials.shopId);
-            Multipayment.getToken(sendParam, (<any>window).someCallbackFunction);
+            Multipayment.getToken(
+                sendParam,
+                (<any>window).someCallbackFunction
+            );
         });
     }
 
     /**
-    * クレジットカード登録
-    * @method registerCreditCard
-    */
+     * クレジットカード登録
+     * @method registerCreditCard
+     */
     public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
         await this.cinerino.getServices();
         // 登録
         await this.cinerino.ownerShipInfo.addCreditCard({
-            creditCard: { token: gmoTokenObject.token }
+            creditCard: { token: gmoTokenObject.token },
         });
-        this.data.creditCards = await this.cinerino.ownerShipInfo.searchCreditCards({});
+        this.data.creditCards =
+            await this.cinerino.ownerShipInfo.searchCreditCards({});
         if (this.data.creditCards.length > 1) {
             await this.deleteCreditCard();
-            this.data.creditCards = await this.cinerino.ownerShipInfo.searchCreditCards({});
+            this.data.creditCards =
+                await this.cinerino.ownerShipInfo.searchCreditCards({});
         }
 
         this.save();
     }
 
     /**
-    * クレジットカード削除
-    */
+     * クレジットカード削除
+     */
     public async deleteCreditCard() {
         await this.cinerino.getServices();
         if (this.data.creditCards.length === 0) {
             return;
         }
         await this.cinerino.ownerShipInfo.deleteCreditCard({
-            cardSeq: this.data.creditCards[0].cardSeq
+            cardSeq: this.data.creditCards[0].cardSeq,
         });
     }
 
     /**
-    * 基本情報変更
-    * @method updateProfile
-    */
+     * 基本情報変更
+     * @method updateProfile
+     */
     public async updateProfile(args: {
         familyName: string;
         givenName: string;
@@ -468,11 +488,11 @@ export class UserService {
             email: args.email,
             telephone: tel,
             additionalProperty: [
-                { name: 'custom:theaterCode', value: args.theaterCode }
-            ]
+                { name: 'custom:theaterCode', value: args.theaterCode },
+            ],
         });
         const profile = await this.cinerino.person.getProfile({
-            id: 'me'
+            id: 'me',
         });
         if (profile === undefined) {
             throw new Error('profile is undefined');
@@ -483,8 +503,8 @@ export class UserService {
     }
 
     /**
-    * ユーザーネーム設定
-    */
+     * ユーザーネーム設定
+     */
     public async setUserName() {
         await this.cinerino.getServices();
         this.data.userName = this.cinerino.userName;
@@ -492,10 +512,13 @@ export class UserService {
     }
 
     /**
-    * よく行く劇場コードを取得する
-    */
+     * よく行く劇場コードを取得する
+     */
     public getWellGoTheaterCode() {
-        if (this.data.profile !== undefined && this.data.profile.additionalProperty !== undefined) {
+        if (
+            this.data.profile !== undefined &&
+            this.data.profile.additionalProperty !== undefined
+        ) {
             const code = this.data.profile.additionalProperty.find((prop) => {
                 return prop.name === 'custom:theaterCode';
             });
@@ -503,13 +526,17 @@ export class UserService {
                 return code.value;
             }
         }
-        return this.getTheaterCode(0);
+        return undefined;
     }
 
     /**
      * 利用可能ポイント取得
      */
     public getAvailableBalance() {
-        return this.data.accounts[0].typeOfGood.availableBalance;
+        const paymentAccount = this.data.accounts[0].typeOfGood.paymentAccount;
+        return paymentAccount === undefined ||
+            paymentAccount.availableBalance === undefined
+            ? 0
+            : paymentAccount.availableBalance;
     }
 }

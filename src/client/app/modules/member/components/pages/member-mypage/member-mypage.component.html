@@ -5,7 +5,7 @@
             <div class="text-small mb-2">会員コード</div>
             <div class="p-2 bg-white mb-2">
                 <span *ngIf="account">
-                    {{ account.typeOfGood.accountNumber }}
+                    {{ account.typeOfGood.identifier }}
                 </span>
                 <span *ngIf="!account">-</span>
             </div>
@@ -13,14 +13,14 @@
                 <div class="row">
                     <div class="col-6 pr-2">
                         <button *ngIf="account" type="button" class="btn btn-block btn-primary center" (click)="copy({ 
-                            value: account.typeOfGood.accountNumber, 
+                            value: account.typeOfGood.identifier, 
                             title: '', 
                             body: '会員コードをコピーしました'
                         })">コードをコピー</button>
                     </div>
                     <div class="col-6 pl-2">
                         <button *ngIf="account" type="button" class="btn btn-block btn-primary center"
-                            (click)="openQR(account.typeOfGood.accountNumber)">
+                            (click)="openQR(account.typeOfGood.identifier)">
                             QRを表示
                         </button>
                     </div>

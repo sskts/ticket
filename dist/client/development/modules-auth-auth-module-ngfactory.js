@@ -1056,7 +1056,10 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                     case 3:
                         err_1 = _b.sent();
                         console.log(err_1);
-                        this.router.navigate(['/error', { redirect: '/auth/register/credit' }]);
+                        this.router.navigate([
+                            '/error',
+                            { redirect: '/auth/register/credit' },
+                        ]);
                         return [3 /*break*/, 4];
                     case 4:
                         this.isLoading = false;
@@ -1071,7 +1074,7 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
      */
     AuthRegisterProgramMembershipComponent.prototype.createForm = function () {
         return this.formBuilder.group({
-            theater: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
+            theater: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
         });
     };
     /**
@@ -1080,7 +1083,7 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
      */
     AuthRegisterProgramMembershipComponent.prototype.onSubmit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var accounts, i, theaterBranchCode, programMembershipRegistered, pointAwardAccount, creditCard, isRegister, err_2;
+            var accounts, i, closeAccountNumber, theaterBranchCode, programMembershipRegistered, accountNumber, pointAwardAccount, creditCard, isRegister, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1100,8 +1103,12 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                         _a.label = 2;
                     case 2:
                         if (!(i < accounts.length)) return [3 /*break*/, 5];
+                        closeAccountNumber = accounts[i].typeOfGood.identifier;
+                        if (typeof closeAccountNumber !== 'string') {
+                            throw new Error('typeOfGood.identifier not string');
+                        }
                         return [4 /*yield*/, this.cinerino.ownerShipInfo.closeAccount({
-                                accountNumber: accounts[i].typeOfGood.accountNumber
+                                accountNumber: closeAccountNumber,
                             })];
                     case 3:
                         _a.sent();
@@ -1112,14 +1119,21 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                     case 5:
                         theaterBranchCode = this.optionsForm.controls.theater.value;
                         programMembershipRegistered = this.userService.data.programMembershipRegistered;
+                        accountNumber = accounts[0].typeOfGood.identifier;
+                        if (typeof accountNumber !== 'string') {
+                            throw new Error('typeOfGood.identifier not string');
+                        }
                         pointAwardAccount = {
-                            accountNumber: accounts[0].typeOfGood.accountNumber
+                            accountNumber: accountNumber,
                         };
                         creditCard = {
                             memberId: 'me',
-                            cardSeq: Number(this.userService.data.creditCards[0].cardSeq)
+                            cardSeq: Number(this.userService.data.creditCards[0].cardSeq),
                         };
-                        return [4 /*yield*/, this.member.isRegister({ interval: 0, limit: 0 })];
+                        return [4 /*yield*/, this.member.isRegister({
+                                interval: 0,
+                                limit: 0,
+                            })];
                     case 6:
                         isRegister = _a.sent();
                         if (!!isRegister) return [3 /*break*/, 8];
@@ -1128,13 +1142,16 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                                 programMembershipRegistered: programMembershipRegistered,
                                 theaterBranchCode: theaterBranchCode,
                                 pointAwardAccount: pointAwardAccount,
-                                creditCard: creditCard
+                                creditCard: creditCard,
                             })];
                     case 7:
                         // 会員登録
                         _a.sent();
                         _a.label = 8;
-                    case 8: return [4 /*yield*/, this.member.isRegister({ interval: 3000, limit: 20 })];
+                    case 8: return [4 /*yield*/, this.member.isRegister({
+                            interval: 3000,
+                            limit: 20,
+                        })];
                     case 9:
                         // 会員登録確認
                         isRegister = _a.sent();
@@ -1151,7 +1168,7 @@ var AuthRegisterProgramMembershipComponent = /** @class */ (function () {
                         this.isLoading = false;
                         this.utilService.openAlert({
                             title: 'エラーが発生しました',
-                            body: "\u518D\u5EA6\u3054\u767B\u9332\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+                            body: "\u518D\u5EA6\u3054\u767B\u9332\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
                         });
                         return [3 /*break*/, 11];
                     case 11: return [2 /*return*/];
@@ -1633,14 +1650,26 @@ var AuthSelectComponent = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        userName = (this.user === null || this.user === undefined ||
-                            this.user.data === null || this.user.data === undefined ||
-                            this.user.data.accounts === null || this.user.data.accounts === undefined) ? '' :
-                            this.user.data.accounts.length > 0 &&
-                                (this.user.data.accounts[0].typeOfGood !== null &&
-                                    this.user.data.accounts[0].typeOfGood !== undefined) ?
-                                this.user.data.accounts[0].typeOfGood.name :
-                                this.user.data.prevUserName !== undefined ? this.user.data.prevUserName : '';
+                        userName = this.user === null ||
+                            this.user === undefined ||
+                            this.user.data === null ||
+                            this.user.data === undefined ||
+                            this.user.data.accounts === null ||
+                            this.user.data.accounts === undefined
+                            ? ''
+                            : this.user.data.accounts.length > 0
+                                ? typeof this.user.data.accounts[0].typeOfGood.name ===
+                                    'string'
+                                    ? this.user.data.accounts[0].typeOfGood.name
+                                    : this.user.data.accounts[0].typeOfGood.name !==
+                                        undefined &&
+                                        this.user.data.accounts[0].typeOfGood.name.ja !==
+                                            undefined
+                                        ? this.user.data.accounts[0].typeOfGood.name.ja
+                                        : ''
+                                : this.user.data.prevUserName !== undefined
+                                    ? this.user.data.prevUserName
+                                    : '';
                         return [4 /*yield*/, this.cinerino.signInWithUserName(false, userName)];
                     case 2:
                         _a.sent();
@@ -1698,7 +1727,7 @@ var AuthSelectComponent = /** @class */ (function () {
     AuthSelectComponent.prototype.openWebBrowser = function (url) {
         this.callNative.inAppBrowser({
             url: url,
-            target: _services__WEBPACK_IMPORTED_MODULE_4__["InAppBrowserTarget"].System
+            target: _services__WEBPACK_IMPORTED_MODULE_4__["InAppBrowserTarget"].System,
         });
     };
     return AuthSelectComponent;
