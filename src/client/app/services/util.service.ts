@@ -6,20 +6,19 @@ import { AlertModalComponent } from '../modules/shared/components/parts/alert-mo
 import { ConfirmModalComponent } from '../modules/shared/components/parts/confirm-modal/confirm-modal.component';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class UtilService {
-
-    constructor(
-        private modal: BsModalService,
-        private http: HttpClient) { }
+    constructor(private modal: BsModalService, private http: HttpClient) {}
 
     /**
      * スリープ
      */
     public async sleep(time: number) {
         return new Promise<void>((resolve) => {
-            setTimeout(() => { resolve(); }, time);
+            setTimeout(() => {
+                resolve();
+            }, time);
         });
     }
 
@@ -27,7 +26,11 @@ export class UtilService {
      * サーバータイム取得
      */
     public async getServerTime() {
-        const result = await this.http.get<{ date: string }>(`/api/serverTime?date=${moment().toISOString()}`).toPromise();
+        const result = await this.http
+            .get<{ date: string }>(
+                `/api/serverTime?date=${moment().toISOString()}`
+            )
+            .toPromise();
 
         return result;
     }
@@ -35,18 +38,25 @@ export class UtilService {
     /**
      * json取得
      */
-    public async getJson<T>(url: string, options?: {
-        headers?: HttpHeaders | {
-            [header: string]: string | string[];
-        };
-        observe?: 'body';
-        params?: HttpParams | {
-            [param: string]: string | string[];
-        };
-        reportProgress?: boolean;
-        responseType?: 'json';
-        withCredentials?: boolean;
-    }) {
+    public async getJson<T>(
+        url: string,
+        options?: {
+            headers?:
+                | HttpHeaders
+                | {
+                      [header: string]: string | string[];
+                  };
+            observe?: 'body';
+            params?:
+                | HttpParams
+                | {
+                      [param: string]: string | string[];
+                  };
+            reportProgress?: boolean;
+            responseType?: 'json';
+            withCredentials?: boolean;
+        }
+    ) {
         const result = await this.http.get<T>(url, options).toPromise();
 
         return result;
@@ -55,19 +65,28 @@ export class UtilService {
     /**
      * text取得
      */
-    public async getText(url: string, options?: {
-        headers?: HttpHeaders | {
-            [header: string]: string | string[];
-        };
-        observe?: 'body';
-        params?: HttpParams | {
-            [param: string]: string | string[];
-        };
-        reportProgress?: boolean;
-        responseType?: 'json';
-        withCredentials?: boolean;
-    }) {
-        const result = await this.http.get<string>(url, { ...options, responseType: (<any>'text') }).toPromise();
+    public async getText(
+        url: string,
+        options?: {
+            headers?:
+                | HttpHeaders
+                | {
+                      [header: string]: string | string[];
+                  };
+            observe?: 'body';
+            params?:
+                | HttpParams
+                | {
+                      [param: string]: string | string[];
+                  };
+            reportProgress?: boolean;
+            responseType?: 'json';
+            withCredentials?: boolean;
+        }
+    ) {
+        const result = await this.http
+            .get<string>(url, { ...options, responseType: <any>'text' })
+            .toPromise();
 
         return result;
     }
@@ -75,15 +94,10 @@ export class UtilService {
     /**
      * 警告モーダル表示
      */
-    public openAlert(args: {
-        title?: string;
-        body?: string;
-    }) {
-        const title = args.title;
-        const body = args.body;
+    public openAlert(params: { title?: string; body?: string }) {
         const modalRef = this.modal.show(AlertModalComponent, {
-            initialState: { title, body },
-            class: 'modal-dialog-centered'
+            initialState: { ...params },
+            class: 'modal-dialog-centered',
         });
         modalRef.content.modal = modalRef;
     }
@@ -91,18 +105,16 @@ export class UtilService {
     /**
      * 確認モーダル表示
      */
-    public openConfirm(args: {
-        title: string;
+    public openConfirm(params: {
+        title?: string;
         body: string;
-        cb: Function
+        next?: string;
+        prev?: string;
+        cb: Function;
     }) {
-        const title = args.title;
-        const body = args.body;
-        const cb = args.cb;
         this.modal.show(ConfirmModalComponent, {
-            initialState: { title, body, cb },
-            class: 'modal-dialog-centered'
+            initialState: { ...params },
+            class: 'modal-dialog-centered',
         });
     }
-
 }

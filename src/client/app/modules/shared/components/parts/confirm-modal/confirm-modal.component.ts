@@ -4,17 +4,16 @@ import { BsModalRef } from 'ngx-bootstrap';
 @Component({
     selector: 'app-confirm-modal',
     templateUrl: './confirm-modal.component.html',
-    styleUrls: ['./confirm-modal.component.scss']
+    styleUrls: ['./confirm-modal.component.scss'],
 })
 export class ConfirmModalComponent implements OnInit {
-
-    @Input() public title: string;
-    @Input() public body: string;
+    @Input() public title?: string;
+    @Input() public body?: string;
+    @Input() public next = 'はい';
+    @Input() public prev = 'いいえ';
     @Input() public cb: Function;
 
-    constructor(
-        public modal: BsModalRef
-    ) { }
+    constructor(public modal: BsModalRef) {}
 
     public ngOnInit() {}
 
@@ -22,5 +21,4 @@ export class ConfirmModalComponent implements OnInit {
         this.modal.hide();
         this.cb();
     }
-
 }
