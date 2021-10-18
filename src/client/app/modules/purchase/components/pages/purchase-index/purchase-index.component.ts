@@ -5,6 +5,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
+import { BsModalService } from 'ngx-bootstrap';
 import { environment } from '../../../../../../environments/environment';
 import { getConfig, object2query, sleep } from '../../../../../functions';
 import { Performance } from '../../../../../models/performance';
@@ -22,6 +23,7 @@ import {
     UserService,
     UtilService,
 } from '../../../../../services';
+import { AppearPopupComponent } from '../../../../shared/components/parts/appear-popup/appear-popup.component';
 
 interface IDate {
     value: string;
@@ -77,7 +79,8 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
         private utilService: UtilService,
         private maintenanceService: MaintenanceService,
         private awsCognitoService: AwsCognitoService,
-        private masterService: MasterService
+        private masterService: MasterService,
+        private modal: BsModalService
     ) {
         this.purchaseSort = PurchaseSort;
     }
@@ -278,14 +281,13 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 location.href = url;
                 return;
             }
-            this.utilService.openConfirm({
-                body: `<p class="mb-1">入場時にワクチン接種済証明書のご提示をお願いいたします。</p>
-                <p class="text-danger mb-0">※ご提示いただけない場合はご入場をお断りさせていただきます。</p>`,
-                next: '了承する',
-                prev: 'キャンセル',
-                cb: () => {
-                    location.href = url;
+            this.modal.show(AppearPopupComponent, {
+                initialState: {
+                    cb: () => {
+                        location.href = url;
+                    },
                 },
+                class: 'modal-dialog-centered',
             });
         } catch (error) {
             console.error(error);

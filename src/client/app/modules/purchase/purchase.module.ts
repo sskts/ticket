@@ -6,19 +6,14 @@ import { PurchasePerformanceFilmComponent } from './components/parts/purchase-pe
 import { PurchasePerformanceTimeComponent } from './components/parts/purchase-performance-time/purchase-performance-time.component';
 import { PurchaseRoutingModule } from './purchase-routing.module';
 
-
 @NgModule({
-  declarations: [
-    PurchaseIndexComponent,
-    PurchasePerformanceFilmComponent,
-    PurchasePerformanceTimeComponent
-  ],
-  entryComponents: [],
-  imports: [
-    CommonModule,
-    PurchaseRoutingModule,
-    SharedModule,
-  ],
-  exports: []
+    declarations: [
+        PurchaseIndexComponent,
+        PurchasePerformanceFilmComponent,
+        PurchasePerformanceTimeComponent,
+    ],
+    entryComponents: [],
+    imports: [CommonModule, PurchaseRoutingModule, SharedModule],
+    exports: [],
 })
-export class PurchaseModule { }
+export class PurchaseModule {}
