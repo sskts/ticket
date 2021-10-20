@@ -1,8 +1,14 @@
 <div class="p-3 scroll-vertical">
-    <div class="mb-3 text-large text-center">{{ title }}</div>
-    <p class="mb-4 text-md-center" [innerHTML]="body"></p>
+    <div class="mb-4">
+        <div *ngIf="title" class="mb-3 text-large text-center">{{ title }}</div>
+        <div *ngIf="body" [innerHTML]="body"></div>
+    </div>
     <div class="buttons mx-auto text-center">
-        <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="close()">はい</button>
-        <button type="button" class="btn btn-outline-secondary btn-block py-3" (click)="modal.hide()">いいえ</button>
+        <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="close()">
+            {{ next }}
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-block py-3" (click)="modal.hide()">
+            {{ prev }}
+        </button>
     </div>
 </div>
