@@ -33,6 +33,7 @@ export interface IScreen {
 }
 
 export interface ITime {
+    appear_popup?: string;
     start_time: string;
     end_time: string;
     only_window_sale_start_time: string;

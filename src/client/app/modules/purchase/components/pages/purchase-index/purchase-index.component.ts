@@ -5,8 +5,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
+import { BsModalService } from 'ngx-bootstrap';
 import { environment } from '../../../../../../environments/environment';
 import { getConfig, object2query, sleep } from '../../../../../functions';
+import { Performance } from '../../../../../models/performance';
 import { ISchedule, IScheduleData } from '../../../../../models/schedule';
 import {
     AwsCognitoService,
@@ -19,8 +21,9 @@ import {
     PurchaseSort,
     SelectService,
     UserService,
-    UtilService
+    UtilService,
 } from '../../../../../services';
+import { AppearPopupComponent } from '../../../../shared/components/parts/appear-popup/appear-popup.component';
 
 interface IDate {
     value: string;
@@ -37,7 +40,7 @@ interface IDate {
 @Component({
     selector: 'app-purchase',
     templateUrl: './purchase-index.component.html',
-    styleUrls: ['./purchase-index.component.scss']
+    styleUrls: ['./purchase-index.component.scss'],
 })
 /**
  * チケット購入
@@ -76,7 +79,8 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
         private utilService: UtilService,
         private maintenanceService: MaintenanceService,
         private awsCognitoService: AwsCognitoService,
-        private masterService: MasterService
+        private masterService: MasterService,
+        private modal: BsModalService
     ) {
         this.purchaseSort = PurchaseSort;
     }
@@ -95,20 +99,22 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 this.isLoading = false;
                 return;
             }
-            this.sellers =
-                await this.utilService.getJson<{
+            this.sellers = await this.utilService.getJson<
+                {
                     branchCode: string;
                     id: string;
                     name: string;
                     alias: string;
-                }[]>(`${getConfig().scheduleApiEndpoint}/seller/seller.json`);
+                }[]
+            >(`${getConfig().scheduleApiEndpoint}/seller/seller.json`);
             this.conditions = this.selectService.data.purchase;
             if (this.userService.isMember()) {
                 // 会員
                 await this.userService.updateAccount();
                 if (this.conditions.theater === '') {
                     const theater = this.userService.getWellGoTheaterCode();
-                    this.conditions.theater = theater !== undefined ? theater : '';
+                    this.conditions.theater =
+                        theater !== undefined ? theater : '';
                 }
             }
             await this.initialize();
@@ -142,8 +148,11 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 {},
                 { exclude: true, sort: true }
             );
-            const findResult = this.theaters.find(theater =>
-                theater.location !== undefined && theater.location.branchCode === this.conditions.theater);
+            const findResult = this.theaters.find(
+                (theater) =>
+                    theater.location !== undefined &&
+                    theater.location.branchCode === this.conditions.theater
+            );
             if (findResult === undefined) {
                 this.conditions.theater = '';
                 this.maintenance.schedule = undefined;
@@ -163,7 +172,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
             console.error(error);
             this.utilService.openAlert({
                 title: 'エラー',
-                body: 'スケジュールの取得に失敗しました。'
+                body: 'スケジュールの取得に失敗しました。',
             });
         }
     }
@@ -228,40 +237,61 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
 
     /**
      * パフォーマンス選択
-     * @method performanceSelect
+     * @method selectPerformance
      */
-    public async performanceSelect(event: { id: string }) {
-        const findResult = this.sellers.find(s => s.alias === this.theatreName);
-        if (findResult === undefined) {
-            return;
-        }
-        const id = `${this.conditions.theater}${event.id}`;
-        const common = {
-            id,
-            sellerId: findResult.id,
-            redirectUrl: getConfig().ticketSiteUrl,
-            native: '1',
-        };
-        let params;
-        if (this.userService.isMember()) {
-            params = {
-                ...common,
-                member: MemberType.Member,
-                clientId: this.cinerinoService.auth.options.clientId
-            };
-        } else {
-            if (this.awsCognitoService.credentials === undefined) {
-                throw new Error('awsCognito.credentials is undefined');
+    public selectPerformance(params: { performance: Performance }) {
+        try {
+            const { performance } = params;
+            const seller = this.sellers.find(
+                (s) => s.alias === this.theatreName
+            );
+            if (seller === undefined) {
+                throw new Error('seller undefined');
             }
-            params = {
-                ...common,
-                identityId: this.awsCognitoService.credentials.identityId,
-                member: MemberType.NotMember,
-                clientId: this.cinerinoService.auth.options.clientId
+            const id = `${this.conditions.theater}${performance.createId()}`;
+            const commonQuery = {
+                id,
+                sellerId: seller.id,
+                redirectUrl: getConfig().ticketSiteUrl,
+                native: '1',
             };
+            let query;
+            if (this.userService.isMember()) {
+                query = {
+                    ...commonQuery,
+                    member: MemberType.Member,
+                    clientId: this.cinerinoService.auth.options.clientId,
+                };
+            } else {
+                if (this.awsCognitoService.credentials === undefined) {
+                    throw new Error('awsCognito.credentials is undefined');
+                }
+                query = {
+                    ...commonQuery,
+                    identityId: this.awsCognitoService.credentials.identityId,
+                    member: MemberType.NotMember,
+                    clientId: this.cinerinoService.auth.options.clientId,
+                };
+            }
+            const url = `${
+                getConfig().entranceServerUrl
+            }/ticket/index.html?${object2query(query)}`;
+            const appearPopup = performance.time.appear_popup;
+            if (appearPopup === undefined || appearPopup === '0') {
+                location.href = url;
+                return;
+            }
+            this.modal.show(AppearPopupComponent, {
+                initialState: {
+                    cb: () => {
+                        location.href = url;
+                    },
+                },
+                class: 'modal-dialog-centered',
+            });
+        } catch (error) {
+            console.error(error);
         }
-        const url = `${getConfig().entranceServerUrl}/ticket/index.html?${object2query(params)}`;
-        location.href = url;
     }
 
     /**
@@ -270,12 +300,16 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
     private async getSchedule(): Promise<IScheduleData> {
         const now = (await this.utilService.getServerTime()).date;
         const branchCode = this.conditions.theater;
-        const findResult = this.sellers.find(s => branchCode === s.branchCode);
+        const findResult = this.sellers.find(
+            (s) => branchCode === s.branchCode
+        );
         if (findResult === undefined) {
             throw new Error('劇場が見つかりません');
         }
         this.theatreName = findResult.alias;
-        const url = `${getConfig().scheduleApiEndpoint}/${findResult.alias}/schedule.json?date=${now}`;
+        const url = `${getConfig().scheduleApiEndpoint}/${
+            findResult.alias
+        }/schedule.json?date=${now}`;
         const json = await this.utilService.getJson<IScheduleData>(url);
         return json;
     }
@@ -289,26 +323,48 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
         const today = moment(now).format('YYYYMMDD');
         this.schedules.forEach((schedule) => {
             const findResult = schedule.movie.find(
-                m => m.screen.find(
-                    s => s.time.find(t => {
-                        const endDate = (t.start_time < t.end_time)
-                            ? moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm')
-                            : moment(`${schedule.date} ${t.end_time}`, 'YYYYMMDD HHmm').add(1, 'days');
-                        return (moment(t.online_display_start_day) <= moment(today)
-                            && endDate > now);
-                    }) !== undefined
-                ) !== undefined
+                (m) =>
+                    m.screen.find(
+                        (s) =>
+                            s.time.find((t) => {
+                                const endDate =
+                                    t.start_time < t.end_time
+                                        ? moment(
+                                              `${schedule.date} ${t.end_time}`,
+                                              'YYYYMMDD HHmm'
+                                          )
+                                        : moment(
+                                              `${schedule.date} ${t.end_time}`,
+                                              'YYYYMMDD HHmm'
+                                          ).add(1, 'days');
+                                return (
+                                    moment(t.online_display_start_day) <=
+                                        moment(today) && endDate > now
+                                );
+                            }) !== undefined
+                    ) !== undefined
             );
             const preSale = schedule.movie.find(
-                m => m.screen.find(
-                    s => s.time.find((t) => {
-                        const rsvStartDate = moment(`${t.rsv_start_day} ${t.rsv_start_time}`, 'YYYYMMDD HHmm');
-                        const startDate = moment(`${schedule.date} ${t.start_time}`, 'YYYYMMDD HHmm');
-                        const diff = Number(environment.PRE_SALE_DIFFERENCE_DAY);
-                        return startDate.diff(rsvStartDate, 'day') > diff;
-                    }
+                (m) =>
+                    m.screen.find(
+                        (s) =>
+                            s.time.find((t) => {
+                                const rsvStartDate = moment(
+                                    `${t.rsv_start_day} ${t.rsv_start_time}`,
+                                    'YYYYMMDD HHmm'
+                                );
+                                const startDate = moment(
+                                    `${schedule.date} ${t.start_time}`,
+                                    'YYYYMMDD HHmm'
+                                );
+                                const diff = Number(
+                                    environment.PRE_SALE_DIFFERENCE_DAY
+                                );
+                                return (
+                                    startDate.diff(rsvStartDate, 'day') > diff
+                                );
+                            }) !== undefined
                     ) !== undefined
-                ) !== undefined
             );
 
             if (findResult === undefined) {
@@ -321,15 +377,16 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                         month: date.format('MM'),
                         week: date.format('ddd'),
                         day: date.format('DD'),
-                        year: date.format('YYYY')
+                        year: date.format('YYYY'),
                     },
                     preSale: preSale !== undefined,
-                    serviceDay: schedule.name_service_day
+                    serviceDay: schedule.name_service_day,
                 });
             }
         });
         this.dateList = result;
-        this.isPreSale = (this.dateList.find(date => date.preSale) !== undefined);
+        this.isPreSale =
+            this.dateList.find((date) => date.preSale) !== undefined;
     }
 
     /**
@@ -340,10 +397,15 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
         await sleep(0);
         const now = moment();
         const today = moment(now).format('YYYYMMDD');
-        const searchDate = (this.dateList.find(d => d.value === this.conditions.date) === undefined)
-            ? today : this.conditions.date;
+        const searchDate =
+            this.dateList.find((d) => d.value === this.conditions.date) ===
+            undefined
+                ? today
+                : this.conditions.date;
         this.conditions.date = searchDate;
-        this.schedule = this.schedules.find(s => s.date === this.conditions.date);
+        this.schedule = this.schedules.find(
+            (s) => s.date === this.conditions.date
+        );
         if (this.schedule === undefined) {
             return;
         }
@@ -361,13 +423,16 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
      * メンテナンス判定
      */
     public isMaintenance(maintenanceType?: 'confirm' | 'schedule') {
-        const confirm = (this.maintenance.confirm && this.maintenance.confirm.isMaintenance);
-        const schedule = (this.maintenance.schedule && this.maintenance.schedule.message !== undefined);
+        const confirm =
+            this.maintenance.confirm && this.maintenance.confirm.isMaintenance;
+        const schedule =
+            this.maintenance.schedule &&
+            this.maintenance.schedule.message !== undefined;
         if (maintenanceType === 'confirm') {
             return confirm;
         } else if (maintenanceType === 'schedule') {
             return schedule;
         }
-        return (confirm || schedule);
+        return confirm || schedule;
     }
 }

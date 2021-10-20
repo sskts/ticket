@@ -54,10 +54,10 @@
             </ul>
             <div *ngIf="!isLoading && schedule">
                 <app-purchase-performance-film *ngIf="conditions.sort === purchaseSort.Film" [schedule]="schedule"
-                    [member]="userService.isMember()" (select)="performanceSelect($event)">
+                    [member]="userService.isMember()" (selectPerformance)="selectPerformance($event)">
                 </app-purchase-performance-film>
                 <app-purchase-performance-time *ngIf="conditions.sort === purchaseSort.Time" [schedule]="schedule"
-                    [member]="userService.isMember()" (select)="performanceSelect($event)">
+                    [member]="userService.isMember()" (selectPerformance)="selectPerformance($event)">
                 </app-purchase-performance-time>
             </div>
         </div>
