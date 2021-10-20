@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.11.0 - 2021-10-20
+
+### Added
+
+-   特定上映回への案内表示追加
+
 ## 3.10.0 - 2021-09-13
 
 ### Changed
