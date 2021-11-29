@@ -529,13 +529,15 @@ var PurchaseIndexComponent = /** @class */ (function () {
                 query = __assign(__assign({}, commonQuery), { identityId: this.awsCognitoService.credentials.identityId, member: _services__WEBPACK_IMPORTED_MODULE_6__["MemberType"].NotMember, clientId: this.cinerinoService.auth.options.clientId });
             }
             var url_1 = Object(_functions__WEBPACK_IMPORTED_MODULE_5__["getConfig"])().entranceServerUrl + "/ticket/index.html?" + Object(_functions__WEBPACK_IMPORTED_MODULE_5__["object2query"])(query);
-            var appearPopup = performance_1.time.appear_popup;
-            if (appearPopup === undefined || appearPopup === '0') {
+            var _a = performance_1.time, popupMessage1 = _a.popupMessage1, popupMessage2 = _a.popupMessage2;
+            if (popupMessage1 === undefined && popupMessage2 === undefined) {
                 location.href = url_1;
                 return;
             }
             this.modal.show(_shared_components_parts_appear_popup_appear_popup_component__WEBPACK_IMPORTED_MODULE_7__["AppearPopupComponent"], {
                 initialState: {
+                    title: popupMessage1,
+                    read: popupMessage2,
                     cb: function () {
                         location.href = url_1;
                     },

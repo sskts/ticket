@@ -276,13 +276,15 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
             const url = `${
                 getConfig().entranceServerUrl
             }/ticket/index.html?${object2query(query)}`;
-            const appearPopup = performance.time.appear_popup;
-            if (appearPopup === undefined || appearPopup === '0') {
+            const { popupMessage1, popupMessage2 } = performance.time;
+            if (popupMessage1 === undefined && popupMessage2 === undefined) {
                 location.href = url;
                 return;
             }
             this.modal.show(AppearPopupComponent, {
                 initialState: {
+                    title: popupMessage1,
+                    read: popupMessage2,
                     cb: () => {
                         location.href = url;
                     },
