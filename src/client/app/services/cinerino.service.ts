@@ -5,10 +5,9 @@ import 'rxjs/add/operator/toPromise';
 import { StorageService } from './storage.service';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class CinerinoService {
-
     public auth: cinerino.auth.ClientCredentials | cinerino.auth.OAuth2;
     public userName?: string;
     public event: cinerino.service.Event;
@@ -20,16 +19,13 @@ export class CinerinoService {
     public product: cinerino.service.Product;
     public ownerShipInfo: cinerino.service.person.OwnershipInfo;
     public transaction: {
-        placeOrder: cinerino.service.transaction.PlaceOrder
+        placeOrder: cinerino.service.transaction.PlaceOrder;
     };
     private endpoint: string;
     private waiterServerUrl: string;
     private projectId: string;
 
-    constructor(
-        private http: HttpClient,
-        private storage: StorageService
-    ) { }
+    constructor(private http: HttpClient, private storage: StorageService) {}
 
     /**
      * getServices
@@ -44,9 +40,11 @@ export class CinerinoService {
             this.payment = new cinerino.service.Payment(option);
             this.person = new cinerino.service.Person(option);
             this.product = new cinerino.service.Product(option);
-            this.ownerShipInfo = new cinerino.service.person.OwnershipInfo(option);
+            this.ownerShipInfo = new cinerino.service.person.OwnershipInfo(
+                option
+            );
             this.transaction = {
-                placeOrder: new cinerino.service.transaction.PlaceOrder(option)
+                placeOrder: new cinerino.service.transaction.PlaceOrder(option),
             };
         } catch (err) {
             console.log(err);
@@ -65,15 +63,20 @@ export class CinerinoService {
     /**
      * ユーザー名付きサインイン
      */
-    public async signInWithUserName(isReSignIn: boolean = false, userName: string = '') {
+    public async signInWithUserName(
+        isReSignIn: boolean = false,
+        userName: string = ''
+    ) {
         const url = '/api/authorize/signIn';
-        const result = await this.http.get<any>(url, {}).toPromise();
+        const result = await this.http
+            .get<{ url: string }>(url, {})
+            .toPromise();
         let redirectUrl = result.url;
-        console.log(result.url);
         if (isReSignIn) {
             redirectUrl += '&isReSignIn=1';
         }
-        location.href = redirectUrl += '&userName=' + encodeURIComponent(userName);
+        location.href = redirectUrl +=
+            '&userName=' + encodeURIComponent(userName);
     }
 
     /**
@@ -81,51 +84,55 @@ export class CinerinoService {
      */
     public async signUp() {
         const url = '/api/authorize/signIn';
-        const result = await this.http.get<any>(url, {}).toPromise();
-        console.log(result.url);
-        const signupUrl = (<string>result.url).replace(/\/authorize/, '/signup');
+        const result = await this.http
+            .get<{ url: string }>(url, {})
+            .toPromise();
+        const signupUrl = result.url.replace(/\/authorize/, '/signup');
         location.href = signupUrl;
     }
 
     /**
-    * サインアウト
-    */
+     * サインアウト
+     */
     public async signOut() {
         const url = '/api/authorize/signOut';
-        const result = await this.http.get<any>(url, {}).toPromise();
-        console.log(result.url);
+        const result = await this.http
+            .get<{ url: string }>(url, {})
+            .toPromise();
         location.href = result.url;
     }
 
     /**
-    * @method createOption
-    */
+     * @method createOption
+     */
     public async createOption() {
         await this.authorize();
 
         return {
             endpoint: this.endpoint,
             auth: this.auth,
-            project: { id: this.projectId }
+            project: { id: this.projectId },
         };
     }
 
     /**
-    * @method authorize
-    */
+     * @method authorize
+     */
     public async authorize() {
         const user = this.storage.load('user');
         const memberType = user.memberType;
         const url = '/api/authorize/getCredentials';
         const body = { member: memberType };
-        const result = await this.http.post<{
-            credentials: { accessToken: string; };
-            userName?: string;
-            clientId: string;
-            endpoint: string;
-            projectId: string;
-            waiterServerUrl: string;
-        }>(url, body).toPromise();
+        const result = await this.http
+            .post<{
+                credentials: { accessToken: string };
+                userName?: string;
+                clientId: string;
+                endpoint: string;
+                projectId: string;
+                waiterServerUrl: string;
+            }>(url, body)
+            .toPromise();
         const option = {
             domain: '',
             clientId: result.clientId,
@@ -135,7 +142,7 @@ export class CinerinoService {
             scope: '',
             state: '',
             nonce: null,
-            tokenIssuer: ''
+            tokenIssuer: '',
         };
         this.auth = cinerino.createAuthInstance(option);
         this.auth.setCredentials(result.credentials);
@@ -163,30 +170,31 @@ export class CinerinoService {
     }
 
     /**
-    * @method getAPIVersion
-    * package.jsonから取得したバージョンを取得する
-    */
+     * @method getAPIVersion
+     * package.jsonから取得したバージョンを取得する
+     */
     private async getAPIVersion() {
         const url = '/api/version';
-        const result = await this.http.get<{
-            version: string;
-        }>(url).toPromise();
+        const result = await this.http
+            .get<{
+                version: string;
+            }>(url)
+            .toPromise();
         return result.version;
     }
 
     /**
      * パスポート取得
      */
-     public async getPassport(params: {
-        scope: string;
-    }) {
-        if (this.waiterServerUrl === undefined
-            || this.waiterServerUrl === '') {
+    public async getPassport(params: { scope: string }) {
+        if (this.waiterServerUrl === undefined || this.waiterServerUrl === '') {
             return { token: '' };
         }
         const url = `${this.waiterServerUrl}/projects/${this.projectId}/passports`;
         const body = { scope: params.scope };
-        const result = await this.http.post<{ token: string; }>(url, body).toPromise();
+        const result = await this.http
+            .post<{ token: string }>(url, body)
+            .toPromise();
 
         return result;
     }
