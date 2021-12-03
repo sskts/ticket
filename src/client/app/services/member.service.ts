@@ -252,10 +252,14 @@ export class MemberService {
 
     /**
      * 退会
-     * @method unRegister
+     * @method deleteUser
      */
-    public async unRegister() {
+    public async deleteUser() {
         await this.cinerinoService.getServices();
-        await this.cinerinoService.person.deleteById({});
+        const { accessToken } = this.cinerinoService.auth.credentials;
+        if (accessToken === undefined) {
+            throw new Error('accessToken undefined');
+        }
+        await this.awsCognitoService.deleteUser({ accessToken });
     }
 }

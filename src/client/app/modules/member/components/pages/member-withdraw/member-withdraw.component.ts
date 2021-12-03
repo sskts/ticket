@@ -49,7 +49,7 @@ export class MemberWithdrawComponent implements OnInit {
         this.isLoading = true;
         try {
             // 会員プログラム削除
-            await this.member.unRegister();
+            await this.member.deleteUser();
 
             // クレジットカード削除
             await this.user.deleteCreditCard().catch((err) => {

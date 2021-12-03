@@ -8181,7 +8181,7 @@ var MemberWithdrawComponent = /** @class */ (function () {
                     case 1:
                         _a.trys.push([1, 5, , 6]);
                         // 会員プログラム削除
-                        return [4 /*yield*/, this.member.unRegister()];
+                        return [4 /*yield*/, this.member.deleteUser()];
                     case 2:
                         // 会員プログラム削除
                         _a.sent();

@@ -5179,6 +5179,29 @@ var AwsCognitoService = /** @class */ (function () {
         });
     };
     /**
+     * ユーザー削除
+     */
+    AwsCognitoService.prototype.deleteUser = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].update({ region: AwsCognitoService.REGION });
+                        var accessToken = params.accessToken;
+                        var cognitoIdentityServiceProvider = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoIdentityServiceProvider"]();
+                        cognitoIdentityServiceProvider.deleteUser({
+                            AccessToken: accessToken,
+                        }, function (err, _data) {
+                            if (err) {
+                                reject(err);
+                                return;
+                            }
+                            resolve();
+                        });
+                    })];
+            });
+        });
+    };
+    /**
      * 認証確認
      * @method isAuthenticate
      * @returns {boolean}
@@ -6800,16 +6823,21 @@ var MemberService = /** @class */ (function () {
     };
     /**
      * 退会
-     * @method unRegister
+     * @method deleteUser
      */
-    MemberService.prototype.unRegister = function () {
+    MemberService.prototype.deleteUser = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var accessToken;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.cinerinoService.person.deleteById({})];
+                        accessToken = this.cinerinoService.auth.credentials.accessToken;
+                        if (accessToken === undefined) {
+                            throw new Error('accessToken undefined');
+                        }
+                        return [4 /*yield*/, this.awsCognitoService.deleteUser({ accessToken: accessToken })];
                     case 2:
                         _a.sent();
                         return [2 /*return*/];

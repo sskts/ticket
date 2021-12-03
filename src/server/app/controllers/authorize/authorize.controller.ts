@@ -10,7 +10,7 @@ const log = debug('sskts-ticket:authorize');
 
 export enum MemberType {
     NotMember = '0',
-    Member = '1'
+    Member = '1',
 }
 
 /**
@@ -24,28 +24,46 @@ export async function getCredentials(req: Request, res: Response) {
         if (req.session === undefined) {
             throw new Error('session is undefined');
         }
-        const body = (req.method === 'POST' || req.method === 'post') ? req.body : req.query;
-        const endpoint = (<string>process.env.SSKTS_API_ENDPOINT);
-        let authModel;
-        if (body.member === MemberType.NotMember) {
-            authModel = new AuthModel();
-        } else if (body.member === MemberType.Member) {
-            authModel = new Auth2Model(req.session.auth);
-        } else {
-            throw new Error('member does not macth MemberType');
-        }
-        const options = { endpoint, auth: authModel.create() };
-        const accessToken = await options.auth.getAccessToken();
-        const credentials = { accessToken };
-        const clientId = options.auth.options.clientId;
+        const body =
+            req.method === 'POST' || req.method === 'post'
+                ? req.body
+                : req.query;
+        const endpoint = <string>process.env.SSKTS_API_ENDPOINT;
         const projectId = <string>process.env.PROJECT_ID;
         const waiterServerUrl = <string>process.env.WAITER_SERVER_URL;
-
+        let userName;
+        let credentials;
+        let clientId;
+        let authModel;
+        if (body.member === MemberType.Member) {
+            authModel = new Auth2Model(req.session.auth);
+            const options = { endpoint, auth: authModel.create() };
+            const accessToken = await options.auth.getAccessToken();
+            authModel.credentials = options.auth.credentials;
+            authModel.save(req.session);
+            credentials = { accessToken };
+            clientId = options.auth.options.clientId;
+            userName =
+                body.member === MemberType.Member
+                    ? options.auth.verifyIdToken(<any>{}).getUsername()
+                    : undefined;
+        } else {
+            authModel = new AuthModel();
+            const options = { endpoint, auth: authModel.create() };
+            const accessToken = await options.auth.getAccessToken();
+            credentials = { accessToken };
+            clientId = options.auth.options.clientId;
+        }
         log('getCredentials MemberType', body.member);
-        const userName = (body.member === MemberType.Member)
-            ? options.auth.verifyIdToken(<any>{}).getUsername()
-            : undefined;
-        res.json({ credentials, userName, clientId, endpoint, projectId, waiterServerUrl });
+
+        res.json({
+            credentials,
+            userName,
+            clientId,
+            endpoint,
+            projectId,
+            waiterServerUrl,
+        });
     } catch (err) {
         errorProsess(res, err);
     }
@@ -67,7 +85,7 @@ export async function signIn(req: Request, res: Response) {
     const authUrl = auth.generateAuthUrl({
         scopes: authModel.scopes,
         state: authModel.state,
-        codeVerifier: authModel.codeVerifier
+        codeVerifier: authModel.codeVerifier,
     });
     delete req.session.auth;
     res.json({ url: authUrl });
@@ -79,7 +97,11 @@ export async function signIn(req: Request, res: Response) {
  * @param {Response} res
  * @param {NextFunction} next
  */
-export async function signInRedirect(req: Request, res: Response, next: NextFunction) {
+export async function signInRedirect(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
     log('signInRedirect');
     try {
         if (req.session === undefined) {
@@ -87,7 +109,9 @@ export async function signInRedirect(req: Request, res: Response, next: NextFunc
         }
         const authModel = new Auth2Model(req.session.auth);
         if (req.query.state !== authModel.state) {
-            throw (new Error(`state not matched ${req.query.state} !== ${authModel.state}`));
+            throw new Error(
+                `state not matched ${req.query.state} !== ${authModel.state}`
+            );
         }
         const auth = authModel.create();
         const credentials = await auth.getToken(
@@ -118,7 +142,7 @@ export async function signOut(req: Request, res: Response) {
     const logoutUrl = auth.generateLogoutUrl();
     log('logoutUrl:', logoutUrl);
     res.json({
-        url: logoutUrl
+        url: logoutUrl,
     });
 }
 
