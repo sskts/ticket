@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.12.0 - 2021-12-03
+
+### Changed
+
+-   プロフィール検索、編集 API を cinerino から cognito へ変更
+
 ## 3.11.0 - 2021-10-20
 
 ### Added
