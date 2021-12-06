@@ -5191,7 +5191,7 @@ var AwsCognitoService = /** @class */ (function () {
                         cognitoIdentityServiceProvider.deleteUser({
                             AccessToken: accessToken,
                         }, function (err, _data) {
-                            if (err) {
+                            if (err && err.name !== 'NotAuthorizedException') {
                                 reject(err);
                                 return;
                             }

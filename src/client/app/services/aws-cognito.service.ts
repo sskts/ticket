@@ -218,7 +218,7 @@ export class AwsCognitoService {
                     AccessToken: accessToken,
                 },
                 (err, _data) => {
-                    if (err) {
+                    if (err && err.name !== 'NotAuthorizedException') {
                         reject(err);
                         return;
                     }
