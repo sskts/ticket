@@ -205,6 +205,30 @@ export class AwsCognitoService {
     }
 
     /**
+     * ユーザー削除
+     */
+    public async deleteUser(params: { accessToken: string }): Promise<void> {
+        return new Promise((resolve, reject) => {
+            AWS.config.update({ region: AwsCognitoService.REGION });
+            const { accessToken } = params;
+            const cognitoIdentityServiceProvider =
+                new AWS.CognitoIdentityServiceProvider();
+            cognitoIdentityServiceProvider.deleteUser(
+                {
+                    AccessToken: accessToken,
+                },
+                (err, _data) => {
+                    if (err && err.name !== 'NotAuthorizedException') {
+                        reject(err);
+                        return;
+                    }
+                    resolve();
+                }
+            );
+        });
+    }
+
+    /**
      * 認証確認
      * @method isAuthenticate
      * @returns {boolean}
