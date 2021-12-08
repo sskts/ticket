@@ -34,29 +34,45 @@ function getCredentials(req, res) {
             if (req.session === undefined) {
                 throw new Error('session is undefined');
             }
-            const body = (req.method === 'POST' || req.method === 'post') ? req.body : req.query;
+            const body = req.method === 'POST' || req.method === 'post'
+                ? req.body
+                : req.query;
             const endpoint = process.env.SSKTS_API_ENDPOINT;
-            let authModel;
-            if (body.member === MemberType.NotMember) {
-                authModel = new auth_model_1.AuthModel();
-            }
-            else if (body.member === MemberType.Member) {
-                authModel = new auth2_model_1.Auth2Model(req.session.auth);
-            }
-            else {
-                throw new Error('member does not macth MemberType');
-            }
-            const options = { endpoint, auth: authModel.create() };
-            const accessToken = yield options.auth.getAccessToken();
-            const credentials = { accessToken };
-            const clientId = options.auth.options.clientId;
             const projectId = process.env.PROJECT_ID;
             const waiterServerUrl = process.env.WAITER_SERVER_URL;
+            let userName;
+            let credentials;
+            let clientId;
+            let authModel;
+            if (body.member === MemberType.Member) {
+                authModel = new auth2_model_1.Auth2Model(req.session.auth);
+                const options = { endpoint, auth: authModel.create() };
+                const accessToken = yield options.auth.getAccessToken();
+                authModel.credentials = options.auth.credentials;
+                authModel.save(req.session);
+                credentials = { accessToken };
+                clientId = options.auth.options.clientId;
+                userName =
+                    body.member === MemberType.Member
+                        ? options.auth.verifyIdToken({}).getUsername()
+                        : undefined;
+            }
+            else {
+                authModel = new auth_model_1.AuthModel();
+                const options = { endpoint, auth: authModel.create() };
+                const accessToken = yield options.auth.getAccessToken();
+                credentials = { accessToken };
+                clientId = options.auth.options.clientId;
+            }
             log('getCredentials MemberType', body.member);
-            const userName = (body.member === MemberType.Member)
-                ? options.auth.verifyIdToken({}).getUsername()
-                : undefined;
-            res.json({ credentials, userName, clientId, endpoint, projectId, waiterServerUrl });
+            res.json({
+                credentials,
+                userName,
+                clientId,
+                endpoint,
+                projectId,
+                waiterServerUrl,
+            });
         }
         catch (err) {
             base_controller_1.errorProsess(res, err);
@@ -81,7 +97,7 @@ function signIn(req, res) {
         const authUrl = auth.generateAuthUrl({
             scopes: authModel.scopes,
             state: authModel.state,
-            codeVerifier: authModel.codeVerifier
+            codeVerifier: authModel.codeVerifier,
         });
         delete req.session.auth;
         res.json({ url: authUrl });
@@ -103,7 +119,7 @@ function signInRedirect(req, res, next) {
             }
             const authModel = new auth2_model_1.Auth2Model(req.session.auth);
             if (req.query.state !== authModel.state) {
-                throw (new Error(`state not matched ${req.query.state} !== ${authModel.state}`));
+                throw new Error(`state not matched ${req.query.state} !== ${authModel.state}`);
             }
             const auth = authModel.create();
             const credentials = yield auth.getToken(req.query.code, authModel.codeVerifier);
@@ -132,7 +148,7 @@ function signOut(req, res) {
         const logoutUrl = auth.generateLogoutUrl();
         log('logoutUrl:', logoutUrl);
         res.json({
-            url: logoutUrl
+            url: logoutUrl,
         });
     });
 }
