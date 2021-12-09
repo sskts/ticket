@@ -28,7 +28,7 @@ exports.default = (app) => {
         res.redirect(url);
     });
     app.use((req, res, next) => {
-        if ((/\.(css|js|svg|jpg|png|gif|ico|json|html|txt)/).test(req.path)) {
+        if (/\.(css|js|svg|jpg|png|gif|ico|json|html|txt)/.test(req.path)) {
             res.status(404);
             res.end();
             return;
@@ -53,9 +53,14 @@ exports.default = (app) => {
             ticketSiteUrl: process.env.TICKET_SITE_URL,
         });
     });
-    app.get('/api/serverTime', (_req, res) => { res.json({ date: moment().toISOString() }); });
+    app.get('/api/serverTime', (_req, res) => {
+        res.json({ date: moment().toISOString() });
+    });
     app.get('*', (_req, res, _next) => {
-        res.sendFile(path.resolve(`${__dirname}/../../../client/${process.env.NODE_ENV}/index.html`));
+        res.sendFile(path.resolve(`${__dirname}/../../../client/${process.env.NODE_ENV}/index.html`), {
+            lastModified: false,
+            etag: false,
+        });
     });
 };
 /**

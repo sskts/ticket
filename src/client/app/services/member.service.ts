@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
+import { AwsCognitoService } from './aws-cognito.service';
 import { CinerinoService } from './cinerino.service';
 import { UtilService } from './util.service';
 
@@ -10,6 +11,7 @@ import { UtilService } from './util.service';
 export class MemberService {
     constructor(
         private cinerinoService: CinerinoService,
+        private awsCognitoService: AwsCognitoService,
         private utilService: UtilService
     ) {}
 
@@ -31,7 +33,13 @@ export class MemberService {
             programMembershipRegistered,
         } = params;
         await this.cinerinoService.getServices();
-        const profile = await this.cinerinoService.person.getProfile({});
+        const { accessToken } = this.cinerinoService.auth.credentials;
+        if (accessToken === undefined) {
+            throw new Error('accessToken undefined');
+        }
+        const profile = await this.awsCognitoService.getProfile({
+            accessToken,
+        });
         if (profile.telephone === undefined) {
             throw new Error('No telephone');
         }
@@ -244,10 +252,14 @@ export class MemberService {
 
     /**
      * 退会
-     * @method unRegister
+     * @method deleteUser
      */
-    public async unRegister() {
+    public async deleteUser() {
         await this.cinerinoService.getServices();
-        await this.cinerinoService.person.deleteById({});
+        const { accessToken } = this.cinerinoService.auth.credentials;
+        if (accessToken === undefined) {
+            throw new Error('accessToken undefined');
+        }
+        await this.awsCognitoService.deleteUser({ accessToken });
     }
 }

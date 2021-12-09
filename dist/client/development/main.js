@@ -5011,20 +5011,20 @@ var AwsCognitoService = /** @class */ (function () {
                         if (this.isAuthenticate()) {
                             return [2 /*return*/];
                         }
-                        aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].region = AwsCognitoService.REGION;
+                        aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].update({ region: AwsCognitoService.REGION });
                         deviceId = localStorage.getItem('deviceId');
                         if (deviceId === 'undefined' || deviceId === null) {
                             aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].credentials = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoIdentityCredentials"]({
-                                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID
+                                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
                             });
                         }
                         else {
                             aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].credentials = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoIdentityCredentials"]({
                                 IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
-                                IdentityId: deviceId
+                                IdentityId: deviceId,
                             });
                         }
-                        this.credentials = aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].credentials;
+                        this.credentials = (aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].credentials);
                         return [4 /*yield*/, this.credentials.getPromise()];
                     case 1:
                         _a.sent();
@@ -5037,14 +5037,180 @@ var AwsCognitoService = /** @class */ (function () {
         });
     };
     /**
+     * ユーザー取得
+     */
+    AwsCognitoService.prototype.getUser = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].update({ region: AwsCognitoService.REGION });
+                        var accessToken = params.accessToken;
+                        var cognitoIdentityServiceProvider = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoIdentityServiceProvider"]();
+                        cognitoIdentityServiceProvider.getUser({ AccessToken: accessToken }, function (err, data) {
+                            if (err) {
+                                reject(err);
+                                return;
+                            }
+                            resolve(data);
+                        });
+                    })];
+            });
+        });
+    };
+    /**
+     * プロフィール取得
+     */
+    AwsCognitoService.prototype.getProfile = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            var accessToken, user, profile;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        accessToken = params.accessToken;
+                        return [4 /*yield*/, this.getUser({ accessToken: accessToken })];
+                    case 1:
+                        user = _a.sent();
+                        profile = {
+                            additionalProperty: undefined,
+                            email: undefined,
+                            givenName: undefined,
+                            familyName: undefined,
+                            telephone: undefined,
+                        };
+                        profile.additionalProperty = user.UserAttributes.filter(function (a) { return a.Value !== undefined; }).map(function (a) { return ({
+                            name: a.Name,
+                            value: a.Value,
+                        }); });
+                        user.UserAttributes.forEach(function (a) {
+                            if (a.Name === 'email') {
+                                profile[a.Name] = a.Value;
+                            }
+                            if (a.Name === 'phone_number') {
+                                profile.telephone = a.Value;
+                            }
+                            if (a.Name === 'family_name') {
+                                profile.familyName = a.Value;
+                            }
+                            if (a.Name === 'given_name') {
+                                profile.givenName = a.Value;
+                            }
+                        });
+                        return [2 /*return*/, profile];
+                }
+            });
+        });
+    };
+    /**
+     * 属性更新
+     */
+    AwsCognitoService.prototype.updateUserAttributes = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].update({ region: AwsCognitoService.REGION });
+                        var accessToken = params.accessToken, userAttributes = params.userAttributes;
+                        var cognitoIdentityServiceProvider = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoIdentityServiceProvider"]();
+                        cognitoIdentityServiceProvider.updateUserAttributes({
+                            AccessToken: accessToken,
+                            UserAttributes: userAttributes,
+                        }, function (err, data) {
+                            if (err) {
+                                reject(err);
+                                return;
+                            }
+                            resolve(data);
+                        });
+                    })];
+            });
+        });
+    };
+    /**
+     * プロフィール更新
+     */
+    AwsCognitoService.prototype.updateProfile = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            var accessToken, profile, userAttributes;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        accessToken = params.accessToken, profile = params.profile;
+                        userAttributes = [];
+                        Object.keys(profile).forEach(function (key) {
+                            if (key === 'additionalProperty') {
+                                return;
+                            }
+                            if (key === 'email') {
+                                userAttributes.push({ Name: 'email', Value: profile.email });
+                            }
+                            if (key === 'givenName') {
+                                userAttributes.push({
+                                    Name: 'given_name',
+                                    Value: profile.givenName,
+                                });
+                            }
+                            if (key === 'familyName') {
+                                userAttributes.push({
+                                    Name: 'family_name',
+                                    Value: profile.familyName,
+                                });
+                            }
+                            if (key === 'telephone') {
+                                userAttributes.push({
+                                    Name: 'phone_number',
+                                    Value: profile.telephone,
+                                });
+                            }
+                        });
+                        if (profile.additionalProperty !== undefined) {
+                            profile.additionalProperty.forEach(function (a) {
+                                if (a.name.match(/custom\:/) !== null) {
+                                    userAttributes.push({
+                                        Name: a.name,
+                                        Value: a.value,
+                                    });
+                                }
+                            });
+                        }
+                        return [4 /*yield*/, this.updateUserAttributes({ accessToken: accessToken, userAttributes: userAttributes })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * ユーザー削除
+     */
+    AwsCognitoService.prototype.deleteUser = function (params) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        aws_sdk__WEBPACK_IMPORTED_MODULE_0__["config"].update({ region: AwsCognitoService.REGION });
+                        var accessToken = params.accessToken;
+                        var cognitoIdentityServiceProvider = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoIdentityServiceProvider"]();
+                        cognitoIdentityServiceProvider.deleteUser({
+                            AccessToken: accessToken,
+                        }, function (err, _data) {
+                            if (err && err.name !== 'NotAuthorizedException') {
+                                reject(err);
+                                return;
+                            }
+                            resolve();
+                        });
+                    })];
+            });
+        });
+    };
+    /**
      * 認証確認
      * @method isAuthenticate
      * @returns {boolean}
      */
     AwsCognitoService.prototype.isAuthenticate = function () {
-        return (this.credentials !== undefined
-            && this.credentials.identityId !== undefined
-            && this.credentials.identityId.length > 0);
+        return (this.credentials !== undefined &&
+            this.credentials.identityId !== undefined &&
+            this.credentials.identityId.length > 0);
     };
     /**
      * レコード更新
@@ -5065,18 +5231,20 @@ var AwsCognitoService = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         cognitoSync = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoSync"]({
-                            credentials: this.credentials
+                            credentials: this.credentials,
                         });
-                        return [4 /*yield*/, cognitoSync.listRecords({
+                        return [4 /*yield*/, cognitoSync
+                                .listRecords({
                                 DatasetName: args.datasetName,
                                 IdentityId: this.credentials.identityId,
                                 IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
-                                LastSyncCount: 0
-                            }).promise()];
+                                LastSyncCount: 0,
+                            })
+                                .promise()];
                     case 2:
                         listRecords = _a.sent();
-                        if (listRecords.DatasetSyncCount === undefined
-                            || listRecords.SyncSessionToken === undefined) {
+                        if (listRecords.DatasetSyncCount === undefined ||
+                            listRecords.SyncSessionToken === undefined) {
                             throw new Error('listRecords: Records or DatasetSyncCount or SyncSessionToken is undefined');
                         }
                         if (listRecords.Records === undefined) {
@@ -5085,13 +5253,15 @@ var AwsCognitoService = /** @class */ (function () {
                         args.value.updateAt = moment__WEBPACK_IMPORTED_MODULE_1__().toISOString();
                         mergeValue = this.convertToObjects(listRecords.Records);
                         Object.assign(mergeValue, args.value);
-                        return [4 /*yield*/, cognitoSync.updateRecords({
+                        return [4 /*yield*/, cognitoSync
+                                .updateRecords({
                                 DatasetName: args.datasetName,
                                 IdentityId: this.credentials.identityId,
                                 IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
                                 SyncSessionToken: listRecords.SyncSessionToken,
-                                RecordPatches: this.convertToRecords(mergeValue, listRecords.DatasetSyncCount)
-                            }).promise()];
+                                RecordPatches: this.convertToRecords(mergeValue, listRecords.DatasetSyncCount),
+                            })
+                                .promise()];
                     case 3:
                         updateRecords = _a.sent();
                         if (updateRecords.Records === undefined) {
@@ -5120,20 +5290,22 @@ var AwsCognitoService = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         cognitoSync = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["CognitoSync"]({
-                            credentials: this.credentials
+                            credentials: this.credentials,
                         });
-                        return [4 /*yield*/, cognitoSync.listRecords({
+                        return [4 /*yield*/, cognitoSync
+                                .listRecords({
                                 DatasetName: args.datasetName,
                                 IdentityId: this.credentials.identityId,
                                 IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
-                                LastSyncCount: 0
-                            }).promise()];
+                                LastSyncCount: 0,
+                            })
+                                .promise()];
                     case 2:
                         listRecords = _a.sent();
                         if (listRecords.Records === undefined) {
                             listRecords.Records = [];
                         }
-                        console.log('getRecords', this.convertToObjects(listRecords.Records));
+                        // console.log('getRecords', this.convertToObjects(listRecords.Records));
                         return [2 /*return*/, this.convertToObjects(listRecords.Records)];
                 }
             });
@@ -5151,7 +5323,7 @@ var AwsCognitoService = /** @class */ (function () {
                 Key: key,
                 Op: 'replace',
                 SyncCount: count,
-                Value: JSON.stringify(value[key])
+                Value: JSON.stringify(value[key]),
             };
         });
     };
@@ -5493,7 +5665,7 @@ var CinerinoService = /** @class */ (function () {
                         this.product = new _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["service"].Product(option);
                         this.ownerShipInfo = new _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["service"].person.OwnershipInfo(option);
                         this.transaction = {
-                            placeOrder: new _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["service"].transaction.PlaceOrder(option)
+                            placeOrder: new _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["service"].transaction.PlaceOrder(option),
                         };
                         return [3 /*break*/, 3];
                     case 2:
@@ -5533,15 +5705,17 @@ var CinerinoService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         url = '/api/authorize/signIn';
-                        return [4 /*yield*/, this.http.get(url, {}).toPromise()];
+                        return [4 /*yield*/, this.http
+                                .get(url, {})
+                                .toPromise()];
                     case 1:
                         result = _a.sent();
                         redirectUrl = result.url;
-                        console.log(result.url);
                         if (isReSignIn) {
                             redirectUrl += '&isReSignIn=1';
                         }
-                        location.href = redirectUrl += '&userName=' + encodeURIComponent(userName);
+                        location.href = redirectUrl +=
+                            '&userName=' + encodeURIComponent(userName);
                         return [2 /*return*/];
                 }
             });
@@ -5557,10 +5731,11 @@ var CinerinoService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         url = '/api/authorize/signIn';
-                        return [4 /*yield*/, this.http.get(url, {}).toPromise()];
+                        return [4 /*yield*/, this.http
+                                .get(url, {})
+                                .toPromise()];
                     case 1:
                         result = _a.sent();
-                        console.log(result.url);
                         signupUrl = result.url.replace(/\/authorize/, '/signup');
                         location.href = signupUrl;
                         return [2 /*return*/];
@@ -5569,8 +5744,8 @@ var CinerinoService = /** @class */ (function () {
         });
     };
     /**
-    * サインアウト
-    */
+     * サインアウト
+     */
     CinerinoService.prototype.signOut = function () {
         return __awaiter(this, void 0, void 0, function () {
             var url, result;
@@ -5578,10 +5753,11 @@ var CinerinoService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         url = '/api/authorize/signOut';
-                        return [4 /*yield*/, this.http.get(url, {}).toPromise()];
+                        return [4 /*yield*/, this.http
+                                .get(url, {})
+                                .toPromise()];
                     case 1:
                         result = _a.sent();
-                        console.log(result.url);
                         location.href = result.url;
                         return [2 /*return*/];
                 }
@@ -5589,8 +5765,8 @@ var CinerinoService = /** @class */ (function () {
         });
     };
     /**
-    * @method createOption
-    */
+     * @method createOption
+     */
     CinerinoService.prototype.createOption = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -5601,15 +5777,15 @@ var CinerinoService = /** @class */ (function () {
                         return [2 /*return*/, {
                                 endpoint: this.endpoint,
                                 auth: this.auth,
-                                project: { id: this.projectId }
+                                project: { id: this.projectId },
                             }];
                 }
             });
         });
     };
     /**
-    * @method authorize
-    */
+     * @method authorize
+     */
     CinerinoService.prototype.authorize = function () {
         return __awaiter(this, void 0, void 0, function () {
             var user, memberType, url, body, result, option;
@@ -5620,7 +5796,9 @@ var CinerinoService = /** @class */ (function () {
                         memberType = user.memberType;
                         url = '/api/authorize/getCredentials';
                         body = { member: memberType };
-                        return [4 /*yield*/, this.http.post(url, body).toPromise()];
+                        return [4 /*yield*/, this.http
+                                .post(url, body)
+                                .toPromise()];
                     case 1:
                         result = _a.sent();
                         option = {
@@ -5632,7 +5810,7 @@ var CinerinoService = /** @class */ (function () {
                             scope: '',
                             state: '',
                             nonce: null,
-                            tokenIssuer: ''
+                            tokenIssuer: '',
                         };
                         this.auth = _cinerino_sdk__WEBPACK_IMPORTED_MODULE_1__["createAuthInstance"](option);
                         this.auth.setCredentials(result.credentials);
@@ -5671,9 +5849,9 @@ var CinerinoService = /** @class */ (function () {
         });
     };
     /**
-    * @method getAPIVersion
-    * package.jsonから取得したバージョンを取得する
-    */
+     * @method getAPIVersion
+     * package.jsonから取得したバージョンを取得する
+     */
     CinerinoService.prototype.getAPIVersion = function () {
         return __awaiter(this, void 0, void 0, function () {
             var url, result;
@@ -5681,7 +5859,9 @@ var CinerinoService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         url = '/api/version';
-                        return [4 /*yield*/, this.http.get(url).toPromise()];
+                        return [4 /*yield*/, this.http
+                                .get(url)
+                                .toPromise()];
                     case 1:
                         result = _a.sent();
                         return [2 /*return*/, result.version];
@@ -5698,13 +5878,14 @@ var CinerinoService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (this.waiterServerUrl === undefined
-                            || this.waiterServerUrl === '') {
+                        if (this.waiterServerUrl === undefined || this.waiterServerUrl === '') {
                             return [2 /*return*/, { token: '' }];
                         }
                         url = this.waiterServerUrl + "/projects/" + this.projectId + "/passports";
                         body = { scope: params.scope };
-                        return [4 /*yield*/, this.http.post(url, body).toPromise()];
+                        return [4 /*yield*/, this.http
+                                .post(url, body)
+                                .toPromise()];
                     case 1:
                         result = _a.sent();
                         return [2 /*return*/, result];
@@ -6335,9 +6516,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cinerino_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_cinerino_sdk__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _cinerino_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cinerino.service */ "./app/services/cinerino.service.ts");
-/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util.service */ "./app/services/util.service.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _aws_cognito_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./aws-cognito.service */ "./app/services/aws-cognito.service.ts");
+/* harmony import */ var _cinerino_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cinerino.service */ "./app/services/cinerino.service.ts");
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util.service */ "./app/services/util.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -6381,9 +6563,12 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 var MemberService = /** @class */ (function () {
-    function MemberService(cinerinoService, utilService) {
+    function MemberService(cinerinoService, awsCognitoService, utilService) {
         this.cinerinoService = cinerinoService;
+        this.awsCognitoService = awsCognitoService;
         this.utilService = utilService;
     }
     /**
@@ -6391,7 +6576,7 @@ var MemberService = /** @class */ (function () {
      */
     MemberService.prototype.registerProgramMembership = function (params) {
         return __awaiter(this, void 0, void 0, function () {
-            var pointAwardAccount, creditCard, theaterBranchCode, programMembershipRegistered, profile, searchSellersResult, seller, data, product, availableOffers, acceptedOffer, passport, date, transaction, accessCode, amount, paymentServices_1, products, serviceType, error_1;
+            var pointAwardAccount, creditCard, theaterBranchCode, programMembershipRegistered, accessToken, profile, searchSellersResult, seller, data, product, availableOffers, acceptedOffer, passport, date, transaction, accessCode, amount, paymentServices_1, products, serviceType, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -6399,7 +6584,13 @@ var MemberService = /** @class */ (function () {
                         return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.cinerinoService.person.getProfile({})];
+                        accessToken = this.cinerinoService.auth.credentials.accessToken;
+                        if (accessToken === undefined) {
+                            throw new Error('accessToken undefined');
+                        }
+                        return [4 /*yield*/, this.awsCognitoService.getProfile({
+                                accessToken: accessToken,
+                            })];
                     case 2:
                         profile = _a.sent();
                         if (profile.telephone === undefined) {
@@ -6633,16 +6824,21 @@ var MemberService = /** @class */ (function () {
     };
     /**
      * 退会
-     * @method unRegister
+     * @method deleteUser
      */
-    MemberService.prototype.unRegister = function () {
+    MemberService.prototype.deleteUser = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var accessToken;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cinerinoService.getServices()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.cinerinoService.person.deleteById({})];
+                        accessToken = this.cinerinoService.auth.credentials.accessToken;
+                        if (accessToken === undefined) {
+                            throw new Error('accessToken undefined');
+                        }
+                        return [4 /*yield*/, this.awsCognitoService.deleteUser({ accessToken: accessToken })];
                     case 2:
                         _a.sent();
                         return [2 /*return*/];
@@ -6650,7 +6846,7 @@ var MemberService = /** @class */ (function () {
             });
         });
     };
-    MemberService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjectable"]({ factory: function MemberService_Factory() { return new MemberService(_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵinject"](_cinerino_service__WEBPACK_IMPORTED_MODULE_2__["CinerinoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵinject"](_util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"])); }, token: MemberService, providedIn: "root" });
+    MemberService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineInjectable"]({ factory: function MemberService_Factory() { return new MemberService(_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_cinerino_service__WEBPACK_IMPORTED_MODULE_3__["CinerinoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_aws_cognito_service__WEBPACK_IMPORTED_MODULE_2__["AwsCognitoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_util_service__WEBPACK_IMPORTED_MODULE_4__["UtilService"])); }, token: MemberService, providedIn: "root" });
     return MemberService;
 }());
 
@@ -7088,11 +7284,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./environments/environment.ts");
 /* harmony import */ var _functions_purchase_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../functions/purchase.function */ "./app/functions/purchase.function.ts");
-/* harmony import */ var _cinerino_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cinerino.service */ "./app/services/cinerino.service.ts");
-/* harmony import */ var _master_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./master.service */ "./app/services/master.service.ts");
-/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./storage.service */ "./app/services/storage.service.ts");
-/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./util.service */ "./app/services/util.service.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _aws_cognito_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./aws-cognito.service */ "./app/services/aws-cognito.service.ts");
+/* harmony import */ var _cinerino_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cinerino.service */ "./app/services/cinerino.service.ts");
+/* harmony import */ var _master_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./master.service */ "./app/services/master.service.ts");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./storage.service */ "./app/services/storage.service.ts");
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./util.service */ "./app/services/util.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7142,6 +7339,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 var MemberType;
 (function (MemberType) {
     MemberType["NotMember"] = "0";
@@ -7149,10 +7348,11 @@ var MemberType;
 })(MemberType || (MemberType = {}));
 var STORAGE_KEY = 'user';
 var UserService = /** @class */ (function () {
-    function UserService(storage, cinerino, masterService, util) {
+    function UserService(storage, cinerino, masterService, awsCognitoService, util) {
         this.storage = storage;
         this.cinerino = cinerino;
         this.masterService = masterService;
+        this.awsCognitoService = awsCognitoService;
         this.util = util;
         this.init();
     }
@@ -7175,7 +7375,7 @@ var UserService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        data = this.storage.load(STORAGE_KEY, _storage_service__WEBPACK_IMPORTED_MODULE_6__["SaveType"].Local);
+                        data = this.storage.load(STORAGE_KEY, _storage_service__WEBPACK_IMPORTED_MODULE_7__["SaveType"].Local);
                         if (data === null) {
                             this.data = {
                                 memberType: MemberType.NotMember,
@@ -7209,7 +7409,7 @@ var UserService = /** @class */ (function () {
      * @method save
      */
     UserService.prototype.save = function () {
-        this.storage.save(STORAGE_KEY, this.data, _storage_service__WEBPACK_IMPORTED_MODULE_6__["SaveType"].Local);
+        this.storage.save(STORAGE_KEY, this.data, _storage_service__WEBPACK_IMPORTED_MODULE_7__["SaveType"].Local);
     };
     /**
      * リセット
@@ -7247,7 +7447,7 @@ var UserService = /** @class */ (function () {
      */
     UserService.prototype.initMember = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var profile, creditCards, err_1, _a, searchResult;
+            var accessToken, profile, creditCards, err_1, _a, searchResult;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -7259,13 +7459,16 @@ var UserService = /** @class */ (function () {
                         if (this.cinerino.userName === undefined) {
                             throw new Error('userName is undefined');
                         }
+                        accessToken = this.cinerino.auth.credentials.accessToken;
+                        if (accessToken === undefined) {
+                            throw new Error('accessToken undefined');
+                        }
                         this.data.userName = this.cinerino.userName;
-                        return [4 /*yield*/, this.cinerino.person.getProfile({})];
+                        return [4 /*yield*/, this.awsCognitoService.getProfile({
+                                accessToken: accessToken,
+                            })];
                     case 2:
                         profile = _b.sent();
-                        if (profile === undefined) {
-                            throw new Error('profile is undefined');
-                        }
                         this.data.profile = profile;
                         _b.label = 3;
                     case 3:
@@ -7342,7 +7545,7 @@ var UserService = /** @class */ (function () {
                     case 2:
                         if (!(i < limit)) return [3 /*break*/, 5];
                         now = moment__WEBPACK_IMPORTED_MODULE_1__().unix();
-                        accountMutex = this.storage.load(POINT_ACCOUNT_MUTEX_KEY, _storage_service__WEBPACK_IMPORTED_MODULE_6__["SaveType"].Local);
+                        accountMutex = this.storage.load(POINT_ACCOUNT_MUTEX_KEY, _storage_service__WEBPACK_IMPORTED_MODULE_7__["SaveType"].Local);
                         if (accountMutex === null || accountMutex.expire < now) {
                             return [3 /*break*/, 5];
                         }
@@ -7357,7 +7560,7 @@ var UserService = /** @class */ (function () {
                         mutex = {
                             expire: moment__WEBPACK_IMPORTED_MODULE_1__().add(15, 'seconds').unix(),
                         };
-                        this.storage.save(POINT_ACCOUNT_MUTEX_KEY, mutex, _storage_service__WEBPACK_IMPORTED_MODULE_6__["SaveType"].Local);
+                        this.storage.save(POINT_ACCOUNT_MUTEX_KEY, mutex, _storage_service__WEBPACK_IMPORTED_MODULE_7__["SaveType"].Local);
                         return [4 /*yield*/, this.searchPointAccount()];
                     case 6:
                         accounts = _a.sent();
@@ -7370,11 +7573,11 @@ var UserService = /** @class */ (function () {
                         accounts = _a.sent();
                         _a.label = 9;
                     case 9:
-                        this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, _storage_service__WEBPACK_IMPORTED_MODULE_6__["SaveType"].Local);
+                        this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, _storage_service__WEBPACK_IMPORTED_MODULE_7__["SaveType"].Local);
                         return [2 /*return*/, accounts];
                     case 10:
                         error_1 = _a.sent();
-                        this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, _storage_service__WEBPACK_IMPORTED_MODULE_6__["SaveType"].Local);
+                        this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, _storage_service__WEBPACK_IMPORTED_MODULE_7__["SaveType"].Local);
                         throw error_1;
                     case 11: return [2 /*return*/];
                 }
@@ -7637,36 +7840,40 @@ var UserService = /** @class */ (function () {
      * 基本情報変更
      * @method updateProfile
      */
-    UserService.prototype.updateProfile = function (args) {
+    UserService.prototype.updateProfile = function (params) {
         return __awaiter(this, void 0, void 0, function () {
-            var tel, profile;
+            var familyName, givenName, email, theaterCode, telephone, accessToken, profile;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        tel = args.telephone.replace(/^0/, '+81');
+                        familyName = params.familyName, givenName = params.givenName, email = params.email, theaterCode = params.theaterCode;
+                        telephone = params.telephone.replace(/^0/, '+81');
                         return [4 /*yield*/, this.cinerino.getServices()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.cinerino.person.updateProfile({
-                                id: 'me',
-                                familyName: args.familyName,
-                                givenName: args.givenName,
-                                email: args.email,
-                                telephone: tel,
-                                additionalProperty: [
-                                    { name: 'custom:theaterCode', value: args.theaterCode },
-                                ],
+                        accessToken = this.cinerino.auth.credentials.accessToken;
+                        if (accessToken === undefined) {
+                            throw new Error('accessToken undefined');
+                        }
+                        return [4 /*yield*/, this.awsCognitoService.updateProfile({
+                                accessToken: accessToken,
+                                profile: {
+                                    familyName: familyName,
+                                    givenName: givenName,
+                                    email: email,
+                                    telephone: telephone,
+                                    additionalProperty: [
+                                        { name: 'custom:theaterCode', value: theaterCode },
+                                    ],
+                                },
                             })];
                     case 2:
                         _a.sent();
-                        return [4 /*yield*/, this.cinerino.person.getProfile({
-                                id: 'me',
+                        return [4 /*yield*/, this.awsCognitoService.getProfile({
+                                accessToken: accessToken,
                             })];
                     case 3:
                         profile = _a.sent();
-                        if (profile === undefined) {
-                            throw new Error('profile is undefined');
-                        }
                         this.data.profile = profile;
                         this.save();
                         return [2 /*return*/];
@@ -7716,7 +7923,7 @@ var UserService = /** @class */ (function () {
             ? 0
             : paymentAccount.availableBalance;
     };
-    UserService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵdefineInjectable"]({ factory: function UserService_Factory() { return new UserService(_angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵinject"](_storage_service__WEBPACK_IMPORTED_MODULE_6__["StorageService"]), _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵinject"](_cinerino_service__WEBPACK_IMPORTED_MODULE_4__["CinerinoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵinject"](_master_service__WEBPACK_IMPORTED_MODULE_5__["MasterService"]), _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵinject"](_util_service__WEBPACK_IMPORTED_MODULE_7__["UtilService"])); }, token: UserService, providedIn: "root" });
+    UserService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵdefineInjectable"]({ factory: function UserService_Factory() { return new UserService(_angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵinject"](_storage_service__WEBPACK_IMPORTED_MODULE_7__["StorageService"]), _angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵinject"](_cinerino_service__WEBPACK_IMPORTED_MODULE_5__["CinerinoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵinject"](_master_service__WEBPACK_IMPORTED_MODULE_6__["MasterService"]), _angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵinject"](_aws_cognito_service__WEBPACK_IMPORTED_MODULE_4__["AwsCognitoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵinject"](_util_service__WEBPACK_IMPORTED_MODULE_8__["UtilService"])); }, token: UserService, providedIn: "root" });
     return UserService;
 }());
 

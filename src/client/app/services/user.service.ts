@@ -3,6 +3,7 @@ import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { environment } from '../../environments/environment';
 import { getProviderCredentials } from '../functions/purchase.function';
+import { AwsCognitoService } from './aws-cognito.service';
 import { CinerinoService } from './cinerino.service';
 import { MasterService } from './master.service';
 import { SaveType, StorageService } from './storage.service';
@@ -73,6 +74,7 @@ export class UserService {
         private storage: StorageService,
         private cinerino: CinerinoService,
         private masterService: MasterService,
+        private awsCognitoService: AwsCognitoService,
         private util: UtilService
     ) {
         this.init();
@@ -164,12 +166,15 @@ export class UserService {
         if (this.cinerino.userName === undefined) {
             throw new Error('userName is undefined');
         }
+        const { accessToken } = this.cinerino.auth.credentials;
+        if (accessToken === undefined) {
+            throw new Error('accessToken undefined');
+        }
         this.data.userName = this.cinerino.userName;
         // 連絡先取得
-        const profile = await this.cinerino.person.getProfile({});
-        if (profile === undefined) {
-            throw new Error('profile is undefined');
-        }
+        const profile = await this.awsCognitoService.getProfile({
+            accessToken,
+        });
         this.data.profile = profile;
 
         try {
@@ -472,33 +477,36 @@ export class UserService {
      * 基本情報変更
      * @method updateProfile
      */
-    public async updateProfile(args: {
+    public async updateProfile(params: {
         familyName: string;
         givenName: string;
         email: string;
         telephone: string;
         theaterCode: string;
     }) {
-        const tel = args.telephone.replace(/^0/, '+81');
+        const { familyName, givenName, email, theaterCode } = params;
+        const telephone = params.telephone.replace(/^0/, '+81');
         await this.cinerino.getServices();
-        await this.cinerino.person.updateProfile({
-            id: 'me',
-            familyName: args.familyName,
-            givenName: args.givenName,
-            email: args.email,
-            telephone: tel,
-            additionalProperty: [
-                { name: 'custom:theaterCode', value: args.theaterCode },
-            ],
-        });
-        const profile = await this.cinerino.person.getProfile({
-            id: 'me',
-        });
-        if (profile === undefined) {
-            throw new Error('profile is undefined');
+        const { accessToken } = this.cinerino.auth.credentials;
+        if (accessToken === undefined) {
+            throw new Error('accessToken undefined');
         }
+        await this.awsCognitoService.updateProfile({
+            accessToken,
+            profile: {
+                familyName,
+                givenName,
+                email,
+                telephone,
+                additionalProperty: [
+                    { name: 'custom:theaterCode', value: theaterCode },
+                ],
+            },
+        });
+        const profile = await this.awsCognitoService.getProfile({
+            accessToken,
+        });
         this.data.profile = profile;
-
         this.save();
     }
 
