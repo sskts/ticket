@@ -276,7 +276,14 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
             const url = `${
                 getConfig().entranceServerUrl
             }/ticket/index.html?${object2query(query)}`;
-            const { popupMessage1, popupMessage2 } = performance.time;
+            const popupMessage1 =
+                performance.time.popupMessage1 === ''
+                    ? undefined
+                    : performance.time.popupMessage1;
+            const popupMessage2 =
+                performance.time.popupMessage2 === ''
+                    ? undefined
+                    : performance.time.popupMessage2;
             if (popupMessage1 === undefined && popupMessage2 === undefined) {
                 location.href = url;
                 return;
