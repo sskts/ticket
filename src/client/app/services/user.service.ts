@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { factory } from '@cinerino/sdk';
-import * as moment from 'moment';
 import { environment } from '../../environments/environment';
+import { getConfig, object2query } from '../functions';
 import { getProviderCredentials } from '../functions/purchase.function';
 import { AwsCognitoService } from './aws-cognito.service';
 import { CinerinoService } from './cinerino.service';
 import { MasterService } from './master.service';
 import { SaveType, StorageService } from './storage.service';
-import { UtilService } from './util.service';
 
 export interface IUserData {
     /**
@@ -58,9 +57,9 @@ export interface IGmoTokenObject {
     isSecurityCodeSet: boolean;
 }
 
-interface PointAccountMutex {
-    expire: Number;
-}
+// interface PointAccountMutex {
+//     expire: Number;
+// }
 
 const STORAGE_KEY = 'user';
 
@@ -74,8 +73,7 @@ export class UserService {
         private storage: StorageService,
         private cinerino: CinerinoService,
         private masterService: MasterService,
-        private awsCognitoService: AwsCognitoService,
-        private util: UtilService
+        private awsCognitoService: AwsCognitoService
     ) {
         this.init();
     }
@@ -186,8 +184,9 @@ export class UserService {
             console.log(err);
             this.data.creditCards = [];
         }
-        // 口座検索または作成
-        this.data.accounts = await this.openPointAccountIfNotExists();
+        // 口座検索
+        const accounts = await this.searchPointAccount();
+        this.data.accounts = accounts;
         const searchResult =
             await this.cinerino.ownerShipInfo.searchMyMemberships({});
         this.data.programMembershipOwnershipInfos = searchResult.data;
@@ -199,9 +198,8 @@ export class UserService {
      * @method updateAccount
      */
     public async updateAccount() {
-        await this.cinerino.getServices();
-        // 口座検索または作成
-        this.data.accounts = await this.openPointAccountIfNotExists();
+        // 口座検索
+        this.data.accounts = await this.searchPointAccount();
         this.save();
     }
 
@@ -210,42 +208,52 @@ export class UserService {
      * 検索された
      * @method openPointAccountIfNotExists
      */
-    private async openPointAccountIfNotExists() {
-        const POINT_ACCOUNT_MUTEX_KEY = 'point_account_mutex';
-        try {
-            // 排他制御処理 15秒間
-            const limit = 50;
-            for (let i = 0; i < limit; i++) {
-                const now = moment().unix();
-                const accountMutex: PointAccountMutex | null =
-                    this.storage.load(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
-                if (accountMutex === null || accountMutex.expire < now) {
-                    break;
-                }
-                await this.util.sleep(300);
-            }
-            const mutex: PointAccountMutex = {
-                expire: moment().add(15, 'seconds').unix(),
-            };
-            this.storage.save(POINT_ACCOUNT_MUTEX_KEY, mutex, SaveType.Local);
+    // private async openPointAccountIfNotExists() {
+    //     const POINT_ACCOUNT_MUTEX_KEY = 'point_account_mutex';
+    //     try {
+    //         // 排他制御処理 15秒間
+    //         const limit = 50;
+    //         for (let i = 0; i < limit; i++) {
+    //             const now = moment().unix();
+    //             const accountMutex: PointAccountMutex | null =
+    //                 this.storage.load(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
+    //             if (accountMutex === null || accountMutex.expire < now) {
+    //                 break;
+    //             }
+    //             await this.util.sleep(300);
+    //         }
+    //         const mutex: PointAccountMutex = {
+    //             expire: moment().add(15, 'seconds').unix(),
+    //         };
+    //         this.storage.save(POINT_ACCOUNT_MUTEX_KEY, mutex, SaveType.Local);
 
-            let accounts = await this.searchPointAccount();
-            if (accounts.length === 0) {
-                await this.openPointAccount();
-                accounts = await this.searchPointAccount();
-            }
-            this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
-            return accounts;
-        } catch (error) {
-            this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
-            throw error;
-        }
-    }
+    //         let accounts = await this.searchPointAccount();
+    //         if (accounts.length === 0) {
+    //             // await this.openPointAccount();
+    //             accounts = await this.searchPointAccount();
+    //         }
+    //         this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
+    //         return accounts;
+    //     } catch (error) {
+    //         this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
+    //         throw error;
+    //     }
+    // }
 
-    private async openPointAccount() {
-        await this.cinerino.ownerShipInfo.openAccount({
-            accountType: 'Point',
-            name: <string>this.cinerino.userName,
+    /**
+     * ポイント口座作成
+     */
+    public async openPointAccount() {
+        return new Promise(() => {
+            const query = object2query({
+                redirectUrl: location.origin,
+                native: '1',
+                member: '1',
+            });
+            const url = `${
+                getConfig().ticketSiteUrl
+            }/product/paymentcard/transaction?${query}`;
+            location.href = url;
         });
     }
 
@@ -253,7 +261,8 @@ export class UserService {
      * ポイントアカウントを検索する
      * @method searchPointAccount
      */
-    private async searchPointAccount() {
+    public async searchPointAccount() {
+        await this.cinerino.getServices();
         // 口座検索
         const searchResult =
             await this.cinerino.ownerShipInfo.searchMyPaymentCards({
