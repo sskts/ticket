@@ -1228,8 +1228,13 @@ var MemberGuardService = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaymentCardGuardService", function() { return PaymentCardGuardService; });
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/user.service */ "./app/services/user.service.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "../../node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services_storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/storage.service */ "./app/services/storage.service.ts");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/user.service */ "./app/services/user.service.ts");
+/* harmony import */ var _services_util_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/util.service */ "./app/services/util.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -1269,9 +1274,19 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
+
+
+
+
+
 var PaymentCardGuardService = /** @class */ (function () {
-    function PaymentCardGuardService(userService) {
+    function PaymentCardGuardService(storageService, router, userService, utilService) {
+        this.storageService = storageService;
+        this.router = router;
         this.userService = userService;
+        this.utilService = utilService;
     }
     /**
      * 認証
@@ -1279,7 +1294,7 @@ var PaymentCardGuardService = /** @class */ (function () {
      */
     PaymentCardGuardService.prototype.canActivate = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var accounts, _a;
+            var POINT_ACCOUNT_MUTEX_KEY, limit, i, now, accountMutex, accounts, _a, mutex, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -1293,27 +1308,59 @@ var PaymentCardGuardService = /** @class */ (function () {
                             this.userService.data.prevUserName = this.userService.data.userName;
                         }
                         this.userService.save();
-                        if (!(this.userService.data.accounts.length === 0)) return [3 /*break*/, 2];
-                        return [4 /*yield*/, this.userService.searchPointAccount()];
+                        POINT_ACCOUNT_MUTEX_KEY = 'point_account_mutex';
+                        _b.label = 1;
                     case 1:
-                        _a = _b.sent();
-                        return [3 /*break*/, 3];
+                        _b.trys.push([1, 11, , 12]);
+                        limit = 50;
+                        i = 0;
+                        _b.label = 2;
                     case 2:
-                        _a = this.userService.data.accounts;
-                        _b.label = 3;
+                        if (!(i < limit)) return [3 /*break*/, 5];
+                        now = moment__WEBPACK_IMPORTED_MODULE_1__().unix();
+                        accountMutex = this.storageService.load(POINT_ACCOUNT_MUTEX_KEY, _services_storage_service__WEBPACK_IMPORTED_MODULE_2__["SaveType"].Local);
+                        if (accountMutex === null || accountMutex.expire < now) {
+                            return [3 /*break*/, 5];
+                        }
+                        return [4 /*yield*/, this.utilService.sleep(300)];
                     case 3:
-                        accounts = _a;
-                        if (!(accounts.length === 0)) return [3 /*break*/, 5];
-                        return [4 /*yield*/, this.userService.openPointAccount()];
+                        _b.sent();
+                        _b.label = 4;
                     case 4:
+                        i++;
+                        return [3 /*break*/, 2];
+                    case 5:
+                        if (!(this.userService.data.accounts.length === 0)) return [3 /*break*/, 7];
+                        return [4 /*yield*/, this.userService.searchPointAccount()];
+                    case 6:
+                        _a = _b.sent();
+                        return [3 /*break*/, 8];
+                    case 7:
+                        _a = this.userService.data.accounts;
+                        _b.label = 8;
+                    case 8:
+                        accounts = _a;
+                        if (!(accounts.length === 0)) return [3 /*break*/, 10];
+                        mutex = {
+                            expire: moment__WEBPACK_IMPORTED_MODULE_1__().add(15, 'seconds').unix(),
+                        };
+                        this.storageService.save(POINT_ACCOUNT_MUTEX_KEY, mutex, _services_storage_service__WEBPACK_IMPORTED_MODULE_2__["SaveType"].Local);
+                        return [4 /*yield*/, this.userService.openPointAccount()];
+                    case 9:
                         _b.sent();
                         return [2 /*return*/, false];
-                    case 5: return [2 /*return*/, true];
+                    case 10: return [2 /*return*/, true];
+                    case 11:
+                        error_1 = _b.sent();
+                        this.storageService.remove(POINT_ACCOUNT_MUTEX_KEY, _services_storage_service__WEBPACK_IMPORTED_MODULE_2__["SaveType"].Local);
+                        this.router.navigate(['/error']);
+                        return [2 /*return*/, false];
+                    case 12: return [2 /*return*/];
                 }
             });
         });
     };
-    PaymentCardGuardService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ factory: function PaymentCardGuardService_Factory() { return new PaymentCardGuardService(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_services_user_service__WEBPACK_IMPORTED_MODULE_0__["UserService"])); }, token: PaymentCardGuardService, providedIn: "root" });
+    PaymentCardGuardService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineInjectable"]({ factory: function PaymentCardGuardService_Factory() { return new PaymentCardGuardService(_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_services_storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"]), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_0__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](_services_util_service__WEBPACK_IMPORTED_MODULE_4__["UtilService"])); }, token: PaymentCardGuardService, providedIn: "root" });
     return PaymentCardGuardService;
 }());
 
@@ -7479,9 +7526,6 @@ var MemberType;
     MemberType["NotMember"] = "0";
     MemberType["Member"] = "1";
 })(MemberType || (MemberType = {}));
-// interface PointAccountMutex {
-//     expire: Number;
-// }
 var STORAGE_KEY = 'user';
 var UserService = /** @class */ (function () {
     function UserService(storage, cinerino, masterService, awsCognitoService) {
@@ -7553,19 +7597,9 @@ var UserService = /** @class */ (function () {
     UserService.prototype.reset = function () {
         var prevUserName = this.cinerino.userName !== undefined
             ? this.cinerino.userName
-            : this.data.accounts.length > 0 &&
-                this.data.accounts[0].typeOfGood !== null &&
-                this.data.accounts[0].typeOfGood !== undefined
-                ? typeof this.data.accounts[0].typeOfGood.name === 'string'
-                    ? this.data.accounts[0].typeOfGood.name
-                    : this.data.accounts[0].typeOfGood.name === undefined
-                        ? ''
-                        : this.data.accounts[0].typeOfGood.name.ja === undefined
-                            ? ''
-                            : this.data.accounts[0].typeOfGood.name.ja
-                : this.data.prevUserName !== undefined
-                    ? this.data.prevUserName
-                    : '';
+            : this.data.prevUserName !== undefined
+                ? this.data.prevUserName
+                : '';
         this.data = {
             memberType: MemberType.NotMember,
             creditCards: [],
@@ -7654,41 +7688,6 @@ var UserService = /** @class */ (function () {
             });
         });
     };
-    /**
-     * ポイントアカウントを検索し、存在しない場合は作成する
-     * 検索された
-     * @method openPointAccountIfNotExists
-     */
-    // private async openPointAccountIfNotExists() {
-    //     const POINT_ACCOUNT_MUTEX_KEY = 'point_account_mutex';
-    //     try {
-    //         // 排他制御処理 15秒間
-    //         const limit = 50;
-    //         for (let i = 0; i < limit; i++) {
-    //             const now = moment().unix();
-    //             const accountMutex: PointAccountMutex | null =
-    //                 this.storage.load(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
-    //             if (accountMutex === null || accountMutex.expire < now) {
-    //                 break;
-    //             }
-    //             await this.util.sleep(300);
-    //         }
-    //         const mutex: PointAccountMutex = {
-    //             expire: moment().add(15, 'seconds').unix(),
-    //         };
-    //         this.storage.save(POINT_ACCOUNT_MUTEX_KEY, mutex, SaveType.Local);
-    //         let accounts = await this.searchPointAccount();
-    //         if (accounts.length === 0) {
-    //             // await this.openPointAccount();
-    //             accounts = await this.searchPointAccount();
-    //         }
-    //         this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
-    //         return accounts;
-    //     } catch (error) {
-    //         this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
-    //         throw error;
-    //     }
-    // }
     /**
      * ポイント口座作成
      */

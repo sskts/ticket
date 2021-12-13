@@ -57,10 +57,6 @@ export interface IGmoTokenObject {
     isSecurityCodeSet: boolean;
 }
 
-// interface PointAccountMutex {
-//     expire: Number;
-// }
-
 const STORAGE_KEY = 'user';
 
 @Injectable({
@@ -129,16 +125,6 @@ export class UserService {
         const prevUserName =
             this.cinerino.userName !== undefined
                 ? this.cinerino.userName
-                : this.data.accounts.length > 0 &&
-                  this.data.accounts[0].typeOfGood !== null &&
-                  this.data.accounts[0].typeOfGood !== undefined
-                ? typeof this.data.accounts[0].typeOfGood.name === 'string'
-                    ? this.data.accounts[0].typeOfGood.name
-                    : this.data.accounts[0].typeOfGood.name === undefined
-                    ? ''
-                    : this.data.accounts[0].typeOfGood.name.ja === undefined
-                    ? ''
-                    : this.data.accounts[0].typeOfGood.name.ja
                 : this.data.prevUserName !== undefined
                 ? this.data.prevUserName
                 : '';
@@ -202,43 +188,6 @@ export class UserService {
         this.data.accounts = await this.searchPointAccount();
         this.save();
     }
-
-    /**
-     * ポイントアカウントを検索し、存在しない場合は作成する
-     * 検索された
-     * @method openPointAccountIfNotExists
-     */
-    // private async openPointAccountIfNotExists() {
-    //     const POINT_ACCOUNT_MUTEX_KEY = 'point_account_mutex';
-    //     try {
-    //         // 排他制御処理 15秒間
-    //         const limit = 50;
-    //         for (let i = 0; i < limit; i++) {
-    //             const now = moment().unix();
-    //             const accountMutex: PointAccountMutex | null =
-    //                 this.storage.load(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
-    //             if (accountMutex === null || accountMutex.expire < now) {
-    //                 break;
-    //             }
-    //             await this.util.sleep(300);
-    //         }
-    //         const mutex: PointAccountMutex = {
-    //             expire: moment().add(15, 'seconds').unix(),
-    //         };
-    //         this.storage.save(POINT_ACCOUNT_MUTEX_KEY, mutex, SaveType.Local);
-
-    //         let accounts = await this.searchPointAccount();
-    //         if (accounts.length === 0) {
-    //             // await this.openPointAccount();
-    //             accounts = await this.searchPointAccount();
-    //         }
-    //         this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
-    //         return accounts;
-    //     } catch (error) {
-    //         this.storage.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
-    //         throw error;
-    //     }
-    // }
 
     /**
      * ポイント口座作成
