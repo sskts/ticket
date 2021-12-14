@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../../../../environments/environment';
 import { getConfig } from '../../../../../functions';
 import {
     AwsCognitoService,
@@ -18,7 +17,6 @@ import {
 })
 export class AuthSelectComponent implements OnInit {
     public isLoading: boolean;
-    public environment = environment;
     public portalSiteUrl: string;
 
     constructor(

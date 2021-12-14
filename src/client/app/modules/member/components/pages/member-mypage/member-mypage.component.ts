@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import * as qrcode from 'qrcode';
-import { environment } from '../../../../../../environments/environment';
+import { getConfig } from '../../../../../functions';
 import {
     CallNativeService,
     InAppBrowserTarget,
@@ -21,7 +21,7 @@ export class MemberMypageComponent implements OnInit {
     public moment = moment;
     public account: factory.ownershipInfo.IOwnershipInfo<factory.permit.IPermit>;
     public availableBalance: number;
-    public environment = environment;
+    public portalSiteUrl: string;
     public programMembershipOwnershipInfo: factory.ownershipInfo.IOwnershipInfo<factory.permit.IPermit>;
 
     constructor(
@@ -38,6 +38,7 @@ export class MemberMypageComponent implements OnInit {
     public async ngOnInit() {
         this.isLoading = true;
         this.availableBalance = 0;
+        this.portalSiteUrl = getConfig().portalSiteUrl;
         try {
             if (this.userService.data.userName === undefined) {
                 this.userService.setUserName();

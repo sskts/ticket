@@ -29,9 +29,7 @@ app.set('views', `${__dirname}/../../../views`); // view設定
 app.set('view engine', 'ejs');
 app.use(compression());
 app.use(express.static(`${__dirname}/../../../public`)); // server
-app.use(express.static(`${__dirname}/../../client/${process.env.NODE_ENV}`, {
-    index: false
-})); // client
+app.use(express.static(`${__dirname}/../../client`, { index: false })); // client
 router(app);
 
 export = app;

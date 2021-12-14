@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { factory } from '@cinerino/sdk';
-import { environment } from '../../environments/environment';
 import { getConfig, object2query } from '../functions';
 import { getProviderCredentials } from '../functions/purchase.function';
 import { AwsCognitoService } from './aws-cognito.service';
@@ -330,7 +329,7 @@ export class UserService {
         holdername: string;
     }) {
         await this.cinerino.getServices();
-        const branchCode = environment.MAIN_SHOP_BRUNCH_CODE;
+        const branchCode = '';
         const searchResult = await this.cinerino.seller.search({});
         const sellerFindResult = searchResult.data.find(
             (s) =>
