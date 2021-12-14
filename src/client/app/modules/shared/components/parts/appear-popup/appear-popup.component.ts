@@ -9,6 +9,8 @@ import { CallNativeService, InAppBrowserTarget } from '../../../../../services';
     styleUrls: ['./appear-popup.component.scss'],
 })
 export class AppearPopupComponent implements OnInit {
+    @Input() public title?: string;
+    @Input() public read?: string;
     @Input() public cb: Function;
     public environment = environment;
 
