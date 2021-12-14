@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.14.0 - 2021-12-14
+
+### Changed
+
+-   ポップアップ表示機能改修
+
 ## 3.13.0 - 2021-12-08
 
 ### Changed
