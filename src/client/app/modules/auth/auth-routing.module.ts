@@ -21,11 +21,7 @@ const routes: Routes = [
         path: '',
         component: AuthBaseComponent,
         children: [
-            {
-                path: 'signin',
-                canActivate: [MemberGuardService, PaymentCardGuardService],
-                component: AuthSigninComponent,
-            },
+            { path: 'signin', component: AuthSigninComponent },
             { path: 'signout', component: AuthSignoutComponent },
             {
                 path: 'register',
