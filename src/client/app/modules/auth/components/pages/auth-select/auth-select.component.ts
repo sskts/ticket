@@ -67,6 +67,7 @@ export class AuthSelectComponent implements OnInit {
             await this.cinerino.signInWithUserName(false, userName);
             this.user.data.memberType = MemberType.Member;
             this.user.save();
+            this.isLoading = false;
         } catch (error) {
             console.error(error);
             this.isLoading = false;

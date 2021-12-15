@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 3.15.0 - 2021-12-15
+
+### Changed
+
+-   ポイントカード取引をリンク型に変更
+
 ## 3.14.0 - 2021-12-14
 
 ### Changed
