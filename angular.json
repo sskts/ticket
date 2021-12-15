@@ -28,7 +28,8 @@
                     },
                     "configurations": {
                         "local": {
-                            "watch": true
+                            "watch": true,
+                            "sourceMap": true
                         },
                         "production": {
                             "optimization": true,

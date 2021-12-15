@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { factory } from '@cinerino/sdk';
-import { getConfig, sleep } from '../functions/util.function';
+import { getConfig } from '../functions/util.function';
 import { CinerinoService } from './cinerino.service';
 import { UtilService } from './util.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class MasterService {
+export class SellerService {
     constructor(
         private cinerinoService: CinerinoService,
         private utilService: UtilService
@@ -16,7 +16,7 @@ export class MasterService {
     /**
      * 販売者検索
      */
-    public async searchSeller(
+    public async search(
         params: factory.seller.ISearchConditions,
         oprions: { exclude: boolean; sort: boolean }
     ) {
@@ -85,37 +85,5 @@ export class MasterService {
                 ? await sortSeller(excludeResult)
                 : excludeResult;
         return sortResult;
-    }
-
-    /**
-     * プロダクト検索
-     */
-    public async searchProduct(params: factory.product.ISearchConditions) {
-        try {
-            const limit = 100;
-            let page = 1;
-            let roop = true;
-            let result: (
-                | factory.product.IProduct
-                | factory.service.paymentService.IService
-            )[] = [];
-            await this.cinerinoService.getServices();
-            while (roop) {
-                const searchResult = await this.cinerinoService.product.search({
-                    page,
-                    limit,
-                    ...params,
-                });
-                result = [...result, ...searchResult.data];
-                page++;
-                roop = searchResult.data.length === limit;
-                if (roop) {
-                    await sleep(500);
-                }
-            }
-            return result;
-        } catch (error) {
-            throw error;
-        }
     }
 }

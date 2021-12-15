@@ -3,18 +3,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { BsModalService } from 'ngx-bootstrap';
-import { CinerinoService, UserService, UtilService } from '../../../../../services';
 import {
-    CreditcardSecurityCodeModalComponent
- } from '../../../../shared/components/parts/security-code-modal/security-code-modal.component';
+    CinerinoService,
+    GmoService,
+    UserService,
+    UtilService,
+} from '../../../../../services';
+// tslint:disable-next-line:max-line-length
+import { CreditcardSecurityCodeModalComponent } from '../../../../shared/components/parts/security-code-modal/security-code-modal.component';
 
 @Component({
     selector: 'app-auth-register-credit',
     templateUrl: './auth-register-credit.component.html',
-    styleUrls: ['./auth-register-credit.component.scss']
+    styleUrls: ['./auth-register-credit.component.scss'],
 })
 export class AuthRegisterCreditComponent implements OnInit {
-
     public cardExpiration: {
         year: string[];
         month: string[];
@@ -30,8 +33,9 @@ export class AuthRegisterCreditComponent implements OnInit {
         private formBuilder: FormBuilder,
         private user: UserService,
         private cinerino: CinerinoService,
+        private gmoService: GmoService,
         private utilService: UtilService
-    ) { }
+    ) {}
 
     /**
      * 初期化
@@ -41,7 +45,7 @@ export class AuthRegisterCreditComponent implements OnInit {
         this.isLoading = true;
         this.cardExpiration = {
             year: [],
-            month: []
+            month: [],
         };
         this.creditForm = this.createForm();
         this.isLoading = false;
@@ -53,11 +57,23 @@ export class AuthRegisterCreditComponent implements OnInit {
      */
     private createForm() {
         const creditrCard = {
-            cardNumber: { value: '', validators: [Validators.required, Validators.pattern(/^[0-9]+$/)] },
-            cardExpirationMonth: { value: '01', validators: [Validators.required] },
-            cardExpirationYear: { value: moment().format('YYYY'), validators: [Validators.required] },
+            cardNumber: {
+                value: '',
+                validators: [
+                    Validators.required,
+                    Validators.pattern(/^[0-9]+$/),
+                ],
+            },
+            cardExpirationMonth: {
+                value: '01',
+                validators: [Validators.required],
+            },
+            cardExpirationYear: {
+                value: moment().format('YYYY'),
+                validators: [Validators.required],
+            },
             securityCode: { value: '', validators: [Validators.required] },
-            holderName: { value: '', validators: [Validators.required] }
+            holderName: { value: '', validators: [Validators.required] },
         };
 
         for (let i = 0; i < 12; i++) {
@@ -65,15 +81,32 @@ export class AuthRegisterCreditComponent implements OnInit {
             this.cardExpiration.month.push(`0${String(i + 1)}`.slice(DIGITS));
         }
         for (let i = 0; i < 10; i++) {
-            this.cardExpiration.year.push(moment().add(i, 'year').format('YYYY'));
+            this.cardExpiration.year.push(
+                moment().add(i, 'year').format('YYYY')
+            );
         }
 
         return this.formBuilder.group({
-            cardNumber: [creditrCard.cardNumber.value, creditrCard.cardNumber.validators],
-            cardExpirationMonth: [creditrCard.cardExpirationMonth.value, creditrCard.cardExpirationMonth.validators],
-            cardExpirationYear: [creditrCard.cardExpirationYear.value, creditrCard.cardExpirationYear.validators],
-            securityCode: [creditrCard.securityCode.value, creditrCard.securityCode.validators],
-            holderName: [creditrCard.holderName.value, creditrCard.holderName.validators]
+            cardNumber: [
+                creditrCard.cardNumber.value,
+                creditrCard.cardNumber.validators,
+            ],
+            cardExpirationMonth: [
+                creditrCard.cardExpirationMonth.value,
+                creditrCard.cardExpirationMonth.validators,
+            ],
+            cardExpirationYear: [
+                creditrCard.cardExpirationYear.value,
+                creditrCard.cardExpirationYear.validators,
+            ],
+            securityCode: [
+                creditrCard.securityCode.value,
+                creditrCard.securityCode.validators,
+            ],
+            holderName: [
+                creditrCard.holderName.value,
+                creditrCard.holderName.validators,
+            ],
         });
     }
 
@@ -92,12 +125,16 @@ export class AuthRegisterCreditComponent implements OnInit {
             this.creditForm.controls.holderName.markAsTouched();
             setTimeout(() => {
                 const element: HTMLElement = this.elementRef.nativeElement;
-                const validation = <HTMLElement>element.querySelector('.validation');
+                const validation = <HTMLElement>(
+                    element.querySelector('.validation')
+                );
                 if (validation === null) {
                     return;
                 }
                 const rect = validation.getBoundingClientRect();
-                const contents = (<HTMLElement>element.querySelector('app-page .scroll'));
+                const contents = <HTMLElement>(
+                    element.querySelector('app-page .scroll')
+                );
                 const scrollTop = contents.scrollTop;
                 const top = rect.top + scrollTop - 80;
                 contents.scrollTo(0, top);
@@ -110,11 +147,13 @@ export class AuthRegisterCreditComponent implements OnInit {
         try {
             await this.cinerino.getServices();
             // GMOトークン取得
-            const gmoTokenObject = await this.user.getGmoObject({
+            const gmoTokenObject = await this.gmoService.getTokenObject({
                 cardno: this.creditForm.controls.cardNumber.value,
-                expire: this.creditForm.controls.cardExpirationYear.value + this.creditForm.controls.cardExpirationMonth.value,
+                expire:
+                    this.creditForm.controls.cardExpirationYear.value +
+                    this.creditForm.controls.cardExpirationMonth.value,
                 securitycode: this.creditForm.controls.securityCode.value,
-                holdername: this.creditForm.controls.holderName.value
+                holdername: this.creditForm.controls.holderName.value,
             });
 
             // 会員 クレジットカード情報保存
@@ -125,7 +164,7 @@ export class AuthRegisterCreditComponent implements OnInit {
             // クレジットカード処理失敗
             this.utilService.openAlert({
                 title: 'エラーが発生しました',
-                body: `入力内容をご確認ください。`
+                body: `入力内容をご確認ください。`,
             });
             this.creditForm.controls.cardNumber.setValue('');
             this.creditForm.controls.securityCode.setValue('');
@@ -149,8 +188,7 @@ export class AuthRegisterCreditComponent implements OnInit {
     public openSecurityCode(event: Event) {
         event.preventDefault();
         this.modal.show(CreditcardSecurityCodeModalComponent, {
-            class: 'modal-dialog-centered'
+            class: 'modal-dialog-centered',
         });
     }
-
 }

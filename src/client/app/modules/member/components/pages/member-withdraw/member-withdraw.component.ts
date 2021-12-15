@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
     CinerinoService,
-    MemberService,
+    UserService,
     UtilService,
 } from '../../../../../services';
 
@@ -13,9 +13,9 @@ import {
 export class MemberWithdrawComponent implements OnInit {
     public isLoading: boolean;
     constructor(
-        private cinerino: CinerinoService,
-        private member: MemberService,
-        private utilService: UtilService
+        private cinerinoService: CinerinoService,
+        private utilService: UtilService,
+        private userService: UserService
     ) {}
 
     /**
@@ -46,9 +46,9 @@ export class MemberWithdrawComponent implements OnInit {
     public async withdraw() {
         this.isLoading = true;
         try {
-            await this.cinerino.person.deleteById({});
-            await this.member.deleteUser();
-            await this.cinerino.signOut();
+            await this.cinerinoService.person.deleteById({});
+            await this.userService.deleteUser();
+            await this.cinerinoService.signOut();
         } catch (err) {
             console.error(err);
             this.isLoading = false;

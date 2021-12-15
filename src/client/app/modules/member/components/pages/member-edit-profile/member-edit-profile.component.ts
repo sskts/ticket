@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { factory } from '@cinerino/sdk';
 import * as libphonenumber from 'libphonenumber-js';
 import { getConfig } from '../../../../../functions';
-import { MasterService, UserService } from '../../../../../services';
+import { SellerService, UserService } from '../../../../../services';
 
 type IMovieTheater = factory.chevre.seller.ISeller;
 
@@ -31,7 +31,7 @@ export class MemberEditProfileComponent implements OnInit {
         private elementRef: ElementRef,
         private router: Router,
         private user: UserService,
-        private masterService: MasterService
+        private sellerService: SellerService
     ) {}
 
     /**
@@ -42,7 +42,7 @@ export class MemberEditProfileComponent implements OnInit {
         try {
             this.profileForm = this.createForm();
             this.isLoading = false;
-            this.theaters = await this.masterService.searchSeller(
+            this.theaters = await this.sellerService.search(
                 {},
                 { exclude: true, sort: true }
             );
