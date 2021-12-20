@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 4.0.0 - 2021-12-20
+
+### Changed
+
+-   メンバーシップ取引をリンク型に変更
+-   アプリケーション構造変更
+
 ## 3.15.0 - 2021-12-15
 
 ### Changed
