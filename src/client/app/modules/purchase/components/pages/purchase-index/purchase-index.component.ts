@@ -16,10 +16,10 @@ import {
     IConfirm,
     IPurchaseConditions,
     MaintenanceService,
-    MasterService,
     MemberType,
     PurchaseSort,
     SelectService,
+    SellerService,
     UserService,
     UtilService,
 } from '../../../../../services';
@@ -79,7 +79,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
         private utilService: UtilService,
         private maintenanceService: MaintenanceService,
         private awsCognitoService: AwsCognitoService,
-        private masterService: MasterService,
+        private sellerService: SellerService,
         private modal: BsModalService
     ) {
         this.purchaseSort = PurchaseSort;
@@ -144,7 +144,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
             this.theaters = [];
             this.dateList = [];
             this.schedules = [];
-            this.theaters = await this.masterService.searchSeller(
+            this.theaters = await this.sellerService.search(
                 {},
                 { exclude: true, sort: true }
             );

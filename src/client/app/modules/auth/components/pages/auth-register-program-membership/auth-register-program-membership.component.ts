@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { factory } from '@cinerino/sdk';
 import {
-    CinerinoService,
-    MasterService,
-    MemberService,
+    SellerService,
     UserService,
     UtilService,
 } from '../../../../../services';
@@ -23,9 +21,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
     constructor(
         private router: Router,
         private formBuilder: FormBuilder,
-        private cinerino: CinerinoService,
-        private member: MemberService,
-        private masterService: MasterService,
+        private sellerService: SellerService,
         private utilService: UtilService,
         private userService: UserService
     ) {}
@@ -38,7 +34,7 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         this.isLoading = true;
         this.optionsForm = this.createForm();
         try {
-            this.theaters = await this.masterService.searchSeller(
+            this.theaters = await this.sellerService.search(
                 {},
                 { exclude: true, sort: true }
             );
@@ -75,56 +71,20 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
             return;
         }
         try {
-            const accounts = this.userService.data.accounts;
-            if (accounts.length > 1) {
-                // ポイントアカウントが複数存在する場合、最初の一件を残してクローズする
-                for (let i = 1; i < accounts.length; i++) {
-                    const closeAccountNumber =
-                        accounts[i].typeOfGood.identifier;
-                    if (typeof closeAccountNumber !== 'string') {
-                        throw new Error('typeOfGood.identifier not string');
-                    }
-                    await this.cinerino.ownerShipInfo.closeAccount({
-                        accountNumber: closeAccountNumber,
-                    });
-                }
-            }
             const theaterBranchCode = this.optionsForm.controls.theater.value;
             const programMembershipRegistered =
                 this.userService.data.programMembershipRegistered;
-            const accountNumber = accounts[0].typeOfGood.identifier;
-            if (typeof accountNumber !== 'string') {
-                throw new Error('typeOfGood.identifier not string');
-            }
-            const pointAwardAccount = {
-                accountNumber,
-            };
-            const creditCard = {
-                memberId: 'me',
-                cardSeq: Number(this.userService.data.creditCards[0].cardSeq),
-            };
-            let isRegister = await this.member.isRegister({
-                interval: 0,
-                limit: 0,
-            });
+            const isRegister =
+                await this.userService.isRegisterProgramMembership({
+                    intervalTime: 0,
+                    limitCount: 0,
+                });
             if (!isRegister) {
                 // 会員登録
-                await this.member.registerProgramMembership({
+                await this.userService.registerProgramMembership({
                     programMembershipRegistered,
                     theaterBranchCode,
-                    pointAwardAccount,
-                    creditCard,
                 });
-            }
-
-            // 会員登録確認
-            isRegister = await this.member.isRegister({
-                interval: 3000,
-                limit: 20,
-            });
-            if (!isRegister) {
-                this.router.navigate(['/error', { redirect: '/auth/select' }]);
-
                 return;
             }
 

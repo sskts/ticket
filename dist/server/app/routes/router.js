@@ -51,13 +51,27 @@ exports.default = (app) => {
             portalSiteUrl: process.env.PORTAL_SITE_URL,
             entranceServerUrl: process.env.ENTRANCE_SERVER_URL,
             ticketSiteUrl: process.env.TICKET_SITE_URL,
+            cognitoRegion: process.env.COGNITO_REGION,
+            cognitoIdentityPoolId: process.env.COGNITO_IDENTITY_POOL_ID,
+            analyticsId: process.env.ANALYTICS_ID,
+            closeTheaters: process.env.CLOSE_THEATERS === undefined ||
+                process.env.CLOSE_THEATERS === ''
+                ? []
+                : process.env.CLOSE_THEATERS.replace(/\s/g, '').split(','),
+            env: process.env.APP_ENV === undefined || process.env.APP_ENV === ''
+                ? 'production'
+                : process.env.APP_ENV,
+            gmoTokenUrl: process.env.GMO_TOKEN_URL === undefined ||
+                process.env.GMO_TOKEN_URL === ''
+                ? undefined
+                : process.env.GMO_TOKEN_URL,
         });
     });
     app.get('/api/serverTime', (_req, res) => {
         res.json({ date: moment().toISOString() });
     });
     app.get('*', (_req, res, _next) => {
-        res.sendFile(path.resolve(`${__dirname}/../../../client/${process.env.NODE_ENV}/index.html`), {
+        res.sendFile(path.resolve(`${__dirname}/../../../client/index.html`), {
             lastModified: false,
             etag: false,
         });

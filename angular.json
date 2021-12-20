@@ -28,31 +28,10 @@
                     },
                     "configurations": {
                         "local": {
-                            "outputPath": "./dist/client/development",
-                            "watch": true
-                        },
-                        "dev": {
-                            "aot": true,
-                            "outputPath": "./dist/client/development",
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/client/environments/environment.ts",
-                                    "with": "src/client/environments/environment.dev.ts"
-                                }
-                            ]
-                        },
-                        "test": {
-                            "aot": true,
-                            "outputPath": "./dist/client/test",
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/client/environments/environment.ts",
-                                    "with": "src/client/environments/environment.test.ts"
-                                }
-                            ]
+                            "watch": true,
+                            "sourceMap": true
                         },
                         "production": {
-                            "outputPath": "./dist/client/production",
                             "optimization": true,
                             "outputHashing": "none",
                             "sourceMap": false,
@@ -62,13 +41,6 @@
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/client/environments/environment.ts",
-                                    "with": "src/client/environments/environment.prod.ts"
-                                }
-                            ],
-                            "index": "src/client/index.production.html",
                             "statsJson": true
                         }
                     }

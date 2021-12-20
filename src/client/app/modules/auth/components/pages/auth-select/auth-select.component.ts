@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../../../../environments/environment';
 import { getConfig } from '../../../../../functions';
 import {
     AwsCognitoService,
@@ -18,7 +17,6 @@ import {
 })
 export class AuthSelectComponent implements OnInit {
     public isLoading: boolean;
-    public environment = environment;
     public portalSiteUrl: string;
 
     constructor(
@@ -69,6 +67,7 @@ export class AuthSelectComponent implements OnInit {
             await this.cinerino.signInWithUserName(false, userName);
             this.user.data.memberType = MemberType.Member;
             this.user.save();
+            this.isLoading = false;
         } catch (error) {
             console.error(error);
             this.isLoading = false;

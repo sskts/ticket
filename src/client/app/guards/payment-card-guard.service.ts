@@ -68,6 +68,12 @@ export class PaymentCardGuardService implements CanActivate {
                 await this.userService.openPointAccount();
                 return false;
             }
+            if (accounts.length > 1) {
+                // ポイントアカウントが複数存在する場合、最初の一件を残してクローズする
+                await this.userService.closeUnnecessaryPointAccount({
+                    accounts,
+                });
+            }
             return true;
         } catch (error) {
             this.storageService.remove(POINT_ACCOUNT_MUTEX_KEY, SaveType.Local);
