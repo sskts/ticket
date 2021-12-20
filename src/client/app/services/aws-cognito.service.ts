@@ -4,17 +4,12 @@
 import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk';
 import * as moment from 'moment';
-import { environment } from '../../environments/environment';
+import { getConfig } from '../functions';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AwsCognitoService {
-    public static REGION: string = environment.REGION;
-    public static IDENTITY_POOL_ID: string = environment.IDENTITY_POOL_ID;
-    public static USER_POOL_ID: string = environment.USER_POOL_ID;
-    public static CLIENT_ID: string = environment.CLIENT_ID;
-
     public credentials?: AWS.CognitoIdentityCredentials;
 
     constructor() {}
@@ -28,15 +23,15 @@ export class AwsCognitoService {
         if (this.isAuthenticate()) {
             return;
         }
-        AWS.config.update({ region: AwsCognitoService.REGION });
+        AWS.config.update({ region: getConfig().cognitoRegion });
         const deviceId = localStorage.getItem('deviceId');
         if (deviceId === 'undefined' || deviceId === null) {
             AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
+                IdentityPoolId: getConfig().cognitoIdentityPoolId,
             });
         } else {
             AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
+                IdentityPoolId: getConfig().cognitoIdentityPoolId,
                 IdentityId: deviceId,
             });
         }
@@ -56,7 +51,7 @@ export class AwsCognitoService {
         accessToken: string;
     }): Promise<AWS.CognitoIdentityServiceProvider.GetUserResponse> {
         return new Promise((resolve, reject) => {
-            AWS.config.update({ region: AwsCognitoService.REGION });
+            AWS.config.update({ region: getConfig().cognitoRegion });
             const { accessToken } = params;
             const cognitoIdentityServiceProvider =
                 new AWS.CognitoIdentityServiceProvider();
@@ -129,7 +124,7 @@ export class AwsCognitoService {
         userAttributes: AWS.CognitoIdentityServiceProvider.AttributeListType;
     }): Promise<AWS.CognitoIdentityServiceProvider.UpdateUserAttributesResponse> {
         return new Promise((resolve, reject) => {
-            AWS.config.update({ region: AwsCognitoService.REGION });
+            AWS.config.update({ region: getConfig().cognitoRegion });
             const { accessToken, userAttributes } = params;
             const cognitoIdentityServiceProvider =
                 new AWS.CognitoIdentityServiceProvider();
@@ -209,7 +204,7 @@ export class AwsCognitoService {
      */
     public async deleteUser(params: { accessToken: string }): Promise<void> {
         return new Promise((resolve, reject) => {
-            AWS.config.update({ region: AwsCognitoService.REGION });
+            AWS.config.update({ region: getConfig().cognitoRegion });
             const { accessToken } = params;
             const cognitoIdentityServiceProvider =
                 new AWS.CognitoIdentityServiceProvider();
@@ -262,7 +257,7 @@ export class AwsCognitoService {
             .listRecords({
                 DatasetName: args.datasetName,
                 IdentityId: this.credentials.identityId,
-                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
+                IdentityPoolId: getConfig().cognitoIdentityPoolId,
                 LastSyncCount: 0,
             })
             .promise();
@@ -285,7 +280,7 @@ export class AwsCognitoService {
             .updateRecords({
                 DatasetName: args.datasetName,
                 IdentityId: this.credentials.identityId,
-                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
+                IdentityPoolId: getConfig().cognitoIdentityPoolId,
                 SyncSessionToken: listRecords.SyncSessionToken,
                 RecordPatches: this.convertToRecords(
                     mergeValue,
@@ -317,7 +312,7 @@ export class AwsCognitoService {
             .listRecords({
                 DatasetName: args.datasetName,
                 IdentityId: this.credentials.identityId,
-                IdentityPoolId: AwsCognitoService.IDENTITY_POOL_ID,
+                IdentityPoolId: getConfig().cognitoIdentityPoolId,
                 LastSyncCount: 0,
             })
             .promise();

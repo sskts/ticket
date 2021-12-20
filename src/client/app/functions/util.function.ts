@@ -32,15 +32,27 @@ export function getConfig(): {
     portalSiteUrl: string;
     entranceServerUrl: string;
     ticketSiteUrl: string;
+    cognitoRegion: string;
+    cognitoIdentityPoolId: string;
+    analyticsId: string;
+    closeTheaters: string[];
+    env: string;
+    gmoTokenUrl: string;
 } {
     const json = sessionStorage.getItem('CONFIG');
-    return (json === null)
+    return json === null
         ? {
-            scheduleApiEndpoint: '',
-            cmsApiEndpoint: '',
-            portalSiteUrl: '',
-            entranceServerUrl: '',
-            ticketSiteUrl: '',
-        }
+              scheduleApiEndpoint: '',
+              cmsApiEndpoint: '',
+              portalSiteUrl: '',
+              entranceServerUrl: '',
+              ticketSiteUrl: '',
+              cognitoRegion: '',
+              cognitoIdentityPoolId: '',
+              analyticsId: '',
+              closeTheaters: [],
+              env: '',
+              gmoTokenUrl: '',
+          }
         : JSON.parse(json);
 }

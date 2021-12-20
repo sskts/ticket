@@ -12,9 +12,9 @@ import { UserService } from '../services/user.service';
 export class ProgramMembershipGuardService implements CanActivate {
     constructor(
         private router: Router,
-        private cinerino: CinerinoService,
-        private user: UserService,
-        private util: UtilService
+        private cinerinoService: CinerinoService,
+        private userService: UserService,
+        private utilService: UtilService
     ) {}
 
     /**
@@ -22,45 +22,44 @@ export class ProgramMembershipGuardService implements CanActivate {
      * @method canActivate
      */
     public async canActivate() {
-        if (!this.user.isMember()) {
+        if (!this.userService.isMember()) {
             // 非会員
             return true;
         }
         if (
-            this.user.data.userName !== undefined &&
-            this.user.data.userName !== ''
+            this.userService.data.userName !== undefined &&
+            this.userService.data.userName !== ''
         ) {
             // ユーザーネーム保存
-            this.user.data.prevUserName = this.user.data.userName;
+            this.userService.data.prevUserName = this.userService.data.userName;
         }
-        this.user.save();
+        this.userService.save();
         if (
             await this.hasAvailability(
-                this.user.data.programMembershipOwnershipInfos
+                this.userService.data.programMembershipOwnershipInfos
             )
         ) {
             // 期限内会員
             // プログラムメンバーシップ登録済み判定を保存
-            this.user.data.programMembershipRegistered = true;
-            this.user.save();
+            this.userService.data.programMembershipRegistered = true;
+            this.userService.save();
             return true;
         }
-        await this.cinerino.getServices();
-        const searchResult =
-            await this.cinerino.ownerShipInfo.searchMyMemberships({});
-        if (searchResult.data.length > 0) {
+        await this.cinerinoService.getServices();
+        const searchResult = await this.userService.searchMyMemberships();
+        if (searchResult.length > 0) {
             // プログラムメンバーシップ登録済み判定を保存
-            this.user.data.programMembershipRegistered = true;
-            this.user.save();
+            this.userService.data.programMembershipRegistered = true;
+            this.userService.save();
         }
-        if (!(await this.hasAvailability(searchResult.data))) {
+        if (!(await this.hasAvailability(searchResult))) {
             // 期限切れ会員
             this.router.navigate(['/auth/register/credit']);
             return false;
         }
         // プログラムメンバーシップを保存
-        this.user.data.programMembershipOwnershipInfos = searchResult.data;
-        this.user.save();
+        this.userService.data.programMembershipOwnershipInfos = searchResult;
+        this.userService.save();
 
         return true;
     }
@@ -71,7 +70,7 @@ export class ProgramMembershipGuardService implements CanActivate {
     private async hasAvailability(
         programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<factory.permit.IPermit>[]
     ) {
-        const now = (await this.util.getServerTime()).date;
+        const now = (await this.utilService.getServerTime()).date;
         const filterResult = programMembershipOwnershipInfos.filter(
             (p) => moment(p.ownedThrough).unix() > moment(now).unix()
         );

@@ -3,22 +3,22 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
+import { getConfig } from '../../functions';
 import { SaveType, StorageService } from '../../services';
 
 declare const ga: Function;
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
     constructor(private router: Router, private storage: StorageService) {
-        this.router.events.subscribe(event => {
+        this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
                 // Googleアナリティクス pageview
                 try {
-                    ga('create', environment.ANALYTICS_ID, 'auto');
+                    ga('create', getConfig().analyticsId, 'auto');
                     ga('set', 'page', event.urlAfterRedirects);
                     ga('send', 'pageview');
                 } catch (err) {
