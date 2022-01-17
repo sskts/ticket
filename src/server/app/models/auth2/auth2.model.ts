@@ -77,13 +77,13 @@ export class Auth2Model {
      */
     public create(): cinerino.auth.OAuth2 {
         const auth = new cinerino.auth.OAuth2({
-            domain: (<string>process.env.OAUTH2_SERVER_DOMAIN),
-            clientId: (<string>process.env.CLIENT_ID_OAUTH2),
-            clientSecret: (<string>process.env.CLIENT_SECRET_OAUTH2),
-            redirectUri: (<string>process.env.AUTH_REDIRECT_URI),
-            logoutUri: (<string>process.env.AUTH_LOGUOT_URI),
+            domain: <string>process.env.AUTHORIZATION_CODE_DOMAIN,
+            clientId: <string>process.env.AUTHORIZATION_CODE_CLIENT_ID,
+            clientSecret: <string>process.env.AUTHORIZATION_CODE_CLIENT_SECRET,
+            redirectUri: <string>process.env.AUTH_REDIRECT_URI,
+            logoutUri: <string>process.env.AUTH_LOGUOT_URI,
             state: this.state,
-            scopes: <any>this.scopes.join(' ')
+            scopes: <any>this.scopes.join(' '),
         });
         if (this.credentials !== undefined) {
             auth.setCredentials(this.credentials);
@@ -103,7 +103,7 @@ export class Auth2Model {
             state: this.state,
             scopes: this.scopes,
             credentials: this.credentials,
-            codeVerifier: this.codeVerifier
+            codeVerifier: this.codeVerifier,
         };
         session.auth = authSession;
     }

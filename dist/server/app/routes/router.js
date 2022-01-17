@@ -39,6 +39,7 @@ exports.default = (app) => {
     app.post('/api/authorize/getCredentials', authorize.getCredentials);
     app.get('/api/authorize/signIn', authorize.signIn);
     app.get('/api/authorize/signOut', authorize.signOut);
+    app.get('/api/authorize/signUp', authorize.signUp);
     app.get('/signIn', authorize.signInRedirect);
     app.get('/signOut', authorize.signOutRedirect);
     app.get('/api/maintenance/excludeTheaters', maintenance.excludeTheaters);

@@ -30,13 +30,13 @@ class Auth2Model {
      */
     create() {
         const auth = new cinerino.auth.OAuth2({
-            domain: process.env.OAUTH2_SERVER_DOMAIN,
-            clientId: process.env.CLIENT_ID_OAUTH2,
-            clientSecret: process.env.CLIENT_SECRET_OAUTH2,
+            domain: process.env.AUTHORIZATION_CODE_DOMAIN,
+            clientId: process.env.AUTHORIZATION_CODE_CLIENT_ID,
+            clientSecret: process.env.AUTHORIZATION_CODE_CLIENT_SECRET,
             redirectUri: process.env.AUTH_REDIRECT_URI,
             logoutUri: process.env.AUTH_LOGUOT_URI,
             state: this.state,
-            scopes: this.scopes.join(' ')
+            scopes: this.scopes.join(' '),
         });
         if (this.credentials !== undefined) {
             auth.setCredentials(this.credentials);
@@ -54,7 +54,7 @@ class Auth2Model {
             state: this.state,
             scopes: this.scopes,
             credentials: this.credentials,
-            codeVerifier: this.codeVerifier
+            codeVerifier: this.codeVerifier,
         };
         session.auth = authSession;
     }

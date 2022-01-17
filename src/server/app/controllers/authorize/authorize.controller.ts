@@ -82,13 +82,13 @@ export async function signIn(req: Request, res: Response) {
     delete req.session.auth;
     const authModel = new Auth2Model(req.session.auth);
     const auth = authModel.create();
-    const authUrl = auth.generateAuthUrl({
+    const url = auth.generateAuthUrl({
         scopes: authModel.scopes,
         state: authModel.state,
         codeVerifier: authModel.codeVerifier,
     });
     delete req.session.auth;
-    res.json({ url: authUrl });
+    res.json({ url });
 }
 
 /**
@@ -139,11 +139,8 @@ export async function signOut(req: Request, res: Response) {
     log('signOut');
     const authModel = new Auth2Model((<Express.Session>req.session).auth);
     const auth = authModel.create();
-    const logoutUrl = auth.generateLogoutUrl();
-    log('logoutUrl:', logoutUrl);
-    res.json({
-        url: logoutUrl,
-    });
+    const url = auth.generateLogoutUrl();
+    res.json({ url });
 }
 
 /**
@@ -155,4 +152,32 @@ export async function signOutRedirect(req: Request, res: Response) {
     log('signOutRedirect');
     delete (<Express.Session>req.session).auth;
     res.redirect('/#/auth/signout');
+}
+
+/**
+ * サインアップ処理
+ * @param {Request} req
+ * @param {Response} res
+ */
+export async function signUp(req: Request, res: Response) {
+    log('signUp');
+    if (req.session === undefined) {
+        throw new Error('session is undefined');
+    }
+    delete req.session.auth;
+    const authModel = new Auth2Model(req.session.auth);
+    const auth = authModel.create();
+    let url = auth.generateAuthUrl({
+        scopes: authModel.scopes,
+        state: authModel.state,
+        codeVerifier: authModel.codeVerifier,
+    });
+    url = url
+        .replace(
+            <string>process.env.AUTHORIZATION_CODE_DOMAIN,
+            <string>process.env.ACCOUNT_SITE_DOMAIN
+        )
+        .replace(/\/authorize/, '/signup');
+    delete req.session.auth;
+    res.json({ url });
 }

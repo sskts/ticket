@@ -83,12 +83,11 @@ export class CinerinoService {
      * サインアップ
      */
     public async signUp() {
-        const url = '/api/authorize/signIn';
+        const url = '/api/authorize/signUp';
         const result = await this.http
             .get<{ url: string }>(url, {})
             .toPromise();
-        const signupUrl = result.url.replace(/\/authorize/, '/signup');
-        location.href = signupUrl;
+        location.href = result.url;
     }
 
     /**
