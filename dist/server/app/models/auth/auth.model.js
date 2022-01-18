@@ -15,7 +15,7 @@ class AuthModel {
         if (session === undefined) {
             session = {};
         }
-        this.state = (session.state !== undefined) ? session.state : uuid.v1();
+        this.state = session.state !== undefined ? session.state : uuid.v1();
         this.scopes = [];
         this.credentials = session.credentials;
         this.codeVerifier = session.codeVerifier;
@@ -28,11 +28,11 @@ class AuthModel {
      */
     create() {
         return new cinerino.auth.ClientCredentials({
-            domain: process.env.AUTHORIZE_SERVER_DOMAIN,
-            clientId: process.env.CLIENT_ID,
-            clientSecret: process.env.CLIENT_SECRET,
+            domain: process.env.CLIENT_CREDENTIALS_DOMAIN,
+            clientId: process.env.CLIENT_CREDENTIALS_CLIENT_ID,
+            clientSecret: process.env.CLIENT_CREDENTIALS_CLIENT_SECRET,
             state: this.state,
-            scopes: this.scopes
+            scopes: this.scopes,
         });
     }
     /**
@@ -46,7 +46,7 @@ class AuthModel {
             state: this.state,
             scopes: this.scopes,
             credentials: this.credentials,
-            codeVerifier: this.codeVerifier
+            codeVerifier: this.codeVerifier,
         };
         session.auth = authSession;
     }

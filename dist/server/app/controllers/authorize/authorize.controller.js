@@ -94,13 +94,13 @@ function signIn(req, res) {
         delete req.session.auth;
         const authModel = new auth2_model_1.Auth2Model(req.session.auth);
         const auth = authModel.create();
-        const authUrl = auth.generateAuthUrl({
+        const url = auth.generateAuthUrl({
             scopes: authModel.scopes,
             state: authModel.state,
             codeVerifier: authModel.codeVerifier,
         });
         delete req.session.auth;
-        res.json({ url: authUrl });
+        res.json({ url });
     });
 }
 exports.signIn = signIn;
@@ -145,11 +145,8 @@ function signOut(req, res) {
         log('signOut');
         const authModel = new auth2_model_1.Auth2Model(req.session.auth);
         const auth = authModel.create();
-        const logoutUrl = auth.generateLogoutUrl();
-        log('logoutUrl:', logoutUrl);
-        res.json({
-            url: logoutUrl,
-        });
+        const url = auth.generateLogoutUrl();
+        res.json({ url });
     });
 }
 exports.signOut = signOut;
@@ -166,3 +163,30 @@ function signOutRedirect(req, res) {
     });
 }
 exports.signOutRedirect = signOutRedirect;
+/**
+ * サインアップ処理
+ * @param {Request} req
+ * @param {Response} res
+ */
+function signUp(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        log('signUp');
+        if (req.session === undefined) {
+            throw new Error('session is undefined');
+        }
+        delete req.session.auth;
+        const authModel = new auth2_model_1.Auth2Model(req.session.auth);
+        const auth = authModel.create();
+        let url = auth.generateAuthUrl({
+            scopes: authModel.scopes,
+            state: authModel.state,
+            codeVerifier: authModel.codeVerifier,
+        });
+        url = url
+            .replace(process.env.AUTHORIZATION_CODE_DOMAIN, process.env.ACCOUNT_SITE_DOMAIN)
+            .replace(/\/authorize/, '/signup');
+        delete req.session.auth;
+        res.json({ url });
+    });
+}
+exports.signUp = signUp;
