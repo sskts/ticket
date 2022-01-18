@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 4.2.0 - 2022-01-18
+
+### Changed
+
+-   Signup URL を認可サーバーとは分離して管理する
+
 ## 4.1.0 - 2021-12-23
 
 ### Changed
