@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 4.3.0 - 2022-01-19
+
+### Added
+
+-   チケットサイトへ username パラメーター追加
+
 ## 4.2.0 - 2022-01-18
 
 ### Changed

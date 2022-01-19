@@ -260,6 +260,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 query = {
                     ...commonQuery,
                     member: MemberType.Member,
+                    username: this.userService.data.userName,
                     clientId: this.cinerinoService.auth.options.clientId,
                 };
             } else {
