@@ -24,13 +24,13 @@ export interface IAuth2Session {
 
 /**
  * 認証モデル
- * @class Auth2Model
+ * @class CognitoAuth2Model
  */
-export class Auth2Model {
+export class CognitoAuth2Model {
     /**
      * 状態（固定値）
      */
-    public static STATE = 'STATE';
+    public static STATE = 'COGNITO_STATE';
     /**
      * 検証コード（固定値）
      */
@@ -62,8 +62,8 @@ export class Auth2Model {
         }
         this.scopes = [];
         this.credentials = session.credentials;
-        this.state = Auth2Model.STATE;
-        this.codeVerifier = Auth2Model.CODE_VERIFIER;
+        this.state = CognitoAuth2Model.STATE;
+        this.codeVerifier = CognitoAuth2Model.CODE_VERIFIER;
     }
 
     /**
@@ -74,9 +74,11 @@ export class Auth2Model {
      */
     public create(): cinerino.auth.OAuth2 {
         const auth = new cinerino.auth.OAuth2({
-            domain: <string>process.env.AUTHORIZATION_CODE_DOMAIN,
-            clientId: <string>process.env.AUTHORIZATION_CODE_CLIENT_ID,
-            clientSecret: <string>process.env.AUTHORIZATION_CODE_CLIENT_SECRET,
+            domain: <string>process.env.COGNITO_AUTHORIZATION_CODE_DOMAIN,
+            clientId: <string>process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_ID,
+            clientSecret: <string>(
+                process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_SECRET
+            ),
             redirectUri: <string>process.env.AUTH_REDIRECT_URI,
             logoutUri: <string>process.env.AUTH_LOGUOT_URI,
             state: this.state,
@@ -102,6 +104,6 @@ export class Auth2Model {
             credentials: this.credentials,
             codeVerifier: this.codeVerifier,
         };
-        session.auth = authSession;
+        session.cognito = authSession;
     }
 }

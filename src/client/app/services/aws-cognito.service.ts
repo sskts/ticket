@@ -1,6 +1,7 @@
 /**
  * AwsCognitoService
  */
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk';
 import * as moment from 'moment';
@@ -11,8 +12,10 @@ import { getConfig } from '../functions';
 })
 export class AwsCognitoService {
     public credentials?: AWS.CognitoIdentityCredentials;
+    private accessToken?: string;
+    private userName?: string;
 
-    constructor() {}
+    constructor(private http: HttpClient) {}
 
     /**
      * 端末IDで認証
@@ -47,16 +50,18 @@ export class AwsCognitoService {
     /**
      * ユーザー取得
      */
-    private async getUser(params: {
-        accessToken: string;
-    }): Promise<AWS.CognitoIdentityServiceProvider.GetUserResponse> {
-        return new Promise((resolve, reject) => {
+    private async getUser(): Promise<AWS.CognitoIdentityServiceProvider.GetUserResponse> {
+        return new Promise(async (resolve, reject) => {
             AWS.config.update({ region: getConfig().cognitoRegion });
-            const { accessToken } = params;
+            await this.authorize();
+            if (this.accessToken === undefined) {
+                reject(new Error('accessToken undefined'));
+                return;
+            }
             const cognitoIdentityServiceProvider =
                 new AWS.CognitoIdentityServiceProvider();
             cognitoIdentityServiceProvider.getUser(
-                { AccessToken: accessToken },
+                { AccessToken: this.accessToken },
                 (err, data) => {
                     if (err) {
                         reject(err);
@@ -71,15 +76,14 @@ export class AwsCognitoService {
     /**
      * プロフィール取得
      */
-    public async getProfile(params: { accessToken: string }): Promise<{
+    public async getProfile(): Promise<{
         additionalProperty?: { name: string; value: string }[];
         email?: string;
         givenName?: string;
         familyName?: string;
         telephone?: string;
     }> {
-        const { accessToken } = params;
-        const user = await this.getUser({ accessToken });
+        const user = await this.getUser();
         const profile: {
             additionalProperty?: { name: string; value: string }[];
             email?: string;
@@ -120,17 +124,20 @@ export class AwsCognitoService {
      * 属性更新
      */
     private async updateUserAttributes(params: {
-        accessToken: string;
         userAttributes: AWS.CognitoIdentityServiceProvider.AttributeListType;
     }): Promise<AWS.CognitoIdentityServiceProvider.UpdateUserAttributesResponse> {
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             AWS.config.update({ region: getConfig().cognitoRegion });
-            const { accessToken, userAttributes } = params;
+            if (this.accessToken === undefined) {
+                reject(new Error('accessToken undefined'));
+                return;
+            }
+            const { userAttributes } = params;
             const cognitoIdentityServiceProvider =
                 new AWS.CognitoIdentityServiceProvider();
             cognitoIdentityServiceProvider.updateUserAttributes(
                 {
-                    AccessToken: accessToken,
+                    AccessToken: this.accessToken,
                     UserAttributes: userAttributes,
                 },
                 (err, data) => {
@@ -148,7 +155,6 @@ export class AwsCognitoService {
      * プロフィール更新
      */
     public async updateProfile(params: {
-        accessToken: string;
         profile: {
             additionalProperty?: { name: string; value: string }[];
             email?: string;
@@ -157,7 +163,7 @@ export class AwsCognitoService {
             telephone?: string;
         };
     }): Promise<void> {
-        const { accessToken, profile } = params;
+        const { profile } = params;
         const userAttributes: AWS.CognitoIdentityServiceProvider.AttributeListType =
             [];
         Object.keys(profile).forEach((key) => {
@@ -196,21 +202,24 @@ export class AwsCognitoService {
                 }
             });
         }
-        await this.updateUserAttributes({ accessToken, userAttributes });
+        await this.updateUserAttributes({ userAttributes });
     }
 
     /**
      * ユーザー削除
      */
-    public async deleteUser(params: { accessToken: string }): Promise<void> {
+    public async deleteUser(): Promise<void> {
         return new Promise((resolve, reject) => {
             AWS.config.update({ region: getConfig().cognitoRegion });
-            const { accessToken } = params;
+            if (this.accessToken === undefined) {
+                reject(new Error('accessToken undefined'));
+                return;
+            }
             const cognitoIdentityServiceProvider =
                 new AWS.CognitoIdentityServiceProvider();
             cognitoIdentityServiceProvider.deleteUser(
                 {
-                    AccessToken: accessToken,
+                    AccessToken: this.accessToken,
                 },
                 (err, _data) => {
                     if (err && err.name !== 'NotAuthorizedException') {
@@ -369,5 +378,46 @@ export class AwsCognitoService {
         );
 
         return result;
+    }
+
+    public async authorize() {
+        const url = '/api/cognito/getCredentials';
+        const result = await this.http
+            .post<{
+                credentials: { accessToken: string };
+                userName?: string;
+            }>(url, {})
+            .toPromise();
+        this.accessToken = result.credentials.accessToken;
+        this.userName = result.userName;
+    }
+
+    public async getUserName() {
+        if (this.userName === undefined) {
+            await this.authorize();
+        }
+        return this.userName;
+    }
+
+    /**
+     * サインイン
+     */
+    public async signIn() {
+        const url = '/api/cognito/signIn';
+        const result = await this.http
+            .get<{ url: string }>(url, {})
+            .toPromise();
+        location.replace(result.url);
+    }
+
+    /**
+     * サインアウト
+     */
+    public async signOut() {
+        const url = '/api/cognito/signOut';
+        const result = await this.http
+            .get<{ url: string }>(url, {})
+            .toPromise();
+        location.href = result.url;
     }
 }

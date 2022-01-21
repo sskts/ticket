@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { CinerinoService } from '../../../../../services';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-auth-logout',
     templateUrl: './auth-logout.component.html',
-    styleUrls: ['./auth-logout.component.scss']
+    styleUrls: ['./auth-logout.component.scss'],
 })
 export class AuthLogoutComponent implements OnInit {
     public isLoading: boolean;
 
-    constructor(
-        private cinerino: CinerinoService
-    ) { }
+    constructor(private router: Router) {}
 
     /**
      * 初期化
@@ -26,12 +24,6 @@ export class AuthLogoutComponent implements OnInit {
      * @method signOut
      */
     public async signOut() {
-        this.isLoading = true;
-        try {
-            await this.cinerino.signOut();
-        } catch {
-            this.isLoading = false;
-        }
+        this.router.navigate(['/auth/signout']);
     }
-
 }
