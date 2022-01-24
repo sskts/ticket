@@ -40,9 +40,6 @@ export class MemberMypageComponent implements OnInit {
         this.availableBalance = 0;
         this.portalSiteUrl = getConfig().portalSiteUrl;
         try {
-            if (this.userService.data.userName === undefined) {
-                this.userService.setUserName();
-            }
             await this.userService.initMember();
             this.account = this.userService.data.accounts[0];
             this.availableBalance = this.userService.getAvailableBalance();

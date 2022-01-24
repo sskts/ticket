@@ -27,14 +27,6 @@ export class ProgramMembershipGuardService implements CanActivate {
             return true;
         }
         if (
-            this.userService.data.userName !== undefined &&
-            this.userService.data.userName !== ''
-        ) {
-            // ユーザーネーム保存
-            this.userService.data.prevUserName = this.userService.data.userName;
-        }
-        this.userService.save();
-        if (
             await this.hasAvailability(
                 this.userService.data.programMembershipOwnershipInfos
             )

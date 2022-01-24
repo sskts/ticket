@@ -4,7 +4,6 @@ import { getConfig } from '../../../../../functions';
 import {
     AwsCognitoService,
     CallNativeService,
-    CinerinoService,
     InAppBrowserTarget,
     MemberType,
     UserService,
@@ -20,7 +19,6 @@ export class AuthSelectComponent implements OnInit {
     public portalSiteUrl: string;
 
     constructor(
-        private cinerino: CinerinoService,
         private router: Router,
         private user: UserService,
         private awsCognito: AwsCognitoService,
@@ -43,31 +41,7 @@ export class AuthSelectComponent implements OnInit {
     public async signIn() {
         this.isLoading = true;
         try {
-            const userName =
-                this.user === null ||
-                this.user === undefined ||
-                this.user.data === null ||
-                this.user.data === undefined ||
-                this.user.data.accounts === null ||
-                this.user.data.accounts === undefined
-                    ? ''
-                    : this.user.data.accounts.length > 0
-                    ? typeof this.user.data.accounts[0].typeOfGood.name ===
-                      'string'
-                        ? this.user.data.accounts[0].typeOfGood.name
-                        : this.user.data.accounts[0].typeOfGood.name !==
-                              undefined &&
-                          this.user.data.accounts[0].typeOfGood.name.ja !==
-                              undefined
-                        ? this.user.data.accounts[0].typeOfGood.name.ja
-                        : ''
-                    : this.user.data.prevUserName !== undefined
-                    ? this.user.data.prevUserName
-                    : '';
-            await this.cinerino.signInWithUserName(false, userName);
-            this.user.data.memberType = MemberType.Member;
-            this.user.save();
-            this.isLoading = false;
+            this.router.navigate(['/auth/signin']);
         } catch (error) {
             console.error(error);
             this.isLoading = false;
