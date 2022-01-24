@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const cinerino = require("@cinerino/sdk");
+const debug = require("debug");
+const log = debug('sskts-ticket:Auth2Model');
 /**
  * 認証モデル
  * @class Auth2Model
@@ -11,6 +13,7 @@ class Auth2Model {
      * @param {any} session
      */
     constructor(session) {
+        log('constructor');
         if (session === undefined) {
             session = {};
         }

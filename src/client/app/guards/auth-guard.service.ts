@@ -8,16 +8,15 @@ import { CinerinoService } from '../services/cinerino.service';
 import { UserService } from '../services/user.service';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class AuthGuardService implements CanActivate {
-
     constructor(
         private router: Router,
-        private cinerino: CinerinoService,
-        private user: UserService,
-        private awsCognito: AwsCognitoService
-    ) { }
+        private cinerinoService: CinerinoService,
+        private userService: UserService,
+        private awsCognitoService: AwsCognitoService
+    ) {}
 
     /**
      * 認証
@@ -25,27 +24,41 @@ export class AuthGuardService implements CanActivate {
      * @returns {Promise<boolean>}
      */
     public async canActivate(): Promise<boolean> {
-        try {
-            await this.cinerino.authorize();
-
-            if (!this.user.isMember()) {
-                const deviceId = localStorage.getItem('deviceId');
-                if (deviceId === null) {
-                    throw new Error('deviceId is null');
-                }
-                this.awsCognito.authenticateWithDeviceId();
+        this.userService.load();
+        if (!this.userService.isMember()) {
+            const deviceId = localStorage.getItem('deviceId');
+            if (deviceId === null) {
+                throw new Error('deviceId is null');
             }
-
+            this.awsCognitoService.authenticateWithDeviceId();
             return true;
-        } catch (_) {
+        }
+        try {
+            await this.cinerinoService.authorize();
+        } catch {
             try {
-                await this.cinerino.signIn(true);
+                await this.cinerinoService.signIn(true);
             } catch (e) {
                 console.error(e);
                 this.router.navigate(['/auth/select']);
             }
-
             return false;
         }
+        try {
+            await this.awsCognitoService.authorize();
+        } catch {
+            try {
+                await this.awsCognitoService.signIn();
+            } catch (e) {
+                console.error(e);
+                this.router.navigate(['/auth/select']);
+            }
+            return false;
+        }
+        const userName = await this.awsCognitoService.getUserName();
+        this.userService.data.userName = userName;
+        this.userService.data.prevUserName = userName;
+        this.userService.save();
+        return true;
     }
 }

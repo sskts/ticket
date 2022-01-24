@@ -121,12 +121,7 @@ export class UserService {
      * @method reset
      */
     public reset() {
-        const prevUserName =
-            this.cinerinoService.userName !== undefined
-                ? this.cinerinoService.userName
-                : this.data.prevUserName !== undefined
-                ? this.data.prevUserName
-                : '';
+        const prevUserName = this.data.prevUserName;
         this.data = {
             memberType: MemberType.NotMember,
             creditCards: [],
@@ -145,19 +140,13 @@ export class UserService {
     public async initMember() {
         this.data.memberType = MemberType.Member;
         this.save();
-        await this.cinerinoService.getServices();
-        if (this.cinerinoService.userName === undefined) {
+        const userName = await this.awsCognitoService.getUserName();
+        if (userName === undefined) {
             throw new Error('userName is undefined');
         }
-        const { accessToken } = this.cinerinoService.auth.credentials;
-        if (accessToken === undefined) {
-            throw new Error('accessToken undefined');
-        }
-        this.data.userName = this.cinerinoService.userName;
+        this.data.userName = userName;
         // 連絡先取得
-        const profile = await this.awsCognitoService.getProfile({
-            accessToken,
-        });
+        const profile = await this.awsCognitoService.getProfile();
         this.data.profile = profile;
 
         try {
@@ -290,12 +279,7 @@ export class UserService {
      * @method deleteUser
      */
     public async deleteUser() {
-        await this.cinerinoService.getServices();
-        const { accessToken } = this.cinerinoService.auth.credentials;
-        if (accessToken === undefined) {
-            throw new Error('accessToken undefined');
-        }
-        await this.awsCognitoService.deleteUser({ accessToken });
+        await this.awsCognitoService.deleteUser();
     }
 
     /**
@@ -477,7 +461,6 @@ export class UserService {
             throw new Error('accessToken undefined');
         }
         await this.awsCognitoService.updateProfile({
-            accessToken,
             profile: {
                 familyName,
                 givenName,
@@ -488,19 +471,8 @@ export class UserService {
                 ],
             },
         });
-        const profile = await this.awsCognitoService.getProfile({
-            accessToken,
-        });
+        const profile = await this.awsCognitoService.getProfile();
         this.data.profile = profile;
-        this.save();
-    }
-
-    /**
-     * ユーザーネーム設定
-     */
-    public async setUserName() {
-        await this.cinerinoService.getServices();
-        this.data.userName = this.cinerinoService.userName;
         this.save();
     }
 

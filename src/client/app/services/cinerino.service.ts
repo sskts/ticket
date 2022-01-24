@@ -75,8 +75,9 @@ export class CinerinoService {
         if (isReSignIn) {
             redirectUrl += '&isReSignIn=1';
         }
-        location.href = redirectUrl +=
-            '&userName=' + encodeURIComponent(userName);
+        location.replace(
+            `${redirectUrl}&userName=${encodeURIComponent(userName)}`
+        );
     }
 
     /**

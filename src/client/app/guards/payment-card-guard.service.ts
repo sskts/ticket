@@ -29,13 +29,6 @@ export class PaymentCardGuardService implements CanActivate {
             // 非会員
             return true;
         }
-        if (
-            this.userService.data.userName !== undefined &&
-            this.userService.data.userName !== ''
-        ) {
-            // ユーザーネーム保存
-            this.userService.data.prevUserName = this.userService.data.userName;
-        }
         this.userService.save();
         const POINT_ACCOUNT_MUTEX_KEY = 'point_account_mutex';
         try {

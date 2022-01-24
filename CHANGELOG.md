@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 4.4.0 - 2022-01-24
+
+### Changed
+
+-   awsSDK 用にアクセストークンを取得
+
 ## 4.3.0 - 2022-01-19
 
 ### Added

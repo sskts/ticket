@@ -3,93 +3,9 @@
  */
 import * as debug from 'debug';
 import { NextFunction, Request, Response } from 'express';
-import { AuthModel } from '../../models/auth/auth.model';
 import { Auth2Model } from '../../models/auth2/auth2.model';
-import { errorProsess } from '../base/base.controller';
+import { CognitoAuth2Model } from '../../models/cognito/cognitoAuth2.model';
 const log = debug('sskts-ticket:authorize');
-
-export enum MemberType {
-    NotMember = '0',
-    Member = '1',
-}
-
-/**
- * 資格情報取得
- * @param {Request} req
- * @param {Response} res
- */
-export async function getCredentials(req: Request, res: Response) {
-    log('getCredentials', req.method);
-    try {
-        if (req.session === undefined) {
-            throw new Error('session is undefined');
-        }
-        const body =
-            req.method === 'POST' || req.method === 'post'
-                ? req.body
-                : req.query;
-        const endpoint = <string>process.env.SSKTS_API_ENDPOINT;
-        const projectId = <string>process.env.PROJECT_ID;
-        const waiterServerUrl = <string>process.env.WAITER_SERVER_URL;
-        let userName;
-        let credentials;
-        let clientId;
-        let authModel;
-        if (body.member === MemberType.Member) {
-            authModel = new Auth2Model(req.session.auth);
-            const options = { endpoint, auth: authModel.create() };
-            const accessToken = await options.auth.getAccessToken();
-            authModel.credentials = options.auth.credentials;
-            authModel.save(req.session);
-            credentials = { accessToken };
-            clientId = options.auth.options.clientId;
-            userName =
-                body.member === MemberType.Member
-                    ? options.auth.verifyIdToken(<any>{}).getUsername()
-                    : undefined;
-        } else {
-            authModel = new AuthModel();
-            const options = { endpoint, auth: authModel.create() };
-            const accessToken = await options.auth.getAccessToken();
-            credentials = { accessToken };
-            clientId = options.auth.options.clientId;
-        }
-        log('getCredentials MemberType', body.member);
-
-        res.json({
-            credentials,
-            userName,
-            clientId,
-            endpoint,
-            projectId,
-            waiterServerUrl,
-        });
-    } catch (err) {
-        errorProsess(res, err);
-    }
-}
-
-/**
- * サインイン処理
- * @param {Request} req
- * @param {Response} res
- */
-export async function signIn(req: Request, res: Response) {
-    log('signIn');
-    if (req.session === undefined) {
-        throw new Error('session is undefined');
-    }
-    delete req.session.auth;
-    const authModel = new Auth2Model(req.session.auth);
-    const auth = authModel.create();
-    const url = auth.generateAuthUrl({
-        scopes: authModel.scopes,
-        state: authModel.state,
-        codeVerifier: authModel.codeVerifier,
-    });
-    delete req.session.auth;
-    res.json({ url });
-}
 
 /**
  * サインインリダイレクト処理
@@ -107,18 +23,21 @@ export async function signInRedirect(
         if (req.session === undefined) {
             throw new Error('session is undefined');
         }
-        const authModel = new Auth2Model(req.session.auth);
-        if (req.query.state !== authModel.state) {
-            throw new Error(
-                `state not matched ${req.query.state} !== ${authModel.state}`
-            );
+        const authModel =
+            Auth2Model.STATE === req.query.state
+                ? new Auth2Model(req.session.auth)
+                : CognitoAuth2Model.STATE === req.query.state
+                ? new CognitoAuth2Model(req.session.cognito)
+                : undefined;
+        if (authModel === undefined) {
+            throw new Error(`state not matched [${req.query.state}]`);
         }
         const auth = authModel.create();
         const credentials = await auth.getToken(
             req.query.code,
             <string>authModel.codeVerifier
         );
-        log('credentials published', credentials);
+        log('credentials published');
 
         authModel.credentials = credentials;
         authModel.save(req.session);
@@ -131,53 +50,17 @@ export async function signInRedirect(
 }
 
 /**
- * サインアウト処理
- * @param {Request} req
- * @param {Response} res
- */
-export async function signOut(req: Request, res: Response) {
-    log('signOut');
-    const authModel = new Auth2Model((<Express.Session>req.session).auth);
-    const auth = authModel.create();
-    const url = auth.generateLogoutUrl();
-    res.json({ url });
-}
-
-/**
  * サインアウトリダイレクト処理
  * @param {Request} req
  * @param {Response} res
  */
 export async function signOutRedirect(req: Request, res: Response) {
     log('signOutRedirect');
-    delete (<Express.Session>req.session).auth;
-    res.redirect('/#/auth/signout');
-}
-
-/**
- * サインアップ処理
- * @param {Request} req
- * @param {Response} res
- */
-export async function signUp(req: Request, res: Response) {
-    log('signUp');
-    if (req.session === undefined) {
-        throw new Error('session is undefined');
+    if ((<Express.Session>req.session).auth !== undefined) {
+        delete (<Express.Session>req.session).auth;
+    } else {
+        delete (<Express.Session>req.session).cognito;
     }
-    delete req.session.auth;
-    const authModel = new Auth2Model(req.session.auth);
-    const auth = authModel.create();
-    let url = auth.generateAuthUrl({
-        scopes: authModel.scopes,
-        state: authModel.state,
-        codeVerifier: authModel.codeVerifier,
-    });
-    url = url
-        .replace(
-            <string>process.env.AUTHORIZATION_CODE_DOMAIN,
-            <string>process.env.ACCOUNT_SITE_DOMAIN
-        )
-        .replace(/\/authorize/, '/signup');
-    delete req.session.auth;
-    res.json({ url });
+
+    res.redirect('/#/auth/signout');
 }
