@@ -24,7 +24,10 @@ import {
  */
 export class MemberTicketHistoryComponent implements OnInit {
     public isLoading: boolean;
-    public reservations: factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGoodWithDetail>[];
+    public reservations: {
+        data: factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGoodWithDetail>;
+        theaterName: string;
+    }[];
     public touch: boolean;
 
     constructor(
@@ -50,6 +53,7 @@ export class MemberTicketHistoryComponent implements OnInit {
             let result: factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGoodWithDetail>[] =
                 [];
             await this.cinerinoService.getServices();
+            const sellers = await this.cinerinoService.seller.search({});
             while (roop) {
                 const searchResult =
                     await this.cinerinoService.ownerShipInfo.search({
@@ -68,16 +72,40 @@ export class MemberTicketHistoryComponent implements OnInit {
                 }
             }
             const now = moment();
-            const reservations = result;
-            this.reservations = reservations.filter((reservation) => {
-                return (
-                    reservation.typeOfGood.typeOf ===
-                        factory.chevre.reservationType.EventReservation &&
-                    moment(
-                        reservation.typeOfGood.reservationFor.endDate
-                    ).unix() < now.unix()
-                );
-            });
+            this.reservations = result
+                .filter((r) => {
+                    return (
+                        r.typeOfGood.typeOf ===
+                            factory.chevre.reservationType.EventReservation &&
+                        moment(r.typeOfGood.reservationFor.endDate).unix() <
+                            now.unix()
+                    );
+                })
+                .map((r) => {
+                    const findResult = sellers.data.find((s) => {
+                        return (
+                            r.typeOfGood.typeOf ===
+                                factory.chevre.reservationType
+                                    .EventReservation &&
+                            r.typeOfGood.reservationFor.coaInfo !== undefined &&
+                            r.typeOfGood.reservationFor.coaInfo.theaterCode ===
+                                s.branchCode
+                        );
+                    });
+                    return {
+                        data: r,
+                        theaterName:
+                            findResult === undefined
+                                ? ''
+                                : findResult.name === undefined
+                                ? ''
+                                : typeof findResult.name === 'string'
+                                ? findResult.name
+                                : findResult.name.ja === undefined
+                                ? ''
+                                : findResult.name.ja,
+                    };
+                });
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/ticket' }]);
             console.log(err);
