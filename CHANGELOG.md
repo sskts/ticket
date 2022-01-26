@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 4.5.1 - 2022-01-26
+
+### Fixed
+
+-   README.md 修正
+
 ## 4.5.0 - 2022-01-26
 
 ### Fixed
