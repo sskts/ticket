@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 4.5.0 - 2022-01-26
+
+### Fixed
+
+-   鑑賞履歴の 101 件以上対応
+
 ## 4.4.0 - 2022-01-24
 
 ### Changed
