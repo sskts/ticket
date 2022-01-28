@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 4.5.2 - 2022-01-28
+
+### Fixed
+
+-   サインアップ URL 修正
+
 ## 4.5.1 - 2022-01-26
 
 ### Fixed
