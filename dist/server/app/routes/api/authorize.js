@@ -17,6 +17,7 @@ const express = require("express");
 const base_controller_1 = require("../../controllers/base/base.controller");
 const auth_model_1 = require("../../models/auth/auth.model");
 const auth2_model_1 = require("../../models/auth2/auth2.model");
+const cognitoAuth2_model_1 = require("../../models/cognito/cognitoAuth2.model");
 const router = express.Router();
 const log = debug('sskts-ticket:api/authorize');
 var MemberType;
@@ -126,8 +127,8 @@ router.get('/signUp', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     if (req.session === undefined) {
         throw new Error('session is undefined');
     }
-    delete req.session.auth;
-    const authModel = new auth2_model_1.Auth2Model(req.session.auth);
+    delete req.session.cognito;
+    const authModel = new cognitoAuth2_model_1.CognitoAuth2Model(req.session.cognito);
     const auth = authModel.create();
     let url = auth.generateAuthUrl({
         scopes: authModel.scopes,
