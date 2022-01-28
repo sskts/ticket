@@ -6,6 +6,7 @@ import * as express from 'express';
 import { errorProsess } from '../../controllers/base/base.controller';
 import { AuthModel } from '../../models/auth/auth.model';
 import { Auth2Model } from '../../models/auth2/auth2.model';
+import { CognitoAuth2Model } from '../../models/cognito/cognitoAuth2.model';
 
 const router = express.Router();
 const log = debug('sskts-ticket:api/authorize');
@@ -119,8 +120,8 @@ router.get('/signUp', async (req, res) => {
     if (req.session === undefined) {
         throw new Error('session is undefined');
     }
-    delete req.session.auth;
-    const authModel = new Auth2Model(req.session.auth);
+    delete req.session.cognito;
+    const authModel = new CognitoAuth2Model(req.session.cognito);
     const auth = authModel.create();
     let url = auth.generateAuthUrl({
         scopes: authModel.scopes,
