@@ -35,13 +35,9 @@ export class AuthGuardService implements CanActivate {
         }
         try {
             await this.cinerinoService.authorize();
-        } catch {
-            try {
-                await this.cinerinoService.signIn(true);
-            } catch (e) {
-                console.error(e);
-                this.router.navigate(['/auth/select']);
-            }
+        } catch (error) {
+            console.error(error);
+            this.router.navigate(['/auth/select']);
             return false;
         }
         try {
@@ -49,8 +45,8 @@ export class AuthGuardService implements CanActivate {
         } catch {
             try {
                 await this.awsCognitoService.signIn();
-            } catch (e) {
-                console.error(e);
+            } catch (error) {
+                console.error(error);
                 this.router.navigate(['/auth/select']);
             }
             return false;
