@@ -94,7 +94,7 @@ router.get('/signIn', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     if (req.session === undefined) {
         throw new Error('session is undefined');
     }
-    delete req.session.auth;
+    delete req.session.cognito;
     const authModel = new cognitoAuth2_model_1.CognitoAuth2Model(req.session.cognito);
     const auth = authModel.create();
     const url = auth.generateAuthUrl({
@@ -102,7 +102,7 @@ router.get('/signIn', (req, res) => __awaiter(void 0, void 0, void 0, function* 
         state: authModel.state,
         codeVerifier: authModel.codeVerifier,
     });
-    delete req.session.auth;
+    delete req.session.cognito;
     res.json({ url });
 }));
 /**
