@@ -1,4 +1,5 @@
-import * as cinerino from '@cinerino/sdk';
+import OAuth2client from '../client/oAuth2client';
+
 /**
  * 認証セッション
  * @interface IAuth2Session
@@ -24,13 +25,13 @@ export interface IAuth2Session {
 
 /**
  * 認証モデル
- * @class Auth2Model
+ * @class CognitoOAuth2
  */
-export class Auth2Model {
+export class CognitoOAuth2 {
     /**
      * 状態（固定値）
      */
-    public static STATE = 'STATE';
+    public static STATE = 'COGNITO_STATE';
     /**
      * 検証コード（固定値）
      */
@@ -62,21 +63,21 @@ export class Auth2Model {
         }
         this.scopes = [];
         this.credentials = session.credentials;
-        this.state = Auth2Model.STATE;
-        this.codeVerifier = Auth2Model.CODE_VERIFIER;
+        this.state = CognitoOAuth2.STATE;
+        this.codeVerifier = CognitoOAuth2.CODE_VERIFIER;
     }
 
     /**
      * 認証クラス作成
-     * @memberof Auth2Model
      * @method create
-     * @returns {cinerino.auth.OAuth2}
      */
-    public create(): cinerino.auth.OAuth2 {
-        const auth = new cinerino.auth.OAuth2({
-            domain: <string>process.env.AUTHORIZATION_CODE_DOMAIN,
-            clientId: <string>process.env.AUTHORIZATION_CODE_CLIENT_ID,
-            clientSecret: <string>process.env.AUTHORIZATION_CODE_CLIENT_SECRET,
+    public create() {
+        const auth = new OAuth2client({
+            domain: <string>process.env.COGNITO_AUTHORIZATION_CODE_DOMAIN,
+            clientId: <string>process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_ID,
+            clientSecret: <string>(
+                process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_SECRET
+            ),
             redirectUri: <string>process.env.AUTH_REDIRECT_URI,
             logoutUri: <string>process.env.AUTH_LOGUOT_URI,
             state: this.state,
@@ -91,7 +92,6 @@ export class Auth2Model {
 
     /**
      * セッションへ保存
-     * @memberof Auth2Model
      * @method save
      * @returns {Object}
      */
@@ -102,6 +102,6 @@ export class Auth2Model {
             credentials: this.credentials,
             codeVerifier: this.codeVerifier,
         };
-        session.auth = authSession;
+        session.cognito = authSession;
     }
 }

@@ -4,9 +4,9 @@
 import * as debug from 'debug';
 import * as express from 'express';
 import { errorProsess } from '../../controllers/base/base.controller';
-import { AuthModel } from '../../models/auth/auth.model';
-import { Auth2Model } from '../../models/auth2/auth2.model';
-import { CognitoAuth2Model } from '../../models/cognito/cognitoAuth2.model';
+import { ClientCredentials } from '../../models/auth/session/clientCredentials';
+import { CognitoOAuth2 } from '../../models/auth/session/cognitoOAuth2';
+import { OAuth2 } from '../../models/auth/session/oAuth2';
 
 const router = express.Router();
 const log = debug('sskts-ticket:api/authorize');
@@ -34,7 +34,7 @@ router.post('/getCredentials', async (req, res) => {
         let clientId;
         let authModel;
         if (body.member === MemberType.Member) {
-            authModel = new Auth2Model(req.session.auth);
+            authModel = new OAuth2(req.session.auth);
             const options = { endpoint, auth: authModel.create() };
             const accessToken = await options.auth.getAccessToken();
             authModel.credentials = options.auth.credentials;
@@ -46,7 +46,7 @@ router.post('/getCredentials', async (req, res) => {
                     ? options.auth.verifyIdToken({}).getUsername()
                     : undefined;
         } else {
-            authModel = new AuthModel();
+            authModel = new ClientCredentials();
             const options = { endpoint, auth: authModel.create() };
             const accessToken = await options.auth.getAccessToken();
             credentials = { accessToken };
@@ -78,7 +78,7 @@ router.get('/signIn', async (req, res) => {
         throw new Error('session is undefined');
     }
     delete req.session.auth;
-    const authModel = new Auth2Model(req.session.auth);
+    const authModel = new OAuth2(req.session.auth);
     const auth = authModel.create();
     const url = auth.generateAuthUrl({
         scopes: authModel.scopes,
@@ -104,7 +104,7 @@ router.get('/signOut', async (req, res) => {
         });
         return;
     }
-    const authModel = new Auth2Model(req.session.auth);
+    const authModel = new OAuth2(req.session.auth);
     const auth = authModel.create();
     const url = auth.generateLogoutUrl();
     res.json({ url });
@@ -121,7 +121,7 @@ router.get('/signUp', async (req, res) => {
         throw new Error('session is undefined');
     }
     delete req.session.cognito;
-    const authModel = new CognitoAuth2Model(req.session.cognito);
+    const authModel = new CognitoOAuth2(req.session.cognito);
     const auth = authModel.create();
     let url = auth.generateAuthUrl({
         scopes: authModel.scopes,
@@ -134,7 +134,7 @@ router.get('/signUp', async (req, res) => {
             <string>process.env.COGNITO_AUTHORIZATION_CODE_DOMAIN
         )
         .replace(/\/authorize/, '/signup');
-    delete req.session.auth;
+    delete req.session.cognito;
     res.json({ url });
 });
 
