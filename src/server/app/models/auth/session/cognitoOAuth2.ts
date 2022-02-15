@@ -1,4 +1,4 @@
-import OAuth2client from '../client/oAuth2client';
+import CognitoOAuth2client from '../client/cognitoOAuth2client';
 
 /**
  * 認証セッション
@@ -72,7 +72,7 @@ export class CognitoOAuth2 {
      * @method create
      */
     public create() {
-        const auth = new OAuth2client({
+        const auth = new CognitoOAuth2client({
             domain: <string>process.env.COGNITO_AUTHORIZATION_CODE_DOMAIN,
             clientId: <string>process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_ID,
             clientSecret: <string>(

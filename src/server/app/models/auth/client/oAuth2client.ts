@@ -46,18 +46,17 @@ export default class OAuth2client implements AuthClient {
     /**
      * The base URL for auth endpoints.
      */
-    protected static readonly OAUTH2_AUTH_BASE_URI: string =
-        '/oauth2/authorize';
+    protected readonly OAUTH2_AUTH_BASE_URI: string = '/oauth2/authorize';
 
     /**
      * The base endpoint for token retrieval.
      */
-    protected static readonly OAUTH2_TOKEN_URI: string = '/oauth2/token';
+    protected readonly OAUTH2_TOKEN_URI: string = '/oauth2/token';
 
     /**
      * The base endpoint to revoke tokens.
      */
-    protected static readonly OAUTH2_LOGOUT_URI: string = '/logout';
+    protected readonly OAUTH2_LOGOUT_URI: string = '/logout';
 
     /**
      * certificates.
@@ -106,7 +105,7 @@ export default class OAuth2client implements AuthClient {
             );
         }
 
-        const rootUrl = `https://${this.options.domain}${OAuth2client.OAUTH2_AUTH_BASE_URI}`;
+        const rootUrl = `https://${this.options.domain}${this.OAUTH2_AUTH_BASE_URI}`;
 
         return `${rootUrl}?${querystring.stringify(options)}`;
     }
@@ -120,7 +119,7 @@ export default class OAuth2client implements AuthClient {
             logout_uri: this.options.logoutUri,
         };
 
-        const rootUrl = `https://${this.options.domain}${OAuth2client.OAUTH2_LOGOUT_URI}`;
+        const rootUrl = `https://${this.options.domain}${this.OAUTH2_LOGOUT_URI}`;
 
         return `${rootUrl}?${querystring.stringify(options)}`;
     }
@@ -156,7 +155,7 @@ export default class OAuth2client implements AuthClient {
         debug('fetching...', options);
 
         return fetch(
-            `https://${this.options.domain}${OAuth2client.OAUTH2_TOKEN_URI}`,
+            `https://${this.options.domain}${this.OAUTH2_TOKEN_URI}`,
             options
         ).then(async (response) => {
             debug('response:', response.status);
@@ -463,7 +462,7 @@ export default class OAuth2client implements AuthClient {
         debug('fetching...', options);
 
         return fetch(
-            `https://${this.options.domain}${OAuth2client.OAUTH2_TOKEN_URI}`,
+            `https://${this.options.domain}${this.OAUTH2_TOKEN_URI}`,
             options
         ).then(async (response) => {
             debug('response:', response.status);

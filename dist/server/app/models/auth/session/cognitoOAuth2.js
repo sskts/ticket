@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const oAuth2client_1 = require("../client/oAuth2client");
+const cognitoOAuth2client_1 = require("../client/cognitoOAuth2client");
 /**
  * 認証モデル
  * @class CognitoOAuth2
@@ -24,7 +24,7 @@ class CognitoOAuth2 {
      * @method create
      */
     create() {
-        const auth = new oAuth2client_1.default({
+        const auth = new cognitoOAuth2client_1.default({
             domain: process.env.COGNITO_AUTHORIZATION_CODE_DOMAIN,
             clientId: process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_ID,
             clientSecret: (process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_SECRET),

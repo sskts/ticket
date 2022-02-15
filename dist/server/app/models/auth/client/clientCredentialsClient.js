@@ -50,7 +50,7 @@ class ClientCredentialsClient extends oAuth2client_1.default {
                 },
             };
             debug('fetching...', options);
-            return fetch(`https://${this.options.domain}${oAuth2client_1.default.OAUTH2_TOKEN_URI}`, options).then((response) => __awaiter(this, void 0, void 0, function* () {
+            return fetch(`https://${this.options.domain}${this.OAUTH2_TOKEN_URI}`, options).then((response) => __awaiter(this, void 0, void 0, function* () {
                 debug('response:', response.status);
                 if (response.status !== httpStatus.OK) {
                     if (response.status === httpStatus.BAD_REQUEST) {

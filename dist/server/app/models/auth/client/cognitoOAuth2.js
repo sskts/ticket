@@ -27,18 +27,6 @@ class OAuth2client {
     constructor(options) {
         // tslint:disable-next-line:no-suspicious-comment
         // TODO add minimum validation
-        /**
-         * The base URL for auth endpoints.
-         */
-        this.OAUTH2_AUTH_BASE_URI = '/oauth2/authorize';
-        /**
-         * The base endpoint for token retrieval.
-         */
-        this.OAUTH2_TOKEN_URI = '/oauth2/token';
-        /**
-         * The base endpoint to revoke tokens.
-         */
-        this.OAUTH2_LOGOUT_URI = '/logout';
         this.options = options;
         this.credentials = {};
     }
@@ -67,7 +55,7 @@ class OAuth2client {
             options.code_challenge_method = 'S256';
             options.code_challenge = OAuth2client.BASE64URLENCODE(OAuth2client.SHA256(optOpts.codeVerifier));
         }
-        const rootUrl = `https://${this.options.domain}${this.OAUTH2_AUTH_BASE_URI}`;
+        const rootUrl = `https://${this.options.domain}${OAuth2client.OAUTH2_AUTH_BASE_URI}`;
         return `${rootUrl}?${querystring.stringify(options)}`;
     }
     /**
@@ -78,7 +66,7 @@ class OAuth2client {
             client_id: this.options.clientId,
             logout_uri: this.options.logoutUri,
         };
-        const rootUrl = `https://${this.options.domain}${this.OAUTH2_LOGOUT_URI}`;
+        const rootUrl = `https://${this.options.domain}${OAuth2client.OAUTH2_LOGOUT_URI}`;
         return `${rootUrl}?${querystring.stringify(options)}`;
     }
     /**
@@ -104,7 +92,7 @@ class OAuth2client {
                 },
             };
             debug('fetching...', options);
-            return fetch(`https://${this.options.domain}${this.OAUTH2_TOKEN_URI}`, options).then((response) => __awaiter(this, void 0, void 0, function* () {
+            return fetch(`https://${this.options.domain}${OAuth2client.OAUTH2_TOKEN_URI}`, options).then((response) => __awaiter(this, void 0, void 0, function* () {
                 debug('response:', response.status);
                 if (response.status !== http_status_1.OK) {
                     if (response.status === http_status_1.BAD_REQUEST) {
@@ -348,7 +336,7 @@ class OAuth2client {
                 },
             };
             debug('fetching...', options);
-            return fetch(`https://${this.options.domain}${this.OAUTH2_TOKEN_URI}`, options).then((response) => __awaiter(this, void 0, void 0, function* () {
+            return fetch(`https://${this.options.domain}${OAuth2client.OAUTH2_TOKEN_URI}`, options).then((response) => __awaiter(this, void 0, void 0, function* () {
                 debug('response:', response.status);
                 if (response.status !== http_status_1.OK) {
                     if (response.status === http_status_1.BAD_REQUEST) {
@@ -446,3 +434,15 @@ class OAuth2client {
     }
 }
 exports.default = OAuth2client;
+/**
+ * The base URL for auth endpoints.
+ */
+OAuth2client.OAUTH2_AUTH_BASE_URI = '/oauth2/authorize';
+/**
+ * The base endpoint for token retrieval.
+ */
+OAuth2client.OAUTH2_TOKEN_URI = '/oauth2/token';
+/**
+ * The base endpoint to revoke tokens.
+ */
+OAuth2client.OAUTH2_LOGOUT_URI = '/logout';
