@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { sleep } from '../../functions/util.function';
 import { Base } from './base';
 
-interface ICreditCard {
+export interface ICreditCard {
     cardSeq: string;
     cardName: string;
     cardNo: string;

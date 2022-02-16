@@ -12,7 +12,6 @@ import { Performance } from '../../../../../models/performance';
 import { ISchedule, IScheduleData } from '../../../../../models/schedule';
 import {
     AwsCognitoService,
-    CinerinoService,
     IConfirm,
     IPurchaseConditions,
     MaintenanceService,
@@ -23,6 +22,7 @@ import {
     UserService,
     UtilService,
 } from '../../../../../services';
+import { SmartTheaterService } from '../../../../../services/smart-theater.service';
 import { AppearPopupComponent } from '../../../../shared/components/parts/appear-popup/appear-popup.component';
 
 interface IDate {
@@ -74,7 +74,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
     constructor(
         public userService: UserService,
         private router: Router,
-        private cinerinoService: CinerinoService,
+        private smartTheaterService: SmartTheaterService,
         private selectService: SelectService,
         private utilService: UtilService,
         private maintenanceService: MaintenanceService,
@@ -254,6 +254,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 sellerId: seller.id,
                 redirectUrl: getConfig().ticketSiteUrl,
                 native: '1',
+                clientId: this.smartTheaterService.getClientId(),
             };
             let query;
             if (this.userService.isMember()) {
@@ -261,7 +262,6 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                     ...commonQuery,
                     member: MemberType.Member,
                     username: this.userService.data.userName,
-                    clientId: this.cinerinoService.auth.options.clientId,
                 };
             } else {
                 if (this.awsCognitoService.credentials === undefined) {
@@ -271,7 +271,6 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                     ...commonQuery,
                     identityId: this.awsCognitoService.credentials.identityId,
                     member: MemberType.NotMember,
-                    clientId: this.cinerinoService.auth.options.clientId,
                 };
             }
             const url = `${

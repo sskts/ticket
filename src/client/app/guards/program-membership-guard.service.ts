@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
-import { UtilService } from '../services';
-import { CinerinoService } from '../services/cinerino.service';
-import { UserService } from '../services/user.service';
+import { SmartTheaterService, UserService, UtilService } from '../services';
+import { IMembership } from '../services/smart-theater.service';
 
 @Injectable({
     providedIn: 'root',
@@ -12,7 +10,7 @@ import { UserService } from '../services/user.service';
 export class ProgramMembershipGuardService implements CanActivate {
     constructor(
         private router: Router,
-        private cinerinoService: CinerinoService,
+        private smartTheaterService: SmartTheaterService,
         private userService: UserService,
         private utilService: UtilService
     ) {}
@@ -37,8 +35,9 @@ export class ProgramMembershipGuardService implements CanActivate {
             this.userService.save();
             return true;
         }
-        await this.cinerinoService.getServices();
-        const searchResult = await this.userService.searchMyMemberships();
+        await this.smartTheaterService.getServices();
+        const searchResult =
+            await this.smartTheaterService.ownershipInfo.searchMemberships({});
         if (searchResult.length > 0) {
             // プログラムメンバーシップ登録済み判定を保存
             this.userService.data.programMembershipRegistered = true;
@@ -60,7 +59,7 @@ export class ProgramMembershipGuardService implements CanActivate {
      * 有効判定
      */
     private async hasAvailability(
-        programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<factory.permit.IPermit>[]
+        programMembershipOwnershipInfos: IMembership[]
     ) {
         const now = (await this.utilService.getServerTime()).date;
         const filterResult = programMembershipOwnershipInfos.filter(

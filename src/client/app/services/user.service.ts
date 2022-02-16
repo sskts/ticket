@@ -3,7 +3,12 @@ import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { getConfig, object2query } from '../functions';
 import { AwsCognitoService } from './aws-cognito.service';
-import { CinerinoService } from './cinerino.service';
+import {
+    ICreditCard,
+    IMembership,
+    IPaymentCard,
+    SmartTheaterService,
+} from './smart-theater.service';
 import { SaveType, StorageService } from './storage.service';
 import { UtilService } from './util.service';
 
@@ -24,15 +29,15 @@ export interface IUserData {
     /**
      * 登録済みクレジットカード
      */
-    creditCards: factory.chevre.paymentMethod.paymentCard.creditCard.ICheckedCard[];
+    creditCards: ICreditCard[];
     /**
      * ポイント口座
      */
-    accounts: factory.ownershipInfo.IOwnershipInfo<factory.permit.IPermit>[];
+    accounts: IPaymentCard[];
     /**
      * プログラムメンバーシップ
      */
-    programMembershipOwnershipInfos: factory.ownershipInfo.IOwnershipInfo<factory.permit.IPermit>[];
+    programMembershipOwnershipInfos: IMembership[];
     /**
      * プログラムメンバーシップ登録判定
      */
@@ -66,7 +71,7 @@ export class UserService {
 
     constructor(
         private storageService: StorageService,
-        private cinerinoService: CinerinoService,
+        private smartTheaterService: SmartTheaterService,
         private awsCognitoService: AwsCognitoService,
         private utilService: UtilService
     ) {
@@ -102,7 +107,7 @@ export class UserService {
         if (data.programMembershipRegistered === undefined) {
             this.data.programMembershipRegistered = false;
         }
-        if (await this.cinerinoService.needReload()) {
+        if (await this.smartTheaterService.needReload()) {
             await this.initMember();
             location.reload();
         }
@@ -150,10 +155,10 @@ export class UserService {
         this.data.profile = profile;
 
         try {
+            await this.smartTheaterService.getServices();
             // クレジットカード検索
-            const creditCards =
-                await this.cinerinoService.ownerShipInfo.searchCreditCards({});
-            this.data.creditCards = creditCards;
+            this.data.creditCards =
+                await this.smartTheaterService.ownershipInfoCreditCards.search();
         } catch (err) {
             console.log(err);
             this.data.creditCards = [];
@@ -197,16 +202,17 @@ export class UserService {
      * 不要なポイント口座閉じる
      */
     public async closeUnnecessaryPointAccount(params: {
-        accounts: factory.ownershipInfo.IOwnershipInfo<factory.permit.IPermit>[];
+        accounts: IPaymentCard[];
     }) {
         const { accounts } = params;
         for (let i = 1; i < accounts.length; i++) {
-            const closeAccountNumber = accounts[i].typeOfGood.identifier;
-            if (typeof closeAccountNumber !== 'string') {
+            const ownershipInfoId = accounts[i].typeOfGood.identifier;
+            if (typeof ownershipInfoId !== 'string') {
                 throw new Error('typeOfGood.identifier not string');
             }
-            await this.cinerinoService.ownerShipInfo.closeAccount({
-                accountNumber: closeAccountNumber,
+            await this.smartTheaterService.getServices();
+            await this.smartTheaterService.ownershipInfo.remove({
+                ownershipInfoId,
             });
         }
     }
@@ -246,21 +252,16 @@ export class UserService {
             let roop = true;
             let count = 0;
             let result = false;
-            await this.cinerinoService.getServices();
+            await this.smartTheaterService.getServices();
             while (roop) {
                 const searchResult =
-                    await this.cinerinoService.ownerShipInfo.search({
-                        typeOfGood: {
-                            typeOf: factory.chevre.programMembership
-                                .ProgramMembershipType.ProgramMembership,
-                        },
-                    });
-                const now = (await this.utilService.getServerTime()).date;
-                const programMembershipOwnershipInfos =
-                    searchResult.data.filter(
-                        (p) =>
-                            moment(p.ownedThrough).unix() > moment(now).unix()
+                    await this.smartTheaterService.ownershipInfo.searchMemberships(
+                        {}
                     );
+                const now = (await this.utilService.getServerTime()).date;
+                const programMembershipOwnershipInfos = searchResult.filter(
+                    (p) => moment(p.ownedThrough).unix() > moment(now).unix()
+                );
                 result = programMembershipOwnershipInfos.length > 0;
                 count++;
                 roop = !result && count < limitCount;
@@ -275,23 +276,13 @@ export class UserService {
     }
 
     /**
-     * 退会
-     * @method deleteUser
-     */
-    public async deleteUser() {
-        await this.awsCognitoService.deleteUser();
-    }
-
-    /**
      * メンバーシップを検索する
      * @method searchMyMemberships
      */
     public async searchMyMemberships() {
-        await this.cinerinoService.getServices();
-        // 口座検索
-        const searchResult = (
-            await this.cinerinoService.ownerShipInfo.searchMyMemberships({})
-        ).data;
+        await this.smartTheaterService.getServices();
+        const searchResult =
+            await this.smartTheaterService.ownershipInfo.searchMemberships({});
         return searchResult;
     }
 
@@ -300,23 +291,11 @@ export class UserService {
      * @method searchPointAccount
      */
     public async searchPointAccount() {
-        await this.cinerinoService.getServices();
+        await this.smartTheaterService.getServices();
         // 口座検索
         const searchResult =
-            await this.cinerinoService.ownerShipInfo.searchMyPaymentCards({
-                sort: {
-                    ownedFrom: factory.sortType.Ascending,
-                },
-            });
-        const accounts = searchResult.data.filter((a) => {
-            const typeOfGood = <factory.permit.IPermit>a.typeOfGood;
-            const paymentAccount = typeOfGood.paymentAccount;
-            return (
-                paymentAccount !== undefined &&
-                paymentAccount.status === factory.accountStatusType.Opened
-            );
-        });
-        return accounts;
+            await this.smartTheaterService.ownershipInfo.searchPaymentCard({});
+        return searchResult;
     }
 
     /**
@@ -354,33 +333,6 @@ export class UserService {
     }
 
     /**
-     * よく行く劇場名取得
-     * @method getTheaterName
-     */
-    public getTheaterName(index: number) {
-        const programMembershipOwnershipInfo =
-            this.data.programMembershipOwnershipInfos[index];
-        if (
-            this.data.programMembershipOwnershipInfos.length === 0 ||
-            programMembershipOwnershipInfo === undefined ||
-            programMembershipOwnershipInfo.acquiredFrom === undefined ||
-            programMembershipOwnershipInfo.acquiredFrom.typeOf !==
-                factory.chevre.organizationType.MovieTheater
-        ) {
-            return '';
-        }
-        const name = programMembershipOwnershipInfo.acquiredFrom.name;
-
-        return name === undefined
-            ? ''
-            : typeof name === 'string'
-            ? name
-            : name.ja === undefined
-            ? ''
-            : name.ja;
-    }
-
-    /**
      * 口座情報取得
      * @method getAccount
      */
@@ -412,34 +364,23 @@ export class UserService {
      * クレジットカード登録
      * @method registerCreditCard
      */
-    public async registerCreditCard(gmoTokenObject: IGmoTokenObject) {
-        await this.cinerinoService.getServices();
+    public async registerCreditCard(params: IGmoTokenObject) {
+        await this.smartTheaterService.getServices();
         // 登録
-        await this.cinerinoService.ownerShipInfo.addCreditCard({
-            creditCard: { token: gmoTokenObject.token },
+        await this.smartTheaterService.ownershipInfoCreditCards.add({
+            token: params.token,
         });
         this.data.creditCards =
-            await this.cinerinoService.ownerShipInfo.searchCreditCards({});
+            await this.smartTheaterService.ownershipInfoCreditCards.search();
         if (this.data.creditCards.length > 1) {
-            await this.deleteCreditCard();
+            await this.smartTheaterService.ownershipInfoCreditCards.remove({
+                cardSeq: this.data.creditCards[0].cardSeq,
+            });
             this.data.creditCards =
-                await this.cinerinoService.ownerShipInfo.searchCreditCards({});
+                await this.smartTheaterService.ownershipInfoCreditCards.search();
         }
 
         this.save();
-    }
-
-    /**
-     * クレジットカード削除
-     */
-    public async deleteCreditCard() {
-        await this.cinerinoService.getServices();
-        if (this.data.creditCards.length === 0) {
-            return;
-        }
-        await this.cinerinoService.ownerShipInfo.deleteCreditCard({
-            cardSeq: this.data.creditCards[0].cardSeq,
-        });
     }
 
     /**
@@ -455,11 +396,6 @@ export class UserService {
     }) {
         const { familyName, givenName, email, theaterCode } = params;
         const telephone = params.telephone.replace(/^0/, '+81');
-        await this.cinerinoService.getServices();
-        const { accessToken } = this.cinerinoService.auth.credentials;
-        if (accessToken === undefined) {
-            throw new Error('accessToken undefined');
-        }
         await this.awsCognitoService.updateProfile({
             profile: {
                 familyName,
@@ -498,10 +434,6 @@ export class UserService {
      * 利用可能ポイント取得
      */
     public getAvailableBalance() {
-        const paymentAccount = this.data.accounts[0].typeOfGood.paymentAccount;
-        return paymentAccount === undefined ||
-            paymentAccount.availableBalance === undefined
-            ? 0
-            : paymentAccount.availableBalance;
+        return 0;
     }
 }

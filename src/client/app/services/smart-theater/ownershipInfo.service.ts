@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { sleep } from '../../functions/util.function';
 import { Base } from './base';
@@ -104,20 +105,24 @@ export class OwnershipInfoService extends Base {
             let result: IMembership[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/MembershipService`;
+                const httpParams = new HttpParams();
+                httpParams.append('page', String(page));
+                httpParams.append('limit', String(limit));
+                if (params.ownedFrom !== undefined) {
+                    httpParams.append(
+                        'ownedFrom',
+                        params.ownedFrom.toISOString()
+                    );
+                }
+                if (params.ownedThrough !== undefined) {
+                    httpParams.append(
+                        'ownedThrough',
+                        params.ownedThrough.toISOString()
+                    );
+                }
                 const searchResult = await this.http
                     .get<IMembership[]>(url, {
-                        params: {
-                            page: String(page),
-                            limit: String(limit),
-                            ownedFrom:
-                                params.ownedFrom === undefined
-                                    ? ''
-                                    : params.ownedFrom.toISOString(),
-                            ownedThrough:
-                                params.ownedThrough === undefined
-                                    ? ''
-                                    : params.ownedThrough.toISOString(),
-                        },
+                        params: httpParams,
                         headers: {
                             Authorization: `Bearer ${this.accessToken}`,
                         },
@@ -150,20 +155,24 @@ export class OwnershipInfoService extends Base {
             let result: IPaymentCard[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/PaymentCard`;
+                const httpParams = new HttpParams();
+                httpParams.append('page', String(page));
+                httpParams.append('limit', String(limit));
+                if (params.ownedFrom !== undefined) {
+                    httpParams.append(
+                        'ownedFrom',
+                        params.ownedFrom.toISOString()
+                    );
+                }
+                if (params.ownedThrough !== undefined) {
+                    httpParams.append(
+                        'ownedThrough',
+                        params.ownedThrough.toISOString()
+                    );
+                }
                 const searchResult = await this.http
                     .get<IPaymentCard[]>(url, {
-                        params: {
-                            page: String(page),
-                            limit: String(limit),
-                            ownedFrom:
-                                params.ownedFrom === undefined
-                                    ? ''
-                                    : params.ownedFrom.toISOString(),
-                            ownedThrough:
-                                params.ownedThrough === undefined
-                                    ? ''
-                                    : params.ownedThrough.toISOString(),
-                        },
+                        params: httpParams,
                         headers: {
                             Authorization: `Bearer ${this.accessToken}`,
                         },
@@ -196,20 +205,24 @@ export class OwnershipInfoService extends Base {
             let result: IEventService[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/EventService`;
+                const httpParams = new HttpParams();
+                httpParams.append('page', String(page));
+                httpParams.append('limit', String(limit));
+                if (params.ownedFrom !== undefined) {
+                    httpParams.append(
+                        'ownedFrom',
+                        params.ownedFrom.toISOString()
+                    );
+                }
+                if (params.ownedThrough !== undefined) {
+                    httpParams.append(
+                        'ownedThrough',
+                        params.ownedThrough.toISOString()
+                    );
+                }
                 const searchResult = await this.http
                     .get<IEventService[]>(url, {
-                        params: {
-                            page: String(page),
-                            limit: String(limit),
-                            ownedFrom:
-                                params.ownedFrom === undefined
-                                    ? ''
-                                    : params.ownedFrom.toISOString(),
-                            ownedThrough:
-                                params.ownedThrough === undefined
-                                    ? ''
-                                    : params.ownedThrough.toISOString(),
-                        },
+                        params: httpParams,
                         headers: {
                             Authorization: `Bearer ${this.accessToken}`,
                         },
@@ -260,6 +273,24 @@ export class OwnershipInfoService extends Base {
                 }
             }
             return result;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    /**
+     * 所有権削除
+     */
+    public async remove(params: { ownershipInfoId: string }) {
+        try {
+            const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/${params.ownershipInfoId}`;
+            await this.http
+                .delete<void>(url, {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`,
+                    },
+                })
+                .toPromise();
         } catch (error) {
             throw error;
         }
