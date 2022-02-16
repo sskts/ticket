@@ -27,6 +27,7 @@ router.post('/getCredentials', async (req, res) => {
         }
         const body = req.body;
         const endpoint = <string>process.env.SSKTS_API_ENDPOINT;
+        const apiEndpoint = <string>process.env.API_ENDPOINT;
         const projectId = <string>process.env.PROJECT_ID;
         const waiterServerUrl = <string>process.env.WAITER_SERVER_URL;
         let userName;
@@ -61,6 +62,7 @@ router.post('/getCredentials', async (req, res) => {
             endpoint,
             projectId,
             waiterServerUrl,
+            apiEndpoint,
         });
     } catch (err) {
         errorProsess(res, err);

@@ -9,9 +9,9 @@ const redis = require("redis");
 const redisClient = redis.createClient(Number(process.env.REDIS_PORT), process.env.REDIS_HOST, {
     password: process.env.REDIS_KEY,
     tls: {
-        servername: process.env.REDIS_HOST
+        servername: process.env.REDIS_HOST,
     },
-    return_buffers: true
+    return_buffers: true,
 });
 const sessionStore = new (connectRedis(session))({ client: redisClient });
 exports.default = session({
@@ -23,6 +23,9 @@ exports.default = session({
     cookie: {
         secure: true,
         httpOnly: true,
-        maxAge: 604800000 // 7 * 24 * 60 * 60 * 1000
-    }
+        maxAge: process.env.SESSION_COOKIE_MAX_AGE === undefined ||
+            process.env.SESSION_COOKIE_MAX_AGE === ''
+            ? 604800000 // 7 * 24 * 60 * 60 * 1000
+            : Number(process.env.SESSION_COOKIE_MAX_AGE),
+    },
 });

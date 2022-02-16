@@ -36,6 +36,7 @@ router.post('/getCredentials', (req, res) => __awaiter(void 0, void 0, void 0, f
         }
         const body = req.body;
         const endpoint = process.env.SSKTS_API_ENDPOINT;
+        const apiEndpoint = process.env.API_ENDPOINT;
         const projectId = process.env.PROJECT_ID;
         const waiterServerUrl = process.env.WAITER_SERVER_URL;
         let userName;
@@ -70,6 +71,7 @@ router.post('/getCredentials', (req, res) => __awaiter(void 0, void 0, void 0, f
             endpoint,
             projectId,
             waiterServerUrl,
+            apiEndpoint,
         });
     }
     catch (err) {
