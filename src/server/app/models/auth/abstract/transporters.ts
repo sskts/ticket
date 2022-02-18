@@ -33,7 +33,6 @@ export class DefaultTransporter implements Transporter {
     /**
      * Default user agent.
      */
-    // public static readonly USER_AGENT: string = `cinerino-api-javascript-client/${pkg.version}`;
     public expectedStatusCodes: number[];
     constructor(expectedStatusCodes: number[]) {
         this.expectedStatusCodes = expectedStatusCodes;

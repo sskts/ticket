@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { sleep } from '../../functions/util.function';
 import { Base } from './base';
 
-export interface ICreditCard {
-    cardSeq: string;
-    cardName: string;
-    cardNo: string;
-    expire: string;
-    holderName: string;
+export namespace OwnershipInfoCreditCardsType {
+    export interface ICreditCard {
+        cardSeq: string;
+        cardName: string;
+        cardNo: string;
+        expire: string;
+        holderName: string;
+    }
 }
 
 @Injectable({
@@ -40,11 +42,11 @@ export class OwnershipInfoCreditCardsService extends Base {
             const limit = 100;
             let page = 1;
             let roop = true;
-            let result: ICreditCard[] = [];
+            let result: OwnershipInfoCreditCardsType.ICreditCard[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/creditCards`;
                 const searchResult = await this.http
-                    .get<ICreditCard[]>(url, {
+                    .get<OwnershipInfoCreditCardsType.ICreditCard[]>(url, {
                         params: {
                             page: String(page),
                             limit: String(limit),

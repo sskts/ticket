@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { factory } from '@cinerino/sdk';
-import { CinerinoService, UserService } from '../../../../../services';
+import {
+    OwnershipInfoType,
+    SmartTheaterService,
+    UserService,
+} from '../../../../../services';
 
 @Component({
     selector: 'app-member-point-history',
@@ -10,12 +13,12 @@ import { CinerinoService, UserService } from '../../../../../services';
 })
 export class MemberPointHistoryComponent implements OnInit {
     public isLoading: boolean;
-    public accountMoneyTransferActions: factory.account.action.moneyTransfer.IAction[];
+    public accountMoneyTransferActions: OwnershipInfoType.IMoneyTransferAction[];
 
     constructor(
         public user: UserService,
         private router: Router,
-        private cinerino: CinerinoService
+        private smartTheaterService: SmartTheaterService
     ) {}
 
     /**
@@ -25,28 +28,24 @@ export class MemberPointHistoryComponent implements OnInit {
     public async ngOnInit() {
         this.isLoading = true;
         try {
-            this.cinerino.getServices();
+            this.smartTheaterService.getServices();
             await this.user.updateAccount();
             if (this.user.data.accounts.length === 0) {
                 throw new Error('account is not found');
             }
-            const accountNumber =
-                this.user.data.accounts[0].typeOfGood.identifier;
-            if (typeof accountNumber !== 'string') {
-                throw new Error('typeOfGood.identifier not string');
-            }
-            const searchResult =
-                await this.cinerino.ownerShipInfo.searchAccountMoneyTransferActions(
+            const ownershipInfoId = this.user.data.accounts[0].id;
+            this.accountMoneyTransferActions =
+                await this.smartTheaterService.ownershipInfo.searchMoneyTransferActions(
                     {
-                        accountNumber,
-                        limit: 100,
+                        ownershipInfoId,
+                        page: 1,
                     }
                 );
-            this.accountMoneyTransferActions = searchResult.data.filter(
-                (a) =>
-                    a.actionStatus ===
-                    factory.actionStatusType.CompletedActionStatus
-            );
+            // this.accountMoneyTransferActions = searchResult.data.filter(
+            //     (a) =>
+            //         a.actionStatus ===
+            //         factory.actionStatusType.CompletedActionStatus
+            // );
         } catch (error) {
             console.error(error);
             this.router.navigate([

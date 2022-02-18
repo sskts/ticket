@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
     AwsCognitoService,
-    CinerinoService,
     MemberType,
+    SmartTheaterService,
     UserService,
 } from '../../../../../services';
 
@@ -17,7 +17,7 @@ export class AuthSignoutComponent implements OnInit {
         private router: Router,
         private userService: UserService,
         private awsCognitoService: AwsCognitoService,
-        private cinerinoService: CinerinoService
+        private smartTheaterService: SmartTheaterService
     ) {}
 
     /**
@@ -26,7 +26,7 @@ export class AuthSignoutComponent implements OnInit {
      */
     public async ngOnInit() {
         try {
-            await this.cinerinoService.signOut();
+            await this.smartTheaterService.signOut();
         } catch {
             try {
                 await this.awsCognitoService.signOut();

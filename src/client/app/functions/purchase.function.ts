@@ -1,33 +1,5 @@
-import { factory } from '@cinerino/sdk';
 import { Performance } from '../models/performance';
 import { IMovie, ISchedule } from '../models/schedule';
-
-/**
- * サービス区分判定
- */
-export function isScreeningServiceType(
-    screeningEvent: factory.chevre.event.screeningEvent.IEvent,
-    serviceType: 'first' | 'late'
-) {
-    if (
-        screeningEvent.coaInfo === undefined ||
-        screeningEvent.coaInfo.kbnService === undefined ||
-        screeningEvent.coaInfo.kbnService.kubunCode === undefined
-    ) {
-        return false;
-    }
-    const kubunCode = screeningEvent.coaInfo.kbnService.kubunCode;
-    if (serviceType === 'first') {
-        return kubunCode === '001';
-    } else if (serviceType === 'late') {
-        return (
-            kubunCode === '002' &&
-            screeningEvent.coaInfo.theaterCode.slice(-2) !== '20'
-        );
-    } else {
-        return false;
-    }
-}
 
 /**
  * スケジュールからパフォーマンスへ変換
@@ -87,43 +59,4 @@ export function hasDisplayPerformance(
     const target = filterPerformancebyMovie(performances, movie);
     const filterResult = target.filter((p) => p.isDisplay());
     return filterResult.length > 0;
-}
-
-/**
- * プロバイダーの資格情報取得
- */
-export async function getProviderCredentials(params: {
-    paymentService: factory.service.paymentService.IService;
-    seller: factory.chevre.seller.ISeller;
-}) {
-    const { paymentService, seller } = params;
-    if (paymentService.provider === undefined) {
-        throw new Error('paymentService.provider undefined');
-    }
-    const findResult = paymentService.provider.find(
-        (provider) => provider.id === seller.id
-    );
-    if (findResult === undefined) {
-        throw new Error('findResult undefined');
-    }
-    const credentials = findResult.credentials;
-    let tokenizationCode;
-    if (credentials !== undefined) {
-        tokenizationCode = credentials.tokenizationCode;
-    }
-    return {
-        kgygishCd:
-            credentials === undefined ? undefined : credentials.kgygishCd,
-        shopId: credentials === undefined ? undefined : credentials.shopId,
-        shopPass: credentials === undefined ? undefined : credentials.shopPass,
-        stCd: credentials === undefined ? undefined : credentials.stCd,
-        paymentUrlExpiresInSeconds:
-            credentials === undefined
-                ? undefined
-                : credentials.paymentUrlExpiresInSeconds,
-        tokenizationCode:
-            typeof tokenizationCode === 'string' && tokenizationCode.length > 0
-                ? tokenizationCode
-                : undefined,
-    };
 }

@@ -5,9 +5,8 @@ import * as qrcode from 'qrcode';
 import { getConfig } from '../../../../../functions';
 import {
     CallNativeService,
-    IMembership,
     InAppBrowserTarget,
-    IPaymentCard,
+    OwnershipInfoType,
     UserService,
     UtilService,
 } from '../../../../../services';
@@ -20,10 +19,10 @@ import {
 export class MemberMypageComponent implements OnInit {
     public isLoading: boolean;
     public moment = moment;
-    public account: IPaymentCard;
+    public account: OwnershipInfoType.IPaymentCard;
     public availableBalance: number;
     public portalSiteUrl: string;
-    public programMembershipOwnershipInfo: IMembership;
+    public programMembershipOwnershipInfo: OwnershipInfoType.IMembership;
 
     constructor(
         public userService: UserService,

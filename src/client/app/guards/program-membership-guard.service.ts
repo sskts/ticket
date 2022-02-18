@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import * as moment from 'moment';
 import { SmartTheaterService, UserService, UtilService } from '../services';
-import { IMembership } from '../services/smart-theater.service';
+import { OwnershipInfoType } from '../services/smart-theater.service';
 
 @Injectable({
     providedIn: 'root',
@@ -59,7 +59,7 @@ export class ProgramMembershipGuardService implements CanActivate {
      * 有効判定
      */
     private async hasAvailability(
-        programMembershipOwnershipInfos: IMembership[]
+        programMembershipOwnershipInfos: OwnershipInfoType.IMembership[]
     ) {
         const now = (await this.utilService.getServerTime()).date;
         const filterResult = programMembershipOwnershipInfos.filter(

@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { sleep } from '../../functions/util.function';
 import { Base } from './base';
 
-export interface ISeller {
-    additionalProperty: {
-        name: string;
-        value: string;
-    }[];
-    branchCode: string;
-    id: string;
-    name: {
-        en: string;
-        ja: string;
-    };
+export namespace SellerType {
+    export interface ISeller {
+        additionalProperty: {
+            name: string;
+            value: string;
+        }[];
+        branchCode: string;
+        id: string;
+        name: {
+            en: string;
+            ja: string;
+        };
+    }
 }
 
 @Injectable({
@@ -27,11 +29,11 @@ export class SellerService extends Base {
             const limit = 100;
             let page = 1;
             let roop = true;
-            let result: ISeller[] = [];
+            let result: SellerType.ISeller[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/sellers`;
                 const searchResult = await this.http
-                    .get<ISeller[]>(url, {
+                    .get<SellerType.ISeller[]>(url, {
                         params: {
                             page: String(page),
                             limit: String(limit),

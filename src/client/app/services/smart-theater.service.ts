@@ -2,28 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import {
-    ICreditCard,
     OwnershipInfoCreditCardsService,
+    OwnershipInfoCreditCardsType,
 } from './smart-theater/ownershipInfo-creditcards.service';
 import {
-    IEventService,
-    IMembership,
-    IMoneyTransferAction,
-    IPaymentCard,
     OwnershipInfoService,
+    OwnershipInfoType,
 } from './smart-theater/ownershipInfo.service';
 import { PeopleService } from './smart-theater/people.service';
-import { ISeller, SellerService } from './smart-theater/seller.service';
+import { SellerService, SellerType } from './smart-theater/seller.service';
 import { StorageService } from './storage.service';
 
-export {
-    IMembership,
-    IPaymentCard,
-    IEventService,
-    IMoneyTransferAction,
-    ICreditCard,
-    ISeller,
-};
+export { OwnershipInfoType, OwnershipInfoCreditCardsType, SellerType };
 
 @Injectable({
     providedIn: 'root',

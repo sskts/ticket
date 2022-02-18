@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { getConfig, object2query } from '../functions';
 import { AwsCognitoService } from './aws-cognito.service';
 import {
-    ICreditCard,
-    IMembership,
-    IPaymentCard,
+    OwnershipInfoCreditCardsType,
+    OwnershipInfoType,
     SmartTheaterService,
 } from './smart-theater.service';
 import { SaveType, StorageService } from './storage.service';
@@ -25,19 +23,35 @@ export interface IUserData {
     /**
      * 登録済みプロフィール
      */
-    profile?: factory.person.IProfile;
+    profile?: {
+        /**
+         * 追加属性
+         * プロジェクト固有の属性等
+         */
+        additionalProperty?: {
+            name: string;
+            value: string;
+        }[];
+        address?: string;
+        age?: string;
+        email?: string;
+        givenName?: string;
+        familyName?: string;
+        gender?: string;
+        telephone?: string;
+    };
     /**
      * 登録済みクレジットカード
      */
-    creditCards: ICreditCard[];
+    creditCards: OwnershipInfoCreditCardsType.ICreditCard[];
     /**
      * ポイント口座
      */
-    accounts: IPaymentCard[];
+    accounts: OwnershipInfoType.IPaymentCard[];
     /**
      * プログラムメンバーシップ
      */
-    programMembershipOwnershipInfos: IMembership[];
+    programMembershipOwnershipInfos: OwnershipInfoType.IMembership[];
     /**
      * プログラムメンバーシップ登録判定
      */
@@ -202,14 +216,11 @@ export class UserService {
      * 不要なポイント口座閉じる
      */
     public async closeUnnecessaryPointAccount(params: {
-        accounts: IPaymentCard[];
+        accounts: OwnershipInfoType.IPaymentCard[];
     }) {
         const { accounts } = params;
         for (let i = 1; i < accounts.length; i++) {
-            const ownershipInfoId = accounts[i].typeOfGood.identifier;
-            if (typeof ownershipInfoId !== 'string') {
-                throw new Error('typeOfGood.identifier not string');
-            }
+            const ownershipInfoId = accounts[i].id;
             await this.smartTheaterService.getServices();
             await this.smartTheaterService.ownershipInfo.remove({
                 ownershipInfoId,
@@ -434,6 +445,6 @@ export class UserService {
      * 利用可能ポイント取得
      */
     public getAvailableBalance() {
-        return 0;
+        return this.data.accounts[0].typeOfGood.paymentAccount.balance;
     }
 }

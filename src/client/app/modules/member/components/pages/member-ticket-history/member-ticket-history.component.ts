@@ -3,12 +3,11 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
-import { sleep } from '../../../../../functions';
 import {
-    CinerinoService,
+    OwnershipInfoType,
     ReservationService,
+    SmartTheaterService,
     UserService,
 } from '../../../../../services';
 
@@ -24,17 +23,14 @@ import {
  */
 export class MemberTicketHistoryComponent implements OnInit {
     public isLoading: boolean;
-    public reservations: {
-        data: factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGoodWithDetail>;
-        theaterName: string;
-    }[];
+    public reservations: OwnershipInfoType.IEventService[];
     public touch: boolean;
 
     constructor(
         private router: Router,
         private reservation: ReservationService,
         public user: UserService,
-        private cinerinoService: CinerinoService
+        private smartTheaterService: SmartTheaterService
     ) {}
 
     /**
@@ -47,65 +43,18 @@ export class MemberTicketHistoryComponent implements OnInit {
         this.reservations = [];
         this.reservation.isMember = this.user.isMember();
         try {
-            const limit = 100;
-            let page = 1;
-            let roop = true;
-            let result: factory.ownershipInfo.IOwnershipInfo<factory.ownershipInfo.IGoodWithDetail>[] =
-                [];
-            await this.cinerinoService.getServices();
-            const sellers = await this.cinerinoService.seller.search({});
-            while (roop) {
-                const searchResult =
-                    await this.cinerinoService.ownerShipInfo.search({
-                        limit,
-                        page,
-                        typeOfGood: {
-                            typeOf: factory.chevre.reservationType
-                                .EventReservation,
-                        },
-                    });
-                result = [...result, ...searchResult.data];
-                page++;
-                roop = searchResult.data.length === limit;
-                if (roop) {
-                    await sleep();
-                }
-            }
+            await this.smartTheaterService.getServices();
+            const eventServices =
+                await this.smartTheaterService.ownershipInfo.searchEventService(
+                    {}
+                );
             const now = moment();
-            this.reservations = result
-                .filter((r) => {
-                    return (
-                        r.typeOfGood.typeOf ===
-                            factory.chevre.reservationType.EventReservation &&
-                        moment(r.typeOfGood.reservationFor.endDate).unix() <
-                            now.unix()
-                    );
-                })
-                .map((r) => {
-                    const findResult = sellers.data.find((s) => {
-                        return (
-                            r.typeOfGood.typeOf ===
-                                factory.chevre.reservationType
-                                    .EventReservation &&
-                            r.typeOfGood.reservationFor.coaInfo !== undefined &&
-                            r.typeOfGood.reservationFor.coaInfo.theaterCode ===
-                                s.branchCode
-                        );
-                    });
-                    return {
-                        data: r,
-                        theaterName:
-                            findResult === undefined
-                                ? ''
-                                : findResult.name === undefined
-                                ? ''
-                                : typeof findResult.name === 'string'
-                                ? findResult.name
-                                : findResult.name.ja === undefined
-                                ? ''
-                                : findResult.name.ja,
-                    };
-                });
+            this.reservations = eventServices.filter((r) => {
+                return (
+                    moment(r.typeOfGood.reservationFor.endDate).unix() <
+                    now.unix()
+                );
+            });
         } catch (err) {
             this.router.navigate(['/error', { redirect: '/ticket' }]);
             console.log(err);
