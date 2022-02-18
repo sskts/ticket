@@ -13,8 +13,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * authorize
  */
 const debug = require("debug");
-const auth2_model_1 = require("../../models/auth2/auth2.model");
-const cognitoAuth2_model_1 = require("../../models/cognito/cognitoAuth2.model");
+const cognitoOAuth2_1 = require("../../models/auth/session/cognitoOAuth2");
+const oAuth2_1 = require("../../models/auth/session/oAuth2");
 const log = debug('sskts-ticket:authorize');
 /**
  * サインインリダイレクト処理
@@ -29,10 +29,10 @@ function signInRedirect(req, res, next) {
             if (req.session === undefined) {
                 throw new Error('session is undefined');
             }
-            const authModel = auth2_model_1.Auth2Model.STATE === req.query.state
-                ? new auth2_model_1.Auth2Model(req.session.auth)
-                : cognitoAuth2_model_1.CognitoAuth2Model.STATE === req.query.state
-                    ? new cognitoAuth2_model_1.CognitoAuth2Model(req.session.cognito)
+            const authModel = oAuth2_1.OAuth2.STATE === req.query.state
+                ? new oAuth2_1.OAuth2(req.session.auth)
+                : cognitoOAuth2_1.CognitoOAuth2.STATE === req.query.state
+                    ? new cognitoOAuth2_1.CognitoOAuth2(req.session.cognito)
                     : undefined;
             if (authModel === undefined) {
                 throw new Error(`state not matched [${req.query.state}]`);

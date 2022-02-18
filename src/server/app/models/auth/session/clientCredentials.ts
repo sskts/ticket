@@ -1,5 +1,5 @@
-import * as cinerino from '@cinerino/sdk';
 import * as uuid from 'uuid';
+import ClientCredentialsClient from '../client/clientCredentialsClient';
 
 /**
  * 認証セッション
@@ -26,9 +26,9 @@ export interface IAuthSession {
 
 /**
  * 認証モデル
- * @class AuthModel
+ * @class ClientCredentials
  */
-export class AuthModel {
+export class ClientCredentials {
     /**
      * 状態
      */
@@ -62,12 +62,10 @@ export class AuthModel {
 
     /**
      * 認証クラス作成
-     * @memberof AuthModel
      * @method create
-     * @returns {cinerino.auth.ClientCredentials}
      */
-    public create(): cinerino.auth.ClientCredentials {
-        return new cinerino.auth.ClientCredentials({
+    public create() {
+        return new ClientCredentialsClient({
             domain: <string>process.env.CLIENT_CREDENTIALS_DOMAIN,
             clientId: <string>process.env.CLIENT_CREDENTIALS_CLIENT_ID,
             clientSecret: <string>process.env.CLIENT_CREDENTIALS_CLIENT_SECRET,
@@ -78,7 +76,6 @@ export class AuthModel {
 
     /**
      * セッションへ保存
-     * @memberof AuthModel
      * @method save
      * @returns {Object}
      */

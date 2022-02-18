@@ -13,3 +13,4 @@ export * from './information.service';
 export * from './seller.service';
 export * from './gmo.service';
 export * from './product.service';
+export * from './smart-theater.service';
