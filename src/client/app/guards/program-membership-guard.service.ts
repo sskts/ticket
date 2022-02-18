@@ -37,7 +37,9 @@ export class ProgramMembershipGuardService implements CanActivate {
         }
         await this.smartTheaterService.getServices();
         const searchResult =
-            await this.smartTheaterService.ownershipInfo.searchMemberships({});
+            await this.smartTheaterService.ownershipInfo.searchMemberships({
+                page: 1,
+            });
         if (searchResult.length > 0) {
             // プログラムメンバーシップ登録済み判定を保存
             this.userService.data.programMembershipRegistered = true;

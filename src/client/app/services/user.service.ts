@@ -267,7 +267,9 @@ export class UserService {
             while (roop) {
                 const searchResult =
                     await this.smartTheaterService.ownershipInfo.searchMemberships(
-                        {}
+                        {
+                            page: 1,
+                        }
                     );
                 const now = (await this.utilService.getServerTime()).date;
                 const programMembershipOwnershipInfos = searchResult.filter(
@@ -293,7 +295,9 @@ export class UserService {
     public async searchMyMemberships() {
         await this.smartTheaterService.getServices();
         const searchResult =
-            await this.smartTheaterService.ownershipInfo.searchMemberships({});
+            await this.smartTheaterService.ownershipInfo.searchMemberships({
+                page: 1,
+            });
         return searchResult;
     }
 
