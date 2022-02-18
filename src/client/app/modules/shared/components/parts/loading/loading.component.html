@@ -1,8 +1,10 @@
-<div class="cover" [class.active]="show"></div>
-<div class="loading" [class.active]="show">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-    <div class="bar4"></div>
-    <div class="bar5"></div>
+<div #cover [style.top.px]="position.y" class="base" [class.active]="show">
+    <div class="cover"></div>
+    <div class="loading">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <div class="bar4"></div>
+        <div class="bar5"></div>
+    </div>
 </div>

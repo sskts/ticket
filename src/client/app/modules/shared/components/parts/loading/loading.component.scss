@@ -1,13 +1,12 @@
-.cover {
+.base {
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.7);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
     z-index: 11;
-    visibility: visible;
+    height: 100%;
+    visibility: hidden;
     animation: fadein 0.4s both;
     display: none;
     &.active {
@@ -17,25 +16,30 @@
     }
 }
 
+.cover {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .loading {
-    opacity: 0;
-    visibility: hidden;
-    position: fixed;
+    display: flex;
+    position: absolute;
     z-index: 10;
     justify-content: space-between;
     top: 50%;
     left: 50%;
-    z-index: 11;
     width: 40px;
     height: 20px;
     margin-top: -10px;
     margin-left: -20px;
-    animation: fadein 0.4s both;
-    display: none;
     div {
         height: 20px;
         width: 2px;
-        background-color: #FFF;
+        background-color: #fff;
         animation: loading 1s infinite;
     }
     .bar1 {
@@ -53,14 +57,7 @@
     .bar5 {
         animation-delay: 0.9s;
     }
-    &.active {
-        display: flex;
-        opacity: 1;
-        visibility: visible;
-    }
 }
-
-
 
 @keyframes loading {
     30% {

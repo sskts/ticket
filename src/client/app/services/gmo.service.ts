@@ -21,7 +21,9 @@ export class GmoService {
         return new Promise<IGmoTokenObject>(async (resolve, reject) => {
             try {
                 await this.smartTheaterService.getServices();
-                const sellers = await this.smartTheaterService.seller.search();
+                const sellers = await this.smartTheaterService.seller.search(
+                    {}
+                );
                 const seller = sellers.find((s) => {
                     const property = s.additionalProperty.find(
                         (a) => a.name === 'shopId'

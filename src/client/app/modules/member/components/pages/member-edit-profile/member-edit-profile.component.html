@@ -6,9 +6,7 @@
         <div class="form-group">
             <div class="row align-items-center">
                 <p class="col-md-4 py-2 text-md-right">ユーザーネーム</p>
-                <div class="col-md-8">
-                    {{ user.data.userName }}
-                </div>
+                <div class="col-md-8"> {{ userName }} </div>
             </div>
         </div>
         <div class="form-group">
@@ -21,8 +19,7 @@
                         type="text" formControlName="familyName" id="familyName" autocomplete="family-name"
                         placeholder="（例）セイ">
 
-                    <div
-                        *ngIf="profileForm.controls.familyName.invalid && profileForm.controls.familyName.touched">
+                    <div *ngIf="profileForm.controls.familyName.invalid && profileForm.controls.familyName.touched">
                         <p *ngIf="profileForm.controls.familyName.errors.required" class="text-danger mb-2">
                             セイが未入力です</p>
                         <p *ngIf="profileForm.controls.familyName.errors.maxlength" class="text-danger mb-2">セイは{{
@@ -44,13 +41,12 @@
                         type="text" formControlName="givenName" id="givenName" autocomplete="given-name"
                         placeholder="（例）メイ">
 
-                    <div
-                        *ngIf="profileForm.controls.givenName.invalid && profileForm.controls.givenName.touched">
+                    <div *ngIf="profileForm.controls.givenName.invalid && profileForm.controls.givenName.touched">
                         <p *ngIf="profileForm.controls.givenName.errors.required" class="text-danger mb-2">
                             メイが未入力です
                         </p>
                         <p *ngIf="profileForm.controls.givenName.errors.maxlength" class="text-danger mb-2">メイは{{
-                                profileForm.controls.givenName.errors.maxlength.requiredLength }}文字以下で入力してください
+                            profileForm.controls.givenName.errors.maxlength.requiredLength }}文字以下で入力してください
                         </p>
                         <p *ngIf="profileForm.controls.givenName.errors.pattern" class="text-danger mb-2">
                             メイは全角カタカナで入力してください</p>
@@ -99,8 +95,8 @@
                 <div class="col-md-8">
                     <select class="form-control" formControlName="theaterCode" id="theaterCode">
                         <option value="">選択してください</option>
-                        <option *ngFor="let theater of theaters" [value]="theater.location.branchCode"
-                            [selected]="theater.location.branchCode === profileForm.controls.theaterCode.value">
+                        <option *ngFor="let theater of theaters" [value]="theater.branchCode"
+                            [selected]="theater.branchCode === profileForm.controls.theaterCode.value">
                             {{ theater.name.ja }}
                         </option>
                     </select>
@@ -111,11 +107,10 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="buttons mx-auto text-center">
             <button type="submit" [disabled]="isLoading" class="btn btn-primary btn-block py-3 mb-3">変更する</button>
-            <button type="button" class="btn btn-outline-secondary btn-block py-3"
-                routerLink="/member/edit">戻る</button>
+            <button type="button" class="btn btn-outline-secondary btn-block py-3" routerLink="/member/edit">戻る</button>
         </div>
     </form>
 </div>

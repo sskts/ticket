@@ -78,6 +78,10 @@ export namespace OwnershipInfoType {
     }
 
     export interface IReservedTicket {
+        ticketedSeat: {
+            seatNumber: string;
+            seatSection: string;
+        };
         ticketType: {
             identifier: string;
             name: {

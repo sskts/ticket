@@ -5,19 +5,19 @@
         <ul class="mb-3 bg-white container mw-100">
             <li class="row align-items-center py-2 border-bottom border-gray">
                 <p class="col-md-4 text-md-right text-small">ユーザーネーム</p>
-                <p class="col-md-8">{{ user.data.userName }}</p>
+                <p class="col-md-8">{{ userService.data.userName }}</p>
             </li>
             <li class="row align-items-center py-2 border-bottom border-gray">
                 <p class="col-md-4 text-md-right text-small">お名前</p>
-                <p class="col-md-8">{{ user.getName() }}</p>
+                <p class="col-md-8">{{ userService.getName() }}</p>
             </li>
             <li class="row align-items-center py-2 border-bottom border-gray">
                 <p class="col-md-4 text-md-right text-small">メールアドレス</p>
-                <p class="col-md-8">{{ user.data.profile?.email }}</p>
+                <p class="col-md-8">{{ userService.data.profile?.email }}</p>
             </li>
             <li class="row align-items-center py-2 border-bottom border-gray">
                 <p class="col-md-4 text-md-right text-small">電話番号</p>
-                <p class="col-md-8">{{ user.getTelephone() }}</p>
+                <p class="col-md-8">{{ userService.getTelephone() }}</p>
             </li>
             <li class="row align-items-center py-2">
                 <p class="col-md-4 text-md-right text-small">よく行く劇場</p>
@@ -25,7 +25,8 @@
             </li>
         </ul>
         <div class="buttons mx-auto text-center">
-            <button type="button" class="btn btn-primary btn-block py-3" routerLink="/member/edit/profile">基本情報変更</button>
+            <button type="button" class="btn btn-primary btn-block py-3"
+                routerLink="/member/edit/profile">基本情報変更</button>
         </div>
     </div>
     <div class="credit">
@@ -33,15 +34,18 @@
         <ul class="mb-3 bg-white container mw-100">
             <li class="row align-items-center py-2 border-bottom border-gray">
                 <p class="col-md-4 text-md-right text-small">カード番号</p>
-                <p class="col-md-8">{{ user.getCreditCard(0)?.cardNo }}</p>
+                <p class="col-md-8">{{ creditCard?.cardNo }}</p>
             </li>
             <li class="row align-items-center py-2">
                 <p class="col-md-4 text-md-right text-small">カード有効期限</p>
-                <p class="col-md-8">{{ user.getCreditCard(0)?.expire }}</p>
+                <p class="col-md-8">{{ creditCard?.expire }}</p>
             </li>
         </ul>
         <div class="buttons mx-auto text-center">
-            <button type="button" class="btn btn-primary btn-block py-3" routerLink="/member/edit/credit">クレジットカード変更</button>
+            <button type="button" class="btn btn-primary btn-block py-3"
+                routerLink="/member/edit/credit">クレジットカード変更</button>
         </div>
     </div>
 </div>
+
+<app-loading [show]="isLoading"></app-loading>

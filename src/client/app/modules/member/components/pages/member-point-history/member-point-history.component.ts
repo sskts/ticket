@@ -28,11 +28,11 @@ export class MemberPointHistoryComponent implements OnInit {
     public async ngOnInit() {
         this.isLoading = true;
         try {
-            this.smartTheaterService.getServices();
             await this.user.updateAccount();
             if (this.user.data.accounts.length === 0) {
                 throw new Error('account is not found');
             }
+            this.smartTheaterService.getServices();
             const ownershipInfoId = this.user.data.accounts[0].id;
             this.accountMoneyTransferActions =
                 await this.smartTheaterService.ownershipInfo.searchMoneyTransferActions(
