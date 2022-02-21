@@ -382,15 +382,21 @@ export class UserService {
     public async registerCreditCard(params: IGmoTokenObject) {
         await this.smartTheaterService.getServices();
         // 登録
-        await this.smartTheaterService.ownershipInfoCreditCards.add({
-            token: params.token,
-        });
+        const addResult =
+            await this.smartTheaterService.ownershipInfoCreditCards.add({
+                token: params.token,
+            });
         this.data.creditCards =
             await this.smartTheaterService.ownershipInfoCreditCards.search();
         if (this.data.creditCards.length > 1) {
-            await this.smartTheaterService.ownershipInfoCreditCards.remove({
-                cardSeq: this.data.creditCards[0].cardSeq,
-            });
+            for (const creditCard of this.data.creditCards) {
+                if (addResult.cardSeq === creditCard.cardSeq) {
+                    continue;
+                }
+                await this.smartTheaterService.ownershipInfoCreditCards.remove({
+                    cardSeq: creditCard.cardSeq,
+                });
+            }
             this.data.creditCards =
                 await this.smartTheaterService.ownershipInfoCreditCards.search();
         }
