@@ -15,9 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const debug = require("debug");
 const express = require("express");
 const base_controller_1 = require("../../controllers/base/base.controller");
-const cognitoAuth2_model_1 = require("../../models/cognito/cognitoAuth2.model");
+const cognitoOAuth2_1 = require("../../models/auth/session/cognitoOAuth2");
 const router = express.Router();
-const log = debug('sskts-ticket:api/authorize');
+const log = debug('sskts-ticket:api/cognito');
 var MemberType;
 (function (MemberType) {
     MemberType["NotMember"] = "0";
@@ -28,47 +28,13 @@ var MemberType;
  */
 router.post('/getCredentials', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     log('getCredentials');
-    // try {
-    //     if (req.session === undefined) {
-    //         throw new Error('session is undefined');
-    //     }
-    //     const body = req.body;
-    //     let credentials =
-    //         req.session.cognito === undefined
-    //             ? undefined
-    //             : req.session.cognito.credentials;
-    //     const auth = new cinerino.auth.OAuth2({
-    //         domain: <string>process.env.COGNITO_AUTHORIZATION_CODE_DOMAIN,
-    //         clientId: <string>process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_ID,
-    //         clientSecret: <string>(
-    //             process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_SECRET
-    //         ),
-    //     });
-    //     console.log('credentials', credentials);
-    //     if (credentials !== undefined) {
-    //         auth.setCredentials(credentials);
-    //     }
-    //     const accessToken = await auth.getAccessToken();
-    //     credentials = auth.credentials;
-    //     req.session.cognito = { credentials };
-    //     const userName =
-    //         body.member === MemberType.Member
-    //             ? auth.verifyIdToken({}).getUsername()
-    //             : undefined;
-    //     res.json({
-    //         credentials: { accessToken },
-    //         userName,
-    //     });
-    // } catch (err) {
-    //     errorProsess(res, err);
-    // }
     try {
         if (req.session === undefined) {
             throw new Error('session is undefined');
         }
         let userName;
         let credentials;
-        const authModel = new cognitoAuth2_model_1.CognitoAuth2Model(req.session.cognito);
+        const authModel = new cognitoOAuth2_1.CognitoOAuth2(req.session.cognito);
         const options = { auth: authModel.create() };
         const accessToken = yield options.auth.getAccessToken();
         authModel.credentials = options.auth.credentials;
@@ -95,7 +61,7 @@ router.get('/signIn', (req, res) => __awaiter(void 0, void 0, void 0, function* 
         throw new Error('session is undefined');
     }
     delete req.session.cognito;
-    const authModel = new cognitoAuth2_model_1.CognitoAuth2Model(req.session.cognito);
+    const authModel = new cognitoOAuth2_1.CognitoOAuth2(req.session.cognito);
     const auth = authModel.create();
     const url = auth.generateAuthUrl({
         scopes: authModel.scopes,
@@ -120,7 +86,7 @@ router.get('/signOut', (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
         return;
     }
-    const authModel = new cognitoAuth2_model_1.CognitoAuth2Model(req.session.cognito);
+    const authModel = new cognitoOAuth2_1.CognitoOAuth2(req.session.cognito);
     const auth = authModel.create();
     const url = auth.generateLogoutUrl();
     res.json({ url });

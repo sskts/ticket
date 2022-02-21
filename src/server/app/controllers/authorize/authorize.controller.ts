@@ -3,8 +3,8 @@
  */
 import * as debug from 'debug';
 import { NextFunction, Request, Response } from 'express';
-import { Auth2Model } from '../../models/auth2/auth2.model';
-import { CognitoAuth2Model } from '../../models/cognito/cognitoAuth2.model';
+import { CognitoOAuth2 } from '../../models/auth/session/cognitoOAuth2';
+import { OAuth2 } from '../../models/auth/session/oAuth2';
 const log = debug('sskts-ticket:authorize');
 
 /**
@@ -24,10 +24,10 @@ export async function signInRedirect(
             throw new Error('session is undefined');
         }
         const authModel =
-            Auth2Model.STATE === req.query.state
-                ? new Auth2Model(req.session.auth)
-                : CognitoAuth2Model.STATE === req.query.state
-                ? new CognitoAuth2Model(req.session.cognito)
+            OAuth2.STATE === req.query.state
+                ? new OAuth2(req.session.auth)
+                : CognitoOAuth2.STATE === req.query.state
+                ? new CognitoOAuth2(req.session.cognito)
                 : undefined;
         if (authModel === undefined) {
             throw new Error(`state not matched [${req.query.state}]`);
