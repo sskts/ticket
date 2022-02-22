@@ -219,9 +219,13 @@ export class UserService {
         accounts: OwnershipInfoType.IPaymentCard[];
     }) {
         const { accounts } = params;
+        await this.smartTheaterService.getServices();
         for (let i = 1; i < accounts.length; i++) {
-            const ownershipInfoId = accounts[i].id;
-            await this.smartTheaterService.getServices();
+            const account = accounts[i];
+            if (account.typeOfGood.paymentAccount.balance > 0) {
+                continue;
+            }
+            const ownershipInfoId = account.id;
             await this.smartTheaterService.ownershipInfo.remove({
                 ownershipInfoId,
             });
