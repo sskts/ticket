@@ -4,7 +4,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AwsCognitoService } from '../services/aws-cognito.service';
-import { CinerinoService } from '../services/cinerino.service';
+import { SmartTheaterService } from '../services/smart-theater.service';
 import { UserService } from '../services/user.service';
 
 @Injectable({
@@ -13,7 +13,7 @@ import { UserService } from '../services/user.service';
 export class AuthGuardService implements CanActivate {
     constructor(
         private router: Router,
-        private cinerinoService: CinerinoService,
+        private smartTheaterService: SmartTheaterService,
         private userService: UserService,
         private awsCognitoService: AwsCognitoService
     ) {}
@@ -34,7 +34,7 @@ export class AuthGuardService implements CanActivate {
             return true;
         }
         try {
-            await this.cinerinoService.authorize();
+            await this.smartTheaterService.authorize();
         } catch (error) {
             console.error(error);
             this.router.navigate(['/auth/select']);

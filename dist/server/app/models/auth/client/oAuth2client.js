@@ -19,7 +19,7 @@ const fetch = require("isomorphic-fetch");
 const querystring = require("querystring");
 const transporters_1 = require("../abstract/transporters");
 const loginTicket_1 = require("../loginTicket");
-const debug = createDebug('sskts-ticket:auth:oAuth2client');
+const debug = createDebug('auth:oAuth2client');
 /**
  * OAuth2 client
  */

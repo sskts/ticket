@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import * as qrcode from 'qrcode';
 import { getConfig } from '../../../../../functions';
 import {
     CallNativeService,
     InAppBrowserTarget,
+    OwnershipInfoType,
     UserService,
     UtilService,
 } from '../../../../../services';
@@ -19,10 +19,10 @@ import {
 export class MemberMypageComponent implements OnInit {
     public isLoading: boolean;
     public moment = moment;
-    public account: factory.ownershipInfo.IOwnershipInfo<factory.permit.IPermit>;
+    public account: OwnershipInfoType.IPaymentCard;
     public availableBalance: number;
     public portalSiteUrl: string;
-    public programMembershipOwnershipInfo: factory.ownershipInfo.IOwnershipInfo<factory.permit.IPermit>;
+    public programMembershipOwnershipInfo: OwnershipInfoType.IMembership;
 
     constructor(
         public userService: UserService,

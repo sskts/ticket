@@ -7,12 +7,13 @@ import {
     Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { factory } from '@cinerino/sdk';
 import * as libphonenumber from 'libphonenumber-js';
 import { getConfig } from '../../../../../functions';
-import { SellerService, UserService } from '../../../../../services';
-
-type IMovieTheater = factory.chevre.seller.ISeller;
+import {
+    SellerType,
+    SmartTheaterService,
+    UserService,
+} from '../../../../../services';
 
 @Component({
     selector: 'app-member-edit-profile',
@@ -22,16 +23,17 @@ type IMovieTheater = factory.chevre.seller.ISeller;
 export class MemberEditProfileComponent implements OnInit {
     public profileForm: FormGroup;
     public isLoading: boolean;
-    public theaters: IMovieTheater[];
+    public theaters: SellerType.ISeller[];
     public staticProfile: {
         email: string;
     };
+    public userName?: string;
     constructor(
         private formBuilder: FormBuilder,
         private elementRef: ElementRef,
         private router: Router,
-        private user: UserService,
-        private sellerService: SellerService
+        private smartTheaterService: SmartTheaterService,
+        private user: UserService
     ) {}
 
     /**
@@ -42,10 +44,12 @@ export class MemberEditProfileComponent implements OnInit {
         try {
             this.profileForm = this.createForm();
             this.isLoading = false;
-            this.theaters = await this.sellerService.search(
-                {},
-                { exclude: true, sort: true }
-            );
+            this.userName = this.user.data.userName;
+            await this.smartTheaterService.getServices();
+            this.theaters = await this.smartTheaterService.seller.search({
+                exclude: true,
+                sort: true,
+            });
         } catch (err) {
             this.router.navigate([
                 '/error',

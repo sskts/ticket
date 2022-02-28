@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { sleep } from '../../functions/util.function';
 import { Base } from './base';
 
-interface ICreditCard {
-    cardSeq: string;
-    cardName: string;
-    cardNo: string;
-    expire: string;
-    holderName: string;
+export namespace OwnershipInfoCreditCardsType {
+    export interface ICreditCard {
+        cardSeq: string;
+        cardName: string;
+        cardNo: string;
+        expire: string;
+        holderName: string;
+    }
 }
 
 @Injectable({
@@ -20,13 +22,20 @@ export class OwnershipInfoCreditCardsService extends Base {
     public async add(params: { token: string }) {
         try {
             const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/creditCards`;
-            await this.http
-                .post<void>(url, params, {
+            const result = await this.http
+                .post<{
+                    cardSeq: string;
+                    cardName: string;
+                    cardNo: string;
+                    expire: string;
+                    holderName: string;
+                }>(url, params, {
                     headers: {
                         Authorization: `Bearer ${this.accessToken}`,
                     },
                 })
                 .toPromise();
+            return result;
         } catch (error) {
             throw error;
         }
@@ -40,11 +49,11 @@ export class OwnershipInfoCreditCardsService extends Base {
             const limit = 100;
             let page = 1;
             let roop = true;
-            let result: ICreditCard[] = [];
+            let result: OwnershipInfoCreditCardsType.ICreditCard[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/creditCards`;
                 const searchResult = await this.http
-                    .get<ICreditCard[]>(url, {
+                    .get<OwnershipInfoCreditCardsType.ICreditCard[]>(url, {
                         params: {
                             page: String(page),
                             limit: String(limit),

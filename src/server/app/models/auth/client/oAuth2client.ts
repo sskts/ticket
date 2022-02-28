@@ -11,7 +11,7 @@ import { DefaultTransporter, RequestError } from '../abstract/transporters';
 import ICredentials from '../credentials';
 import { ITokenPayload, LoginTicket } from '../loginTicket';
 
-const debug = createDebug('sskts-ticket:auth:oAuth2client');
+const debug = createDebug('auth:oAuth2client');
 
 export interface IGenerateAuthUrlOpts {
     scopes: string[];

@@ -1,45 +1,63 @@
 import { Component, OnInit } from '@angular/core';
-import { CinerinoService, UserService } from '../../../../../services';
+import { Router } from '@angular/router';
+import { SmartTheaterService, UserService } from '../../../../../services';
 
 @Component({
     selector: 'app-member-edit',
     templateUrl: './member-edit.component.html',
-    styleUrls: ['./member-edit.component.scss']
+    styleUrls: ['./member-edit.component.scss'],
 })
 export class MemberEditComponent implements OnInit {
+    public isLoading: boolean;
     public theaterName: string;
+    public creditCard?: {
+        cardNo: string;
+        expire: string;
+    };
 
     constructor(
-        public user: UserService,
-        private cinerino: CinerinoService
-    ) {
-        this.theaterName = '';
-    }
+        public userService: UserService,
+        private router: Router,
+        private smartTheaterService: SmartTheaterService
+    ) {}
 
     /**
      * 初期化
      * @method ngOnInit
      */
     public async ngOnInit() {
-        this.theaterName = await this.getTheaterName();
-    }
-
-    /**
-      * 劇場一覧取得
-      */
-    private async getTheaterName() {
-        const branchCode = this.user.getWellGoTheaterCode();
-        if (branchCode !== undefined) {
-            await this.cinerino.getServices();
-            const result = await this.cinerino.seller.search({
-                branchCode: { $eq: branchCode }
-            });
-            const seller = result.data[0];
-            return (seller.name === undefined) ? ''
-                : (typeof seller.name === 'string') ? seller.name
-                    : (seller.name.ja === undefined) ? ''
-                        : seller.name.ja;
+        try {
+            this.isLoading = true;
+            this.creditCard = this.userService.getCreditCard(0);
+            await this.smartTheaterService.getServices();
+            const seller = await this.smartTheaterService.seller.search({});
+            this.theaterName = '';
+            if (
+                this.userService.data.profile === undefined ||
+                this.userService.data.profile.additionalProperty === undefined
+            ) {
+                this.isLoading = false;
+                return;
+            }
+            const additionalProperty =
+                this.userService.data.profile.additionalProperty.find(
+                    (a) => a.name === 'custom:theaterCode'
+                );
+            if (additionalProperty === undefined) {
+                this.isLoading = false;
+                return;
+            }
+            const theaterCode = additionalProperty.value;
+            const findResult = seller.find((s) => s.branchCode === theaterCode);
+            if (findResult === undefined) {
+                this.isLoading = false;
+                return;
+            }
+            this.theaterName = findResult.name.ja;
+        } catch (error) {
+            this.router.navigate(['/error', { redirect: '/purchase' }]);
+            console.error('PurchaseComponent.ngOnInit', error);
         }
-        return this.user.getTheaterName(0);
+        this.isLoading = false;
     }
 }

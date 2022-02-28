@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { BsModalService } from 'ngx-bootstrap';
 import {
-    CinerinoService,
     GmoService,
+    SmartTheaterService,
     UserService,
     UtilService,
 } from '../../../../../services';
@@ -32,7 +32,7 @@ export class AuthRegisterCreditComponent implements OnInit {
         private elementRef: ElementRef,
         private formBuilder: FormBuilder,
         private user: UserService,
-        private cinerino: CinerinoService,
+        private smartTheaterService: SmartTheaterService,
         private gmoService: GmoService,
         private utilService: UtilService
     ) {}
@@ -145,7 +145,6 @@ export class AuthRegisterCreditComponent implements OnInit {
         }
 
         try {
-            await this.cinerino.getServices();
             // GMOトークン取得
             const gmoTokenObject = await this.gmoService.getTokenObject({
                 cardno: this.creditForm.controls.cardNumber.value,
@@ -178,8 +177,7 @@ export class AuthRegisterCreditComponent implements OnInit {
      * @method signOut
      */
     public async signOut() {
-        await this.cinerino.getServices();
-        await this.cinerino.signOut();
+        await this.smartTheaterService.signOut();
     }
 
     /**

@@ -1,10 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
-import { OwnershipInfoCreditCardsService } from './smart-theater/ownershipInfo-creditcards.service';
-import { OwnershipInfoService } from './smart-theater/ownershipInfo.service';
+import {
+    OwnershipInfoCreditCardsService,
+    OwnershipInfoCreditCardsType,
+} from './smart-theater/ownershipInfo-creditcards.service';
+import {
+    OwnershipInfoService,
+    OwnershipInfoType,
+} from './smart-theater/ownershipInfo.service';
 import { PeopleService } from './smart-theater/people.service';
+import { SellerService, SellerType } from './smart-theater/seller.service';
 import { StorageService } from './storage.service';
+
+export { OwnershipInfoType, OwnershipInfoCreditCardsType, SellerType };
 
 @Injectable({
     providedIn: 'root',
@@ -13,13 +22,15 @@ export class SmartTheaterService {
     private endpoint: string;
     private accessToken: string;
     private projectId: string;
+    private clientId: string;
 
     constructor(
         private http: HttpClient,
         private storage: StorageService,
         public ownershipInfo: OwnershipInfoService,
         public ownershipInfoCreditCards: OwnershipInfoCreditCardsService,
-        public people: PeopleService
+        public people: PeopleService,
+        public seller: SellerService
     ) {}
 
     /**
@@ -31,6 +42,7 @@ export class SmartTheaterService {
             this.ownershipInfo.setOption(option);
             this.ownershipInfoCreditCards.setOption(option);
             this.people.setOption(option);
+            this.seller.setOption(option);
         } catch (err) {
             console.log(err);
             throw new Error('getServices is failed');
@@ -121,6 +133,7 @@ export class SmartTheaterService {
         this.endpoint = result.apiEndpoint;
         this.accessToken = result.credentials.accessToken;
         this.projectId = result.projectId;
+        this.clientId = result.clientId;
     }
 
     /**
@@ -152,5 +165,9 @@ export class SmartTheaterService {
             }>(url)
             .toPromise();
         return result.version;
+    }
+
+    public getClientId() {
+        return this.clientId;
     }
 }

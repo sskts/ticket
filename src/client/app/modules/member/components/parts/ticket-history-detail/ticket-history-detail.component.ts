@@ -9,8 +9,8 @@ import {
     OnInit,
     ViewChild,
 } from '@angular/core';
-import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
+import { OwnershipInfoType } from '../../../../../services';
 
 @Component({
     selector: 'app-ticket-history-detail',
@@ -20,12 +20,7 @@ import * as moment from 'moment';
 export class TicketHistoryDetailComponent
     implements OnInit, AfterContentChecked
 {
-    @Input() public reservation: {
-        data: factory.ownershipInfo.IOwnershipInfo<
-            factory.chevre.reservation.IReservation<factory.chevre.reservationType.EventReservation>
-        >;
-        theaterName: string;
-    };
+    @Input() public reservation: OwnershipInfoType.IEventService;
     @ViewChild('topimage', { static: true })
     private topImageElement: ElementRef;
     public totalPrice: string;
@@ -46,32 +41,31 @@ export class TicketHistoryDetailComponent
         this.topHeight = 0;
         this.totalPrice = '';
         const total =
-            this.reservation.data.typeOfGood.reservedTicket.coaTicketInfo ===
+            this.reservation.typeOfGood.reservedTicket.coaTicketInfo ===
             undefined
                 ? undefined
-                : this.reservation.data.typeOfGood.reservedTicket.coaTicketInfo
+                : this.reservation.typeOfGood.reservedTicket.coaTicketInfo
                       .salePrice;
-
         if (typeof total === 'number') {
             this.totalPrice = total.toLocaleString();
         }
         const startDate = moment(
-            this.reservation.data.typeOfGood.reservationFor.startDate
+            this.reservation.typeOfGood.reservationFor.startDate
         );
         this.startDate = startDate.format('YYYY.MM.DD(dd)');
         this.startTime = startDate.format('HH:mm');
-        if (
-            this.reservation.data.typeOfGood.reservationFor.endDate !==
-            undefined
-        ) {
+        if (this.reservation.typeOfGood.reservationFor.endDate !== undefined) {
             this.endTime = moment(
-                this.reservation.data.typeOfGood.reservationFor.endDate
+                this.reservation.typeOfGood.reservationFor.endDate
             ).format('HH:mm');
         }
     }
 
     public ngAfterContentChecked() {
-        if (this.reservation.theaterName !== '') {
+        if (
+            this.reservation.typeOfGood.reservationFor.superEvent.location.name
+                .ja !== ''
+        ) {
             this.topHeight = Math.floor(
                 this.topImageElement.nativeElement.offsetHeight
             );
