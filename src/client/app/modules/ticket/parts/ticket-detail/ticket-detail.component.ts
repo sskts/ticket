@@ -9,7 +9,7 @@ import { IReservation } from '../../../../services';
 @Component({
     selector: 'app-ticket-detail',
     templateUrl: './ticket-detail.component.html',
-    styleUrls: ['./ticket-detail.component.scss']
+    styleUrls: ['./ticket-detail.component.scss'],
 })
 export class TicketDetailComponent implements OnInit {
     @Input() public reservation: IReservation;
@@ -18,7 +18,7 @@ export class TicketDetailComponent implements OnInit {
     public confirmationNumber: string;
     public moment = moment;
 
-    constructor() { }
+    constructor() {}
 
     /**
      * 初期化
@@ -27,23 +27,29 @@ export class TicketDetailComponent implements OnInit {
     public async ngOnInit() {
         this.showQrCodeList = [];
         this.qrCodeList = [];
-        this.confirmationNumber = this.reservation.confirmationNumber.split('-')[0];
-
+        this.confirmationNumber =
+            this.reservation.confirmationNumber.split('-')[0];
         for (let i = 0; i < this.reservation.reservedTickets.length; i++) {
             // QR生成
-            const showQrCode = moment(this.reservation.reservationsFor[i].startDate).subtract(24, 'hours').unix() <= moment().unix();
+            const showQrCode =
+                moment(this.reservation.reservationsFor[i].startDate)
+                    .subtract(24, 'hours')
+                    .unix() <= moment().unix();
             this.showQrCodeList.push(showQrCode);
             if (showQrCode) {
-                const ticketToken = this.reservation.reservedTickets[i].ticketToken;
+                const ticketToken =
+                    this.reservation.reservedTickets[i].ticketToken;
                 const basicSize = 21;
                 const option: qrcode.QRCodeToDataURLOptions = {
                     margin: 0,
-                    scale: (80 / basicSize)
+                    scale: 80 / basicSize,
                 };
-                const qrCode = await qrcode.toDataURL(ticketToken !== undefined ? ticketToken : '', option);
+                const qrCode = await qrcode.toDataURL(
+                    ticketToken !== undefined ? ticketToken : '',
+                    option
+                );
                 this.qrCodeList.push(qrCode);
             }
         }
     }
-
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AwsCognitoService, CinerinoService } from '../../../../../services';
+import {
+    AwsCognitoService,
+    SmartTheaterService,
+} from '../../../../../services';
 import { MemberType, UserService } from '../../../../../services/user.service';
 
 @Component({
@@ -14,7 +17,7 @@ export class AuthSigninComponent implements OnInit {
         private router: Router,
         private userService: UserService,
         private awsCognitoService: AwsCognitoService,
-        private cinerinoService: CinerinoService
+        private smartTheaterService: SmartTheaterService
     ) {}
 
     /**
@@ -27,9 +30,9 @@ export class AuthSigninComponent implements OnInit {
             this.userService.data.memberType = MemberType.Member;
             this.userService.save();
             try {
-                await this.cinerinoService.authorize();
+                await this.smartTheaterService.authorize();
             } catch {
-                await this.cinerinoService.signInWithUserName(
+                await this.smartTheaterService.signInWithUserName(
                     false,
                     this.userService.data.prevUserName
                 );

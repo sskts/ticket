@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CinerinoService } from '../../../../../services';
+import { SmartTheaterService } from '../../../../../services';
 
 @Component({
     selector: 'app-auth-register-terms',
     templateUrl: './auth-register-terms.component.html',
-    styleUrls: ['./auth-register-terms.component.scss']
+    styleUrls: ['./auth-register-terms.component.scss'],
 })
 export class AuthRegisterTermsComponent implements OnInit {
-
     public isLoading: boolean;
     public termsForm: FormGroup;
 
     constructor(
-        private cinerino: CinerinoService,
+        private smartTheaterService: SmartTheaterService,
         private formBuilder: FormBuilder
-    ) { }
+    ) {}
 
     /**
      * 初期化
@@ -24,7 +23,7 @@ export class AuthRegisterTermsComponent implements OnInit {
     public ngOnInit() {
         this.isLoading = false;
         this.termsForm = this.formBuilder.group({
-            terms: [false, [Validators.requiredTrue]]
+            terms: [false, [Validators.requiredTrue]],
         });
     }
 
@@ -40,7 +39,7 @@ export class AuthRegisterTermsComponent implements OnInit {
             return;
         }
         try {
-            await this.cinerino.signUp();
+            await this.smartTheaterService.signUp();
         } catch (error) {
             this.isLoading = false;
             console.error(error);
@@ -53,5 +52,4 @@ export class AuthRegisterTermsComponent implements OnInit {
     public prev() {
         window.history.back();
     }
-
 }

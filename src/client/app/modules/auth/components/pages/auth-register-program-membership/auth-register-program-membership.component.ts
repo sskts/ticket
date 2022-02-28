@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { factory } from '@cinerino/sdk';
 import {
-    SellerService,
+    SellerType,
+    SmartTheaterService,
     UserService,
     UtilService,
 } from '../../../../../services';
@@ -16,12 +16,12 @@ import {
 export class AuthRegisterProgramMembershipComponent implements OnInit {
     public isLoading: boolean;
     public optionsForm: FormGroup;
-    public theaters: factory.chevre.seller.ISeller[];
+    public theaters: SellerType.ISeller[];
 
     constructor(
         private router: Router,
         private formBuilder: FormBuilder,
-        private sellerService: SellerService,
+        private smartTheaterService: SmartTheaterService,
         private utilService: UtilService,
         private userService: UserService
     ) {}
@@ -34,10 +34,11 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
         this.isLoading = true;
         this.optionsForm = this.createForm();
         try {
-            this.theaters = await this.sellerService.search(
-                {},
-                { exclude: true, sort: true }
-            );
+            await this.smartTheaterService.getServices();
+            this.theaters = await this.smartTheaterService.seller.search({
+                exclude: true,
+                sort: true,
+            });
         } catch (err) {
             console.log(err);
             this.router.navigate([

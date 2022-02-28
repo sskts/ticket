@@ -1,37 +1,61 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 import { sleep } from '../../functions/util.function';
 import { Base } from './base';
 
-export interface IMembership {
-    id: string;
-    ownedFrom: string;
-    ownedThrough: string;
-    typeOfGood: {
-        identifier: string;
-    };
-}
-
-export interface IPaymentCard {
-    id: string;
-    ownedFrom: string;
-    ownedThrough: string;
-    typeOfGood: {
-        identifier: string;
-    };
-}
-
-export interface IEventService {
-    id: string;
-    ownedFrom: string;
-    ownedThrough: string;
-    typeOfGood: {
+export namespace OwnershipInfoType {
+    export interface IMembership {
         id: string;
-        reservationNumber: string;
-        bookingTime: string;
-        reservationFor: {
+        ownedFrom: string;
+        ownedThrough: string;
+        typeOfGood: {
+            identifier: string;
+        };
+    }
+
+    export interface IPaymentCard {
+        id: string;
+        ownedFrom: string;
+        ownedThrough: string;
+        typeOfGood: {
+            identifier: string;
+            paymentAccount: {
+                balance: number;
+            };
+        };
+    }
+
+    export interface IEventService {
+        id: string;
+        ownedFrom: string;
+        ownedThrough: string;
+        typeOfGood: {
             id: string;
-            startDate: string;
-            endDate: string;
+            reservationNumber: string;
+            bookingTime: string;
+            reservationFor: IReservationFor;
+            reservedTicket: IReservedTicket;
+        };
+    }
+
+    export interface IReservationFor {
+        id: string;
+        startDate: string;
+        endDate: string;
+        name: {
+            en: string;
+            ja: string;
+        };
+        location: {
+            branchCode: string;
+            name: {
+                en: string;
+                ja: string;
+            };
+        };
+        superEvent: {
+            kanaName: string;
             name: {
                 en: string;
                 ja: string;
@@ -43,47 +67,48 @@ export interface IEventService {
                     ja: string;
                 };
             };
-            superEvent: {
-                kanaName: string;
-                name: {
-                    en: string;
-                    ja: string;
-                };
-                location: {
-                    branchCode: string;
-                    name: {
-                        en: string;
-                        ja: string;
-                    };
-                };
-                workPerformed: {
-                    identifier: string;
-                    name: string;
-                };
-            };
-        };
-        reservedTicket: {
-            ticketType: {
+            workPerformed: {
                 identifier: string;
-                name: {
-                    en: string;
-                    ja: string;
-                };
+                name: string;
             };
         };
-    };
-}
+        coaInfo: {
+            dateJouei: string;
+        };
+    }
 
-export interface IMoneyTransferAction {
-    amount: {
-        currency: string;
-        value: number;
-    };
-    description: string;
-    purpose: {
-        typeOf: string;
-    };
-    startDate: string;
+    export interface IReservedTicket {
+        ticketedSeat: {
+            seatNumber: string;
+            seatSection: string;
+        };
+        ticketType: {
+            identifier: string;
+            name: {
+                en: string;
+                ja: string;
+            };
+        };
+        ticketToken: string;
+        coaTicketInfo: {
+            salePrice: number;
+            spseatKbn: string;
+            spseatAdd2: number;
+            ticketName: string;
+        };
+    }
+
+    export interface IMoneyTransferAction {
+        amount: {
+            currency: string;
+            value: number;
+        };
+        description: string;
+        purpose: {
+            typeOf: string;
+        };
+        startDate: string;
+    }
 }
 
 @Injectable({
@@ -96,28 +121,34 @@ export class OwnershipInfoService extends Base {
     public async searchMemberships(params: {
         ownedFrom?: Date;
         ownedThrough?: Date;
+        page?: number;
+        limit?: number;
     }) {
         try {
-            const limit = 100;
-            let page = 1;
+            const limit = params.limit === undefined ? 100 : params.limit;
+            let page = params.page === undefined ? 1 : params.page;
             let roop = true;
-            let result: IMembership[] = [];
+            let result: OwnershipInfoType.IMembership[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/MembershipService`;
+                const httpParams = new HttpParams();
+                httpParams.append('page', String(page));
+                httpParams.append('limit', String(limit));
+                if (params.ownedFrom !== undefined) {
+                    httpParams.append(
+                        'ownedFrom',
+                        params.ownedFrom.toISOString()
+                    );
+                }
+                if (params.ownedThrough !== undefined) {
+                    httpParams.append(
+                        'ownedThrough',
+                        params.ownedThrough.toISOString()
+                    );
+                }
                 const searchResult = await this.http
-                    .get<IMembership[]>(url, {
-                        params: {
-                            page: String(page),
-                            limit: String(limit),
-                            ownedFrom:
-                                params.ownedFrom === undefined
-                                    ? ''
-                                    : params.ownedFrom.toISOString(),
-                            ownedThrough:
-                                params.ownedThrough === undefined
-                                    ? ''
-                                    : params.ownedThrough.toISOString(),
-                        },
+                    .get<OwnershipInfoType.IMembership[]>(url, {
+                        params: httpParams,
                         headers: {
                             Authorization: `Bearer ${this.accessToken}`,
                         },
@@ -125,7 +156,8 @@ export class OwnershipInfoService extends Base {
                     .toPromise();
                 result = [...result, ...searchResult];
                 page++;
-                roop = searchResult.length === limit;
+                roop =
+                    searchResult.length === limit && params.page === undefined;
                 if (roop) {
                     await sleep();
                 }
@@ -142,28 +174,34 @@ export class OwnershipInfoService extends Base {
     public async searchPaymentCard(params: {
         ownedFrom?: Date;
         ownedThrough?: Date;
+        page?: number;
+        limit?: number;
     }) {
         try {
-            const limit = 100;
-            let page = 1;
+            const limit = params.limit === undefined ? 100 : params.limit;
+            let page = params.page === undefined ? 1 : params.page;
             let roop = true;
-            let result: IPaymentCard[] = [];
+            let result: OwnershipInfoType.IPaymentCard[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/PaymentCard`;
+                const httpParams = new HttpParams();
+                httpParams.append('page', String(page));
+                httpParams.append('limit', String(limit));
+                if (params.ownedFrom !== undefined) {
+                    httpParams.append(
+                        'ownedFrom',
+                        params.ownedFrom.toISOString()
+                    );
+                }
+                if (params.ownedThrough !== undefined) {
+                    httpParams.append(
+                        'ownedThrough',
+                        params.ownedThrough.toISOString()
+                    );
+                }
                 const searchResult = await this.http
-                    .get<IPaymentCard[]>(url, {
-                        params: {
-                            page: String(page),
-                            limit: String(limit),
-                            ownedFrom:
-                                params.ownedFrom === undefined
-                                    ? ''
-                                    : params.ownedFrom.toISOString(),
-                            ownedThrough:
-                                params.ownedThrough === undefined
-                                    ? ''
-                                    : params.ownedThrough.toISOString(),
-                        },
+                    .get<OwnershipInfoType.IPaymentCard[]>(url, {
+                        params: httpParams,
                         headers: {
                             Authorization: `Bearer ${this.accessToken}`,
                         },
@@ -171,12 +209,18 @@ export class OwnershipInfoService extends Base {
                     .toPromise();
                 result = [...result, ...searchResult];
                 page++;
-                roop = searchResult.length === limit;
+                roop =
+                    searchResult.length === limit && params.page === undefined;
                 if (roop) {
                     await sleep();
                 }
             }
-            return result;
+            const sortResult = result.sort((a, b) => {
+                const unixA = moment(a.ownedFrom).unix();
+                const unixB = moment(b.ownedFrom).unix();
+                return unixA - unixB;
+            });
+            return sortResult;
         } catch (error) {
             throw error;
         }
@@ -188,28 +232,34 @@ export class OwnershipInfoService extends Base {
     public async searchEventService(params: {
         ownedFrom?: Date;
         ownedThrough?: Date;
+        page?: number;
+        limit?: number;
     }) {
         try {
-            const limit = 100;
-            let page = 1;
+            const limit = params.limit === undefined ? 100 : params.limit;
+            let page = params.page === undefined ? 1 : params.page;
             let roop = true;
-            let result: IEventService[] = [];
+            let result: OwnershipInfoType.IEventService[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/EventService`;
+                const httpParams = new HttpParams();
+                httpParams.append('page', String(page));
+                httpParams.append('limit', String(limit));
+                if (params.ownedFrom !== undefined) {
+                    httpParams.append(
+                        'ownedFrom',
+                        params.ownedFrom.toISOString()
+                    );
+                }
+                if (params.ownedThrough !== undefined) {
+                    httpParams.append(
+                        'ownedThrough',
+                        params.ownedThrough.toISOString()
+                    );
+                }
                 const searchResult = await this.http
-                    .get<IEventService[]>(url, {
-                        params: {
-                            page: String(page),
-                            limit: String(limit),
-                            ownedFrom:
-                                params.ownedFrom === undefined
-                                    ? ''
-                                    : params.ownedFrom.toISOString(),
-                            ownedThrough:
-                                params.ownedThrough === undefined
-                                    ? ''
-                                    : params.ownedThrough.toISOString(),
-                        },
+                    .get<OwnershipInfoType.IEventService[]>(url, {
+                        params: httpParams,
                         headers: {
                             Authorization: `Bearer ${this.accessToken}`,
                         },
@@ -217,7 +267,8 @@ export class OwnershipInfoService extends Base {
                     .toPromise();
                 result = [...result, ...searchResult];
                 page++;
-                roop = searchResult.length === limit;
+                roop =
+                    searchResult.length === limit && params.page === undefined;
                 if (roop) {
                     await sleep();
                 }
@@ -233,16 +284,18 @@ export class OwnershipInfoService extends Base {
      */
     public async searchMoneyTransferActions(params: {
         ownershipInfoId: string;
+        page?: number;
+        limit?: number;
     }) {
         try {
-            const limit = 100;
-            let page = 1;
+            const limit = params.limit === undefined ? 100 : params.limit;
+            let page = params.page === undefined ? 1 : params.page;
             let roop = true;
-            let result: IMoneyTransferAction[] = [];
+            let result: OwnershipInfoType.IMoneyTransferAction[] = [];
             while (roop) {
-                const url = `${this.endpoint}/projects/${this.projectId}/people//me/ownershipInfos/PaymentCard/${params.ownershipInfoId}/actions/moneyTransfer`;
+                const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/PaymentCard/${params.ownershipInfoId}/actions/moneyTransfer`;
                 const searchResult = await this.http
-                    .get<IMoneyTransferAction[]>(url, {
+                    .get<OwnershipInfoType.IMoneyTransferAction[]>(url, {
                         params: {
                             page: String(page),
                             limit: String(limit),
@@ -254,12 +307,31 @@ export class OwnershipInfoService extends Base {
                     .toPromise();
                 result = [...result, ...searchResult];
                 page++;
-                roop = searchResult.length === limit;
+                roop =
+                    searchResult.length === limit && params.page === undefined;
                 if (roop) {
                     await sleep();
                 }
             }
             return result;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    /**
+     * 所有権削除
+     */
+    public async remove(params: { ownershipInfoId: string }) {
+        try {
+            const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/${params.ownershipInfoId}`;
+            await this.http
+                .delete<void>(url, {
+                    headers: {
+                        Authorization: `Bearer ${this.accessToken}`,
+                    },
+                })
+                .toPromise();
         } catch (error) {
             throw error;
         }

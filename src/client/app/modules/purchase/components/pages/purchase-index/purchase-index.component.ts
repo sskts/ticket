@@ -3,7 +3,6 @@
  */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { BsModalService } from 'ngx-bootstrap';
 import { environment } from '../../../../../../environments/environment';
@@ -12,17 +11,19 @@ import { Performance } from '../../../../../models/performance';
 import { ISchedule, IScheduleData } from '../../../../../models/schedule';
 import {
     AwsCognitoService,
-    CinerinoService,
     IConfirm,
     IPurchaseConditions,
     MaintenanceService,
     MemberType,
     PurchaseSort,
     SelectService,
-    SellerService,
     UserService,
     UtilService,
 } from '../../../../../services';
+import {
+    SellerType,
+    SmartTheaterService,
+} from '../../../../../services/smart-theater.service';
 import { AppearPopupComponent } from '../../../../shared/components/parts/appear-popup/appear-popup.component';
 
 interface IDate {
@@ -49,7 +50,7 @@ interface IDate {
  */
 export class PurchaseIndexComponent implements OnInit, OnDestroy {
     public isLoading: boolean;
-    public theaters: factory.chevre.seller.ISeller[];
+    public theaters: SellerType.ISeller[];
     public dateList: IDate[];
     public schedules: ISchedule[];
     public schedule?: ISchedule;
@@ -74,12 +75,11 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
     constructor(
         public userService: UserService,
         private router: Router,
-        private cinerinoService: CinerinoService,
+        private smartTheaterService: SmartTheaterService,
         private selectService: SelectService,
         private utilService: UtilService,
         private maintenanceService: MaintenanceService,
         private awsCognitoService: AwsCognitoService,
-        private sellerService: SellerService,
         private modal: BsModalService
     ) {
         this.purchaseSort = PurchaseSort;
@@ -144,14 +144,13 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
             this.theaters = [];
             this.dateList = [];
             this.schedules = [];
-            this.theaters = await this.sellerService.search(
-                {},
-                { exclude: true, sort: true }
-            );
+            await this.smartTheaterService.getServices();
+            this.theaters = await this.smartTheaterService.seller.search({
+                exclude: true,
+                sort: true,
+            });
             const findResult = this.theaters.find(
-                (theater) =>
-                    theater.location !== undefined &&
-                    theater.location.branchCode === this.conditions.theater
+                (t) => t.branchCode === this.conditions.theater
             );
             if (findResult === undefined) {
                 this.conditions.theater = '';
@@ -254,6 +253,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 sellerId: seller.id,
                 redirectUrl: getConfig().ticketSiteUrl,
                 native: '1',
+                clientId: this.smartTheaterService.getClientId(),
             };
             let query;
             if (this.userService.isMember()) {
@@ -261,7 +261,6 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                     ...commonQuery,
                     member: MemberType.Member,
                     username: this.userService.data.userName,
-                    clientId: this.cinerinoService.auth.options.clientId,
                 };
             } else {
                 if (this.awsCognitoService.credentials === undefined) {
@@ -271,7 +270,6 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                     ...commonQuery,
                     identityId: this.awsCognitoService.credentials.identityId,
                     member: MemberType.NotMember,
-                    clientId: this.cinerinoService.auth.options.clientId,
                 };
             }
             const url = `${

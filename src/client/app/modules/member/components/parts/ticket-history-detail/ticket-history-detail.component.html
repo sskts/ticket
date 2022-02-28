@@ -3,16 +3,16 @@
         <img #topimage src="/assets/images/ticket-history/header.png"
             [style.height.px]="topHeight === 0 ? null : topHeight" />
         <div #centerimage class="center">
-            <div class="title">{{ reservation.data.typeOfGood.reservationFor.name.ja }}</div>
+            <div class="title">{{ reservation.typeOfGood.reservationFor.name.ja }}</div>
             <div class="location">
                 <div class="info">
                     <div class="title">劇場</div>
-                    <div class="name">{{ reservation.theaterName }}</div>
+                    <div class="name">{{ reservation.typeOfGood.reservationFor.superEvent.location.name.ja }}</div>
                 </div>
                 <div class="separator"></div>
                 <div class="info">
                     <div class="title">スクリーン</div>
-                    <div class="name">{{reservation.data.typeOfGood.reservationFor.location.name?.ja }}</div>
+                    <div class="name">{{reservation.typeOfGood.reservationFor.location.name?.ja }}</div>
                 </div>
             </div>
         </div>

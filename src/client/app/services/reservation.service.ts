@@ -2,18 +2,18 @@
  * ReservationService
  */
 import { Injectable } from '@angular/core';
-import { factory } from '@cinerino/sdk';
 import * as moment from 'moment';
 import { AwsCognitoService } from './aws-cognito.service';
-import { CinerinoService } from './cinerino.service';
+import {
+    OwnershipInfoType,
+    SmartTheaterService,
+} from './smart-theater.service';
 import { StorageService } from './storage.service';
-type ITicket = factory.chevre.reservation.ITicket<factory.chevre.reservationType.EventReservation>;
-type IReservationFor = factory.chevre.reservation.IReservationFor<factory.chevre.reservationType.EventReservation>;
 
 export interface IReservation {
     confirmationNumber: string;
-    reservationsFor: IReservationFor[];
-    reservedTickets: ITicket[];
+    reservationsFor: OwnershipInfoType.IReservationFor[];
+    reservedTickets: OwnershipInfoType.IReservedTicket[];
 }
 
 export interface IReservationData {
@@ -22,7 +22,7 @@ export interface IReservationData {
 }
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class ReservationService {
     public data: IReservationData;
@@ -31,8 +31,8 @@ export class ReservationService {
     constructor(
         private awsCognito: AwsCognitoService,
         private storage: StorageService,
-        private cinerino: CinerinoService
-    ) { }
+        private smartTheaterService: SmartTheaterService
+    ) {}
 
     /**
      * 予約情報取得
@@ -40,12 +40,15 @@ export class ReservationService {
      * @returns {Promise<void>}
      */
     private async getReservation(): Promise<void> {
-        const reservation: IReservationData = (this.data === undefined)
-            ? this.storage.load('reservation')
-            : this.data;
-        if (reservation === undefined
-            || reservation === null
-            || reservation.expired < moment().unix()) {
+        const reservation: IReservationData =
+            this.data === undefined
+                ? this.storage.load('reservation')
+                : this.data;
+        if (
+            reservation === undefined ||
+            reservation === null ||
+            reservation.expired < moment().unix()
+        ) {
             try {
                 if (this.isMember) {
                     // 会員
@@ -72,45 +75,63 @@ export class ReservationService {
      */
     private async fitchReservationCognito(): Promise<IReservationData> {
         const reservationRecord: {
-            orders: factory.order.IOrder[]
+            orders: {
+                acceptedOffers: {
+                    itemOffered: {
+                        typeOf: string;
+                        reservationNumber: string;
+                        reservationFor: OwnershipInfoType.IReservationFor;
+                        reservedTicket: OwnershipInfoType.IReservedTicket;
+                    };
+                }[];
+            }[];
         } = await this.awsCognito.getRecords({
-            datasetName: 'reservation'
+            datasetName: 'reservation',
         });
         const expired = 10;
 
         const orders: IReservation[] = [];
         if (Array.isArray(reservationRecord.orders)) {
             reservationRecord.orders.forEach((order) => {
-                const reservationsFor: IReservationFor[] = [];
-                const reservedTickets: ITicket[] = [];
-                order.acceptedOffers.forEach(o => {
-                    if (o.itemOffered.typeOf !== factory.chevre.reservationType.EventReservation) {
+                const reservationsFor: OwnershipInfoType.IReservationFor[] = [];
+                const reservedTickets: OwnershipInfoType.IReservedTicket[] = [];
+                order.acceptedOffers.forEach((o) => {
+                    if (o.itemOffered.typeOf !== 'EventReservation') {
                         return;
                     }
-                    const itemOffered = <factory.chevre.reservation.IReservation<
-                        factory.chevre.reservationType.EventReservation
-                    >>o.itemOffered;
-                    reservationsFor.push(itemOffered.reservationFor);
+                    const itemOffered = o.itemOffered;
+
+                    reservationsFor.push({
+                        ...itemOffered.reservationFor,
+                        startDate: moment(
+                            itemOffered.reservationFor.startDate
+                        ).toISOString(),
+                        endDate: moment(
+                            itemOffered.reservationFor.endDate
+                        ).toISOString(),
+                    });
                     reservedTickets.push(itemOffered.reservedTicket);
                 });
 
-                if (order.acceptedOffers[0].itemOffered.typeOf !== factory.chevre.reservationType.EventReservation) {
+                if (
+                    order.acceptedOffers[0].itemOffered.typeOf !==
+                    'EventReservation'
+                ) {
                     return;
                 }
-                const confirmationNumber = (<factory.chevre.reservation.IReservation<
-                    factory.chevre.reservationType.EventReservation
-                >>order.acceptedOffers[0].itemOffered).reservationNumber;
+                const confirmationNumber =
+                    order.acceptedOffers[0].itemOffered.reservationNumber;
                 orders.push({
                     confirmationNumber,
                     reservationsFor: reservationsFor,
-                    reservedTickets: reservedTickets
+                    reservedTickets: reservedTickets,
                 });
             });
         }
 
         return {
             reservations: orders,
-            expired: moment().add(expired, 'second').unix()
+            expired: moment().add(expired, 'second').unix(),
         };
     }
 
@@ -120,30 +141,24 @@ export class ReservationService {
      * @returns {Promise<IReservationData>}
      */
     private async fitchReservation(): Promise<IReservationData> {
-        await this.cinerino.getServices();
-        const searchResult = await this.cinerino.ownerShipInfo.search({
-            typeOfGood: {
-                typeOf: factory.chevre.reservationType.EventReservation
-            },
-            limit: 100
-        });
+        await this.smartTheaterService.getServices();
         const eventReservations =
-            <factory.ownershipInfo.IOwnershipInfo<
-                factory.chevre.reservation.IReservation<factory.chevre.reservationType.EventReservation>
-            >[]>searchResult.data;
+            await this.smartTheaterService.ownershipInfo.searchEventService({});
+
         const orders: IReservation[] = [];
         for (const eventReservation of eventReservations) {
-            const confirmationNumber =  eventReservation.typeOfGood.reservationNumber.split('-')[0];
+            const confirmationNumber =
+                eventReservation.typeOfGood.reservationNumber.split('-')[0];
             const reservationFor = eventReservation.typeOfGood.reservationFor;
             const reservedTicket = eventReservation.typeOfGood.reservedTicket;
             const target = orders.find((order) => {
-                return (order.confirmationNumber === confirmationNumber);
+                return order.confirmationNumber === confirmationNumber;
             });
             if (target === undefined) {
                 const reservation: IReservation = {
                     confirmationNumber: confirmationNumber,
                     reservationsFor: [],
-                    reservedTickets: []
+                    reservedTickets: [],
                 };
                 reservation.reservationsFor.push(reservationFor);
                 reservation.reservedTickets.push(reservedTicket);
@@ -157,7 +172,7 @@ export class ReservationService {
 
         return {
             reservations: orders,
-            expired: moment().add(expired, 'second').unix()
+            expired: moment().add(expired, 'second').unix(),
         };
     }
 
@@ -165,7 +180,9 @@ export class ReservationService {
      * パフォーマンスごとの予約情報取得（購入番号順）
      * @method getReservationByPurchaseNumber
      */
-    public async getReservationByPurchaseNumberOrder(): Promise<IReservation[]> {
+    public async getReservationByPurchaseNumberOrder(): Promise<
+        IReservation[]
+    > {
         await this.getReservation();
 
         return this.data.reservations.filter((reservation) => {
@@ -174,7 +191,7 @@ export class ReservationService {
             }
             const endDate = moment(reservation.reservationsFor[0].endDate);
 
-            return (endDate.unix() > moment().unix());
+            return endDate.unix() > moment().unix();
         });
     }
 
@@ -182,7 +199,9 @@ export class ReservationService {
      * パフォーマンスごとの予約情報取得（鑑賞日順）
      * @method getReservationByAppreciationDayOrder
      */
-    public async getReservationByAppreciationDayOrder(): Promise<IReservation[]> {
+    public async getReservationByAppreciationDayOrder(): Promise<
+        IReservation[]
+    > {
         await this.getReservation();
         const order = this.data.reservations.filter((reservation) => {
             if (reservation.reservedTickets.length === 0) {
@@ -190,7 +209,7 @@ export class ReservationService {
             }
             const endDate = moment(reservation.reservationsFor[0].endDate);
             // 上映終了12時間後まで表示
-            return (endDate.unix() > moment().add(-12, 'hour').unix());
+            return endDate.unix() > moment().add(-12, 'hour').unix();
         });
 
         order.sort((a, b) => {
@@ -207,5 +226,4 @@ export class ReservationService {
 
         return order;
     }
-
 }

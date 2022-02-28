@@ -2,14 +2,14 @@
  * TicketComponent
  */
 import { Component, OnInit } from '@angular/core';
-import { factory } from '@cinerino/sdk';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { cms } from '../../../../models';
 import {
     CmsService,
     IPurchaseConditions,
     SelectService,
-    SellerService,
+    SellerType,
+    SmartTheaterService,
     UtilService,
 } from '../../../../services';
 import { MovieDetailModalComponent } from '../../../shared/components/parts/movie-detail-modal/movie-detail-modal.component';
@@ -26,7 +26,7 @@ import { MovieDetailModalComponent } from '../../../shared/components/parts/movi
  */
 export class MovieIndexComponent implements OnInit {
     public isLoading: boolean;
-    public theaters: factory.chevre.seller.ISeller[];
+    public theaters: SellerType.ISeller[];
     public conditions: IPurchaseConditions;
     public nowShowing: {
         title: cms.schedule.ITitle;
@@ -39,7 +39,7 @@ export class MovieIndexComponent implements OnInit {
 
     constructor(
         private cmsService: CmsService,
-        private sellerService: SellerService,
+        private smartTheaterService: SmartTheaterService,
         private selectService: SelectService,
         private utilService: UtilService,
         private modal: BsModalService
@@ -53,10 +53,11 @@ export class MovieIndexComponent implements OnInit {
         this.isLoading = true;
         try {
             this.conditions = this.selectService.data.purchase;
-            this.theaters = await this.sellerService.search(
-                {},
-                { exclude: true, sort: true }
-            );
+            await this.smartTheaterService.getServices();
+            this.theaters = await this.smartTheaterService.seller.search({
+                exclude: true,
+                sort: true,
+            });
             await this.getSchedule();
         } catch (error) {
             this.utilService.openAlert({
