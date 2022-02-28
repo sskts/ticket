@@ -1,4 +1,3 @@
-import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { sleep } from '../../functions/util.function';
@@ -131,20 +130,17 @@ export class OwnershipInfoService extends Base {
             let result: OwnershipInfoType.IMembership[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/MembershipService`;
-                const httpParams = new HttpParams();
-                httpParams.append('page', String(page));
-                httpParams.append('limit', String(limit));
+                const httpParams: {
+                    [param: string]: string;
+                } = {
+                    page: String(page),
+                    limit: String(limit),
+                };
                 if (params.ownedFrom !== undefined) {
-                    httpParams.append(
-                        'ownedFrom',
-                        params.ownedFrom.toISOString()
-                    );
+                    httpParams.ownedFrom = params.ownedFrom.toISOString();
                 }
                 if (params.ownedThrough !== undefined) {
-                    httpParams.append(
-                        'ownedThrough',
-                        params.ownedThrough.toISOString()
-                    );
+                    httpParams.ownedThrough = params.ownedThrough.toISOString();
                 }
                 const searchResult = await this.http
                     .get<OwnershipInfoType.IMembership[]>(url, {
@@ -184,20 +180,17 @@ export class OwnershipInfoService extends Base {
             let result: OwnershipInfoType.IPaymentCard[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/PaymentCard`;
-                const httpParams = new HttpParams();
-                httpParams.append('page', String(page));
-                httpParams.append('limit', String(limit));
+                const httpParams: {
+                    [param: string]: string;
+                } = {
+                    page: String(page),
+                    limit: String(limit),
+                };
                 if (params.ownedFrom !== undefined) {
-                    httpParams.append(
-                        'ownedFrom',
-                        params.ownedFrom.toISOString()
-                    );
+                    httpParams.ownedFrom = params.ownedFrom.toISOString();
                 }
                 if (params.ownedThrough !== undefined) {
-                    httpParams.append(
-                        'ownedThrough',
-                        params.ownedThrough.toISOString()
-                    );
+                    httpParams.ownedThrough = params.ownedThrough.toISOString();
                 }
                 const searchResult = await this.http
                     .get<OwnershipInfoType.IPaymentCard[]>(url, {
@@ -242,20 +235,17 @@ export class OwnershipInfoService extends Base {
             let result: OwnershipInfoType.IEventService[] = [];
             while (roop) {
                 const url = `${this.endpoint}/projects/${this.projectId}/people/me/ownershipInfos/EventService`;
-                const httpParams = new HttpParams();
-                httpParams.append('page', String(page));
-                httpParams.append('limit', String(limit));
+                const httpParams: {
+                    [param: string]: string;
+                } = {
+                    page: String(page),
+                    limit: String(limit),
+                };
                 if (params.ownedFrom !== undefined) {
-                    httpParams.append(
-                        'ownedFrom',
-                        params.ownedFrom.toISOString()
-                    );
+                    httpParams.ownedFrom = params.ownedFrom.toISOString();
                 }
                 if (params.ownedThrough !== undefined) {
-                    httpParams.append(
-                        'ownedThrough',
-                        params.ownedThrough.toISOString()
-                    );
+                    httpParams.ownedThrough = params.ownedThrough.toISOString();
                 }
                 const searchResult = await this.http
                     .get<OwnershipInfoType.IEventService[]>(url, {
