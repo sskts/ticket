@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 5.0.1 - 2022-02-28
+
+### Fixed
+
+-   スマートシアター API 呼び出し修正
+
 ## 5.0.0 - 2022-02-28
 
 ### Changed
