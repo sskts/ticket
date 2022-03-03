@@ -52,28 +52,12 @@ export class SmartTheaterService {
     /**
      * サインイン
      */
-    public async signIn(isReSignIn: boolean = false) {
-        await this.signInWithUserName(isReSignIn);
-    }
-
-    /**
-     * ユーザー名付きサインイン
-     */
-    public async signInWithUserName(
-        isReSignIn: boolean = false,
-        userName: string = ''
-    ) {
+    public async signIn() {
         const url = '/api/authorize/signIn';
         const result = await this.http
             .get<{ url: string }>(url, {})
             .toPromise();
-        let redirectUrl = result.url;
-        if (isReSignIn) {
-            redirectUrl += '&isReSignIn=1';
-        }
-        location.replace(
-            `${redirectUrl}&userName=${encodeURIComponent(userName)}`
-        );
+        location.replace(result.url);
     }
 
     /**

@@ -59,6 +59,7 @@ export interface IUserData {
     /**
      * ログイン済みユーザーネーム
      * （ログイン画面ユーザーネーム忘れ対応）
+     * @deprecated
      */
     prevUserName?: string;
 }
