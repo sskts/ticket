@@ -7,7 +7,7 @@ import * as http from 'http';
 import * as app from './app/app';
 
 process.env.VERSION = JSON.parse(
-    fs.readFileSync('./package.json', 'utf8')
+    fs.readFileSync(`${__dirname}/../../package.json`, 'utf8')
 ).version;
 /**
  * Get port from environment and store in Express.
