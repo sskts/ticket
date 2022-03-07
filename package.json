@@ -23,7 +23,7 @@
         "clean": "rimraf src/**/*.spec.ts",
         "analyze": "webpack-bundle-analyzer dist/client/production/stats.json",
         "deploy:development": "gcloud app deploy ./app.development.gcp.yaml --project sskts-dev",
-        "deploy:test": "gcloud app deploy ./app.test.gcp.yaml --project sskts-text",
+        "deploy:test": "gcloud app deploy ./app.test.gcp.yaml --project sskts-test",
         "deploy:production": "gcloud app deploy ./app.production.gcp.yaml --project sskts-prod-ticket --no-promote --version staging"
     },
     "private": true,

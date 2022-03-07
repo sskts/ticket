@@ -53,10 +53,11 @@ export class AuthSelectComponent implements OnInit {
      * @method start
      */
     public async start() {
-        this.isLoading = true;
-        this.user.data.memberType = MemberType.NotMember;
-        this.user.save();
         try {
+            this.isLoading = true;
+            await this.user.load();
+            this.user.data.memberType = MemberType.NotMember;
+            this.user.save();
             await this.awsCognito.authenticateWithDeviceId();
             if (this.awsCognito.credentials === undefined) {
                 throw new Error('credentials is undefined');

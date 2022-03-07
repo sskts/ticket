@@ -6,11 +6,15 @@ import * as fs from 'fs';
 import * as http from 'http';
 import * as app from './app/app';
 
-process.env.VERSION = JSON.parse(fs.readFileSync('../../package.json', 'utf8')).version;
+process.env.VERSION = JSON.parse(
+    fs.readFileSync('./package.json', 'utf8')
+).version;
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.PORT === undefined ? '8080' : process.env.PORT);
+const port = normalizePort(
+    process.env.PORT === undefined ? '8080' : process.env.PORT
+);
 // tslint:disable-next-line:no-backbone-get-set-outside-model
 app.set('port', port);
 
@@ -56,9 +60,7 @@ function onError(error: any) {
         throw error;
     }
 
-    const bind = typeof port === 'string'
-        ? 'Pipe ' + port
-        : 'Port ' + port;
+    const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
     // handle specific listen errors with friendly messages
     switch (error.code) {
@@ -82,9 +84,8 @@ function onError(error: any) {
 function onListening() {
     const addr = server.address();
     // tslint:disable-next-line:no-unused-variable
-    const bind = typeof addr === 'string'
-        ? 'pipe ' + addr
-        : 'port ' + addr.port;
+    const bind =
+        typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
     // tslint:disable-next-line:no-unused-expression
     bind;
 }

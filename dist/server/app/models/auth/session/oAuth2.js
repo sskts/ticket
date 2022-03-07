@@ -28,11 +28,11 @@ class OAuth2 {
             domain: process.env.AUTHORIZATION_CODE_DOMAIN,
             clientId: process.env.AUTHORIZATION_CODE_CLIENT_ID,
             clientSecret: process.env.AUTHORIZATION_CODE_CLIENT_SECRET,
-            redirectUri: process.env.PORT
-                ? `${req.protocol}://${req.hostname}:${process.env.PORT}/signIn`
+            redirectUri: process.env.AUTH_REDIRECT_URI
+                ? process.env.AUTH_REDIRECT_URI
                 : `${req.protocol}://${req.hostname}/signIn`,
-            logoutUri: process.env.PORT
-                ? `${req.protocol}://${req.hostname}:${process.env.PORT}/signOut`
+            logoutUri: process.env.AUTH_LOGUOT_URI
+                ? process.env.AUTH_LOGUOT_URI
                 : `${req.protocol}://${req.hostname}/signOut`,
             state: this.state,
             scopes: this.scopes.join(' '),
