@@ -11,7 +11,6 @@
 | `REDIS_PORT`                               | true     |                 | REDIS ポート                             |
 | `REDIS_KEY`                                | true     |                 | REDIS キー                               |
 | `SESSION_COOKIE_MAX_AGE`                   | false    |                 | SESSION COOKIE MAX AGE                   |
-| `SSKTS_API_ENDPOINT`                       | true     |                 | SSKTS API エンドポイント                 |
 | `API_ENDPOINT`                             | true     |                 | API エンドポイント                       |
 | `CLIENT_CREDENTIALS_CLIENT_ID`             | true     |                 | client credentials client id             |
 | `CLIENT_CREDENTIALS_CLIENT_SECRET`         | true     |                 | client credentials client secret         |
