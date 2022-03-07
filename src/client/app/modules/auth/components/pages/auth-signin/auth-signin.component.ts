@@ -32,10 +32,7 @@ export class AuthSigninComponent implements OnInit {
             try {
                 await this.smartTheaterService.authorize();
             } catch {
-                await this.smartTheaterService.signInWithUserName(
-                    false,
-                    this.userService.data.prevUserName
-                );
+                await this.smartTheaterService.signIn();
                 return;
             }
             try {
