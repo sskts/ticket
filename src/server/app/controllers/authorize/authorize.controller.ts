@@ -32,7 +32,7 @@ export async function signInRedirect(
         if (authModel === undefined) {
             throw new Error(`state not matched [${req.query.state}]`);
         }
-        const auth = authModel.create();
+        const auth = authModel.create(req);
         const credentials = await auth.getToken(
             req.query.code,
             <string>authModel.codeVerifier

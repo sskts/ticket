@@ -18,8 +18,6 @@
 | `AUTHORIZATION_CODE_CLIENT_ID`             | true     |                 | authorization code client secret         |
 | `AUTHORIZATION_CODE_CLIENT_SECRET`         | true     |                 | authorization code client secret         |
 | `AUTHORIZATION_CODE_DOMAIN`                | true     |                 | authorization code domain                |
-| `AUTH_REDIRECT_URI`                        | true     |                 | サインインリダイレクト URL               |
-| `AUTH_LOGUOT_URI`                          | true     |                 | サインアウトリダイレクト URL             |
 | `SSKTS_ALLOWED_IPS`                        | false    |                 | IP 制限 IP リスト(カンマ区切り)          |
 | `SSKTS_BASIC_AUTH_NAME`                    | false    |                 | ベーシック認証 ID                        |
 | `SSKTS_BASIC_AUTH_PASS`                    | false    |                 | ベーシック認証 PASS                      |

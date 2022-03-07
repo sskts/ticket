@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import OAuth2client from '../client/oAuth2client';
 
 /**
@@ -71,13 +72,17 @@ export class OAuth2 {
      * 認証クラス作成
      * @method create
      */
-    public create() {
+    public create(req: Request) {
         const auth = new OAuth2client({
             domain: <string>process.env.AUTHORIZATION_CODE_DOMAIN,
             clientId: <string>process.env.AUTHORIZATION_CODE_CLIENT_ID,
             clientSecret: <string>process.env.AUTHORIZATION_CODE_CLIENT_SECRET,
-            redirectUri: <string>process.env.AUTH_REDIRECT_URI,
-            logoutUri: <string>process.env.AUTH_LOGUOT_URI,
+            redirectUri: process.env.PORT
+                ? `${req.protocol}://${req.hostname}:${process.env.PORT}/signIn`
+                : `${req.protocol}://${req.hostname}/signIn`,
+            logoutUri: process.env.PORT
+                ? `${req.protocol}://${req.hostname}:${process.env.PORT}/signOut`
+                : `${req.protocol}://${req.hostname}/signOut`,
             state: this.state,
             scopes: <any>this.scopes.join(' '),
         });
