@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 5.2.0 - 2022-03-09
+
+### Changed
+
+-   リダイレクト URL を固定に変更
+-   バージョン取得変更
+
 ## 5.1.0 - 2022-03-07
 
 ### Changed

@@ -45,7 +45,7 @@ router.post('/getCredentials', (req, res) => __awaiter(void 0, void 0, void 0, f
         let authModel;
         if (body.member === MemberType.Member) {
             authModel = new oAuth2_1.OAuth2(req.session.auth);
-            const options = { endpoint, auth: authModel.create() };
+            const options = { endpoint, auth: authModel.create(req) };
             const accessToken = yield options.auth.getAccessToken();
             authModel.credentials = options.auth.credentials;
             authModel.save(req.session);
@@ -90,7 +90,7 @@ router.get('/signIn', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
     delete req.session.auth;
     const authModel = new oAuth2_1.OAuth2(req.session.auth);
-    const auth = authModel.create();
+    const auth = authModel.create(req);
     const url = auth.generateAuthUrl({
         scopes: authModel.scopes,
         state: authModel.state,
@@ -115,7 +115,7 @@ router.get('/signOut', (req, res) => __awaiter(void 0, void 0, void 0, function*
         return;
     }
     const authModel = new oAuth2_1.OAuth2(req.session.auth);
-    const auth = authModel.create();
+    const auth = authModel.create(req);
     const url = auth.generateLogoutUrl();
     res.json({ url });
 }));
@@ -131,7 +131,7 @@ router.get('/signUp', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
     delete req.session.cognito;
     const authModel = new cognitoOAuth2_1.CognitoOAuth2(req.session.cognito);
-    const auth = authModel.create();
+    const auth = authModel.create(req);
     let url = auth.generateAuthUrl({
         scopes: authModel.scopes,
         state: authModel.state,

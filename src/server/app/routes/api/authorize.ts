@@ -36,7 +36,7 @@ router.post('/getCredentials', async (req, res) => {
         let authModel;
         if (body.member === MemberType.Member) {
             authModel = new OAuth2(req.session.auth);
-            const options = { endpoint, auth: authModel.create() };
+            const options = { endpoint, auth: authModel.create(req) };
             const accessToken = await options.auth.getAccessToken();
             authModel.credentials = options.auth.credentials;
             authModel.save(req.session);
@@ -81,7 +81,7 @@ router.get('/signIn', async (req, res) => {
     }
     delete req.session.auth;
     const authModel = new OAuth2(req.session.auth);
-    const auth = authModel.create();
+    const auth = authModel.create(req);
     const url = auth.generateAuthUrl({
         scopes: authModel.scopes,
         state: authModel.state,
@@ -107,7 +107,7 @@ router.get('/signOut', async (req, res) => {
         return;
     }
     const authModel = new OAuth2(req.session.auth);
-    const auth = authModel.create();
+    const auth = authModel.create(req);
     const url = auth.generateLogoutUrl();
     res.json({ url });
 });
@@ -124,7 +124,7 @@ router.get('/signUp', async (req, res) => {
     }
     delete req.session.cognito;
     const authModel = new CognitoOAuth2(req.session.cognito);
-    const auth = authModel.create();
+    const auth = authModel.create(req);
     let url = auth.generateAuthUrl({
         scopes: authModel.scopes,
         state: authModel.state,

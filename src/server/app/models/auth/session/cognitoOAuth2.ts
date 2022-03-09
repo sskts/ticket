@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import CognitoOAuth2client from '../client/cognitoOAuth2client';
 
 /**
@@ -71,15 +72,19 @@ export class CognitoOAuth2 {
      * 認証クラス作成
      * @method create
      */
-    public create() {
+    public create(req: Request) {
         const auth = new CognitoOAuth2client({
             domain: <string>process.env.COGNITO_AUTHORIZATION_CODE_DOMAIN,
             clientId: <string>process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_ID,
             clientSecret: <string>(
                 process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_SECRET
             ),
-            redirectUri: <string>process.env.AUTH_REDIRECT_URI,
-            logoutUri: <string>process.env.AUTH_LOGUOT_URI,
+            redirectUri: process.env.AUTH_REDIRECT_URI
+                ? process.env.AUTH_REDIRECT_URI
+                : `${req.protocol}://${req.hostname}/signIn`,
+            logoutUri: process.env.AUTH_LOGUOT_URI
+                ? process.env.AUTH_LOGUOT_URI
+                : `${req.protocol}://${req.hostname}/signOut`,
             state: this.state,
             scopes: <any>this.scopes.join(' '),
         });

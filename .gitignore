@@ -49,3 +49,4 @@ dist/server/public/entrance/
 dist/**/stats.json
 public/storage
 *.gcp.yaml
+/ssl

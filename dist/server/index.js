@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 const http = require("http");
 const app = require("./app/app");
-process.env.VERSION = JSON.parse(fs.readFileSync('../../package.json', 'utf8')).version;
+process.env.VERSION = JSON.parse(fs.readFileSync(`${__dirname}/../../package.json`, 'utf8')).version;
 /**
  * Get port from environment and store in Express.
  */
@@ -47,9 +47,7 @@ function onError(error) {
     if (error.syscall !== 'listen') {
         throw error;
     }
-    const bind = typeof port === 'string'
-        ? 'Pipe ' + port
-        : 'Port ' + port;
+    const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
     // handle specific listen errors with friendly messages
     switch (error.code) {
         case 'EACCES':
@@ -70,9 +68,7 @@ function onError(error) {
 function onListening() {
     const addr = server.address();
     // tslint:disable-next-line:no-unused-variable
-    const bind = typeof addr === 'string'
-        ? 'pipe ' + addr
-        : 'port ' + addr.port;
+    const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
     // tslint:disable-next-line:no-unused-expression
     bind;
 }
