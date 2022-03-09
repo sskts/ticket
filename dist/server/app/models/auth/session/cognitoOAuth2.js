@@ -23,13 +23,17 @@ class CognitoOAuth2 {
      * 認証クラス作成
      * @method create
      */
-    create() {
+    create(req) {
         const auth = new cognitoOAuth2client_1.default({
             domain: process.env.COGNITO_AUTHORIZATION_CODE_DOMAIN,
             clientId: process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_ID,
             clientSecret: (process.env.COGNITO_AUTHORIZATION_CODE_CLIENT_SECRET),
-            redirectUri: process.env.AUTH_REDIRECT_URI,
-            logoutUri: process.env.AUTH_LOGUOT_URI,
+            redirectUri: process.env.AUTH_REDIRECT_URI
+                ? process.env.AUTH_REDIRECT_URI
+                : `${req.protocol}://${req.hostname}/signIn`,
+            logoutUri: process.env.AUTH_LOGUOT_URI
+                ? process.env.AUTH_LOGUOT_URI
+                : `${req.protocol}://${req.hostname}/signOut`,
             state: this.state,
             scopes: this.scopes.join(' '),
         });

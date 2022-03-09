@@ -28,9 +28,10 @@ export class AuthGuardService implements CanActivate {
         if (!this.userService.isMember()) {
             const deviceId = localStorage.getItem('deviceId');
             if (deviceId === null) {
-                throw new Error('deviceId is null');
+                this.router.navigate(['/auth/select']);
+                return false;
             }
-            this.awsCognitoService.authenticateWithDeviceId();
+            await this.awsCognitoService.authenticateWithDeviceId();
             return true;
         }
         try {

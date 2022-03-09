@@ -125,11 +125,11 @@ export class SmartTheaterService {
      */
     public async needReload() {
         const version = await this.getAPIVersion();
-        const server = this.storage.load('server');
+        let server = this.storage.load('server');
         if (server === null) {
             this.storage.save('server', { version: version });
-            return true;
         }
+        server = this.storage.load('server');
         if (server.version !== version) {
             this.storage.save('server', { version: version });
             return true;

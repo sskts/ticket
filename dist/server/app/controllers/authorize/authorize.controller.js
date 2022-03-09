@@ -37,7 +37,7 @@ function signInRedirect(req, res, next) {
             if (authModel === undefined) {
                 throw new Error(`state not matched [${req.query.state}]`);
             }
-            const auth = authModel.create();
+            const auth = authModel.create(req);
             const credentials = yield auth.getToken(req.query.code, authModel.codeVerifier);
             log('credentials published');
             authModel.credentials = credentials;

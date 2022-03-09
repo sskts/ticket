@@ -123,7 +123,9 @@ export class UserService {
             this.data.programMembershipRegistered = false;
         }
         if (await this.smartTheaterService.needReload()) {
-            await this.initMember();
+            if (this.isMember()) {
+                await this.initMember();
+            }
             location.reload();
         }
     }
