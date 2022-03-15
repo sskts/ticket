@@ -2,7 +2,7 @@
  * authorize
  */
 import * as debug from 'debug';
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { CognitoOAuth2 } from '../../models/auth/session/cognitoOAuth2';
 import { OAuth2 } from '../../models/auth/session/oAuth2';
 const log = debug('sskts-ticket:authorize');
@@ -13,11 +13,7 @@ const log = debug('sskts-ticket:authorize');
  * @param {Response} res
  * @param {NextFunction} next
  */
-export async function signInRedirect(
-    req: Request,
-    res: Response,
-    next: NextFunction
-) {
+export async function signInRedirect(req: Request, res: Response) {
     log('signInRedirect');
     try {
         if (req.session === undefined) {
@@ -45,7 +41,9 @@ export async function signInRedirect(
         auth.setCredentials(credentials);
         res.redirect('/#/auth/signin');
     } catch (err) {
-        next(err);
+        delete (<Express.Session>req.session).auth;
+        delete (<Express.Session>req.session).cognito;
+        res.redirect('/#/error');
     }
 }
 
