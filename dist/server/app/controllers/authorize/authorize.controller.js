@@ -22,7 +22,7 @@ const log = debug('sskts-ticket:authorize');
  * @param {Response} res
  * @param {NextFunction} next
  */
-function signInRedirect(req, res, next) {
+function signInRedirect(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         log('signInRedirect');
         try {
@@ -46,7 +46,9 @@ function signInRedirect(req, res, next) {
             res.redirect('/#/auth/signin');
         }
         catch (err) {
-            next(err);
+            delete req.session.auth;
+            delete req.session.cognito;
+            res.redirect('/#/error');
         }
     });
 }
