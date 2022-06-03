@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 5.2.2 - 2022-06-03
+
+### Fixed
+
+-   注文取引確定レスポンスの acceptedOffers への依存を排除
+
 ## 5.2.1 - 2022-03-15
 
 ### Fixed
