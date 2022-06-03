@@ -93,7 +93,10 @@ export class ReservationService {
         const orders: IReservation[] = [];
         if (Array.isArray(reservationRecord.orders)) {
             reservationRecord.orders.forEach((order) => {
-                if (order.acceptedOffers === undefined) {
+                if (
+                    order.acceptedOffers === undefined ||
+                    order.acceptedOffers.length === 0
+                ) {
                     return;
                 }
                 const reservationsFor: OwnershipInfoType.IReservationFor[] = [];
