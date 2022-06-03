@@ -76,7 +76,7 @@ export class ReservationService {
     private async fitchReservationCognito(): Promise<IReservationData> {
         const reservationRecord: {
             orders: {
-                acceptedOffers: {
+                acceptedOffers?: {
                     itemOffered: {
                         typeOf: string;
                         reservationNumber: string;
@@ -93,6 +93,9 @@ export class ReservationService {
         const orders: IReservation[] = [];
         if (Array.isArray(reservationRecord.orders)) {
             reservationRecord.orders.forEach((order) => {
+                if (order.acceptedOffers === undefined) {
+                    return;
+                }
                 const reservationsFor: OwnershipInfoType.IReservationFor[] = [];
                 const reservedTickets: OwnershipInfoType.IReservedTicket[] = [];
                 order.acceptedOffers.forEach((o) => {
