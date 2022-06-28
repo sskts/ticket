@@ -207,6 +207,7 @@ export class UserService {
                 redirectUrl: location.origin,
                 native: '1',
                 member: '1',
+                username: this.data.userName,
             });
             const url = `${
                 getConfig().ticketSiteUrl
@@ -250,6 +251,7 @@ export class UserService {
                 member: '1',
                 programMembershipRegistered,
                 theaterBranchCode,
+                username: this.data.userName,
             });
             const url = `${
                 getConfig().ticketSiteUrl
