@@ -1,21 +1,17 @@
-/**
- * PurchasePerformanceFilmComponent
- */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
     filterPerformancebyMovie,
-    hasDisplayPerformance,
     schedule2Performance,
 } from '../../../../../functions';
 import { Performance } from '../../../../../models/performance';
 import { ISchedule } from '../../../../../models/schedule';
 
 @Component({
-    selector: 'app-purchase-performance-film',
-    templateUrl: './purchase-performance-film.component.html',
-    styleUrls: ['./purchase-performance-film.component.scss'],
+    selector: 'app-purchase-time',
+    templateUrl: './purchase-time.component.html',
+    styleUrls: ['./purchase-time.component.scss'],
 })
-export class PurchasePerformanceFilmComponent implements OnInit {
+export class PurchaseTimeComponent implements OnInit {
     @Input() public schedule: ISchedule;
     @Input() public member: boolean;
     @Output() public selectPerformance = new EventEmitter<{
@@ -23,7 +19,6 @@ export class PurchasePerformanceFilmComponent implements OnInit {
     }>();
     public filterPerformancebyMovie = filterPerformancebyMovie;
     public performances: Performance[];
-    public hasDisplayPerformance = hasDisplayPerformance;
 
     constructor() {}
 

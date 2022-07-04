@@ -71,6 +71,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
         name: string;
         alias: string;
     }[];
+    public isMember: boolean;
 
     constructor(
         public userService: UserService,
@@ -93,6 +94,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
         this.isLoading = true;
         this.isCOASchedule = false;
         this.maintenance = {};
+        this.isMember = this.userService.isMember();
         try {
             this.maintenance.confirm = await this.maintenanceService.confirm();
             if (this.maintenance.confirm.isMaintenance) {
@@ -108,7 +110,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 }[]
             >(`${getConfig().scheduleApiEndpoint}/seller/seller.json`);
             this.conditions = this.selectService.data.purchase;
-            if (this.userService.isMember()) {
+            if (this.isMember) {
                 // 会員
                 await this.userService.updateAccount();
                 if (this.conditions.theater === '') {
@@ -256,7 +258,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 clientId: this.smartTheaterService.getClientId(),
             };
             let query;
-            if (this.userService.isMember()) {
+            if (this.isMember) {
                 query = {
                     ...commonQuery,
                     member: MemberType.Member,

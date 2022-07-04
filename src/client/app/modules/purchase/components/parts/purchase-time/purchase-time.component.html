@@ -1,0 +1,3 @@
+<app-purchase-time-performance *ngFor="let performance of performances" [performance]="performance"
+    (click)="(performance.isSalse()) ? selectPerformance.emit({performance: performance}) : null;">
+</app-purchase-time-performance>

@@ -1,24 +1,29 @@
+/**
+ * PurchasePerformanceFilmComponent
+ */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
     filterPerformancebyMovie,
+    hasDisplayPerformance,
     schedule2Performance,
 } from '../../../../../functions';
 import { Performance } from '../../../../../models/performance';
-import { ISchedule } from '../../../../../models/schedule';
+import { IMovie, ISchedule } from '../../../../../models/schedule';
 
 @Component({
-    selector: 'app-purchase-performance-time',
-    templateUrl: './purchase-performance-time.component.html',
-    styleUrls: ['./purchase-performance-time.component.scss'],
+    selector: 'app-purchase-movie',
+    templateUrl: './purchase-movie.component.html',
+    styleUrls: ['./purchase-movie.component.scss'],
 })
-export class PurchasePerformanceTimeComponent implements OnInit {
+export class PurchaseMoveComponent implements OnInit {
     @Input() public schedule: ISchedule;
+    @Input() public movie: IMovie;
     @Input() public member: boolean;
     @Output() public selectPerformance = new EventEmitter<{
         performance: Performance;
     }>();
-    public filterPerformancebyMovie = filterPerformancebyMovie;
     public performances: Performance[];
+    public isDisplay: boolean;
 
     constructor() {}
 
@@ -27,9 +32,14 @@ export class PurchasePerformanceTimeComponent implements OnInit {
      * @method ngOnInit
      */
     public ngOnInit() {
-        this.performances = schedule2Performance(
+        const performances = schedule2Performance(
             this.schedule,
             this.member
         ).filter((p) => p.isDisplay());
+        this.isDisplay = hasDisplayPerformance(performances, this.movie);
+        if (!this.isDisplay) {
+            return;
+        }
+        this.performances = filterPerformancebyMovie(performances, this.movie);
     }
 }
