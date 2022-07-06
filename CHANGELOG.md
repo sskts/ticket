@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 5.3.2 - 2022-07-04
+
+### Fixed
+
+-   スケジュール表示調整
+
 ## 5.3.1 - 2022-07-04
 
 ### Fixed
