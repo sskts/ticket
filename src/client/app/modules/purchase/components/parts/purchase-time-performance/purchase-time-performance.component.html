@@ -1,28 +1,24 @@
-<div *ngFor="let performance of performances" class="performance position-relative mb-2 py-2 px-3 text-white"
-    [ngClass]="(performance.isSalse()) ? performance.getAvailability().className : ''"
-    (click)="(performance.isSalse()) ? selectPerformance.emit({performance: performance}) : null;">
+<div class="performance position-relative mb-2 py-2 px-3 text-white" [ngClass]="isSalse ? availability.className : ''"
+    (click)="(isSalse) ? selectPerformance.emit({performance: performance}) : null;">
     <div class="d-flex align-items-center">
         <div class="w-50">
             <div class="mb-1">
-                <span class="font-weight-bold text-large">{{ performance.getTime('start') }}</span> ～
-                {{ performance.getTime('end') }}
+                <span class="font-weight-bold text-large">{{ startTime }}</span> ～ {{ endTime }}
             </div>
             <p class="text-small">{{ performance.screen.name }}</p>
             <div class="text-small">
-                <p *ngIf="performance.isSalse()">{{ performance.getAvailability().text }}</p>
-                <p
-                    *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isBeforePeriod()">
+                <p *ngIf="isSalse">{{ availability.text }}</p>
+                <p *ngIf="!isSalse && performance.time.seat_count.cnt_reserve_free > 0 && isBeforePeriod">
+                    販売期間外
+                </p>
+                <p *ngIf="!isSalse && performance.time.seat_count.cnt_reserve_free > 0 && isAfterPeriod">
                     販売期間外
                 </p>
                 <p
-                    *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isAfterPeriod()">
-                    販売期間外
-                </p>
-                <p
-                    *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()">
+                    *ngIf="!isSalse && performance.time.seat_count.cnt_reserve_free > 0 && !isBeforePeriod && !isAfterPeriod && isWindow">
                     窓口
                 </p>
-                <p *ngIf="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free === 0">
+                <p *ngIf="!isSalse && performance.time.seat_count.cnt_reserve_free === 0">
                     満席
                 </p>
             </div>

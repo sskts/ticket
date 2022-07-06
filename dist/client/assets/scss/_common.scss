@@ -315,3 +315,11 @@ app-purchase .gdcs .service {
 .modal.fade .modal-dialog {
     will-change: transform;
 }
+
+app-purchase-movie-performance {
+    &:last-child {
+        .performance {
+            border-bottom: none !important;
+        }
+    }
+}
