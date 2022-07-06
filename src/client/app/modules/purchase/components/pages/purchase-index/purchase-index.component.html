@@ -53,12 +53,16 @@
                     class="py-3 text-center" (click)="changeSort(purchaseSort.Time)">上映時間順</li>
             </ul>
             <div *ngIf="!isLoading && schedule">
-                <app-purchase-performance-film *ngIf="conditions.sort === purchaseSort.Film" [schedule]="schedule"
-                    [member]="userService.isMember()" (selectPerformance)="selectPerformance($event)">
-                </app-purchase-performance-film>
-                <app-purchase-performance-time *ngIf="conditions.sort === purchaseSort.Time" [schedule]="schedule"
-                    [member]="userService.isMember()" (selectPerformance)="selectPerformance($event)">
-                </app-purchase-performance-time>
+                <ng-container *ngIf="conditions.sort === purchaseSort.Film">
+                    <app-purchase-movie *ngFor="let movie of schedule.movie" [schedule]="schedule" [movie]="movie"
+                        [member]="isMember" (selectPerformance)="selectPerformance($event)">
+                    </app-purchase-movie>
+                </ng-container>
+                <ng-container *ngIf="conditions.sort === purchaseSort.Time">
+                    <app-purchase-time [schedule]="schedule" [member]="isMember"
+                        (selectPerformance)="selectPerformance($event)">
+                    </app-purchase-time>
+                </ng-container>
             </div>
         </div>
     </div>
