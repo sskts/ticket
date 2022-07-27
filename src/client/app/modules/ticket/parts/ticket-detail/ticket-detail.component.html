@@ -1,5 +1,5 @@
 <div *ngIf="reservation.reservedTickets.length > 0" class="">
-    
+
     <ul class="bg-dark-gray text-white text-small container mw-100">
         <li class="row align-items-center border-bottom border-white py-2">
             <p class="col-md-4 text-md-right">作品名</p>
@@ -7,15 +7,18 @@
         </li>
         <li class="row align-items-center border-bottom border-white py-2">
             <p class="col-md-4 text-md-right">上映日時</p>
-            <p class="col-md-8">{{ moment(reservation.reservationsFor[0].coaInfo.dateJouei).format('YYYY/MM/DD (ddd)') }} {{
+            <p class="col-md-8">{{ moment(reservation.reservationsFor[0].coaInfo.dateJouei).format('YYYY/MM/DD (ddd)')
+                }} {{
                 reservation.reservationsFor[0].startDate | timeFormat: reservation.reservationsFor[0].coaInfo.dateJouei
-                }}-{{ reservation.reservationsFor[0].endDate | timeFormat: reservation.reservationsFor[0].coaInfo.dateJouei
+                }}-{{ reservation.reservationsFor[0].endDate | timeFormat:
+                reservation.reservationsFor[0].coaInfo.dateJouei
                 }}</p>
         </li>
         <li class="row align-items-center py-2">
             <p class="col-md-4 text-md-right">劇場 / スクリーン</p>
-            <p class="col-md-8">{{ reservation.reservationsFor[0].superEvent.location.name.ja }} / {{ reservation.reservationsFor[0].location.name.ja
-            }}</p>
+            <p class="col-md-8">{{ reservation.reservationsFor[0].superEvent.location.name.ja }} / {{
+                reservation.reservationsFor[0].location.name.ja
+                }}</p>
         </li>
     </ul>
 
@@ -29,11 +32,11 @@
                 <p class="text-small">{{ reservedTicket.coaTicketInfo.ticketName }}</p>
             </div>
             <div class="text-center">
-                <p *ngIf="!showQrCodeList[index]" class="inner text-small">鑑賞日前日から<br>QRコードが<br>表示されます。</p>
+                <p *ngIf="!showQrCodeList[index]" class="inner text-small">上映開始時間の24時間前から<br>QRコードが表示されます。</p>
                 <img *ngIf="showQrCodeList[index]" class="p-2 bg-white" [src]="qrCodeList[index]">
             </div>
         </div>
-        
+
         <p *ngIf="(reservation.reservationsFor[0].superEvent.location.branchCode | slice : -2) === '20' 
             && reservedTicket.coaTicketInfo.spseatKbn === '003'
             && reservedTicket.coaTicketInfo.spseatAdd2 > 0" class="p-3 text-small border border-gray mt-3">
