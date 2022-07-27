@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 5.3.3 - 2022-07-27
+
+### Changed
+
+-   QR 表示文言変更
+
 ## 5.3.2 - 2022-07-04
 
 ### Fixed
