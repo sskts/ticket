@@ -52,7 +52,7 @@
         "isomorphic-fetch": "^3.0.0",
         "libphonenumber-js": "^1.7.25",
         "moment": "^2.24.0",
-        "moment-timezone": "^0.5.26",
+        "moment-timezone": "^0.5.35",
         "ngx-bootstrap": "^5.5.0",
         "ngx-swiper-wrapper": "^8.0.2",
         "qrcode": "^1.4.2",
