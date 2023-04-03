@@ -66,4 +66,23 @@ router.get('/health', (_req, res) => {
     res.status(httpStatus.OK);
     res.send(`${httpStatus.OK} ${httpStatus[200]}`);
 });
+/**
+ * アプリステータス取得
+ */
+router.get('/application/status', (_req, res) => {
+    res.status(httpStatus.OK);
+    let status = 'NO_RELEASE';
+    const now = moment();
+    if (process.env.NEW_MEMBERSHIP_COUPON_RELEASE !== undefined &&
+        now.unix() > moment(process.env.NEW_MEMBERSHIP_COUPON_RELEASE).unix()) {
+        status = 'NEW_MEMBERSHIP_COUPON_RELEASE';
+    }
+    if (process.env.MEMBERSHIP_COUPON_CLOSE !== undefined &&
+        now.unix() > moment(process.env.MEMBERSHIP_COUPON_CLOSE).unix()) {
+        status = 'MEMBERSHIP_COUPON_CLOSE';
+    }
+    res.json({
+        status,
+    });
+});
 exports.utilRouter = router;

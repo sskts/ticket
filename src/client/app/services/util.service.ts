@@ -36,6 +36,22 @@ export class UtilService {
     }
 
     /**
+     * アプリステータス取得
+     */
+    public async getApplicationStatus() {
+        const result = await this.http
+            .get<{
+                date:
+                    | 'NO_RELEASE'
+                    | 'NEW_MEMBERSHIP_COUPON_RELEASE'
+                    | 'MEMBERSHIP_COUPON_CLOSE';
+            }>(`/api/application/status?date=${moment().toISOString()}`)
+            .toPromise();
+
+        return result;
+    }
+
+    /**
      * json取得
      */
     public async getJson<T>(

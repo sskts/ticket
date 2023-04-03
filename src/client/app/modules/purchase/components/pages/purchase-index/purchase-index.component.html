@@ -1,11 +1,11 @@
 <app-campaign class="d-block" url="purchase"></app-campaign>
 <div *ngIf="!isLoading && !isMaintenance('confirm')" [class]="theatreName">
     <div class="p-3">
-        <p class="text-small bg-danger text-white p-2 mb-3">
+        <!-- <p class="text-small bg-danger text-white p-2 mb-3">
             ※新型コロナウィルス感染症予防のため、座席の販売方法が劇場、作品、日付等により異なります。各劇場のNEWS、インフォメーションにてご確認くださいますようお願いいたします。<br>
             ※新型コロナウイルス感染症予防のため、全てのご来場のお客様にマスクの着用をお願いしております。<br>
             マスク未着用のお客様は入場をお断りさせていただきます。
-        </p>
+        </p> -->
         <div class="input-group align-items-center">
             <select class="form-control rounded" name="theater" [(ngModel)]="conditions.theater"
                 (change)="changeTheater()">
