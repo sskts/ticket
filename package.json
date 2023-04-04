@@ -1,6 +1,6 @@
 {
     "name": "ticket",
-    "version": "5.3.3",
+    "version": "5.4.0",
     "license": "MIT",
     "scripts": {
         "ng": "ng",
@@ -111,5 +111,8 @@
         "tslint-microsoft-contrib": "^6.2.0",
         "typescript": "^3.6.3",
         "webpack-bundle-analyzer": "^3.5.2"
+    },
+    "engines": {
+        "npm": "8.5.0"
     }
 }
