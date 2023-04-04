@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 5.4.0 - 2023-04-04
+
+### Added
+
+-   会員移行ステータス管理追加
+
 ## 5.3.3 - 2022-07-27
 
 ### Changed
