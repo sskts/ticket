@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApplicationStatus } from '../../../../../models/util';
 import {
     SellerType,
     SmartTheaterService,
@@ -64,14 +65,26 @@ export class AuthRegisterProgramMembershipComponent implements OnInit {
      * @method onSubmit
      */
     public async onSubmit() {
-        this.isLoading = true;
         if (this.optionsForm.invalid) {
             // フォームのステータス変更
             this.optionsForm.controls.theater.markAsTouched();
-            this.isLoading = false;
             return;
         }
         try {
+            this.isLoading = true;
+            const { status } = await this.utilService.getApplicationStatus();
+            if (status !== ApplicationStatus.NO_RELEASE) {
+                this.utilService.openConfirm({
+                    title: '会員登録/更新は終了しました',
+                    body: '',
+                    cb: () => {
+                        this.router.navigate(['/']);
+                    },
+                    next: 'TOPへ戻る',
+                });
+                this.isLoading = false;
+                return;
+            }
             const theaterBranchCode = this.optionsForm.controls.theater.value;
             const programMembershipRegistered =
                 this.userService.data.programMembershipRegistered;

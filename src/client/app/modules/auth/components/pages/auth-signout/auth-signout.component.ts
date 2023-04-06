@@ -33,6 +33,7 @@ export class AuthSignoutComponent implements OnInit {
             } catch {
                 this.userService.data.memberType = MemberType.NotMember;
                 this.userService.reset();
+                // TODO 移行処理で分岐
                 this.router.navigate(['/auth/select'], { replaceUrl: true });
             }
         }
