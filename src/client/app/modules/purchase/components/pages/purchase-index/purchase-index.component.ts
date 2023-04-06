@@ -313,7 +313,6 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                     ? undefined
                     : performance.time.popupMessage2;
             if (popupMessage1 === undefined && popupMessage2 === undefined) {
-                this.isLoading = false;
                 location.href = url;
                 return;
             }
