@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { getConfig } from '../../../../../functions';
+import { ApplicationStatus } from '../../../../../models/util';
 import {
     AwsCognitoService,
     CallNativeService,
     InAppBrowserTarget,
     MemberType,
     UserService,
+    UtilService,
 } from '../../../../../services';
 
 @Component({
@@ -17,21 +19,25 @@ import {
 export class AuthSelectComponent implements OnInit {
     public isLoading: boolean;
     public portalSiteUrl: string;
+    public applicationStatus?: ApplicationStatus;
 
     constructor(
         private router: Router,
         private user: UserService,
         private awsCognito: AwsCognitoService,
-        private callNative: CallNativeService
+        private callNative: CallNativeService,
+        private utilService: UtilService
     ) {}
 
     /**
      * 初期化
      * @method ngOnInit
      */
-    public ngOnInit() {
+    public async ngOnInit() {
         this.isLoading = false;
         this.portalSiteUrl = getConfig().portalSiteUrl;
+        const { status } = await this.utilService.getApplicationStatus();
+        this.applicationStatus = status;
     }
 
     /**

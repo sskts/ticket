@@ -21,10 +21,12 @@ import {
     UtilService,
 } from '../../../../../services';
 import {
+    OwnershipInfoType,
     SellerType,
     SmartTheaterService,
 } from '../../../../../services/smart-theater.service';
 import { AppearPopupComponent } from '../../../../shared/components/parts/appear-popup/appear-popup.component';
+import { ApplicationStatus } from '../../../../../models/util';
 
 interface IDate {
     value: string;
@@ -240,8 +242,33 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
      * パフォーマンス選択
      * @method selectPerformance
      */
-    public selectPerformance(params: { performance: Performance }) {
+    public async selectPerformance(params: { performance: Performance }) {
         try {
+            if (this.isMember) {
+                this.isLoading = true;
+                const isAvailabilityMemberships =
+                    await this.isAvailabilityMemberships();
+                const { status } =
+                    await this.utilService.getApplicationStatus();
+
+                if (!isAvailabilityMemberships) {
+                    this.isLoading = false;
+                    if (status !== ApplicationStatus.NO_RELEASE) {
+                        this.utilService.openConfirm({
+                            title: '会員有効期限が切れています',
+                            body: '',
+                            cb: () => {
+                                this.router.navigate(['/']);
+                            },
+                            next: 'TOPへ戻る',
+                        });
+                        return;
+                    }
+                    // 有効なメンバーシップなし
+                    this.router.navigate(['/auth/register/credit']);
+                    return;
+                }
+            }
             const { performance } = params;
             const seller = this.sellers.find(
                 (s) => s.alias === this.theatreName
@@ -289,6 +316,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 location.href = url;
                 return;
             }
+            this.isLoading = false;
             this.modal.show(AppearPopupComponent, {
                 initialState: {
                     title: popupMessage1,
@@ -302,6 +330,49 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
         } catch (error) {
             console.error(error);
         }
+    }
+
+    // 有効なメンバーシップを持っているか
+    public async isAvailabilityMemberships() {
+        const isAvailabilityMemberships = async (params: {
+            memberships: OwnershipInfoType.IMembership[];
+        }) => {
+            const now = (await this.utilService.getServerTime()).date;
+            const filterResult = params.memberships.filter(
+                (p) => moment(p.ownedThrough).unix() > moment(now).unix()
+            );
+            return filterResult.length > 0;
+        };
+        const memberships =
+            this.userService.data.programMembershipOwnershipInfos;
+        let isAvailability = await isAvailabilityMemberships({ memberships });
+        if (isAvailability) {
+            // 期限内会員
+            // プログラムメンバーシップ登録済み判定を保存
+            this.userService.data.programMembershipRegistered = true;
+            this.userService.save();
+            return true;
+        }
+        await this.smartTheaterService.getServices();
+        const searchResult =
+            await this.smartTheaterService.ownershipInfo.searchMemberships({
+                page: 1,
+            });
+        if (searchResult.length > 0) {
+            // プログラムメンバーシップ登録済み判定を保存
+            this.userService.data.programMembershipRegistered = true;
+            this.userService.save();
+        }
+        isAvailability = await isAvailabilityMemberships({ memberships });
+        if (!isAvailability) {
+            // 期限切れ会員
+            return false;
+        }
+        // プログラムメンバーシップを保存
+        this.userService.data.programMembershipOwnershipInfos = searchResult;
+        this.userService.save();
+
+        return true;
     }
 
     /**

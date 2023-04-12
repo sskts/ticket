@@ -5,7 +5,8 @@
         <li class="p-3 border-bottom border-white" routerLink="/about" routerLinkActive="active" (click)="close.emit()">
             <img class="mr-3" src="/assets/images/icon/about_white.svg" width="15" height="15">このアプリについて
         </li>
-        <li class="p-3 border-bottom border-white" routerLink="/member/point/benefits" (click)="close.emit()">
+        <li *ngIf="applicationStatus === 'NO_RELEASE'" class="p-3 border-bottom border-white"
+            routerLink="/member/point/benefits" (click)="close.emit()">
             <img class="mr-3" src="/assets/images/icon/benefits_white.svg" width="15" height="15">会員特典
         </li>
         <li class="p-3 border-bottom border-white" routerLink="/policy" routerLinkActive="active"
@@ -41,7 +42,8 @@
             (click)="close.emit()">
             <img class="mr-3" src="/assets/images/icon/text_white.svg" width="15" height="15">プライバシーポリシー
         </li>
-        <li class="p-3 border-bottom border-white" routerLink="/benefits" (click)="close.emit()">
+        <li *ngIf="applicationStatus === 'NO_RELEASE'" class="p-3 border-bottom border-white" routerLink="/benefits"
+            (click)="close.emit()">
             <img class="mr-3" src="/assets/images/icon/benefits_white.svg" width="15" height="15">会員特典 / 会員登録
         </li>
         <li class="p-3 border-bottom border-white" routerLink="/auth/select" (click)="close.emit()">

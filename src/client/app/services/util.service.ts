@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { BsModalService } from 'ngx-bootstrap';
+import { ApplicationStatus } from '../models/util';
 import { AlertModalComponent } from '../modules/shared/components/parts/alert-modal/alert-modal.component';
 import { ConfirmModalComponent } from '../modules/shared/components/parts/confirm-modal/confirm-modal.component';
 
@@ -41,10 +42,7 @@ export class UtilService {
     public async getApplicationStatus() {
         const result = await this.http
             .get<{
-                date:
-                    | 'NO_RELEASE'
-                    | 'NEW_MEMBERSHIP_COUPON_RELEASE'
-                    | 'MEMBERSHIP_COUPON_CLOSE';
+                status: ApplicationStatus;
             }>(`/api/application/status?date=${moment().toISOString()}`)
             .toPromise();
 
