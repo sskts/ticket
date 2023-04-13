@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import * as moment from 'moment';
+import { ApplicationStatus } from '../models/util';
 import { SmartTheaterService, UserService, UtilService } from '../services';
 import { OwnershipInfoType } from '../services/smart-theater.service';
 
@@ -22,6 +23,10 @@ export class ProgramMembershipGuardService implements CanActivate {
     public async canActivate() {
         if (!this.userService.isMember()) {
             // 非会員
+            return true;
+        }
+        const { status } = await this.utilService.getApplicationStatus();
+        if (status !== ApplicationStatus.NO_RELEASE) {
             return true;
         }
         if (

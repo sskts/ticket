@@ -8,6 +8,7 @@ import {
     AuthGuardService,
     MemberGuardService,
     PaymentCardGuardService,
+    ProgramMembershipGuardService,
     TutorialGuardService,
 } from './guards';
 import { ErrorComponent } from './modules/error/pages/error/error.component';
@@ -55,7 +56,11 @@ const appRoutes: Routes = [
     {
         path: 'purchase',
         component: BaseComponent,
-        canActivate: [AuthGuardService, PaymentCardGuardService],
+        canActivate: [
+            AuthGuardService,
+            PaymentCardGuardService,
+            ProgramMembershipGuardService,
+        ],
         loadChildren: () =>
             import('./modules/purchase/purchase.module').then(
                 (m) => m.PurchaseModule

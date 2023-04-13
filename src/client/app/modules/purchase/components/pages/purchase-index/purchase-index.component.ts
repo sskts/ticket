@@ -9,6 +9,7 @@ import { environment } from '../../../../../../environments/environment';
 import { getConfig, object2query, sleep } from '../../../../../functions';
 import { Performance } from '../../../../../models/performance';
 import { ISchedule, IScheduleData } from '../../../../../models/schedule';
+import { ApplicationStatus } from '../../../../../models/util';
 import {
     AwsCognitoService,
     IConfirm,
@@ -26,7 +27,6 @@ import {
     SmartTheaterService,
 } from '../../../../../services/smart-theater.service';
 import { AppearPopupComponent } from '../../../../shared/components/parts/appear-popup/appear-popup.component';
-import { ApplicationStatus } from '../../../../../models/util';
 
 interface IDate {
     value: string;
