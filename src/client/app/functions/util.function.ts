@@ -59,3 +59,20 @@ export function getConfig(): {
           }
         : JSON.parse(json);
 }
+
+export function getStorageItem<T>(params: {
+    storageType: 'sessionStorage' | 'localStorage';
+    key: string;
+}) {
+    try {
+        const { storageType, key } = params;
+        const item = window[storageType].getItem(key);
+        if (item === null) {
+            throw new Error('item null');
+        }
+        return <T>JSON.parse(item);
+    } catch (error) {
+        console.error(error);
+        return undefined;
+    }
+}

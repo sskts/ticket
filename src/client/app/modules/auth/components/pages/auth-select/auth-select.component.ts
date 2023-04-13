@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { getConfig } from '../../../../../functions';
+import { getConfig, getStorageItem } from '../../../../../functions';
 import { ApplicationStatus } from '../../../../../models/util';
 import {
     AwsCognitoService,
@@ -20,12 +20,13 @@ export class AuthSelectComponent implements OnInit {
     public isLoading: boolean;
     public portalSiteUrl: string;
     public applicationStatus?: ApplicationStatus;
+    public isNewMembershipTransfer: boolean;
 
     constructor(
         private router: Router,
         private user: UserService,
         private awsCognito: AwsCognitoService,
-        private callNative: CallNativeService,
+        private callNativeService: CallNativeService,
         private utilService: UtilService
     ) {}
 
@@ -34,10 +35,22 @@ export class AuthSelectComponent implements OnInit {
      * @method ngOnInit
      */
     public async ngOnInit() {
-        this.isLoading = false;
-        this.portalSiteUrl = getConfig().portalSiteUrl;
-        const { status } = await this.utilService.getApplicationStatus();
-        this.applicationStatus = status;
+        try {
+            this.isLoading = false;
+            this.portalSiteUrl = getConfig().portalSiteUrl;
+            const { status } = await this.utilService.getApplicationStatus();
+            const data = getStorageItem<{
+                sub: string;
+                userName: string;
+                newMembershipTransferUrl: string;
+            }>({
+                storageType: 'localStorage',
+                key: 'TRANSFER',
+            });
+            this.applicationStatus = status;
+            this.isNewMembershipTransfer =
+                status !== ApplicationStatus.NO_RELEASE && data !== undefined;
+        } catch (error) {}
     }
 
     /**
@@ -80,8 +93,38 @@ export class AuthSelectComponent implements OnInit {
      * @method openWebBrowser
      */
     public openWebBrowser(url: string) {
-        this.callNative.inAppBrowser({
+        this.callNativeService.inAppBrowser({
             url: url,
+            target: InAppBrowserTarget.System,
+        });
+    }
+
+    /**
+     * 会員移行
+     */
+    public newMembershipTransfer() {
+        const data = getStorageItem<{
+            sub: string;
+            userName: string;
+            newMembershipTransferUrl: string;
+        }>({
+            storageType: 'localStorage',
+            key: 'TRANSFER',
+        });
+        if (data === undefined) {
+            this.utilService.openAlert({
+                title: 'エラー',
+                body: '会員移行に失敗しました。',
+            });
+            return;
+        }
+        this.utilService.postLog({
+            log: JSON.stringify(data),
+            params: data.sub,
+            method: 'transfer.redirect',
+        });
+        this.callNativeService.inAppBrowser({
+            url: `${data.newMembershipTransferUrl}&sub=${data.sub}`,
             target: InAppBrowserTarget.System,
         });
     }

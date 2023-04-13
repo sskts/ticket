@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { getStorageItem } from '../../../../../functions';
 import {
     AwsCognitoService,
+    CallNativeService,
+    InAppBrowserTarget,
     MemberType,
     SmartTheaterService,
     UserService,
+    UtilService,
 } from '../../../../../services';
 
 @Component({
@@ -16,8 +20,10 @@ export class AuthSignoutComponent implements OnInit {
     constructor(
         private router: Router,
         private userService: UserService,
+        private utilService: UtilService,
         private awsCognitoService: AwsCognitoService,
-        private smartTheaterService: SmartTheaterService
+        private smartTheaterService: SmartTheaterService,
+        private callNativeService: CallNativeService
     ) {}
 
     /**
@@ -33,7 +39,26 @@ export class AuthSignoutComponent implements OnInit {
             } catch {
                 this.userService.data.memberType = MemberType.NotMember;
                 this.userService.reset();
-                // TODO 移行処理で分岐
+                const data = getStorageItem<{
+                    sub: string;
+                    userName: string;
+                    newMembershipTransferUrl: string;
+                }>({
+                    storageType: 'sessionStorage',
+                    key: 'TRANSFER',
+                });
+                if (data !== undefined) {
+                    // 会員移行
+                    this.utilService.postLog({
+                        log: JSON.stringify(data),
+                        params: data.sub,
+                        method: 'transfer.redirect',
+                    });
+                    this.callNativeService.inAppBrowser({
+                        url: `${data.newMembershipTransferUrl}&sub=${data.sub}`,
+                        target: InAppBrowserTarget.System,
+                    });
+                }
                 this.router.navigate(['/auth/select'], { replaceUrl: true });
             }
         }

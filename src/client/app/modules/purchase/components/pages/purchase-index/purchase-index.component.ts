@@ -254,13 +254,9 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                 if (!isAvailabilityMemberships) {
                     this.isLoading = false;
                     if (status !== ApplicationStatus.NO_RELEASE) {
-                        this.utilService.openConfirm({
+                        this.utilService.openAlert({
                             title: '会員有効期限が切れています',
-                            body: '',
-                            cb: () => {
-                                this.router.navigate(['/']);
-                            },
-                            next: 'TOPへ戻る',
+                            body: 'マイページより会員移行を行っていただくことにより継続できます。',
                         });
                         return;
                     }

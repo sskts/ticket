@@ -9,6 +9,10 @@
                     アプリの始め方を選択してください。
                 </p>
                 <div class="buttons mx-auto text-center">
+                    <button *ngIf="isNewMembershipTransfer" type="button" class="btn btn-primary btn-block py-3 mb-3"
+                        (click)="newMembershipTransfer()">
+                        会員移行
+                    </button>
                     <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="signIn()">
                         ログイン
                     </button>
