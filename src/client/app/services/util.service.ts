@@ -2,8 +2,12 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { BsModalService } from 'ngx-bootstrap';
+import { retry } from 'rxjs/operators';
+import { ApplicationStatus } from '../models/util';
 import { AlertModalComponent } from '../modules/shared/components/parts/alert-modal/alert-modal.component';
 import { ConfirmModalComponent } from '../modules/shared/components/parts/confirm-modal/confirm-modal.component';
+
+const RETRY_COUNT = 3;
 
 @Injectable({
     providedIn: 'root',
@@ -41,10 +45,7 @@ export class UtilService {
     public async getApplicationStatus() {
         const result = await this.http
             .get<{
-                date:
-                    | 'NO_RELEASE'
-                    | 'NEW_MEMBERSHIP_COUPON_RELEASE'
-                    | 'MEMBERSHIP_COUPON_CLOSE';
+                status: ApplicationStatus;
             }>(`/api/application/status?date=${moment().toISOString()}`)
             .toPromise();
 
@@ -132,5 +133,27 @@ export class UtilService {
             initialState: { ...params },
             class: 'modal-dialog-centered',
         });
+    }
+
+    /**
+     * ログ送信
+     */
+    public async postLog(data: {
+        log: string;
+        params: string;
+        method: string;
+        level?: 'info' | 'warn' | 'error';
+    }) {
+        const { log, params, method, level } = data;
+        await this.http
+            .post('/api/logging', {
+                log,
+                params,
+                method,
+                page: location.href,
+                level,
+            })
+            .pipe(retry(RETRY_COUNT))
+            .toPromise();
     }
 }

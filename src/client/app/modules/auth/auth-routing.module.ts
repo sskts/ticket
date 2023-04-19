@@ -11,6 +11,7 @@ import { AuthRegisterComponent } from './components/pages/auth-register/auth-reg
 import { AuthSelectComponent } from './components/pages/auth-select/auth-select.component';
 import { AuthSigninComponent } from './components/pages/auth-signin/auth-signin.component';
 import { AuthSignoutComponent } from './components/pages/auth-signout/auth-signout.component';
+import { AuthTransferComponent } from './components/pages/auth-transfer/auth-transfer.component';
 
 const routes: Routes = [
     {
@@ -46,6 +47,7 @@ const routes: Routes = [
                     },
                 ],
             },
+            { path: 'transfer', component: AuthTransferComponent },
         ],
     },
     {

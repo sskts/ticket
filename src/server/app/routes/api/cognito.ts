@@ -3,6 +3,7 @@
  */
 import * as debug from 'debug';
 import * as express from 'express';
+import jwtDecode from 'jwt-decode';
 import { errorProsess } from '../../controllers/base/base.controller';
 import { CognitoOAuth2 } from '../../models/auth/session/cognitoOAuth2';
 
@@ -32,10 +33,10 @@ router.post('/getCredentials', async (req, res) => {
         authModel.save(req.session);
         credentials = { accessToken };
         userName = options.auth.verifyIdToken({}).getUsername();
-
         res.json({
             credentials,
             userName,
+            sub: jwtDecode<{ sub: string }>(credentials.accessToken).sub,
         });
     } catch (err) {
         errorProsess(res, err);

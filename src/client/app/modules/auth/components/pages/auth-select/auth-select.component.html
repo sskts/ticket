@@ -9,13 +9,24 @@
                     アプリの始め方を選択してください。
                 </p>
                 <div class="buttons mx-auto text-center">
-                    <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="signIn()">ログイン</button>
-                    <button type="button" class="btn btn-primary btn-block py-3 mb-3"
-                        routerLink="/auth/register">新規登録</button>
-                    <button type="button" class="btn btn-primary btn-block py-3 mb-3"
-                        (click)="start()">会員登録せずにチケット購入する</button>
+                    <button *ngIf="isNewMembershipTransfer" type="button" class="btn btn-primary btn-block py-3 mb-3"
+                        (click)="newMembershipTransfer()">
+                        会員移行
+                    </button>
+                    <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="signIn()">
+                        ログイン
+                    </button>
+                    <button *ngIf="applicationStatus === 'NO_RELEASE'" type="button"
+                        class="btn btn-primary btn-block py-3 mb-3" routerLink="/auth/register">
+                        新規登録
+                    </button>
+                    <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="start()">
+                        会員登録せずにチケット購入する
+                    </button>
                     <button type="button" class="btn btn-outline-light btn-block py-3"
-                        (click)="openWebBrowser(portalSiteUrl + '/form/')">お問い合わせ</button>
+                        (click)="openWebBrowser(portalSiteUrl + '/form/')">
+                        お問い合わせ
+                    </button>
                 </div>
             </div>
         </div>

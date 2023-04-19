@@ -386,10 +386,15 @@ export class AwsCognitoService {
             .post<{
                 credentials: { accessToken: string };
                 userName?: string;
+                sub: string;
             }>(url, {})
             .toPromise();
         this.accessToken = result.credentials.accessToken;
         this.userName = result.userName;
+        return {
+            userName: result.userName,
+            sub: result.sub,
+        };
     }
 
     public async getUserName() {

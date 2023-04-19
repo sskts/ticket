@@ -8,6 +8,7 @@ import { MemberEditComponent } from './components/pages/member-edit/member-edit.
 import { MemberMypageComponent } from './components/pages/member-mypage/member-mypage.component';
 import { MemberPointHistoryComponent } from './components/pages/member-point-history/member-point-history.component';
 import { MemberTicketHistoryComponent } from './components/pages/member-ticket-history/member-ticket-history.component';
+import { MemberTransferComponent } from './components/pages/member-transfer/member-transfer.component';
 import { MemberWithdrawComponent } from './components/pages/member-withdraw/member-withdraw.component';
 import { PointHistoryListComponent } from './components/parts/point-history-list/point-history-list.component';
 import { PointSliderComponent } from './components/parts/point-slider/point-slider.component';
@@ -16,25 +17,22 @@ import { TicketHistoryDetailComponent } from './components/parts/ticket-history-
 import { MemberRoutingModule } from './member-routing.module';
 
 @NgModule({
-  declarations: [
-    MemberBenefitsComponent,
-    MemberEditComponent,
-    MemberEditCreditComponent,
-    MemberEditProfileComponent,
-    MemberMypageComponent,
-    MemberPointHistoryComponent,
-    MemberTicketHistoryComponent,
-    MemberWithdrawComponent,
-    PointHistoryListComponent,
-    PointSliderComponent,
-    PointStampsComponent,
-    TicketHistoryDetailComponent
-  ],
-  entryComponents: [],
-  imports: [
-    CommonModule,
-    MemberRoutingModule,
-    SharedModule,
-  ]
+    declarations: [
+        MemberBenefitsComponent,
+        MemberEditComponent,
+        MemberEditCreditComponent,
+        MemberEditProfileComponent,
+        MemberMypageComponent,
+        MemberPointHistoryComponent,
+        MemberTicketHistoryComponent,
+        MemberWithdrawComponent,
+        MemberTransferComponent,
+        PointHistoryListComponent,
+        PointSliderComponent,
+        PointStampsComponent,
+        TicketHistoryDetailComponent,
+    ],
+    entryComponents: [],
+    imports: [CommonModule, MemberRoutingModule, SharedModule],
 })
-export class MemberModule { }
+export class MemberModule {}
