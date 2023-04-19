@@ -2,11 +2,10 @@
     "compilerOptions": {
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
-        "charset": "utf8",
         "diagnostics": false,
         "disableSizeLimit": false,
         "emitDecoratorMetadata": true,
-        "experimentalDecorators":true,
+        "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
         "inlineSourceMap": false,
         "inlineSources": false,
@@ -35,9 +34,5 @@
         "target": "es6",
         "watch": false
     },
-    "exclude": [
-        "docs",
-        "node_modules",
-        "definitions"
-    ]
+    "exclude": ["docs", "node_modules", "definitions"]
 }

@@ -3,6 +3,7 @@
  */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { getConfig } from '../../../../../functions';
+import { ApplicationStatus } from '../../../../../models/util';
 import { CallNativeService, InAppBrowserTarget } from '../../../../../services';
 
 @Component({
@@ -13,6 +14,7 @@ import { CallNativeService, InAppBrowserTarget } from '../../../../../services';
 export class HeaderMenuComponent implements OnInit {
     @Input() public isMember: boolean;
     @Input() public isOpen: boolean;
+    @Input() public applicationStatus?: ApplicationStatus;
     @Output() public close: EventEmitter<{}> = new EventEmitter();
     public portalSiteUrl: string;
 

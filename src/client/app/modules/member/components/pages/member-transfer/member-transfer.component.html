@@ -1,0 +1,20 @@
+<div class="py-4 px-3">
+    <h2 class="text-center mb-3 text-large font-weight-bold">会員移行</h2>
+    <p class="mb-3">
+        会員移行を行います。
+        <br> 下記注意文言をご確認のうえ
+        <br> 問題なければ会員移行ボタンを押してください。
+    </p>
+
+    <p class="mb-4">
+        会員移行した場合もとの状態に戻すことはできません。
+    </p>
+
+    <div class="buttons mx-auto text-center">
+        <button type="submit" [disabled]="isLoading" (click)="confirmTransfer()"
+            class="btn btn-danger btn-block py-3 mb-3">会員移行</button>
+    </div>
+</div>
+
+
+<app-loading [show]="isLoading"></app-loading>

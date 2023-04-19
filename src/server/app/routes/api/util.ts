@@ -6,6 +6,9 @@ import * as debug from 'debug';
 import * as express from 'express';
 import * as httpStatus from 'http-status';
 import * as moment from 'moment';
+// import * as winston from 'winston';
+const winston = require('winston');
+
 const log = debug('sskts-ticket: /api/util');
 const router = express.Router();
 
@@ -37,6 +40,7 @@ router.get('/config', async (_req, res) => {
             process.env.GMO_TOKEN_URL === ''
                 ? undefined
                 : process.env.GMO_TOKEN_URL,
+        newMembershipTransferUrl: process.env.NEW_MEMBERSHIP_TRANSFER_URL,
     });
 });
 
@@ -86,6 +90,31 @@ router.get('/application/status', (_req, res) => {
     res.json({
         status,
     });
+});
+
+/**
+ * ログ出力
+ */
+router.post('/logging', (req, res) => {
+    log('logging');
+    const logger = winston.createLogger({
+        level: 'info',
+        format: winston.format.json(),
+        transports: [new winston.transports.Console()],
+    });
+    const level = req.body.level;
+    if (level === 'warn') {
+        logger.warn('[log] client log', req.body);
+        res.json();
+        return;
+    }
+    if (level === 'error') {
+        logger.error('[log] client log', req.body);
+        res.json();
+        return;
+    }
+    logger.info('[log] client log', req.body);
+    res.json();
 });
 
 export const utilRouter = router;

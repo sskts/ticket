@@ -14,6 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 const debug = require("debug");
 const express = require("express");
+const jwt_decode_1 = require("jwt-decode");
 const base_controller_1 = require("../../controllers/base/base.controller");
 const cognitoOAuth2_1 = require("../../models/auth/session/cognitoOAuth2");
 const router = express.Router();
@@ -44,6 +45,7 @@ router.post('/getCredentials', (req, res) => __awaiter(void 0, void 0, void 0, f
         res.json({
             credentials,
             userName,
+            sub: jwt_decode_1.default(credentials.accessToken).sub,
         });
     }
     catch (err) {

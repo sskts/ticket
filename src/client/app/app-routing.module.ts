@@ -69,11 +69,7 @@ const appRoutes: Routes = [
     {
         path: 'ticket',
         component: BaseComponent,
-        canActivate: [
-            AuthGuardService,
-            PaymentCardGuardService,
-            ProgramMembershipGuardService,
-        ],
+        canActivate: [AuthGuardService, PaymentCardGuardService],
         loadChildren: () =>
             import('./modules/ticket/ticket.module').then(
                 (m) => m.TicketModule
@@ -82,11 +78,7 @@ const appRoutes: Routes = [
     {
         path: 'movie',
         component: BaseComponent,
-        canActivate: [
-            AuthGuardService,
-            PaymentCardGuardService,
-            ProgramMembershipGuardService,
-        ],
+        canActivate: [AuthGuardService, PaymentCardGuardService],
         loadChildren: () =>
             import('./modules/movie/movie.module').then((m) => m.MovieModule),
     },
@@ -97,7 +89,6 @@ const appRoutes: Routes = [
             AuthGuardService,
             MemberGuardService,
             PaymentCardGuardService,
-            ProgramMembershipGuardService,
         ],
         loadChildren: () =>
             import('./modules/member/member.module').then(

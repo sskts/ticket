@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SmartTheaterService } from '../../../../../services';
+import { Router } from '@angular/router';
+import { ApplicationStatus } from '../../../../../models/util';
+import { SmartTheaterService, UtilService } from '../../../../../services';
 
 @Component({
     selector: 'app-auth-register-terms',
@@ -10,21 +12,34 @@ import { SmartTheaterService } from '../../../../../services';
 export class AuthRegisterTermsComponent implements OnInit {
     public isLoading: boolean;
     public termsForm: FormGroup;
+    public applicationStatus?: ApplicationStatus;
 
     constructor(
         private smartTheaterService: SmartTheaterService,
-        private formBuilder: FormBuilder
+        private utilService: UtilService,
+        private formBuilder: FormBuilder,
+        private router: Router
     ) {}
 
     /**
      * 初期化
      * @method ngOnInit
      */
-    public ngOnInit() {
-        this.isLoading = false;
-        this.termsForm = this.formBuilder.group({
-            terms: [false, [Validators.requiredTrue]],
-        });
+    public async ngOnInit() {
+        try {
+            this.isLoading = false;
+            this.termsForm = this.formBuilder.group({
+                terms: [false, [Validators.requiredTrue]],
+            });
+            const { status } = await this.utilService.getApplicationStatus();
+            this.applicationStatus = status;
+        } catch (error) {
+            console.error(error);
+            this.router.navigate([
+                '/error',
+                { redirect: '/auth/register/terms' },
+            ]);
+        }
     }
 
     /**
@@ -36,6 +51,18 @@ export class AuthRegisterTermsComponent implements OnInit {
         if (this.termsForm.invalid) {
             this.termsForm.controls.terms.markAsDirty();
             this.isLoading = false;
+            return;
+        }
+        const { status } = await this.utilService.getApplicationStatus();
+        if (status !== ApplicationStatus.NO_RELEASE) {
+            this.utilService.openConfirm({
+                title: '会員登録は終了しました',
+                body: '',
+                cb: () => {
+                    this.router.navigate(['/']);
+                },
+                next: 'TOPへ戻る',
+            });
             return;
         }
         try {
