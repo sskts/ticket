@@ -68,7 +68,8 @@
             routerLink="/member/ticket/history">鑑賞履歴</button>
         <button type="button" class="btn btn-primary btn-block center py-3 mb-3"
             routerLink="/member/edit">登録情報確認・変更</button>
-        <button type="button" class="btn btn-primary btn-block center py-3" routerLink="/member/transfer">会員移行</button>
+        <button *ngIf="applicationStatus !== 'NO_RELEASE'" type="button" class="btn btn-primary btn-block center py-3"
+            routerLink="/member/transfer">会員移行</button>
     </div>
     <div>
         <p class="mb-2"><a href="#" routerLink="/auth/logout">ログアウト</a></p>
