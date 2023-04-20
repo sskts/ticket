@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import * as qrcode from 'qrcode';
 import { getConfig } from '../../../../../functions';
+import { ApplicationStatus } from '../../../../../models/util';
 import {
     CallNativeService,
     InAppBrowserTarget,
@@ -23,6 +24,7 @@ export class MemberMypageComponent implements OnInit {
     public availableBalance: number;
     public portalSiteUrl: string;
     public programMembershipOwnershipInfo: OwnershipInfoType.IMembership;
+    public applicationStatus: ApplicationStatus;
 
     constructor(
         public userService: UserService,
@@ -39,12 +41,15 @@ export class MemberMypageComponent implements OnInit {
         this.isLoading = true;
         this.availableBalance = 0;
         this.portalSiteUrl = getConfig().portalSiteUrl;
+        this.applicationStatus = ApplicationStatus.NO_RELEASE;
         try {
             await this.userService.initMember();
             this.account = this.userService.data.accounts[0];
             this.availableBalance = this.userService.getAvailableBalance();
             this.programMembershipOwnershipInfo =
                 this.userService.data.programMembershipOwnershipInfos[0];
+            const { status } = await this.utilService.getApplicationStatus();
+            this.applicationStatus = status;
         } catch (error) {
             console.error(error);
             this.router.navigate(['/error', { redirect: '/member/mypage' }]);

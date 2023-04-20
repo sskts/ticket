@@ -38,6 +38,7 @@ export class AuthSelectComponent implements OnInit {
         try {
             this.isLoading = false;
             this.portalSiteUrl = getConfig().portalSiteUrl;
+            this.applicationStatus = ApplicationStatus.NO_RELEASE;
             const { status } = await this.utilService.getApplicationStatus();
             const data = getStorageItem<{
                 sub: string;
