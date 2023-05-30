@@ -11,7 +11,7 @@
                 <div class="buttons mx-auto text-center">
                     <button *ngIf="isNewMembershipTransfer" type="button" class="btn btn-primary btn-block py-3 mb-3"
                         (click)="newMembershipTransfer()">
-                        会員移行
+                        会員移行<span *ngIf="userName" class="text-break"><br>ユーザーネーム: {{ userName }}</span>
                     </button>
                     <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="signIn()">
                         ログイン
