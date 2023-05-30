@@ -9,6 +9,10 @@
     background-color: rgba(0, 0, 0, .5);
 }
 
+html {
+    background-color: #000;
+}
+
 html, body {
     height: 100%;
     font-size: $body-font-size;
@@ -19,6 +23,17 @@ body {
     user-select: none;
     background-attachment: fixed;
     font-family: $font-family;
+    position: relative;
+}
+
+html,
+body,
+app-contents,
+app-header,
+app-navigation
+ {
+    margin: 0 auto;
+    max-width: 768px;
 }
 
 ::placeholder {
