@@ -24,9 +24,9 @@ body {
     background-attachment: fixed;
     font-family: $font-family;
     position: relative;
+    overflow: hidden;
 }
 
-html,
 body,
 app-contents,
 app-header,
@@ -288,7 +288,7 @@ app-purchase .gdcs .service {
 }
 
 .pagination-wrapper {
-    position: fixed;
+    position: absolute;
     bottom: 70px;
     left: 0;
     right: 0;
