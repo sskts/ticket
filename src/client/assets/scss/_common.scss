@@ -9,6 +9,10 @@
     background-color: rgba(0, 0, 0, .5);
 }
 
+html {
+    background-color: #000;
+}
+
 html, body {
     height: 100%;
     font-size: $body-font-size;
@@ -19,6 +23,17 @@ body {
     user-select: none;
     background-attachment: fixed;
     font-family: $font-family;
+    position: relative;
+    overflow: hidden;
+}
+
+body,
+app-contents,
+app-header,
+app-navigation
+ {
+    margin: 0 auto;
+    max-width: 768px;
 }
 
 ::placeholder {
@@ -273,7 +288,7 @@ app-purchase .gdcs .service {
 }
 
 .pagination-wrapper {
-    position: fixed;
+    position: absolute;
     bottom: 70px;
     left: 0;
     right: 0;

@@ -32,7 +32,7 @@
             <div class="text-small mb-2">会員更新予定日</div>
             <div class="p-2 bg-white">
                 <span *ngIf="programMembershipOwnershipInfo?.ownedThrough">
-                    {{ moment(programMembershipOwnershipInfo.ownedThrough).format('YYYY/MM/DD') }}
+                    {{ programMembershipOwnershipInfoOwnedThrough }}
                 </span>
                 <span *ngIf="!programMembershipOwnershipInfo?.ownedThrough">-</span>
             </div>

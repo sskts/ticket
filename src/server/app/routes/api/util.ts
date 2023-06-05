@@ -41,6 +41,8 @@ router.get('/config', async (_req, res) => {
                 ? undefined
                 : process.env.GMO_TOKEN_URL,
         newMembershipTransferUrl: process.env.NEW_MEMBERSHIP_TRANSFER_URL,
+        membershipExpirationTimeSeconds:
+            process.env.MEMBERSHIP_EXPIRATION_TIME_SECONDS,
     });
 });
 

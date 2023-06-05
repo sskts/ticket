@@ -24,6 +24,7 @@ export class MemberMypageComponent implements OnInit {
     public availableBalance: number;
     public portalSiteUrl: string;
     public programMembershipOwnershipInfo: OwnershipInfoType.IMembership;
+    public programMembershipOwnershipInfoOwnedThrough: string;
     public applicationStatus: ApplicationStatus;
 
     constructor(
@@ -42,12 +43,19 @@ export class MemberMypageComponent implements OnInit {
         this.availableBalance = 0;
         this.portalSiteUrl = getConfig().portalSiteUrl;
         this.applicationStatus = ApplicationStatus.NO_RELEASE;
+        this.programMembershipOwnershipInfoOwnedThrough = '';
         try {
             await this.userService.initMember();
             this.account = this.userService.data.accounts[0];
             this.availableBalance = this.userService.getAvailableBalance();
             this.programMembershipOwnershipInfo =
                 this.userService.data.programMembershipOwnershipInfos[0];
+            if (this.programMembershipOwnershipInfo !== undefined) {
+                this.programMembershipOwnershipInfoOwnedThrough = moment(
+                    this.programMembershipOwnershipInfo.ownedThrough
+                ).format('YYYY/MM/DD');
+            }
+
             const { status } = await this.utilService.getApplicationStatus();
             this.applicationStatus = status;
         } catch (error) {

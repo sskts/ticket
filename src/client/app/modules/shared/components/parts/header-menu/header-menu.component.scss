@@ -1,5 +1,5 @@
 .cover {
-    position: fixed;
+    position: absolute;
     top: 48px;
     bottom: 0;
     left: 0;
@@ -11,14 +11,16 @@
     }
 }
 .menu {
-    position: fixed;
+    position: absolute;
     top: 48px;
     bottom: 0;
     right: -100%;
     z-index: 20;
-    overflow: scroll;
+    overflow-y: scroll;
     transition: right 0.1s;
+    visibility: hidden;
     &.active {
         right: 0;
+        visibility: visible;
     }
 }

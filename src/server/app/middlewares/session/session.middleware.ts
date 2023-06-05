@@ -5,18 +5,26 @@
 import * as connectRedis from 'connect-redis';
 import * as session from 'express-session';
 import * as redis from 'redis';
+import * as createDebug from 'debug';
 
-const redisClient = redis.createClient(
-    Number(process.env.REDIS_PORT),
-    process.env.REDIS_HOST,
-    {
-        password: process.env.REDIS_KEY,
-        tls: {
-            servername: process.env.REDIS_HOST,
-        },
-        return_buffers: true,
-    }
-);
+const debug = createDebug('sskts-ticket:session');
+
+const redisClient = redis.createClient({
+    port: Number(process.env.REDIS_PORT),
+    host: process.env.REDIS_HOST,
+    password: process.env.REDIS_KEY,
+    tls:
+        process.env.REDIS_TLS_SERVERNAME === undefined ||
+        process.env.REDIS_TLS_SERVERNAME === ''
+            ? undefined
+            : {
+                  servername: process.env.REDIS_TLS_SERVERNAME,
+              },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    return_buffers: true,
+});
+
+debug('redis host...', process.env.REDIS_HOST);
 
 const sessionStore = new (connectRedis(session))({ client: redisClient });
 

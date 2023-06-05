@@ -21,6 +21,7 @@ export class AuthSelectComponent implements OnInit {
     public portalSiteUrl: string;
     public applicationStatus?: ApplicationStatus;
     public isNewMembershipTransfer: boolean;
+    public userName?: string;
 
     constructor(
         private router: Router,
@@ -51,6 +52,7 @@ export class AuthSelectComponent implements OnInit {
             this.applicationStatus = status;
             this.isNewMembershipTransfer =
                 status !== ApplicationStatus.NO_RELEASE && data !== undefined;
+            this.userName = data === undefined ? undefined : data.userName;
         } catch (error) {}
     }
 
