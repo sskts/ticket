@@ -14,6 +14,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 5.6.0 - 2023-06-05
+
+### Added
+
+-   移行時有効期限チェック追加
+
+### Fixed
+
+-   レイアウト調整
+-   セッション調整
+
 ## 5.5.1 - 2023-04-19
 
 ### Fixed
