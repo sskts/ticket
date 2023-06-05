@@ -3,7 +3,6 @@
  */
 import { Injectable } from '@angular/core';
 
-
 /**
  * 呼び出し先
  */
@@ -24,7 +23,7 @@ export enum InAppBrowserTarget {
     /**
      * システム標準の Web ブラウザー ( system’s web browser ) を開きます。
      */
-    System = '_system'
+    System = '_system',
 }
 
 /**
@@ -64,7 +63,7 @@ export interface IlocalNotificationArgs {
         /**
          * 通知を送る時間（ISO）
          */
-        at: string
+        at: string;
     };
     /**
      * アイコンの画像パス
@@ -81,11 +80,10 @@ export interface IlocalNotificationArgs {
 }
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class CallNativeService {
-
-    constructor() { }
+    constructor() {}
 
     /**
      * @method postMessage
@@ -107,13 +105,13 @@ export class CallNativeService {
      */
     public inAppBrowser(args: IinAppBrowserArgs) {
         if ((<any>window).wizViewMessenger === undefined) {
-            window.open(args.url, '_blank');
+            location.href = args.url;
             return;
         }
         try {
             const data = {
                 method: 'inAppBrowser',
-                option: args
+                option: args,
             };
             this.postMessage(data);
         } catch (err) {
@@ -130,7 +128,7 @@ export class CallNativeService {
         try {
             const data = {
                 method: 'localNotification',
-                option: args
+                option: args,
             };
             this.postMessage(data);
         } catch (err) {
