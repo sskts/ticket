@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 5.6.2 - 2023-06-13
+
+### Changed
+
+-   会員移行ボタン色変更
+
 ## 5.6.1 - 2023-06-09
 
 ### Fixed
