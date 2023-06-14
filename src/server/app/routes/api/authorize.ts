@@ -7,9 +7,14 @@ import { errorProsess } from '../../controllers/base/base.controller';
 import { ClientCredentials } from '../../models/auth/session/clientCredentials';
 import { CognitoOAuth2 } from '../../models/auth/session/cognitoOAuth2';
 import { OAuth2 } from '../../models/auth/session/oAuth2';
+import * as moment from 'moment';
 
 const router = express.Router();
 const log = debug('sskts-ticket:api/authorize');
+const UPDATE_ACCESS_TOKEN_TIME_MINUTES = 15;
+let credentials:
+    | { accessToken: string; expiryDate?: number; clientId?: string }
+    | undefined;
 
 export enum MemberType {
     NotMember = '0',
@@ -31,32 +36,55 @@ router.post('/getCredentials', async (req, res) => {
         const projectId = <string>process.env.PROJECT_ID;
         const waiterServerUrl = <string>process.env.WAITER_SERVER_URL;
         let userName;
-        let credentials;
-        let clientId;
+        let accessToken: string;
+        let expiryDate: number | undefined;
+        let clientId: string | undefined;
         let authModel;
         if (body.member === MemberType.Member) {
             authModel = new OAuth2(req.session.auth);
             const options = { endpoint, auth: authModel.create(req) };
-            const accessToken = await options.auth.getAccessToken();
+            accessToken = await options.auth.getAccessToken();
             authModel.credentials = options.auth.credentials;
             authModel.save(req.session);
-            credentials = { accessToken };
             clientId = options.auth.options.clientId;
             userName =
                 body.member === MemberType.Member
                     ? options.auth.verifyIdToken({}).getUsername()
                     : undefined;
         } else {
-            authModel = new ClientCredentials();
-            const options = { endpoint, auth: authModel.create() };
-            const accessToken = await options.auth.getAccessToken();
-            credentials = { accessToken };
-            clientId = options.auth.options.clientId;
+            const now = moment().toISOString();
+            const isTokenExpired =
+                credentials !== undefined &&
+                credentials.expiryDate !== undefined
+                    ? moment(credentials.expiryDate)
+                          .add(-1 * UPDATE_ACCESS_TOKEN_TIME_MINUTES, 'minutes')
+                          .unix() <= moment(now).unix()
+                    : false;
+            if (credentials === undefined || isTokenExpired) {
+                // 更新
+                authModel = new ClientCredentials();
+                const options = {
+                    endpoint,
+                    auth: authModel.create(),
+                };
+                accessToken = await options.auth.getAccessToken();
+                expiryDate = options.auth.credentials.expiry_date;
+                clientId = options.auth.options.clientId;
+                credentials = {
+                    accessToken,
+                    expiryDate,
+                    clientId,
+                };
+            } else {
+                accessToken = credentials.accessToken;
+                expiryDate = credentials.expiryDate;
+                clientId = credentials.clientId;
+            }
         }
         log('getCredentials MemberType', body.member);
 
         res.json({
-            credentials,
+            credentials: { accessToken },
             userName,
             clientId,
             endpoint,

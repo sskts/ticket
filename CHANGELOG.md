@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 5.7.0 - 2023-06-14
+
+### Fixed
+
+-   セッション調整
+
 ## 5.6.2 - 2023-06-13
 
 ### Changed
