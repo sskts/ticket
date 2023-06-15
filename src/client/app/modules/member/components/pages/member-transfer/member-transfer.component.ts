@@ -5,7 +5,6 @@ import {
     UserService,
     UtilService,
 } from '../../../../../services';
-import * as moment from 'moment';
 
 @Component({
     selector: 'app-member-transfer',
@@ -60,30 +59,30 @@ export class MemberTransferComponent implements OnInit {
         try {
             const {
                 newMembershipTransferUrl,
-                membershipExpirationTimeSeconds,
+                // membershipExpirationTimeSeconds,
             } = await this.utilService.getJson<{
                 newMembershipTransferUrl: string;
                 membershipExpirationTimeSeconds: string;
             }>(`/api/config?date${new Date().toISOString()}`);
             await this.smartTheaterService.getServices();
-            const memberships =
-                await this.smartTheaterService.ownershipInfo.searchMemberships({
-                    page: 1,
-                });
-            const membership = memberships[0];
-            const now = (await this.utilService.getServerTime()).date;
-            if (
-                membership === undefined ||
-                moment(now).diff(moment(membership.ownedThrough), 'seconds') >
-                    Number(membershipExpirationTimeSeconds)
-            ) {
-                this.isLoading = false;
-                this.utilService.openAlert({
-                    title: 'エラー',
-                    body: `<p>会員移行に失敗しました。<br>会員有効期限をご確認ください。</p>`,
-                });
-                return;
-            }
+            // const memberships =
+            //     await this.smartTheaterService.ownershipInfo.searchMemberships({
+            //         page: 1,
+            //     });
+            // const membership = memberships[0];
+            // const now = (await this.utilService.getServerTime()).date;
+            // if (
+            //     membership === undefined ||
+            //     moment(now).diff(moment(membership.ownedThrough), 'seconds') >
+            //         Number(membershipExpirationTimeSeconds)
+            // ) {
+            //     this.isLoading = false;
+            //     this.utilService.openAlert({
+            //         title: 'エラー',
+            //         body: `<p>会員移行に失敗しました。<br>会員有効期限をご確認ください。</p>`,
+            //     });
+            //     return;
+            // }
             const { sub, userName } = await this.awsCognitoService.authorize();
             const json = JSON.stringify({
                 sub,
