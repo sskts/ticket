@@ -256,7 +256,7 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
                     if (status !== ApplicationStatus.NO_RELEASE) {
                         this.utilService.openAlert({
                             title: '会員有効期限が切れています',
-                            body: 'マイページより会員移行を行っていただくことにより継続できます。',
+                            body: 'マイページより会員移行を行っていただき、有効期限更新のお手続きを対応いただくことで継続できます。',
                         });
                         return;
                     }
