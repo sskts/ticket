@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 5.7.2 - 2023-06-16
+
+### Fixed
+
+-   会員有効期限が切れ文言を変更
+
 ## 5.7.1 - 2023-06-15
 
 ### Changed
