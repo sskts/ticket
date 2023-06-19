@@ -35,7 +35,8 @@ export class MemberTransferComponent implements OnInit {
         this.utilService.openConfirm({
             title: '本当に会員移行しますか？',
             body: `
-            <p>会員移行した場合もとの状態に戻すことはできません。<br>
+            <p>会員移行手続きを開始いただくとアプリへの会員ログイン及びチケット購入等アプリサービスはご利用できなくなります。<br>
+            会員移行手続きを完了いただき、シネマサンシャインホームページから新会員サービスをご利用ください。<br>
             ユーザーネームが必要な場合ががございます。<br>
             メモをとるなどして、必ずお控えください。<br>
             ユーザーネーム: <strong>${this.userService.data.userName}</strong></p>`,

@@ -8,13 +8,18 @@
                 <p class="text-center text-white mb-4">
                     アプリの始め方を選択してください。
                 </p>
+                <p *ngIf="isNewMembershipTransfer" class="text-left text-white mb-4">
+                    会員移行を完了されたお客様はシネマサンシャインホームページから会員サービスをご利用ください。<br>
+                    会員移行手続きを開始されたお客様は、アプリへのログインはできなくなります。
+                </p>
                 <div class="buttons mx-auto text-center">
                     <button *ngIf="isNewMembershipTransfer" type="button" class="btn btn-primary btn-block py-3 mb-3"
                         (click)="newMembershipTransfer()">
                         会員移行<span *ngIf="userName" class="text-break"><br>ユーザーネーム: {{ userName }}</span>
                     </button>
                     <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="signIn()">
-                        ログイン
+                        ログイン<span *ngIf="isNewMembershipTransfer"
+                            class="text-small"><br>会員移行手続きを開始されたお客様は、<br>アプリへのログインはできなくなります。</span>
                     </button>
                     <button *ngIf="applicationStatus === 'NO_RELEASE'" type="button"
                         class="btn btn-primary btn-block py-3 mb-3" routerLink="/auth/register">
