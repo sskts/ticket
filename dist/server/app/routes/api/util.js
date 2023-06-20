@@ -29,6 +29,7 @@ router.get('/config', (_req, res) => __awaiter(void 0, void 0, void 0, function*
         scheduleApiEndpoint: process.env.SCHEDULE_API_ENDPOINT,
         cmsApiEndpoint: process.env.CMS_API_ENDPOINT,
         portalSiteUrl: process.env.PORTAL_SITE_URL,
+        mypageSiteUrl: process.env.MYPAGE_SITE_URL,
         entranceServerUrl: process.env.ENTRANCE_SERVER_URL,
         ticketSiteUrl: process.env.TICKET_SITE_URL,
         cognitoRegion: process.env.COGNITO_REGION,
