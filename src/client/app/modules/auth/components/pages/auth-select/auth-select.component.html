@@ -17,8 +17,8 @@
                         (click)="newMembershipTransfer()">
                         会員移行<span *ngIf="userName" class="text-break"><br>ユーザーネーム: {{ userName }}</span>
                     </button>
-                    <button type="button" class="btn btn-primary btn-block py-3 mb-3"
-                        (click)="openWebBrowser(portalSiteUrl + '/cs_reward/')">
+                    <button *ngIf="mypageSiteUrl" type="button" class="btn btn-primary btn-block py-3 mb-3"
+                        (click)="openWebBrowser(mypageSiteUrl)">
                         会員移行済みの方はこちら
                     </button>
                     <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="signIn()">
