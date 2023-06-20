@@ -33,6 +33,7 @@ export function getConfig(): {
     scheduleApiEndpoint: string;
     cmsApiEndpoint: string;
     portalSiteUrl: string;
+    mypageSiteUrl: string;
     entranceServerUrl: string;
     ticketSiteUrl: string;
     cognitoRegion: string;
@@ -48,6 +49,7 @@ export function getConfig(): {
               scheduleApiEndpoint: '',
               cmsApiEndpoint: '',
               portalSiteUrl: '',
+              mypageSiteUrl: '',
               entranceServerUrl: '',
               ticketSiteUrl: '',
               cognitoRegion: '',

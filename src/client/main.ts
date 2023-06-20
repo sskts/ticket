@@ -38,6 +38,7 @@ async function setConfig() {
         scheduleApiEndpoint: string;
         cmsApiEndpoint: string;
         portalSiteUrl: string;
+        mypageSiteUrl: string;
         entranceServerUrl: string;
         ticketSiteUrl: string;
         cognitoRegion: string;

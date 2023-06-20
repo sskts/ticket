@@ -19,6 +19,7 @@ import {
 export class AuthSelectComponent implements OnInit {
     public isLoading: boolean;
     public portalSiteUrl: string;
+    public mypageSiteUrl: string;
     public applicationStatus?: ApplicationStatus;
     public isNewMembershipTransfer: boolean;
     public userName?: string;
@@ -39,6 +40,7 @@ export class AuthSelectComponent implements OnInit {
         try {
             this.isLoading = false;
             this.portalSiteUrl = getConfig().portalSiteUrl;
+            this.mypageSiteUrl = getConfig().mypageSiteUrl;
             this.applicationStatus = ApplicationStatus.NO_RELEASE;
             const { status } = await this.utilService.getApplicationStatus();
             const data = getStorageItem<{
