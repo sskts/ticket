@@ -1,6 +1,6 @@
 {
     "name": "ticket",
-    "version": "5.7.4",
+    "version": "5.7.5",
     "license": "MIT",
     "scripts": {
         "ng": "ng",
@@ -18,7 +18,7 @@
         "start": "node dist/server/index",
         "test": "npm run lint",
         "test:client": "ng test --code-coverage",
-        "preversion": "npm run build",
+        "preversion": "npm run build:all",
         "version": "git add -A",
         "postversion": "git push origin --tags",
         "clean": "rimraf src/**/*.spec.ts",
