@@ -12,21 +12,33 @@
             <div class="container px-0">
                 <div class="row">
                     <div class="col-6 pr-2">
-                        <button *ngIf="account" type="button" class="btn btn-block btn-primary center" (click)="copy({ 
-                            value: account.typeOfGood.identifier, 
-                            title: '', 
-                            body: '会員コードをコピーしました'
-                        })">コードをコピー</button>
+                        <button
+                            *ngIf="account"
+                            type="button"
+                            class="btn btn-block btn-primary center"
+                            (click)="
+                                copy({
+                                    value: account.typeOfGood.identifier,
+                                    title: '',
+                                    body: '会員コードをコピーしました'
+                                })
+                            "
+                        >
+                            コードをコピー
+                        </button>
                     </div>
                     <div class="col-6 pl-2">
-                        <button *ngIf="account" type="button" class="btn btn-block btn-primary center"
-                            (click)="openQR(account.typeOfGood.identifier)">
+                        <button
+                            *ngIf="account"
+                            type="button"
+                            class="btn btn-block btn-primary center"
+                            (click)="openQR(account.typeOfGood.identifier)"
+                        >
                             QRを表示
                         </button>
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="">
             <div class="text-small mb-2">会員更新予定日</div>
@@ -34,7 +46,9 @@
                 <span *ngIf="programMembershipOwnershipInfo?.ownedThrough">
                     {{ programMembershipOwnershipInfoOwnedThrough }}
                 </span>
-                <span *ngIf="!programMembershipOwnershipInfo?.ownedThrough">-</span>
+                <span *ngIf="!programMembershipOwnershipInfo?.ownedThrough"
+                    >-</span
+                >
             </div>
         </div>
     </div>
@@ -43,33 +57,85 @@
         <div class="text-small mb-2">ポイント交換</div>
         <div class="d-flex bg-white py-3 mb-3">
             <div class="w-50 border-right border-gray text-center px-2">
-                <p class="mb-1">￥1100鑑賞</p>
-                <p *ngIf="!(availableBalance < 2)" class="text-small mb-1">交換可能</p>
-                <p *ngIf="availableBalance < 2" class="text-small mb-1">あと{{ 2 - availableBalance }}pt</p>
-                <rating class="text-yellow" [(ngModel)]="availableBalance" [max]="2" [readonly]="true"></rating>
+                <p class="mb-1">￥1200鑑賞</p>
+                <p *ngIf="!(availableBalance < 2)" class="text-small mb-1">
+                    交換可能
+                </p>
+                <p *ngIf="availableBalance < 2" class="text-small mb-1">
+                    あと{{ 2 - availableBalance }}pt
+                </p>
+                <rating
+                    class="text-yellow"
+                    [(ngModel)]="availableBalance"
+                    [max]="2"
+                    [readonly]="true"
+                ></rating>
             </div>
             <div class="w-50 text-center px-2">
                 <p class="mb-1">無料鑑賞</p>
-                <p *ngIf="!(availableBalance < 6)" class="text-small mb-1">交換可能</p>
-                <p *ngIf="availableBalance < 6" class="text-small mb-1">あと{{ 6 - availableBalance }}pt</p>
-                <rating class="text-yellow" [(ngModel)]="availableBalance" [max]="6" [readonly]="true"></rating>
+                <p *ngIf="!(availableBalance < 6)" class="text-small mb-1">
+                    交換可能
+                </p>
+                <p *ngIf="availableBalance < 6" class="text-small mb-1">
+                    あと{{ 6 - availableBalance }}pt
+                </p>
+                <rating
+                    class="text-yellow"
+                    [(ngModel)]="availableBalance"
+                    [max]="6"
+                    [readonly]="true"
+                ></rating>
             </div>
         </div>
-        <p><a href="#" (click)="openPointModal($event)"><img class="mr-1 align-middle"
-                    src="/assets/images/icon/help_blue.svg" width="16" height="16">ポイント交換について</a></p>
+        <p>
+            <a href="#" (click)="openPointModal($event)"
+                ><img
+                    class="mr-1 align-middle"
+                    src="/assets/images/icon/help_blue.svg"
+                    width="16"
+                    height="16"
+                />ポイント交換について</a
+            >
+        </p>
     </div>
 
     <div class="buttons mx-auto text-center mb-4">
-        <button type="button" class="btn btn-primary btn-block center py-3 mb-3"
-            (click)="openWebBrowser(portalSiteUrl + '/point-transfer')">ポイント振替</button>
-        <button type="button" class="btn btn-primary btn-block center py-3 mb-3"
-            routerLink="/member/point/history">ポイント使用・獲得履歴</button>
-        <button type="button" class="btn btn-primary btn-block center py-3 mb-3"
-            routerLink="/member/ticket/history">鑑賞履歴</button>
-        <button type="button" class="btn btn-primary btn-block center py-3 mb-3"
-            routerLink="/member/edit">登録情報確認・変更</button>
-        <button *ngIf="applicationStatus !== 'NO_RELEASE'" type="button" class="btn btn-danger btn-block center py-3"
-            routerLink="/member/transfer">会員移行</button>
+        <button
+            type="button"
+            class="btn btn-primary btn-block center py-3 mb-3"
+            (click)="openWebBrowser(portalSiteUrl + '/point-transfer')"
+        >
+            ポイント振替
+        </button>
+        <button
+            type="button"
+            class="btn btn-primary btn-block center py-3 mb-3"
+            routerLink="/member/point/history"
+        >
+            ポイント使用・獲得履歴
+        </button>
+        <button
+            type="button"
+            class="btn btn-primary btn-block center py-3 mb-3"
+            routerLink="/member/ticket/history"
+        >
+            鑑賞履歴
+        </button>
+        <button
+            type="button"
+            class="btn btn-primary btn-block center py-3 mb-3"
+            routerLink="/member/edit"
+        >
+            登録情報確認・変更
+        </button>
+        <button
+            *ngIf="applicationStatus !== 'NO_RELEASE'"
+            type="button"
+            class="btn btn-danger btn-block center py-3"
+            routerLink="/member/transfer"
+        >
+            会員移行
+        </button>
     </div>
     <div>
         <p class="mb-2"><a href="#" routerLink="/auth/logout">ログアウト</a></p>
