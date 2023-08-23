@@ -14,5 +14,8 @@
     { "code": "15", "name": "masaki" },
     { "code": "12", "name": "kitajima" },
     { "code": "18", "name": "aira" },
-    { "code": "22", "name": "iizuka" }
+    { "code": "22", "name": "iizuka" },
+    { "code": "32", "name": "sapporo" },
+    { "code": "33", "name": "tomakomai" },
+    { "code": "34", "name": "muroran" }
 ]
