@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## 5.7.6 - 2023-08-23
+
+### Added
+
+-   新劇場のデータを追加 (32,33,34)
+
 ## 5.7.5 - 2023-08-07
 
 ### Added

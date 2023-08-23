@@ -1,6 +1,6 @@
 {
     "name": "ticket",
-    "version": "5.7.5",
+    "version": "5.7.6",
     "license": "MIT",
     "scripts": {
         "ng": "ng",
