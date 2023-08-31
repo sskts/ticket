@@ -4,9 +4,10 @@ import * as moment from 'moment';
 import { SaveType, StorageService } from '../services/storage.service';
 import { UserService } from '../services/user.service';
 import { UtilService } from '../services/util.service';
+import { ApplicationStatus } from '../models/util';
 
 interface PointAccountMutex {
-    expire: Number;
+    expire: number;
 }
 
 @Injectable({
@@ -28,6 +29,15 @@ export class PaymentCardGuardService implements CanActivate {
         if (!this.userService.isMember()) {
             // 非会員
             return true;
+        }
+        try {
+            const { status } = await this.utilService.getApplicationStatus();
+            if (status === ApplicationStatus.MEMBERSHIP_COUPON_CLOSE) {
+                return true;
+            }
+        } catch (error) {
+            this.router.navigate(['/error']);
+            return false;
         }
         this.userService.save();
         const POINT_ACCOUNT_MUTEX_KEY = 'point_account_mutex';
