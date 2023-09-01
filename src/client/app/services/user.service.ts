@@ -166,6 +166,10 @@ export class UserService {
         try {
             const { status } = await this.utilService.getApplicationStatus();
             if (status === ApplicationStatus.MEMBERSHIP_COUPON_CLOSE) {
+                // 口座検索
+                const accounts = await this.searchPointAccount();
+                this.data.accounts = accounts;
+                this.save();
                 return;
             }
         } catch (error) {
@@ -192,6 +196,7 @@ export class UserService {
         // 口座検索
         const accounts = await this.searchPointAccount();
         this.data.accounts = accounts;
+        // メンバーシップ検索
         this.data.programMembershipOwnershipInfos =
             await this.searchMyMemberships();
         this.save();

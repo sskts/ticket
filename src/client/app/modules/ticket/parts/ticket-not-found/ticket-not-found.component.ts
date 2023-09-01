@@ -28,9 +28,9 @@ export class TicketNotFoundComponent implements OnInit, OnDestroy {
         this.interval = setInterval(() => {
             const h1 = el === null ? 0 : el.clientHeight;
             const h2 = el2 === null ? 0 : el2.clientHeight + 24;
+            this.top = h1 + h2;
             if (h1 + h2 > 0 || count > limit) {
                 clearInterval(this.interval);
-                this.top = h1 + h2;
             }
             count++;
         }, intervalTime);

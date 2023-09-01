@@ -22,10 +22,12 @@ export class RootComponent implements OnInit {
     public async ngOnInit() {
         try {
             if (this.user.isMember()) {
+                await this.user.updateAccount();
                 const { status } =
                     await this.utilService.getApplicationStatus();
-                if (status !== ApplicationStatus.MEMBERSHIP_COUPON_CLOSE) {
-                    await this.user.updateAccount();
+                if (status === ApplicationStatus.MEMBERSHIP_COUPON_CLOSE) {
+                    this.router.navigate(['/member/mypage']);
+                    return;
                 }
             }
         } catch (error) {
