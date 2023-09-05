@@ -7,23 +7,25 @@
                 <div class="logo text-center mb-4">
                     <img src="/assets/images/common/logo_text.svg" />
                 </div>
-                <p class="text-center text-white mb-4">
-                    アプリの始め方を選択してください。
-                </p>
-                <p
-                    *ngIf="applicationStatus !== 'MEMBERSHIP_COUPON_CLOSE'"
-                    class="text-left text-white mb-4"
-                >
-                    会員移行を完了されたお客様はシネマサンシャインホームページから会員サービスをご利用ください。<br />
-                    会員移行手続きを開始されたお客様は、アプリへのログインはできなくなります。
-                </p>
-                <p
-                    *ngIf="applicationStatus === 'MEMBERSHIP_COUPON_CLOSE'"
-                    class="text-left text-white mb-4"
-                >
-                    会員移行を完了されたお客様はシネマサンシャインホームページから会員サービスをご利用ください。<br />
-                    会員移行手続きを開始されたお客様は、アプリへのログインはできなくなります。
-                </p>
+                <div *ngIf="applicationStatus !== 'MEMBERSHIP_COUPON_CLOSE'">
+                    <p class="text-center text-white mb-4">
+                        アプリの始め方を選択してください。
+                    </p>
+                    <p class="text-left text-white mb-4">
+                        会員移行を完了されたお客様はシネマサンシャインホームページから会員サービスをご利用ください。<br />
+                        会員移行手続きを開始されたお客様は、アプリへのログインはできなくなります。
+                    </p>
+                </div>
+                <div *ngIf="applicationStatus === 'MEMBERSHIP_COUPON_CLOSE'">
+                    <p class="text-center text-white mb-4">
+                        アプリサービスは終了いたしました。
+                    </p>
+                    <p class="text-left text-white mb-4">
+                        2023年9月30日をもちましてアプリ会員サービスは終了いたしました。<br />
+                        会員サービスを継続されるお客様で会員以降手続きがまだお済みでない方は。ログイン後アプリのマイページから会員移行手続きをお願いいたします。
+                    </p>
+                </div>
+
                 <div class="buttons mx-auto text-center">
                     <button
                         *ngIf="isNewMembershipTransfer"
