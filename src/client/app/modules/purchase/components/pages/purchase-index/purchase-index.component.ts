@@ -244,12 +244,15 @@ export class PurchaseIndexComponent implements OnInit, OnDestroy {
      */
     public async selectPerformance(params: { performance: Performance }) {
         try {
+            const { status } = await this.utilService.getApplicationStatus();
+            if (status === ApplicationStatus.MEMBERSHIP_COUPON_CLOSE) {
+                this.router.navigate(['/purchase/close']);
+                return;
+            }
             if (this.isMember) {
                 this.isLoading = true;
                 const isAvailabilityMemberships =
                     await this.isAvailabilityMemberships();
-                const { status } =
-                    await this.utilService.getApplicationStatus();
 
                 if (!isAvailabilityMemberships) {
                     this.isLoading = false;

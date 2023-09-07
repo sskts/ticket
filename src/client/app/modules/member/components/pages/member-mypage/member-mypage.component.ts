@@ -47,7 +47,10 @@ export class MemberMypageComponent implements OnInit {
         try {
             await this.userService.initMember();
             this.account = this.userService.data.accounts[0];
-            this.availableBalance = this.userService.getAvailableBalance();
+            const availableBalance = this.userService.getAvailableBalance();
+            if (typeof availableBalance === 'number') {
+                this.availableBalance = availableBalance;
+            }
             this.programMembershipOwnershipInfo =
                 this.userService.data.programMembershipOwnershipInfos[0];
             if (this.programMembershipOwnershipInfo !== undefined) {
