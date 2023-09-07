@@ -5,18 +5,15 @@ import { TicketIndexComponent } from './pages/ticket-index/ticket-index.componen
 import { TicketDetailComponent } from './parts/ticket-detail/ticket-detail.component';
 import { TicketNotFoundComponent } from './parts/ticket-not-found/ticket-not-found.component';
 import { TicketRoutingModule } from './ticket-routing.module';
-
+import { TicketCloseComponent } from './pages/ticket-close/ticket-close.component';
 
 @NgModule({
-  declarations: [
-    TicketIndexComponent,
-    TicketDetailComponent,
-    TicketNotFoundComponent,
-  ],
-  imports: [
-    CommonModule,
-    TicketRoutingModule,
-    SharedModule,
-  ]
+    declarations: [
+        TicketIndexComponent,
+        TicketCloseComponent,
+        TicketDetailComponent,
+        TicketNotFoundComponent,
+    ],
+    imports: [CommonModule, TicketRoutingModule, SharedModule],
 })
-export class TicketModule { }
+export class TicketModule {}

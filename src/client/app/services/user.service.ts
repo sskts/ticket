@@ -9,6 +9,7 @@ import {
 } from './smart-theater.service';
 import { SaveType, StorageService } from './storage.service';
 import { UtilService } from './util.service';
+import { ApplicationStatus } from '../models/util';
 
 export interface IUserData {
     /**
@@ -162,6 +163,18 @@ export class UserService {
     public async initMember() {
         this.data.memberType = MemberType.Member;
         this.save();
+        try {
+            const { status } = await this.utilService.getApplicationStatus();
+            if (status === ApplicationStatus.MEMBERSHIP_COUPON_CLOSE) {
+                // 口座検索
+                const accounts = await this.searchPointAccount();
+                this.data.accounts = accounts;
+                this.save();
+                return;
+            }
+        } catch (error) {
+            throw error;
+        }
         const userName = await this.awsCognitoService.getUserName();
         if (userName === undefined) {
             throw new Error('userName is undefined');
@@ -183,6 +196,7 @@ export class UserService {
         // 口座検索
         const accounts = await this.searchPointAccount();
         this.data.accounts = accounts;
+        // メンバーシップ検索
         this.data.programMembershipOwnershipInfos =
             await this.searchMyMemberships();
         this.save();
@@ -464,6 +478,9 @@ export class UserService {
      * 利用可能ポイント取得
      */
     public getAvailableBalance() {
+        if (this.data.accounts.length === 0) {
+            return '-';
+        }
         return this.data.accounts[0].typeOfGood.paymentAccount.balance;
     }
 }

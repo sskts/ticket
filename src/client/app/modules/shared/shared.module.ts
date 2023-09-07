@@ -33,6 +33,7 @@ import {
     DurationPipe,
     TimeFormatPipe,
 } from './pipes';
+import { ItemCloseComponent } from './components/parts/item-close/item-close.component';
 
 const components = [
     AboutComponent,
@@ -52,6 +53,7 @@ const components = [
     MembershipBenefitsComponent,
     NavigationComponent,
     CampaignComponent,
+    ItemCloseComponent,
 ];
 
 const entryComponents = [

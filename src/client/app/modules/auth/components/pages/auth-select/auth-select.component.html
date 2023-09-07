@@ -1,38 +1,83 @@
 <div id="contents" class="scroll bg">
     <div class="h-100">
-        <div class="px-3 d-flex justify-content-center align-items-center h-100">
+        <div
+            class="px-3 d-flex justify-content-center align-items-center h-100"
+        >
             <div class="w-100">
                 <div class="logo text-center mb-4">
-                    <img src="/assets/images/common/logo_text.svg">
+                    <img src="/assets/images/common/logo_text.svg" />
                 </div>
-                <p class="text-center text-white mb-4">
-                    アプリの始め方を選択してください。
-                </p>
-                <p class="text-left text-white mb-4">
-                    会員移行を完了されたお客様はシネマサンシャインホームページから会員サービスをご利用ください。<br>
-                    会員移行手続きを開始されたお客様は、アプリへのログインはできなくなります。
-                </p>
+                <div *ngIf="applicationStatus !== 'MEMBERSHIP_COUPON_CLOSE'">
+                    <p class="text-center text-white mb-4">
+                        アプリの始め方を選択してください。
+                    </p>
+                    <p class="text-left text-white mb-4">
+                        会員移行を完了されたお客様はシネマサンシャインホームページから会員サービスをご利用ください。<br />
+                        会員移行手続きを開始されたお客様は、アプリへのログインはできなくなります。
+                    </p>
+                </div>
+                <div *ngIf="applicationStatus === 'MEMBERSHIP_COUPON_CLOSE'">
+                    <p class="text-center text-white mb-4">
+                        アプリサービスは終了いたしました。
+                    </p>
+                    <p class="text-left text-white mb-4">
+                        2023年9月30日をもちましてアプリ会員サービスは終了いたしました。<br />
+                        会員サービスを継続されるお客様で会員以降手続きがまだお済みでない方は。ログイン後アプリのマイページから会員移行手続きをお願いいたします。
+                    </p>
+                </div>
+
                 <div class="buttons mx-auto text-center">
-                    <button *ngIf="isNewMembershipTransfer" type="button" class="btn btn-primary btn-block py-3 mb-3"
-                        (click)="newMembershipTransfer()">
-                        会員移行<span *ngIf="userName" class="text-break"><br>ユーザーネーム: {{ userName }}</span>
+                    <button
+                        *ngIf="isNewMembershipTransfer"
+                        type="button"
+                        class="btn btn-primary btn-block py-3 mb-3"
+                        (click)="newMembershipTransfer()"
+                    >
+                        会員移行<span *ngIf="userName" class="text-break"
+                            ><br />ユーザーネーム: {{ userName }}</span
+                        >
                     </button>
-                    <button *ngIf="mypageSiteUrl" type="button" class="btn btn-primary btn-block py-3 mb-3"
-                        (click)="openWebBrowser(mypageSiteUrl)">
+                    <button
+                        *ngIf="
+                            mypageSiteUrl &&
+                            applicationStatus !== 'MEMBERSHIP_COUPON_CLOSE'
+                        "
+                        type="button"
+                        class="btn btn-primary btn-block py-3 mb-3"
+                        (click)="openWebBrowser(mypageSiteUrl)"
+                    >
                         会員移行済みの方はこちら
                     </button>
-                    <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="signIn()">
-                        ログイン<span class="text-small"><br>会員移行手続きを開始されたお客様は、<br>アプリへのログインはできなくなります。</span>
+                    <button
+                        type="button"
+                        class="btn btn-primary btn-block py-3 mb-3"
+                        (click)="signIn()"
+                    >
+                        ログイン<span class="text-small"
+                            ><br />会員移行手続きを開始されたお客様は、<br />アプリへのログインはできなくなります。</span
+                        >
                     </button>
-                    <button *ngIf="applicationStatus === 'NO_RELEASE'" type="button"
-                        class="btn btn-primary btn-block py-3 mb-3" routerLink="/auth/register">
+                    <button
+                        *ngIf="applicationStatus === 'NO_RELEASE'"
+                        type="button"
+                        class="btn btn-primary btn-block py-3 mb-3"
+                        routerLink="/auth/register"
+                    >
                         新規登録
                     </button>
-                    <button type="button" class="btn btn-primary btn-block py-3 mb-3" (click)="start()">
+                    <button
+                        *ngIf="applicationStatus !== 'MEMBERSHIP_COUPON_CLOSE'"
+                        type="button"
+                        class="btn btn-primary btn-block py-3 mb-3"
+                        (click)="start()"
+                    >
                         会員登録せずにチケット購入する
                     </button>
-                    <button type="button" class="btn btn-outline-light btn-block py-3"
-                        (click)="openWebBrowser(portalSiteUrl + '/form/')">
+                    <button
+                        type="button"
+                        class="btn btn-outline-light btn-block py-3"
+                        (click)="openWebBrowser(portalSiteUrl + '/form/')"
+                    >
                         お問い合わせ
                     </button>
                 </div>

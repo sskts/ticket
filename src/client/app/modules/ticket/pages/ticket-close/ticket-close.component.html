@@ -1,0 +1,13 @@
+<app-campaign class="d-block" url="ticket"></app-campaign>
+<div class="pt-4 pb-5 px-3">
+    <div *ngIf="!isLoading">
+        <p class="text-danger font-weight-bold" id="closeText">
+            ※9月30日（土）をもちまして、会員移行手続き以外のサービスを終了いたしました。2024年6月30日まではアプリ会員情報（ポイント、鑑賞履歴）を引き継いでの会員移行が可能となります。
+        </p>
+        <app-ticket-not-found
+            text="アプリサービスは終了いたしました。"
+        ></app-ticket-not-found>
+    </div>
+</div>
+<app-loading [show]="isLoading"></app-loading>
+<app-information url="ticket"></app-information>

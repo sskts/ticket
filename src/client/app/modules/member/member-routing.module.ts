@@ -9,30 +9,61 @@ import { MemberPointHistoryComponent } from './components/pages/member-point-his
 import { MemberTicketHistoryComponent } from './components/pages/member-ticket-history/member-ticket-history.component';
 import { MemberTransferComponent } from './components/pages/member-transfer/member-transfer.component';
 import { MemberWithdrawComponent } from './components/pages/member-withdraw/member-withdraw.component';
+import { statusGuardService } from '../../guards/status-guard.service';
+import { MemberMypageCloseComponent } from './components/pages/member-mypage-close/member-mypage-close.component';
 
 const routes: Routes = [
-    { path: 'mypage', component: MemberMypageComponent },
+    {
+        path: 'mypage',
+        canActivate: [statusGuardService],
+        component: MemberMypageComponent,
+    },
+    { path: 'mypage/close', component: MemberMypageCloseComponent },
     { path: 'withdraw', component: MemberWithdrawComponent },
     { path: 'transfer', component: MemberTransferComponent },
     {
         path: 'point',
         children: [
-            { path: 'benefits', component: MemberBenefitsComponent },
-            { path: 'history', component: MemberPointHistoryComponent },
+            {
+                path: 'benefits',
+                canActivate: [statusGuardService],
+                component: MemberBenefitsComponent,
+            },
+            {
+                path: 'history',
+                canActivate: [statusGuardService],
+                component: MemberPointHistoryComponent,
+            },
         ],
     },
     {
         path: 'edit',
         children: [
-            { path: '', component: MemberEditComponent },
-            { path: 'credit', component: MemberEditCreditComponent },
-            { path: 'profile', component: MemberEditProfileComponent },
+            {
+                path: '',
+                canActivate: [statusGuardService],
+                component: MemberEditComponent,
+            },
+            {
+                path: 'credit',
+                canActivate: [statusGuardService],
+                component: MemberEditCreditComponent,
+            },
+            {
+                path: 'profile',
+                canActivate: [statusGuardService],
+                component: MemberEditProfileComponent,
+            },
         ],
     },
     {
         path: 'ticket',
         children: [
-            { path: 'history', component: MemberTicketHistoryComponent },
+            {
+                path: 'history',
+                canActivate: [statusGuardService],
+                component: MemberTicketHistoryComponent,
+            },
         ],
     },
 ];

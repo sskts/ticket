@@ -7,10 +7,12 @@ import { PurchaseMoveComponent } from './components/parts/purchase-movie/purchas
 import { PurchaseTimePerformanceComponent } from './components/parts/purchase-time-performance/purchase-time-performance.component';
 import { PurchaseTimeComponent } from './components/parts/purchase-time/purchase-time.component';
 import { PurchaseRoutingModule } from './purchase-routing.module';
+import { PurchaseCloseComponent } from './components/pages/purchase-close/purchase-close.component';
 
 @NgModule({
     declarations: [
         PurchaseIndexComponent,
+        PurchaseCloseComponent,
         PurchaseMoveComponent,
         PurchaseMoviePerformanceComponent,
         PurchaseTimeComponent,

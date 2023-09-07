@@ -1,19 +1,35 @@
 <div class="p-3 scroll-vertical">
-    <p *ngIf="title" class="text-large text-center font-weight-bold mb-3" [innerHtml]="title"></p>
+    <p
+        *ngIf="title"
+        class="text-large text-center font-weight-bold mb-3"
+        [innerHtml]="title"
+    ></p>
     <p *ngIf="description" class="mb-3" [innerHtml]="description"></p>
-    <div *ngIf="image" class="mb-3">
-        <img class="w-100" [src]="image">
+    <div *ngIf="image" class="mb-4">
+        <img class="w-100" [src]="image" />
     </div>
-    <div class="mb-3 text-center">
+    <!-- <div class="mb-3 text-center">
         <div class="checkbox">
             <input type="checkbox" id="notWatch" [(ngModel)]="notWatch">
             <label for="notWatch" class="agree-label">今後このメッセージを表示しない</label>
         </div>
-    </div>
+    </div> -->
 
     <div class="buttons mx-auto text-center">
-        <button *ngIf="url" (click)="openWebBrowser(url)" type="button"
-            class="btn btn-primary btn-block py-3 mb-3">詳細はこちら</button>
-        <button type="button" class="btn btn-outline-secondary btn-block py-3" (click)="close()">閉じる</button>
+        <button
+            *ngIf="url"
+            (click)="openWebBrowser(url)"
+            type="button"
+            class="btn btn-primary btn-block py-3 mb-3"
+        >
+            詳細はこちら
+        </button>
+        <button
+            type="button"
+            class="btn btn-outline-secondary btn-block py-3"
+            (click)="close()"
+        >
+            閉じる
+        </button>
     </div>
 </div>

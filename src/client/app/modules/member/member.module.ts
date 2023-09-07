@@ -15,6 +15,7 @@ import { PointSliderComponent } from './components/parts/point-slider/point-slid
 import { PointStampsComponent } from './components/parts/point-stamps/point-stamps.component';
 import { TicketHistoryDetailComponent } from './components/parts/ticket-history-detail/ticket-history-detail.component';
 import { MemberRoutingModule } from './member-routing.module';
+import { MemberMypageCloseComponent } from './components/pages/member-mypage-close/member-mypage-close.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { MemberRoutingModule } from './member-routing.module';
         MemberEditCreditComponent,
         MemberEditProfileComponent,
         MemberMypageComponent,
+        MemberMypageCloseComponent,
         MemberPointHistoryComponent,
         MemberTicketHistoryComponent,
         MemberWithdrawComponent,
