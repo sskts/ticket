@@ -43,11 +43,14 @@ export class UtilService {
      * アプリステータス取得
      */
     public async getApplicationStatus() {
-        const result = await this.http
-            .get<{
-                status: ApplicationStatus;
-            }>(`/api/application/status?date=${moment().toISOString()}`)
-            .toPromise();
+        const result = {
+            status: ApplicationStatus.MEMBERSHIP_COUPON_CLOSE,
+        };
+        // const result = await this.http
+        //     .get<{
+        //         status: ApplicationStatus;
+        //     }>(`/api/application/status?date=${moment().toISOString()}`)
+        //     .toPromise();
 
         return result;
     }

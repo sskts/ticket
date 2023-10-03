@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService, UtilService } from '../../../../../services';
 import { ApplicationStatus } from '../../../../../models/util';
+import { UserService, UtilService } from '../../../../../services';
 
 @Component({
     selector: 'app-root',

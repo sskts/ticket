@@ -57,7 +57,6 @@ class OAuth2 {
         session.auth = authSession;
     }
 }
-exports.OAuth2 = OAuth2;
 /**
  * 状態（固定値）
  */
@@ -66,3 +65,4 @@ OAuth2.STATE = 'STATE';
  * 検証コード（固定値）
  */
 OAuth2.CODE_VERIFIER = 'CODE_VERIFIER';
+exports.OAuth2 = OAuth2;

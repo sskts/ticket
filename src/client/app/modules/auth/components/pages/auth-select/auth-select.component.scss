@@ -14,6 +14,10 @@
     will-change: transform;
 }
 
+.min-100 {
+    min-height: 100%;
+}
+
 .bg {
     background-image: url(/assets/images/auth/bg.jpg);
     background-size: cover;
