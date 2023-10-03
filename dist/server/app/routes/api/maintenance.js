@@ -3,11 +3,10 @@
  * API
  */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -21,7 +20,7 @@ const router = express.Router();
 /**
  * メンテナンス確認
  */
-router.get('/confirm', (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/confirm', (_req, res) => __awaiter(this, void 0, void 0, function* () {
     log('config');
     try {
         if (process.env.MAINTENANCE_TIME === undefined ||
@@ -55,7 +54,7 @@ router.get('/confirm', (_req, res) => __awaiter(void 0, void 0, void 0, function
 /**
  * 除外劇場
  */
-router.get('/excludeTheaters', (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/excludeTheaters', (_req, res) => __awaiter(this, void 0, void 0, function* () {
     log('excludeTheaters');
     try {
         if (process.env.EXCLUDE_THEATERS_TIME === undefined ||

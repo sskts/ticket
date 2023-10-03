@@ -57,7 +57,6 @@ class CognitoOAuth2 {
         session.cognito = authSession;
     }
 }
-exports.CognitoOAuth2 = CognitoOAuth2;
 /**
  * 状態（固定値）
  */
@@ -66,3 +65,4 @@ CognitoOAuth2.STATE = 'COGNITO_STATE';
  * 検証コード（固定値）
  */
 CognitoOAuth2.CODE_VERIFIER = 'CODE_VERIFIER';
+exports.CognitoOAuth2 = CognitoOAuth2;
