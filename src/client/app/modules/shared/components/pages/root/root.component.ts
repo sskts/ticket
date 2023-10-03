@@ -33,6 +33,6 @@ export class RootComponent implements OnInit {
         } catch (error) {
             console.error(error);
         }
-        this.router.navigate(['/purchase']);
+        this.router.navigate(['/auth/select']);
     }
 }
